@@ -95,10 +95,42 @@ body {
   animation: fg-feedback 260ms ease-out;
 }
 
+@keyframes fg-temp-toast {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  12% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  22% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+}
+
+.fg-temp-toast {
+  animation: fg-temp-toast 1.7s ease-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fg-pin--pending,
   .fg-feedback {
     animation: none;
+  }
+
+  .fg-temp-toast {
+    animation: none;
+    opacity: 1;
   }
 }
 

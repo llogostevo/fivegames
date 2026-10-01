@@ -5,7 +5,13 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import { GameMap } from "@/components/game/GameMap";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
+import { ResultsPopup } from "@/components/game/ResultsPopup";
+import { TemperatureToast } from "@/components/game/TemperatureToast";
 import { CLUE_COUNT } from "@/lib/game/constants";
+import {
+  getDailyResult,
+  saveDailyResult,
+} from "@/lib/game/dailyResultStorage";
 import { getPanelActionState } from "@/lib/game/panelActions";
 import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
@@ -66,6 +72,7 @@ function buildShareText(reveal: GameReveal): string {
     `Pin5 #${reveal.gameNumber} — ${reveal.theme}`,
     `${reveal.totalScore.toLocaleString()} / ${reveal.maxScore.toLocaleString()}`,
     progress,
+    "https://fivegames.vercel.app/",
   ].join("\n");
 }
 
@@ -126,6 +133,10 @@ export function GamePlay() {
     "idle",
   );
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
+  const [howToPlayCta, setHowToPlayCta] = useState("Got it");
+  const [resultsOpen, setResultsOpen] = useState(false);
+  const [tempToast, setTempToast] = useState<TemperatureResult | null>(null);
+  const [tempToastKey, setTempToastKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -134,6 +145,8 @@ export function GamePlay() {
       setIsStarting(true);
       setError(null);
       setUnavailableMessage(null);
+      setHowToPlayOpen(false);
+      setResultsOpen(false);
 
       try {
         const response = await fetch("/api/game/start", {
@@ -156,18 +169,38 @@ export function GamePlay() {
           return;
         }
 
-        setTheme(data.theme);
-        setThemeId(data.themeId);
+        const saved = getDailyResult(data.gameId);
+
+        setTheme(saved?.theme ?? data.theme);
+        setThemeId(saved?.themeId ?? data.themeId);
         setPendingGuess(null);
-        setReveal(null);
         setConfirmingAnswer(false);
         setTransitionTemperature(null);
         setShareStatus("idle");
-        setRows(
-          data.clue
-            ? [{ text: data.clue, coordinates: null, temperature: null }]
-            : [],
-        );
+
+        if (saved) {
+          // Already finished today's game — show score + next-game timer.
+          setReveal({
+            ...saved,
+            nextReleaseAt: data.nextReleaseAt,
+            theme: data.theme,
+            themeId: data.themeId,
+            accent: data.accent,
+            accentSoft: data.accentSoft,
+          });
+          setRows([]);
+          setResultsOpen(true);
+          setHowToPlayOpen(false);
+        } else {
+          setReveal(null);
+          setRows(
+            data.clue
+              ? [{ text: data.clue, coordinates: null, temperature: null }]
+              : [],
+          );
+          setHowToPlayCta("Play now");
+          setHowToPlayOpen(true);
+        }
       } catch (startError) {
         if (!cancelled) {
           const message =
@@ -198,6 +231,24 @@ export function GamePlay() {
       cancelled = true;
     };
   }, [round]);
+
+  const showTemperatureToast = useCallback((temperature: TemperatureResult | null) => {
+    if (!temperature) {
+      return;
+    }
+    setTempToast(temperature);
+    setTempToastKey((value) => value + 1);
+  }, []);
+
+  useEffect(() => {
+    if (!tempToast || tempToastKey <= 0) {
+      return;
+    }
+    const id = window.setTimeout(() => {
+      setTempToast(null);
+    }, 1700);
+    return () => window.clearTimeout(id);
+  }, [tempToast, tempToastKey]);
 
   const handleSelect = useCallback((coordinates: Coordinates) => {
     setPendingGuess(coordinates);
@@ -253,6 +304,7 @@ export function GamePlay() {
       ]);
       setPendingGuess(null);
       setTransitionTemperature(guessData.temperature);
+      showTemperatureToast(guessData.temperature);
     } catch (nextError) {
       setError(
         `${nextError instanceof Error ? nextError.message : "Couldn't get the next clue."} Try again.`,
@@ -293,7 +345,10 @@ export function GamePlay() {
       setTransitionTemperature(null);
 
       if (guessData.complete && guessData.reveal) {
+        saveDailyResult(guessData.reveal);
         setReveal(guessData.reveal);
+        setShareStatus("idle");
+        setResultsOpen(true);
       } else {
         throw new Error("The final result didn't come back.");
       }
@@ -384,7 +439,10 @@ export function GamePlay() {
       setPendingGuess(null);
       setConfirmingAnswer(false);
       setTransitionTemperature(null);
+      saveDailyResult(answerData.reveal);
       setReveal(answerData.reveal);
+      setShareStatus("idle");
+      setResultsOpen(true);
     } catch (answerError) {
       setError(
         `${answerError instanceof Error ? answerError.message : "Couldn't lock your answer."} Try again.`,
@@ -471,7 +529,10 @@ export function GamePlay() {
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <button
             type="button"
-            onClick={() => setHowToPlayOpen(true)}
+            onClick={() => {
+              setHowToPlayCta("Got it");
+              setHowToPlayOpen(true);
+            }}
             className="rounded-md border border-rule px-2.5 py-1.5 text-xs font-semibold text-muted transition hover:bg-neutral-50 hover:text-foreground sm:px-3 sm:text-sm"
           >
             How to play
@@ -506,10 +567,23 @@ export function GamePlay() {
         </div>
       </header>
 
+      <TemperatureToast temperature={tempToast} toastKey={tempToastKey} />
+
       <HowToPlayModal
         open={howToPlayOpen}
+        primaryLabel={howToPlayCta}
         onClose={() => setHowToPlayOpen(false)}
       />
+
+      {reveal ? (
+        <ResultsPopup
+          open={resultsOpen}
+          reveal={reveal}
+          shareStatus={shareStatus}
+          onClose={() => setResultsOpen(false)}
+          onShare={() => void handleShareScore()}
+        />
+      ) : null}
 
       <main className="flex flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4 lg:grid lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_24rem] lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-6 lg:gap-y-4 lg:p-6">
         <section className="shrink-0 lg:col-start-2 lg:row-start-1" aria-live="polite">
@@ -588,11 +662,18 @@ export function GamePlay() {
                 </ol>
               </div>
 
-              <div className="mt-3 flex gap-2">
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => setResultsOpen(true)}
+                  className="rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 sm:px-4 sm:py-2.5"
+                >
+                  View results
+                </button>
                 <button
                   type="button"
                   onClick={() => void handleShareScore()}
-                  className="rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 sm:px-4 sm:py-2.5"
+                  className="rounded-md bg-course px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 sm:px-4 sm:py-2.5"
                 >
                   {shareStatus === "copied"
                     ? "Copied!"
@@ -600,19 +681,11 @@ export function GamePlay() {
                       ? "Shared!"
                       : "Share score"}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setRound((value) => value + 1)}
-                  className="rounded-md border border-rule px-3 py-2 text-sm font-semibold transition hover:bg-neutral-50 sm:px-4 sm:py-2.5"
-                >
-                  Play again
-                </button>
               </div>
 
               <NextGameCountdown
                 key={reveal.nextReleaseAt}
                 nextReleaseAt={reveal.nextReleaseAt}
-                onPlayToday={() => setRound((value) => value + 1)}
               />
             </div>
           ) : confirmingAnswer ? (

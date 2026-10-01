@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import {
   LngLatBounds,
   Map as MapLibreMap,
@@ -22,6 +29,12 @@ import type { Coordinates } from "@/types/coordinates";
 export type LockedMapGuess = {
   number: number;
   coordinates: Coordinates;
+};
+
+export type GameMapHandle = {
+  /** JPEG data URL of the current map canvas, or null if unavailable. */
+  captureSnapshot: () => string | null;
+  resize: () => void;
 };
 
 type GameMapProps = {
@@ -47,7 +60,11 @@ type GameMapProps = {
   /** Overlays rendered on top of the map (hints, buttons). */
   children?: ReactNode;
   className?: string;
-};
+  /** Hide zoom controls (useful for compact result snapshots). */
+  showControls?: boolean;
+  /** Padding used when fitting the reveal bounds. */
+  fitPadding?: number;
+}
 
 const COURSE_SOURCE_ID = "fg-course";
 const DEFAULT_ACCENT = "#c4157a";
@@ -75,21 +92,26 @@ function prefersReducedMotion() {
   );
 }
 
-export function GameMap({
-  initialCenter = DEFAULT_MAP_CENTER,
-  initialZoom = DEFAULT_MAP_ZOOM,
-  gameMode = true,
-  showLabels = false,
-  interactive = true,
-  pendingGuess = null,
-  pendingNumber = 1,
-  lockedGuesses = [],
-  target = null,
-  accentColor = DEFAULT_ACCENT,
-  onSelect,
-  children,
-  className,
-}: GameMapProps) {
+export const GameMap = forwardRef<GameMapHandle, GameMapProps>(function GameMap(
+  {
+    initialCenter = DEFAULT_MAP_CENTER,
+    initialZoom = DEFAULT_MAP_ZOOM,
+    gameMode = true,
+    showLabels = false,
+    interactive = true,
+    pendingGuess = null,
+    pendingNumber = 1,
+    lockedGuesses = [],
+    target = null,
+    accentColor = DEFAULT_ACCENT,
+    onSelect,
+    children,
+    className,
+    showControls = true,
+    fitPadding = 72,
+  },
+  ref,
+) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const pendingMarkerRef = useRef<Marker | null>(null);
@@ -100,6 +122,28 @@ export function GameMap({
   const accentColorRef = useRef(accentColor);
   const [mapReady, setMapReady] = useState(false);
   const [styleError, setStyleError] = useState<string | null>(null);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      captureSnapshot: () => {
+        const map = mapRef.current;
+        if (!map) {
+          return null;
+        }
+        try {
+          map.resize();
+          return map.getCanvas().toDataURL("image/jpeg", 0.88);
+        } catch {
+          return null;
+        }
+      },
+      resize: () => {
+        mapRef.current?.resize();
+      },
+    }),
+    [],
+  );
 
   useEffect(() => {
     onSelectRef.current = onSelect;
@@ -143,12 +187,16 @@ export function GameMap({
           zoom: initialZoom,
           maxZoom: MAP_MAX_ZOOM,
           attributionControl: { compact: true },
+          // Needed so captureSnapshot() can read pixels after draw.
+          preserveDrawingBuffer: true,
         });
 
-        map.addControl(
-          new NavigationControl({ showCompass: false }),
-          "top-right",
-        );
+        if (showControls) {
+          map.addControl(
+            new NavigationControl({ showCompass: false }),
+            "top-right",
+          );
+        }
 
         map.on("click", (event) => {
           if (!interactiveRef.current) {
@@ -193,6 +241,7 @@ export function GameMap({
               "line-opacity": 0.85,
             },
           });
+          map.resize();
           setMapReady(true);
         });
 
@@ -225,6 +274,22 @@ export function GameMap({
     // Intentionally mount-only: initial view / gameMode apply on first render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const map = mapRef.current;
+    if (!mapReady || !container || !map) {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => {
+      map.resize();
+    });
+    observer.observe(container);
+    map.resize();
+
+    return () => observer.disconnect();
+  }, [mapReady]);
 
   // Pending pin: a filled control that can be dragged to fine-tune.
   useEffect(() => {
@@ -346,7 +411,7 @@ export function GameMap({
       }
     });
     map.fitBounds(bounds, {
-      padding: 72,
+      padding: fitPadding,
       maxZoom: 11,
       duration: prefersReducedMotion() ? 0 : 1400,
     });
@@ -383,4 +448,4 @@ export function GameMap({
       {children}
     </div>
   );
-}
+});
