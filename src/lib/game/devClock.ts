@@ -1,21 +1,13 @@
 import { cookies } from "next/headers";
 
 import { DEV_DATE_COOKIE } from "@/lib/game/constants";
-import {
-  isDateOverrideUiEnabled,
-  isValidIsoDate,
-  type ClockOptions,
-} from "@/lib/game/date";
+import { isValidIsoDate, type ClockOptions } from "@/lib/game/date";
 
 /**
  * Read the temporary date-switcher cookie for API routes.
- * Enabled in development, or in production when FIVEGAMES_ALLOW_DATE_OVERRIDE=true.
+ * Allowed in production for now (beta testing); remove with the toolbar later.
  */
 export async function getRequestClockOptions(): Promise<ClockOptions> {
-  if (!isDateOverrideUiEnabled()) {
-    return {};
-  }
-
   const store = await cookies();
   const value = store.get(DEV_DATE_COOKIE)?.value?.trim();
   if (!value || !isValidIsoDate(value)) {

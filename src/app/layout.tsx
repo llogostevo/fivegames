@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 
 import { DevDateToolbar } from "@/components/dev/DevDateToolbar";
 import { DEV_DATE_COOKIE } from "@/lib/game/constants";
-import { isDateOverrideUiEnabled } from "@/lib/game/date";
 
 import "./globals.css";
 
@@ -31,12 +30,9 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const showDevToolbar = isDateOverrideUiEnabled();
-  let initialDevDate = "";
-  if (showDevToolbar) {
-    const store = await cookies();
-    initialDevDate = store.get(DEV_DATE_COOKIE)?.value ?? "";
-  }
+  // Temporary beta testing control — remove DevDateToolbar later.
+  const store = await cookies();
+  const initialDevDate = store.get(DEV_DATE_COOKIE)?.value ?? "";
 
   return (
     <html
@@ -44,7 +40,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        {showDevToolbar ? <DevDateToolbar initialDate={initialDevDate} /> : null}
+        <DevDateToolbar initialDate={initialDevDate} />
         {children}
       </body>
     </html>

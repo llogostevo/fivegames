@@ -182,25 +182,11 @@ export function parseDevNow(value: string): Date {
 }
 
 /**
- * Whether the temporary on-page date switcher (and its cookie) is enabled.
- * Env date overrides (`FIVEGAMES_DEV_DATE` / `FIVEGAMES_DEV_NOW`) work whenever set,
- * including production — use those to force a game for all visitors.
- */
-export function isDateOverrideUiEnabled(
-  nodeEnv: string | undefined = process.env.NODE_ENV,
-): boolean {
-  if (nodeEnv !== "production") {
-    return true;
-  }
-  return process.env.FIVEGAMES_ALLOW_DATE_OVERRIDE === "true";
-}
-
-/**
  * Resolve the clock used for daily release decisions.
  *
  * When `FIVEGAMES_DEV_NOW` or `FIVEGAMES_DEV_DATE` is set (or passed via options),
- * that override is used in any environment — including production — so a shared
- * test deployment can pin a game for audiences. Leave both unset for the real clock.
+ * that override is used in any environment. The temporary on-page date dropdown
+ * also works via cookie in production while we are in beta.
  */
 export function resolveClock(
   now: Date = new Date(),
