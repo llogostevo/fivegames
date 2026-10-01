@@ -1,12 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { GameMap } from "@/components/game/GameMap";
 import { CLUE_COUNT, TEST_GAME_ID } from "@/lib/game/constants";
+import { getPanelActionState } from "@/lib/game/panelActions";
 import type { Coordinates } from "@/types/coordinates";
 import type {
+  ContinueResponse,
   GameReveal,
+  LockAnswerResponse,
   LockGuessResponse,
   PublicGameState,
   TemperatureResult,
@@ -22,10 +25,17 @@ function formatDistance(meters: number): string {
   if (meters < 1000) {
     return `${meters} m`;
   }
-  if (meters < 100_000) {
+  if (meters < 10_000) {
     return `${(meters / 1000).toFixed(1)} km`;
   }
+  if (meters < 100_000) {
+    return `${Math.round(meters / 1000)} km`;
+  }
   return `${Math.round(meters / 1000).toLocaleString()} km`;
+}
+
+function formatPoints(points: number): string {
+  return `${points.toLocaleString()} pts`;
 }
 
 const TEMPERATURE = {
@@ -49,12 +59,13 @@ function PinBadge({
   state,
 }: {
   number: number;
-  state: "locked" | "active" | "upcoming";
+  state: "locked" | "active" | "upcoming" | "carried";
 }) {
   const styles = {
     locked: "border-course text-course bg-white",
     active: "border-course bg-course text-white",
     upcoming: "border-rule text-muted bg-white",
+    carried: "border-rule text-muted bg-neutral-50",
   }[state];
   return (
     <span
@@ -65,16 +76,33 @@ function PinBadge({
   );
 }
 
+async function postGuess(pendingGuess: Coordinates) {
+  const response = await fetch(`/api/game/${TEST_GAME_ID}/guess`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pendingGuess),
+  });
+  const data = (await response.json()) as LockGuessResponse & {
+    error?: string;
+  };
+  if (!response.ok) {
+    throw new Error(data.error ?? "Your pin wasn't locked.");
+  }
+  return data;
+}
+
 export function GamePlay() {
   const [round, setRound] = useState(0);
   const [theme, setTheme] = useState<string>("");
   const [rows, setRows] = useState<ClueRow[]>([]);
   const [pendingGuess, setPendingGuess] = useState<Coordinates | null>(null);
   const [reveal, setReveal] = useState<GameReveal | null>(null);
+  const [confirmingAnswer, setConfirmingAnswer] = useState(false);
+  const [transitionTemperature, setTransitionTemperature] =
+    useState<TemperatureResult | null>(null);
   const [isStarting, setIsStarting] = useState(true);
-  const [isLocking, setIsLocking] = useState(false);
+  const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -101,7 +129,8 @@ export function GamePlay() {
         setTheme(data.theme);
         setPendingGuess(null);
         setReveal(null);
-        setCopied(false);
+        setConfirmingAnswer(false);
+        setTransitionTemperature(null);
         setRows(
           data.clue
             ? [{ text: data.clue, coordinates: null, temperature: null }]
@@ -129,126 +158,204 @@ export function GamePlay() {
 
   const handleSelect = useCallback((coordinates: Coordinates) => {
     setPendingGuess(coordinates);
+    setTransitionTemperature(null);
   }, []);
 
-  async function handleLockGuess() {
-    if (!pendingGuess || isLocking || reveal) {
+  async function handleGetNextClue() {
+    if (!pendingGuess || isBusy || reveal || confirmingAnswer) {
       return;
     }
 
     const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
-    if (activeRowIndex === -1) {
+    if (activeRowIndex === -1 || activeRowIndex >= CLUE_COUNT - 1) {
       return;
     }
 
-    setIsLocking(true);
+    setIsBusy(true);
     setError(null);
 
     try {
-      const response = await fetch(`/api/game/${TEST_GAME_ID}/guess`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pendingGuess),
-      });
-      const data = (await response.json()) as LockGuessResponse & {
+      const guessData = await postGuess(pendingGuess);
+
+      setRows((current) =>
+        current.map((row, index) =>
+          index === activeRowIndex
+            ? {
+                ...row,
+                coordinates: pendingGuess,
+                temperature: guessData.temperature,
+              }
+            : row,
+        ),
+      );
+
+      const continueResponse = await fetch(
+        `/api/game/${TEST_GAME_ID}/continue`,
+        { method: "POST" },
+      );
+      const continueData = (await continueResponse.json()) as ContinueResponse & {
         error?: string;
       };
 
-      if (!response.ok) {
-        throw new Error(data.error ?? "Your pin wasn't locked.");
+      if (!continueResponse.ok) {
+        throw new Error(continueData.error ?? "Couldn't open the next clue.");
       }
 
-      setRows((current) => {
-        const next = current.map((row, index) =>
-          index === activeRowIndex
-            ? { ...row, coordinates: pendingGuess, temperature: data.temperature }
-            : row,
-        );
-        if (!data.complete && data.nextClue) {
-          next.push({ text: data.nextClue, coordinates: null, temperature: null });
-        }
-        return next;
-      });
+      setRows((current) => [
+        ...current,
+        {
+          text: continueData.clue,
+          coordinates: null,
+          temperature: null,
+        },
+      ]);
       setPendingGuess(null);
-
-      if (data.complete && data.reveal) {
-        setReveal(data.reveal);
-      }
-    } catch (lockError) {
+      setTransitionTemperature(guessData.temperature);
+    } catch (nextError) {
       setError(
-        `${lockError instanceof Error ? lockError.message : "Your pin wasn't locked."} Try locking it again.`,
+        `${nextError instanceof Error ? nextError.message : "Couldn't get the next clue."} Try again.`,
       );
     } finally {
-      setIsLocking(false);
+      setIsBusy(false);
     }
   }
 
-  // Enter locks the pin on keyboards.
-  const lockRef = useRef(handleLockGuess);
-  useEffect(() => {
-    lockRef.current = handleLockGuess;
-  });
-  useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key !== "Enter" || event.repeat) {
-        return;
-      }
-      const target = event.target as HTMLElement | null;
-      if (target?.closest("button, a, input, textarea")) {
-        return;
-      }
-      void lockRef.current();
+  async function handleSeeResult() {
+    if (!pendingGuess || isBusy || reveal || confirmingAnswer) {
+      return;
     }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+
+    const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
+    if (activeRowIndex !== CLUE_COUNT - 1) {
+      return;
+    }
+
+    setIsBusy(true);
+    setError(null);
+
+    try {
+      const guessData = await postGuess(pendingGuess);
+
+      setRows((current) =>
+        current.map((row, index) =>
+          index === activeRowIndex
+            ? {
+                ...row,
+                coordinates: pendingGuess,
+                temperature: guessData.temperature,
+              }
+            : row,
+        ),
+      );
+      setPendingGuess(null);
+      setTransitionTemperature(null);
+
+      if (guessData.complete && guessData.reveal) {
+        setReveal(guessData.reveal);
+      } else {
+        throw new Error("The final result didn't come back.");
+      }
+    } catch (resultError) {
+      setError(
+        `${resultError instanceof Error ? resultError.message : "Couldn't finish the game."} Try again.`,
+      );
+    } finally {
+      setIsBusy(false);
+    }
+  }
+
+  async function handleConfirmFinalAnswer() {
+    if (!pendingGuess || isBusy || reveal) {
+      return;
+    }
+
+    const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
+    if (activeRowIndex === -1 || activeRowIndex >= CLUE_COUNT - 1) {
+      return;
+    }
+
+    setIsBusy(true);
+    setError(null);
+
+    try {
+      const guessData = await postGuess(pendingGuess);
+
+      setRows((current) =>
+        current.map((row, index) =>
+          index === activeRowIndex
+            ? {
+                ...row,
+                coordinates: pendingGuess,
+                temperature: guessData.temperature,
+              }
+            : row,
+        ),
+      );
+
+      const answerResponse = await fetch(`/api/game/${TEST_GAME_ID}/answer`, {
+        method: "POST",
+      });
+      const answerData = (await answerResponse.json()) as LockAnswerResponse & {
+        error?: string;
+      };
+
+      if (!answerResponse.ok) {
+        throw new Error(answerData.error ?? "Couldn't lock your answer.");
+      }
+
+      setPendingGuess(null);
+      setConfirmingAnswer(false);
+      setTransitionTemperature(null);
+      setReveal(answerData.reveal);
+    } catch (answerError) {
+      setError(
+        `${answerError instanceof Error ? answerError.message : "Couldn't lock your answer."} Try again.`,
+      );
+    } finally {
+      setIsBusy(false);
+    }
+  }
 
   const isComplete = reveal !== null;
   const activeIndex = rows.findIndex((row) => row.coordinates === null);
   const activeRow = activeIndex >= 0 ? rows[activeIndex] : null;
   const pinNumber = activeIndex + 1;
-  const lockedRows = rows.filter((row) => row.coordinates !== null);
-  const lockedCount = lockedRows.length;
-  const lastLocked = lockedRows[lockedCount - 1];
+  const lockedCount = rows.filter((row) => row.coordinates !== null).length;
   const lockedGuesses = rows.flatMap((row, index) =>
     row.coordinates ? [{ number: index + 1, coordinates: row.coordinates }] : [],
   );
-  const canLock = Boolean(pendingGuess) && !isLocking && !isComplete;
-  const isFinalPin = pinNumber === CLUE_COUNT;
+  const hasPin = pendingGuess !== null;
+  const panelActions = getPanelActionState({
+    hasPin,
+    clueNumber: Math.max(pinNumber, 1),
+    isBusy,
+    isComplete,
+    isConfirming: confirmingAnswer,
+  });
+  const canAct = panelActions.canAct;
+  const isFinalClue = panelActions.isFinalClue;
 
-  const distances = reveal?.guesses.map((guess) => guess.distanceMeters) ?? [];
-  const closestIndex = distances.length
-    ? distances.indexOf(Math.min(...distances))
+  const actualDistances =
+    reveal?.guesses
+      .filter((guess) => !guess.carriedForward)
+      .map((guess) => guess.distanceMeters ?? Number.POSITIVE_INFINITY) ?? [];
+  const closestActualIndex = actualDistances.length
+    ? actualDistances.indexOf(Math.min(...actualDistances))
     : -1;
 
-  async function handleShare() {
-    if (!reveal) {
-      return;
-    }
-    const trail = rows
-      .map((row, index) =>
-        index === 0 ? "📍" : row.temperature ? TEMPERATURE[row.temperature].emoji : "",
-      )
-      .join("");
-    const text = [
-      `FiveGames: ${theme}`,
-      trail,
-      `Closest pin: ${formatDistance(distances[closestIndex])}`,
-      window.location.origin,
-    ].join("\n");
+  const mapGuesses =
+    isComplete && reveal
+      ? reveal.guesses
+          .filter((guess) => !guess.carriedForward)
+          .map((guess, index) => ({
+            number: index + 1,
+            coordinates: { lat: guess.lat, lng: guess.lng },
+          }))
+      : lockedGuesses;
 
-    try {
-      if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
-        await navigator.share({ text });
-        return;
-      }
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Share sheet dismissed; nothing to do.
-    }
-  }
+  const latestLockedIndex = lockedCount - 1;
+  const latestLocked =
+    !isComplete && latestLockedIndex >= 0 ? rows[latestLockedIndex] : null;
 
   return (
     <div className="flex min-h-dvh flex-1 flex-col lg:h-dvh">
@@ -266,19 +373,25 @@ export function GamePlay() {
         <ol
           className="flex items-center gap-1.5"
           aria-label={
-            isComplete
-              ? "All five pins placed"
-              : `Pin ${Math.max(pinNumber, 1)} of ${CLUE_COUNT}`
+            isComplete && reveal
+              ? reveal.lockedAfterClue < CLUE_COUNT
+                ? `Answer locked on clue ${reveal.lockedAfterClue}`
+                : "Completed in 5 clues"
+              : `Clue ${Math.max(pinNumber, 1)} of ${CLUE_COUNT}`
           }
         >
           {Array.from({ length: CLUE_COUNT }, (_, index) => {
             const done = index < lockedCount;
-            const current = index === activeIndex && !isComplete;
+            const current = !isComplete && index === activeIndex;
             return (
               <li
                 key={index}
                 className={`h-2 rounded-full transition-all ${
-                  current ? "w-6 bg-course" : done ? "w-2 bg-course" : "w-2 bg-rule"
+                  current
+                    ? "w-6 bg-course"
+                    : done
+                      ? "w-2 bg-course"
+                      : "w-2 bg-rule"
                 }`}
               />
             );
@@ -286,9 +399,8 @@ export function GamePlay() {
         </ol>
       </header>
 
-      <main className="grid flex-1 grid-cols-1 gap-4 p-4 sm:p-6 lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_24rem] lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-6">
-        {/* Current clue or result */}
-        <section className="lg:col-start-2 lg:row-start-1" aria-live="polite">
+      <main className="flex flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4 lg:grid lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_24rem] lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-6 lg:gap-y-4 lg:p-6">
+        <section className="shrink-0 lg:col-start-2 lg:row-start-1" aria-live="polite">
           {isStarting ? (
             <div className="space-y-3" aria-label="Loading the first clue">
               <div className="h-4 w-24 animate-pulse rounded bg-neutral-100" />
@@ -301,21 +413,30 @@ export function GamePlay() {
               <h2 className="font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
                 {reveal.answer.name}
               </h2>
-              <p className="mt-2 text-base">
-                Your closest was pin {closestIndex + 1},{" "}
-                <strong className="font-semibold">
-                  {formatDistance(distances[closestIndex])}
-                </strong>{" "}
-                away.
+              <p className="mt-2 text-sm font-semibold text-course">
+                {reveal.lockedAfterClue < CLUE_COUNT
+                  ? `🎯 Answer locked on clue ${reveal.lockedAfterClue}`
+                  : "Completed in 5 clues"}
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => void handleShare()}
-                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
-                >
-                  {copied ? "Copied to clipboard" : "Share result"}
-                </button>
+              <div className="mt-4">
+                <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
+                  Total score
+                </p>
+                <p className="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                  {reveal.totalScore.toLocaleString()}
+                  <span className="text-xl font-semibold text-muted sm:text-2xl">
+                    {" "}
+                    / {reveal.maxScore.toLocaleString()}
+                  </span>
+                </p>
+              </div>
+              {closestActualIndex >= 0 ? (
+                <p className="mt-2 text-sm text-muted">
+                  Closest pin: {closestActualIndex + 1} (
+                  {formatDistance(actualDistances[closestActualIndex])})
+                </p>
+              ) : null}
+              <div className="mt-4">
                 <button
                   type="button"
                   onClick={() => setRound((value) => value + 1)}
@@ -325,42 +446,89 @@ export function GamePlay() {
                 </button>
               </div>
             </div>
-          ) : activeRow ? (
-            <div key={activeIndex} className="fg-feedback">
-              <p className="text-sm font-medium text-course">
-                Clue {pinNumber} of {CLUE_COUNT}
+          ) : confirmingAnswer ? (
+            <div className="fg-feedback rounded-lg border border-rule p-4">
+              <p className="font-display text-2xl font-semibold leading-snug">
+                Lock this as your final answer?
               </p>
-              <p className="mt-1 font-display text-2xl font-semibold leading-snug sm:text-[1.7rem]">
-                {activeRow.text}
+              <p className="mt-2 text-sm text-muted">
+                You won&apos;t see the remaining clues. Your current location
+                will count for the remaining rounds.
+              </p>
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                <button
+                  type="button"
+                  disabled={isBusy || !hasPin}
+                  onClick={() => void handleConfirmFinalAnswer()}
+                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
+                >
+                  Lock Final Answer
+                </button>
+                <button
+                  type="button"
+                  disabled={isBusy}
+                  onClick={() => setConfirmingAnswer(false)}
+                  className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold transition hover:bg-neutral-50 disabled:opacity-60"
+                >
+                  Keep Playing
+                </button>
+              </div>
+            </div>
+          ) : activeRow ? (
+            <div key={activeIndex} className="fg-feedback space-y-3 lg:space-y-4">
+              <div>
+                <p className="text-sm font-medium text-course">
+                  Clue {pinNumber} of {CLUE_COUNT}
+                </p>
+                <p className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl lg:text-[1.7rem]">
+                  {activeRow.text}
+                </p>
+              </div>
+
+              {transitionTemperature ? (
+                <p
+                  className={`hidden items-center gap-2 rounded-md px-3 py-2 text-sm lg:flex ${TEMPERATURE[transitionTemperature].tone}`}
+                >
+                  <span aria-hidden="true" className="text-base">
+                    {TEMPERATURE[transitionTemperature].emoji}
+                  </span>
+                  <span>
+                    <strong className="font-semibold">
+                      {TEMPERATURE[transitionTemperature].word}.
+                    </strong>{" "}
+                    {feedbackSentence(transitionTemperature, lockedCount)}
+                  </span>
+                </p>
+              ) : null}
+
+              <p className="text-sm text-muted">
+                {hasPin
+                  ? "Pin placed — get another clue or lock your answer."
+                  : "Drop a pin on the map to continue."}
               </p>
 
-              {lastLocked ? (
-                lastLocked.temperature ? (
-                  <p
-                    className={`mt-3 flex items-center gap-2 rounded-md px-3 py-2 text-sm ${TEMPERATURE[lastLocked.temperature].tone}`}
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  disabled={!canAct}
+                  onClick={() =>
+                    void (isFinalClue ? handleSeeResult() : handleGetNextClue())
+                  }
+                  className="rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:bg-neutral-300"
+                >
+                  {panelActions.primaryLabel}
+                </button>
+                {panelActions.secondaryLabel ? (
+                  <button
+                    type="button"
+                    disabled={!canAct}
+                    onClick={() => setConfirmingAnswer(true)}
+                    className="rounded-md border border-course px-4 py-2.5 text-sm font-semibold text-course transition hover:bg-course-soft disabled:cursor-not-allowed disabled:border-rule disabled:text-muted disabled:hover:bg-transparent"
                   >
-                    <span aria-hidden="true" className="text-base">
-                      {TEMPERATURE[lastLocked.temperature].emoji}
-                    </span>
-                    <span>
-                      <strong className="font-semibold">
-                        {TEMPERATURE[lastLocked.temperature].word}.
-                      </strong>{" "}
-                      {feedbackSentence(lastLocked.temperature, lockedCount)}
-                    </span>
-                  </p>
-                ) : (
-                  <p className="mt-3 rounded-md bg-neutral-100 px-3 py-2 text-sm text-muted">
-                    Pin 1 is down. From now on, each pin tells you if you&apos;re
-                    warmer or colder than the one before.
-                  </p>
-                )
-              ) : (
-                <p className="mt-3 text-sm text-muted">
-                  Each clue narrows it down. Drop a pin where you think the
-                  place is. You get five pins, one per clue.
-                </p>
-              )}
+                    {panelActions.secondaryLabel}
+                  </button>
+                ) : null}
+              </div>
             </div>
           ) : null}
 
@@ -374,86 +542,161 @@ export function GamePlay() {
           ) : null}
         </section>
 
-        {/* Map */}
         <GameMap
           key={round}
-          className="relative h-[58dvh] min-h-80 w-full overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full"
+          className="relative min-h-[50dvh] w-full flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none"
           gameMode
           showLabels={isComplete}
-          interactive={!isComplete && !isLocking && !isStarting}
+          interactive={!isComplete && !isBusy && !isStarting && !confirmingAnswer}
           pendingGuess={isComplete ? null : pendingGuess}
-          pendingNumber={pinNumber}
-          lockedGuesses={lockedGuesses}
+          pendingNumber={Math.max(pinNumber, 1)}
+          lockedGuesses={mapGuesses}
           target={reveal?.answer.coordinates ?? null}
           onSelect={handleSelect}
-        >
-          {!isComplete && !isStarting ? (
-            <>
-              {!pendingGuess ? (
-                <p className="pointer-events-none absolute left-3 top-3 rounded-md bg-white/95 px-3 py-1.5 text-sm font-medium shadow-sm">
-                  Tap the map to place pin {pinNumber}
-                </p>
-              ) : null}
-              <div className="pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center gap-1.5 px-4">
-                <button
-                  type="button"
-                  onClick={() => void handleLockGuess()}
-                  disabled={!canLock}
-                  className="pointer-events-auto rounded-full bg-course px-6 py-3 font-display text-lg font-bold text-white shadow-lg transition hover:brightness-110 disabled:bg-white disabled:text-muted disabled:shadow-md"
-                >
-                  {isFinalPin ? "Lock final pin" : `Lock pin ${pinNumber}`}
-                </button>
-                {pendingGuess ? (
-                  <p className="hidden rounded bg-white/90 px-2 py-0.5 text-xs text-muted sm:block">
-                    Drag the pin to adjust, or press Enter to lock
-                  </p>
-                ) : null}
-              </div>
-            </>
-          ) : null}
-        </GameMap>
+        />
 
-        {/* Clue trail */}
-        {rows.length > 0 ? (
+        {latestLocked ? (
           <section
-            className="lg:col-start-2 lg:row-start-2 lg:overflow-y-auto"
-            aria-label="Clues so far"
+            className="shrink-0 rounded-lg border border-rule px-3 py-2 lg:hidden"
+            aria-label={`Guess ${latestLockedIndex + 1} feedback`}
+            aria-live="polite"
+          >
+            <div className="flex items-center gap-3">
+              <PinBadge number={latestLockedIndex + 1} state="locked" />
+              {latestLocked.temperature ? (
+                <p
+                  className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-semibold ${TEMPERATURE[latestLocked.temperature].tone}`}
+                >
+                  <span aria-hidden="true">
+                    {TEMPERATURE[latestLocked.temperature].emoji}
+                  </span>
+                  <span className="uppercase tracking-wide">
+                    {TEMPERATURE[latestLocked.temperature].word}
+                  </span>
+                </p>
+              ) : (
+                <p className="text-sm font-semibold uppercase tracking-wide text-muted">
+                  Pin locked
+                </p>
+              )}
+            </div>
+          </section>
+        ) : null}
+
+        {rows.length > 0 || isComplete ? (
+          <section
+            className={`${
+              isComplete ? "shrink-0" : "hidden lg:block"
+            } lg:col-start-2 lg:row-start-2 lg:min-h-0 lg:overflow-y-auto`}
+            aria-label="Clues and results"
           >
             <ol className="divide-y divide-rule border-y border-rule">
               {Array.from({ length: CLUE_COUNT }, (_, index) => {
                 const row = rows[index];
+                const revealedGuess = reveal?.guesses[index];
                 const isActive = index === activeIndex && !isComplete;
-                if (isActive && !isComplete) {
-                  return null;
+
+                if (revealedGuess?.carriedForward) {
+                  return (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 py-2.5 text-sm text-muted"
+                    >
+                      <PinBadge number={index + 1} state="carried" />
+                      <div className="min-w-0 flex-1">
+                        <p className="leading-snug">
+                          Final answer carried forward
+                        </p>
+                        <p className="mt-0.5 font-semibold tabular-nums text-foreground/70">
+                          {formatPoints(revealedGuess.score)}
+                        </p>
+                      </div>
+                    </li>
+                  );
                 }
-                const distance = reveal?.guesses[index]?.distanceMeters;
-                const isClosest = isComplete && index === closestIndex;
+
+                if (isActive && row) {
+                  return (
+                    <li key={index} className="flex items-start gap-3 py-3">
+                      <PinBadge number={index + 1} state="active" />
+                      <p className="min-w-0 flex-1 text-sm leading-snug">
+                        {row.text}
+                      </p>
+                    </li>
+                  );
+                }
+
+                if (!row && !revealedGuess) {
+                  return (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 py-3 opacity-50"
+                    >
+                      <PinBadge number={index + 1} state="upcoming" />
+                      <p className="min-w-0 flex-1 text-sm leading-snug text-muted">
+                        Locked
+                      </p>
+                    </li>
+                  );
+                }
+
+                const temperature =
+                  revealedGuess?.temperature ?? row?.temperature ?? null;
+                const distance = revealedGuess?.distanceMeters;
+                const score = revealedGuess?.score;
+                const isClosest =
+                  isComplete &&
+                  !revealedGuess?.carriedForward &&
+                  index === closestActualIndex;
+
                 return (
-                  <li
-                    key={index}
-                    className={`flex items-start gap-3 py-3 ${row ? "" : "opacity-60"}`}
-                  >
-                    <PinBadge number={index + 1} state={row ? "locked" : "upcoming"} />
-                    <p className="min-w-0 flex-1 text-sm leading-snug">
-                      {row ? row.text : "Unlocks after the pin before it"}
-                    </p>
-                    <div className="flex shrink-0 flex-col items-end gap-0.5 text-sm">
-                      {row?.temperature ? (
-                        <span
-                          className={`rounded px-1.5 py-0.5 text-xs font-semibold ${TEMPERATURE[row.temperature].tone}`}
-                        >
-                          <span aria-hidden="true">
-                            {TEMPERATURE[row.temperature].emoji}{" "}
-                          </span>
-                          {TEMPERATURE[row.temperature].word}
-                        </span>
+                  <li key={index} className="flex items-start gap-3 py-3">
+                    <PinBadge number={index + 1} state="locked" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm leading-snug">
+                        {row?.text ?? `Clue ${index + 1}`}
+                      </p>
+                      {revealedGuess?.isFinalAnswer &&
+                      reveal &&
+                      reveal.lockedAfterClue < CLUE_COUNT ? (
+                        <p className="mt-1 text-xs font-semibold text-course">
+                          🎯 Final answer
+                        </p>
                       ) : null}
-                      {typeof distance === "number" ? (
-                        <span
-                          className={`tabular-nums ${isClosest ? "font-semibold text-course" : "text-muted"}`}
-                        >
-                          {formatDistance(distance)}
-                        </span>
+                      {isComplete && typeof distance === "number" ? (
+                        <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                          <span
+                            className={`tabular-nums ${isClosest ? "font-semibold text-course" : "text-muted"}`}
+                          >
+                            {formatDistance(distance)}
+                          </span>
+                          {typeof score === "number" ? (
+                            <span className="font-semibold tabular-nums">
+                              {formatPoints(score)}
+                            </span>
+                          ) : null}
+                          {temperature ? (
+                            <span
+                              className={`rounded px-1.5 py-0.5 text-xs font-semibold ${TEMPERATURE[temperature].tone}`}
+                            >
+                              <span aria-hidden="true">
+                                {TEMPERATURE[temperature].emoji}{" "}
+                              </span>
+                              {TEMPERATURE[temperature].word}
+                            </span>
+                          ) : null}
+                        </p>
+                      ) : temperature ? (
+                        <p className="mt-1">
+                          <span
+                            className={`rounded px-1.5 py-0.5 text-xs font-semibold ${TEMPERATURE[temperature].tone}`}
+                          >
+                            <span aria-hidden="true">
+                              {TEMPERATURE[temperature].emoji}{" "}
+                            </span>
+                            {TEMPERATURE[temperature].word}
+                          </span>
+                        </p>
                       ) : null}
                     </div>
                   </li>

@@ -1,10 +1,12 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
-import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
+import { compareGuessTemperature } from "@/lib/game/distance";
+import { buildReveal } from "@/lib/game/reveal";
 import type { GameSession } from "@/lib/game/session";
 import type { Coordinates } from "@/types/coordinates";
 import type {
+  ContinueResponse,
   GameDefinition,
-  GameReveal,
+  LockAnswerResponse,
   LockGuessResponse,
   TemperatureResult,
 } from "@/types/game";
@@ -24,19 +26,30 @@ function isValidCoordinate(value: unknown): value is Coordinates {
   );
 }
 
+function assertActiveSession(game: GameDefinition, session: GameSession) {
+  if (session.gameId !== game.id) {
+    throw new Error("Session does not match game");
+  }
+  if (session.lockedAfterClue !== null) {
+    throw new Error("Game is already complete");
+  }
+}
+
 export function lockGuess(options: {
   game: GameDefinition;
   session: GameSession;
   guess: unknown;
 }): { session: GameSession; response: LockGuessResponse } {
   const { game, session } = options;
-
-  if (session.gameId !== game.id) {
-    throw new Error("Session does not match game");
-  }
+  assertActiveSession(game, session);
 
   if (session.guesses.length >= CLUE_COUNT) {
     throw new Error("All guesses are already locked");
+  }
+
+  // Player must be on a clue they have been shown and have not yet guessed.
+  if (session.guesses.length !== session.revealedClueCount - 1) {
+    throw new Error("Finish the current clue decision before guessing again");
   }
 
   if (!isValidCoordinate(options.guess)) {
@@ -57,38 +70,104 @@ export function lockGuess(options: {
   }
 
   const nextSession: GameSession = {
-    gameId: session.gameId,
+    ...session,
     guesses: [...session.guesses, guess],
   };
 
   const guessIndex = nextSession.guesses.length;
   const complete = guessIndex >= CLUE_COUNT;
 
-  let reveal: GameReveal | null = null;
   if (complete) {
-    reveal = {
-      answer: {
-        name: game.answer.name,
-        coordinates: target,
+    nextSession.lockedAfterClue = CLUE_COUNT;
+    return {
+      session: nextSession,
+      response: {
+        guessIndex,
+        temperature,
+        complete: true,
+        awaitingDecision: false,
+        canLockAnswer: false,
+        reveal: buildReveal(game, nextSession),
       },
-      guesses: nextSession.guesses.map((lockedGuess) => ({
-        ...lockedGuess,
-        distanceMeters: Math.round(distanceMeters(lockedGuess, target)),
-      })),
     };
   }
-
-  const nextClueIndex = complete ? null : guessIndex;
 
   return {
     session: nextSession,
     response: {
       guessIndex,
       temperature,
-      complete,
-      nextClueIndex,
-      nextClue: nextClueIndex === null ? null : game.clues[nextClueIndex],
-      reveal,
+      complete: false,
+      awaitingDecision: true,
+      canLockAnswer: true,
+      reveal: null,
+    },
+  };
+}
+
+export function continueToNextClue(options: {
+  game: GameDefinition;
+  session: GameSession;
+}): { session: GameSession; response: ContinueResponse } {
+  const { game, session } = options;
+  assertActiveSession(game, session);
+
+  if (session.guesses.length === 0) {
+    throw new Error("Lock a guess before continuing");
+  }
+
+  if (session.guesses.length !== session.revealedClueCount) {
+    throw new Error("No pending decision to continue from");
+  }
+
+  if (session.revealedClueCount >= CLUE_COUNT) {
+    throw new Error("No further clues available");
+  }
+
+  const nextClueIndex = session.revealedClueCount;
+  const nextSession: GameSession = {
+    ...session,
+    revealedClueCount: session.revealedClueCount + 1,
+  };
+
+  return {
+    session: nextSession,
+    response: {
+      clueIndex: nextClueIndex,
+      clue: game.clues[nextClueIndex],
+    },
+  };
+}
+
+export function lockFinalAnswer(options: {
+  game: GameDefinition;
+  session: GameSession;
+}): { session: GameSession; response: LockAnswerResponse } {
+  const { game, session } = options;
+  assertActiveSession(game, session);
+
+  if (session.guesses.length === 0) {
+    throw new Error("Lock a guess before locking your answer");
+  }
+
+  if (session.guesses.length !== session.revealedClueCount) {
+    throw new Error("Lock your current guess before locking your answer");
+  }
+
+  if (session.guesses.length >= CLUE_COUNT) {
+    throw new Error("Game is already on the final clue");
+  }
+
+  const nextSession: GameSession = {
+    ...session,
+    lockedAfterClue: session.guesses.length,
+  };
+
+  return {
+    session: nextSession,
+    response: {
+      complete: true,
+      reveal: buildReveal(game, nextSession),
     },
   };
 }

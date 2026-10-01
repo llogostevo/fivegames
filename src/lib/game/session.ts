@@ -5,7 +5,15 @@ import type { Guess } from "@/types/game";
 
 export type GameSession = {
   gameId: string;
+  /** Pins the player has actually locked. */
   guesses: Guess[];
+  /** How many clue texts have been revealed to the player (1–5). */
+  revealedClueCount: number;
+  /**
+   * When set, the game is complete.
+   * Equals the clue number (1–5) on which they committed their final answer.
+   */
+  lockedAfterClue: number | null;
 };
 
 function sessionSecret(): string {
@@ -21,6 +29,16 @@ export function encodeSession(session: GameSession): string {
     "base64url",
   );
   return `${payload}.${sign(payload)}`;
+}
+
+function isGuessArray(value: unknown): value is Guess[] {
+  return (
+    Array.isArray(value) &&
+    value.every(
+      (guess) =>
+        typeof guess?.lat === "number" && typeof guess?.lng === "number",
+    )
+  );
 }
 
 export function decodeSession(token: string | undefined): GameSession | null {
@@ -49,28 +67,32 @@ export function decodeSession(token: string | undefined): GameSession | null {
       Buffer.from(payload, "base64url").toString("utf8"),
     );
 
-    if (
-      !parsed ||
-      typeof parsed !== "object" ||
-      typeof (parsed as GameSession).gameId !== "string" ||
-      !Array.isArray((parsed as GameSession).guesses)
-    ) {
+    if (!parsed || typeof parsed !== "object") {
       return null;
     }
 
-    const guesses = (parsed as GameSession).guesses;
-    if (
-      !guesses.every(
-        (guess) =>
-          typeof guess?.lat === "number" && typeof guess?.lng === "number",
-      )
-    ) {
+    const session = parsed as Partial<GameSession>;
+    if (typeof session.gameId !== "string" || !isGuessArray(session.guesses)) {
       return null;
     }
+
+    const revealedClueCount =
+      typeof session.revealedClueCount === "number"
+        ? session.revealedClueCount
+        : Math.max(session.guesses.length, 1);
+
+    const lockedAfterClue =
+      typeof session.lockedAfterClue === "number"
+        ? session.lockedAfterClue
+        : session.lockedAfterClue === null
+          ? null
+          : null;
 
     return {
-      gameId: (parsed as GameSession).gameId,
-      guesses,
+      gameId: session.gameId,
+      guesses: session.guesses,
+      revealedClueCount,
+      lockedAfterClue,
     };
   } catch {
     return null;
@@ -78,7 +100,12 @@ export function decodeSession(token: string | undefined): GameSession | null {
 }
 
 export function createEmptySession(gameId: string): GameSession {
-  return { gameId, guesses: [] };
+  return {
+    gameId,
+    guesses: [],
+    revealedClueCount: 1,
+    lockedAfterClue: null,
+  };
 }
 
 export function sessionCookieOptions(maxAgeSeconds = 60 * 60 * 6) {
