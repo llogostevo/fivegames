@@ -2,17 +2,109 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1e1e24;
+  --muted: #6b6b76;
+  --rule: #e3e3e8;
+  --course: #c4157a;
+  --course-soft: #fbe7f2;
+  --warm: #e4572e;
+  --warm-soft: #fdebe5;
+  --cold: #2d7dd2;
+  --cold-soft: #e6f0fb;
+  --finish: #1e1e24;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-course: var(--course);
+  --color-course-soft: var(--course-soft);
+  --color-warm: var(--warm);
+  --color-warm-soft: var(--warm-soft);
+  --color-cold: var(--cold);
+  --color-cold-soft: var(--cold-soft);
+  --font-sans: var(--font-barlow);
+  --font-display: var(--font-barlow-condensed);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--course);
+  outline-offset: 2px;
+}
+
+/* Map pins, styled after orienteering control circles */
+.fg-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  border: 3px solid var(--course);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--course);
+  box-shadow: 0 1px 3px rgba(30, 30, 36, 0.25);
+}
+
+.fg-pin--pending {
+  background: var(--course);
+  color: #fff;
+  border-color: #fff;
+  width: 34px;
+  height: 34px;
+  cursor: grab;
+  box-shadow: 0 0 0 3px var(--course), 0 2px 8px rgba(30, 30, 36, 0.35);
+  animation: fg-drop 220ms ease-out;
+}
+
+.fg-pin--finish {
+  width: 34px;
+  height: 34px;
+  border: 3px solid var(--finish);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 7px var(--finish),
+    0 1px 4px rgba(30, 30, 36, 0.3);
+}
+
+@keyframes fg-drop {
+  from {
+    transform: translateY(-10px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+@keyframes fg-feedback {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+}
+
+.fg-feedback {
+  animation: fg-feedback 260ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fg-pin--pending,
+  .fg-feedback {
+    animation: none;
+  }
+}
+
+.fg-map--placing .maplibregl-canvas-container.maplibregl-interactive {
+  cursor: crosshair;
+}
+.fg-map--placing .maplibregl-canvas-container.maplibregl-interactive:active {
+  cursor: grabbing;
 }
