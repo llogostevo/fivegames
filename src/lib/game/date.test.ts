@@ -193,12 +193,30 @@ describe("development clock overrides", () => {
     }), "2026-09-30");
   });
 
-  it("ignores development overrides in production", () => {
+  it("honours date overrides even when nodeEnv is production", () => {
     assert.equal(
       getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
         nodeEnv: "production",
         devDate: "2026-09-28",
-        devNow: "2026-09-28T07:59",
+        devNow: null,
+      }),
+      "2026-09-28",
+    );
+    assert.equal(
+      getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
+        nodeEnv: "production",
+        devNow: "2026-09-30T07:59",
+      }),
+      "2026-09-29",
+    );
+  });
+
+  it("uses the real clock in production when no override is set", () => {
+    assert.equal(
+      getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
+        nodeEnv: "production",
+        devDate: null,
+        devNow: null,
       }),
       "2026-10-01",
     );

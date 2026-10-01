@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 
 import { DevDateToolbar } from "@/components/dev/DevDateToolbar";
 import { DEV_DATE_COOKIE } from "@/lib/game/constants";
+import { isDateOverrideUiEnabled } from "@/lib/game/date";
 
 import "./globals.css";
 
@@ -30,7 +31,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const showDevToolbar = process.env.NODE_ENV !== "production";
+  const showDevToolbar = isDateOverrideUiEnabled();
   let initialDevDate = "";
   if (showDevToolbar) {
     const store = await cookies();

@@ -141,11 +141,21 @@ describe("getTodaysGame", () => {
     assert.equal(game.theme, "movies-tv");
   });
 
-  it("does not let the override affect production date selection", async () => {
+  it("honours an explicit date override in production", async () => {
     const game = await getTodaysGame(new Date("2026-10-01T12:00:00.000Z"), {
       nodeEnv: "production",
       devDate: "2026-09-28",
-      devNow: "2026-09-28T07:59",
+      devNow: null,
+    });
+    assert.equal(game.id, "2026-09-28");
+    assert.equal(game.theme, "music");
+  });
+
+  it("uses the real release clock in production when no override is set", async () => {
+    const game = await getTodaysGame(new Date("2026-10-01T12:00:00.000Z"), {
+      nodeEnv: "production",
+      devDate: null,
+      devNow: null,
     });
     assert.equal(game.id, "2026-10-01");
     assert.equal(game.theme, "history");

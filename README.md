@@ -49,14 +49,16 @@ Release schedule is configured in `src/lib/game/dailyConfig.ts` (`DAILY_GAME_CON
 
 Theme ids, labels, and accent colours are defined in `src/lib/game/themes.ts`. Game JSON only stores the theme id.
 
-### Development clock overrides
+### Clock / date overrides (local + production testing)
 
-Copy `.env.example` to `.env.local`, then restart `npm run dev`.
+These work in **any** environment when set — including production — so a shared deploy can pin one test game for audiences.
 
-- `FIVEGAMES_DEV_DATE=2026-09-28` — load that day's game (treated as 12:00 London)
-- `FIVEGAMES_DEV_NOW=2026-10-01T07:59` — exact London wall time for release testing (`08:00`, `08:01`, `23:00`, etc.)
+- `FIVEGAMES_DEV_DATE=2026-09-28` — that day's game (treated as 12:00 London)
+- `FIVEGAMES_DEV_NOW=2026-10-01T07:59` — exact London wall time (`08:00`, `08:01`, etc.)
 
-`FIVEGAMES_DEV_NOW` wins if both are set. Overrides are ignored when `NODE_ENV=production`.
+`FIVEGAMES_DEV_NOW` wins if both are set. Leave both unset for the real release clock.
+
+Optional: `FIVEGAMES_ALLOW_DATE_OVERRIDE=true` shows the amber date dropdown in production (per-visitor cookie). Local `next dev` always shows it.
 
 Temporary test games covering Mon–Sun are documented in `data/games/README.md`. They are **not** final editorial content.
 

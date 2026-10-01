@@ -26,7 +26,7 @@ type DevDateToolbarProps = {
   initialDate?: string;
 };
 
-/** Temporary development control — not shown in production builds. */
+/** Temporary date switcher for testing (dev, or production with FIVEGAMES_ALLOW_DATE_OVERRIDE). */
 export function DevDateToolbar({ initialDate = "" }: DevDateToolbarProps) {
   const [value, setValue] = useState(initialDate);
 
