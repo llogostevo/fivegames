@@ -1,6 +1,6 @@
-# FiveGames
+# Pin5
 
-FiveGames is a daily browser-based location quiz. Each calendar day has one challenge: five progressive clues, five map pins, warmer/colder feedback, and a maximum score of 25,000.
+Pin5 is a daily browser-based location quiz. Each calendar day has one challenge: five progressive clues, five map pins, warmer/colder feedback, and a maximum score of 25,000.
 
 ## Tech stack
 

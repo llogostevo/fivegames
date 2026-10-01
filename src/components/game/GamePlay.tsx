@@ -62,7 +62,7 @@ function buildShareText(reveal: GameReveal): string {
       ? `🎯 Locked on clue ${reveal.lockedAfterClue}/5`
       : "Completed in 5 clues";
   return [
-    `FiveGames #${reveal.gameNumber} — ${reveal.theme}`,
+    `Pin5 #${reveal.gameNumber} — ${reveal.theme}`,
     `${reveal.totalScore.toLocaleString()} / ${reveal.maxScore.toLocaleString()}`,
     progress,
   ].join("\n");
@@ -144,7 +144,7 @@ export function GamePlay() {
         if (!response.ok) {
           if (response.status === 404) {
             throw Object.assign(
-              new Error(data.error ?? "Today's FiveGames isn't available yet."),
+              new Error(data.error ?? "Today's Pin5 isn't available yet."),
               { unavailable: true },
             );
           }
@@ -449,7 +449,7 @@ export function GamePlay() {
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-rule px-4 py-3 sm:px-6">
         <div className="flex items-baseline gap-3">
           <h1 className="font-display text-2xl font-bold tracking-tight">
-            FiveGames
+            Pin5
           </h1>
           {theme ? (
             <span className="rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course">
@@ -505,7 +505,7 @@ export function GamePlay() {
               <div className="flex items-start gap-3">
                 <div className="min-w-0 flex-1">
                   <p className="text-xs text-muted sm:text-sm">
-                    FiveGames #{reveal.gameNumber} · {reveal.theme}
+                    Pin5 #{reveal.gameNumber} · {reveal.theme}
                   </p>
                   <p className="mt-2 hidden text-sm text-muted lg:block">
                     The place was

@@ -1,4 +1,4 @@
-# FiveGames daily game data
+# Pin5 daily game data
 
 Each file is one calendar day's challenge:
 

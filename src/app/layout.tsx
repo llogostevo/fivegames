@@ -20,7 +20,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "FiveGames",
+  title: "Pin5",
   description: "Five clues. Five pins. Find the place.",
 };
 

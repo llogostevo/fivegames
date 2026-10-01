@@ -48,7 +48,7 @@ export function NextGameCountdown({
             onClick={onPlayToday}
             className="mt-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110"
           >
-            Play today&apos;s FiveGames →
+            Play today&apos;s Pin5 →
           </button>
         </>
       ) : (
@@ -56,7 +56,7 @@ export function NextGameCountdown({
           <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
             Come back tomorrow
           </p>
-          <p className="mt-1 text-xs text-muted">Next FiveGames in</p>
+          <p className="mt-1 text-xs text-muted">Next Pin5 in</p>
           <p
             className="mt-0.5 font-display text-xl font-bold tracking-tight tabular-nums sm:text-2xl"
             aria-live="polite"

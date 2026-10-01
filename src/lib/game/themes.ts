@@ -1,5 +1,5 @@
 /**
- * Weekly FiveGames theme schedule + accent colours.
+ * Weekly Pin5 theme schedule + accent colours.
  * Game JSON only stores the theme id; colours come from here.
  */
 

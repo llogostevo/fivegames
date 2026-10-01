@@ -238,7 +238,7 @@ describe("missing game messaging", () => {
   it("uses a simple player-facing sentence", () => {
     assert.equal(
       missingGamePlayerMessage(),
-      "Today's FiveGames isn't available yet.",
+      "Today's Pin5 isn't available yet.",
     );
   });
 });

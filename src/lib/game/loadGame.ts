@@ -215,7 +215,7 @@ export function getPublicGameMeta(
 
 /** Player-facing message when today's file is missing. */
 export function missingGamePlayerMessage(): string {
-  return "Today's FiveGames isn't available yet.";
+  return "Today's Pin5 isn't available yet.";
 }
 
 /** Developer-facing detail for a missing dated game. */
