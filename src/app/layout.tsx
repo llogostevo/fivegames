@@ -20,8 +20,8 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Pin5",
-  description: "Five clues. Five pins. Find the place.",
+  title: "Pin5 · UK Edition",
+  description: "Five clues. Five pins. Find the place. Pin5 UK Edition.",
 };
 
 export const viewport: Viewport = {

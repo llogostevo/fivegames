@@ -447,10 +447,19 @@ export function GamePlay() {
       style={themeStyle}
     >
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-rule px-4 py-3 sm:px-6">
-        <div className="flex items-baseline gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <h1 className="font-display text-2xl font-bold tracking-tight">
             Pin5
           </h1>
+          <span
+            className="inline-flex items-center gap-1 rounded-md border border-rule bg-neutral-50 px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground/80 sm:px-2 sm:text-[11px]"
+            title="Pin5 UK Edition"
+          >
+            <span aria-hidden="true" className="text-[13px] leading-none tracking-normal">
+              🇬🇧
+            </span>
+            <span>UK Edition</span>
+          </span>
           {theme ? (
             <span className="rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course">
               {theme}
