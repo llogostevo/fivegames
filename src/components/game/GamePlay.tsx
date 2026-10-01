@@ -13,7 +13,10 @@ import {
   readPlayerHistory,
   recordCompletedReveal,
 } from "@/lib/game/playerHistory";
-import { getPanelActionState } from "@/lib/game/panelActions";
+import {
+  getPanelActionState,
+  getPlacementPrompt,
+} from "@/lib/game/panelActions";
 import {
   buildDailyShareText,
   buildWeeklyShareText,
@@ -503,14 +506,20 @@ export function GamePlay() {
     row.coordinates ? [{ number: index + 1, coordinates: row.coordinates }] : [],
   );
   const hasPin = pendingGuess !== null;
+  const currentPinNumber = Math.max(pinNumber, 1);
   const panelActions = getPanelActionState({
     hasPin,
-    clueNumber: Math.max(pinNumber, 1),
+    clueNumber: currentPinNumber,
     isBusy,
     isComplete,
     isConfirming: confirmingAnswer,
   });
+  const placementPrompt = getPlacementPrompt({
+    pinNumber: currentPinNumber,
+    hasPin,
+  });
   const canAct = panelActions.canAct;
+  const showActions = panelActions.showActions;
   const isFinalClue = panelActions.isFinalClue;
 
   const actualDistances =
@@ -778,7 +787,7 @@ export function GamePlay() {
               </div>
             </div>
           ) : activeRow ? (
-            <div key={activeIndex} className="fg-feedback space-y-3 lg:space-y-4">
+            <div key={activeIndex} className="fg-feedback space-y-2">
               <div>
                 <p className="text-sm font-medium text-course">
                   Clue {pinNumber} of {CLUE_COUNT}
@@ -804,18 +813,34 @@ export function GamePlay() {
                 </p>
               ) : null}
 
-              {!hasPin ? (
-                <p className="text-sm text-muted">Drop a pin on the map.</p>
-              ) : null}
+              <div aria-live="polite">
+                <p className="text-sm font-semibold text-foreground">
+                  {placementPrompt.title}
+                </p>
+                <p className="mt-0.5 text-sm text-muted">
+                  {placementPrompt.detail}
+                </p>
+              </div>
 
-              <div className="flex flex-col gap-2">
+              {/*
+                Reserve the two-button stack height always so the map does not
+                jump when actions appear/disappear. Actions stay visually hidden
+                (not disabled grey) until a pin exists.
+              */}
+              <div
+                className={`flex min-h-[5.75rem] flex-col gap-2 ${
+                  showActions ? "" : "invisible pointer-events-none"
+                }`}
+                aria-hidden={!showActions}
+              >
                 <button
                   type="button"
                   disabled={!canAct}
+                  tabIndex={showActions ? 0 : -1}
                   onClick={() =>
                     void (isFinalClue ? handleSeeResult() : handleGetNextClue())
                   }
-                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:bg-neutral-300"
+                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {panelActions.primaryLabel}
                 </button>
@@ -823,12 +848,15 @@ export function GamePlay() {
                   <button
                     type="button"
                     disabled={!canAct}
+                    tabIndex={showActions ? 0 : -1}
                     onClick={() => setConfirmingAnswer(true)}
-                    className="rounded-md border border-course px-4 py-2.5 text-sm font-semibold text-course transition hover:bg-course-soft disabled:cursor-not-allowed disabled:border-rule disabled:text-muted disabled:hover:bg-transparent"
+                    className="rounded-md border border-course px-4 py-2.5 text-sm font-semibold text-course transition hover:bg-course-soft disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {panelActions.secondaryLabel}
                   </button>
-                ) : null}
+                ) : (
+                  <div className="h-[2.625rem]" aria-hidden="true" />
+                )}
               </div>
             </div>
           ) : null}

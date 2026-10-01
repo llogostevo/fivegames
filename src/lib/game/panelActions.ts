@@ -7,9 +7,49 @@ export type PanelActionState = {
   secondaryLabel: string | null;
   /** Whether panel actions may be activated. */
   canAct: boolean;
+  /**
+   * Whether Submit / Lock actions should be visible.
+   * Hidden (not merely disabled) until the current pin exists.
+   */
+  showActions: boolean;
   /** True when the primary action finishes the game. */
   isFinalClue: boolean;
 };
+
+export type PlacementPrompt = {
+  title: string;
+  detail: string;
+};
+
+/**
+ * Explicit pin-placement copy for the active clue.
+ * Makes “place another pin” obvious after each submit.
+ */
+export function getPlacementPrompt(options: {
+  pinNumber: number;
+  hasPin: boolean;
+}): PlacementPrompt {
+  const pinNumber = Math.min(Math.max(options.pinNumber, 1), CLUE_COUNT);
+
+  if (options.hasPin) {
+    return {
+      title: `📍 Pin ${pinNumber} ready`,
+      detail: "Drag the pin if you want to adjust it.",
+    };
+  }
+
+  if (pinNumber === 1) {
+    return {
+      title: `📍 Place pin 1 of ${CLUE_COUNT}`,
+      detail: "Tap the map to make your first guess.",
+    };
+  }
+
+  return {
+    title: `📍 Place pin ${pinNumber} of ${CLUE_COUNT}`,
+    detail: "Tap the map to make your next guess.",
+  };
+}
 
 /**
  * Derive right-hand panel action labels/enabled state.
@@ -31,13 +71,15 @@ export function getPanelActionState(options: {
   } = options;
 
   const isFinalClue = clueNumber === CLUE_COUNT;
+  const showActions = hasPin && !isComplete && !isConfirming;
   const canAct =
-    hasPin && !isBusy && !isComplete && !isConfirming && clueNumber >= 1;
+    showActions && !isBusy && clueNumber >= 1;
 
   return {
     primaryLabel: isFinalClue ? "Submit Final Guess →" : "Submit Guess →",
     secondaryLabel: isFinalClue ? null : "🎯 Lock Final Answer",
     canAct,
+    showActions,
     isFinalClue,
   };
 }
