@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import { cookies } from "next/headers";
+
+import { DevDateToolbar } from "@/components/dev/DevDateToolbar";
+import { DEV_DATE_COOKIE } from "@/lib/game/constants";
+
 import "./globals.css";
 
 const barlow = Barlow({
@@ -24,13 +29,23 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const showDevToolbar = process.env.NODE_ENV !== "production";
+  let initialDevDate = "";
+  if (showDevToolbar) {
+    const store = await cookies();
+    initialDevDate = store.get(DEV_DATE_COOKIE)?.value ?? "";
+  }
+
   return (
     <html
       lang="en"
       className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col font-sans">
+        {showDevToolbar ? <DevDateToolbar initialDate={initialDevDate} /> : null}
+        {children}
+      </body>
     </html>
   );
 }

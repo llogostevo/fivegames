@@ -1,4 +1,5 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
+import type { ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature } from "@/lib/game/distance";
 import { buildReveal } from "@/lib/game/reveal";
 import type { GameSession } from "@/lib/game/session";
@@ -39,8 +40,10 @@ export function lockGuess(options: {
   game: GameDefinition;
   session: GameSession;
   guess: unknown;
+  now?: Date;
+  clockOptions?: ClockOptions;
 }): { session: GameSession; response: LockGuessResponse } {
-  const { game, session } = options;
+  const { game, session, now = new Date(), clockOptions = {} } = options;
   assertActiveSession(game, session);
 
   if (session.guesses.length >= CLUE_COUNT) {
@@ -87,7 +90,7 @@ export function lockGuess(options: {
         complete: true,
         awaitingDecision: false,
         canLockAnswer: false,
-        reveal: buildReveal(game, nextSession),
+        reveal: buildReveal(game, nextSession, now, clockOptions),
       },
     };
   }
@@ -142,8 +145,10 @@ export function continueToNextClue(options: {
 export function lockFinalAnswer(options: {
   game: GameDefinition;
   session: GameSession;
+  now?: Date;
+  clockOptions?: ClockOptions;
 }): { session: GameSession; response: LockAnswerResponse } {
-  const { game, session } = options;
+  const { game, session, now = new Date(), clockOptions = {} } = options;
   assertActiveSession(game, session);
 
   if (session.guesses.length === 0) {
@@ -167,7 +172,7 @@ export function lockFinalAnswer(options: {
     session: nextSession,
     response: {
       complete: true,
-      reveal: buildReveal(game, nextSession),
+      reveal: buildReveal(game, nextSession, now, clockOptions),
     },
   };
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { CLUE_COUNT } from "@/lib/game/constants";
+import { getRequestClockOptions } from "@/lib/game/devClock";
 import {
   GameNotFoundError,
   getPublicGameMeta,
@@ -17,13 +18,14 @@ import type { PublicGameState } from "@/types/game";
 
 export async function POST() {
   try {
-    const game = await getTodaysGame();
+    const clock = await getRequestClockOptions();
+    const game = await getTodaysGame(new Date(), clock);
     const session = createEmptySession(game.id);
     const token = encodeSession(session);
     const cookie = sessionCookieOptions();
 
     const body: PublicGameState = {
-      ...getPublicGameMeta(game),
+      ...getPublicGameMeta(game, new Date(), clock),
       clueCount: CLUE_COUNT,
       clueIndex: 0,
       clue: game.clues[0],

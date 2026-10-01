@@ -8,3 +8,6 @@ export const CLUE_COUNT = 5;
 export const DISTANCE_EQUALITY_TOLERANCE_METERS = 100;
 
 export const GAME_SESSION_COOKIE = "fivegames_session";
+
+/** Development-only cookie used by the temporary date switcher toolbar. */
+export const DEV_DATE_COOKIE = "fivegames_dev_date";

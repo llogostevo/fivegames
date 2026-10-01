@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
+import { getRequestClockOptions } from "@/lib/game/devClock";
 import { lockGuess } from "@/lib/game/evaluateGuess";
 import { GameNotFoundError, loadGame } from "@/lib/game/loadGame";
 import {
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
     }
 
     const game = await loadGame(session.gameId);
+    const clock = await getRequestClockOptions();
 
     const body: unknown = await request.json();
     const guess =
@@ -34,6 +36,7 @@ export async function POST(request: Request) {
       game,
       session,
       guess: { lat: guess?.lat, lng: guess?.lng },
+      clockOptions: clock,
     });
 
     const response = NextResponse.json(result.response);
