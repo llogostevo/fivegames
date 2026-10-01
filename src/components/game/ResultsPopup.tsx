@@ -2,8 +2,14 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { PlayerProgress } from "@/components/game/PlayerProgress";
 import { formatDailyReleaseBlurb, formatReleaseTimeLabel } from "@/lib/game/dailyConfig";
 import { formatCountdown } from "@/lib/game/date";
+import {
+  getCurrentStreak,
+  getWeeklyStats,
+  readPlayerHistory,
+} from "@/lib/game/playerHistory";
 import { THEMES, WEEKDAY_THEMES, type ThemeId } from "@/lib/game/themes";
 import type { GameReveal } from "@/types/game";
 
@@ -11,8 +17,12 @@ type ResultsPopupProps = {
   open: boolean;
   reveal: GameReveal;
   shareStatus: "idle" | "copied" | "shared";
+  weekShareStatus?: "idle" | "copied" | "shared";
+  /** True after completing the Sunday game for the current week. */
+  showWeeklyShare?: boolean;
   onClose: () => void;
   onShare: () => void;
+  onShareWeek?: () => void;
 };
 
 const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0] as const;
@@ -88,8 +98,11 @@ export function ResultsPopup({
   open,
   reveal,
   shareStatus,
+  weekShareStatus = "idle",
+  showWeeklyShare = false,
   onClose,
   onShare,
+  onShareWeek,
 }: ResultsPopupProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -133,12 +146,26 @@ export function ResultsPopup({
     return null;
   }
 
+  // History is written from GamePlay on server completion; read-only here.
+  const history = readPlayerHistory();
+  const weekly = getWeeklyStats(history, reveal.date);
+  const streak = getCurrentStreak(history, reveal.date);
+
   const shareLabel =
     shareStatus === "copied"
       ? "Copied!"
       : shareStatus === "shared"
         ? "Shared!"
-        : "Share score";
+        : showWeeklyShare
+          ? "Share today's result"
+          : "Share score";
+
+  const weekShareLabel =
+    weekShareStatus === "copied"
+      ? "Copied!"
+      : weekShareStatus === "shared"
+        ? "Shared!"
+        : "Share my week";
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -271,6 +298,13 @@ export function ResultsPopup({
                 ))}
               </ol>
 
+              <PlayerProgress
+                todayScore={reveal.totalScore}
+                referenceDate={reveal.date}
+                weekly={weekly}
+                streak={streak}
+              />
+
               <CompactCountdown
                 key={reveal.nextReleaseAt}
                 nextReleaseAt={reveal.nextReleaseAt}
@@ -309,7 +343,7 @@ export function ResultsPopup({
           )}
         </div>
 
-        <div className="border-t border-rule px-4 py-3">
+        <div className="space-y-2 border-t border-rule px-4 py-3">
           {page === 1 ? (
             <div className="flex gap-2">
               <button
@@ -346,6 +380,15 @@ export function ResultsPopup({
               </button>
             </div>
           )}
+          {showWeeklyShare && onShareWeek ? (
+            <button
+              type="button"
+              onClick={onShareWeek}
+              className="w-full rounded-md border border-rule px-3 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
+            >
+              {weekShareLabel}
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

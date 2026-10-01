@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 
 import { DevDateToolbarHost } from "@/components/dev/DevDateToolbarHost";
+import { SITE_URL } from "@/lib/site";
 
 import "./globals.css";
 
@@ -17,9 +19,26 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["600", "700"],
 });
 
+const siteTitle = "Pin5 · UK Edition";
+const siteDescription =
+  "Five clues. Five pins. Find the place. Pin5 UK Edition.";
+
 export const metadata: Metadata = {
-  title: "Pin5 · UK Edition",
-  description: "Five clues. Five pins. Find the place. Pin5 UK Edition.",
+  metadataBase: new URL(SITE_URL),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    title: siteTitle,
+    description: siteDescription,
+    siteName: siteTitle,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export const viewport: Viewport = {
@@ -36,6 +55,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-sans">
         <DevDateToolbarHost />
         {children}
+        <Analytics />
       </body>
     </html>
   );

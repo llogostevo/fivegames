@@ -8,8 +8,18 @@ import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
 import { TemperatureToast } from "@/components/game/TemperatureToast";
 import { CLUE_COUNT } from "@/lib/game/constants";
-import { saveDailyResult } from "@/lib/game/dailyResultStorage";
+import {
+  getCurrentStreak,
+  readPlayerHistory,
+  recordCompletedReveal,
+} from "@/lib/game/playerHistory";
 import { getPanelActionState } from "@/lib/game/panelActions";
+import {
+  buildDailyShareText,
+  buildWeeklyShareText,
+  isWeeklyShareAvailable,
+  shareText,
+} from "@/lib/game/share";
 import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
 import type {
@@ -58,19 +68,6 @@ function feedbackSentence(temperature: TemperatureResult, pin: number) {
     return `Pin ${pin} is further away than pin ${pin - 1}.`;
   }
   return `Pin ${pin} is about as far away as pin ${pin - 1}.`;
-}
-
-function buildShareText(reveal: GameReveal): string {
-  const progress =
-    reveal.lockedAfterClue < CLUE_COUNT
-      ? `🎯 Locked on clue ${reveal.lockedAfterClue}/5`
-      : "Completed in 5 clues";
-  return [
-    `Pin5 #${reveal.gameNumber} — ${reveal.theme}`,
-    `${reveal.totalScore.toLocaleString()} / ${reveal.maxScore.toLocaleString()}`,
-    progress,
-    "https://fivegames.vercel.app/",
-  ].join("\n");
 }
 
 function PinBadge({
@@ -129,6 +126,9 @@ export function GamePlay() {
   const [shareStatus, setShareStatus] = useState<"idle" | "copied" | "shared">(
     "idle",
   );
+  const [weekShareStatus, setWeekShareStatus] = useState<
+    "idle" | "copied" | "shared"
+  >("idle");
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   const [howToPlayCta, setHowToPlayCta] = useState("Got it");
   const [resultsOpen, setResultsOpen] = useState(false);
@@ -171,10 +171,11 @@ export function GamePlay() {
         setPendingGuess(null);
         setConfirmingAnswer(false);
         setShareStatus("idle");
+        setWeekShareStatus("idle");
 
         if (data.complete && data.reveal) {
           // Server session already completed today's game — show results.
-          saveDailyResult(data.reveal);
+          recordCompletedReveal(data.reveal);
           setReveal(data.reveal);
           setRows([]);
           setTransitionTemperature(null);
@@ -368,9 +369,10 @@ export function GamePlay() {
       setTransitionTemperature(null);
 
       if (guessData.complete && guessData.reveal) {
-        saveDailyResult(guessData.reveal);
+        recordCompletedReveal(guessData.reveal);
         setReveal(guessData.reveal);
         setShareStatus("idle");
+        setWeekShareStatus("idle");
         setResultsOpen(true);
       } else {
         throw new Error("The final result didn't come back.");
@@ -389,35 +391,51 @@ export function GamePlay() {
       return;
     }
 
-    const text = buildShareText(reveal);
+    const history = readPlayerHistory();
+    const streak = getCurrentStreak(history, reveal.date);
+    const result = await shareText(buildDailyShareText(reveal, streak));
 
-    try {
-      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
-        await navigator.share({ text });
-        setShareStatus("shared");
-        return;
-      }
-
-      if (
-        typeof navigator !== "undefined" &&
-        navigator.clipboard &&
-        typeof navigator.clipboard.writeText === "function"
-      ) {
-        await navigator.clipboard.writeText(text);
-        setShareStatus("copied");
-        return;
-      }
-
-      setError("Sharing isn't available in this browser.");
-    } catch (shareError) {
-      if (
-        shareError instanceof DOMException &&
-        shareError.name === "AbortError"
-      ) {
-        return;
-      }
-      setError("Couldn't share your score. Try again.");
+    if (result.status === "shared" || result.status === "copied") {
+      setShareStatus(result.status);
+      return;
     }
+    if (result.status === "aborted") {
+      return;
+    }
+    setError(
+      result.status === "unsupported"
+        ? "Sharing isn't available in this browser."
+        : "Couldn't share your score. Try again.",
+    );
+  }
+
+  async function handleShareWeek() {
+    if (!reveal || !isWeeklyShareAvailable(reveal.date)) {
+      return;
+    }
+
+    const history = readPlayerHistory();
+    const streak = getCurrentStreak(history, reveal.date);
+    const result = await shareText(
+      buildWeeklyShareText({
+        history,
+        referenceDate: reveal.date,
+        streak,
+      }),
+    );
+
+    if (result.status === "shared" || result.status === "copied") {
+      setWeekShareStatus(result.status);
+      return;
+    }
+    if (result.status === "aborted") {
+      return;
+    }
+    setError(
+      result.status === "unsupported"
+        ? "Sharing isn't available in this browser."
+        : "Couldn't share your week. Try again.",
+    );
   }
 
   async function handleConfirmFinalAnswer() {
@@ -462,9 +480,10 @@ export function GamePlay() {
       setPendingGuess(null);
       setConfirmingAnswer(false);
       setTransitionTemperature(null);
-      saveDailyResult(answerData.reveal);
+      recordCompletedReveal(answerData.reveal);
       setReveal(answerData.reveal);
       setShareStatus("idle");
+      setWeekShareStatus("idle");
       setResultsOpen(true);
     } catch (answerError) {
       setError(
@@ -604,8 +623,11 @@ export function GamePlay() {
           open={resultsOpen}
           reveal={reveal}
           shareStatus={shareStatus}
+          weekShareStatus={weekShareStatus}
+          showWeeklyShare={isWeeklyShareAvailable(reveal.date)}
           onClose={() => setResultsOpen(false)}
           onShare={() => void handleShareScore()}
+          onShareWeek={() => void handleShareWeek()}
         />
       ) : null}
 
@@ -703,8 +725,23 @@ export function GamePlay() {
                     ? "Copied!"
                     : shareStatus === "shared"
                       ? "Shared!"
-                      : "Share score"}
+                      : isWeeklyShareAvailable(reveal.date)
+                        ? "Share today's result"
+                        : "Share score"}
                 </button>
+                {isWeeklyShareAvailable(reveal.date) ? (
+                  <button
+                    type="button"
+                    onClick={() => void handleShareWeek()}
+                    className="rounded-md border border-rule px-3 py-2 text-sm font-semibold transition hover:bg-neutral-50 sm:px-4 sm:py-2.5"
+                  >
+                    {weekShareStatus === "copied"
+                      ? "Copied!"
+                      : weekShareStatus === "shared"
+                        ? "Shared!"
+                        : "Share my week"}
+                  </button>
+                ) : null}
               </div>
 
               <NextGameCountdown
