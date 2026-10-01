@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import { GameMap } from "@/components/game/GameMap";
+import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { CLUE_COUNT } from "@/lib/game/constants";
 import { getPanelActionState } from "@/lib/game/panelActions";
@@ -124,6 +125,7 @@ export function GamePlay() {
   const [shareStatus, setShareStatus] = useState<"idle" | "copied" | "shared">(
     "idle",
   );
+  const [howToPlayOpen, setHowToPlayOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -446,8 +448,8 @@ export function GamePlay() {
       }`}
       style={themeStyle}
     >
-      <header className="flex shrink-0 items-center justify-between gap-4 border-b border-rule px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-2.5 sm:gap-3">
+      <header className="flex shrink-0 items-center justify-between gap-3 border-b border-rule px-4 py-3 sm:gap-4 sm:px-6">
+        <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           <h1 className="font-display text-2xl font-bold tracking-tight">
             Pin5
           </h1>
@@ -461,39 +463,53 @@ export function GamePlay() {
             <span>UK Edition</span>
           </span>
           {theme ? (
-            <span className="rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course">
+            <span className="hidden rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course sm:inline">
               {theme}
             </span>
           ) : null}
         </div>
-        <ol
-          className="flex items-center gap-1.5"
-          aria-label={
-            isComplete && reveal
-              ? reveal.lockedAfterClue < CLUE_COUNT
-                ? `Answer locked on clue ${reveal.lockedAfterClue}`
-                : "Completed in 5 clues"
-              : `Clue ${Math.max(pinNumber, 1)} of ${CLUE_COUNT}`
-          }
-        >
-          {Array.from({ length: CLUE_COUNT }, (_, index) => {
-            const done = index < lockedCount;
-            const current = !isComplete && index === activeIndex;
-            return (
-              <li
-                key={index}
-                className={`h-2 rounded-full transition-all ${
-                  current
-                    ? "w-6 bg-course"
-                    : done
-                      ? "w-2 bg-course"
-                      : "w-2 bg-rule"
-                }`}
-              />
-            );
-          })}
-        </ol>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={() => setHowToPlayOpen(true)}
+            className="rounded-md border border-rule px-2.5 py-1.5 text-xs font-semibold text-muted transition hover:bg-neutral-50 hover:text-foreground sm:px-3 sm:text-sm"
+          >
+            How to play
+          </button>
+          <ol
+            className="flex items-center gap-1.5"
+            aria-label={
+              isComplete && reveal
+                ? reveal.lockedAfterClue < CLUE_COUNT
+                  ? `Answer locked on clue ${reveal.lockedAfterClue}`
+                  : "Completed in 5 clues"
+                : `Clue ${Math.max(pinNumber, 1)} of ${CLUE_COUNT}`
+            }
+          >
+            {Array.from({ length: CLUE_COUNT }, (_, index) => {
+              const done = index < lockedCount;
+              const current = !isComplete && index === activeIndex;
+              return (
+                <li
+                  key={index}
+                  className={`h-2 rounded-full transition-all ${
+                    current
+                      ? "w-6 bg-course"
+                      : done
+                        ? "w-2 bg-course"
+                        : "w-2 bg-rule"
+                  }`}
+                />
+              );
+            })}
+          </ol>
+        </div>
       </header>
+
+      <HowToPlayModal
+        open={howToPlayOpen}
+        onClose={() => setHowToPlayOpen(false)}
+      />
 
       <main className="flex flex-1 flex-col gap-3 p-3 sm:gap-4 sm:p-4 lg:grid lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_24rem] lg:grid-rows-[auto_minmax(0,1fr)] lg:gap-x-6 lg:gap-y-4 lg:p-6">
         <section className="shrink-0 lg:col-start-2 lg:row-start-1" aria-live="polite">
