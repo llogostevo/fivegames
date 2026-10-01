@@ -54,6 +54,19 @@ function feedbackSentence(temperature: TemperatureResult, pin: number) {
   return `Pin ${pin} is about as far away as pin ${pin - 1}.`;
 }
 
+function buildShareText(reveal: GameReveal, theme: string): string {
+  const progress =
+    reveal.lockedAfterClue < CLUE_COUNT
+      ? `🎯 Locked on clue ${reveal.lockedAfterClue}/5`
+      : "Completed in 5 clues";
+  const themeLine = theme ? `FiveGames — ${theme}` : "FiveGames";
+  return [
+    themeLine,
+    `${reveal.totalScore.toLocaleString()} / ${reveal.maxScore.toLocaleString()}`,
+    progress,
+  ].join("\n");
+}
+
 function PinBadge({
   number,
   state,
@@ -103,6 +116,9 @@ export function GamePlay() {
   const [isStarting, setIsStarting] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [shareStatus, setShareStatus] = useState<"idle" | "copied" | "shared">(
+    "idle",
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -131,6 +147,7 @@ export function GamePlay() {
         setReveal(null);
         setConfirmingAnswer(false);
         setTransitionTemperature(null);
+        setShareStatus("idle");
         setRows(
           data.clue
             ? [{ text: data.clue, coordinates: null, temperature: null }]
@@ -261,6 +278,42 @@ export function GamePlay() {
       );
     } finally {
       setIsBusy(false);
+    }
+  }
+
+  async function handleShareScore() {
+    if (!reveal) {
+      return;
+    }
+
+    const text = buildShareText(reveal, theme);
+
+    try {
+      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+        await navigator.share({ text });
+        setShareStatus("shared");
+        return;
+      }
+
+      if (
+        typeof navigator !== "undefined" &&
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+      ) {
+        await navigator.clipboard.writeText(text);
+        setShareStatus("copied");
+        return;
+      }
+
+      setError("Sharing isn't available in this browser.");
+    } catch (shareError) {
+      if (
+        shareError instanceof DOMException &&
+        shareError.name === "AbortError"
+      ) {
+        return;
+      }
+      setError("Couldn't share your score. Try again.");
     }
   }
 
@@ -436,7 +489,18 @@ export function GamePlay() {
                   {formatDistance(actualDistances[closestActualIndex])})
                 </p>
               ) : null}
-              <div className="mt-4">
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => void handleShareScore()}
+                  className="rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                >
+                  {shareStatus === "copied"
+                    ? "Copied!"
+                    : shareStatus === "shared"
+                      ? "Shared!"
+                      : "Share score"}
+                </button>
                 <button
                   type="button"
                   onClick={() => setRound((value) => value + 1)}
