@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# MapLibre worker files copied from node_modules for Next.js/Turbopack
+/public/maplibre/
+
 # production
 /build
 

@@ -1,0 +1,16 @@
+{
+  "id": "test-001",
+  "theme": "Music",
+  "answer": {
+    "name": "Liverpool",
+    "lat": 53.4084,
+    "lng": -2.9916
+  },
+  "clues": [
+    "This city has had an enormous influence on popular music.",
+    "Its musical history helped shape British culture around the world.",
+    "A famous club here played an important role in the development of Merseybeat.",
+    "It is the home city of The Beatles.",
+    "This city sits on the River Mersey."
+  ]
+}
