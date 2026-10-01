@@ -43,7 +43,7 @@ Release schedule is configured in `src/lib/game/dailyConfig.ts` (`DAILY_GAME_CON
 | Tuesday   | Movies & TV | Purple   |
 | Wednesday | Sport       | Green    |
 | Thursday  | History     | Amber    |
-| Friday    | World       | Blue     |
+| Friday    | Landmarks   | Blue     |
 | Saturday  | Culture     | Coral    |
 | Sunday    | Wildcard    | Teal     |
 

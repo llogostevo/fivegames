@@ -8,7 +8,7 @@ export const THEME_IDS = [
   "movies-tv",
   "sport",
   "history",
-  "world",
+  "landmarks",
   "culture",
   "wildcard",
 ] as const;
@@ -62,13 +62,13 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accentSoft: "#fef3c7",
     emoji: "🏛️",
   },
-  world: {
-    id: "world",
-    displayName: "World",
-    label: "World",
+  landmarks: {
+    id: "landmarks",
+    displayName: "Landmarks",
+    label: "Landmarks",
     accent: "#1d4ed8",
     accentSoft: "#dbeafe",
-    emoji: "🌍",
+    emoji: "🗺️",
   },
   culture: {
     id: "culture",
@@ -94,7 +94,7 @@ export const WEEKDAY_THEMES: Record<number, ThemeId> = {
   2: "movies-tv",
   3: "sport",
   4: "history",
-  5: "world",
+  5: "landmarks",
   6: "culture",
   0: "wildcard",
 };
