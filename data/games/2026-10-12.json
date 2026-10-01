@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-12",
+  "date": "2026-10-12",
+  "gameNumber": 15,
+  "theme": "music",
+  "answer": {
+    "name": "Sheffield",
+    "lat": 53.3811,
+    "lng": -1.4701
+  },
+  "clues": [
+    "This steel city later became known for sharp indie guitar bands.",
+    "A hillside venue and grassroots venues helped define its scene.",
+    "One world-famous group took their name from a local suburb.",
+    "Arctic Monkeys formed here before topping charts worldwide.",
+    "It lies in South Yorkshire at the edge of the Peak District."
+  ]
+}

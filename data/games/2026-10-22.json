@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-22",
+  "date": "2026-10-22",
+  "gameNumber": 25,
+  "theme": "history",
+  "answer": {
+    "name": "Hastings",
+    "lat": 50.8543,
+    "lng": 0.5735
+  },
+  "clues": [
+    "A battle fought near this place in 1066 changed English history.",
+    "The Normans landed on this stretch of coast before the famous clash inland.",
+    "A ruined castle still overlooks the Old Town and fishing huts.",
+    "The Battle of Hastings was fought a few miles inland at Battle.",
+    "It is a seaside town in East Sussex."
+  ]
+}

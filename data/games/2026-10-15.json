@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-15",
+  "date": "2026-10-15",
+  "gameNumber": 18,
+  "theme": "history",
+  "answer": {
+    "name": "Chester",
+    "lat": 53.1934,
+    "lng": -2.8931
+  },
+  "clues": [
+    "This city still shows the grid of a Roman fortress.",
+    "Walkable walls enclose shops set on unique galleried rows.",
+    "A riverside racecourse occupies land once outside the fortress.",
+    "It was the Roman fortress of Deva Victrix.",
+    "It sits on the River Dee near the Welsh border."
+  ]
+}

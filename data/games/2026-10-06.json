@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-06",
+  "date": "2026-10-06",
+  "gameNumber": 9,
+  "theme": "movies-tv",
+  "answer": {
+    "name": "Belfast",
+    "lat": 54.5973,
+    "lng": -5.9301
+  },
+  "clues": [
+    "This capital has hosted major fantasy television production.",
+    "Huge studio complexes nearby were used for a global HBO hit.",
+    "Its waterfront and hills often double for other worlds on screen.",
+    "Much of Game of Thrones was filmed in and around this city.",
+    "It is the capital of Northern Ireland."
+  ]
+}

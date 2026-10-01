@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-19",
+  "date": "2026-10-19",
+  "gameNumber": 22,
+  "theme": "music",
+  "answer": {
+    "name": "Glasgow",
+    "lat": 55.8642,
+    "lng": -4.2518
+  },
+  "clues": [
+    "This Scottish city has a fierce reputation for live music.",
+    "From indie to electronic, its venues punch above their weight worldwide.",
+    "A Victorian concert hall and a modern arena bookend its scene.",
+    "Bands from Belle and Sebastian to Simple Minds are linked with it.",
+    "It is Scotland’s largest city, on the River Clyde."
+  ]
+}

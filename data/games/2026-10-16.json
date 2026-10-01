@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-16",
+  "date": "2026-10-16",
+  "gameNumber": 19,
+  "theme": "world",
+  "answer": {
+    "name": "Salisbury",
+    "lat": 51.0688,
+    "lng": -1.7945
+  },
+  "clues": [
+    "This cathedral city is a gateway to one of the world’s most famous monuments.",
+    "Its medieval spire is the tallest in Britain.",
+    "A short journey north reaches a prehistoric stone circle on open downs.",
+    "Stonehenge lies on the plain nearby.",
+    "It is in Wiltshire in southern England."
+  ]
+}

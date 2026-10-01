@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-14",
+  "date": "2026-10-14",
+  "gameNumber": 17,
+  "theme": "sport",
+  "answer": {
+    "name": "Nottingham",
+    "lat": 52.9548,
+    "lng": -1.1581
+  },
+  "clues": [
+    "This Midlands city is steeped in football and cricket tradition.",
+    "One of England’s oldest professional football clubs is based here.",
+    "A famous Trent Bridge ground hosts Test cricket nearby.",
+    "Nottingham Forest and Notts County share its sporting story.",
+    "It stands on the River Trent in the East Midlands."
+  ]
+}

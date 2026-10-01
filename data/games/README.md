@@ -6,22 +6,17 @@ Each file is one calendar day's challenge:
 YYYY-MM-DD.json
 ```
 
-## Development / test week
+## Beta content — 4 UK weeks
 
-The seven files dated **2026-09-28 → 2026-10-04** are **temporary development games**.
+The files dated **2026-09-28 → 2026-10-25** are temporary **UK-based** editorial samples for beta testing (28 games / 4 theme weeks). They are not final production content.
 
-They exist so we can exercise the daily loader, weekly themes, and gameplay. They are **not** final editorial content.
+| Week | Dates | Themes |
+|------|-------|--------|
+| 1 | 28 Sep – 4 Oct | Music → Wildcard (#1–7) |
+| 2 | 5–11 Oct | Music → Wildcard (#8–14) |
+| 3 | 12–18 Oct | Music → Wildcard (#15–21) |
+| 4 | 19–25 Oct | Music → Wildcard (#22–28) |
 
-| Date       | Weekday   | Theme        | # |
-|------------|-----------|--------------|---|
-| 2026-09-28 | Monday    | Music        | 1 |
-| 2026-09-29 | Tuesday   | Movies & TV  | 2 |
-| 2026-09-30 | Wednesday | Sport        | 3 |
-| 2026-10-01 | Thursday  | History      | 4 |
-| 2026-10-02 | Friday    | World        | 5 |
-| 2026-10-03 | Saturday  | Culture      | 6 |
-| 2026-10-04 | Sunday    | Wildcard     | 7 |
-
-To force a specific day during local development, set `FIVEGAMES_DEV_DATE` (see repo `.env.example`).
+Weekday themes follow `src/lib/game/themes.ts` (Mon Music … Sun Wildcard).
 
 Game JSON must stay under `data/games/` — never under `public/`.

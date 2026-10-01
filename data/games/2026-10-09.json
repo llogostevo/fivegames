@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-09",
+  "date": "2026-10-09",
+  "gameNumber": 12,
+  "theme": "world",
+  "answer": {
+    "name": "Cambridge",
+    "lat": 52.2053,
+    "lng": 0.1218
+  },
+  "clues": [
+    "This city is famous worldwide for learning and scientific discovery.",
+    "Colleges line a river where students still punt past ancient lawns.",
+    "A mathematical bridge and a chapel with a soaring fan vault are landmarks.",
+    "Its university is one of the oldest in the English-speaking world.",
+    "It lies on the River Cam in eastern England."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-10",
+  "date": "2026-10-10",
+  "gameNumber": 13,
+  "theme": "culture",
+  "answer": {
+    "name": "Stratford-upon-Avon",
+    "lat": 52.1917,
+    "lng": -1.7083
+  },
+  "clues": [
+    "This market town is inseparable from English literary culture.",
+    "Theatres here stage plays that have travelled the world.",
+    "Half-timbered houses and riverside walks draw visitors year-round.",
+    "It is the birthplace of William Shakespeare.",
+    "It sits on the River Avon in Warwickshire."
+  ]
+}

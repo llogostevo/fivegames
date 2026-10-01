@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-25",
+  "date": "2026-10-25",
+  "gameNumber": 28,
+  "theme": "wildcard",
+  "answer": {
+    "name": "Portree",
+    "lat": 57.4125,
+    "lng": -6.1933
+  },
+  "clues": [
+    "This harbour village is the main settlement on a celebrated Scottish island.",
+    "Colourful houses curve around a sheltered bay below the Cuillin hills.",
+    "Ferries and single-track roads bring visitors chasing dramatic scenery.",
+    "It is the largest town on the Isle of Skye.",
+    "It sits on the east coast of Skye in the Inner Hebrides."
+  ]
+}

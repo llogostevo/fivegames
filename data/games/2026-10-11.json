@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-11",
+  "date": "2026-10-11",
+  "gameNumber": 14,
+  "theme": "wildcard",
+  "answer": {
+    "name": "Blackpool",
+    "lat": 53.8175,
+    "lng": -3.0357
+  },
+  "clues": [
+    "This resort once styled itself as the playground of the industrial north.",
+    "An illuminated season still draws crowds along its promenade.",
+    "A famous tower was inspired by a Paris landmark.",
+    "Blackpool Tower and the Pleasure Beach are its best-known attractions.",
+    "It faces the Irish Sea on the Lancashire coast."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-07",
+  "date": "2026-10-07",
+  "gameNumber": 10,
+  "theme": "sport",
+  "answer": {
+    "name": "St Andrews",
+    "lat": 56.3398,
+    "lng": -2.7967
+  },
+  "clues": [
+    "This coastal town is sacred ground for a major global sport.",
+    "Players speak of it as the home of the game itself.",
+    "A famous Old Course links stretches along its shore.",
+    "The Royal and Ancient Golf Club is based here.",
+    "It sits on the east coast of Fife in Scotland."
+  ]
+}

@@ -100,24 +100,20 @@ describe("getGameByDate", () => {
     assert.equal(getTheme(game.theme).label, "History");
   });
 
-  it("loads all seven development test games", async () => {
-    const dates = [
-      "2026-09-28",
-      "2026-09-29",
-      "2026-09-30",
-      "2026-10-01",
-      "2026-10-02",
-      "2026-10-03",
-      "2026-10-04",
-    ] as const;
-
-    for (const [index, date] of dates.entries()) {
+  it("loads all twenty-eight beta UK games with correct themes", async () => {
+    const start = new Date("2026-09-28T12:00:00.000Z");
+    for (let index = 0; index < 28; index += 1) {
+      const day = new Date(start);
+      day.setUTCDate(start.getUTCDate() + index);
+      const date = day.toISOString().slice(0, 10);
       const game = await getGameByDate(date);
-      const weekday = new Date(`${date}T12:00:00.000Z`).getUTCDay();
+      const weekday = day.getUTCDay();
       assert.equal(game.theme, WEEKDAY_THEMES[weekday]);
       assert.equal(game.gameNumber, index + 1);
       assert.equal(game.clues.length, 5);
       assert.ok(game.answer.name.length > 0);
+      assert.ok(game.answer.lat >= -90 && game.answer.lat <= 90);
+      assert.ok(game.answer.lng >= -180 && game.answer.lng <= 180);
     }
   });
 

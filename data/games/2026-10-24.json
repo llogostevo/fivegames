@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-24",
+  "date": "2026-10-24",
+  "gameNumber": 27,
+  "theme": "culture",
+  "answer": {
+    "name": "Glastonbury",
+    "lat": 51.1485,
+    "lng": -2.7175
+  },
+  "clues": [
+    "This small town blends myth, music culture and pilgrimage.",
+    "A ruined abbey and a tor rising above the levels draw visitors year-round.",
+    "A nearby farm hosts one of the world’s largest greenfield festivals.",
+    "It is closely linked with Arthurian legend and the Glastonbury Festival.",
+    "It sits among the Somerset Levels in south-west England."
+  ]
+}

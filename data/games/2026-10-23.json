@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-23",
+  "date": "2026-10-23",
+  "gameNumber": 26,
+  "theme": "world",
+  "answer": {
+    "name": "Giant's Causeway",
+    "lat": 55.2408,
+    "lng": -6.5116
+  },
+  "clues": [
+    "This coastal wonder looks almost engineered by geometry.",
+    "Thousands of interlocking basalt columns meet the Atlantic.",
+    "Legend says a giant built a path across the sea from here.",
+    "It is a UNESCO World Heritage Site on the Antrim coast.",
+    "It lies in County Antrim in Northern Ireland."
+  ]
+}

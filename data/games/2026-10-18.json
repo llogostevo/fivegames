@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-18",
+  "date": "2026-10-18",
+  "gameNumber": 21,
+  "theme": "wildcard",
+  "answer": {
+    "name": "Portmeirion",
+    "lat": 52.9131,
+    "lng": -4.0991
+  },
+  "clues": [
+    "This colourful village looks as if it belongs on the Mediterranean.",
+    "An architect built it as a whimsical Italianate resort on a private estuary.",
+    "A cult 1960s TV series filmed many scenes among its domes and arches.",
+    "The Prisoner was largely shot here.",
+    "It stands on the coast of Gwynedd in North Wales."
+  ]
+}

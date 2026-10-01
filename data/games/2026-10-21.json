@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-21",
+  "date": "2026-10-21",
+  "gameNumber": 24,
+  "theme": "sport",
+  "answer": {
+    "name": "Newmarket",
+    "lat": 52.2447,
+    "lng": 0.4051
+  },
+  "clues": [
+    "This town calls itself the home of English horse racing.",
+    "Gallops and stud farms surround it on open heathland.",
+    "Two historic racecourses sit on its edge.",
+    "The Jockey Club and the National Heritage Centre for Horseracing are based here.",
+    "It lies in Suffolk in East Anglia."
+  ]
+}

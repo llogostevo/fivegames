@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-05",
+  "date": "2026-10-05",
+  "gameNumber": 8,
+  "theme": "music",
+  "answer": {
+    "name": "Bristol",
+    "lat": 51.4545,
+    "lng": -2.5879
+  },
+  "clues": [
+    "This harbour city became a centre for trip-hop and alternative UK music.",
+    "Artists and producers here helped invent a distinctive 1990s sound.",
+    "Banksy also left a strong visual mark on its streets.",
+    "Massive Attack and Portishead emerged from its music scene.",
+    "It sits near the mouth of the River Avon in south-west England."
+  ]
+}

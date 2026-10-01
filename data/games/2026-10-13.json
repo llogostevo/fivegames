@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-13",
+  "date": "2026-10-13",
+  "gameNumber": 16,
+  "theme": "movies-tv",
+  "answer": {
+    "name": "Whitby",
+    "lat": 54.4863,
+    "lng": -0.6133
+  },
+  "clues": [
+    "This harbour town has a gothic reputation far beyond its size.",
+    "A ruined abbey on the cliff has appeared in countless photographs and films.",
+    "A Victorian novel made it forever associated with a famous vampire.",
+    "Bram Stoker set key scenes of Dracula here.",
+    "It sits where the River Esk meets the North Sea in North Yorkshire."
+  ]
+}
