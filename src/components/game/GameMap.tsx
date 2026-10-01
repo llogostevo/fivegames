@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   LngLatBounds,
   Map as MapLibreMap,
@@ -29,12 +22,6 @@ import type { Coordinates } from "@/types/coordinates";
 export type LockedMapGuess = {
   number: number;
   coordinates: Coordinates;
-};
-
-export type GameMapHandle = {
-  /** JPEG data URL of the current map canvas, or null if unavailable. */
-  captureSnapshot: () => string | null;
-  resize: () => void;
 };
 
 type GameMapProps = {
@@ -92,26 +79,23 @@ function prefersReducedMotion() {
   );
 }
 
-export const GameMap = forwardRef<GameMapHandle, GameMapProps>(function GameMap(
-  {
-    initialCenter = DEFAULT_MAP_CENTER,
-    initialZoom = DEFAULT_MAP_ZOOM,
-    gameMode = true,
-    showLabels = false,
-    interactive = true,
-    pendingGuess = null,
-    pendingNumber = 1,
-    lockedGuesses = [],
-    target = null,
-    accentColor = DEFAULT_ACCENT,
-    onSelect,
-    children,
-    className,
-    showControls = true,
-    fitPadding = 72,
-  },
-  ref,
-) {
+export function GameMap({
+  initialCenter = DEFAULT_MAP_CENTER,
+  initialZoom = DEFAULT_MAP_ZOOM,
+  gameMode = true,
+  showLabels = false,
+  interactive = true,
+  pendingGuess = null,
+  pendingNumber = 1,
+  lockedGuesses = [],
+  target = null,
+  accentColor = DEFAULT_ACCENT,
+  onSelect,
+  children,
+  className,
+  showControls = true,
+  fitPadding = 72,
+}: GameMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const pendingMarkerRef = useRef<Marker | null>(null);
@@ -122,28 +106,6 @@ export const GameMap = forwardRef<GameMapHandle, GameMapProps>(function GameMap(
   const accentColorRef = useRef(accentColor);
   const [mapReady, setMapReady] = useState(false);
   const [styleError, setStyleError] = useState<string | null>(null);
-
-  useImperativeHandle(
-    ref,
-    () => ({
-      captureSnapshot: () => {
-        const map = mapRef.current;
-        if (!map) {
-          return null;
-        }
-        try {
-          map.resize();
-          return map.getCanvas().toDataURL("image/jpeg", 0.88);
-        } catch {
-          return null;
-        }
-      },
-      resize: () => {
-        mapRef.current?.resize();
-      },
-    }),
-    [],
-  );
 
   useEffect(() => {
     onSelectRef.current = onSelect;
@@ -187,8 +149,6 @@ export const GameMap = forwardRef<GameMapHandle, GameMapProps>(function GameMap(
           zoom: initialZoom,
           maxZoom: MAP_MAX_ZOOM,
           attributionControl: { compact: true },
-          // Needed so captureSnapshot() can read pixels after draw.
-          preserveDrawingBuffer: true,
         });
 
         if (showControls) {
@@ -448,4 +408,4 @@ export const GameMap = forwardRef<GameMapHandle, GameMapProps>(function GameMap(
       {children}
     </div>
   );
-});
+}
