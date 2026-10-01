@@ -75,7 +75,15 @@ export type GameReveal = {
   maxScore: number;
 };
 
-/** Public game state returned to the client (never includes the answer mid-game). */
+/** Locked pin returned on resume — coordinates + earned temperature only. */
+export type PublicLockedGuess = Guess & {
+  temperature: TemperatureResult | null;
+};
+
+/**
+ * Public game state from /start (new, resumed, or completed).
+ * Never includes the answer mid-game; reveal only when complete.
+ */
 export type PublicGameState = {
   gameId: string;
   gameNumber: number;
@@ -88,8 +96,21 @@ export type PublicGameState = {
   /** ISO timestamp of the next configured daily release. */
   nextReleaseAt: string;
   clueCount: number;
+  /** How this /start response was produced. */
+  status: "new" | "resumed" | "completed";
+  /** Clues revealed so far (never includes unrevealed future clues). */
+  clues: string[];
+  /** Locked pins with warmer/colder already earned (no distances/scores). */
+  guesses: PublicLockedGuess[];
+  revealedClueCount: number;
+  /** Index of the current clue (0-based) for display. */
   clueIndex: number;
+  /** Current clue text, or null when complete. */
   clue: string | null;
+  /** True when a guess is locked and Continue / Lock Final Answer is pending. */
+  awaitingDecision: boolean;
+  canLockAnswer: boolean;
+  lockedAfterClue: number | null;
   complete: boolean;
   reveal: GameReveal | null;
 };

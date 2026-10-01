@@ -123,7 +123,7 @@ export function HowToPlayModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-full rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+            className="w-full rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
           >
             {primaryLabel}
           </button>

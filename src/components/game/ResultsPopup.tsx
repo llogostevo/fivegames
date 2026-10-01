@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-import { NextGameCountdown } from "@/components/game/NextGameCountdown";
-import { formatReleaseTimeLabel } from "@/lib/game/dailyConfig";
+import { formatDailyReleaseBlurb, formatReleaseTimeLabel } from "@/lib/game/dailyConfig";
+import { formatCountdown } from "@/lib/game/date";
 import { THEMES, WEEKDAY_THEMES, type ThemeId } from "@/lib/game/themes";
 import type { GameReveal } from "@/types/game";
 
@@ -43,6 +43,47 @@ function themeLabel(themeId: ThemeId): string {
   return THEMES[themeId].label;
 }
 
+function CompactCountdown({ nextReleaseAt }: { nextReleaseAt: string }) {
+  const [secondsLeft, setSecondsLeft] = useState(() => {
+    const target = Date.parse(nextReleaseAt);
+    if (Number.isNaN(target)) {
+      return 0;
+    }
+    return Math.max(0, Math.ceil((target - Date.now()) / 1000));
+  });
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      const target = Date.parse(nextReleaseAt);
+      if (Number.isNaN(target)) {
+        setSecondsLeft(0);
+        return;
+      }
+      setSecondsLeft(Math.max(0, Math.ceil((target - Date.now()) / 1000)));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [nextReleaseAt]);
+
+  if (secondsLeft <= 0) {
+    return null;
+  }
+
+  return (
+    <div className="rounded-lg bg-neutral-50 px-3 py-2.5">
+      <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
+        Next Pin5 in
+      </p>
+      <p
+        className="mt-0.5 font-display text-xl font-bold tracking-tight tabular-nums"
+        aria-live="polite"
+      >
+        {formatCountdown(secondsLeft)}
+      </p>
+      <p className="mt-0.5 text-[11px] text-muted">{formatDailyReleaseBlurb()}</p>
+    </div>
+  );
+}
+
 export function ResultsPopup({
   open,
   reveal,
@@ -71,7 +112,6 @@ export function ResultsPopup({
       return;
     }
 
-    setPage(1);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
@@ -93,8 +133,15 @@ export function ResultsPopup({
     return null;
   }
 
+  const shareLabel =
+    shareStatus === "copied"
+      ? "Copied!"
+      : shareStatus === "shared"
+        ? "Shared!"
+        : "Share score";
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <button
         type="button"
         className="absolute inset-0 bg-foreground/45 backdrop-blur-[2px]"
@@ -105,19 +152,19 @@ export function ResultsPopup({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 flex max-h-[min(92dvh,36rem)] w-full max-w-md flex-col overflow-hidden rounded-t-2xl border border-rule bg-background shadow-xl sm:rounded-2xl"
+        className="relative z-10 w-full max-w-sm overflow-hidden rounded-2xl border border-rule bg-background shadow-xl"
       >
-        <div className="flex items-start justify-between gap-3 px-5 pb-3 pt-4">
+        <div className="flex items-start justify-between gap-3 px-4 pt-4">
           <div className="min-w-0">
-            <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
+            <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
               Pin5 #{reveal.gameNumber} · {reveal.theme}
             </p>
             {page === 1 ? (
               <>
-                <p className="mt-1 text-sm text-muted">The place was</p>
+                <p className="mt-0.5 text-xs text-muted">The place was</p>
                 <h2
                   id={titleId}
-                  className="font-display text-3xl font-bold leading-tight tracking-tight"
+                  className="font-display text-2xl font-bold leading-tight tracking-tight"
                 >
                   {reveal.answer.name}
                 </h2>
@@ -125,7 +172,7 @@ export function ResultsPopup({
             ) : (
               <h2
                 id={titleId}
-                className="mt-1 font-display text-2xl font-bold leading-tight tracking-tight"
+                className="mt-0.5 font-display text-xl font-bold leading-tight tracking-tight"
               >
                 Come back tomorrow
               </h2>
@@ -135,7 +182,7 @@ export function ResultsPopup({
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rule text-lg leading-none text-muted transition hover:bg-neutral-50 hover:text-foreground"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rule text-lg leading-none text-muted transition hover:bg-neutral-50 hover:text-foreground"
             aria-label="Close and see the map"
             title="Close and see the map"
           >
@@ -144,7 +191,7 @@ export function ResultsPopup({
         </div>
 
         <div
-          className="flex items-center justify-center gap-1.5 px-5 pb-3"
+          className="flex items-center justify-center gap-1.5 px-4 py-2"
           aria-label={`Results page ${page} of 2`}
         >
           <button
@@ -167,24 +214,24 @@ export function ResultsPopup({
           />
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-4">
+        <div className="px-4 pb-3">
           {page === 1 ? (
-            <div className="space-y-4">
+            <div className="space-y-2.5">
               <div className="flex items-end justify-between gap-3">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
                     Total score
                   </p>
-                  <p className="mt-0.5 font-display text-3xl font-bold tracking-tight">
+                  <p className="font-display text-2xl font-bold tracking-tight">
                     {reveal.totalScore.toLocaleString()}
-                    <span className="text-lg font-semibold text-muted">
+                    <span className="text-base font-semibold text-muted">
                       {" "}
                       / {reveal.maxScore.toLocaleString()}
                     </span>
                   </p>
                 </div>
                 {closestDistance !== null ? (
-                  <p className="text-right text-sm text-muted">
+                  <p className="text-right text-xs text-muted">
                     Closest pin {closestIndex + 1}
                     <br />
                     <span className="font-semibold text-foreground">
@@ -194,103 +241,88 @@ export function ResultsPopup({
                 ) : null}
               </div>
 
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
-                  Score on each pin
-                </p>
-                <ol className="mt-2 divide-y divide-rule rounded-lg border border-rule">
-                  {reveal.guesses.map((guess, index) => (
-                    <li
-                      key={index}
-                      className={`flex items-center justify-between gap-3 px-3 py-2 text-sm tabular-nums ${
-                        guess.carriedForward ? "bg-neutral-50 text-muted" : ""
-                      }`}
-                    >
-                      <span className="font-display font-bold text-course">
-                        Pin {index + 1}
-                        {guess.carriedForward ? (
-                          <span className="ml-2 text-xs font-medium text-muted">
-                            carried
-                          </span>
-                        ) : null}
-                      </span>
-                      <span className="flex items-center gap-3">
-                        <span className="w-16 text-right text-muted">
-                          {typeof guess.distanceMeters === "number"
-                            ? formatDistance(guess.distanceMeters)
-                            : "—"}
+              <ol className="divide-y divide-rule rounded-lg border border-rule">
+                {reveal.guesses.map((guess, index) => (
+                  <li
+                    key={index}
+                    className={`flex items-center justify-between gap-2 px-2.5 py-1.5 text-xs tabular-nums ${
+                      guess.carriedForward ? "bg-neutral-50 text-muted" : ""
+                    }`}
+                  >
+                    <span className="font-display font-bold text-course">
+                      Pin {index + 1}
+                      {guess.carriedForward ? (
+                        <span className="ml-1.5 text-[10px] font-medium text-muted">
+                          carried
                         </span>
-                        <span className="w-[4.5rem] text-right font-semibold text-foreground">
-                          {guess.score.toLocaleString()} pts
-                        </span>
+                      ) : null}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <span className="w-12 text-right text-muted">
+                        {typeof guess.distanceMeters === "number"
+                          ? formatDistance(guess.distanceMeters)
+                          : "—"}
                       </span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+                      <span className="w-14 text-right font-semibold text-foreground">
+                        {guess.score.toLocaleString()}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
 
-              <NextGameCountdown
+              <CompactCountdown
                 key={reveal.nextReleaseAt}
                 nextReleaseAt={reveal.nextReleaseAt}
               />
             </div>
           ) : (
-            <div className="space-y-4">
-              <div className="rounded-lg bg-neutral-50 px-3 py-3">
+            <div className="space-y-2.5">
+              <div className="rounded-lg bg-neutral-50 px-3 py-2.5">
                 <h3 className="font-display text-sm font-semibold tracking-tight">
                   Come back each day
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted">
-                  Pin5 is a daily game — one new UK place every day. A fresh
-                  puzzle drops at {formatReleaseTimeLabel()} UK time. Come back
-                  tomorrow for a new set of five clues and a new location to
-                  find.
+                <p className="mt-1 text-xs leading-snug text-muted">
+                  One new UK place every day at {formatReleaseTimeLabel()} UK
+                  time — a fresh set of five clues to find.
                 </p>
               </div>
 
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
+                <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
                   Games this week
                 </p>
-                <ul className="mt-2 divide-y divide-rule rounded-lg border border-rule">
+                <ul className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
                   {WEEKDAY_ORDER.map((day) => (
-                    <li
-                      key={day}
-                      className="flex items-center justify-between gap-3 px-3 py-2 text-sm"
-                    >
-                      <span className="font-semibold text-foreground">
+                    <li key={day} className="flex gap-1.5">
+                      <span className="w-7 shrink-0 font-semibold text-foreground">
                         {WEEKDAY_LABELS[day]}
                       </span>
-                      <span className="text-muted">
+                      <span className="truncate text-muted">
                         {themeLabel(WEEKDAY_THEMES[day])}
                       </span>
                     </li>
                   ))}
                 </ul>
               </div>
-
             </div>
           )}
         </div>
 
-        <div className="border-t border-rule px-5 py-4">
+        <div className="border-t border-rule px-4 py-3">
           {page === 1 ? (
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={onShare}
-                className="flex-1 rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                className="flex-1 rounded-md bg-course px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
               >
-                {shareStatus === "copied"
-                  ? "Copied!"
-                  : shareStatus === "shared"
-                    ? "Shared!"
-                    : "Share score"}
+                {shareLabel}
               </button>
               <button
                 type="button"
                 onClick={() => setPage(2)}
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-neutral-900 px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
               >
                 What&apos;s next
                 <span aria-hidden="true">→</span>
@@ -301,20 +333,16 @@ export function ResultsPopup({
               <button
                 type="button"
                 onClick={() => setPage(1)}
-                className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
+                className="rounded-md border border-rule px-3 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
               >
                 ← Score
               </button>
               <button
                 type="button"
                 onClick={onShare}
-                className="flex-1 rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                className="flex-1 rounded-md bg-course px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
               >
-                {shareStatus === "copied"
-                  ? "Copied!"
-                  : shareStatus === "shared"
-                    ? "Shared!"
-                    : "Share score"}
+                {shareLabel}
               </button>
             </div>
           )}

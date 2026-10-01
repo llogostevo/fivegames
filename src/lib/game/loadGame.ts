@@ -169,7 +169,8 @@ export async function loadGame(gameId: string): Promise<GameDefinition> {
 
 /**
  * Currently released daily game (Europe/London release schedule).
- * May override the clock via FIVEGAMES_DEV_NOW / FIVEGAMES_DEV_DATE (any environment).
+ * Development may override the clock; production always uses real time
+ * (see resolveClock).
  */
 export async function getTodaysGame(
   now: Date = new Date(),
@@ -181,7 +182,7 @@ export async function getTodaysGame(
 
 /**
  * Load a game only if it is released at `now`.
- * Used to keep unreleased dated games out of the public start flow.
+ * Used to keep unreleased dated games out of privileged flows.
  */
 export async function getReleasedGameByDate(
   date: string,

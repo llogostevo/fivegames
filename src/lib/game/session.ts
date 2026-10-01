@@ -1,7 +1,16 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
-import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
+import {
+  GAME_SESSION_COOKIE,
+  GAME_SESSION_COOKIE_MAX_AGE_SECONDS,
+} from "@/lib/game/constants";
 import type { Guess } from "@/types/game";
+
+/** Documented development-only fallback — never used in production. */
+export const DEV_SESSION_SECRET_FALLBACK = "fivegames-dev-session-secret";
+
+/** Minimum entropy for production session secrets (bytes as string length). */
+export const MIN_PRODUCTION_SESSION_SECRET_LENGTH = 32;
 
 export type GameSession = {
   gameId: string;
@@ -14,21 +23,58 @@ export type GameSession = {
    * Equals the clue number (1–5) on which they committed their final answer.
    */
   lockedAfterClue: number | null;
+  /**
+   * ISO timestamp when /start minted this session.
+   * Proves the game was released at that instant (checked on later actions).
+   */
+  startedAt: string;
 };
 
-function sessionSecret(): string {
-  return process.env.FIVEGAMES_SESSION_SECRET ?? "fivegames-dev-session-secret";
+export class SessionSecretConfigError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "SessionSecretConfigError";
+  }
 }
 
-function sign(payload: string): string {
-  return createHmac("sha256", sessionSecret()).update(payload).digest("base64url");
+export function getSessionSecret(options: { nodeEnv?: string } = {}): string {
+  const nodeEnv = options.nodeEnv ?? process.env.NODE_ENV ?? "development";
+  const configured = process.env.FIVEGAMES_SESSION_SECRET?.trim();
+
+  if (nodeEnv === "production") {
+    if (!configured) {
+      throw new SessionSecretConfigError(
+        "FIVEGAMES_SESSION_SECRET must be set in production.",
+      );
+    }
+    if (configured.length < MIN_PRODUCTION_SESSION_SECRET_LENGTH) {
+      throw new SessionSecretConfigError(
+        `FIVEGAMES_SESSION_SECRET must be at least ${MIN_PRODUCTION_SESSION_SECRET_LENGTH} characters.`,
+      );
+    }
+    if (configured === DEV_SESSION_SECRET_FALLBACK) {
+      throw new SessionSecretConfigError(
+        "FIVEGAMES_SESSION_SECRET must not use the development default value.",
+      );
+    }
+    return configured;
+  }
+
+  return configured && configured.length > 0
+    ? configured
+    : DEV_SESSION_SECRET_FALLBACK;
+}
+
+function sign(payload: string, secret: string): string {
+  return createHmac("sha256", secret).update(payload).digest("base64url");
 }
 
 export function encodeSession(session: GameSession): string {
+  const secret = getSessionSecret();
   const payload = Buffer.from(JSON.stringify(session), "utf8").toString(
     "base64url",
   );
-  return `${payload}.${sign(payload)}`;
+  return `${payload}.${sign(payload, secret)}`;
 }
 
 function isGuessArray(value: unknown): value is Guess[] {
@@ -41,8 +87,23 @@ function isGuessArray(value: unknown): value is Guess[] {
   );
 }
 
+function isIsoTimestamp(value: unknown): value is string {
+  if (typeof value !== "string" || value.length < 10) {
+    return false;
+  }
+  const time = Date.parse(value);
+  return !Number.isNaN(time);
+}
+
 export function decodeSession(token: string | undefined): GameSession | null {
   if (!token) {
+    return null;
+  }
+
+  let secret: string;
+  try {
+    secret = getSessionSecret();
+  } catch {
     return null;
   }
 
@@ -51,7 +112,7 @@ export function decodeSession(token: string | undefined): GameSession | null {
     return null;
   }
 
-  const expected = sign(payload);
+  const expected = sign(payload, secret);
   const signatureBuffer = Buffer.from(signature);
   const expectedBuffer = Buffer.from(expected);
 
@@ -72,7 +133,11 @@ export function decodeSession(token: string | undefined): GameSession | null {
     }
 
     const session = parsed as Partial<GameSession>;
-    if (typeof session.gameId !== "string" || !isGuessArray(session.guesses)) {
+    if (
+      typeof session.gameId !== "string" ||
+      !isGuessArray(session.guesses) ||
+      !isIsoTimestamp(session.startedAt)
+    ) {
       return null;
     }
 
@@ -84,31 +149,57 @@ export function decodeSession(token: string | undefined): GameSession | null {
     const lockedAfterClue =
       typeof session.lockedAfterClue === "number"
         ? session.lockedAfterClue
-        : session.lockedAfterClue === null
-          ? null
-          : null;
+        : null;
+
+    if (
+      !Number.isInteger(revealedClueCount) ||
+      revealedClueCount < 1 ||
+      revealedClueCount > 5
+    ) {
+      return null;
+    }
+
+    if (
+      lockedAfterClue !== null &&
+      (!Number.isInteger(lockedAfterClue) ||
+        lockedAfterClue < 1 ||
+        lockedAfterClue > 5)
+    ) {
+      return null;
+    }
+
+    if (session.guesses.length > revealedClueCount) {
+      return null;
+    }
 
     return {
       gameId: session.gameId,
       guesses: session.guesses,
       revealedClueCount,
       lockedAfterClue,
+      startedAt: session.startedAt,
     };
   } catch {
     return null;
   }
 }
 
-export function createEmptySession(gameId: string): GameSession {
+export function createEmptySession(
+  gameId: string,
+  startedAt: Date = new Date(),
+): GameSession {
   return {
     gameId,
     guesses: [],
     revealedClueCount: 1,
     lockedAfterClue: null,
+    startedAt: startedAt.toISOString(),
   };
 }
 
-export function sessionCookieOptions(maxAgeSeconds = 60 * 60 * 6) {
+export function sessionCookieOptions(
+  maxAgeSeconds = GAME_SESSION_COOKIE_MAX_AGE_SECONDS,
+) {
   return {
     name: GAME_SESSION_COOKIE,
     httpOnly: true,

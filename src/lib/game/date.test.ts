@@ -193,21 +193,21 @@ describe("development clock overrides", () => {
     }), "2026-09-30");
   });
 
-  it("honours date overrides even when nodeEnv is production", () => {
+  it("ignores date overrides in production (fail closed)", () => {
     assert.equal(
       getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
         nodeEnv: "production",
         devDate: "2026-09-28",
         devNow: null,
       }),
-      "2026-09-28",
+      "2026-10-01",
     );
     assert.equal(
       getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
         nodeEnv: "production",
         devNow: "2026-09-30T07:59",
       }),
-      "2026-09-29",
+      "2026-10-01",
     );
   });
 
@@ -219,6 +219,18 @@ describe("development clock overrides", () => {
         devNow: null,
       }),
       "2026-10-01",
+    );
+  });
+
+  it("still allows explicit options.now in production for tests", () => {
+    const pinned = londonWallTimeToUtc("2026-09-28", 12, 0);
+    assert.equal(
+      getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
+        nodeEnv: "production",
+        now: pinned,
+        devDate: "2026-10-05",
+      }),
+      "2026-09-28",
     );
   });
 

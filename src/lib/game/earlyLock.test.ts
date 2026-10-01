@@ -206,6 +206,7 @@ describe("early lock answer", () => {
       guesses: [farAway, nearTarget],
       revealedClueCount: 2,
       lockedAfterClue: 2,
+      startedAt: new Date("2026-09-28T12:00:00.000Z").toISOString(),
     };
 
     const reveal = buildReveal(game, session);

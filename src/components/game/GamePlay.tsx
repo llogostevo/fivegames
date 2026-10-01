@@ -8,10 +8,7 @@ import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
 import { TemperatureToast } from "@/components/game/TemperatureToast";
 import { CLUE_COUNT } from "@/lib/game/constants";
-import {
-  getDailyResult,
-  saveDailyResult,
-} from "@/lib/game/dailyResultStorage";
+import { saveDailyResult } from "@/lib/game/dailyResultStorage";
 import { getPanelActionState } from "@/lib/game/panelActions";
 import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
@@ -114,7 +111,7 @@ async function postGuess(pendingGuess: Coordinates) {
 }
 
 export function GamePlay() {
-  const [round, setRound] = useState(0);
+  const [round] = useState(0);
   const [theme, setTheme] = useState<string>("");
   const [themeId, setThemeId] = useState<ThemeId | null>(null);
   const [unavailableMessage, setUnavailableMessage] = useState<string | null>(
@@ -169,37 +166,63 @@ export function GamePlay() {
           return;
         }
 
-        const saved = getDailyResult(data.gameId);
-
-        setTheme(saved?.theme ?? data.theme);
-        setThemeId(saved?.themeId ?? data.themeId);
+        setTheme(data.theme);
+        setThemeId(data.themeId);
         setPendingGuess(null);
         setConfirmingAnswer(false);
-        setTransitionTemperature(null);
         setShareStatus("idle");
 
-        if (saved) {
-          // Already finished today's game — show score + next-game timer.
-          setReveal({
-            ...saved,
-            nextReleaseAt: data.nextReleaseAt,
-            theme: data.theme,
-            themeId: data.themeId,
-            accent: data.accent,
-            accentSoft: data.accentSoft,
-          });
+        if (data.complete && data.reveal) {
+          // Server session already completed today's game — show results.
+          saveDailyResult(data.reveal);
+          setReveal(data.reveal);
           setRows([]);
+          setTransitionTemperature(null);
           setResultsOpen(true);
           setHowToPlayOpen(false);
-        } else {
-          setReveal(null);
-          setRows(
-            data.clue
-              ? [{ text: data.clue, coordinates: null, temperature: null }]
-              : [],
-          );
+          return;
+        }
+
+        // New or resumed in-progress game from the signed session.
+        setReveal(null);
+        const rowsFromStart: ClueRow[] = data.clues.map((text, index) => {
+          const guess = data.guesses[index];
+          return {
+            text,
+            coordinates: guess
+              ? { lat: guess.lat, lng: guess.lng }
+              : null,
+            temperature: guess?.temperature ?? null,
+          };
+        });
+        // Ensure the current active clue row exists even if clues array is short.
+        if (
+          rowsFromStart.length === 0 &&
+          data.clue &&
+          data.status === "new"
+        ) {
+          rowsFromStart.push({
+            text: data.clue,
+            coordinates: null,
+            temperature: null,
+          });
+        }
+        setRows(rowsFromStart);
+
+        const latestTemperature =
+          data.guesses.length > 0
+            ? data.guesses[data.guesses.length - 1]?.temperature ?? null
+            : null;
+        setTransitionTemperature(latestTemperature);
+
+        if (data.status === "new") {
           setHowToPlayCta("Play now");
           setHowToPlayOpen(true);
+          setResultsOpen(false);
+        } else {
+          // Resumed in-progress — return to the board, no welcome modal.
+          setHowToPlayOpen(false);
+          setResultsOpen(false);
         }
       } catch (startError) {
         if (!cancelled) {
@@ -577,6 +600,7 @@ export function GamePlay() {
 
       {reveal ? (
         <ResultsPopup
+          key={`${reveal.gameId}-${resultsOpen ? "open" : "closed"}`}
           open={resultsOpen}
           reveal={reveal}
           shareStatus={shareStatus}
@@ -754,7 +778,7 @@ export function GamePlay() {
                   onClick={() =>
                     void (isFinalClue ? handleSeeResult() : handleGetNextClue())
                   }
-                  className="rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:bg-neutral-300"
+                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:bg-neutral-300"
                 >
                   {panelActions.primaryLabel}
                 </button>

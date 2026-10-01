@@ -181,12 +181,21 @@ export function parseDevNow(value: string): Date {
   return londonWallTimeToUtc(wall[1], hour, minute, second);
 }
 
+function resolveNodeEnv(options: ClockOptions): string {
+  return options.nodeEnv ?? process.env.NODE_ENV ?? "development";
+}
+
 /**
  * Resolve the clock used for daily release decisions.
  *
- * When `FIVEGAMES_DEV_NOW` or `FIVEGAMES_DEV_DATE` is set (or passed via options),
- * that override is used in any environment. The temporary on-page date dropdown
- * also works via cookie in production while we are in beta.
+ * Production: always uses the real `now` (or an explicit test `options.now`).
+ * Development clock cookies/env overrides are ignored — fail closed.
+ *
+ * Development: `FIVEGAMES_DEV_NOW` / `FIVEGAMES_DEV_DATE` (or matching options)
+ * may pin the clock for local testing.
+ *
+ * Note: `options.now` is always honoured so unit tests can inject an instant
+ * without depending on process.env.NODE_ENV.
  */
 export function resolveClock(
   now: Date = new Date(),
@@ -194,6 +203,10 @@ export function resolveClock(
 ): Date {
   if (options.now) {
     return options.now;
+  }
+
+  if (resolveNodeEnv(options) === "production") {
+    return now;
   }
 
   const devNow =
