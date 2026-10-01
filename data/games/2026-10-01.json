@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-01",
+  "date": "2026-10-01",
+  "gameNumber": 4,
+  "theme": "history",
+  "answer": {
+    "name": "York",
+    "lat": 53.9591,
+    "lng": -1.0815
+  },
+  "clues": [
+    "This place was a major settlement long before the Norman Conquest.",
+    "Roman walls and medieval streets still shape its centre.",
+    "Vikings left a strong mark here; one of their names for it survives in museums.",
+    "A famous Gothic minster dominates the skyline.",
+    "It sits at the confluence of the Rivers Ouse and Foss."
+  ]
+}

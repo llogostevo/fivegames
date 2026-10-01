@@ -1,0 +1,18 @@
+{
+  "id": "2026-09-30",
+  "date": "2026-09-30",
+  "gameNumber": 3,
+  "theme": "sport",
+  "answer": {
+    "name": "Manchester",
+    "lat": 53.4808,
+    "lng": -2.2426
+  },
+  "clues": [
+    "This city is synonymous with elite football in England.",
+    "Two major Premier League clubs call it home.",
+    "A famous velodrome and aquatics centre were built here for a Commonwealth Games.",
+    "Old Trafford sits on its western side.",
+    "It is the largest city in North West England."
+  ]
+}

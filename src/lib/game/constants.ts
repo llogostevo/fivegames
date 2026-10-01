@@ -1,6 +1,3 @@
-/** Prototype test game. */
-export const TEST_GAME_ID = "test-001";
-
 /** Expected number of clues / locked guesses. */
 export const CLUE_COUNT = 5;
 

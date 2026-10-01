@@ -1,10 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import { GameMap } from "@/components/game/GameMap";
-import { CLUE_COUNT, TEST_GAME_ID } from "@/lib/game/constants";
+import { NextGameCountdown } from "@/components/game/NextGameCountdown";
+import { CLUE_COUNT } from "@/lib/game/constants";
 import { getPanelActionState } from "@/lib/game/panelActions";
+import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
 import type {
   ContinueResponse,
@@ -54,14 +56,13 @@ function feedbackSentence(temperature: TemperatureResult, pin: number) {
   return `Pin ${pin} is about as far away as pin ${pin - 1}.`;
 }
 
-function buildShareText(reveal: GameReveal, theme: string): string {
+function buildShareText(reveal: GameReveal): string {
   const progress =
     reveal.lockedAfterClue < CLUE_COUNT
       ? `🎯 Locked on clue ${reveal.lockedAfterClue}/5`
       : "Completed in 5 clues";
-  const themeLine = theme ? `FiveGames — ${theme}` : "FiveGames";
   return [
-    themeLine,
+    `FiveGames #${reveal.gameNumber} — ${reveal.theme}`,
     `${reveal.totalScore.toLocaleString()} / ${reveal.maxScore.toLocaleString()}`,
     progress,
   ].join("\n");
@@ -90,7 +91,7 @@ function PinBadge({
 }
 
 async function postGuess(pendingGuess: Coordinates) {
-  const response = await fetch(`/api/game/${TEST_GAME_ID}/guess`, {
+  const response = await fetch("/api/game/guess", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(pendingGuess),
@@ -107,6 +108,10 @@ async function postGuess(pendingGuess: Coordinates) {
 export function GamePlay() {
   const [round, setRound] = useState(0);
   const [theme, setTheme] = useState<string>("");
+  const [themeId, setThemeId] = useState<ThemeId | null>(null);
+  const [unavailableMessage, setUnavailableMessage] = useState<string | null>(
+    null,
+  );
   const [rows, setRows] = useState<ClueRow[]>([]);
   const [pendingGuess, setPendingGuess] = useState<Coordinates | null>(null);
   const [reveal, setReveal] = useState<GameReveal | null>(null);
@@ -126,9 +131,10 @@ export function GamePlay() {
     async function startGame() {
       setIsStarting(true);
       setError(null);
+      setUnavailableMessage(null);
 
       try {
-        const response = await fetch(`/api/game/${TEST_GAME_ID}/start`, {
+        const response = await fetch("/api/game/start", {
           method: "POST",
         });
         const data = (await response.json()) as PublicGameState & {
@@ -136,6 +142,12 @@ export function GamePlay() {
         };
 
         if (!response.ok) {
+          if (response.status === 404) {
+            throw Object.assign(
+              new Error(data.error ?? "Today's FiveGames isn't available yet."),
+              { unavailable: true },
+            );
+          }
           throw new Error(data.error ?? "The game didn't start.");
         }
         if (cancelled) {
@@ -143,6 +155,7 @@ export function GamePlay() {
         }
 
         setTheme(data.theme);
+        setThemeId(data.themeId);
         setPendingGuess(null);
         setReveal(null);
         setConfirmingAnswer(false);
@@ -155,9 +168,20 @@ export function GamePlay() {
         );
       } catch (startError) {
         if (!cancelled) {
-          setError(
-            `${startError instanceof Error ? startError.message : "The game didn't start."} Refresh the page to try again.`,
-          );
+          const message =
+            startError instanceof Error
+              ? startError.message
+              : "The game didn't start.";
+          if (
+            startError instanceof Error &&
+            "unavailable" in startError &&
+            startError.unavailable
+          ) {
+            setUnavailableMessage(message);
+            setRows([]);
+          } else {
+            setError(`${message} Refresh the page to try again.`);
+          }
         }
       } finally {
         if (!cancelled) {
@@ -206,10 +230,9 @@ export function GamePlay() {
         ),
       );
 
-      const continueResponse = await fetch(
-        `/api/game/${TEST_GAME_ID}/continue`,
-        { method: "POST" },
-      );
+      const continueResponse = await fetch("/api/game/continue", {
+        method: "POST",
+      });
       const continueData = (await continueResponse.json()) as ContinueResponse & {
         error?: string;
       };
@@ -286,7 +309,7 @@ export function GamePlay() {
       return;
     }
 
-    const text = buildShareText(reveal, theme);
+    const text = buildShareText(reveal);
 
     try {
       if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
@@ -345,7 +368,7 @@ export function GamePlay() {
         ),
       );
 
-      const answerResponse = await fetch(`/api/game/${TEST_GAME_ID}/answer`, {
+      const answerResponse = await fetch("/api/game/answer", {
         method: "POST",
       });
       const answerData = (await answerResponse.json()) as LockAnswerResponse & {
@@ -410,9 +433,20 @@ export function GamePlay() {
   const latestLocked =
     !isComplete && latestLockedIndex >= 0 ? rows[latestLockedIndex] : null;
 
+  const activeTheme = getThemeOrDefault(reveal?.themeId ?? themeId);
+  const themeStyle = {
+    "--course": activeTheme.accent,
+    "--course-soft": activeTheme.accentSoft,
+  } as CSSProperties;
+
   return (
-    <div className="flex min-h-dvh flex-1 flex-col lg:h-dvh">
-      <header className="flex items-center justify-between gap-4 border-b border-rule px-4 py-3 sm:px-6">
+    <div
+      className={`flex flex-1 flex-col lg:h-dvh ${
+        isComplete ? "h-dvh overflow-hidden" : "min-h-dvh"
+      }`}
+      style={themeStyle}
+    >
+      <header className="flex shrink-0 items-center justify-between gap-4 border-b border-rule px-4 py-3 sm:px-6">
         <div className="flex items-baseline gap-3">
           <h1 className="font-display text-2xl font-bold tracking-tight">
             FiveGames
@@ -460,40 +494,80 @@ export function GamePlay() {
               <div className="h-6 w-full animate-pulse rounded bg-neutral-100" />
               <div className="h-6 w-2/3 animate-pulse rounded bg-neutral-100" />
             </div>
+          ) : unavailableMessage ? (
+            <div className="fg-feedback">
+              <h2 className="font-display text-2xl font-semibold leading-snug">
+                {unavailableMessage}
+              </h2>
+            </div>
           ) : isComplete && reveal ? (
             <div className="fg-feedback">
-              <p className="text-sm text-muted">The place was</p>
-              <h2 className="font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-                {reveal.answer.name}
-              </h2>
-              <p className="mt-2 text-sm font-semibold text-course">
-                {reveal.lockedAfterClue < CLUE_COUNT
-                  ? `🎯 Answer locked on clue ${reveal.lockedAfterClue}`
-                  : "Completed in 5 clues"}
-              </p>
-              <div className="mt-4">
-                <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
-                  Total score
-                </p>
-                <p className="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                  {reveal.totalScore.toLocaleString()}
-                  <span className="text-xl font-semibold text-muted sm:text-2xl">
-                    {" "}
-                    / {reveal.maxScore.toLocaleString()}
-                  </span>
-                </p>
+              <div className="flex items-start gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs text-muted sm:text-sm">
+                    FiveGames #{reveal.gameNumber} · {reveal.theme}
+                  </p>
+                  <p className="mt-2 hidden text-sm text-muted lg:block">
+                    The place was
+                  </p>
+                  <h2 className="mt-1 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:mt-0 lg:text-5xl">
+                    {reveal.answer.name}
+                  </h2>
+                  <p className="mt-1 text-xs font-semibold text-course sm:text-sm">
+                    {reveal.lockedAfterClue < CLUE_COUNT
+                      ? `🎯 Answer locked on clue ${reveal.lockedAfterClue}`
+                      : "Completed in 5 clues"}
+                  </p>
+                  <p className="mt-3 hidden text-sm font-medium uppercase tracking-[0.16em] text-muted lg:block">
+                    Total score
+                  </p>
+                  <p className="mt-1 font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
+                    {reveal.totalScore.toLocaleString()}
+                    <span className="text-base font-semibold text-muted sm:text-xl lg:text-2xl">
+                      {" "}
+                      / {reveal.maxScore.toLocaleString()}
+                    </span>
+                  </p>
+                  {closestActualIndex >= 0 ? (
+                    <p className="mt-1 text-xs text-muted sm:text-sm">
+                      Closest pin: {closestActualIndex + 1} (
+                      {formatDistance(actualDistances[closestActualIndex])})
+                    </p>
+                  ) : null}
+                </div>
+
+                <ol
+                  className="shrink-0 space-y-1 pt-0.5 lg:hidden"
+                  aria-label="Guess scores"
+                >
+                  {reveal.guesses.map((guess, index) => (
+                    <li
+                      key={index}
+                      className={`flex items-center justify-end gap-2 text-sm tabular-nums ${
+                        guess.carriedForward ? "text-muted" : "text-foreground"
+                      }`}
+                    >
+                      <span className="w-4 text-right font-display font-bold text-course">
+                        {index + 1}
+                      </span>
+                      <span className="w-14 text-right text-muted">
+                        {typeof guess.distanceMeters === "number"
+                          ? formatDistance(guess.distanceMeters)
+                          : "—"}
+                      </span>
+                      <span className="w-[4.25rem] text-right font-semibold">
+                        {guess.score.toLocaleString()}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </div>
-              {closestActualIndex >= 0 ? (
-                <p className="mt-2 text-sm text-muted">
-                  Closest pin: {closestActualIndex + 1} (
-                  {formatDistance(actualDistances[closestActualIndex])})
-                </p>
-              ) : null}
-              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+
+              <div className="mt-3 flex gap-2">
                 <button
                   type="button"
                   onClick={() => void handleShareScore()}
-                  className="rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                  className="rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 sm:px-4 sm:py-2.5"
                 >
                   {shareStatus === "copied"
                     ? "Copied!"
@@ -504,11 +578,17 @@ export function GamePlay() {
                 <button
                   type="button"
                   onClick={() => setRound((value) => value + 1)}
-                  className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
+                  className="rounded-md border border-rule px-3 py-2 text-sm font-semibold transition hover:bg-neutral-50 sm:px-4 sm:py-2.5"
                 >
                   Play again
                 </button>
               </div>
+
+              <NextGameCountdown
+                key={reveal.nextReleaseAt}
+                nextReleaseAt={reveal.nextReleaseAt}
+                onPlayToday={() => setRound((value) => value + 1)}
+              />
             </div>
           ) : confirmingAnswer ? (
             <div className="fg-feedback rounded-lg border border-rule p-4">
@@ -565,11 +645,9 @@ export function GamePlay() {
                 </p>
               ) : null}
 
-              <p className="text-sm text-muted">
-                {hasPin
-                  ? "Pin placed — get another clue or lock your answer."
-                  : "Drop a pin on the map to continue."}
-              </p>
+              {!hasPin ? (
+                <p className="text-sm text-muted">Drop a pin on the map.</p>
+              ) : null}
 
               <div className="flex flex-col gap-2">
                 <button
@@ -608,7 +686,9 @@ export function GamePlay() {
 
         <GameMap
           key={round}
-          className="relative min-h-[50dvh] w-full flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none"
+          className={`relative w-full flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none ${
+            isComplete ? "min-h-0" : "min-h-[50dvh]"
+          }`}
           gameMode
           showLabels={isComplete}
           interactive={!isComplete && !isBusy && !isStarting && !confirmingAnswer}
@@ -616,6 +696,7 @@ export function GamePlay() {
           pendingNumber={Math.max(pinNumber, 1)}
           lockedGuesses={mapGuesses}
           target={reveal?.answer.coordinates ?? null}
+          accentColor={activeTheme.accent}
           onSelect={handleSelect}
         />
 
@@ -649,9 +730,7 @@ export function GamePlay() {
 
         {rows.length > 0 || isComplete ? (
           <section
-            className={`${
-              isComplete ? "shrink-0" : "hidden lg:block"
-            } lg:col-start-2 lg:row-start-2 lg:min-h-0 lg:overflow-y-auto`}
+            className="hidden lg:col-start-2 lg:row-start-2 lg:block lg:min-h-0 lg:overflow-y-auto"
             aria-label="Clues and results"
           >
             <ol className="divide-y divide-rule border-y border-rule">

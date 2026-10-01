@@ -12,8 +12,10 @@ import { createEmptySession } from "./session";
 import type { GameDefinition } from "../../types/game";
 
 const game: GameDefinition = {
-  id: "test-001",
-  theme: "Music",
+  id: "2026-09-28",
+  date: "2026-09-28",
+  gameNumber: 1,
+  theme: "music",
   answer: { name: "Liverpool", lat: 53.4084, lng: -2.9916 },
   clues: ["c1", "c2", "c3", "c4", "c5"],
 };
@@ -54,6 +56,15 @@ describe("early lock answer", () => {
     assert.equal(reveal.totalScore, finalScore * 5);
     assert.equal(reveal.maxScore, SCORING.MAX_TOTAL_POINTS);
     assert.ok(reveal.totalScore <= 25_000);
+    assert.equal(reveal.gameId, game.id);
+    assert.equal(reveal.gameNumber, 1);
+    assert.equal(reveal.date, game.date);
+    assert.equal(reveal.themeId, "music");
+    assert.equal(reveal.theme, "Music");
+    assert.equal(reveal.accent, "#c4157a");
+    assert.ok(reveal.nextReleaseAt);
+    assert.equal(reveal.cluesUsed, 1);
+    assert.equal(reveal.complete, true);
   });
 
   it("locks after clue 2 with warmer/colder on actual guesses only", () => {
@@ -147,7 +158,7 @@ describe("early lock answer", () => {
     assert.equal(continued.session.revealedClueCount, 2);
   });
 
-  it("Get Clue flow locks the current guess and advances in one step", () => {
+  it("Submit Guess flow locks the current guess and advances in one step", () => {
     let session = createEmptySession(game.id);
     const locked = lockGuess({ game, session, guess: farAway });
     session = locked.session;
@@ -177,7 +188,7 @@ describe("early lock answer", () => {
     assert.equal(answer.response.reveal.actualGuessCount, 2);
   });
 
-  it("clue 5 completes with See Result (guess only, no continue)", () => {
+  it("clue 5 completes with Submit Final Guess (guess only, no continue)", () => {
     let session = createEmptySession(game.id);
     const pins = [farAway, mid, farAway, mid, nearTarget];
     for (let i = 0; i < 4; i += 1) {

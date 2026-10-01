@@ -2,47 +2,56 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
-import { continueToNextClue } from "@/lib/game/evaluateGuess";
-import { loadGame } from "@/lib/game/loadGame";
+import { lockGuess } from "@/lib/game/evaluateGuess";
+import { GameNotFoundError, loadGame } from "@/lib/game/loadGame";
 import {
   decodeSession,
   encodeSession,
   sessionCookieOptions,
 } from "@/lib/game/session";
 
-type RouteContext = {
-  params: Promise<{ gameId: string }>;
-};
-
-export async function POST(_request: Request, context: RouteContext) {
+export async function POST(request: Request) {
   try {
-    const { gameId } = await context.params;
-    const game = await loadGame(gameId);
-
     const cookieStore = await cookies();
     const session = decodeSession(cookieStore.get(GAME_SESSION_COOKIE)?.value);
 
-    if (!session || session.gameId !== game.id) {
+    if (!session) {
       return NextResponse.json(
         { error: "No active game session. Start the game first." },
         { status: 409 },
       );
     }
 
-    const result = continueToNextClue({ game, session });
+    const game = await loadGame(session.gameId);
+
+    const body: unknown = await request.json();
+    const guess =
+      body && typeof body === "object"
+        ? (body as { lat?: unknown; lng?: unknown })
+        : null;
+
+    const result = lockGuess({
+      game,
+      session,
+      guess: { lat: guess?.lat, lng: guess?.lng },
+    });
+
     const response = NextResponse.json(result.response);
     const cookie = sessionCookieOptions();
     response.cookies.set(cookie.name, encodeSession(result.session), cookie);
     return response;
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Failed to continue";
-
-    if (message.startsWith("Game not found")) {
-      return NextResponse.json({ error: message }, { status: 404 });
+    if (error instanceof GameNotFoundError) {
+      return NextResponse.json(
+        { error: "No active game session. Start the game first." },
+        { status: 409 },
+      );
     }
 
-    if (message === "Game is already complete") {
+    const message =
+      error instanceof Error ? error.message : "Failed to lock guess";
+
+    if (message === "All guesses are already locked") {
       return NextResponse.json({ error: message }, { status: 409 });
     }
 

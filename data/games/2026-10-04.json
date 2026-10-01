@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-04",
+  "date": "2026-10-04",
+  "gameNumber": 7,
+  "theme": "wildcard",
+  "answer": {
+    "name": "Brighton",
+    "lat": 50.8225,
+    "lng": -0.1372
+  },
+  "clues": [
+    "This seaside city has a playful, slightly eccentric reputation.",
+    "A landmark pier and pebble beach draw weekend crowds from the capital.",
+    "An ornate royal pleasure palace with onion domes sits near the front.",
+    "The Royal Pavilion is its most famous building.",
+    "It faces the English Channel in East Sussex."
+  ]
+}

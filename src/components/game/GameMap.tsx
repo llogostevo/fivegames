@@ -42,13 +42,15 @@ type GameMapProps = {
   /** Mystery target shown after the game is complete. */
   target?: Coordinates | null;
   onSelect?: (coordinates: Coordinates) => void;
+  /** Theme accent for the journey line (pins use CSS --course). */
+  accentColor?: string;
   /** Overlays rendered on top of the map (hints, buttons). */
   children?: ReactNode;
   className?: string;
 };
 
 const COURSE_SOURCE_ID = "fg-course";
-const COURSE_COLOR = "#c4157a";
+const DEFAULT_ACCENT = "#c4157a";
 const FINISH_COLOR = "#1e1e24";
 
 type LineFeature = GeoJSON.Feature<GeoJSON.LineString, { kind: string }>;
@@ -83,6 +85,7 @@ export function GameMap({
   pendingNumber = 1,
   lockedGuesses = [],
   target = null,
+  accentColor = DEFAULT_ACCENT,
   onSelect,
   children,
   className,
@@ -94,6 +97,7 @@ export function GameMap({
   const targetMarkerRef = useRef<Marker | null>(null);
   const onSelectRef = useRef(onSelect);
   const interactiveRef = useRef(interactive);
+  const accentColorRef = useRef(accentColor);
   const [mapReady, setMapReady] = useState(false);
   const [styleError, setStyleError] = useState<string | null>(null);
 
@@ -105,6 +109,15 @@ export function GameMap({
     interactiveRef.current = interactive;
     pendingMarkerRef.current?.setDraggable(interactive);
   }, [interactive]);
+
+  useEffect(() => {
+    accentColorRef.current = accentColor;
+    const map = mapRef.current;
+    if (!mapReady || !map || !map.getLayer("fg-course-line")) {
+      return;
+    }
+    map.setPaintProperty("fg-course-line", "line-color", accentColor);
+  }, [accentColor, mapReady]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -175,7 +188,7 @@ export function GameMap({
             filter: ["==", ["get", "kind"], "course"],
             layout: { "line-cap": "round", "line-join": "round" },
             paint: {
-              "line-color": COURSE_COLOR,
+              "line-color": accentColorRef.current,
               "line-width": 2.5,
               "line-opacity": 0.85,
             },

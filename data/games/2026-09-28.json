@@ -1,6 +1,8 @@
 {
-  "id": "test-001",
-  "theme": "Music",
+  "id": "2026-09-28",
+  "date": "2026-09-28",
+  "gameNumber": 1,
+  "theme": "music",
   "answer": {
     "name": "Liverpool",
     "lat": 53.4084,

@@ -1,55 +1,71 @@
 # FiveGames
 
-FiveGames is a daily browser-based quiz/game platform. Players will use five clues and five pins to find the place.
-
-This repository currently contains the **foundation only**. Game functionality has not been implemented yet.
+FiveGames is a daily browser-based location quiz. Each calendar day has one challenge: five progressive clues, five map pins, warmer/colder feedback, and a maximum score of 25,000.
 
 ## Tech stack
 
 - [Next.js](https://nextjs.org/) (App Router)
 - TypeScript
 - Tailwind CSS
+- MapLibre GL
 - ESLint
 - npm
 
-Intended deployment target: [Vercel](https://vercel.com/).
-
 ## Getting started
-
-### Install dependencies
 
 ```bash
 npm install
-```
-
-### Run locally
-
-```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Production build
-
 ```bash
+npm test
+npm run lint
 npm run build
 npm start
 ```
 
-### Lint
+## Daily games
 
-```bash
-npm run lint
-```
+Games live as server-only JSON under `data/games/YYYY-MM-DD.json`.
 
-## Project status
+A dated game becomes playable at **08:00 Europe/London** on its date (not midnight). Before that time, the previous day's game remains the available challenge. GMT/BST are handled via the `Europe/London` timezone.
 
-This is an initial Next.js foundation with:
+Release schedule is configured in `src/lib/game/dailyConfig.ts` (`DAILY_GAME_CONFIG`). Change `releaseHour` / `releaseMinute` there to move the daily drop; countdown copy updates automatically.
 
-- App Router + `src/` directory layout
-- TypeScript and Tailwind CSS
-- A temporary “coming soon” homepage
-- Placeholder folders for future UI, game, and data code
+### Weekly themes
 
-No database, auth, APIs, maps, analytics, payments, or game logic are included yet.
+| Day       | Theme       | Accent   |
+|-----------|-------------|----------|
+| Monday    | Music       | Magenta  |
+| Tuesday   | Movies & TV | Purple   |
+| Wednesday | Sport       | Green    |
+| Thursday  | History     | Amber    |
+| Friday    | World       | Blue     |
+| Saturday  | Culture     | Coral    |
+| Sunday    | Wildcard    | Teal     |
+
+Theme ids, labels, and accent colours are defined in `src/lib/game/themes.ts`. Game JSON only stores the theme id.
+
+### Development clock overrides
+
+Copy `.env.example` to `.env.local`, then restart `npm run dev`.
+
+- `FIVEGAMES_DEV_DATE=2026-09-28` — load that day's game (treated as 12:00 London)
+- `FIVEGAMES_DEV_NOW=2026-10-01T07:59` — exact London wall time for release testing (`08:00`, `08:01`, `23:00`, etc.)
+
+`FIVEGAMES_DEV_NOW` wins if both are set. Overrides are ignored when `NODE_ENV=production`.
+
+Temporary test games covering Mon–Sun are documented in `data/games/README.md`. They are **not** final editorial content.
+
+### Missing games
+
+If no JSON exists for the currently released date, the API returns 404. Production shows a simple “isn’t available yet” message; development returns a clearer missing-file hint.
+
+## Security notes
+
+- Game JSON (including answers) is never placed under `public/`
+- Before completion the client only receives the current clue and public meta (id, number, date, theme label)
+- Answer name, coordinates, future clues, distances, and scores stay server-side until the reveal

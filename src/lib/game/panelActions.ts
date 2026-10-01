@@ -35,9 +35,7 @@ export function getPanelActionState(options: {
     hasPin && !isBusy && !isComplete && !isConfirming && clueNumber >= 1;
 
   return {
-    primaryLabel: isFinalClue
-      ? "See Result →"
-      : `Get Clue ${clueNumber + 1} →`,
+    primaryLabel: isFinalClue ? "Submit Final Guess →" : "Submit Guess →",
     secondaryLabel: isFinalClue ? null : "🎯 Lock Final Answer",
     canAct,
     isFinalClue,

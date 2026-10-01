@@ -1,7 +1,9 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
+import { getNextReleaseAt, type ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
 import { SCORING, calculateScore } from "@/lib/game/scoring";
 import type { GameSession } from "@/lib/game/session";
+import { getTheme } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
 import type {
   GameDefinition,
@@ -35,6 +37,8 @@ function scoreGuess(
 export function buildReveal(
   game: GameDefinition,
   session: GameSession,
+  now: Date = new Date(),
+  clockOptions: ClockOptions = {},
 ): GameReveal {
   if (session.guesses.length === 0) {
     throw new Error("Cannot reveal a game with no guesses");
@@ -90,14 +94,25 @@ export function buildReveal(
   }
 
   const totalScore = guesses.reduce((sum, guess) => sum + guess.score, 0);
+  const theme = getTheme(game.theme);
 
   return {
+    gameId: game.id,
+    gameNumber: game.gameNumber,
+    date: game.date,
+    themeId: game.theme,
+    theme: theme.label,
+    accent: theme.accent,
+    accentSoft: theme.accentSoft,
+    nextReleaseAt: getNextReleaseAt(now, clockOptions).toISOString(),
     answer: {
       name: game.answer.name,
       coordinates: target,
     },
     guesses,
     lockedAfterClue,
+    cluesUsed: lockedAfterClue,
+    complete: true,
     finalCoordinates,
     actualGuessCount: lockedAfterClue,
     totalScore,

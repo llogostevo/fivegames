@@ -1,4 +1,5 @@
 import type { Coordinates } from "@/types/coordinates";
+import type { ThemeId } from "@/lib/game/themes";
 
 export type GameAnswer = {
   name: string;
@@ -6,9 +7,12 @@ export type GameAnswer = {
   lng: number;
 };
 
+/** Full server-side game definition loaded from dated JSON. Never send wholesale to the client. */
 export type GameDefinition = {
   id: string;
-  theme: string;
+  date: string;
+  gameNumber: number;
+  theme: ThemeId;
   answer: GameAnswer;
   clues: string[];
 };
@@ -36,6 +40,17 @@ export type RevealedGuess = Guess & {
 };
 
 export type GameReveal = {
+  /** Stable id (ISO date) for later persistence. */
+  gameId: string;
+  gameNumber: number;
+  date: string;
+  themeId: ThemeId;
+  /** Display name for UI. */
+  theme: string;
+  accent: string;
+  accentSoft: string;
+  /** ISO timestamp of the next configured daily release. */
+  nextReleaseAt: string;
   answer: {
     name: string;
     coordinates: Coordinates;
@@ -48,6 +63,10 @@ export type GameReveal = {
   guesses: RevealedGuess[];
   /** How many clues the player actually used (1–5). */
   lockedAfterClue: number;
+  /** Alias of lockedAfterClue for weekly-progress consumers. */
+  cluesUsed: number;
+  /** Always true when a reveal is returned. */
+  complete: true;
   /** Coordinates of the pin that was committed as the final answer. */
   finalCoordinates: Coordinates;
   /** Number of pins the player physically placed. */
@@ -59,7 +78,15 @@ export type GameReveal = {
 /** Public game state returned to the client (never includes the answer mid-game). */
 export type PublicGameState = {
   gameId: string;
+  gameNumber: number;
+  date: string;
+  themeId: ThemeId;
+  /** Display name for the theme chip. */
   theme: string;
+  accent: string;
+  accentSoft: string;
+  /** ISO timestamp of the next configured daily release. */
+  nextReleaseAt: string;
   clueCount: number;
   clueIndex: number;
   clue: string | null;
