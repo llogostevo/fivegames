@@ -168,7 +168,7 @@ describe("buildDailyShareText", () => {
       ].join("\n"),
     );
     assert.equal(buildShareText(reveal(), 4), text);
-    assert.equal(SHARE_URL, "https://fivegames.vercel.app/daily");
+    assert.equal(SHARE_URL, "https://pin5.co.uk/daily");
   });
 
   it("formats short final-pin distances in metres", () => {
@@ -384,6 +384,6 @@ describe("weekly share content", () => {
     assert.ok(!text.includes("clue"));
     assert.ok(!text.includes("km"));
     assert.ok(text.endsWith(SHARE_URL));
-    assert.equal(SHARE_URL, "https://fivegames.vercel.app/daily");
+    assert.equal(SHARE_URL, "https://pin5.co.uk/daily");
   });
 });

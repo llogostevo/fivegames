@@ -4,28 +4,28 @@ import {
 } from "@/lib/game/modes";
 
 /**
- * Public beta origin for PIN5.
- * Keep share / metadata on this host until pin5.co.uk launches.
+ * Canonical public origin for PIN5 (shares, Open Graph, absolute links).
+ * Override with NEXT_PUBLIC_SITE_URL if needed.
  */
-export const BETA_SITE_URL = "https://fivegames.vercel.app";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://pin5.co.uk";
 
 /**
- * Canonical site origin for absolute metadata URLs (Open Graph, etc.).
- * Defaults to the beta host; override with NEXT_PUBLIC_SITE_URL if needed.
+ * @deprecated Use SITE_URL — kept for older imports/tests.
  */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? BETA_SITE_URL;
+export const BETA_SITE_URL = SITE_URL;
 
 /**
  * @deprecated Prefer shareUrlForMode("daily") — root is now the hub.
  * Kept for tests that assert the legacy constant shape.
  */
-export const SHARE_URL = `${BETA_SITE_URL}/daily`;
+export const SHARE_URL = `${SITE_URL}/daily`;
 
 /** @deprecated Prefer shareUrlForMode("football"). */
-export const FOOTBALL_SHARE_URL = `${BETA_SITE_URL}/football/england`;
+export const FOOTBALL_SHARE_URL = `${SITE_URL}/football/england`;
 
 /** Absolute share URL for a game mode. */
 export function shareUrlForMode(mode: GameMode): string {
   const path = getModeDefinition(mode).sharePath;
-  return `${BETA_SITE_URL}${path}`;
+  return `${SITE_URL}${path}`;
 }
