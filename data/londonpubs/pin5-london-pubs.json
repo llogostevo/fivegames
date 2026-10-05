@@ -1,0 +1,490 @@
+{
+  "dataset": "pin5-london-pubs",
+  "region": "London",
+  "pubCount": 25,
+  "clueDesign": {
+    "1": "hard historical/cultural clue",
+    "2": "stronger identity/history clue",
+    "3": "distinctive feature or local context",
+    "4": "explicit pub name",
+    "5": "precise geographical clue"
+  },
+  "notes": "Starter set of notable London pubs. Coordinates are intended as gameplay targets and should be spot-checked against your map provider before production launch.",
+  "pubs": [
+    {
+      "id": "prospect-of-whitby",
+      "pub": "The Prospect of Whitby",
+      "area": "Wapping",
+      "borough": "Tower Hamlets",
+      "address": "57 Wapping Wall, London E1W 3SH",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.507,
+        "lng": -0.051
+      },
+      "clues": [
+        "Long before the docks became apartments, this riverside drinking place was associated with sailors, smugglers and river thieves.",
+        "The site has served drinkers for centuries and Samuel Pepys is among the famous names linked with it.",
+        "A replica noose hangs over the Thames outside the pub, recalling the area's grim maritime history.",
+        "The pub is The Prospect of Whitby.",
+        "Look in Wapping on the north bank of the Thames, on Wapping Wall between Shadwell Basin and the river bend towards Limehouse."
+      ]
+    },
+    {
+      "id": "the-mayflower",
+      "pub": "The Mayflower",
+      "area": "Rotherhithe",
+      "borough": "Southwark",
+      "address": "117 Rotherhithe Street, London SE16 4NF",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5012,
+        "lng": -0.0533
+      },
+      "clues": [
+        "This riverside pub commemorates a ship whose passengers established Plymouth Colony in North America.",
+        "The famous vessel began part of its 1620 voyage from nearby landing steps.",
+        "The pub was formerly known as the Spread Eagle and Crown and took its present name in the 20th century.",
+        "The pub is The Mayflower.",
+        "Pin Rotherhithe on the south bank of the Thames, close to St Mary's Church and Rotherhithe Overground station."
+      ]
+    },
+    {
+      "id": "the-george-inn",
+      "pub": "The George Inn",
+      "area": "Borough",
+      "borough": "Southwark",
+      "address": "75-77 Borough High Street, London SE1 1NH",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5044,
+        "lng": -0.0897
+      },
+      "clues": [
+        "Travellers once arrived here by horse and coach, using a courtyard surrounded by galleries.",
+        "It is the capital's last surviving galleried coaching inn and is now cared for by the National Trust.",
+        "It hides just off one of London's oldest routes south from London Bridge.",
+        "The pub is The George Inn.",
+        "Look just off Borough High Street, a short walk south of London Bridge and close to Borough Market."
+      ]
+    },
+    {
+      "id": "the-spaniards-inn",
+      "pub": "The Spaniards Inn",
+      "area": "Hampstead",
+      "borough": "Barnet",
+      "address": "Spaniards Road, London NW3 7JJ",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5777,
+        "lng": -0.1783
+      },
+      "clues": [
+        "According to a famous story, a landlord delayed an angry 18th-century mob with free drink until soldiers could arrive.",
+        "This old inn appears in Dickens's The Pickwick Papers and has another literary association with Bram Stoker's Dracula.",
+        "It stands beside an old toll house on the edge of one of London's largest and best-known open spaces.",
+        "The pub is The Spaniards Inn.",
+        "Pin the northern edge of Hampstead Heath on Spaniards Road, between Hampstead and Highgate."
+      ]
+    },
+    {
+      "id": "ye-olde-cheshire-cheese",
+      "pub": "Ye Olde Cheshire Cheese",
+      "area": "Fleet Street",
+      "borough": "City of London",
+      "address": "145 Fleet Street, London EC4A 2BP",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5141,
+        "lng": -0.1077
+      },
+      "clues": [
+        "The building occupying this site was rebuilt shortly after a catastrophe destroyed much of London in 1666.",
+        "Generations of writers and journalists have drunk here, fitting for a pub in the historic heart of London's newspaper trade.",
+        "Its entrance is tucked down a narrow passage off Fleet Street.",
+        "The pub is Ye Olde Cheshire Cheese.",
+        "Look on the north side of Fleet Street, between Fetter Lane and St Paul's Cathedral."
+      ]
+    },
+    {
+      "id": "ye-olde-mitre",
+      "pub": "Ye Olde Mitre",
+      "area": "Holborn",
+      "borough": "Camden",
+      "address": "1 Ely Court, Ely Place, London EC1N 6SJ",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5186,
+        "lng": -0.1073
+      },
+      "clues": [
+        "A royal story associated with this secluded inn involves Elizabeth I and a cherry tree.",
+        "The pub's unusual historical setting was connected with the Bishops of Ely.",
+        "You reach it through tiny Ely Court, making it unusually easy to walk past.",
+        "The pub is Ye Olde Mitre.",
+        "Pin Ely Court off Ely Place, between Hatton Garden and Holborn Circus."
+      ]
+    },
+    {
+      "id": "lamb-and-flag",
+      "pub": "The Lamb & Flag",
+      "area": "Covent Garden",
+      "borough": "Westminster",
+      "address": "33 Rose Street, London WC2E 9EB",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5112,
+        "lng": -0.1249
+      },
+      "clues": [
+        "In the 19th century this drinking house gained a reputation for bare-knuckle prize fighting.",
+        "Its long history and tucked-away position contrast with the theatres and crowds surrounding it today.",
+        "The pub sits on tiny Rose Street, just off a famous Covent Garden pedestrian route.",
+        "The pub is The Lamb & Flag.",
+        "Look in Covent Garden, between Long Acre and the Strand and a short walk from the Piazza."
+      ]
+    },
+    {
+      "id": "the-french-house",
+      "pub": "The French House",
+      "area": "Soho",
+      "borough": "Westminster",
+      "address": "49 Dean Street, London W1D 5BG",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5133,
+        "lng": -0.1321
+      },
+      "clues": [
+        "This small Soho institution became a meeting place for writers and artists including Dylan Thomas and Francis Bacon.",
+        "It developed a particularly strong French identity during the Second World War.",
+        "It is famous for serving beer in half-pints and for favouring conversation over phones and music.",
+        "The pub is The French House.",
+        "Pin Dean Street in the heart of Soho, between Oxford Street and Shaftesbury Avenue."
+      ]
+    },
+    {
+      "id": "the-ten-bells",
+      "pub": "The Ten Bells",
+      "area": "Spitalfields",
+      "borough": "Tower Hamlets",
+      "address": "84 Commercial Street, London E1 6LY",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5197,
+        "lng": -0.0746
+      },
+      "clues": [
+        "This Victorian pub is repeatedly drawn into stories surrounding one of London's most notorious unsolved series of murders.",
+        "Its history is closely tied to the poor and densely populated East End of the late 19th century.",
+        "It stands opposite one of London's best-known historic markets and beside Christ Church Spitalfields.",
+        "The pub is The Ten Bells.",
+        "Pin Commercial Street at the corner of Fournier Street, opposite Old Spitalfields Market."
+      ]
+    },
+    {
+      "id": "the-grapes",
+      "pub": "The Grapes",
+      "area": "Limehouse",
+      "borough": "Tower Hamlets",
+      "address": "76 Narrow Street, London E14 8BP",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5094,
+        "lng": -0.0338
+      },
+      "clues": [
+        "This tiny riverside pub has literary connections stretching back to Charles Dickens.",
+        "Its modern ownership has included two very famous actors and a newspaper proprietor.",
+        "A narrow rear terrace looks directly onto the Thames.",
+        "The pub is The Grapes.",
+        "Look on Narrow Street in Limehouse, on the north bank of the Thames just west of Canary Wharf."
+      ]
+    },
+    {
+      "id": "the-blackfriar",
+      "pub": "The Blackfriar",
+      "area": "Blackfriars",
+      "borough": "City of London",
+      "address": "174 Queen Victoria Street, London EC4V 4EG",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5121,
+        "lng": -0.1036
+      },
+      "clues": [
+        "This remarkable pub celebrates the religious order that once gave the surrounding district its name.",
+        "Inside, mosaics, reliefs and decorative figures make it look unlike almost any ordinary London pub.",
+        "Its wedge-shaped building stands at a busy junction close to a Thames bridge and railway station.",
+        "The pub is The Blackfriar.",
+        "Pin the junction of Queen Victoria Street and New Bridge Street, immediately north of Blackfriars Bridge."
+      ]
+    },
+    {
+      "id": "princess-louise",
+      "pub": "The Princess Louise",
+      "area": "Holborn",
+      "borough": "Camden",
+      "address": "208 High Holborn, London WC1V 7EP",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5174,
+        "lng": -0.1219
+      },
+      "clues": [
+        "This Victorian pub is celebrated less for a famous drinker than for the remarkable survival of its historic interior.",
+        "Ornate glass, mirrors, tiles and wooden partitions divide the bar into intimate compartments.",
+        "It stands on a major east-west road between the West End and the City.",
+        "The pub is The Princess Louise.",
+        "Look on High Holborn, a short walk east of Holborn Underground station."
+      ]
+    },
+    {
+      "id": "the-seven-stars",
+      "pub": "The Seven Stars",
+      "area": "Holborn",
+      "borough": "Camden",
+      "address": "53 Carey Street, London WC2A 2JB",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5158,
+        "lng": -0.1138
+      },
+      "clues": [
+        "This small pub claims a history reaching back to the early 17th century and survived the Great Fire era.",
+        "Its decor reflects the profession practised in the imposing institution directly opposite.",
+        "One of its snug areas is appropriately known as the Wig Box.",
+        "The pub is The Seven Stars.",
+        "Pin Carey Street immediately behind the Royal Courts of Justice, between Fleet Street and Lincoln's Inn Fields."
+      ]
+    },
+    {
+      "id": "jamaica-wine-house",
+      "pub": "Jamaica Wine House",
+      "area": "City of London",
+      "borough": "City of London",
+      "address": "St Michael's Alley, London EC3V 9DS",
+      "difficulty": 3,
+      "target": {
+        "lat": 51.5133,
+        "lng": -0.0854
+      },
+      "clues": [
+        "The site is associated with a major change in London's drinking habits that began in the 17th century.",
+        "It occupies the site of London's first coffee house, opened by Pasqua Rosée.",
+        "Despite its Caribbean-sounding name, you'll find it hidden in a tiny alley in the Square Mile.",
+        "The pub is Jamaica Wine House.",
+        "Look in St Michael's Alley just off Cornhill, between Bank and Leadenhall Market."
+      ]
+    },
+    {
+      "id": "hoop-and-grapes",
+      "pub": "The Hoop & Grapes",
+      "area": "Aldgate",
+      "borough": "City of London",
+      "address": "47 Aldgate High Street, London EC3N 1AL",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5138,
+        "lng": -0.076
+      },
+      "clues": [
+        "This timber-framed survivor stood close to, but escaped, the destruction that swept through London in 1666.",
+        "Its noticeably crooked frontage hints at the age of the building.",
+        "For much of the 19th century it was run by wine merchants.",
+        "The pub is The Hoop & Grapes.",
+        "Pin Aldgate High Street near Aldgate Underground station, at the eastern edge of the City."
+      ]
+    },
+    {
+      "id": "the-churchill-arms",
+      "pub": "The Churchill Arms",
+      "area": "Kensington",
+      "borough": "Kensington and Chelsea",
+      "address": "119 Kensington Church Street, London W8 7LN",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5067,
+        "lng": -0.1948
+      },
+      "clues": [
+        "This pub's name and memorabilia celebrate one of Britain's most famous prime ministers.",
+        "Its interior combines British wartime memorabilia with a restaurant serving Thai food.",
+        "The exterior is famous for an extraordinary display of flowers, and at Christmas for an equally extravagant display of trees.",
+        "The pub is The Churchill Arms.",
+        "Look on Kensington Church Street, just north of Kensington High Street and south of Notting Hill Gate."
+      ]
+    },
+    {
+      "id": "the-cutty-sark",
+      "pub": "The Cutty Sark",
+      "area": "Greenwich",
+      "borough": "Greenwich",
+      "address": "4-6 Ballast Quay, London SE10 9PD",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.4868,
+        "lng": -0.0027
+      },
+      "clues": [
+        "This Georgian riverside pub eventually took the name of a famous 19th-century tea clipper.",
+        "It was previously known as the Green Man and later the Union Tavern.",
+        "Its large windows look north across the Thames from a quieter stretch of historic Greenwich.",
+        "The pub is The Cutty Sark.",
+        "Pin Ballast Quay on the Thames east of Greenwich town centre and the Old Royal Naval College."
+      ]
+    },
+    {
+      "id": "the-gun",
+      "pub": "The Gun",
+      "area": "Docklands",
+      "borough": "Tower Hamlets",
+      "address": "27 Coldharbour, London E14 9NS",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.4968,
+        "lng": -0.0085
+      },
+      "clues": [
+        "This riverside pub's name recalls the firing of cannon associated with the nearby docks and maritime activity.",
+        "Tradition links the site with a clandestine meeting involving Admiral Nelson.",
+        "From its riverside position you can look across the Thames towards the Greenwich Peninsula.",
+        "The pub is The Gun.",
+        "Look at Coldharbour on the eastern side of the Isle of Dogs, south of Canary Wharf."
+      ]
+    },
+    {
+      "id": "the-dove",
+      "pub": "The Dove",
+      "area": "Hammersmith",
+      "borough": "Hammersmith and Fulham",
+      "address": "19 Upper Mall, London W6 9TA",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.4905,
+        "lng": -0.234
+      },
+      "clues": [
+        "A famous British composer is said to have worked on one of the country's best-known patriotic songs while staying nearby.",
+        "Writers and artists have long been associated with this very small Thames-side drinking place.",
+        "It sits on a narrow riverside lane beside the Thames Path rather than on a major road.",
+        "The pub is The Dove.",
+        "Pin Upper Mall on the north bank of the Thames, west of Hammersmith Bridge."
+      ]
+    },
+    {
+      "id": "the-hawley-arms",
+      "pub": "The Hawley Arms",
+      "area": "Camden Town",
+      "borough": "Camden",
+      "address": "2 Castlehaven Road, London NW1 8QU",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5415,
+        "lng": -0.1454
+      },
+      "clues": [
+        "This pub became closely associated with London's music scene in the 2000s and with one particular singer from nearby Camden.",
+        "It was badly damaged in the 2008 Camden Market fire before reopening.",
+        "Its location puts it amid railway arches, markets and live-music venues.",
+        "The pub is The Hawley Arms.",
+        "Look on Castlehaven Road in Camden Town, just north of the Regent's Canal and Camden Market."
+      ]
+    },
+    {
+      "id": "the-worlds-end-camden",
+      "pub": "The World's End",
+      "area": "Camden Town",
+      "borough": "Camden",
+      "address": "174 Camden High Street, London NW1 0NE",
+      "difficulty": 1,
+      "target": {
+        "lat": 51.5392,
+        "lng": -0.1425
+      },
+      "clues": [
+        "This huge north London pub has long been a meeting point for gig-goers.",
+        "Below it is a famous live-music venue whose name evokes the subterranean.",
+        "It occupies a prominent corner opposite one of Camden Town's Underground entrances.",
+        "The pub is The World's End.",
+        "Pin Camden High Street directly beside Camden Town Underground station."
+      ]
+    },
+    {
+      "id": "the-windsor-castle",
+      "pub": "The Windsor Castle",
+      "area": "Kensington",
+      "borough": "Kensington and Chelsea",
+      "address": "114 Campden Hill Road, London W8 7AR",
+      "difficulty": 3,
+      "target": {
+        "lat": 51.5057,
+        "lng": -0.1996
+      },
+      "clues": [
+        "This neighbourhood pub is known for a historic interior divided by wooden screens and unusually low openings.",
+        "Its name is shared with a royal residence well outside London.",
+        "It sits in a quieter residential pocket between Notting Hill and Kensington High Street.",
+        "The pub is The Windsor Castle.",
+        "Look on Campden Hill Road, west of Kensington Palace and south of Notting Hill Gate."
+      ]
+    },
+    {
+      "id": "the-royal-oak-borough",
+      "pub": "The Royal Oak",
+      "area": "Borough",
+      "borough": "Southwark",
+      "address": "44 Tabard Street, London SE1 4JU",
+      "difficulty": 3,
+      "target": {
+        "lat": 51.5003,
+        "lng": -0.0931
+      },
+      "clues": [
+        "This understated backstreet pub is particularly prized by traditional beer enthusiasts.",
+        "It is associated with Harvey's, the independent Sussex brewery.",
+        "It stands on a street whose name recalls the medieval inn from which Chaucer's pilgrims set out.",
+        "The pub is The Royal Oak.",
+        "Pin Tabard Street, south of Borough Underground station and east of Borough High Street."
+      ]
+    },
+    {
+      "id": "the-harp",
+      "pub": "The Harp",
+      "area": "Covent Garden",
+      "borough": "Westminster",
+      "address": "47 Chandos Place, London WC2N 4HS",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.5098,
+        "lng": -0.1259
+      },
+      "clues": [
+        "This compact central London pub built its reputation around cask ale rather than grand architecture or celebrity.",
+        "It has received major national recognition from real-ale campaigners.",
+        "Its narrow frontage sits on a street linking Trafalgar Square with Covent Garden.",
+        "The pub is The Harp.",
+        "Look on Chandos Place, just north-east of Charing Cross station and west of Covent Garden Piazza."
+      ]
+    },
+    {
+      "id": "cittie-of-yorke",
+      "pub": "Cittie of Yorke",
+      "area": "Holborn",
+      "borough": "Camden",
+      "address": "22 High Holborn, London WC1V 6BN",
+      "difficulty": 2,
+      "target": {
+        "lat": 51.518,
+        "lng": -0.1122
+      },
+      "clues": [
+        "Although the present interior is largely 20th century, drinking on this site has a much longer history.",
+        "The extraordinary long bar room has high ceilings, dark timber and a row of private drinking booths.",
+        "Its deliberately archaic name fits an atmospheric building on one of central London's busiest roads.",
+        "The pub is Cittie of Yorke.",
+        "Pin High Holborn opposite the northern end of Chancery Lane, close to Chancery Lane Underground station."
+      ]
+    }
+  ]
+}

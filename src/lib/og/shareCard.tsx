@@ -8,7 +8,7 @@ export const SHARE_IMAGE_SIZE = {
 
 export const SHARE_CONTENT_TYPE = "image/png";
 
-export type ShareCardKind = "hub" | "daily" | "world" | "football";
+export type ShareCardKind = "hub" | "daily" | "world" | "football" | "pubs";
 
 export type FootballFlag = "ENG" | "ITA" | "GER" | "FRA" | "ESP";
 
@@ -193,6 +193,25 @@ function DailyIcon({ size = 220 }: { size?: number }) {
   );
 }
 
+function PubsIcon({
+  size = 220,
+  accent = "#b45309",
+}: {
+  size?: number;
+  accent?: string;
+}) {
+  return (
+    <RoundedFrame background={accent} size={size}>
+      <EmojiStack
+        primary="🍺"
+        secondary="📍"
+        primarySize={Math.round(size * 0.42)}
+        secondarySize={Math.round(size * 0.18)}
+      />
+    </RoundedFrame>
+  );
+}
+
 function ShareIcon({
   kind,
   accent,
@@ -209,6 +228,8 @@ function ShareIcon({
       return <WorldIcon />;
     case "daily":
       return <DailyIcon />;
+    case "pubs":
+      return <PubsIcon accent={accent} />;
     case "football":
       return <FootballIcon accent={accent} flag={flag} />;
   }
@@ -221,11 +242,14 @@ export function shareCardImage({
   accent = "#15803d",
   flag,
 }: ShareCardProps) {
-  const midColor = kind === "football" ? accent : "#1d1d1f";
+  const midColor =
+    kind === "football" || kind === "pubs" ? accent : "#1d1d1f";
   const bg =
     kind === "football"
       ? "radial-gradient(circle at 50% 45%, #f4faf5 0%, #e7f0e8 55%, #dfe8e0 100%)"
-      : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
+      : kind === "pubs"
+        ? "radial-gradient(circle at 50% 45%, #fffaf3 0%, #f7efe3 55%, #efe4d4 100%)"
+        : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
 
   return new ImageResponse(
     (
@@ -274,7 +298,8 @@ export function shareCardImage({
                 fontSize: 48,
                 fontWeight: 700,
                 color: midColor,
-                letterSpacing: kind === "football" ? "0.08em" : "-0.02em",
+                letterSpacing:
+                  kind === "football" || kind === "pubs" ? "0.08em" : "-0.02em",
                 lineHeight: 1.05,
                 textTransform: "uppercase",
               }}

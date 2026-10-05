@@ -19,6 +19,8 @@ export type HubGameEntry = {
   shortLabel: string;
   /** Badge code — no flag emoji. */
   code: string;
+  /** Top-right tile emoji (⚽ / 📍 / 🍺). */
+  tileEmoji: string;
   href: string;
   mapImage: string;
   /** Preferred featured candidate (World). */
@@ -42,7 +44,7 @@ export function isHubGameEntry(
   return !("comingSoon" in entry && entry.comingSoon);
 }
 
-/** Ordered catalog — World featured first, then UK, then Football leagues. */
+/** Ordered catalog — World featured first, then UK, London pubs, then Football. */
 export const HUB_GAMES: readonly HubGameEntry[] = [
   {
     id: "world",
@@ -50,6 +52,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "World",
     shortLabel: "Anywhere on Earth",
     code: "WORLD",
+    tileEmoji: "📍",
     href: GAME_MODE_DEFINITIONS.world.path,
     mapImage: "/hub-maps/world.webp",
     featured: true,
@@ -61,9 +64,21 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "United Kingdom",
     shortLabel: "Daily 5",
     code: "UK",
+    tileEmoji: "📍",
     href: GAME_MODE_DEFINITIONS.daily.path,
     mapImage: "/hub-maps/uk.webp",
     groupLabel: "Daily 5",
+  },
+  {
+    id: "london-pubs",
+    group: "general",
+    name: "London",
+    shortLabel: "Pubs",
+    code: "LDN",
+    tileEmoji: "🍺",
+    href: GAME_MODE_DEFINITIONS["london-pubs"].path,
+    mapImage: "/hub-maps/london.webp",
+    groupLabel: "Pubs 5",
   },
   {
     id: "football",
@@ -71,6 +86,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "England",
     shortLabel: "The 92",
     code: "ENG",
+    tileEmoji: "⚽",
     href: GAME_MODE_DEFINITIONS.football.path,
     mapImage: "/hub-maps/england.webp",
     groupLabel: "Football 5",
@@ -81,6 +97,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "Italy",
     shortLabel: "Serie A & B",
     code: "ITA",
+    tileEmoji: "⚽",
     href: GAME_MODE_DEFINITIONS["football-italy"].path,
     mapImage: "/hub-maps/italy.webp",
     groupLabel: "Football 5",
@@ -91,6 +108,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "Germany",
     shortLabel: "Bundesliga 1 & 2",
     code: "GER",
+    tileEmoji: "⚽",
     href: GAME_MODE_DEFINITIONS["football-germany"].path,
     mapImage: "/hub-maps/germany.webp",
     groupLabel: "Football 5",
@@ -101,6 +119,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "France",
     shortLabel: "Ligue 1 & 2",
     code: "FRA",
+    tileEmoji: "⚽",
     href: GAME_MODE_DEFINITIONS["football-france"].path,
     mapImage: "/hub-maps/france.webp",
     groupLabel: "Football 5",
@@ -111,6 +130,7 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     name: "Spain",
     shortLabel: "LaLiga & Segunda",
     code: "ESP",
+    tileEmoji: "⚽",
     href: GAME_MODE_DEFINITIONS["football-spain"].path,
     mapImage: "/hub-maps/spain.webp",
     groupLabel: "Football 5",

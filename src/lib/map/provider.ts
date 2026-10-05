@@ -44,5 +44,11 @@ export const WORLD_MAP_START: MapStartView = {
   zoom: 1.35,
 };
 
+/** Greater London overview for London pubs — never the day’s answer. */
+export const LONDON_MAP_START: MapStartView = {
+  center: { lat: 51.5074, lng: -0.1278 },
+  zoom: 11.2,
+};
+
 /** High enough to identify venues such as stadiums and concert halls. */
 export const MAP_MAX_ZOOM = 18;

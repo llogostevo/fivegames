@@ -13,6 +13,7 @@ export const THEME_IDS = [
   "wildcard",
   "football",
   "world",
+  "london-pubs",
 ] as const;
 
 export type ThemeId = (typeof THEME_IDS)[number];
@@ -103,6 +104,14 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accent: "#1d4ed8",
     accentSoft: "#dbeafe",
     emoji: "🌍",
+  },
+  "london-pubs": {
+    id: "london-pubs",
+    displayName: "London Pubs",
+    label: "London Pubs",
+    accent: "#b45309",
+    accentSoft: "#fef3c7",
+    emoji: "🍺",
   },
 };
 

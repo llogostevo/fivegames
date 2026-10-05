@@ -193,9 +193,9 @@ function GameTile({
           <span
             className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#dadcd8] bg-white/95 text-[13px] leading-none"
             aria-hidden="true"
-            title={game.group === "football" ? "Football 5" : "Daily 5"}
+            title={game.groupLabel}
           >
-            {game.group === "football" ? "⚽" : "📍"}
+            {game.tileEmoji}
           </span>
         </div>
 
@@ -268,7 +268,7 @@ function FeaturedPlayTile({
             className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/25 bg-white/10 text-[13px] leading-none"
             aria-hidden="true"
           >
-            {game.group === "football" ? "⚽" : "📍"}
+            {game.tileEmoji}
           </span>
         </div>
         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75">
@@ -477,18 +477,26 @@ export function HubGames({
   );
   const featured = pickFeaturedGame(playedSet);
   const generalGames = hubGamesInGroup("general");
-  /** Desktop: World (or other general featured) + companion tile in one row. */
+  /** Desktop: fold featured + up to two companion tiles into one row. */
+  const companionGeneral =
+    featured !== null && featured.group === "general"
+      ? generalGames.filter((game) => game.id !== featured.id)
+      : [];
   const foldGeneral =
-    columns >= 4 && featured !== null && featured.group === "general";
-  const companionGeneral = foldGeneral
-    ? generalGames.filter((game) => game.id !== featured.id)
-    : [];
+    columns >= 4 &&
+    featured !== null &&
+    featured.group === "general" &&
+    companionGeneral.length >= 1 &&
+    companionGeneral.length <= 2;
 
   return (
     <div className="space-y-5 sm:space-y-6">
-      {foldGeneral ? (
+      {foldGeneral && featured ? (
         <div className="grid grid-cols-4 gap-3">
-          <FeaturedPlayTile game={featured} className="col-span-3 h-full" />
+          <FeaturedPlayTile
+            game={featured}
+            className={`${companionGeneral.length === 1 ? "col-span-3" : "col-span-2"} h-full`}
+          />
           {companionGeneral.map((game) => {
             const progress = hubProgressForMode(snapshot, game.id);
             return (

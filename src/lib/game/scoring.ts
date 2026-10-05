@@ -54,6 +54,22 @@ export const WORLD_SCORING_PROFILE: ScoringProfile = {
   foundRadiusMetres: FOUND_LOCATION_RADIUS_METRES,
 };
 
+/**
+ * City-scale profile (London pubs) — same ceilings, short decay so the right
+ * neighbourhood matters and a wrong side of the city scores poorly.
+ */
+export const CITY_SCORING_PROFILE: ScoringProfile = {
+  clueMaxScores: [
+    25_000,
+    22_500,
+    20_000,
+    17_500,
+    15_000,
+  ],
+  accuracyDecayLengthKm: 5,
+  foundRadiusMetres: FOUND_LOCATION_RADIUS_METRES,
+};
+
 /** @deprecated Prefer COUNTRY_SCORING_PROFILE.clueMaxScores */
 export const CLUE_MAX_SCORES = COUNTRY_SCORING_PROFILE.clueMaxScores;
 

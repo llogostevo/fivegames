@@ -790,7 +790,11 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
                     Pin5 #{reveal.gameNumber} · {reveal.theme}
                   </p>
                   <p className="mt-2 hidden text-sm text-muted lg:block">
-                    {isFootballMode(mode) ? "The club was" : "The place was"}
+                    {isFootballMode(mode)
+                      ? "The club was"
+                      : mode === "london-pubs"
+                        ? "The pub was"
+                        : "The place was"}
                   </p>
                   <h2 className="mt-1 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:mt-0 lg:text-5xl">
                     {reveal.answer.name}

@@ -31,10 +31,8 @@ describe("hubCatalog", () => {
   });
 
   it("pads an odd tile count with coming soon", () => {
-    const general = HUB_GAMES.filter((game) => game.group === "general");
-    // World featured → only UK in section → 1 tile → pad
-    const tiles = general.filter((game) => game.id === "daily");
     const pad = comingSoonForGroup("general");
+    const tiles = HUB_GAMES.filter((game) => game.id === "daily");
     const padded = withComingSoonPad(tiles, 2, pad);
     assert.equal(padded.length, 2);
     assert.equal(padded[1] && "comingSoon" in padded[1], true);
@@ -59,5 +57,13 @@ describe("hubCatalog", () => {
       comingSoonForGroup("general"),
     );
     assert.equal(padded.length, 1);
+  });
+
+  it("lists London pubs in the general section", () => {
+    const general = HUB_GAMES.filter((game) => game.group === "general");
+    assert.ok(general.some((game) => game.id === "london-pubs"));
+    const pubs = HUB_GAMES.find((game) => game.id === "london-pubs");
+    assert.equal(pubs?.tileEmoji, "🍺");
+    assert.equal(pubs?.code, "LDN");
   });
 });

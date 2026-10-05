@@ -37,6 +37,8 @@ export function HubFlagIcon({
       return <FranceFlag className={frame} />;
     case "ESP":
       return <SpainFlag className={frame} />;
+    case "LDN":
+      return <LondonBadge className={frame} />;
     default:
       return (
         <span
@@ -138,6 +140,26 @@ function SpainFlag({ className }: IconProps) {
     <FlagShell className={className}>
       <rect width="24" height="18" fill="#AA151B" />
       <rect y="4.5" width="24" height="9" fill="#F1BF00" />
+    </FlagShell>
+  );
+}
+
+/** City of London–inspired badge (cross + sword) for London Pubs. */
+function LondonBadge({ className }: IconProps) {
+  return (
+    <FlagShell className={className}>
+      <rect width="24" height="18" fill="#ffffff" />
+      <path d="M12 0v18M0 9h24" stroke="#C8102E" strokeWidth="3.2" />
+      <path
+        d="M4.2 2.2 5.6 5.4 2.8 4.2Z"
+        fill="#C8102E"
+      />
+      <path
+        d="M4.8 5.2v5.2"
+        stroke="#C8102E"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
     </FlagShell>
   );
 }

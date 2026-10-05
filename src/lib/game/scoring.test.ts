@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 
 import {
   CLUE_MAX_SCORES,
+  CITY_SCORING_PROFILE,
   COUNTRY_SCORING_PROFILE,
   SCORING,
   WORLD_SCORING_PROFILE,
@@ -172,6 +173,27 @@ describe("WORLD_SCORING_PROFILE", () => {
     assert.ok(worldFar.totalScore > 10_000);
     assert.ok(worldFar.totalScore < 25_000);
     assert.ok(worldFar.totalScore > countryFar.totalScore * 100);
+  });
+
+  it("penalises wrong-borough misses on the city profile", () => {
+    const cityNear = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 1_500,
+      profile: CITY_SCORING_PROFILE,
+    });
+    const cityFar = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 12_000,
+      profile: CITY_SCORING_PROFILE,
+    });
+    const countrySame = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 12_000,
+      profile: COUNTRY_SCORING_PROFILE,
+    });
+
+    assert.ok(cityNear.totalScore > cityFar.totalScore);
+    assert.ok(cityFar.totalScore < countrySame.totalScore);
   });
 
   it("still collapses antipodal-scale misses toward zero", () => {

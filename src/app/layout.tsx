@@ -21,7 +21,7 @@ const barlowCondensed = Barlow_Condensed({
 
 const siteTitle = "PIN5";
 const siteDescription =
-  "PIN5 — daily location games. Play Daily 5 and Football 5 across England, Italy, Germany, France, and Spain.";
+  "PIN5 — daily location games. Play Daily 5, London Pubs, World, and Football 5.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

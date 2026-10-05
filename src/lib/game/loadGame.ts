@@ -14,6 +14,11 @@ import {
   getTodaysFootballGame,
 } from "@/lib/game/football/loadFootballGame";
 import { footballLeagueForMode } from "@/lib/game/football/leagues";
+import {
+  getReleasedLondonPubsGameByDate,
+  getTodaysLondonPubsGame,
+  getLondonPubsGameByDate,
+} from "@/lib/game/londonpubs/loadLondonPubsGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -192,7 +197,7 @@ export async function getTodaysGame(
   return getGameByDate(date);
 }
 
-/** Load today's game for a mode (daily JSON, World schedule, or Football). */
+/** Load today's game for a mode (daily JSON, World, London pubs, or Football). */
 export async function getTodaysGameForMode(
   mode: GameMode,
   now: Date = new Date(),
@@ -200,6 +205,9 @@ export async function getTodaysGameForMode(
 ): Promise<GameDefinition> {
   if (mode === "world") {
     return getTodaysWorldGame(now, options);
+  }
+  if (mode === "london-pubs") {
+    return getTodaysLondonPubsGame(now, options);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
@@ -233,6 +241,9 @@ export async function getReleasedGameForMode(
   if (mode === "world") {
     return getReleasedWorldGameByDate(date, now, options);
   }
+  if (mode === "london-pubs") {
+    return getReleasedLondonPubsGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -247,6 +258,9 @@ export async function getGameForModeByDate(
 ): Promise<GameDefinition> {
   if (mode === "world") {
     return getWorldGameByDate(date);
+  }
+  if (mode === "london-pubs") {
+    return getLondonPubsGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {

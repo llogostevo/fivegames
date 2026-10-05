@@ -41,6 +41,15 @@ const SLICES = [
     isoA3: "GBR",
   },
   {
+    file: "london",
+    lat: 51.51,
+    lng: -0.12,
+    zoom: 11.15,
+    width: 800,
+    height: 500,
+    isoA3: null,
+  },
+  {
     file: "england",
     lat: 52.5,
     lng: -1.4,
