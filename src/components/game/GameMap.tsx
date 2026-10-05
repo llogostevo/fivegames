@@ -501,11 +501,8 @@ export function GameMap({
         // Keep the hold ring anchored while the map pans/zooms.
         map.on("move", () => {
           const hold = holdRef.current;
-          const visual = hold
-            ? { lng: hold.lng, lat: hold.lat }
-            : null;
-          if (visual) {
-            projectHold(visual.lng, visual.lat);
+          if (hold) {
+            projectHold(hold.lng, hold.lat, hold.pointerType);
           }
         });
 
