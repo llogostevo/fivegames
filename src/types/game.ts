@@ -73,7 +73,36 @@ export type GameReveal = {
   actualGuessCount: number;
   totalScore: number;
   maxScore: number;
+  /**
+   * True when completion was an automatic FOUND (pin within the found radius).
+   * Always server-derived — never accepted from the client.
+   */
+  foundLocation: boolean;
+  /** Pin number that found the location, or null for a normal lock/finish. */
+  foundOnPin: number | null;
 };
+
+/**
+ * Response from POST /api/game/check (commit pin).
+ * Unsuccessful pins never include distance, score, or warmer/colder.
+ */
+export type CheckPinResponse =
+  | {
+      found: false;
+      complete: false;
+      awaitingDecision: true;
+      guessIndex: number;
+    }
+  | {
+      found: false;
+      complete: true;
+      reveal: GameReveal;
+    }
+  | {
+      found: true;
+      complete: true;
+      reveal: GameReveal;
+    };
 
 /** Locked pin returned on resume — coordinates + earned temperature only. */
 export type PublicLockedGuess = Guess & {
@@ -128,6 +157,11 @@ export type LockGuessResponse = {
 export type ContinueResponse = {
   clueIndex: number;
   clue: string;
+  /**
+   * Warmer/colder for the just-committed pin vs the previous one.
+   * Null after pin 1 (no previous pin). Only returned on Get Another Clue.
+   */
+  temperature: TemperatureResult | null;
 };
 
 export type LockAnswerResponse = {

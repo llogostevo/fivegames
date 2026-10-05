@@ -16,6 +16,9 @@ export type PlayerHistoryGame = {
   score: number;
   lockedAfterClue: number;
   completedAt: string;
+  /** Optional — older history records omit these. */
+  foundLocation?: boolean;
+  foundOnPin?: number | null;
 };
 
 export type PlayerHistory = {
@@ -109,6 +112,23 @@ function parseHistoryGame(
     return null;
   }
 
+  const foundLocation = record.foundLocation === true;
+  let foundOnPin: number | null | undefined;
+  if (foundLocation) {
+    if (
+      typeof record.foundOnPin === "number" &&
+      Number.isInteger(record.foundOnPin) &&
+      record.foundOnPin >= 1 &&
+      record.foundOnPin <= 5
+    ) {
+      foundOnPin = record.foundOnPin;
+    } else {
+      foundOnPin = null;
+    }
+  } else if (record.foundLocation === false) {
+    foundOnPin = null;
+  }
+
   return {
     gameId: record.gameId,
     gameNumber: record.gameNumber,
@@ -117,6 +137,9 @@ function parseHistoryGame(
     score: Math.round(record.score),
     lockedAfterClue: record.lockedAfterClue,
     completedAt: record.completedAt,
+    ...(record.foundLocation === true || record.foundLocation === false
+      ? { foundLocation, foundOnPin: foundOnPin ?? null }
+      : {}),
   };
 }
 
@@ -197,6 +220,8 @@ export function historyGameFromReveal(
     score: reveal.totalScore,
     lockedAfterClue: reveal.lockedAfterClue,
     completedAt: completedAt.toISOString(),
+    foundLocation: reveal.foundLocation === true,
+    foundOnPin: reveal.foundLocation ? (reveal.foundOnPin ?? null) : null,
   };
 }
 

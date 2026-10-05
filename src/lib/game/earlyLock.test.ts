@@ -20,14 +20,16 @@ const game: GameDefinition = {
   clues: ["c1", "c2", "c3", "c4", "c5"],
 };
 
-const nearTarget = { lat: 53.41, lng: -2.99 };
+/** Outside the 1km FOUND radius — used for normal / early-lock flows. */
 const farAway = { lat: 51.5074, lng: -0.1278 };
 const mid = { lat: 53.4808, lng: -2.2426 };
+/** Slightly closer than farAway but still outside FOUND. */
+const closerOutside = { lat: 53.2, lng: -2.5 };
 
 describe("early lock answer", () => {
   it("locks after clue 1 and carries the pin forward", () => {
     let session = createEmptySession(game.id);
-    const locked = lockGuess({ game, session, guess: nearTarget });
+    const locked = lockGuess({ game, session, guess: mid });
     session = locked.session;
 
     assert.equal(locked.response.complete, false);
@@ -39,6 +41,7 @@ describe("early lock answer", () => {
     const reveal = answer.response.reveal;
 
     assert.equal(answer.response.complete, true);
+    assert.equal(reveal.foundLocation, false);
     assert.equal(reveal.lockedAfterClue, 1);
     assert.equal(reveal.actualGuessCount, 1);
     assert.equal(reveal.guesses.filter((g) => !g.carriedForward).length, 1);
@@ -46,7 +49,8 @@ describe("early lock answer", () => {
     assert.equal(reveal.guesses[0]?.isFinalAnswer, true);
 
     const finalScore = reveal.guesses[0]?.score ?? 0;
-    assert.ok(finalScore > 4900);
+    assert.ok(finalScore > 0);
+    assert.ok(finalScore < SCORING.MAX_POINTS_PER_GUESS);
     assert.equal(
       reveal.guesses.every(
         (row, index) => index === 0 || row.score === finalScore,
@@ -73,13 +77,16 @@ describe("early lock answer", () => {
     session = continueToNextClue({ game, session }).session;
     assert.equal(session.revealedClueCount, 2);
 
-    const second = lockGuess({ game, session, guess: nearTarget });
-    assert.equal(second.response.temperature, "warmer");
+    const second = lockGuess({ game, session, guess: closerOutside });
+    // Mid-game commit must not leak warmer/colder until Get Another Clue.
+    assert.equal(second.response.temperature, null);
+    assert.equal(second.response.complete, false);
     session = second.session;
 
     const answer = lockFinalAnswer({ game, session });
     const reveal = answer.response.reveal;
 
+    assert.equal(reveal.foundLocation, false);
     assert.equal(reveal.lockedAfterClue, 2);
     assert.equal(reveal.actualGuessCount, 2);
     assert.equal(reveal.guesses[0]?.carriedForward, false);
@@ -94,7 +101,7 @@ describe("early lock answer", () => {
   it("locks after clue 3 and clue 4", () => {
     for (const stopAt of [3, 4]) {
       let session = createEmptySession(game.id);
-      const pins = [farAway, mid, nearTarget, nearTarget, nearTarget];
+      const pins = [farAway, mid, closerOutside, mid, farAway];
 
       for (let i = 0; i < stopAt; i += 1) {
         session = lockGuess({ game, session, guess: pins[i] }).session;
@@ -104,6 +111,7 @@ describe("early lock answer", () => {
       }
 
       const answer = lockFinalAnswer({ game, session });
+      assert.equal(answer.response.reveal.foundLocation, false);
       assert.equal(answer.response.reveal.lockedAfterClue, stopAt);
       assert.equal(answer.response.reveal.actualGuessCount, stopAt);
       assert.equal(
@@ -115,7 +123,7 @@ describe("early lock answer", () => {
 
   it("completes normally after clue 5 without early lock", () => {
     let session = createEmptySession(game.id);
-    const pins = [farAway, mid, farAway, mid, nearTarget];
+    const pins = [farAway, mid, farAway, mid, closerOutside];
 
     for (let i = 0; i < 5; i += 1) {
       const result = lockGuess({ game, session, guess: pins[i] });
@@ -126,6 +134,7 @@ describe("early lock answer", () => {
       } else {
         assert.equal(result.response.complete, true);
         assert.equal(result.response.awaitingDecision, false);
+        assert.equal(result.response.reveal?.foundLocation, false);
         assert.equal(result.response.reveal?.lockedAfterClue, 5);
         assert.equal(result.response.reveal?.actualGuessCount, 5);
         assert.equal(
@@ -138,7 +147,7 @@ describe("early lock answer", () => {
 
   it("does not reveal remaining clues after early lock", () => {
     let session = createEmptySession(game.id);
-    session = lockGuess({ game, session, guess: nearTarget }).session;
+    session = lockGuess({ game, session, guess: mid }).session;
     const answer = lockFinalAnswer({ game, session });
 
     const payload = JSON.stringify(answer.response);
@@ -155,96 +164,113 @@ describe("early lock answer", () => {
     const continued = continueToNextClue({ game, session });
     assert.equal(continued.response.clueIndex, 1);
     assert.equal(continued.response.clue, "c2");
+    assert.equal(continued.response.temperature, null);
     assert.equal(continued.session.revealedClueCount, 2);
   });
 
-  it("Get Another Clue commits the pin, then reveals the next clue", () => {
+  it("Get Another Clue continues from an already-committed pin and reveals warmer/colder", () => {
     let session = createEmptySession(game.id);
     const locked = lockGuess({ game, session, guess: farAway });
     session = locked.session;
-    // Pin 1 has no previous pin → no warmer/colder.
     assert.equal(locked.response.temperature, null);
 
     const continued = continueToNextClue({ game, session });
     session = continued.session;
     assert.equal(continued.response.clue, "c2");
+    assert.equal(continued.response.temperature, null);
     assert.equal(session.guesses.length, 1);
     assert.equal(session.revealedClueCount, 2);
 
-    const second = lockGuess({ game, session, guess: nearTarget });
-    // Warmer/colder only exists once Pin 2 is committed (Get Another Clue).
-    assert.equal(second.response.temperature, "warmer");
-    session = continueToNextClue({ game, session: second.session }).session;
+    const second = lockGuess({ game, session, guess: closerOutside });
+    assert.equal(second.response.temperature, null);
+    assert.equal(second.response.complete, false);
+    const afterSecond = continueToNextClue({
+      game,
+      session: second.session,
+    });
+    assert.equal(afterSecond.response.temperature, "warmer");
+    assert.equal(afterSecond.response.clue, "c3");
+    session = afterSecond.session;
     assert.equal(session.revealedClueCount, 3);
     assert.equal(session.guesses.length, 2);
   });
 
-  it("Lock Final Answer commits the current provisional pin then completes", () => {
+  it("Lock Final Answer completes from an already-committed pin", () => {
     let session = createEmptySession(game.id);
     session = lockGuess({ game, session, guess: farAway }).session;
     session = continueToNextClue({ game, session }).session;
-    // Pin is still "editable" client-side until this commit:
-    session = lockGuess({ game, session, guess: nearTarget }).session;
+    session = lockGuess({ game, session, guess: closerOutside }).session;
     const answer = lockFinalAnswer({ game, session });
+    assert.equal(answer.response.reveal.foundLocation, false);
     assert.equal(answer.response.reveal.lockedAfterClue, 2);
     assert.equal(answer.response.reveal.actualGuessCount, 2);
   });
 
-  it("placing/adjusting is client-only: session guesses do not change without lockGuess", () => {
+  it("session guesses do not change without a commit call", () => {
     const session = createEmptySession(game.id);
     assert.equal(session.guesses.length, 0);
     assert.equal(session.revealedClueCount, 1);
-    // No adjust endpoint — repeated client repositioning cannot request temperature.
-    assert.equal(session.guesses.length, 0);
   });
 
-  it("warmer/colder is only returned when a pin is committed via lockGuess", () => {
+  it("warmer/colder is only returned via Get Another Clue (continue)", () => {
     let session = createEmptySession(game.id);
     session = lockGuess({ game, session, guess: farAway }).session;
     session = continueToNextClue({ game, session }).session;
     assert.equal(session.guesses.length, 1);
 
-    const committed = lockGuess({ game, session, guess: nearTarget });
-    assert.equal(committed.response.temperature, "warmer");
+    const committed = lockGuess({ game, session, guess: closerOutside });
+    assert.equal(committed.response.temperature, null);
     assert.equal(committed.session.guesses.length, 2);
+
+    const continued = continueToNextClue({
+      game,
+      session: committed.session,
+    });
+    assert.equal(continued.response.temperature, "warmer");
   });
 
   it("clue 5 completes with Lock (guess only, no continue / no clue 6)", () => {
     let session = createEmptySession(game.id);
-    const pins = [farAway, mid, farAway, mid, nearTarget];
+    const pins = [farAway, mid, farAway, mid, closerOutside];
     for (let i = 0; i < 4; i += 1) {
       session = lockGuess({ game, session, guess: pins[i] }).session;
       session = continueToNextClue({ game, session }).session;
     }
     const final = lockGuess({ game, session, guess: pins[4] });
     assert.equal(final.response.complete, true);
+    assert.equal(final.response.reveal?.foundLocation, false);
     assert.equal(final.response.reveal?.lockedAfterClue, 5);
   });
 
   it("buildReveal keeps actual guesses distinguishable for the map", () => {
     const session = {
       gameId: game.id,
-      guesses: [farAway, nearTarget],
+      guesses: [farAway, closerOutside],
       revealedClueCount: 2,
       lockedAfterClue: 2,
       startedAt: new Date("2026-09-28T12:00:00.000Z").toISOString(),
+      foundLocation: false,
+      foundOnPin: null,
     };
 
     const reveal = buildReveal(game, session);
     const actual = reveal.guesses.filter((g) => !g.carriedForward);
     assert.equal(actual.length, 2);
     assert.equal(reveal.actualGuessCount, 2);
+    assert.equal(reveal.foundLocation, false);
     assert.notEqual(actual[0]?.lat, actual[1]?.lat);
   });
 
-  it("maximum score remains 25,000 for a perfect early lock", () => {
-    let session = createEmptySession(game.id);
-    session = lockGuess({
+  it("maximum score remains 25,000 for a perfect early lock on the exact target", () => {
+    const session = createEmptySession(game.id);
+    // Exact target is FOUND → auto-completes with 25,000.
+    const locked = lockGuess({
       game,
       session,
       guess: { lat: game.answer.lat, lng: game.answer.lng },
-    }).session;
-    const reveal = lockFinalAnswer({ game, session }).response.reveal;
-    assert.equal(reveal.totalScore, 25_000);
+    });
+    assert.equal(locked.response.complete, true);
+    assert.equal(locked.response.reveal?.foundLocation, true);
+    assert.equal(locked.response.reveal?.totalScore, 25_000);
   });
 });

@@ -17,7 +17,6 @@ type ClueFlowModalProps = {
   onConfirmLock: () => void;
   /** Returns from lock confirmation to the decision state. */
   onCancelLock: () => void;
-  onAdjust: () => void;
   onGetAnotherClue: () => void;
   onPlaceNextPin: () => void;
   onRetry: () => void;
@@ -29,7 +28,6 @@ export function ClueFlowModal({
   onRequestLock,
   onConfirmLock,
   onCancelLock,
-  onAdjust,
   onGetAnotherClue,
   onPlaceNextPin,
   onRetry,
@@ -85,11 +83,12 @@ export function ClueFlowModal({
               id={titleId}
               className="mt-1 font-display text-xl font-bold tracking-tight"
             >
-              Your pin is placed
+              Your pin is locked in
             </h2>
             <p className="mt-1 text-sm text-muted">
-              Lock it in, adjust it, or spend another clue
-              {state.isFinalClue ? "." : " for more information."}
+              {state.isFinalClue
+                ? "Choose whether to lock your answer."
+                : "Choose whether to lock your answer or spend another clue for more information."}
             </p>
 
             <div className="mt-4 flex flex-col gap-2">
@@ -116,14 +115,6 @@ export function ClueFlowModal({
                 }
               >
                 🎯 Lock final answer
-              </button>
-              <button
-                type="button"
-                disabled={isBusy}
-                onClick={onAdjust}
-                className="rounded-md px-4 py-2.5 text-sm font-medium text-muted transition hover:bg-neutral-50 hover:text-foreground disabled:opacity-60"
-              >
-                ↩ Adjust pin
               </button>
             </div>
           </>

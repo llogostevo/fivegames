@@ -256,6 +256,11 @@ export function ResultsPopup({
                       / {reveal.maxScore.toLocaleString()}
                     </span>
                   </p>
+                  {reveal.foundLocation && reveal.foundOnPin ? (
+                    <p className="mt-1 text-xs font-semibold text-course">
+                      🎯 Found on pin {reveal.foundOnPin}
+                    </p>
+                  ) : null}
                 </div>
                 {closestDistance !== null ? (
                   <p className="text-right text-xs text-muted">

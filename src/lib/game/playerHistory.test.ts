@@ -70,6 +70,8 @@ function fakeReveal(date: string, score: number): GameReveal {
     actualGuessCount: 2,
     totalScore: score,
     maxScore: 25_000,
+    foundLocation: false,
+    foundOnPin: null,
   };
 }
 

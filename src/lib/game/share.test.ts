@@ -82,6 +82,8 @@ function reveal(overrides: Partial<GameReveal> = {}): GameReveal {
     actualGuessCount: 4,
     totalScore: 22_315,
     maxScore: 25_000,
+    foundLocation: false,
+    foundOnPin: null,
     ...overrides,
   };
 }

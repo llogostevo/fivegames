@@ -57,15 +57,93 @@ body {
   box-shadow: 0 1px 3px rgba(30, 30, 36, 0.25);
 }
 
-.fg-pin--pending {
-  background: var(--course);
-  color: #fff;
-  border-color: #fff;
-  width: 34px;
-  height: 34px;
-  cursor: grab;
-  box-shadow: 0 0 0 3px var(--course), 0 2px 8px rgba(30, 30, 36, 0.35);
-  animation: fg-drop 220ms ease-out;
+.fg-hold-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 1px 3px rgba(30, 30, 36, 0.35));
+}
+
+.fg-hold-ring--pulse {
+  animation: fg-hold-pulse 220ms ease-out;
+}
+
+@keyframes fg-hold-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  55% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fg-hold-coach {
+  animation: fg-hold-coach 2.2s ease-out forwards;
+}
+
+@keyframes fg-hold-coach {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+}
+
+.fg-hold-demo-progress {
+  stroke-dashoffset: 125.6;
+  animation: fg-hold-demo-fill 1.6s ease-in-out infinite;
+}
+
+.fg-hold-demo-pin {
+  animation: fg-hold-demo-pin 1.6s ease-in-out infinite;
+}
+
+@keyframes fg-hold-demo-fill {
+  0%,
+  15% {
+    stroke-dashoffset: 125.6;
+  }
+  55%,
+  70% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 125.6;
+  }
+}
+
+@keyframes fg-hold-demo-pin {
+  0%,
+  50% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  60%,
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
 }
 
 .fg-pin--finish {
@@ -123,9 +201,26 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fg-pin--pending,
+  .fg-hold-ring--pulse,
+  .fg-hold-coach,
+  .fg-hold-demo-progress,
+  .fg-hold-demo-pin,
   .fg-feedback {
     animation: none;
+  }
+
+  .fg-hold-coach {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .fg-hold-demo-progress {
+    stroke-dashoffset: 30;
+  }
+
+  .fg-hold-demo-pin {
+    opacity: 1;
+    transform: none;
   }
 
   .fg-temp-toast {
@@ -138,5 +233,65 @@ body {
   cursor: crosshair;
 }
 .fg-map--placing .maplibregl-canvas-container.maplibregl-interactive:active {
-  cursor: grabbing;
+  cursor: crosshair;
+}
+
+@keyframes found-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes found-ring {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes found-confetti {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+.found-pop {
+  animation: found-pop 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.found-ring {
+  animation: found-ring 1.1s ease-out both;
+}
+
+.found-confetti {
+  animation: found-confetti 2.4s linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .found-pop,
+  .found-ring,
+  .found-confetti {
+    animation: none;
+  }
 }

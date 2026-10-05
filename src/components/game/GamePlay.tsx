@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import { ClueFlowModal } from "@/components/game/ClueFlowModal";
+import { FoundCelebration } from "@/components/game/FoundCelebration";
 import { GameMap } from "@/components/game/GameMap";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
@@ -15,6 +16,11 @@ import {
   type ClueFlowModalState,
 } from "@/lib/game/clueFlow";
 import { CLUE_COUNT } from "@/lib/game/constants";
+import {
+  markHoldTipSeen,
+  readHoldTipSeen,
+  shouldShowHoldTip,
+} from "@/lib/game/holdTip";
 import {
   getCurrentStreak,
   readPlayerHistory,
@@ -29,10 +35,10 @@ import {
 import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
 import type { Coordinates } from "@/types/coordinates";
 import type {
+  CheckPinResponse,
   ContinueResponse,
   GameReveal,
   LockAnswerResponse,
-  LockGuessResponse,
   PublicGameState,
   TemperatureResult,
 } from "@/types/game";
@@ -88,17 +94,17 @@ function PinBadge({
   );
 }
 
-async function postGuess(pendingGuess: Coordinates) {
-  const response = await fetch("/api/game/guess", {
+async function postCheckPin(coordinates: Coordinates) {
+  const response = await fetch("/api/game/check", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(pendingGuess),
+    body: JSON.stringify(coordinates),
   });
-  const data = (await response.json()) as LockGuessResponse & {
+  const data = (await response.json()) as CheckPinResponse & {
     error?: string;
   };
   if (!response.ok) {
-    throw new Error(data.error ?? "Your pin wasn't locked.");
+    throw new Error(data.error ?? "Couldn't commit that pin.");
   }
   return data;
 }
@@ -111,11 +117,12 @@ export function GamePlay() {
     null,
   );
   const [rows, setRows] = useState<ClueRow[]>([]);
-  const [pendingGuess, setPendingGuess] = useState<Coordinates | null>(null);
   const [reveal, setReveal] = useState<GameReveal | null>(null);
-  /** Client-only: current pin is editable; no server warmer/colder yet. */
-  const [isAdjusting, setIsAdjusting] = useState(false);
   const [flowModal, setFlowModal] = useState<ClueFlowModalState | null>(null);
+  /** One-shot celebration after a live FOUND; never set on resume. */
+  const [foundCelebration, setFoundCelebration] = useState<GameReveal | null>(
+    null,
+  );
   const [isStarting, setIsStarting] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -128,6 +135,9 @@ export function GamePlay() {
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   const [howToPlayCta, setHowToPlayCta] = useState("Got it");
   const [resultsOpen, setResultsOpen] = useState(false);
+  const [showHoldTip, setShowHoldTip] = useState(() =>
+    shouldShowHoldTip(readHoldTipSeen()),
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -162,14 +172,13 @@ export function GamePlay() {
 
         setTheme(data.theme);
         setThemeId(data.themeId);
-        setPendingGuess(null);
-        setIsAdjusting(false);
         setFlowModal(null);
         setShareStatus("idle");
         setWeekShareStatus("idle");
 
         if (data.complete && data.reveal) {
           // Server session already completed today's game — show results.
+          // Do not replay FOUND celebration on resume.
           recordCompletedReveal(data.reveal);
           setReveal(data.reveal);
           setRows([]);
@@ -203,38 +212,14 @@ export function GamePlay() {
           });
         }
 
-        // Recover mid-flight Get Another Clue (guess committed, continue pending).
+        // Committed pin awaiting Get Another Clue / Lock — restore decision modal.
         if (data.awaitingDecision) {
-          const continueResponse = await fetch("/api/game/continue", {
-            method: "POST",
-          });
-          const continueData =
-            (await continueResponse.json()) as ContinueResponse & {
-              error?: string;
-            };
-          if (!continueResponse.ok) {
-            throw new Error(
-              continueData.error ?? "Couldn't restore the next clue.",
-            );
-          }
-          if (cancelled) {
-            return;
-          }
-
-          const lastTemperature =
-            data.guesses[data.guesses.length - 1]?.temperature ?? null;
-          rowsFromStart.push({
-            text: continueData.clue,
-            coordinates: null,
-            temperature: null,
-          });
           setRows(rowsFromStart);
+          const pinNumber = data.guesses.length;
           setFlowModal({
-            type: "nextClue",
-            temperature: lastTemperature,
-            clueNumber: continueData.clueIndex + 1,
-            clueText: continueData.clue,
-            nextPinNumber: continueData.clueIndex + 1,
+            type: "decision",
+            pinNumber,
+            isFinalClue: isFinalClueNumber(pinNumber),
           });
           setHowToPlayOpen(false);
           setResultsOpen(false);
@@ -283,34 +268,90 @@ export function GamePlay() {
     };
   }, [round]);
 
-  const handleSelect = useCallback(
+  const finishWithFoundReveal = useCallback((foundReveal: GameReveal) => {
+    recordCompletedReveal(foundReveal);
+    setReveal(foundReveal);
+    setFlowModal(null);
+    setShareStatus("idle");
+    setWeekShareStatus("idle");
+    setFoundCelebration(foundReveal);
+    setResultsOpen(false);
+  }, []);
+
+  const handleCommitPin = useCallback(
     (coordinates: Coordinates) => {
-      if (reveal || isBusy) {
+      if (reveal || isBusy || foundCelebration) {
         return;
       }
-      // Place / adjust are client-only — never call the server here.
-      setPendingGuess(coordinates);
-      setIsAdjusting(false);
-      const pinNumber =
-        rows.findIndex((row) => row.coordinates === null) + 1 || 1;
-      setFlowModal({
-        type: "decision",
-        pinNumber: Math.max(pinNumber, 1),
-        isFinalClue: isFinalClueNumber(Math.max(pinNumber, 1)),
-      });
+
+      const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
+      if (activeRowIndex === -1) {
+        return;
+      }
+
+      const currentPin = activeRowIndex + 1;
+
+      // Successful press-and-hold — dismiss first-time tip for returning visits.
+      markHoldTipSeen();
+      setShowHoldTip(false);
+
+      // Hold completed = pin committed. Show it immediately; server confirms.
+      setRows((current) =>
+        current.map((row, index) =>
+          index === activeRowIndex ? { ...row, coordinates } : row,
+        ),
+      );
+      setFlowModal(null);
+      setIsBusy(true);
+      setError(null);
+
+      void (async () => {
+        try {
+          const check = await postCheckPin(coordinates);
+
+          if (check.found && check.reveal) {
+            finishWithFoundReveal(check.reveal);
+            return;
+          }
+
+          if (check.complete && check.reveal) {
+            // Pin 5 not found — game complete, no decision modal.
+            setFlowModal(null);
+            recordCompletedReveal(check.reveal);
+            setReveal(check.reveal);
+            setShareStatus("idle");
+            setWeekShareStatus("idle");
+            setResultsOpen(true);
+            return;
+          }
+
+          setFlowModal({
+            type: "decision",
+            pinNumber: currentPin,
+            isFinalClue: isFinalClueNumber(currentPin),
+          });
+        } catch (checkError) {
+          // Roll back optimistic pin so the player can try again.
+          setRows((current) =>
+            current.map((row, index) =>
+              index === activeRowIndex
+                ? { ...row, coordinates: null }
+                : row,
+            ),
+          );
+          setError(
+            `${checkError instanceof Error ? checkError.message : "Couldn't commit that pin."} Try again.`,
+          );
+        } finally {
+          setIsBusy(false);
+        }
+      })();
     },
-    [reveal, isBusy, rows],
+    [reveal, isBusy, foundCelebration, rows, finishWithFoundReveal],
   );
 
-  function handleAdjustPin() {
-    // Close modal; keep the same provisional pin editable. No server call.
-    setIsAdjusting(true);
-    setFlowModal(null);
-    setError(null);
-  }
-
   function handleRequestLock() {
-    // Confirmation only — does not commit or call the server.
+    // Confirmation only — pin is already committed; does not call the server.
     if (!flowModal || flowModal.type !== "decision") {
       return;
     }
@@ -318,6 +359,7 @@ export function GamePlay() {
   }
 
   function handleCancelLock() {
+    // Return to decision modal — committed pin cannot be moved.
     if (!flowModal || flowModal.type !== "lockConfirm") {
       return;
     }
@@ -325,12 +367,18 @@ export function GamePlay() {
   }
 
   async function handleGetAnotherClue() {
-    if (!pendingGuess || isBusy || reveal) {
+    if (isBusy || reveal) {
       return;
     }
 
-    const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
-    if (activeRowIndex === -1 || activeRowIndex >= CLUE_COUNT - 1) {
+    const committedIndex = [...rows]
+      .map((row, index) => (row.coordinates ? index : -1))
+      .filter((index) => index >= 0)
+      .pop();
+    if (
+      committedIndex === undefined ||
+      committedIndex >= CLUE_COUNT - 1
+    ) {
       return;
     }
 
@@ -338,21 +386,7 @@ export function GamePlay() {
     setError(null);
 
     try {
-      // Commitment point: only now does the server lock the pin + compute W/C.
-      const guessData = await postGuess(pendingGuess);
-
-      setRows((current) =>
-        current.map((row, index) =>
-          index === activeRowIndex
-            ? {
-                ...row,
-                coordinates: pendingGuess,
-                temperature: guessData.temperature,
-              }
-            : row,
-        ),
-      );
-
+      // Pin already committed — continue reveals warmer/colder + next clue.
       const continueResponse = await fetch("/api/game/continue", {
         method: "POST",
       });
@@ -365,18 +399,20 @@ export function GamePlay() {
       }
 
       setRows((current) => [
-        ...current,
+        ...current.map((row, index) =>
+          index === committedIndex
+            ? { ...row, temperature: continueData.temperature }
+            : row,
+        ),
         {
           text: continueData.clue,
           coordinates: null,
           temperature: null,
         },
       ]);
-      setPendingGuess(null);
-      setIsAdjusting(false);
       setFlowModal({
         type: "nextClue",
-        temperature: guessData.temperature,
+        temperature: continueData.temperature,
         clueNumber: continueData.clueIndex + 1,
         clueText: continueData.clue,
         nextPinNumber: continueData.clueIndex + 1,
@@ -397,12 +433,11 @@ export function GamePlay() {
   }
 
   async function handleLockFinalAnswer() {
-    if (!pendingGuess || isBusy || reveal) {
+    if (isBusy || reveal) {
       return;
     }
 
-    const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
-    if (activeRowIndex === -1) {
+    if (!rows.some((row) => row.coordinates)) {
       return;
     }
 
@@ -410,33 +445,7 @@ export function GamePlay() {
     setError(null);
 
     try {
-      const guessData = await postGuess(pendingGuess);
-
-      setRows((current) =>
-        current.map((row, index) =>
-          index === activeRowIndex
-            ? {
-                ...row,
-                coordinates: pendingGuess,
-                temperature: guessData.temperature,
-              }
-            : row,
-        ),
-      );
-
-      // Clue 5: guessing completes the game.
-      if (guessData.complete && guessData.reveal) {
-        setPendingGuess(null);
-        setIsAdjusting(false);
-        setFlowModal(null);
-        recordCompletedReveal(guessData.reveal);
-        setReveal(guessData.reveal);
-        setShareStatus("idle");
-        setWeekShareStatus("idle");
-        setResultsOpen(true);
-        return;
-      }
-
+      // Pin already committed — only complete via early lock.
       const answerResponse = await fetch("/api/game/answer", {
         method: "POST",
       });
@@ -448,14 +457,16 @@ export function GamePlay() {
         throw new Error(answerData.error ?? "Couldn't lock your answer.");
       }
 
-      setPendingGuess(null);
-      setIsAdjusting(false);
-      setFlowModal(null);
-      recordCompletedReveal(answerData.reveal);
-      setReveal(answerData.reveal);
-      setShareStatus("idle");
-      setWeekShareStatus("idle");
-      setResultsOpen(true);
+      if (answerData.reveal.foundLocation) {
+        finishWithFoundReveal(answerData.reveal);
+      } else {
+        setFlowModal(null);
+        recordCompletedReveal(answerData.reveal);
+        setReveal(answerData.reveal);
+        setShareStatus("idle");
+        setWeekShareStatus("idle");
+        setResultsOpen(true);
+      }
     } catch (lockError) {
       const message =
         lockError instanceof Error
@@ -473,8 +484,6 @@ export function GamePlay() {
 
   function handlePlaceNextPin() {
     setFlowModal(null);
-    setIsAdjusting(false);
-    setPendingGuess(null);
   }
 
   function handleFlowRetry() {
@@ -541,20 +550,31 @@ export function GamePlay() {
   }
 
   const isComplete = reveal !== null;
-  const activeIndex = rows.findIndex((row) => row.coordinates === null);
+  const placingIndex = rows.findIndex((row) => row.coordinates === null);
+  const modalOpen = flowModal !== null;
+  const awaitingDecision =
+    flowModal?.type === "decision" || flowModal?.type === "lockConfirm";
+  // While a committed pin awaits a decision, show that clue (no null-coordinate row).
+  const activeIndex =
+    placingIndex >= 0
+      ? placingIndex
+      : awaitingDecision && rows.length > 0
+        ? rows.length - 1
+        : -1;
   const activeRow = activeIndex >= 0 ? rows[activeIndex] : null;
   const pinNumber = activeIndex + 1;
   const lockedCount = rows.filter((row) => row.coordinates !== null).length;
   const lockedGuesses = rows.flatMap((row, index) =>
     row.coordinates ? [{ number: index + 1, coordinates: row.coordinates }] : [],
   );
-  const hasPin = pendingGuess !== null;
-  const currentPinNumber = Math.max(pinNumber, 1);
-  const modalOpen = flowModal !== null;
+  const currentPinNumber = Math.max(
+    placingIndex >= 0 ? placingIndex + 1 : pinNumber,
+    1,
+  );
+  const canPlacePin = placingIndex >= 0 && !awaitingDecision;
   const placementPrompt = getMapPlacementCopy({
     pinNumber: currentPinNumber,
-    hasPin,
-    isAdjusting,
+    pinCommitted: !canPlacePin,
     modalOpen,
   });
   const mapInteractive =
@@ -562,7 +582,7 @@ export function GamePlay() {
     !isBusy &&
     !isStarting &&
     !modalOpen &&
-    (isAdjusting || !hasPin);
+    canPlacePin;
 
   const actualDistances =
     reveal?.guesses
@@ -642,7 +662,10 @@ export function GamePlay() {
           >
             {Array.from({ length: CLUE_COUNT }, (_, index) => {
               const done = index < lockedCount;
-              const current = !isComplete && index === activeIndex;
+              const current =
+                !isComplete &&
+                (index === placingIndex ||
+                  (placingIndex < 0 && awaitingDecision && index === activeIndex));
               return (
                 <li
                   key={index}
@@ -666,13 +689,24 @@ export function GamePlay() {
         onClose={() => setHowToPlayOpen(false)}
       />
 
+      {foundCelebration ? (
+        <FoundCelebration
+          reveal={foundCelebration}
+          onComplete={() => {
+            setFoundCelebration(null);
+            setResultsOpen(true);
+          }}
+        />
+      ) : null}
+
       <ClueFlowModal
-        state={howToPlayOpen || resultsOpen ? null : flowModal}
+        state={
+          howToPlayOpen || resultsOpen || foundCelebration ? null : flowModal
+        }
         isBusy={isBusy}
         onRequestLock={handleRequestLock}
         onConfirmLock={() => void handleLockFinalAnswer()}
         onCancelLock={handleCancelLock}
-        onAdjust={handleAdjustPin}
         onGetAnotherClue={() => void handleGetAnotherClue()}
         onPlaceNextPin={handlePlaceNextPin}
         onRetry={handleFlowRetry}
@@ -822,11 +856,11 @@ export function GamePlay() {
               </div>
 
               {placementPrompt ? (
-                <div aria-live="polite">
-                  <p className="text-sm font-semibold text-foreground">
+                <div aria-live="polite" className="space-y-0.5">
+                  <p className="text-sm font-semibold leading-snug text-foreground">
                     {placementPrompt.title}
                   </p>
-                  <p className="mt-0.5 text-sm text-muted">
+                  <p className="text-xs text-muted sm:text-sm">
                     {placementPrompt.detail}
                   </p>
                 </div>
@@ -852,13 +886,29 @@ export function GamePlay() {
           gameMode
           showLabels={isComplete}
           interactive={mapInteractive}
-          pendingGuess={isComplete ? null : pendingGuess}
-          pendingNumber={Math.max(pinNumber, 1)}
           lockedGuesses={mapGuesses}
           target={reveal?.answer.coordinates ?? null}
           accentColor={activeTheme.accent}
-          onSelect={handleSelect}
-        />
+          onCommit={handleCommitPin}
+        >
+          {showHoldTip && mapInteractive ? (
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 z-[15] p-2.5 sm:p-3"
+              role="status"
+              aria-live="polite"
+            >
+              <div className="mx-auto max-w-sm rounded-lg border border-rule bg-background/95 px-3 py-2.5 shadow-md backdrop-blur-[2px]">
+                <p className="font-display text-sm font-bold tracking-tight sm:text-base">
+                  Press & hold to place your pin
+                </p>
+                <p className="mt-0.5 text-xs leading-snug text-muted sm:text-sm">
+                  Keep holding until the circle fills. Once the pin drops, your
+                  guess is locked in.
+                </p>
+              </div>
+            </div>
+          ) : null}
+        </GameMap>
 
         {latestLocked ? (
           <section
