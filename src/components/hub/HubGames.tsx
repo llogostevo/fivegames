@@ -1,135 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
+import { HubFlagIcon } from "@/components/hub/HubIcons";
 import {
   emptyHubProgress,
   hubProgressForMode,
   readHubProgress,
   type HubProgressSnapshot,
-  type ModeHubProgress,
 } from "@/lib/game/hubProgress";
 import {
-  GAME_MODES,
-  UPCOMING_FOOTBALL_LEAGUES,
-  listFootballModes,
-  listGeneralKnowledgeModes,
-  type GameModeDefinition,
-} from "@/lib/game/modes";
+  HUB_GAMES,
+  HUB_SECTION_META,
+  comingSoonForGroup,
+  hubGamesInGroup,
+  isHubGameEntry,
+  pickFeaturedGame,
+  withComingSoonPad,
+  type HubComingSoonEntry,
+  type HubGameEntry,
+  type HubGameGroup,
+} from "@/lib/game/hubCatalog";
+import { hubTileAriaLabel, buildHubDayShareText } from "@/lib/game/hubShare";
+import { formatCountdown } from "@/lib/game/date";
+import { formatDailyReleaseBlurb } from "@/lib/game/dailyConfig";
+import { GAME_MODES, type GameMode } from "@/lib/game/modes";
 import { historyStorageKey } from "@/lib/game/playerHistory";
+import { shareText } from "@/lib/game/share";
 
-function SectionHeading({
-  id,
-  children,
-  meta,
-}: {
-  id: string;
-  children: ReactNode;
-  meta?: string | null;
-}) {
-  return (
-    <div className="flex items-baseline justify-between gap-3">
-      <h2
-        id={id}
-        className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted"
-      >
-        {children}
-      </h2>
-      {meta ? (
-        <p className="text-[11px] tabular-nums text-muted">{meta}</p>
-      ) : null}
-    </div>
-  );
-}
+const FOCUS_RING =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4157a]";
 
-function GameCard({
-  game,
-  progress,
-  primary = "title",
-}: {
-  game: GameModeDefinition;
-  progress: ModeHubProgress | null;
-  primary?: "title" | "subtitle";
-}) {
-  const heading = primary === "subtitle" ? game.subtitle : game.title;
-  const secondary = primary === "subtitle" ? game.title : game.subtitle;
-  const played = progress?.playedToday === true;
-  const score = progress?.todayScore ?? null;
-  const streakLabel = progress?.streakLabel ?? null;
+function useColumnCount(): number {
+  const [columns, setColumns] = useState(2);
 
-  return (
-    <Link
-      href={game.path}
-      className={`group block rounded-2xl border px-4 py-4 transition hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md ${
-        played
-          ? "border-rule/40 bg-background/55 shadow-none"
-          : "border-rule/80 bg-background/90 shadow-sm"
-      }`}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p
-            className={`font-display text-2xl font-bold tracking-tight ${
-              played ? "text-foreground/80" : ""
-            }`}
-          >
-            <span aria-hidden="true" className="mr-2">
-              {game.emoji}
-            </span>
-            {heading}
-            <span className="ml-2 align-middle text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-              {secondary}
-            </span>
-          </p>
-          {played ? (
-            streakLabel ? (
-              <p className="mt-1.5 text-sm text-muted">{streakLabel}</p>
-            ) : null
-          ) : (
-            <p className="mt-1.5 text-sm leading-snug text-foreground/70">
-              {game.detail}
-            </p>
-          )}
-        </div>
-        <div className="mt-0.5 flex shrink-0 flex-col items-end gap-0.5">
-          {played && score !== null ? (
-            <>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
-                Done
-              </span>
-              <p className="font-display text-xl font-bold tabular-nums leading-none tracking-tight text-foreground">
-                {score.toLocaleString()}
-                <span className="ml-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
-                  pts
-                </span>
-              </p>
-            </>
-          ) : (
-            <span
-              className="mt-0.5 text-lg font-semibold text-muted transition group-hover:text-foreground"
-              aria-hidden="true"
-            >
-              →
-            </span>
-          )}
-        </div>
-      </div>
-    </Link>
-  );
-}
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+      if (width >= 1100) {
+        setColumns(4);
+      } else if (width >= 768) {
+        setColumns(3);
+      } else {
+        setColumns(2);
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
-function sectionPlayedMeta(
-  snapshot: HubProgressSnapshot,
-  games: GameModeDefinition[],
-): string | null {
-  if (games.length === 0) {
-    return null;
-  }
-  const played = games.filter(
-    (game) => hubProgressForMode(snapshot, game.id)?.playedToday,
-  ).length;
-  return `${played}/${games.length} today`;
+  return columns;
 }
 
 function hubStorageFingerprint(availableGameDate: string): string {
@@ -187,79 +109,423 @@ function subscribeHubProgress(onStoreChange: () => void): () => void {
   };
 }
 
-type HubGamesProps = {
-  /** Server-resolved released game date (includes dev date cookie). */
+function SectionHeading({
+  id,
+  title,
+  played,
+  total,
+}: {
+  id: string;
+  title: string;
+  played: number;
+  total: number;
+}) {
+  return (
+    <div className="flex items-baseline justify-between gap-3">
+      <h2
+        id={id}
+        className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5f6368]"
+      >
+        {title}
+      </h2>
+      <p className="text-[11px] tabular-nums text-[#5f6368]">
+        {played} of {total} played
+      </p>
+    </div>
+  );
+}
+
+function ComingSoonTile({ entry }: { entry: HubComingSoonEntry }) {
+  return (
+    <div
+      className="flex min-h-[150px] items-center justify-center rounded-[18px] border border-dashed border-[#dadcd8] bg-transparent px-4 text-center"
+      aria-hidden="true"
+    >
+      <p className="text-sm leading-snug text-[#5f6368]">{entry.label}</p>
+    </div>
+  );
+}
+
+function GameTile({
+  game,
+  played,
+  score,
+}: {
+  game: HubGameEntry;
+  played: boolean;
+  score: number | null;
+}) {
+  return (
+    <Link
+      href={game.href}
+      aria-label={hubTileAriaLabel(game, played, score)}
+      className={`group relative flex h-full min-h-[150px] flex-col overflow-hidden rounded-[18px] border border-[#dadcd8] motion-safe:transition motion-safe:duration-150 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md ${FOCUS_RING} ${
+        played ? "bg-[#eef0ed]" : "bg-white"
+      }`}
+    >
+      {/* Decorative map */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${game.mapImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: played ? 0.45 : 0.85,
+        }}
+      />
+      <div
+        className={`pointer-events-none absolute inset-0 ${
+          played
+            ? "bg-gradient-to-t from-[#eef0ed] via-[#eef0ed]/70 to-[#eef0ed]/15"
+            : "bg-gradient-to-t from-white via-white/65 to-white/10"
+        }`}
+        aria-hidden="true"
+      />
+
+      <div className="relative flex flex-1 flex-col p-3">
+        <div className="flex items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#dadcd8] bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1d1d1f]">
+            <HubFlagIcon code={game.code} className="h-3 w-4 shrink-0" />
+            {game.code}
+          </span>
+          <span
+            className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#dadcd8] bg-white/95 text-[13px] leading-none"
+            aria-hidden="true"
+            title={game.group === "football" ? "Football 5" : "Daily 5"}
+          >
+            {game.group === "football" ? "⚽" : "📍"}
+          </span>
+        </div>
+
+        <div className="mt-auto min-w-0 pt-6">
+          <p className="truncate text-[10px] font-semibold uppercase tracking-[0.14em] text-[#5f6368]">
+            {game.shortLabel}
+          </p>
+          <p className="font-display text-[1.65rem] font-bold leading-none tracking-tight text-[#1d1d1f]">
+            {game.name}
+          </p>
+          {played && score !== null ? (
+            <p className="mt-1.5 flex items-center gap-1.5 text-sm text-[#1d1d1f]">
+              <span
+                className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#1d1d1f] text-[10px] leading-none text-white"
+                aria-hidden="true"
+              >
+                ✓
+              </span>
+              <span className="tabular-nums">
+                {score.toLocaleString("en-GB")} pts
+              </span>
+            </p>
+          ) : (
+            <p className="mt-1.5 text-sm font-semibold text-[#c4157a]">
+              Play →
+            </p>
+          )}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function FeaturedPlayTile({
+  game,
+  className = "",
+}: {
+  game: HubGameEntry;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={game.href}
+      aria-label={`Today's featured game: ${hubTileAriaLabel(game, false, null)}`}
+      className={`relative block min-h-[176px] overflow-hidden rounded-[20px] bg-[#1d1d1f] text-white motion-safe:transition motion-safe:duration-150 motion-safe:hover:brightness-110 ${FOCUS_RING} ${className}`}
+    >
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${game.mapImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "brightness(0.62) contrast(1.08) saturate(0.85)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1d1d1f]/82 via-[#1d1d1f]/35 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="relative flex h-full min-h-[176px] flex-col justify-center px-5 py-5 sm:px-6">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/90">
+            <HubFlagIcon code={game.code} className="h-3 w-4 shrink-0" />
+            {game.code}
+          </span>
+          <span
+            className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/25 bg-white/10 text-[13px] leading-none"
+            aria-hidden="true"
+          >
+            {game.group === "football" ? "⚽" : "📍"}
+          </span>
+        </div>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75">
+          Today&apos;s featured game
+        </p>
+        <p className="mt-2 font-display text-4xl font-bold leading-none tracking-tight sm:text-[2.75rem]">
+          {game.name}
+        </p>
+        <p className="mt-1.5 text-sm text-white/80">{game.shortLabel}</p>
+        <span className="mt-4 inline-flex w-fit items-center rounded-lg bg-[#c4157a] px-3.5 py-2 text-sm font-semibold text-white">
+          Play today&apos;s place →
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+function FeaturedAllDoneTile({
+  nextReleaseAt,
+  availableGameDate,
+  snapshot,
+}: {
+  nextReleaseAt: string;
   availableGameDate: string;
+  snapshot: HubProgressSnapshot;
+}) {
+  const [secondsLeft, setSecondsLeft] = useState(() => {
+    const target = Date.parse(nextReleaseAt);
+    if (Number.isNaN(target)) {
+      return 0;
+    }
+    return Math.max(0, Math.ceil((target - Date.now()) / 1000));
+  });
+  const [shareStatus, setShareStatus] = useState<
+    "idle" | "copied" | "shared"
+  >("idle");
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      const target = Date.parse(nextReleaseAt);
+      if (Number.isNaN(target)) {
+        setSecondsLeft(0);
+        return;
+      }
+      setSecondsLeft(Math.max(0, Math.ceil((target - Date.now()) / 1000)));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [nextReleaseAt]);
+
+  async function handleShare() {
+    const scores = HUB_GAMES.map((game) => {
+      const row = hubProgressForMode(snapshot, game.id);
+      return {
+        mode: game.id,
+        score: row?.todayScore ?? 0,
+      };
+    }).filter((row) => {
+      const progress = hubProgressForMode(snapshot, row.mode);
+      return progress?.playedToday;
+    });
+
+    const result = await shareText(
+      buildHubDayShareText(scores, availableGameDate),
+    );
+    if (result.status === "copied" || result.status === "shared") {
+      setShareStatus(result.status);
+      window.setTimeout(() => setShareStatus("idle"), 2000);
+    }
+  }
+
+  const shareLabel =
+    shareStatus === "copied"
+      ? "Copied!"
+      : shareStatus === "shared"
+        ? "Shared!"
+        : "Share today's results";
+
+  return (
+    <div className="relative min-h-[176px] overflow-hidden rounded-[20px] bg-[#1d1d1f] px-5 py-5 text-white sm:px-6">
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "url(/hub-maps/world.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "brightness(0.62) contrast(1.08) saturate(0.85)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1d1d1f]/82 via-[#1d1d1f]/35 to-transparent"
+        aria-hidden="true"
+      />
+      <div className="relative">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75">
+          Today&apos;s featured game
+        </p>
+        <p className="mt-2 font-display text-3xl font-bold leading-none tracking-tight sm:text-4xl">
+          All done for today
+        </p>
+        {secondsLeft > 0 ? (
+          <p className="mt-2 text-sm text-white/80">
+            Next games in{" "}
+            <span className="font-display text-lg font-bold tabular-nums text-white">
+              {formatCountdown(secondsLeft)}
+            </span>
+            <span className="mt-0.5 block text-xs text-white/55">
+              {formatDailyReleaseBlurb()}
+            </span>
+          </p>
+        ) : (
+          <p className="mt-2 text-sm text-white/80">New games are ready.</p>
+        )}
+        <button
+          type="button"
+          onClick={() => void handleShare()}
+          className={`mt-4 inline-flex rounded-lg bg-[#c4157a] px-3.5 py-2 text-sm font-semibold text-white motion-safe:transition motion-safe:hover:brightness-110 ${FOCUS_RING}`}
+        >
+          {shareLabel}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function HubSection({
+  group,
+  snapshot,
+  featuredId,
+  columns,
+}: {
+  group: HubGameGroup;
+  snapshot: HubProgressSnapshot;
+  featuredId: GameMode | null;
+  columns: number;
+}) {
+  const meta = HUB_SECTION_META[group];
+  const allInGroup = hubGamesInGroup(group);
+  const playedCount = allInGroup.filter(
+    (game) => hubProgressForMode(snapshot, game.id)?.playedToday,
+  ).length;
+
+  const visible = allInGroup.filter((game) => game.id !== featuredId);
+  const padded = withComingSoonPad(
+    visible,
+    columns,
+    comingSoonForGroup(group),
+  );
+
+  const gridClass =
+    columns >= 4
+      ? "grid-cols-4"
+      : columns >= 3
+        ? "grid-cols-3"
+        : "grid-cols-2";
+
+  return (
+    <section aria-labelledby={meta.id} className="space-y-2.5">
+      <SectionHeading
+        id={meta.id}
+        title={meta.title}
+        played={playedCount}
+        total={allInGroup.length}
+      />
+      <div className={`grid gap-3 ${gridClass}`}>
+        {padded.map((entry) => {
+          if (!isHubGameEntry(entry)) {
+            return <ComingSoonTile key={entry.id} entry={entry} />;
+          }
+          const progress = hubProgressForMode(snapshot, entry.id);
+          return (
+            <GameTile
+              key={entry.id}
+              game={entry}
+              played={progress?.playedToday === true}
+              score={progress?.todayScore ?? null}
+            />
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+type HubGamesProps = {
+  availableGameDate: string;
+  nextReleaseAt: string;
 };
 
-export function HubGames({ availableGameDate }: HubGamesProps) {
+export function HubGames({
+  availableGameDate,
+  nextReleaseAt,
+}: HubGamesProps) {
   const snapshot = useSyncExternalStore(
     subscribeHubProgress,
     () => getHubProgressSnapshot(availableGameDate),
     () => getServerHubProgressSnapshot(availableGameDate),
   );
-  const generalKnowledge = listGeneralKnowledgeModes();
-  const football = listFootballModes();
+  const columns = useColumnCount();
+
+  const playedSet = new Set<GameMode>(
+    HUB_GAMES.filter(
+      (game) => hubProgressForMode(snapshot, game.id)?.playedToday,
+    ).map((game) => game.id),
+  );
+  const featured = pickFeaturedGame(playedSet);
+  const generalGames = hubGamesInGroup("general");
+  /** Desktop: World (or other general featured) + companion tile in one row. */
+  const foldGeneral =
+    columns >= 4 && featured !== null && featured.group === "general";
+  const companionGeneral = foldGeneral
+    ? generalGames.filter((game) => game.id !== featured.id)
+    : [];
 
   return (
-    <>
-      <section aria-labelledby="general-knowledge-heading" className="space-y-3">
-        <SectionHeading
-          id="general-knowledge-heading"
-          meta={sectionPlayedMeta(snapshot, generalKnowledge)}
-        >
-          General knowledge
-        </SectionHeading>
-        {generalKnowledge.map((game) => (
-          <GameCard
-            key={game.id}
-            game={game}
-            primary={game.family === "world" ? "subtitle" : "title"}
-            progress={hubProgressForMode(snapshot, game.id)}
-          />
-        ))}
-      </section>
+    <div className="space-y-5 sm:space-y-6">
+      {foldGeneral ? (
+        <div className="grid grid-cols-4 gap-3">
+          <FeaturedPlayTile game={featured} className="col-span-3 h-full" />
+          {companionGeneral.map((game) => {
+            const progress = hubProgressForMode(snapshot, game.id);
+            return (
+              <GameTile
+                key={game.id}
+                game={game}
+                played={progress?.playedToday === true}
+                score={progress?.todayScore ?? null}
+              />
+            );
+          })}
+        </div>
+      ) : featured ? (
+        <FeaturedPlayTile game={featured} />
+      ) : (
+        <FeaturedAllDoneTile
+          nextReleaseAt={nextReleaseAt}
+          availableGameDate={availableGameDate}
+          snapshot={snapshot}
+        />
+      )}
 
-      <section aria-labelledby="football-heading" className="mt-8 space-y-3">
-        <SectionHeading
-          id="football-heading"
-          meta={sectionPlayedMeta(snapshot, football)}
-        >
-          Football 5
-        </SectionHeading>
-        {football.map((game) => (
-          <GameCard
-            key={game.id}
-            game={game}
-            primary="subtitle"
-            progress={hubProgressForMode(snapshot, game.id)}
-          />
-        ))}
+      {!foldGeneral ? (
+        <HubSection
+          group="general"
+          snapshot={snapshot}
+          featuredId={featured?.id ?? null}
+          columns={columns}
+        />
+      ) : null}
 
-        {UPCOMING_FOOTBALL_LEAGUES.length > 0 ? (
-          <div className="pt-2">
-            <p className="text-sm text-foreground/65">More leagues soon.</p>
-            <ul className="mt-3 grid grid-cols-2 gap-2">
-              {UPCOMING_FOOTBALL_LEAGUES.map((league) => (
-                <li
-                  key={league.id}
-                  className="rounded-xl border border-dashed border-rule bg-background/50 px-3 py-3"
-                >
-                  <p className="text-sm font-semibold text-foreground/80">
-                    <span aria-hidden="true" className="mr-1.5">
-                      {league.emoji}
-                    </span>
-                    {league.subtitle}
-                  </p>
-                  <p className="mt-0.5 text-[11px] uppercase tracking-[0.12em] text-muted">
-                    Coming soon
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-      </section>
-    </>
+      <HubSection
+        group="football"
+        snapshot={snapshot}
+        featuredId={featured?.id ?? null}
+        columns={columns}
+      />
+    </div>
   );
 }
