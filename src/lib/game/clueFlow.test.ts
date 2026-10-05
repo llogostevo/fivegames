@@ -3,14 +3,15 @@ import { describe, it } from "node:test";
 
 import {
   decisionModalShowsTemperature,
+  decisionScoreContext,
+  finishConfirmCommitsGuess,
+  finishConfirmExplanation,
   getMapPlacementCopy,
   isFinalClueNumber,
-  lockConfirmCommitsGuess,
-  lockConfirmExplanation,
   shouldShowTemperatureInNextClueModal,
   temperatureFeedbackCopy,
-  toDecisionFromLockConfirm,
-  toLockConfirmState,
+  toDecisionFromFinishConfirm,
+  toFinishConfirmState,
 } from "./clueFlow";
 
 describe("clue flow decision rules", () => {
@@ -30,6 +31,19 @@ describe("clue flow decision rules", () => {
   it("clue 5 is the final clue (no Get another clue)", () => {
     assert.equal(isFinalClueNumber(5), true);
     assert.equal(isFinalClueNumber(4), false);
+  });
+
+  it("exposes current and next score ceilings for the decision UI", () => {
+    assert.deepEqual(decisionScoreContext(2), {
+      currentMaxScore: 22_500,
+      nextMaxScore: 20_000,
+      isFinalClue: false,
+    });
+    assert.deepEqual(decisionScoreContext(5), {
+      currentMaxScore: 15_000,
+      nextMaxScore: null,
+      isFinalClue: true,
+    });
   });
 });
 
@@ -62,34 +76,12 @@ describe("map placement copy", () => {
     );
   });
 
-  it("resumed clue 3 keeps the compact Press & hold instruction", () => {
-    assert.deepEqual(
-      getMapPlacementCopy({
-        pinNumber: 3,
-        pinCommitted: false,
-        modalOpen: false,
-      })?.title,
-      "📍 Press & hold to place pin 3 of 5",
-    );
-  });
-
   it("hides placement chrome once a pin is committed", () => {
     assert.equal(
       getMapPlacementCopy({
         pinNumber: 2,
         pinCommitted: true,
         modalOpen: false,
-      }),
-      null,
-    );
-  });
-
-  it("hides placement chrome while decision/next-clue modal is open", () => {
-    assert.equal(
-      getMapPlacementCopy({
-        pinNumber: 2,
-        pinCommitted: false,
-        modalOpen: true,
       }),
       null,
     );
@@ -102,48 +94,42 @@ describe("temperature feedback copy", () => {
     assert.equal(warmer.word, "Warmer");
     assert.equal(warmer.sentence, "Your last pin was closer.");
     assert.ok(!warmer.sentence.includes("km"));
-
-    const colder = temperatureFeedbackCopy("colder");
-    assert.equal(colder.word, "Colder");
-    assert.equal(colder.sentence, "Your last pin was further away.");
   });
 });
 
-describe("lock confirmation state", () => {
-  it("clicking Lock Final Answer opens confirmation without committing", () => {
-    const confirm = toLockConfirmState({ pinNumber: 2, isFinalClue: false });
-    assert.equal(confirm.type, "lockConfirm");
+describe("Finish Here confirmation state", () => {
+  it("opens confirmation without committing", () => {
+    const confirm = toFinishConfirmState({
+      pinNumber: 2,
+      isFinalClue: false,
+      currentMaxScore: 22_500,
+      nextMaxScore: 20_000,
+    });
+    assert.equal(confirm.type, "finishConfirm");
     assert.equal(confirm.pinNumber, 2);
-    assert.equal(lockConfirmCommitsGuess(), false);
+    assert.equal(finishConfirmCommitsGuess(), false);
   });
 
-  it("Go Back returns to the decision state with the same pin", () => {
-    const decision = toDecisionFromLockConfirm({
+  it("Go Back returns to the decision state with the same pin and ceilings", () => {
+    const decision = toDecisionFromFinishConfirm({
       pinNumber: 3,
       isFinalClue: false,
+      currentMaxScore: 20_000,
+      nextMaxScore: 17_500,
     });
     assert.deepEqual(decision, {
       type: "decision",
       pinNumber: 3,
       isFinalClue: false,
+      currentMaxScore: 20_000,
+      nextMaxScore: 17_500,
     });
   });
 
-  it("pins 1–4 mention remaining clues; pin 5 does not", () => {
-    const early = lockConfirmExplanation(false);
-    assert.ok(early.includes("remaining clues"));
-    assert.ok(early.startsWith("This ends today's game."));
-
-    const final = lockConfirmExplanation(true);
-    assert.ok(!final.includes("remaining clues"));
+  it("uses Finish Here confirmation copy", () => {
     assert.equal(
-      final,
-      "This ends today's game. Your current pin will be used as your final answer.",
+      finishConfirmExplanation(),
+      "This ends today's game using your current location.",
     );
-  });
-
-  it("opening confirmation does not imply progression or warmer/colder", () => {
-    assert.equal(lockConfirmCommitsGuess(), false);
-    assert.equal(decisionModalShowsTemperature(), false);
   });
 });

@@ -7,6 +7,7 @@ export const CLUE_COUNT = 5;
  */
 export const DISTANCE_EQUALITY_TOLERANCE_METERS = 100;
 
+/** @deprecated Prefer SESSION_COOKIE_BY_MODE.daily — kept for existing imports. */
 export const GAME_SESSION_COOKIE = "fivegames_session";
 
 /**

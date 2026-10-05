@@ -1,16 +1,17 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
 import { getRequestClockOptions } from "@/lib/game/devClock";
 import {
   GameNotFoundError,
-  getTodaysGame,
+  getTodaysGameForMode,
   missingGameDeveloperMessage,
   missingGamePlayerMessage,
 } from "@/lib/game/loadGame";
 import {
-  decodeSession,
+  readSignedSessionForMode,
+  requestGameMode,
+} from "@/lib/game/requestSession";
+import {
   encodeSession,
   SessionSecretConfigError,
   sessionCookieOptions,
@@ -19,16 +20,14 @@ import { resolveStartGame } from "@/lib/game/startGame";
 
 const GENERIC_START_ERROR = "Couldn't start today's game.";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
+    const mode = requestGameMode(request);
     const clock = await getRequestClockOptions();
-    // Release-gated: only the currently available daily game (08:00 London).
-    const game = await getTodaysGame(new Date(), clock);
+    // Release-gated: only the currently available game for this mode (08:00 London).
+    const game = await getTodaysGameForMode(mode, new Date(), clock);
 
-    const cookieStore = await cookies();
-    const existingSession = decodeSession(
-      cookieStore.get(GAME_SESSION_COOKIE)?.value,
-    );
+    const existingSession = await readSignedSessionForMode(mode);
 
     const result = resolveStartGame({
       game,
@@ -36,7 +35,7 @@ export async function POST() {
       clockOptions: clock,
     });
 
-    const cookie = sessionCookieOptions();
+    const cookie = sessionCookieOptions(mode);
     const response = NextResponse.json(result.body);
     // Always re-set the cookie so maxAge refreshes on resume.
     response.cookies.set(cookie.name, encodeSession(result.session), cookie);

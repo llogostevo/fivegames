@@ -1,9 +1,12 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
+import { GAME_SESSION_COOKIE_MAX_AGE_SECONDS } from "@/lib/game/constants";
 import {
-  GAME_SESSION_COOKIE,
-  GAME_SESSION_COOKIE_MAX_AGE_SECONDS,
-} from "@/lib/game/constants";
+  DEFAULT_GAME_MODE,
+  SESSION_COOKIE_BY_MODE,
+  isGameMode,
+  type GameMode,
+} from "@/lib/game/modes";
 import type { Guess } from "@/types/game";
 
 /** Documented development-only fallback — never used in production. */
@@ -14,6 +17,11 @@ export const MIN_PRODUCTION_SESSION_SECRET_LENGTH = 32;
 
 export type GameSession = {
   gameId: string;
+  /**
+   * Which PIN5 mode this session belongs to.
+   * Absent on legacy cookies — treated as daily.
+   */
+  mode?: GameMode;
   /** Pins the player has actually locked. */
   guesses: Guess[];
   /** How many clue texts have been revealed to the player (1–5). */
@@ -191,8 +199,11 @@ export function decodeSession(token: string | undefined): GameSession | null {
       foundOnPin = session.foundOnPin;
     }
 
+    const mode = isGameMode(session.mode) ? session.mode : DEFAULT_GAME_MODE;
+
     return {
       gameId: session.gameId,
+      mode,
       guesses: session.guesses,
       revealedClueCount,
       lockedAfterClue,
@@ -208,9 +219,11 @@ export function decodeSession(token: string | undefined): GameSession | null {
 export function createEmptySession(
   gameId: string,
   startedAt: Date = new Date(),
+  mode: GameMode = DEFAULT_GAME_MODE,
 ): GameSession {
   return {
     gameId,
+    mode,
     guesses: [],
     revealedClueCount: 1,
     lockedAfterClue: null,
@@ -220,11 +233,16 @@ export function createEmptySession(
   };
 }
 
+export function sessionMode(session: GameSession): GameMode {
+  return session.mode ?? DEFAULT_GAME_MODE;
+}
+
 export function sessionCookieOptions(
+  mode: GameMode = DEFAULT_GAME_MODE,
   maxAgeSeconds = GAME_SESSION_COOKIE_MAX_AGE_SECONDS,
 ) {
   return {
-    name: GAME_SESSION_COOKIE,
+    name: SESSION_COOKIE_BY_MODE[mode],
     httpOnly: true,
     sameSite: "lax" as const,
     secure: process.env.NODE_ENV === "production",

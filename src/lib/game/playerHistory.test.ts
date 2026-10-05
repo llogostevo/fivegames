@@ -56,6 +56,7 @@ function fakeReveal(date: string, score: number): GameReveal {
     gameId: date,
     gameNumber: 1,
     date,
+    mode: "daily",
     themeId: "history",
     theme: "History",
     accent: "#b45309",
@@ -70,6 +71,9 @@ function fakeReveal(date: string, score: number): GameReveal {
     actualGuessCount: 2,
     totalScore: score,
     maxScore: 25_000,
+    clueMaximum: 22_500,
+    accuracyFactor: 0.8,
+    finalDistanceMeters: 20_000,
     foundLocation: false,
     foundOnPin: null,
   };

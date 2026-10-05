@@ -1,5 +1,10 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import {
+  DEFAULT_GAME_MODE,
+  modeShareTitle,
+  type GameMode,
+} from "@/lib/game/modes";
+import {
   formatStreakLabel,
   getWeeklyStats,
   MAX_WEEKLY_SCORE,
@@ -22,8 +27,7 @@ const TEMPERATURE_EMOJI: Record<TemperatureResult, string> = {
 
 /** Build the emoji trail for actual pins only (final answer ends with 🎯). */
 export function buildSharePinTrail(guesses: RevealedGuess[]): string {
-  const actual = guesses.filter((guess) => !guess.carriedForward);
-  return actual
+  return guesses
     .map((guess, index) => {
       if (guess.isFinalAnswer) {
         return "🎯";
@@ -66,9 +70,19 @@ export function getFinalPinDistanceMeters(
  * Beta daily share copy for a completed game.
  * Score / trail / lock / distance come from the server reveal; streak is local-only.
  */
+function revealMode(reveal: GameReveal): GameMode {
+  return reveal.mode ?? DEFAULT_GAME_MODE;
+}
+
 export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
+  const mode = revealMode(reveal);
+  const title =
+    mode === "football"
+      ? `${modeShareTitle(mode)} #${reveal.gameNumber}`
+      : `PIN5 #${reveal.gameNumber} — ${reveal.theme}`;
+
   const lines = [
-    `PIN5 #${reveal.gameNumber} — ${reveal.theme}`,
+    title,
     `🎯 ${reveal.totalScore.toLocaleString("en-GB")} / ${reveal.maxScore.toLocaleString("en-GB")}`,
     buildSharePinTrail(reveal.guesses),
     `🔒 Locked on clue ${reveal.lockedAfterClue}/${CLUE_COUNT}`,
@@ -117,6 +131,7 @@ export type WeeklyShareInput = {
   /** Completed Sunday game date (or any date in the week — week is derived). */
   referenceDate: string;
   streak?: number;
+  mode?: GameMode;
 };
 
 /**
@@ -126,13 +141,18 @@ export function buildWeeklyShareText({
   history,
   referenceDate,
   streak = 0,
+  mode = DEFAULT_GAME_MODE,
 }: WeeklyShareInput): string {
   const weekly = getWeeklyStats(history, referenceDate);
   const daysPlayed = countDaysPlayed(weekly);
   const weekNumber = getPin5WeekNumber(referenceDate);
+  const weekTitle =
+    mode === "football"
+      ? `${modeShareTitle(mode)} — WEEK ${weekNumber}`
+      : `PIN5 — WEEK ${weekNumber}`;
 
   const lines = [
-    `PIN5 — WEEK ${weekNumber}`,
+    weekTitle,
     `🏆 ${weekly.weeklyScore.toLocaleString("en-GB")} / ${MAX_WEEKLY_SCORE.toLocaleString("en-GB")}`,
     `📅 ${daysPlayed}/7 played`,
     buildWeeklyDayPattern(weekly),

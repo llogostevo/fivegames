@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useId, useRef } from "react";
 
-import { PlayerProgress } from "@/components/game/PlayerProgress";
-import { formatDailyReleaseBlurb, formatReleaseTimeLabel } from "@/lib/game/dailyConfig";
-import { formatCountdown } from "@/lib/game/date";
+import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import {
+  formatStreakLabel,
   getCurrentStreak,
   getWeeklyStats,
   readPlayerHistory,
+  type WeeklyStats,
 } from "@/lib/game/playerHistory";
-import { THEMES, WEEKDAY_THEMES, type ThemeId } from "@/lib/game/themes";
 import type { GameReveal } from "@/types/game";
 
 type ResultsPopupProps = {
@@ -23,17 +23,6 @@ type ResultsPopupProps = {
   onClose: () => void;
   onShare: () => void;
   onShareWeek?: () => void;
-};
-
-const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0] as const;
-const WEEKDAY_LABELS: Record<(typeof WEEKDAY_ORDER)[number], string> = {
-  1: "Mon",
-  2: "Tue",
-  3: "Wed",
-  4: "Thu",
-  5: "Fri",
-  6: "Sat",
-  0: "Sun",
 };
 
 function formatDistance(meters: number): string {
@@ -49,49 +38,66 @@ function formatDistance(meters: number): string {
   return `${Math.round(meters / 1000).toLocaleString()} km`;
 }
 
-function themeLabel(themeId: ThemeId): string {
-  return THEMES[themeId].label;
+function modeLabel(mode: GameMode): string {
+  return mode === "football" ? "FOOTBALL" : "UK EDITION";
 }
 
-function CompactCountdown({ nextReleaseAt }: { nextReleaseAt: string }) {
-  const [secondsLeft, setSecondsLeft] = useState(() => {
-    const target = Date.parse(nextReleaseAt);
-    if (Number.isNaN(target)) {
-      return 0;
-    }
-    return Math.max(0, Math.ceil((target - Date.now()) / 1000));
-  });
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      const target = Date.parse(nextReleaseAt);
-      if (Number.isNaN(target)) {
-        setSecondsLeft(0);
-        return;
-      }
-      setSecondsLeft(Math.max(0, Math.ceil((target - Date.now()) / 1000)));
-    }, 1000);
-    return () => window.clearInterval(id);
-  }, [nextReleaseAt]);
-
-  if (secondsLeft <= 0) {
-    return null;
-  }
-
+function ShareIcon({ className }: { className?: string }) {
   return (
-    <div className="rounded-lg bg-neutral-50 px-3 py-2.5">
-      <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-        Next Pin5 in
-      </p>
-      <p
-        className="mt-0.5 font-display text-xl font-bold tracking-tight tabular-nums"
-        aria-live="polite"
-      >
-        {formatCountdown(secondsLeft)}
-      </p>
-      <p className="mt-0.5 text-[11px] text-muted">{formatDailyReleaseBlurb()}</p>
-    </div>
+    <svg
+      className={className}
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 3v10m0-10 3.5 3.5M12 3 8.5 6.5M6 11v7.5A2.5 2.5 0 0 0 8.5 21h7a2.5 2.5 0 0 0 2.5-2.5V11"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
+}
+
+function CheckIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path
+        d="M2.5 6.2 4.8 8.5 9.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function dayTitle(day: WeeklyStats["days"][number]): string {
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ][day.weekdayIndex]!;
+
+  if (day.score !== null) {
+    return `${weekday} — ${day.score.toLocaleString()} points`;
+  }
+  if (day.status === "today") {
+    return `${weekday} — today`;
+  }
+  if (day.status === "future") {
+    return `${weekday} — upcoming`;
+  }
+  return `${weekday} — not completed`;
 }
 
 export function ResultsPopup({
@@ -106,19 +112,13 @@ export function ResultsPopup({
 }: ResultsPopupProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [page, setPage] = useState<1 | 2>(1);
 
-  const actualGuesses = reveal.guesses.filter((guess) => !guess.carriedForward);
-  const actualDistances = actualGuesses.map(
-    (guess) => guess.distanceMeters ?? Number.POSITIVE_INFINITY,
-  );
+  const actualDistances = reveal.guesses.map((guess) => guess.distanceMeters);
   const closestIndex = actualDistances.length
     ? actualDistances.indexOf(Math.min(...actualDistances))
     : -1;
   const closestDistance =
-    closestIndex >= 0 && Number.isFinite(actualDistances[closestIndex])
-      ? actualDistances[closestIndex]
-      : null;
+    closestIndex >= 0 ? actualDistances[closestIndex]! : null;
 
   useEffect(() => {
     if (!open) {
@@ -146,26 +146,73 @@ export function ResultsPopup({
     return null;
   }
 
-  // History is written from GamePlay on server completion; read-only here.
-  const history = readPlayerHistory();
-  const weekly = getWeeklyStats(history, reveal.date);
-  const streak = getCurrentStreak(history, reveal.date);
+  const mode = reveal.mode ?? DEFAULT_GAME_MODE;
+  const modeHistory = readPlayerHistory(undefined, mode);
+  const weekly = getWeeklyStats(modeHistory, reveal.date);
+  const streak = getCurrentStreak(modeHistory, reveal.date);
+
+  const dailyHistory = readPlayerHistory(undefined, "daily");
+  const footballHistory = readPlayerHistory(undefined, "football");
+  const dailyPlayed =
+    mode === "daily" || Boolean(dailyHistory.games[reveal.date]);
+  const footballPlayed =
+    mode === "football" || Boolean(footballHistory.games[reveal.date]);
+  const dailyScore =
+    mode === "daily"
+      ? reveal.totalScore
+      : (dailyHistory.games[reveal.date]?.score ?? null);
+  const footballScore =
+    mode === "football"
+      ? reveal.totalScore
+      : (footballHistory.games[reveal.date]?.score ?? null);
+  const playedCount = Number(dailyPlayed) + Number(footballPlayed);
+  const otherPending = !(dailyPlayed && footballPlayed);
 
   const shareLabel =
     shareStatus === "copied"
       ? "Copied!"
       : shareStatus === "shared"
         ? "Shared!"
-        : showWeeklyShare
-          ? "Share today's result"
-          : "Share score";
+        : "Share today's result";
 
   const weekShareLabel =
     weekShareStatus === "copied"
       ? "Copied!"
       : weekShareStatus === "shared"
         ? "Shared!"
-        : "Share my week";
+        : "or share my week";
+
+  const resultLine = (() => {
+    if (reveal.foundLocation && reveal.foundOnPin) {
+      const distance =
+        typeof reveal.finalDistanceMeters === "number"
+          ? formatDistance(reveal.finalDistanceMeters)
+          : null;
+      const place = mode === "football" ? "from the ground" : "away";
+      return distance
+        ? `Found on pin ${reveal.foundOnPin} · ${distance} ${place}`
+        : `Found on pin ${reveal.foundOnPin}`;
+    }
+    if (closestIndex >= 0 && closestDistance !== null) {
+      return `Closest: pin ${closestIndex + 1} · ${formatDistance(closestDistance)}`;
+    }
+    return `Finished on pin ${reveal.lockedAfterClue}`;
+  })();
+
+  const subtitle = [reveal.answer.stadium, reveal.answer.city]
+    .filter(Boolean)
+    .join(" · ");
+
+  const otherGame =
+    mode === "football"
+      ? {
+          href: "/",
+          label: "Play UK Edition",
+        }
+      : {
+          href: "/football",
+          label: "Play Football Edition",
+        };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -179,221 +226,211 @@ export function ResultsPopup({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 w-full max-w-sm overflow-hidden rounded-2xl border border-rule bg-background shadow-xl"
+        className="relative z-10 flex max-h-[min(92dvh,40rem)] w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-rule bg-background shadow-xl"
       >
-        <div className="flex items-start justify-between gap-3 px-4 pt-4">
-          <div className="min-w-0">
-            <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-              Pin5 #{reveal.gameNumber} · {reveal.theme}
-            </p>
-            {page === 1 ? (
-              <>
-                <p className="mt-0.5 text-xs text-muted">The place was</p>
-                <h2
-                  id={titleId}
-                  className="font-display text-2xl font-bold leading-tight tracking-tight"
-                >
-                  {reveal.answer.name}
-                </h2>
-              </>
-            ) : (
+        <div className="overflow-y-auto px-4 pb-4 pt-4">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+                PIN5 #{reveal.gameNumber} · {modeLabel(mode)}
+              </p>
+              <p className="mt-1 text-xs text-muted">
+                {mode === "football" ? "The club was" : "The place was"}
+              </p>
               <h2
                 id={titleId}
-                className="mt-0.5 font-display text-xl font-bold leading-tight tracking-tight"
+                className="mt-0.5 font-display text-[2rem] font-bold leading-none tracking-tight"
               >
-                Come back tomorrow
+                {reveal.answer.name}
               </h2>
-            )}
+              {subtitle ? (
+                <p className="mt-1.5 text-xs text-muted">{subtitle}</p>
+              ) : null}
+            </div>
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={onClose}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-rule text-xl leading-none text-muted transition hover:bg-neutral-50 hover:text-foreground"
+              aria-label="Close"
+              title="Close"
+            >
+              ×
+            </button>
           </div>
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rule text-lg leading-none text-muted transition hover:bg-neutral-50 hover:text-foreground"
-            aria-label="Close and see the map"
-            title="Close and see the map"
+
+          <div className="mt-5">
+            <p className="font-display text-[2rem] font-bold leading-none tracking-tight tabular-nums">
+              {reveal.totalScore.toLocaleString()}
+              <span className="align-baseline text-base font-semibold text-muted">
+                {" "}
+                / {reveal.maxScore.toLocaleString()}
+              </span>
+            </p>
+            <p className="mt-1.5 text-xs text-muted">{resultLine}</p>
+          </div>
+
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={onShare}
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-course text-base font-semibold text-white transition hover:brightness-110"
+            >
+              <ShareIcon />
+              {shareLabel}
+            </button>
+            {showWeeklyShare && onShareWeek ? (
+              <button
+                type="button"
+                onClick={onShareWeek}
+                className="mt-2 w-full py-1 text-center text-sm font-semibold text-course transition hover:brightness-90"
+              >
+                {weekShareLabel}
+              </button>
+            ) : null}
+          </div>
+
+          <section
+            className="mt-5 rounded-xl bg-course-soft px-3.5 py-3.5"
+            aria-label="Today's Pin5"
           >
-            ×
-          </button>
-        </div>
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className="text-xs font-semibold text-foreground/80">
+                Today&apos;s Pin5
+              </h3>
+              <p className="text-xs text-muted">{playedCount} of 2 played</p>
+            </div>
 
-        <div
-          className="flex items-center justify-center gap-1.5 px-4 py-2"
-          aria-label={`Results page ${page} of 2`}
-        >
-          <button
-            type="button"
-            onClick={() => setPage(1)}
-            className={`h-1.5 rounded-full transition-all ${
-              page === 1 ? "w-5 bg-course" : "w-1.5 bg-rule"
-            }`}
-            aria-label="Your score"
-            aria-current={page === 1 ? "step" : undefined}
-          />
-          <button
-            type="button"
-            onClick={() => setPage(2)}
-            className={`h-1.5 rounded-full transition-all ${
-              page === 2 ? "w-5 bg-course" : "w-1.5 bg-rule"
-            }`}
-            aria-label="What’s next"
-            aria-current={page === 2 ? "step" : undefined}
-          />
-        </div>
-
-        <div className="px-4 pb-3">
-          {page === 1 ? (
-            <div className="space-y-2.5">
-              <div className="flex items-end justify-between gap-3">
-                <div>
-                  <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-                    Total score
-                  </p>
-                  <p className="font-display text-2xl font-bold tracking-tight">
-                    {reveal.totalScore.toLocaleString()}
-                    <span className="text-base font-semibold text-muted">
-                      {" "}
-                      / {reveal.maxScore.toLocaleString()}
-                    </span>
-                  </p>
-                  {reveal.foundLocation && reveal.foundOnPin ? (
-                    <p className="mt-1 text-xs font-semibold text-course">
-                      🎯 Found on pin {reveal.foundOnPin}
+            <ul className="mt-3 space-y-2.5">
+              <li className="flex items-start gap-2.5">
+                <span
+                  className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                    footballPlayed
+                      ? "bg-course text-white"
+                      : "border border-dashed border-rule bg-white text-transparent"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {footballPlayed ? <CheckIcon /> : null}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <p className="text-sm font-semibold">Football</p>
+                    {footballScore !== null ? (
+                      <p className="text-sm font-semibold tabular-nums">
+                        {footballScore.toLocaleString()}
+                      </p>
+                    ) : null}
+                  </div>
+                  {!footballPlayed ? (
+                    <p className="text-xs text-muted">
+                      5 clues · find today&apos;s home ground
                     </p>
                   ) : null}
                 </div>
-                {closestDistance !== null ? (
-                  <p className="text-right text-xs text-muted">
-                    Closest pin {closestIndex + 1}
-                    <br />
-                    <span className="font-semibold text-foreground">
-                      {formatDistance(closestDistance)}
-                    </span>
-                  </p>
-                ) : null}
-              </div>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span
+                  className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                    dailyPlayed
+                      ? "bg-course text-white"
+                      : "border border-dashed border-rule bg-white text-transparent"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {dailyPlayed ? <CheckIcon /> : null}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <p className="text-sm font-semibold">UK Edition</p>
+                    {dailyScore !== null ? (
+                      <p className="text-sm font-semibold tabular-nums">
+                        {dailyScore.toLocaleString()}
+                      </p>
+                    ) : null}
+                  </div>
+                  {!dailyPlayed ? (
+                    <p className="text-xs text-muted">
+                      5 clues · one place somewhere in the UK
+                    </p>
+                  ) : null}
+                </div>
+              </li>
+            </ul>
 
-              <ol className="divide-y divide-rule rounded-lg border border-rule">
-                {reveal.guesses.map((guess, index) => (
+            {otherPending ? (
+              <Link
+                href={otherGame.href}
+                className="mt-3.5 flex h-12 w-full items-center justify-center rounded-xl bg-neutral-900 text-sm font-semibold text-white transition hover:brightness-110"
+              >
+                {otherGame.label}
+                <span aria-hidden="true" className="ml-1.5">
+                  →
+                </span>
+              </Link>
+            ) : (
+              <p className="mt-3.5 text-center text-xs font-medium text-foreground/70">
+                Both games played today
+              </p>
+            )}
+          </section>
+
+          <section
+            className="mt-3 rounded-xl bg-neutral-50 px-3.5 py-3.5"
+            aria-label="This week"
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                This week
+              </h3>
+              {streak > 0 ? (
+                <p className="text-xs font-semibold text-foreground">
+                  {formatStreakLabel(streak)}
+                </p>
+              ) : null}
+            </div>
+            <p className="mt-1 font-display text-2xl font-bold tracking-tight tabular-nums">
+              {weekly.weeklyScore.toLocaleString()}
+              <span className="text-sm font-semibold text-muted">
+                {" "}
+                / {weekly.maxWeeklyScore.toLocaleString()}
+              </span>
+            </p>
+            <ol
+              className="mt-3 flex items-center justify-between gap-1"
+              aria-label="Weekly completions Monday to Sunday"
+            >
+              {weekly.days.map((day) => {
+                const filled = day.status === "completed";
+                const isToday = day.date === reveal.date;
+                return (
                   <li
-                    key={index}
-                    className={`flex items-center justify-between gap-2 px-2.5 py-1.5 text-xs tabular-nums ${
-                      guess.carriedForward ? "bg-neutral-50 text-muted" : ""
-                    }`}
+                    key={day.date}
+                    className="flex flex-1 flex-col items-center gap-0.5"
                   >
-                    <span className="font-display font-bold text-course">
-                      Pin {index + 1}
-                      {guess.carriedForward ? (
-                        <span className="ml-1.5 text-[10px] font-medium text-muted">
-                          carried
-                        </span>
-                      ) : null}
+                    <span className="text-[10px] font-semibold text-muted">
+                      {day.label}
                     </span>
-                    <span className="flex items-center gap-2">
-                      <span className="w-12 text-right text-muted">
-                        {typeof guess.distanceMeters === "number"
-                          ? formatDistance(guess.distanceMeters)
-                          : "—"}
-                      </span>
-                      <span className="w-14 text-right font-semibold text-foreground">
-                        {guess.score.toLocaleString()}
-                      </span>
+                    <span
+                      title={dayTitle(day)}
+                      aria-label={dayTitle(day)}
+                      className={`flex h-5 w-5 items-center justify-center rounded-full border text-[10px] font-bold leading-none ${
+                        filled
+                          ? "border-course bg-course text-white"
+                          : isToday
+                            ? "border-course bg-course-soft text-course"
+                            : day.status === "missed"
+                              ? "border-rule bg-white text-muted"
+                              : "border-dashed border-rule bg-white text-muted/60"
+                      }`}
+                    >
+                      {filled ? <CheckIcon /> : null}
                     </span>
                   </li>
-                ))}
-              </ol>
-
-              <PlayerProgress
-                todayScore={reveal.totalScore}
-                referenceDate={reveal.date}
-                weekly={weekly}
-                streak={streak}
-              />
-
-              <CompactCountdown
-                key={reveal.nextReleaseAt}
-                nextReleaseAt={reveal.nextReleaseAt}
-              />
-            </div>
-          ) : (
-            <div className="space-y-2.5">
-              <div className="rounded-lg bg-neutral-50 px-3 py-2.5">
-                <h3 className="font-display text-sm font-semibold tracking-tight">
-                  Come back each day
-                </h3>
-                <p className="mt-1 text-xs leading-snug text-muted">
-                  One new UK place every day at {formatReleaseTimeLabel()} UK
-                  time — a fresh set of five clues to find.
-                </p>
-              </div>
-
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-                  Games this week
-                </p>
-                <ul className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
-                  {WEEKDAY_ORDER.map((day) => (
-                    <li key={day} className="flex gap-1.5">
-                      <span className="w-7 shrink-0 font-semibold text-foreground">
-                        {WEEKDAY_LABELS[day]}
-                      </span>
-                      <span className="truncate text-muted">
-                        {themeLabel(WEEKDAY_THEMES[day])}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="space-y-2 border-t border-rule px-4 py-3">
-          {page === 1 ? (
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={onShare}
-                className="flex-1 rounded-md bg-course px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                {shareLabel}
-              </button>
-              <button
-                type="button"
-                onClick={() => setPage(2)}
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-neutral-900 px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                What&apos;s next
-                <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          ) : (
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setPage(1)}
-                className="rounded-md border border-rule px-3 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
-              >
-                ← Score
-              </button>
-              <button
-                type="button"
-                onClick={onShare}
-                className="flex-1 rounded-md bg-course px-3 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                {shareLabel}
-              </button>
-            </div>
-          )}
-          {showWeeklyShare && onShareWeek ? (
-            <button
-              type="button"
-              onClick={onShareWeek}
-              className="w-full rounded-md border border-rule px-3 py-2.5 text-sm font-semibold transition hover:bg-neutral-50"
-            >
-              {weekShareLabel}
-            </button>
-          ) : null}
+                );
+              })}
+            </ol>
+          </section>
         </div>
       </div>
     </div>

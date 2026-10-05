@@ -1,11 +1,12 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
 import { getRequestClockOptions } from "@/lib/game/devClock";
 import { lockFinalAnswer } from "@/lib/game/evaluateGuess";
 import {
-  decodeSession,
+  readSignedSessionForMode,
+  requestGameMode,
+} from "@/lib/game/requestSession";
+import {
   encodeSession,
   SessionSecretConfigError,
   sessionCookieOptions,
@@ -18,10 +19,10 @@ import {
 const GENERIC_SESSION_ERROR = "No active game session. Start the game first.";
 const GENERIC_ACTION_ERROR = "Couldn't lock your answer.";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
-    const cookieStore = await cookies();
-    const session = decodeSession(cookieStore.get(GAME_SESSION_COOKIE)?.value);
+    const mode = requestGameMode(request);
+    const session = await readSignedSessionForMode(mode);
 
     if (!session) {
       return NextResponse.json({ error: GENERIC_SESSION_ERROR }, { status: 409 });
@@ -31,7 +32,7 @@ export async function POST() {
     const game = await loadGameForSession(session, clock);
     const result = lockFinalAnswer({ game, session, clockOptions: clock });
     const response = NextResponse.json(result.response);
-    const cookie = sessionCookieOptions();
+    const cookie = sessionCookieOptions(mode);
     response.cookies.set(cookie.name, encodeSession(result.session), cookie);
     return response;
   } catch (error) {

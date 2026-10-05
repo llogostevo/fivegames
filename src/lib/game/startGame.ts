@@ -2,9 +2,11 @@ import { CLUE_COUNT } from "@/lib/game/constants";
 import type { ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature } from "@/lib/game/distance";
 import { getPublicGameMeta } from "@/lib/game/loadGame";
+import { DEFAULT_GAME_MODE } from "@/lib/game/modes";
 import { buildReveal } from "@/lib/game/reveal";
 import {
   createEmptySession,
+  sessionMode,
   type GameSession,
 } from "@/lib/game/session";
 import type {
@@ -142,7 +144,13 @@ export function resolveStartGame(options: {
   const { game, existingSession, now = new Date(), clockOptions = {} } =
     options;
 
-  if (existingSession && existingSession.gameId === game.id) {
+  const gameMode = game.mode ?? DEFAULT_GAME_MODE;
+
+  if (
+    existingSession &&
+    existingSession.gameId === game.id &&
+    sessionMode(existingSession) === gameMode
+  ) {
     if (existingSession.lockedAfterClue !== null) {
       return {
         session: existingSession,
@@ -164,7 +172,7 @@ export function resolveStartGame(options: {
     };
   }
 
-  const session = createEmptySession(game.id, now);
+  const session = createEmptySession(game.id, now, gameMode);
   return {
     session,
     body: buildInProgressBody(game, session, "new", now, clockOptions),
