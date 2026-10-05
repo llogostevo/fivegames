@@ -11,7 +11,15 @@ export const BETA_SITE_URL = "https://fivegames.vercel.app";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? BETA_SITE_URL;
 
 /**
- * URL appended to shared score messages during beta.
+ * URL appended to shared Daily score messages during beta.
  * Stays on the Vercel deployment until the public launch cutover.
  */
 export const SHARE_URL = `${BETA_SITE_URL}/`;
+
+/** Football share landing page. */
+export const FOOTBALL_SHARE_URL = `${BETA_SITE_URL}/football`;
+
+/** Share URL for a given game mode. */
+export function shareUrlForMode(mode: "daily" | "football"): string {
+  return mode === "football" ? FOOTBALL_SHARE_URL : SHARE_URL;
+}

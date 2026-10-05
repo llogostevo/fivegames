@@ -18,7 +18,7 @@ import {
 } from "./share";
 import { WEEKLY_SHARE_BRAG_SCORE_THRESHOLD } from "./shareConfig";
 import { getWeeklyStats } from "./playerHistory";
-import { SHARE_URL } from "@/lib/site";
+import { FOOTBALL_SHARE_URL, SHARE_URL } from "@/lib/site";
 import type { GameReveal, RevealedGuess } from "@/types/game";
 
 function guess(
@@ -195,6 +195,20 @@ describe("buildDailyShareText", () => {
     const text = buildDailyShareText(reveal(), 0);
     assert.ok(!text.includes("day streak"));
     assert.ok(text.includes("You can't beat me."));
+  });
+
+  it("uses the football URL for Football shares", () => {
+    const text = buildDailyShareText(
+      reveal({
+        mode: "football",
+        themeId: "football",
+        theme: "Football",
+      }),
+      0,
+    );
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL"));
+    assert.equal(text.endsWith(FOOTBALL_SHARE_URL), true);
+    assert.equal(text.endsWith(SHARE_URL), false);
   });
 });
 
