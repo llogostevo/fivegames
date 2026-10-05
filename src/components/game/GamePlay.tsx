@@ -638,48 +638,55 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
       }`}
       style={themeStyle}
     >
-      <header className="flex shrink-0 items-center justify-between gap-3 border-b border-rule px-4 py-3 sm:gap-4 sm:px-6">
-        <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+      <header className="flex shrink-0 flex-wrap items-center justify-between gap-x-2 gap-y-2 border-b border-rule px-3 py-2.5 sm:gap-x-4 sm:px-6 sm:py-3">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-md font-display text-2xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
+            className="flex shrink-0 items-center gap-1.5 rounded-md font-display text-xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course sm:gap-2 sm:text-2xl"
           >
-            <Pin5Mark size="sm" className="h-8 w-8" />
-            <span>Pin5</span>
+            <Pin5Mark size="sm" className="h-7 w-7 sm:h-8 sm:w-8" />
+            <span className="hidden min-[380px]:inline">Pin5</span>
           </Link>
           {isFootballMode(mode) ? (
             <span
-              className="inline-flex items-center gap-1 rounded-md border border-course/30 bg-course-soft px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-course sm:px-2 sm:text-[11px]"
+              className="inline-flex min-w-0 max-w-[9.5rem] items-center gap-1 truncate rounded-md border border-course/30 bg-course-soft px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-course sm:max-w-none sm:px-2 sm:text-[11px]"
               title={modeDef.chipLabel}
             >
-              <span aria-hidden="true" className="text-[13px] leading-none tracking-normal">
+              <span
+                aria-hidden="true"
+                className="shrink-0 text-[13px] leading-none tracking-normal"
+              >
                 {modeDef.emoji}
               </span>
-              <span>{modeDef.chipLabel}</span>
+              <span className="truncate">{modeDef.chipLabel}</span>
             </span>
           ) : (
             <span
-              className="inline-flex items-center gap-1 rounded-md border border-rule bg-neutral-50 px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground/80 sm:px-2 sm:text-[11px]"
+              className="inline-flex min-w-0 max-w-[9.5rem] items-center gap-1 truncate rounded-md border border-rule bg-neutral-50 px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground/80 sm:max-w-none sm:px-2 sm:text-[11px]"
               title={modeDef.chipLabel}
             >
-              <span aria-hidden="true" className="text-[13px] leading-none tracking-normal">
+              <span
+                aria-hidden="true"
+                className="shrink-0 text-[13px] leading-none tracking-normal"
+              >
                 {modeDef.emoji}
               </span>
-              <span>{modeDef.chipLabel}</span>
+              <span className="truncate">{modeDef.chipLabel}</span>
             </span>
           )}
           {theme && mode === "daily" ? (
-            <span className="hidden rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course sm:inline">
+            <span className="hidden rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course md:inline">
               {theme}
             </span>
           ) : null}
         </div>
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <Link
             href="/"
-            className="rounded-md border border-[#c4157a] px-2.5 py-1.5 text-xs font-semibold text-[#c4157a] transition hover:bg-[#fbe7f2] sm:px-3 sm:text-sm"
+            className="rounded-md border border-[#c4157a] px-2 py-1.5 text-[11px] font-semibold text-[#c4157a] transition hover:bg-[#fbe7f2] sm:px-3 sm:text-sm"
           >
-            More games
+            <span className="sm:hidden">Games</span>
+            <span className="hidden sm:inline">More games</span>
           </Link>
           <button
             type="button"
@@ -687,9 +694,10 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
               setHowToPlayCta("Got it");
               setHowToPlayOpen(true);
             }}
-            className="rounded-md border border-rule px-2.5 py-1.5 text-xs font-semibold text-muted transition hover:bg-neutral-50 hover:text-foreground sm:px-3 sm:text-sm"
+            className="rounded-md border border-rule px-2 py-1.5 text-[11px] font-semibold text-muted transition hover:bg-neutral-50 hover:text-foreground sm:px-3 sm:text-sm"
           >
-            How to play
+            <span className="sm:hidden">Help</span>
+            <span className="hidden sm:inline">How to play</span>
           </button>
           <ol
             className="flex items-center gap-1.5"
