@@ -41,6 +41,8 @@ export function HubFlagIcon({
       return <LondonBadge className={frame} />;
     case "TFL":
       return <TubeRoundel className={frame} />;
+    case "APT":
+      return <AirportBadge className={frame} />;
     default:
       return (
         <span
@@ -178,6 +180,30 @@ function TubeRoundel({ className }: IconProps) {
       <rect width="24" height="18" rx="2" fill="#1d1d1f" />
       <circle cx="12" cy="9" r="6.2" fill="none" stroke="#E32017" strokeWidth="2.4" />
       <rect x="3.5" y="7.35" width="17" height="3.3" rx="0.4" fill="#0019A8" />
+    </svg>
+  );
+}
+
+/** Simple runway / plane badge for World Airports. */
+function AirportBadge({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 18"
+      className={className}
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <rect width="24" height="18" rx="2" fill="#0c4a6e" />
+      <path
+        d="M3 12.5h18M5 10.5h14M7 14.5h10"
+        stroke="#7dd3fc"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 4.2 14.8 9.8H19l-1.5 1.4H14l-2 4.2-2-4.2H6.5L5 9.8h4.2L12 4.2Z"
+        fill="#ffffff"
+      />
     </svg>
   );
 }

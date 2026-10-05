@@ -12,7 +12,8 @@ describe("hubCatalog", () => {
   it("lists World first and marks it featured", () => {
     assert.equal(HUB_GAMES[0]?.id, "world");
     assert.equal(HUB_GAMES[0]?.featured, true);
-    assert.equal(HUB_GAMES[1]?.id, "daily");
+    assert.equal(HUB_GAMES[1]?.id, "world-airports");
+    assert.equal(HUB_GAMES[2]?.id, "daily");
   });
 
   it("features World when nothing is played", () => {
@@ -22,7 +23,7 @@ describe("hubCatalog", () => {
 
   it("features the next unplayed game after World is done", () => {
     const featured = pickFeaturedGame(new Set(["world"]));
-    assert.equal(featured?.id, "daily");
+    assert.equal(featured?.id, "world-airports");
   });
 
   it("returns null when every game is played", () => {
@@ -73,5 +74,13 @@ describe("hubCatalog", () => {
     assert.equal(stations.tileEmoji, "🚇");
     assert.equal(stations.code, "TFL");
     assert.equal(stations.shortLabel, "Train & Tube");
+  });
+
+  it("lists World airports in the general section", () => {
+    const airports = HUB_GAMES.find((game) => game.id === "world-airports");
+    assert.ok(airports);
+    assert.equal(airports.tileEmoji, "✈️");
+    assert.equal(airports.code, "APT");
+    assert.equal(airports.name, "Airports");
   });
 });

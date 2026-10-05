@@ -14,7 +14,8 @@ export type ShareCardKind =
   | "world"
   | "football"
   | "pubs"
-  | "stations";
+  | "stations"
+  | "airports";
 
 export type FootballFlag = "ENG" | "ITA" | "GER" | "FRA" | "ESP";
 
@@ -265,6 +266,25 @@ function StationsIcon({
   );
 }
 
+function AirportsIcon({
+  size = 220,
+  accent = "#0369a1",
+}: {
+  size?: number;
+  accent?: string;
+}) {
+  return (
+    <RoundedFrame background="#0c4a6e" size={size}>
+      <EmojiStack
+        primary="✈️"
+        secondary="🌍"
+        primarySize={Math.round(size * 0.4)}
+        secondarySize={Math.round(size * 0.18)}
+      />
+    </RoundedFrame>
+  );
+}
+
 function ShareIcon({
   kind,
   accent,
@@ -285,6 +305,8 @@ function ShareIcon({
       return <PubsIcon accent={accent} />;
     case "stations":
       return <StationsIcon accent={accent} />;
+    case "airports":
+      return <AirportsIcon accent={accent} />;
     case "football":
       return <FootballIcon accent={accent} flag={flag} />;
   }
@@ -298,7 +320,10 @@ export function shareCardImage({
   flag,
 }: ShareCardProps) {
   const midColor =
-    kind === "football" || kind === "pubs" || kind === "stations"
+    kind === "football" ||
+    kind === "pubs" ||
+    kind === "stations" ||
+    kind === "airports"
       ? accent
       : "#1d1d1f";
   const bg =
@@ -308,7 +333,9 @@ export function shareCardImage({
         ? "radial-gradient(circle at 50% 45%, #fffaf3 0%, #f7efe3 55%, #efe4d4 100%)"
         : kind === "stations"
           ? "radial-gradient(circle at 50% 45%, #fff5f5 0%, #fde8e8 55%, #f5dede 100%)"
-          : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
+          : kind === "airports"
+            ? "radial-gradient(circle at 50% 45%, #f0f9ff 0%, #e0f2fe 55%, #dbeafe 100%)"
+            : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
 
   return new ImageResponse(
     (
@@ -360,7 +387,8 @@ export function shareCardImage({
                 letterSpacing:
                   kind === "football" ||
                   kind === "pubs" ||
-                  kind === "stations"
+                  kind === "stations" ||
+                  kind === "airports"
                     ? "0.08em"
                     : "-0.02em",
                 lineHeight: 1.05,

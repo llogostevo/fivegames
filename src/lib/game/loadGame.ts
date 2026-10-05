@@ -24,6 +24,11 @@ import {
   getTodaysLondonStationsGame,
   getLondonStationsGameByDate,
 } from "@/lib/game/londonstations/loadLondonStationsGame";
+import {
+  getReleasedWorldAirportsGameByDate,
+  getTodaysWorldAirportsGame,
+  getWorldAirportsGameByDate,
+} from "@/lib/game/worldairports/loadWorldAirportsGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -217,6 +222,9 @@ export async function getTodaysGameForMode(
   if (mode === "london-stations") {
     return getTodaysLondonStationsGame(now, options);
   }
+  if (mode === "world-airports") {
+    return getTodaysWorldAirportsGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -255,6 +263,9 @@ export async function getReleasedGameForMode(
   if (mode === "london-stations") {
     return getReleasedLondonStationsGameByDate(date, now, options);
   }
+  if (mode === "world-airports") {
+    return getReleasedWorldAirportsGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -275,6 +286,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "london-stations") {
     return getLondonStationsGameByDate(date);
+  }
+  if (mode === "world-airports") {
+    return getWorldAirportsGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {

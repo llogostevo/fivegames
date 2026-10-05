@@ -11,7 +11,7 @@ import { getRequestClockOptions } from "@/lib/game/devClock";
 export const metadata: Metadata = {
   title: "PIN5",
   description:
-    "PIN5 — daily location games. Play Daily 5 UK, London Pubs, Train & Tube, World, and Football 5 across England, Italy, Germany, France, and Spain.",
+    "PIN5 — daily location games. Play Daily 5 UK, London Pubs, Train & Tube, World, Airports, and Football 5 across England, Italy, Germany, France, and Spain.",
 };
 
 export default async function HomePage() {

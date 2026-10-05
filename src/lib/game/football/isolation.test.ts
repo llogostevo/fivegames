@@ -68,6 +68,10 @@ describe("Daily / Football isolation", () => {
       SESSION_COOKIE_BY_MODE["london-stations"],
       "fivegames_session_london_stations",
     );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["world-airports"],
+      "fivegames_session_world_airports",
+    );
     assert.notEqual(
       sessionCookieOptions("daily").name,
       sessionCookieOptions("world").name,
@@ -264,6 +268,10 @@ describe("Daily / Football isolation", () => {
     assert.equal(
       historyStorageKey("london-stations"),
       PLAYER_HISTORY_KEY_BY_MODE["london-stations"],
+    );
+    assert.equal(
+      historyStorageKey("world-airports"),
+      PLAYER_HISTORY_KEY_BY_MODE["world-airports"],
     );
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("world"));
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("football"));

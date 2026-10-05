@@ -59,6 +59,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Daily 5",
   },
   {
+    id: "world-airports",
+    group: "general",
+    name: "Airports",
+    shortLabel: "Worldwide",
+    code: "APT",
+    tileEmoji: "✈️",
+    href: GAME_MODE_DEFINITIONS["world-airports"].path,
+    mapImage: "/hub-maps/world.webp",
+    groupLabel: "Airports",
+  },
+  {
     id: "daily",
     group: "general",
     name: "United Kingdom",

@@ -112,7 +112,8 @@ function modeRowLabel(def: GameModeDefinition): string {
   return def.family === "football" ||
     def.family === "world" ||
     def.family === "pubs" ||
-    def.family === "stations"
+    def.family === "stations" ||
+    def.family === "airports"
     ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
     : def.title;
 }
@@ -123,6 +124,9 @@ function modeRowHint(def: GameModeDefinition): string {
   }
   if (def.family === "world") {
     return "5 clues · find today's place anywhere";
+  }
+  if (def.family === "airports") {
+    return "5 clues · find today's airport";
   }
   if (def.family === "pubs") {
     return "5 clues · find today's London pub";
@@ -262,14 +266,16 @@ export function ResultsPopup({
       otherDef.family === "football" ||
       otherDef.family === "world" ||
       otherDef.family === "pubs" ||
-      otherDef.family === "stations"
+      otherDef.family === "stations" ||
+      otherDef.family === "airports"
         ? `Play ${otherDef.title} · ${otherDef.subtitle}`
         : `Play ${otherDef.title}`,
   };
 
-  // World first, then Daily UK, London editions, then football leagues.
+  // World first, then airports, Daily UK, London editions, then football.
   const orderedStatuses = [
     ...modeStatuses.filter((row) => row.def.family === "world"),
+    ...modeStatuses.filter((row) => row.def.family === "airports"),
     ...modeStatuses.filter((row) => row.def.family === "daily"),
     ...modeStatuses.filter((row) => row.def.family === "pubs"),
     ...modeStatuses.filter((row) => row.def.family === "stations"),
@@ -303,7 +309,9 @@ export function ResultsPopup({
                     ? "The pub was"
                     : mode === "london-stations"
                       ? "The station was"
-                      : "The place was"}
+                      : mode === "world-airports"
+                        ? "The airport was"
+                        : "The place was"}
               </p>
               <h2
                 id={titleId}

@@ -10,6 +10,7 @@
  * `world` = World places (/world)
  * `london-pubs` = London pubs (/london-pubs)
  * `london-stations` = London train & tube (/london-stations)
+ * `world-airports` = World airports (/airports)
  */
 
 import {
@@ -27,6 +28,7 @@ import {
 
 export const GAME_MODES = [
   "world",
+  "world-airports",
   "daily",
   "london-pubs",
   "london-stations",
@@ -61,7 +63,7 @@ export type GameModeDefinition = {
   shareTitle: string;
   /** Results / OG mode label. */
   modeLabel: string;
-  family: "daily" | "football" | "world" | "pubs" | "stations";
+  family: "daily" | "football" | "world" | "pubs" | "stations" | "airports";
   /**
    * Fixed opening map camera for this mode.
    * Country/region overview only — must not encode the day’s answer.
@@ -103,6 +105,23 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     shareTitle: "PIN5 🌍 WORLD",
     modeLabel: "WORLD",
     family: "world",
+    mapStart: WORLD_MAP_START,
+    scoring: WORLD_SCORING_PROFILE,
+  },
+  "world-airports": {
+    id: "world-airports",
+    path: "/airports",
+    title: "Airports",
+    subtitle: "World",
+    chipLabel: "Airports",
+    emoji: "✈️",
+    detail: "Five clues to find today’s major airport anywhere on Earth.",
+    sessionCookie: "fivegames_session_world_airports",
+    historyKey: "pin5_world_airports_player_history",
+    sharePath: "/airports",
+    shareTitle: "PIN5 ✈️ AIRPORTS",
+    modeLabel: "AIRPORTS",
+    family: "airports",
     mapStart: WORLD_MAP_START,
     scoring: WORLD_SCORING_PROFILE,
   },
@@ -247,6 +266,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
 export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.sessionCookie,
   world: GAME_MODE_DEFINITIONS.world.sessionCookie,
+  "world-airports": GAME_MODE_DEFINITIONS["world-airports"].sessionCookie,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].sessionCookie,
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].sessionCookie,
   football: GAME_MODE_DEFINITIONS.football.sessionCookie,
@@ -261,6 +281,7 @@ export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
 export const PLAYER_HISTORY_KEY_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.historyKey,
   world: GAME_MODE_DEFINITIONS.world.historyKey,
+  "world-airports": GAME_MODE_DEFINITIONS["world-airports"].historyKey,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].historyKey,
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].historyKey,
   football: GAME_MODE_DEFINITIONS.football.historyKey,
@@ -317,7 +338,8 @@ export function modeDisplayName(mode: GameMode): string {
   return def.family === "football" ||
     def.family === "world" ||
     def.family === "pubs" ||
-    def.family === "stations"
+    def.family === "stations" ||
+    def.family === "airports"
     ? `${def.title} · ${def.subtitle}`
     : def.title;
 }
@@ -346,6 +368,10 @@ export function isStationsMode(mode: GameMode): boolean {
   return getModeDefinition(mode).family === "stations";
 }
 
+export function isAirportsMode(mode: GameMode): boolean {
+  return getModeDefinition(mode).family === "airports";
+}
+
 /** Modes listed on the landing hub and results cross-sell. */
 export function listPlayableModes(): GameModeDefinition[] {
   return GAME_MODES.map((id) => GAME_MODE_DEFINITIONS[id]);
@@ -355,10 +381,11 @@ export function listFootballModes(): GameModeDefinition[] {
   return listPlayableModes().filter((mode) => mode.family === "football");
 }
 
-/** Daily UK + World + London editions (non-football) hub section — World first. */
+/** Daily UK + World editions + London editions (non-football). */
 export function listGeneralKnowledgeModes(): GameModeDefinition[] {
   return [
     GAME_MODE_DEFINITIONS.world,
+    GAME_MODE_DEFINITIONS["world-airports"],
     GAME_MODE_DEFINITIONS.daily,
     GAME_MODE_DEFINITIONS["london-pubs"],
     GAME_MODE_DEFINITIONS["london-stations"],
