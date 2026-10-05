@@ -14,6 +14,7 @@ export const THEME_IDS = [
   "football",
   "world",
   "london-pubs",
+  "london-stations",
 ] as const;
 
 export type ThemeId = (typeof THEME_IDS)[number];
@@ -112,6 +113,14 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accent: "#b45309",
     accentSoft: "#fef3c7",
     emoji: "🍺",
+  },
+  "london-stations": {
+    id: "london-stations",
+    displayName: "Train & Tube",
+    label: "Train & Tube",
+    accent: "#e11d48",
+    accentSoft: "#ffe4e6",
+    emoji: "🚇",
   },
 };
 

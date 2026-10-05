@@ -794,7 +794,9 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
                       ? "The club was"
                       : mode === "london-pubs"
                         ? "The pub was"
-                        : "The place was"}
+                        : mode === "london-stations"
+                          ? "The station was"
+                          : "The place was"}
                   </p>
                   <h2 className="mt-1 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:mt-0 lg:text-5xl">
                     {reveal.answer.name}

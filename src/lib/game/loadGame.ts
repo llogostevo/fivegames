@@ -19,6 +19,11 @@ import {
   getTodaysLondonPubsGame,
   getLondonPubsGameByDate,
 } from "@/lib/game/londonpubs/loadLondonPubsGame";
+import {
+  getReleasedLondonStationsGameByDate,
+  getTodaysLondonStationsGame,
+  getLondonStationsGameByDate,
+} from "@/lib/game/londonstations/loadLondonStationsGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -197,7 +202,7 @@ export async function getTodaysGame(
   return getGameByDate(date);
 }
 
-/** Load today's game for a mode (daily JSON, World, London pubs, or Football). */
+/** Load today's game for a mode (daily JSON, World, London editions, or Football). */
 export async function getTodaysGameForMode(
   mode: GameMode,
   now: Date = new Date(),
@@ -208,6 +213,9 @@ export async function getTodaysGameForMode(
   }
   if (mode === "london-pubs") {
     return getTodaysLondonPubsGame(now, options);
+  }
+  if (mode === "london-stations") {
+    return getTodaysLondonStationsGame(now, options);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
@@ -244,6 +252,9 @@ export async function getReleasedGameForMode(
   if (mode === "london-pubs") {
     return getReleasedLondonPubsGameByDate(date, now, options);
   }
+  if (mode === "london-stations") {
+    return getReleasedLondonStationsGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -261,6 +272,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "london-pubs") {
     return getLondonPubsGameByDate(date);
+  }
+  if (mode === "london-stations") {
+    return getLondonStationsGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {

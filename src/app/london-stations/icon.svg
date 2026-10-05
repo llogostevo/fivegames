@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 Train and Tube">
+  <rect width="32" height="32" rx="8" fill="#1d1d1f"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#E32017" stroke-width="3.5"/>
+  <rect x="5" y="13.5" width="22" height="5" rx="1" fill="#0019A8"/>
+</svg>

@@ -66,4 +66,12 @@ describe("hubCatalog", () => {
     assert.equal(pubs?.tileEmoji, "🍺");
     assert.equal(pubs?.code, "LDN");
   });
+
+  it("lists London train and tube in the general section", () => {
+    const stations = HUB_GAMES.find((game) => game.id === "london-stations");
+    assert.ok(stations);
+    assert.equal(stations.tileEmoji, "🚇");
+    assert.equal(stations.code, "TFL");
+    assert.equal(stations.shortLabel, "Train & Tube");
+  });
 });

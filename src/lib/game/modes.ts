@@ -9,6 +9,7 @@
  * `football-spain` = Spain (/football/spain)
  * `world` = World places (/world)
  * `london-pubs` = London pubs (/london-pubs)
+ * `london-stations` = London train & tube (/london-stations)
  */
 
 import {
@@ -28,6 +29,7 @@ export const GAME_MODES = [
   "world",
   "daily",
   "london-pubs",
+  "london-stations",
   "football",
   "football-italy",
   "football-germany",
@@ -59,7 +61,7 @@ export type GameModeDefinition = {
   shareTitle: string;
   /** Results / OG mode label. */
   modeLabel: string;
-  family: "daily" | "football" | "world" | "pubs";
+  family: "daily" | "football" | "world" | "pubs" | "stations";
   /**
    * Fixed opening map camera for this mode.
    * Country/region overview only — must not encode the day’s answer.
@@ -118,6 +120,23 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     shareTitle: "PIN5 🍺 LONDON PUBS",
     modeLabel: "LONDON PUBS",
     family: "pubs",
+    mapStart: LONDON_MAP_START,
+    scoring: CITY_SCORING_PROFILE,
+  },
+  "london-stations": {
+    id: "london-stations",
+    path: "/london-stations",
+    title: "Train & Tube",
+    subtitle: "London",
+    chipLabel: "London Stations",
+    emoji: "🚇",
+    detail: "Five clues to find today’s London train or tube station.",
+    sessionCookie: "fivegames_session_london_stations",
+    historyKey: "pin5_london_stations_player_history",
+    sharePath: "/london-stations",
+    shareTitle: "PIN5 🚇 TRAIN & TUBE",
+    modeLabel: "TRAIN & TUBE",
+    family: "stations",
     mapStart: LONDON_MAP_START,
     scoring: CITY_SCORING_PROFILE,
   },
@@ -229,6 +248,7 @@ export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.sessionCookie,
   world: GAME_MODE_DEFINITIONS.world.sessionCookie,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].sessionCookie,
+  "london-stations": GAME_MODE_DEFINITIONS["london-stations"].sessionCookie,
   football: GAME_MODE_DEFINITIONS.football.sessionCookie,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].sessionCookie,
   "football-germany":
@@ -242,6 +262,7 @@ export const PLAYER_HISTORY_KEY_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.historyKey,
   world: GAME_MODE_DEFINITIONS.world.historyKey,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].historyKey,
+  "london-stations": GAME_MODE_DEFINITIONS["london-stations"].historyKey,
   football: GAME_MODE_DEFINITIONS.football.historyKey,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].historyKey,
   "football-germany":
@@ -295,7 +316,8 @@ export function modeDisplayName(mode: GameMode): string {
   const def = getModeDefinition(mode);
   return def.family === "football" ||
     def.family === "world" ||
-    def.family === "pubs"
+    def.family === "pubs" ||
+    def.family === "stations"
     ? `${def.title} · ${def.subtitle}`
     : def.title;
 }
@@ -320,6 +342,10 @@ export function isPubsMode(mode: GameMode): boolean {
   return getModeDefinition(mode).family === "pubs";
 }
 
+export function isStationsMode(mode: GameMode): boolean {
+  return getModeDefinition(mode).family === "stations";
+}
+
 /** Modes listed on the landing hub and results cross-sell. */
 export function listPlayableModes(): GameModeDefinition[] {
   return GAME_MODES.map((id) => GAME_MODE_DEFINITIONS[id]);
@@ -329,11 +355,12 @@ export function listFootballModes(): GameModeDefinition[] {
   return listPlayableModes().filter((mode) => mode.family === "football");
 }
 
-/** Daily UK + World + Pubs (non-football) hub section — World first. */
+/** Daily UK + World + London editions (non-football) hub section — World first. */
 export function listGeneralKnowledgeModes(): GameModeDefinition[] {
   return [
     GAME_MODE_DEFINITIONS.world,
     GAME_MODE_DEFINITIONS.daily,
     GAME_MODE_DEFINITIONS["london-pubs"],
+    GAME_MODE_DEFINITIONS["london-stations"],
   ];
 }

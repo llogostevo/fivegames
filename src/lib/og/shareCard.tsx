@@ -8,7 +8,13 @@ export const SHARE_IMAGE_SIZE = {
 
 export const SHARE_CONTENT_TYPE = "image/png";
 
-export type ShareCardKind = "hub" | "daily" | "world" | "football" | "pubs";
+export type ShareCardKind =
+  | "hub"
+  | "daily"
+  | "world"
+  | "football"
+  | "pubs"
+  | "stations";
 
 export type FootballFlag = "ENG" | "ITA" | "GER" | "FRA" | "ESP";
 
@@ -212,6 +218,53 @@ function PubsIcon({
   );
 }
 
+function StationsIcon({
+  size = 220,
+  accent = "#e11d48",
+}: {
+  size?: number;
+  accent?: string;
+}) {
+  return (
+    <RoundedFrame background="#1d1d1f" size={size}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 12,
+        }}
+      >
+        <div
+          style={{
+            width: Math.round(size * 0.48),
+            height: Math.round(size * 0.48),
+            borderRadius: Math.round(size * 0.24),
+            border: `${Math.round(size * 0.055)}px solid ${accent}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              width: Math.round(size * 0.42),
+              height: Math.round(size * 0.1),
+              background: "#0019A8",
+              borderRadius: 4,
+            }}
+          />
+        </div>
+        <div style={{ fontSize: Math.round(size * 0.18), lineHeight: 1, display: "flex" }}>
+          🚇
+        </div>
+      </div>
+    </RoundedFrame>
+  );
+}
+
 function ShareIcon({
   kind,
   accent,
@@ -230,6 +283,8 @@ function ShareIcon({
       return <DailyIcon />;
     case "pubs":
       return <PubsIcon accent={accent} />;
+    case "stations":
+      return <StationsIcon accent={accent} />;
     case "football":
       return <FootballIcon accent={accent} flag={flag} />;
   }
@@ -243,13 +298,17 @@ export function shareCardImage({
   flag,
 }: ShareCardProps) {
   const midColor =
-    kind === "football" || kind === "pubs" ? accent : "#1d1d1f";
+    kind === "football" || kind === "pubs" || kind === "stations"
+      ? accent
+      : "#1d1d1f";
   const bg =
     kind === "football"
       ? "radial-gradient(circle at 50% 45%, #f4faf5 0%, #e7f0e8 55%, #dfe8e0 100%)"
       : kind === "pubs"
         ? "radial-gradient(circle at 50% 45%, #fffaf3 0%, #f7efe3 55%, #efe4d4 100%)"
-        : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
+        : kind === "stations"
+          ? "radial-gradient(circle at 50% 45%, #fff5f5 0%, #fde8e8 55%, #f5dede 100%)"
+          : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
 
   return new ImageResponse(
     (
@@ -299,7 +358,11 @@ export function shareCardImage({
                 fontWeight: 700,
                 color: midColor,
                 letterSpacing:
-                  kind === "football" || kind === "pubs" ? "0.08em" : "-0.02em",
+                  kind === "football" ||
+                  kind === "pubs" ||
+                  kind === "stations"
+                    ? "0.08em"
+                    : "-0.02em",
                 lineHeight: 1.05,
                 textTransform: "uppercase",
               }}

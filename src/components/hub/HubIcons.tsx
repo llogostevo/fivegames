@@ -39,6 +39,8 @@ export function HubFlagIcon({
       return <SpainFlag className={frame} />;
     case "LDN":
       return <LondonBadge className={frame} />;
+    case "TFL":
+      return <TubeRoundel className={frame} />;
     default:
       return (
         <span
@@ -161,5 +163,21 @@ function LondonBadge({ className }: IconProps) {
         strokeLinecap="round"
       />
     </FlagShell>
+  );
+}
+
+/** Stylised Underground roundel for Train & Tube. */
+function TubeRoundel({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 18"
+      className={className}
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <rect width="24" height="18" rx="2" fill="#1d1d1f" />
+      <circle cx="12" cy="9" r="6.2" fill="none" stroke="#E32017" strokeWidth="2.4" />
+      <rect x="3.5" y="7.35" width="17" height="3.3" rx="0.4" fill="#0019A8" />
+    </svg>
   );
 }

@@ -81,6 +81,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Pubs 5",
   },
   {
+    id: "london-stations",
+    group: "general",
+    name: "London",
+    shortLabel: "Train & Tube",
+    code: "TFL",
+    tileEmoji: "🚇",
+    href: GAME_MODE_DEFINITIONS["london-stations"].path,
+    mapImage: "/hub-maps/london.webp",
+    groupLabel: "Train & Tube",
+  },
+  {
     id: "football",
     group: "football",
     name: "England",
