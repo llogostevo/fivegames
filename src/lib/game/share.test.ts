@@ -163,7 +163,7 @@ describe("buildDailyShareText", () => {
         "📍 1.0 km away",
         "🔥 4 day streak",
         "",
-        "You can't beat me.",
+        "Can you beat me?",
         SHARE_URL,
       ].join("\n"),
     );
@@ -194,7 +194,7 @@ describe("buildDailyShareText", () => {
   it("omits the streak line when streak is zero", () => {
     const text = buildDailyShareText(reveal(), 0);
     assert.ok(!text.includes("day streak"));
-    assert.ok(text.includes("You can't beat me."));
+    assert.ok(text.includes("Can you beat me?"));
   });
 
   it("uses the football URL for Football shares", () => {

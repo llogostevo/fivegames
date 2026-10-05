@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 UK">
+  <rect width="32" height="32" rx="8" fill="#1e1e24"/>
+  <g transform="translate(4 7)">
+    <rect width="24" height="18" rx="2" fill="#012169"/>
+    <path d="M0 0 24 18M24 0 0 18" stroke="#ffffff" stroke-width="3.2"/>
+    <path d="M0 0 24 18M24 0 0 18" stroke="#C8102E" stroke-width="1.6"/>
+    <path d="M12 0v18M0 9h24" stroke="#ffffff" stroke-width="5"/>
+    <path d="M12 0v18M0 9h24" stroke="#C8102E" stroke-width="2.6"/>
+  </g>
+</svg>

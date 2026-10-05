@@ -97,7 +97,7 @@ export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
     lines.push(`🔥 ${formatStreakLabel(streak)}`);
   }
 
-  lines.push("", "You can't beat me.", shareUrlForMode(mode));
+  lines.push("", "Can you beat me?", shareUrlForMode(mode));
   return lines.join("\n");
 }
 
