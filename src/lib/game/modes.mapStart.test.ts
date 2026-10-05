@@ -20,9 +20,9 @@ describe("mode map starts", () => {
     }
   });
 
-  it("opens World on a globe projection at Earth scale", () => {
+  it("opens World at Earth scale on a flat map", () => {
     const world = GAME_MODE_DEFINITIONS.world.mapStart;
-    assert.equal(world.projection, "globe");
+    assert.notEqual(world.projection, "globe");
     assert.ok(world.zoom < 3);
   });
 

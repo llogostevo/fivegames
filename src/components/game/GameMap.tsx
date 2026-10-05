@@ -362,9 +362,6 @@ export function GameMap({
           attributionControl: { compact: true },
         });
 
-        if (initialProjection === "globe") {
-          map.setProjection({ type: "globe" });
-        }
         if (showControls) {
           map.addControl(
             new NavigationControl({ showCompass: false }),
@@ -464,6 +461,15 @@ export function GameMap({
         map.on("load", () => {
           if (cancelled) {
             return;
+          }
+          // Globe must wait until style load — early setProjection throws and
+          // blocks World mode ("Style is not done loading").
+          if (initialProjection === "globe") {
+            try {
+              map.setProjection({ type: "globe" });
+            } catch (error) {
+              console.warn("Could not enable globe projection", error);
+            }
           }
           map.addSource(COURSE_SOURCE_ID, {
             type: "geojson",

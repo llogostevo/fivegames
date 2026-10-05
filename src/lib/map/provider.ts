@@ -38,11 +38,10 @@ export const DEFAULT_MAP_START: MapStartView = {
   zoom: DEFAULT_MAP_ZOOM,
 };
 
-/** Whole-Earth opening view for World mode (MapLibre globe). */
+/** Whole-Earth opening view for World mode (flat Mercator — easier to pan/place). */
 export const WORLD_MAP_START: MapStartView = {
   center: { lat: 20, lng: 10 },
   zoom: 1.35,
-  projection: "globe",
 };
 
 /** High enough to identify venues such as stadiums and concert halls. */
