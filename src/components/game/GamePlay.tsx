@@ -2,21 +2,24 @@
 
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
+import { ClueFlowModal } from "@/components/game/ClueFlowModal";
 import { GameMap } from "@/components/game/GameMap";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
-import { TemperatureToast } from "@/components/game/TemperatureToast";
+import {
+  getMapPlacementCopy,
+  isFinalClueNumber,
+  toDecisionFromLockConfirm,
+  toLockConfirmState,
+  type ClueFlowModalState,
+} from "@/lib/game/clueFlow";
 import { CLUE_COUNT } from "@/lib/game/constants";
 import {
   getCurrentStreak,
   readPlayerHistory,
   recordCompletedReveal,
 } from "@/lib/game/playerHistory";
-import {
-  getPanelActionState,
-  getPlacementPrompt,
-} from "@/lib/game/panelActions";
 import {
   buildDailyShareText,
   buildWeeklyShareText,
@@ -62,16 +65,6 @@ const TEMPERATURE = {
   colder: { emoji: "🧊", word: "Colder", tone: "bg-cold-soft text-cold" },
   same: { emoji: "➡️", word: "Same", tone: "bg-neutral-100 text-foreground" },
 } as const;
-
-function feedbackSentence(temperature: TemperatureResult, pin: number) {
-  if (temperature === "warmer") {
-    return `Pin ${pin} is closer than pin ${pin - 1}.`;
-  }
-  if (temperature === "colder") {
-    return `Pin ${pin} is further away than pin ${pin - 1}.`;
-  }
-  return `Pin ${pin} is about as far away as pin ${pin - 1}.`;
-}
 
 function PinBadge({
   number,
@@ -120,9 +113,9 @@ export function GamePlay() {
   const [rows, setRows] = useState<ClueRow[]>([]);
   const [pendingGuess, setPendingGuess] = useState<Coordinates | null>(null);
   const [reveal, setReveal] = useState<GameReveal | null>(null);
-  const [confirmingAnswer, setConfirmingAnswer] = useState(false);
-  const [transitionTemperature, setTransitionTemperature] =
-    useState<TemperatureResult | null>(null);
+  /** Client-only: current pin is editable; no server warmer/colder yet. */
+  const [isAdjusting, setIsAdjusting] = useState(false);
+  const [flowModal, setFlowModal] = useState<ClueFlowModalState | null>(null);
   const [isStarting, setIsStarting] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -135,8 +128,6 @@ export function GamePlay() {
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   const [howToPlayCta, setHowToPlayCta] = useState("Got it");
   const [resultsOpen, setResultsOpen] = useState(false);
-  const [tempToast, setTempToast] = useState<TemperatureResult | null>(null);
-  const [tempToastKey, setTempToastKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -172,7 +163,8 @@ export function GamePlay() {
         setTheme(data.theme);
         setThemeId(data.themeId);
         setPendingGuess(null);
-        setConfirmingAnswer(false);
+        setIsAdjusting(false);
+        setFlowModal(null);
         setShareStatus("idle");
         setWeekShareStatus("idle");
 
@@ -181,7 +173,6 @@ export function GamePlay() {
           recordCompletedReveal(data.reveal);
           setReveal(data.reveal);
           setRows([]);
-          setTransitionTemperature(null);
           setResultsOpen(true);
           setHowToPlayOpen(false);
           return;
@@ -211,13 +202,46 @@ export function GamePlay() {
             temperature: null,
           });
         }
-        setRows(rowsFromStart);
 
-        const latestTemperature =
-          data.guesses.length > 0
-            ? data.guesses[data.guesses.length - 1]?.temperature ?? null
-            : null;
-        setTransitionTemperature(latestTemperature);
+        // Recover mid-flight Get Another Clue (guess committed, continue pending).
+        if (data.awaitingDecision) {
+          const continueResponse = await fetch("/api/game/continue", {
+            method: "POST",
+          });
+          const continueData =
+            (await continueResponse.json()) as ContinueResponse & {
+              error?: string;
+            };
+          if (!continueResponse.ok) {
+            throw new Error(
+              continueData.error ?? "Couldn't restore the next clue.",
+            );
+          }
+          if (cancelled) {
+            return;
+          }
+
+          const lastTemperature =
+            data.guesses[data.guesses.length - 1]?.temperature ?? null;
+          rowsFromStart.push({
+            text: continueData.clue,
+            coordinates: null,
+            temperature: null,
+          });
+          setRows(rowsFromStart);
+          setFlowModal({
+            type: "nextClue",
+            temperature: lastTemperature,
+            clueNumber: continueData.clueIndex + 1,
+            clueText: continueData.clue,
+            nextPinNumber: continueData.clueIndex + 1,
+          });
+          setHowToPlayOpen(false);
+          setResultsOpen(false);
+          return;
+        }
+
+        setRows(rowsFromStart);
 
         if (data.status === "new") {
           setHowToPlayCta("Play now");
@@ -259,31 +283,49 @@ export function GamePlay() {
     };
   }, [round]);
 
-  const showTemperatureToast = useCallback((temperature: TemperatureResult | null) => {
-    if (!temperature) {
+  const handleSelect = useCallback(
+    (coordinates: Coordinates) => {
+      if (reveal || isBusy) {
+        return;
+      }
+      // Place / adjust are client-only — never call the server here.
+      setPendingGuess(coordinates);
+      setIsAdjusting(false);
+      const pinNumber =
+        rows.findIndex((row) => row.coordinates === null) + 1 || 1;
+      setFlowModal({
+        type: "decision",
+        pinNumber: Math.max(pinNumber, 1),
+        isFinalClue: isFinalClueNumber(Math.max(pinNumber, 1)),
+      });
+    },
+    [reveal, isBusy, rows],
+  );
+
+  function handleAdjustPin() {
+    // Close modal; keep the same provisional pin editable. No server call.
+    setIsAdjusting(true);
+    setFlowModal(null);
+    setError(null);
+  }
+
+  function handleRequestLock() {
+    // Confirmation only — does not commit or call the server.
+    if (!flowModal || flowModal.type !== "decision") {
       return;
     }
-    setTempToast(temperature);
-    setTempToastKey((value) => value + 1);
-  }, []);
+    setFlowModal(toLockConfirmState(flowModal));
+  }
 
-  useEffect(() => {
-    if (!tempToast || tempToastKey <= 0) {
+  function handleCancelLock() {
+    if (!flowModal || flowModal.type !== "lockConfirm") {
       return;
     }
-    const id = window.setTimeout(() => {
-      setTempToast(null);
-    }, 1700);
-    return () => window.clearTimeout(id);
-  }, [tempToast, tempToastKey]);
+    setFlowModal(toDecisionFromLockConfirm(flowModal));
+  }
 
-  const handleSelect = useCallback((coordinates: Coordinates) => {
-    setPendingGuess(coordinates);
-    setTransitionTemperature(null);
-  }, []);
-
-  async function handleGetNextClue() {
-    if (!pendingGuess || isBusy || reveal || confirmingAnswer) {
+  async function handleGetAnotherClue() {
+    if (!pendingGuess || isBusy || reveal) {
       return;
     }
 
@@ -296,6 +338,7 @@ export function GamePlay() {
     setError(null);
 
     try {
+      // Commitment point: only now does the server lock the pin + compute W/C.
       const guessData = await postGuess(pendingGuess);
 
       setRows((current) =>
@@ -330,24 +373,36 @@ export function GamePlay() {
         },
       ]);
       setPendingGuess(null);
-      setTransitionTemperature(guessData.temperature);
-      showTemperatureToast(guessData.temperature);
+      setIsAdjusting(false);
+      setFlowModal({
+        type: "nextClue",
+        temperature: guessData.temperature,
+        clueNumber: continueData.clueIndex + 1,
+        clueText: continueData.clue,
+        nextPinNumber: continueData.clueIndex + 1,
+      });
     } catch (nextError) {
-      setError(
-        `${nextError instanceof Error ? nextError.message : "Couldn't get the next clue."} Try again.`,
-      );
+      const message =
+        nextError instanceof Error
+          ? nextError.message
+          : "Couldn't get the next clue.";
+      setFlowModal({
+        type: "error",
+        message: `${message} Try again.`,
+        retry: "getClue",
+      });
     } finally {
       setIsBusy(false);
     }
   }
 
-  async function handleSeeResult() {
-    if (!pendingGuess || isBusy || reveal || confirmingAnswer) {
+  async function handleLockFinalAnswer() {
+    if (!pendingGuess || isBusy || reveal) {
       return;
     }
 
     const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
-    if (activeRowIndex !== CLUE_COUNT - 1) {
+    if (activeRowIndex === -1) {
       return;
     }
 
@@ -368,25 +423,69 @@ export function GamePlay() {
             : row,
         ),
       );
-      setPendingGuess(null);
-      setTransitionTemperature(null);
 
+      // Clue 5: guessing completes the game.
       if (guessData.complete && guessData.reveal) {
+        setPendingGuess(null);
+        setIsAdjusting(false);
+        setFlowModal(null);
         recordCompletedReveal(guessData.reveal);
         setReveal(guessData.reveal);
         setShareStatus("idle");
         setWeekShareStatus("idle");
         setResultsOpen(true);
-      } else {
-        throw new Error("The final result didn't come back.");
+        return;
       }
-    } catch (resultError) {
-      setError(
-        `${resultError instanceof Error ? resultError.message : "Couldn't finish the game."} Try again.`,
-      );
+
+      const answerResponse = await fetch("/api/game/answer", {
+        method: "POST",
+      });
+      const answerData = (await answerResponse.json()) as LockAnswerResponse & {
+        error?: string;
+      };
+
+      if (!answerResponse.ok) {
+        throw new Error(answerData.error ?? "Couldn't lock your answer.");
+      }
+
+      setPendingGuess(null);
+      setIsAdjusting(false);
+      setFlowModal(null);
+      recordCompletedReveal(answerData.reveal);
+      setReveal(answerData.reveal);
+      setShareStatus("idle");
+      setWeekShareStatus("idle");
+      setResultsOpen(true);
+    } catch (lockError) {
+      const message =
+        lockError instanceof Error
+          ? lockError.message
+          : "Couldn't lock your answer.";
+      setFlowModal({
+        type: "error",
+        message: `${message} Try again.`,
+        retry: "lock",
+      });
     } finally {
       setIsBusy(false);
     }
+  }
+
+  function handlePlaceNextPin() {
+    setFlowModal(null);
+    setIsAdjusting(false);
+    setPendingGuess(null);
+  }
+
+  function handleFlowRetry() {
+    if (!flowModal || flowModal.type !== "error") {
+      return;
+    }
+    if (flowModal.retry === "getClue") {
+      void handleGetAnotherClue();
+      return;
+    }
+    void handleLockFinalAnswer();
   }
 
   async function handleShareScore() {
@@ -441,62 +540,6 @@ export function GamePlay() {
     );
   }
 
-  async function handleConfirmFinalAnswer() {
-    if (!pendingGuess || isBusy || reveal) {
-      return;
-    }
-
-    const activeRowIndex = rows.findIndex((row) => row.coordinates === null);
-    if (activeRowIndex === -1 || activeRowIndex >= CLUE_COUNT - 1) {
-      return;
-    }
-
-    setIsBusy(true);
-    setError(null);
-
-    try {
-      const guessData = await postGuess(pendingGuess);
-
-      setRows((current) =>
-        current.map((row, index) =>
-          index === activeRowIndex
-            ? {
-                ...row,
-                coordinates: pendingGuess,
-                temperature: guessData.temperature,
-              }
-            : row,
-        ),
-      );
-
-      const answerResponse = await fetch("/api/game/answer", {
-        method: "POST",
-      });
-      const answerData = (await answerResponse.json()) as LockAnswerResponse & {
-        error?: string;
-      };
-
-      if (!answerResponse.ok) {
-        throw new Error(answerData.error ?? "Couldn't lock your answer.");
-      }
-
-      setPendingGuess(null);
-      setConfirmingAnswer(false);
-      setTransitionTemperature(null);
-      recordCompletedReveal(answerData.reveal);
-      setReveal(answerData.reveal);
-      setShareStatus("idle");
-      setWeekShareStatus("idle");
-      setResultsOpen(true);
-    } catch (answerError) {
-      setError(
-        `${answerError instanceof Error ? answerError.message : "Couldn't lock your answer."} Try again.`,
-      );
-    } finally {
-      setIsBusy(false);
-    }
-  }
-
   const isComplete = reveal !== null;
   const activeIndex = rows.findIndex((row) => row.coordinates === null);
   const activeRow = activeIndex >= 0 ? rows[activeIndex] : null;
@@ -507,20 +550,19 @@ export function GamePlay() {
   );
   const hasPin = pendingGuess !== null;
   const currentPinNumber = Math.max(pinNumber, 1);
-  const panelActions = getPanelActionState({
-    hasPin,
-    clueNumber: currentPinNumber,
-    isBusy,
-    isComplete,
-    isConfirming: confirmingAnswer,
-  });
-  const placementPrompt = getPlacementPrompt({
+  const modalOpen = flowModal !== null;
+  const placementPrompt = getMapPlacementCopy({
     pinNumber: currentPinNumber,
     hasPin,
+    isAdjusting,
+    modalOpen,
   });
-  const canAct = panelActions.canAct;
-  const showActions = panelActions.showActions;
-  const isFinalClue = panelActions.isFinalClue;
+  const mapInteractive =
+    !isComplete &&
+    !isBusy &&
+    !isStarting &&
+    !modalOpen &&
+    (isAdjusting || !hasPin);
 
   const actualDistances =
     reveal?.guesses
@@ -618,12 +660,22 @@ export function GamePlay() {
         </div>
       </header>
 
-      <TemperatureToast temperature={tempToast} toastKey={tempToastKey} />
-
       <HowToPlayModal
         open={howToPlayOpen}
         primaryLabel={howToPlayCta}
         onClose={() => setHowToPlayOpen(false)}
+      />
+
+      <ClueFlowModal
+        state={howToPlayOpen || resultsOpen ? null : flowModal}
+        isBusy={isBusy}
+        onRequestLock={handleRequestLock}
+        onConfirmLock={() => void handleLockFinalAnswer()}
+        onCancelLock={handleCancelLock}
+        onAdjust={handleAdjustPin}
+        onGetAnotherClue={() => void handleGetAnotherClue()}
+        onPlaceNextPin={handlePlaceNextPin}
+        onRetry={handleFlowRetry}
       />
 
       {reveal ? (
@@ -758,34 +810,6 @@ export function GamePlay() {
                 nextReleaseAt={reveal.nextReleaseAt}
               />
             </div>
-          ) : confirmingAnswer ? (
-            <div className="fg-feedback rounded-lg border border-rule p-4">
-              <p className="font-display text-2xl font-semibold leading-snug">
-                Lock this as your final answer?
-              </p>
-              <p className="mt-2 text-sm text-muted">
-                You won&apos;t see the remaining clues. Your current location
-                will count for the remaining rounds.
-              </p>
-              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                <button
-                  type="button"
-                  disabled={isBusy || !hasPin}
-                  onClick={() => void handleConfirmFinalAnswer()}
-                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
-                >
-                  Lock Final Answer
-                </button>
-                <button
-                  type="button"
-                  disabled={isBusy}
-                  onClick={() => setConfirmingAnswer(false)}
-                  className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold transition hover:bg-neutral-50 disabled:opacity-60"
-                >
-                  Keep Playing
-                </button>
-              </div>
-            </div>
           ) : activeRow ? (
             <div key={activeIndex} className="fg-feedback space-y-2">
               <div>
@@ -797,67 +821,16 @@ export function GamePlay() {
                 </p>
               </div>
 
-              {transitionTemperature ? (
-                <p
-                  className={`hidden items-center gap-2 rounded-md px-3 py-2 text-sm lg:flex ${TEMPERATURE[transitionTemperature].tone}`}
-                >
-                  <span aria-hidden="true" className="text-base">
-                    {TEMPERATURE[transitionTemperature].emoji}
-                  </span>
-                  <span>
-                    <strong className="font-semibold">
-                      {TEMPERATURE[transitionTemperature].word}.
-                    </strong>{" "}
-                    {feedbackSentence(transitionTemperature, lockedCount)}
-                  </span>
-                </p>
+              {placementPrompt ? (
+                <div aria-live="polite">
+                  <p className="text-sm font-semibold text-foreground">
+                    {placementPrompt.title}
+                  </p>
+                  <p className="mt-0.5 text-sm text-muted">
+                    {placementPrompt.detail}
+                  </p>
+                </div>
               ) : null}
-
-              <div aria-live="polite">
-                <p className="text-sm font-semibold text-foreground">
-                  {placementPrompt.title}
-                </p>
-                <p className="mt-0.5 text-sm text-muted">
-                  {placementPrompt.detail}
-                </p>
-              </div>
-
-              {/*
-                Reserve the two-button stack height always so the map does not
-                jump when actions appear/disappear. Actions stay visually hidden
-                (not disabled grey) until a pin exists.
-              */}
-              <div
-                className={`flex min-h-[5.75rem] flex-col gap-2 ${
-                  showActions ? "" : "invisible pointer-events-none"
-                }`}
-                aria-hidden={!showActions}
-              >
-                <button
-                  type="button"
-                  disabled={!canAct}
-                  tabIndex={showActions ? 0 : -1}
-                  onClick={() =>
-                    void (isFinalClue ? handleSeeResult() : handleGetNextClue())
-                  }
-                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {panelActions.primaryLabel}
-                </button>
-                {panelActions.secondaryLabel ? (
-                  <button
-                    type="button"
-                    disabled={!canAct}
-                    tabIndex={showActions ? 0 : -1}
-                    onClick={() => setConfirmingAnswer(true)}
-                    className="rounded-md border border-course px-4 py-2.5 text-sm font-semibold text-course transition hover:bg-course-soft disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {panelActions.secondaryLabel}
-                  </button>
-                ) : (
-                  <div className="h-[2.625rem]" aria-hidden="true" />
-                )}
-              </div>
             </div>
           ) : null}
 
@@ -878,7 +851,7 @@ export function GamePlay() {
           }`}
           gameMode
           showLabels={isComplete}
-          interactive={!isComplete && !isBusy && !isStarting && !confirmingAnswer}
+          interactive={mapInteractive}
           pendingGuess={isComplete ? null : pendingGuess}
           pendingNumber={Math.max(pinNumber, 1)}
           lockedGuesses={mapGuesses}

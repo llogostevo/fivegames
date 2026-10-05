@@ -16,15 +16,15 @@ const STEPS = [
   },
   {
     title: "Drop a pin",
-    body: "Tap the map, then Submit Guess to lock it.",
+    body: "Tap the map to place your pin. Then decide what to do next.",
+  },
+  {
+    title: "Lock, adjust, or continue",
+    body: "Lock your answer, adjust the same pin with no feedback, or spend a clue.",
   },
   {
     title: "Warmer or colder",
-    body: "From pin 2, see if you’re closer — not the exact distance.",
-  },
-  {
-    title: "Continue or lock",
-    body: "Take the next clue, or Lock Final Answer early.",
+    body: "Only after you get another clue will you learn if you got warmer or colder.",
   },
   {
     title: "Score at the end",
