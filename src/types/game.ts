@@ -1,5 +1,6 @@
-import type { Coordinates } from "@/types/coordinates";
+import type { GameMode } from "@/lib/game/modes";
 import type { ThemeId } from "@/lib/game/themes";
+import type { Coordinates } from "@/types/coordinates";
 
 export type GameAnswer = {
   name: string;
@@ -7,13 +8,25 @@ export type GameAnswer = {
   lng: number;
 };
 
-/** Full server-side game definition loaded from dated JSON. Never send wholesale to the client. */
+/** Optional reveal-only detail (e.g. Football stadium / city). Never sent mid-game. */
+export type GameAnswerDetail = {
+  stadium?: string;
+  city?: string;
+  division?: string;
+  clubId?: string;
+};
+
+/** Full server-side game definition. Never send wholesale to the client. */
 export type GameDefinition = {
   id: string;
   date: string;
   gameNumber: number;
   theme: ThemeId;
+  /** Defaults to daily when omitted (legacy daily JSON). */
+  mode?: GameMode;
   answer: GameAnswer;
+  /** Football (and future modes) extras for completed reveals only. */
+  answerDetail?: GameAnswerDetail;
   clues: string[];
 };
 
@@ -52,7 +65,12 @@ export type GameReveal = {
   answer: {
     name: string;
     coordinates: Coordinates;
+    stadium?: string;
+    city?: string;
+    division?: string;
   };
+  /** Which PIN5 mode produced this reveal. */
+  mode: GameMode;
   /**
    * Actual committed pins only (journey history).
    * Final score is NOT the sum of these pins.
@@ -122,6 +140,7 @@ export type PublicGameState = {
   gameId: string;
   gameNumber: number;
   date: string;
+  mode: GameMode;
   themeId: ThemeId;
   /** Display name for the theme chip. */
   theme: string;

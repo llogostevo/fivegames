@@ -1,12 +1,22 @@
 import { addCalendarDays, isValidIsoDate } from "@/lib/game/date";
+import {
+  DEFAULT_GAME_MODE,
+  PLAYER_HISTORY_KEY_BY_MODE,
+  type GameMode,
+} from "@/lib/game/modes";
 import { SCORING } from "@/lib/game/scoring";
 import { isThemeId, type ThemeId } from "@/lib/game/themes";
 import { getWeekDates, getWeekdayIndex } from "@/lib/game/week";
 import type { GameReveal } from "@/types/game";
 
-export const PLAYER_HISTORY_KEY = "pin5_player_history";
+/** Daily history key — kept for backwards compatibility with existing localStorage. */
+export const PLAYER_HISTORY_KEY = PLAYER_HISTORY_KEY_BY_MODE.daily;
 export const PLAYER_HISTORY_VERSION = 1;
 export const MAX_WEEKLY_SCORE = SCORING.MAX_TOTAL_POINTS * 7;
+
+export function historyStorageKey(mode: GameMode = DEFAULT_GAME_MODE): string {
+  return PLAYER_HISTORY_KEY_BY_MODE[mode];
+}
 
 export type PlayerHistoryGame = {
   gameId: string;
@@ -175,13 +185,14 @@ export function readPlayerHistory(
   storage: Pick<Storage, "getItem"> | null = typeof window !== "undefined"
     ? window.localStorage
     : null,
+  mode: GameMode = DEFAULT_GAME_MODE,
 ): PlayerHistory {
   if (!storage) {
     return emptyHistory();
   }
 
   try {
-    const raw = storage.getItem(PLAYER_HISTORY_KEY);
+    const raw = storage.getItem(historyStorageKey(mode));
     if (!raw) {
       return emptyHistory();
     }
@@ -196,13 +207,14 @@ export function writePlayerHistory(
   storage: Pick<Storage, "setItem"> | null = typeof window !== "undefined"
     ? window.localStorage
     : null,
+  mode: GameMode = DEFAULT_GAME_MODE,
 ): void {
   if (!storage) {
     return;
   }
 
   try {
-    storage.setItem(PLAYER_HISTORY_KEY, JSON.stringify(history));
+    storage.setItem(historyStorageKey(mode), JSON.stringify(history));
   } catch {
     // Quota / private mode — ignore.
   }
@@ -256,12 +268,13 @@ export function recordCompletedReveal(
     ? window.localStorage
     : null,
 ): PlayerHistory {
-  const current = readPlayerHistory(storage);
+  const mode = reveal.mode ?? DEFAULT_GAME_MODE;
+  const current = readPlayerHistory(storage, mode);
   const next = upsertCompletedGame(
     current,
     historyGameFromReveal(reveal, completedAt),
   );
-  writePlayerHistory(next, storage);
+  writePlayerHistory(next, storage, mode);
   return next;
 }
 

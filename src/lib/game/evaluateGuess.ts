@@ -33,6 +33,12 @@ function assertActiveSession(game: GameDefinition, session: GameSession) {
   if (session.gameId !== game.id) {
     throw new Error("Session does not match game");
   }
+
+  const sessionGameMode = session.mode ?? "daily";
+  const definitionMode = game.mode ?? "daily";
+  if (sessionGameMode !== definitionMode) {
+    throw new Error("Session does not match game");
+  }
   if (session.lockedAfterClue !== null) {
     throw new Error("Game is already complete");
   }

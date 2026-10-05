@@ -9,6 +9,11 @@ import {
   isValidIsoDate,
   type ClockOptions,
 } from "@/lib/game/date";
+import {
+  getReleasedFootballGameByDate,
+  getTodaysFootballGame,
+} from "@/lib/game/football/loadFootballGame";
+import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import type { GameDefinition } from "@/types/game";
 
@@ -128,6 +133,7 @@ export function parseGameDefinition(
     date: raw.date,
     gameNumber: raw.gameNumber,
     theme: raw.theme,
+    mode: "daily",
     answer: {
       name: answer.name.trim(),
       lat,
@@ -180,6 +186,18 @@ export async function getTodaysGame(
   return getGameByDate(date);
 }
 
+/** Load today's game for a mode (daily JSON or Football schedule). */
+export async function getTodaysGameForMode(
+  mode: GameMode,
+  now: Date = new Date(),
+  options: ClockOptions = {},
+): Promise<GameDefinition> {
+  if (mode === "football") {
+    return getTodaysFootballGame(now, options);
+  }
+  return getTodaysGame(now, options);
+}
+
 /**
  * Load a game only if it is released at `now`.
  * Used to keep unreleased dated games out of privileged flows.
@@ -195,6 +213,33 @@ export async function getReleasedGameByDate(
   return getGameByDate(date);
 }
 
+/** Load a dated game for a mode when released. */
+export async function getReleasedGameForMode(
+  mode: GameMode,
+  date: string,
+  now: Date = new Date(),
+  options: ClockOptions = {},
+): Promise<GameDefinition> {
+  if (mode === "football") {
+    return getReleasedFootballGameByDate(date, now, options);
+  }
+  return getReleasedGameByDate(date, now, options);
+}
+
+/** Load any mode's game by date (no release gate — session access uses startedAt). */
+export async function getGameForModeByDate(
+  mode: GameMode,
+  date: string,
+): Promise<GameDefinition> {
+  if (mode === "football") {
+    const { getFootballGameByDate } = await import(
+      "@/lib/game/football/loadFootballGame"
+    );
+    return getFootballGameByDate(date);
+  }
+  return getGameByDate(date);
+}
+
 /** Public theme/meta fields safe to send before completion. */
 export function getPublicGameMeta(
   game: GameDefinition,
@@ -202,10 +247,12 @@ export function getPublicGameMeta(
   options: ClockOptions = {},
 ) {
   const theme = getTheme(game.theme);
+  const mode = game.mode ?? DEFAULT_GAME_MODE;
   return {
     gameId: game.id,
     gameNumber: game.gameNumber,
     date: game.date,
+    mode,
     themeId: game.theme,
     theme: theme.label,
     accent: theme.accent,

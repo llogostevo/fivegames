@@ -113,12 +113,23 @@ export function FoundCelebration({
         >
           YOU FOUND IT!
         </h2>
-        <p className="mt-3 font-display text-2xl font-semibold text-white">
+        <p
+          className={`mt-3 font-display text-2xl font-semibold text-white ${
+            reveal.mode === "football" ? "uppercase tracking-wide" : ""
+          }`}
+        >
           {reveal.answer.name}
         </p>
-        <p className="mt-2 text-sm text-white/80">
-          You found today&apos;s location.
-        </p>
+        {reveal.answer.stadium || reveal.answer.city ? (
+          <div className="mt-2 space-y-0.5 text-sm text-white/85">
+            {reveal.answer.stadium ? <p>{reveal.answer.stadium}</p> : null}
+            {reveal.answer.city ? <p>{reveal.answer.city}</p> : null}
+          </div>
+        ) : (
+          <p className="mt-2 text-sm text-white/80">
+            You found today&apos;s location.
+          </p>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { GAME_SESSION_COOKIE } from "@/lib/game/constants";
 import { getRequestClockOptions } from "@/lib/game/devClock";
 import { checkPin } from "@/lib/game/evaluateGuess";
 import {
-  decodeSession,
+  readSignedSessionForMode,
+  requestGameMode,
+} from "@/lib/game/requestSession";
+import {
   encodeSession,
   SessionSecretConfigError,
   sessionCookieOptions,
@@ -20,8 +21,8 @@ const GENERIC_ACTION_ERROR = "Couldn't check that pin.";
 
 export async function POST(request: Request) {
   try {
-    const cookieStore = await cookies();
-    const session = decodeSession(cookieStore.get(GAME_SESSION_COOKIE)?.value);
+    const mode = requestGameMode(request);
+    const session = await readSignedSessionForMode(mode);
 
     if (!session) {
       return NextResponse.json({ error: GENERIC_SESSION_ERROR }, { status: 409 });
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
 
     // Always persist: unsuccessful commits also consume a pin.
     const response = NextResponse.json(result.response);
-    const cookie = sessionCookieOptions();
+    const cookie = sessionCookieOptions(mode);
     response.cookies.set(cookie.name, encodeSession(result.session), cookie);
     return response;
   } catch (error) {

@@ -1,6 +1,7 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import { getNextReleaseAt, type ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
+import { DEFAULT_GAME_MODE } from "@/lib/game/modes";
 import { calculateFinalScore, SCORING } from "@/lib/game/scoring";
 import type { GameSession } from "@/lib/game/session";
 import { getTheme } from "@/lib/game/themes";
@@ -68,11 +69,14 @@ export function buildReveal(
   });
 
   const theme = getTheme(game.theme);
+  const mode = game.mode ?? DEFAULT_GAME_MODE;
+  const detail = game.answerDetail;
 
   return {
     gameId: game.id,
     gameNumber: game.gameNumber,
     date: game.date,
+    mode,
     themeId: game.theme,
     theme: theme.label,
     accent: theme.accent,
@@ -81,6 +85,9 @@ export function buildReveal(
     answer: {
       name: game.answer.name,
       coordinates: target,
+      ...(detail?.stadium ? { stadium: detail.stadium } : {}),
+      ...(detail?.city ? { city: detail.city } : {}),
+      ...(detail?.division ? { division: detail.division } : {}),
     },
     guesses,
     lockedAfterClue,

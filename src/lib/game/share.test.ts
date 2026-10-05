@@ -57,6 +57,7 @@ function reveal(overrides: Partial<GameReveal> = {}): GameReveal {
     gameId: "2026-10-02",
     gameNumber: 4,
     date: "2026-10-02",
+    mode: "daily",
     themeId: "history",
     theme: "History",
     accent: "#b45309",

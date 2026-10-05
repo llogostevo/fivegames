@@ -56,6 +56,7 @@ function fakeReveal(date: string, score: number): GameReveal {
     gameId: date,
     gameNumber: 1,
     date,
+    mode: "daily",
     themeId: "history",
     theme: "History",
     accent: "#b45309",
