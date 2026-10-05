@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 
 import { DevDateToolbarHost } from "@/components/dev/DevDateToolbarHost";
+import { HUB_SEO } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 import "./globals.css";
@@ -19,25 +20,28 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["600", "700"],
 });
 
-const siteTitle = "PIN5";
-const siteDescription =
-  "PIN5 — daily location games. Play Daily 5, London Pubs, Train & Tube, World, Airports, and Football 5.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: siteTitle,
-  description: siteDescription,
+  title: {
+    default: HUB_SEO.title,
+    template: "%s",
+  },
+  description: HUB_SEO.description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
-    title: siteTitle,
-    description: siteDescription,
+    title: HUB_SEO.title,
+    description: HUB_SEO.description,
     siteName: "PIN5",
     locale: "en_GB",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescription,
+    title: HUB_SEO.title,
+    description: HUB_SEO.description,
   },
 };
 

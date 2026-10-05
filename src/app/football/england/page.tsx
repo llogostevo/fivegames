@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 
 import { GamePlay } from "@/components/game/GamePlay";
+import { SeoCopy } from "@/components/seo/SeoCopy";
+import { buildPageMetadata, seoForMode } from "@/lib/seo";
 
-const title = "PIN5 ⚽ Football · England";
-const description =
-  "Daily PIN5 Football England — find today's Football 92 home ground from five clues.";
+const page = seoForMode("football");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    siteName: "PIN5 Football England",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-};
+export const metadata: Metadata = buildPageMetadata(page);
 
 export default function FootballEnglandPage() {
-  return <GamePlay mode="football" />;
+  return (
+    <>
+      <GamePlay mode="football" />
+      <SeoCopy page={page} mode="football" />
+    </>
+  );
 }

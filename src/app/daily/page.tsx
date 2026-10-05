@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 
 import { GamePlay } from "@/components/game/GamePlay";
+import { SeoCopy } from "@/components/seo/SeoCopy";
+import { buildPageMetadata, seoForMode } from "@/lib/seo";
 
-const title = "PIN5 · Daily 5 · UK Edition";
-const description =
-  "Five clues. Five pins. Find the place. PIN5 Daily 5 UK Edition.";
+const page = seoForMode("daily");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    siteName: "PIN5 Daily 5",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-};
+export const metadata: Metadata = buildPageMetadata(page);
 
 export default function DailyPage() {
-  return <GamePlay mode="daily" />;
+  return (
+    <>
+      <GamePlay mode="daily" />
+      <SeoCopy page={page} mode="daily" />
+    </>
+  );
 }

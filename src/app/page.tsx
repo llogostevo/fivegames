@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 
 import { HubGames } from "@/components/hub/HubGames";
 import { Pin5Mark } from "@/components/hub/Pin5Mark";
+import { SeoCopy } from "@/components/seo/SeoCopy";
 import {
   getAvailableGameDate,
   getNextReleaseAt,
 } from "@/lib/game/date";
 import { getRequestClockOptions } from "@/lib/game/devClock";
+import { buildPageMetadata, HUB_SEO } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "PIN5",
-  description:
-    "PIN5 — daily location games. Play Daily 5 UK, London Pubs, Train & Tube, World, Airports, and Football 5 across England, Italy, Germany, France, and Spain.",
-};
+export const metadata: Metadata = buildPageMetadata(HUB_SEO);
 
 export default async function HomePage() {
   const clockOptions = await getRequestClockOptions();
@@ -31,7 +29,7 @@ export default async function HomePage() {
                 PIN5
               </h1>
               <p className="mt-1 text-[0.95rem] leading-snug text-[#5f6368] sm:text-base">
-                Five clues. Five pins. One place.
+                Daily location games — five clues, five pins, one place
               </p>
             </div>
           </div>
@@ -42,6 +40,8 @@ export default async function HomePage() {
           nextReleaseAt={nextReleaseAt}
         />
       </div>
+
+      <SeoCopy page={HUB_SEO} includeWebsiteSchema headingLevel={2} />
     </main>
   );
 }

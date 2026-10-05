@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 
 import { GamePlay } from "@/components/game/GamePlay";
+import { SeoCopy } from "@/components/seo/SeoCopy";
+import { buildPageMetadata, seoForMode } from "@/lib/seo";
 
-const title = "PIN5 · Airports · World";
-const description =
-  "Five clues. Five pins. Find the airport anywhere on Earth. PIN5 Airports.";
+const page = seoForMode("world-airports");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    siteName: "PIN5 Airports",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-};
+export const metadata: Metadata = buildPageMetadata(page);
 
 export default function WorldAirportsPage() {
-  return <GamePlay mode="world-airports" />;
+  return (
+    <>
+      <GamePlay mode="world-airports" />
+      <SeoCopy page={page} mode="world-airports" />
+    </>
+  );
 }

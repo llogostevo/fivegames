@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 
 import { GamePlay } from "@/components/game/GamePlay";
+import { SeoCopy } from "@/components/seo/SeoCopy";
+import { buildPageMetadata, seoForMode } from "@/lib/seo";
 
-const title = "PIN5 · Train & Tube · London";
-const description =
-  "Five clues. Five pins. Find the London train or tube station. PIN5 Train & Tube.";
+const page = seoForMode("london-stations");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
-    title,
-    description,
-    siteName: "PIN5 Train & Tube",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-};
+export const metadata: Metadata = buildPageMetadata(page);
 
 export default function LondonStationsPage() {
-  return <GamePlay mode="london-stations" />;
+  return (
+    <>
+      <GamePlay mode="london-stations" />
+      <SeoCopy page={page} mode="london-stations" />
+    </>
+  );
 }
