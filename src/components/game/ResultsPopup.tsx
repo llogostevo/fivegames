@@ -371,34 +371,44 @@ export function ResultsPopup({
               </p>
             </div>
 
-            <ul className="mt-3 space-y-2.5">
+            <ul className="mt-3 space-y-1">
               {orderedStatuses.map(({ def, played, score }) => (
-                <li key={def.id} className="flex items-start gap-2.5">
-                  <span
-                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                      played
-                        ? "bg-course text-white"
-                        : "border border-dashed border-rule bg-white text-transparent"
-                    }`}
-                    aria-hidden="true"
+                <li key={def.id}>
+                  <Link
+                    href={modePath(def.id)}
+                    className="flex items-start gap-2.5 rounded-lg px-1.5 py-1.5 transition hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
+                    aria-label={
+                      played && score !== null
+                        ? `${modeRowLabel(def)}, scored ${score.toLocaleString()}, open game`
+                        : `${modeRowLabel(def)}, not played yet, open game`
+                    }
                   >
-                    {played ? <CheckIcon /> : null}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <p className="text-sm font-semibold">
-                        {modeRowLabel(def)}
-                      </p>
-                      {score !== null ? (
-                        <p className="text-sm font-semibold tabular-nums">
-                          {score.toLocaleString()}
+                    <span
+                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                        played
+                          ? "bg-course text-white"
+                          : "border border-dashed border-rule bg-white text-transparent"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {played ? <CheckIcon /> : null}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="text-sm font-semibold">
+                          {modeRowLabel(def)}
                         </p>
+                        {score !== null ? (
+                          <p className="text-sm font-semibold tabular-nums">
+                            {score.toLocaleString()}
+                          </p>
+                        ) : null}
+                      </div>
+                      {!played ? (
+                        <p className="text-xs text-muted">{modeRowHint(def)}</p>
                       ) : null}
                     </div>
-                    {!played ? (
-                      <p className="text-xs text-muted">{modeRowHint(def)}</p>
-                    ) : null}
-                  </div>
+                  </Link>
                 </li>
               ))}
             </ul>
