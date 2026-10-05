@@ -22,8 +22,7 @@ import {
 } from "@/lib/game/holdTip";
 import {
   holdProgress,
-  holdRingOffsetYPx,
-  holdRingScreenPosition,
+  holdRingSizePx,
   shouldCancelHoldForMovement,
   triggerPinCommitHaptic,
 } from "@/lib/game/pinHold";
@@ -70,7 +69,6 @@ type GameMapProps = {
 const COURSE_SOURCE_ID = "fg-course";
 const DEFAULT_ACCENT = "#c4157a";
 const FINISH_COLOR = "#1e1e24";
-const HOLD_RING_SIZE = 56;
 
 type LineFeature = GeoJSON.Feature<GeoJSON.LineString, { kind: string }>;
 
@@ -104,42 +102,47 @@ function prefersReducedMotion() {
 function HoldProgressRing({
   progress,
   pulsing,
+  size,
 }: {
   progress: number;
   pulsing: boolean;
+  size: number;
 }) {
-  const radius = 20;
+  const center = size / 2;
+  const stroke = size >= 80 ? 5.5 : 4;
+  const radius = center - stroke - 2;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference * (1 - progress);
+  const dashOffset = circumference * (1 - progress);
+  const innerDot = size >= 80 ? 8 : 7;
 
   return (
     <div
       className={`fg-hold-ring${pulsing ? " fg-hold-ring--pulse" : ""}`}
       aria-hidden="true"
     >
-      <svg width={HOLD_RING_SIZE} height={HOLD_RING_SIZE} viewBox="0 0 56 56">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <circle
-          cx="28"
-          cy="28"
+          cx={center}
+          cy={center}
           r={radius}
           fill="none"
           stroke="rgba(255,255,255,0.85)"
-          strokeWidth="4"
+          strokeWidth={stroke}
         />
         <circle
-          cx="28"
-          cy="28"
+          cx={center}
+          cy={center}
           r={radius}
           fill="none"
           stroke="var(--course)"
-          strokeWidth="4"
+          strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          transform="rotate(-90 28 28)"
+          strokeDashoffset={dashOffset}
+          transform={`rotate(-90 ${center} ${center})`}
         />
         {progress >= 1 ? (
-          <circle cx="28" cy="28" r="7" fill="var(--course)" />
+          <circle cx={center} cy={center} r={innerDot} fill="var(--course)" />
         ) : null}
       </svg>
     </div>
@@ -187,12 +190,11 @@ export function GameMap({
   const [mapReady, setMapReady] = useState(false);
   const [styleError, setStyleError] = useState<string | null>(null);
   const [holdVisual, setHoldVisual] = useState<HoldVisual | null>(null);
-  /** Touch point (commit) + ring centre (may be offset above the finger). */
+  /** Exact commit point — ring is centred here (larger on touch). */
   const [holdScreen, setHoldScreen] = useState<{
-    touchX: number;
-    touchY: number;
-    ringX: number;
-    ringY: number;
+    x: number;
+    y: number;
+    ringSize: number;
   } | null>(null);
   const [coachMessage, setCoachMessage] = useState<string | null>(null);
 
@@ -249,23 +251,14 @@ export function GameMap({
   }
 
   function setHoldScreenFromPoint(
-    touchX: number,
-    touchY: number,
+    x: number,
+    y: number,
     pointerType: string,
   ) {
-    const container = containerRef.current;
-    const ring = holdRingScreenPosition({
-      touchX,
-      touchY,
-      offsetY: holdRingOffsetYPx(pointerType),
-      ringSize: HOLD_RING_SIZE,
-      containerHeight: container?.clientHeight ?? 0,
-    });
     setHoldScreen({
-      touchX,
-      touchY,
-      ringX: ring.x,
-      ringY: ring.y,
+      x,
+      y,
+      ringSize: holdRingSizePx(pointerType),
     });
   }
 
@@ -691,33 +684,34 @@ export function GameMap({
         ref={containerRef}
         className={`absolute inset-0 ${interactive ? "fg-map--placing" : ""}`}
         role="application"
-        aria-label="Map. Press and hold to place your pin. Keep holding until the circle fills above your finger."
+        aria-label="Map. Press and hold to place your pin. Keep holding until the circle fills."
       />
       {holdVisual && holdScreen ? (
         <>
-          {/* Exact commit point — stays under the finger. */}
+          {/* Exact commit point under the finger. */}
           <div
             className="fg-hold-target pointer-events-none absolute z-10"
             style={{
-              left: holdScreen.touchX,
-              top: holdScreen.touchY,
+              left: holdScreen.x,
+              top: holdScreen.y,
             }}
             aria-hidden="true"
           />
-          {/* Progress ring — offset above the thumb on touch/pen. */}
+          {/* Progress ring centred on the pin — larger on touch so the arc clears the thumb. */}
           <div
             className="pointer-events-none absolute z-10"
             style={{
-              left: holdScreen.ringX,
-              top: holdScreen.ringY,
-              width: HOLD_RING_SIZE,
-              height: HOLD_RING_SIZE,
+              left: holdScreen.x,
+              top: holdScreen.y,
+              width: holdScreen.ringSize,
+              height: holdScreen.ringSize,
               transform: "translate(-50%, -50%)",
             }}
           >
             <HoldProgressRing
               progress={holdVisual.progress}
               pulsing={holdVisual.pulsing}
+              size={holdScreen.ringSize}
             />
           </div>
         </>

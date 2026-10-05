@@ -12,11 +12,15 @@ export const PIN_COMMIT_HOLD_DURATION_MS = 800;
  */
 export const PIN_HOLD_MOVE_TOLERANCE_PX = 12;
 
+/** Progress ring diameter for mouse (cursor doesn't occlude much). */
+export const PIN_HOLD_RING_SIZE_MOUSE_PX = 56;
+
 /**
- * On touch/pen, lift the progress ring this many pixels above the contact
- * point so the thumb does not cover it. Mouse stays centred on the cursor.
+ * Progress ring diameter for touch/pen.
+ * Large enough that the fill arc sits outside a typical thumb pad,
+ * while the centre still marks the exact commit point.
  */
-export const PIN_HOLD_RING_OFFSET_Y_PX = 56;
+export const PIN_HOLD_RING_SIZE_TOUCH_PX = 104;
 
 /** Short success buzz when a pin commits (ms). */
 export const PIN_COMMIT_HAPTIC_MS = 14;
@@ -45,36 +49,11 @@ export function holdProgress(
   return Math.min(1, Math.max(0, elapsedMs / durationMs));
 }
 
-/** How far above the contact point to draw the hold ring (0 for mouse). */
-export function holdRingOffsetYPx(pointerType: string): number {
-  return pointerType === "mouse" ? 0 : PIN_HOLD_RING_OFFSET_Y_PX;
-}
-
-/**
- * Screen position for the progress ring.
- * Prefer above the finger; flip below near the top edge; clamp in-bounds.
- * Commit coordinates stay at the original touch point — only the ring moves.
- */
-export function holdRingScreenPosition(options: {
-  touchX: number;
-  touchY: number;
-  offsetY: number;
-  ringSize: number;
-  containerHeight: number;
-}): { x: number; y: number } {
-  const half = options.ringSize / 2;
-  const pad = 4;
-  let y = options.touchY - options.offsetY;
-
-  if (options.offsetY > 0 && y < half + pad) {
-    y = options.touchY + options.offsetY;
-  }
-
-  const minY = half + pad;
-  const maxY = Math.max(minY, options.containerHeight - half - pad);
-  y = Math.min(Math.max(y, minY), maxY);
-
-  return { x: options.touchX, y };
+/** Ring diameter for the active pointer — touch/pen gets the larger outer arc. */
+export function holdRingSizePx(pointerType: string): number {
+  return pointerType === "mouse"
+    ? PIN_HOLD_RING_SIZE_MOUSE_PX
+    : PIN_HOLD_RING_SIZE_TOUCH_PX;
 }
 
 /** Light haptic on successful pin commit (no-op when unsupported). */
