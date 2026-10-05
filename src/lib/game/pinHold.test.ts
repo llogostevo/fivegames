@@ -4,10 +4,10 @@ import { describe, it } from "node:test";
 import {
   PIN_COMMIT_HOLD_DURATION_MS,
   PIN_HOLD_MOVE_TOLERANCE_PX,
-  PIN_HOLD_RING_OFFSET_Y_PX,
+  PIN_HOLD_RING_SIZE_MOUSE_PX,
+  PIN_HOLD_RING_SIZE_TOUCH_PX,
   holdProgress,
-  holdRingOffsetYPx,
-  holdRingScreenPosition,
+  holdRingSizePx,
   shouldCancelHoldForMovement,
 } from "./pinHold";
 
@@ -51,37 +51,14 @@ describe("hold movement tolerance", () => {
   });
 });
 
-describe("hold ring offset", () => {
-  it("does not offset the ring for mouse", () => {
-    assert.equal(holdRingOffsetYPx("mouse"), 0);
+describe("hold ring size", () => {
+  it("uses the compact ring for mouse", () => {
+    assert.equal(holdRingSizePx("mouse"), PIN_HOLD_RING_SIZE_MOUSE_PX);
   });
 
-  it("offsets the ring above touch and pen contacts", () => {
-    assert.equal(holdRingOffsetYPx("touch"), PIN_HOLD_RING_OFFSET_Y_PX);
-    assert.equal(holdRingOffsetYPx("pen"), PIN_HOLD_RING_OFFSET_Y_PX);
-  });
-
-  it("places the ring above the finger when there is room", () => {
-    const ring = holdRingScreenPosition({
-      touchX: 120,
-      touchY: 200,
-      offsetY: PIN_HOLD_RING_OFFSET_Y_PX,
-      ringSize: 56,
-      containerHeight: 500,
-    });
-    assert.equal(ring.x, 120);
-    assert.equal(ring.y, 200 - PIN_HOLD_RING_OFFSET_Y_PX);
-  });
-
-  it("flips the ring below the finger near the top edge", () => {
-    const ring = holdRingScreenPosition({
-      touchX: 120,
-      touchY: 40,
-      offsetY: PIN_HOLD_RING_OFFSET_Y_PX,
-      ringSize: 56,
-      containerHeight: 500,
-    });
-    assert.equal(ring.x, 120);
-    assert.ok(ring.y > 40);
+  it("uses a larger outer arc for touch and pen", () => {
+    assert.equal(holdRingSizePx("touch"), PIN_HOLD_RING_SIZE_TOUCH_PX);
+    assert.equal(holdRingSizePx("pen"), PIN_HOLD_RING_SIZE_TOUCH_PX);
+    assert.ok(PIN_HOLD_RING_SIZE_TOUCH_PX > PIN_HOLD_RING_SIZE_MOUSE_PX);
   });
 });

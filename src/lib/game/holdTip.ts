@@ -9,8 +9,7 @@ export const HOLD_TIP_SEEN_KEY = "pin5_hold_tip_seen";
 export const SHORT_TAP_COACH_DURATION_MS = 2_200;
 
 export const SHORT_TAP_COACH_FIRST = "Hold a little longer…";
-export const SHORT_TAP_COACH_REPEAT =
-  "Press & hold — circle fills above your finger";
+export const SHORT_TAP_COACH_REPEAT = "Press & hold until the circle fills";
 
 export function readHoldTipSeen(): boolean {
   try {

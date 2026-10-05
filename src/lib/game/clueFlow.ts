@@ -148,6 +148,6 @@ export function getMapPlacementCopy(options: {
 
   return {
     title: `📍 Press & hold to place pin ${pinNumber} of ${CLUE_COUNT}`,
-    detail: "Keep holding until the circle fills above your finger.",
+    detail: "Keep holding until the circle fills.",
   };
 }

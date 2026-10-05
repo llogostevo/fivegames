@@ -57,7 +57,7 @@ describe("map placement copy", () => {
       }),
       {
         title: "📍 Press & hold to place pin 1 of 5",
-        detail: "Keep holding until the circle fills above your finger.",
+        detail: "Keep holding until the circle fills.",
       },
     );
   });
@@ -71,7 +71,7 @@ describe("map placement copy", () => {
       }),
       {
         title: "📍 Press & hold to place pin 2 of 5",
-        detail: "Keep holding until the circle fills above your finger.",
+        detail: "Keep holding until the circle fills.",
       },
     );
   });

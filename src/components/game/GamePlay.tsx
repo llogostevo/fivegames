@@ -911,8 +911,8 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
                   Press & hold to place your pin
                 </p>
                 <p className="mt-0.5 text-xs leading-snug text-muted sm:text-sm">
-                  Keep holding — the circle fills above your finger. Once the
-                  pin drops, your guess is locked in.
+                  Keep holding until the circle fills. Once the pin drops, your
+                  guess is locked in.
                 </p>
               </div>
             </div>
