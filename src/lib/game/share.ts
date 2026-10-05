@@ -16,7 +16,7 @@ import {
   getPin5WeekNumber,
   isWeeklyShareAvailable,
 } from "@/lib/game/week";
-import { SHARE_URL } from "@/lib/site";
+import { shareUrlForMode } from "@/lib/site";
 import type { GameReveal, RevealedGuess, TemperatureResult } from "@/types/game";
 
 const TEMPERATURE_EMOJI: Record<TemperatureResult, string> = {
@@ -97,7 +97,7 @@ export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
     lines.push(`🔥 ${formatStreakLabel(streak)}`);
   }
 
-  lines.push("", "You can't beat me.", SHARE_URL);
+  lines.push("", "You can't beat me.", shareUrlForMode(mode));
   return lines.join("\n");
 }
 
@@ -165,7 +165,7 @@ export function buildWeeklyShareText({
   lines.push(
     "",
     weeklyShareBragLine(weekly.weeklyScore, daysPlayed),
-    SHARE_URL,
+    shareUrlForMode(mode),
   );
 
   return lines.join("\n");
