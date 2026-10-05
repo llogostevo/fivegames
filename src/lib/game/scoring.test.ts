@@ -3,11 +3,15 @@ import { describe, it } from "node:test";
 
 import {
   CLUE_MAX_SCORES,
+  CITY_SCORING_PROFILE,
+  COUNTRY_SCORING_PROFILE,
   SCORING,
+  WORLD_SCORING_PROFILE,
   accuracyFactorFromDistanceKm,
   calculateFinalScore,
   getClueMaxScore,
   getNextClueMaxScore,
+  maxScoreForProfile,
 } from "./scoring";
 
 const SAMPLE_DISTANCES_KM = [
@@ -138,5 +142,66 @@ describe("calculateFinalScore", () => {
       assert.ok(result.totalScore < 25_000);
       assert.equal(result.totalScore, getClueMaxScore(clue));
     }
+  });
+});
+
+describe("WORLD_SCORING_PROFILE", () => {
+  it("keeps the same clue ceilings as country games", () => {
+    assert.deepEqual(
+      [...WORLD_SCORING_PROFILE.clueMaxScores],
+      [...COUNTRY_SCORING_PROFILE.clueMaxScores],
+    );
+    assert.equal(
+      maxScoreForProfile(WORLD_SCORING_PROFILE),
+      maxScoreForProfile(COUNTRY_SCORING_PROFILE),
+    );
+  });
+
+  it("still awards points for multi-thousand kilometre misses", () => {
+    const countryFar = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 1_000_000, // 1000 km
+      profile: COUNTRY_SCORING_PROFILE,
+    });
+    const worldFar = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 1_000_000,
+      profile: WORLD_SCORING_PROFILE,
+    });
+
+    assert.ok(countryFar.totalScore <= 1);
+    assert.ok(worldFar.totalScore > 10_000);
+    assert.ok(worldFar.totalScore < 25_000);
+    assert.ok(worldFar.totalScore > countryFar.totalScore * 100);
+  });
+
+  it("penalises wrong-borough misses on the city profile", () => {
+    const cityNear = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 1_500,
+      profile: CITY_SCORING_PROFILE,
+    });
+    const cityFar = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 12_000,
+      profile: CITY_SCORING_PROFILE,
+    });
+    const countrySame = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 12_000,
+      profile: COUNTRY_SCORING_PROFILE,
+    });
+
+    assert.ok(cityNear.totalScore > cityFar.totalScore);
+    assert.ok(cityFar.totalScore < countrySame.totalScore);
+  });
+
+  it("still collapses antipodal-scale misses toward zero", () => {
+    const antipode = calculateFinalScore({
+      clueNumber: 1,
+      distanceMeters: 15_000_000, // 15,000 km
+      profile: WORLD_SCORING_PROFILE,
+    });
+    assert.ok(antipode.totalScore < 1_500);
   });
 });

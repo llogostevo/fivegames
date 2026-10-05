@@ -30,6 +30,7 @@ import {
   DEFAULT_MAP_CENTER,
   DEFAULT_MAP_ZOOM,
   MAP_MAX_ZOOM,
+  type MapProjection,
 } from "@/lib/map/provider";
 import { loadMapStyle, setIdentifyingLabelsVisible } from "@/lib/map/style";
 import { ensureMapLibreWorker } from "@/lib/map/worker";
@@ -43,6 +44,8 @@ export type LockedMapGuess = {
 type GameMapProps = {
   initialCenter?: Coordinates;
   initialZoom?: number;
+  /** Opening projection (globe for World). */
+  initialProjection?: MapProjection;
   /** Hide place names, POIs and other identifying labels on first load. */
   gameMode?: boolean;
   /** Show identifying labels (used for the reveal). */
@@ -152,6 +155,7 @@ function HoldProgressRing({
 export function GameMap({
   initialCenter = DEFAULT_MAP_CENTER,
   initialZoom = DEFAULT_MAP_ZOOM,
+  initialProjection = "mercator",
   gameMode = true,
   showLabels = false,
   interactive = true,
@@ -457,6 +461,15 @@ export function GameMap({
         map.on("load", () => {
           if (cancelled) {
             return;
+          }
+          // Globe must wait until style load — early setProjection throws and
+          // blocks World mode ("Style is not done loading").
+          if (initialProjection === "globe") {
+            try {
+              map.setProjection({ type: "globe" });
+            } catch (error) {
+              console.warn("Could not enable globe projection", error);
+            }
           }
           map.addSource(COURSE_SOURCE_ID, {
             type: "geojson",

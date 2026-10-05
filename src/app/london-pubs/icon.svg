@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 London Pubs">
+  <rect width="32" height="32" rx="8" fill="#1e1e24"/>
+  <g transform="translate(4 7)">
+    <rect width="24" height="18" rx="2" fill="#ffffff"/>
+    <path d="M12 0v18M0 9h24" stroke="#C8102E" stroke-width="3.2"/>
+    <path d="M4.2 2.2 5.6 5.4 2.8 4.2Z" fill="#C8102E"/>
+    <path d="M4.8 5.2v5.2" stroke="#C8102E" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,23 +1,15 @@
-import { addCalendarDays, isValidIsoDate } from "@/lib/game/date";
-
 /**
- * Football schedule configuration.
- *
- * To deliberately reseed future Football games without rewriting history:
- * 1. Bump `version`
- * 2. Set `cycleStartDate` to the first London date that should use the new order
- * 3. Change `seed` to a new stable string
- *
- * Dates before `cycleStartDate` are not expected to resolve under this version.
+ * Deterministic Football schedule helpers (shared by all leagues).
  */
-export const FOOTBALL_SCHEDULE = {
-  version: 1,
-  /** First Europe/London game date for this schedule version. */
-  cycleStartDate: "2026-09-28",
-  /** Deterministic shuffle seed — change only when reseeding. */
-  seed: "pin5-football92-v1",
-  clubCount: 92,
-} as const;
+
+import { addCalendarDays, isValidIsoDate } from "@/lib/game/date";
+import {
+  FOOTBALL_LEAGUES,
+  FOOTBALL_SCHEDULE,
+  type FootballLeagueId,
+} from "@/lib/game/football/leagues";
+
+export { FOOTBALL_SCHEDULE };
 
 /** FNV-1a style hash → uint32 seed for the PRNG. */
 export function hashSeed(seed: string): number {
@@ -63,10 +55,7 @@ export function orderFootballClubIds(
 }
 
 /** Whole calendar days from startDate to date (date >= startDate). */
-export function calendarDaysSince(
-  startDate: string,
-  date: string,
-): number {
+export function calendarDaysSince(startDate: string, date: string): number {
   if (!isValidIsoDate(startDate) || !isValidIsoDate(date)) {
     throw new Error("Invalid ISO date for football schedule");
   }
@@ -99,6 +88,10 @@ export function footballCycleIndex(
   return ((offset % clubCount) + clubCount) % clubCount;
 }
 
-export function footballGameNumber(date: string): number {
-  return calendarDaysSince(FOOTBALL_SCHEDULE.cycleStartDate, date) + 1;
+export function footballGameNumber(
+  date: string,
+  leagueId: FootballLeagueId = "england",
+): number {
+  const start = FOOTBALL_LEAGUES[leagueId].schedule.cycleStartDate;
+  return calendarDaysSince(start, date) + 1;
 }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 Football Italy">
+  <rect width="32" height="32" rx="8" fill="#15803d"/>
+  <g transform="translate(4 7)">
+    <rect width="24" height="18" rx="2" fill="#ffffff"/>
+    <rect width="8" height="18" fill="#009246"/>
+    <rect x="16" width="8" height="18" fill="#CE2B37"/>
+  </g>
+</svg>

@@ -2,6 +2,10 @@ import { CLUE_COUNT } from "@/lib/game/constants";
 import type { ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
 import { isFoundLocation } from "@/lib/game/found";
+import {
+  DEFAULT_GAME_MODE,
+  scoringProfileForMode,
+} from "@/lib/game/modes";
 import { buildReveal } from "@/lib/game/reveal";
 import type { GameSession } from "@/lib/game/session";
 import type { Coordinates } from "@/types/coordinates";
@@ -13,6 +17,14 @@ import type {
   LockGuessResponse,
   TemperatureResult,
 } from "@/types/game";
+
+function scoringForSession(
+  game: GameDefinition,
+  session: GameSession,
+) {
+  const mode = game.mode ?? session.mode ?? DEFAULT_GAME_MODE;
+  return scoringProfileForMode(mode);
+}
 
 function isValidCoordinate(value: unknown): value is Coordinates {
   return (
@@ -118,8 +130,9 @@ export function checkPin(options: {
   const guess = { lat: options.guess.lat, lng: options.guess.lng };
   const target = { lat: game.answer.lat, lng: game.answer.lng };
   const meters = distanceMeters(guess, target);
+  const foundRadius = scoringForSession(game, session).foundRadiusMetres;
 
-  if (isFoundLocation(meters)) {
+  if (isFoundLocation(meters, foundRadius)) {
     const completed = completeAsFound({
       game,
       session,
@@ -196,9 +209,10 @@ export function lockGuess(options: {
 
   const target = { lat: game.answer.lat, lng: game.answer.lng };
   const meters = distanceMeters(guess, target);
+  const foundRadius = scoringForSession(game, session).foundRadiusMetres;
 
   // Security backstop: committing a FOUND pin always completes the game.
-  if (isFoundLocation(meters)) {
+  if (isFoundLocation(meters, foundRadius)) {
     const completed = completeAsFound({
       game,
       session,
@@ -325,7 +339,10 @@ export function lockFinalAnswer(options: {
   const finalGuess = session.guesses[session.guesses.length - 1]!;
   const target = { lat: game.answer.lat, lng: game.answer.lng };
   const meters = distanceMeters(finalGuess, target);
-  const found = isFoundLocation(meters);
+  const found = isFoundLocation(
+    meters,
+    scoringForSession(game, session).foundRadiusMetres,
+  );
 
   const nextSession: GameSession = {
     ...session,

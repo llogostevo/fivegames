@@ -21,6 +21,12 @@ describe("How to play press-and-hold copy", () => {
     assert.equal(/click the map/i.test(joined), false);
   });
 
+  it("uses a location-neutral opening step", () => {
+    const first = HOW_TO_PLAY_STEPS[0]!;
+    assert.ok(first.body.toLowerCase().includes("location"));
+    assert.equal(/uk location/i.test(first.body), false);
+  });
+
   it("explains the clue-ceiling scoring model", () => {
     const scoreStep = HOW_TO_PLAY_STEPS.find((step) =>
       step.title.toLowerCase().includes("25,000"),

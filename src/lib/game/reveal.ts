@@ -1,8 +1,14 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import { getNextReleaseAt, type ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
-import { DEFAULT_GAME_MODE } from "@/lib/game/modes";
-import { calculateFinalScore, SCORING } from "@/lib/game/scoring";
+import {
+  DEFAULT_GAME_MODE,
+  scoringProfileForMode,
+} from "@/lib/game/modes";
+import {
+  calculateFinalScore,
+  maxScoreForProfile,
+} from "@/lib/game/scoring";
 import type { GameSession } from "@/lib/game/session";
 import { getTheme } from "@/lib/game/themes";
 import type {
@@ -43,12 +49,16 @@ export function buildReveal(
     ? (session.foundOnPin ?? lockedAfterClue)
     : null;
 
+  const mode = game.mode ?? session.mode ?? DEFAULT_GAME_MODE;
+  const scoring = scoringProfileForMode(mode);
+
   const target = { lat: game.answer.lat, lng: game.answer.lng };
   const finalCoordinates = session.guesses[session.guesses.length - 1]!;
   const finalDistanceMeters = distanceMeters(finalCoordinates, target);
   const scored = calculateFinalScore({
     clueNumber: lockedAfterClue,
     distanceMeters: finalDistanceMeters,
+    profile: scoring,
   });
 
   const guesses: RevealedGuess[] = session.guesses.map((guess, index) => {
@@ -69,7 +79,6 @@ export function buildReveal(
   });
 
   const theme = getTheme(game.theme);
-  const mode = game.mode ?? DEFAULT_GAME_MODE;
   const detail = game.answerDetail;
 
   return {
@@ -96,7 +105,7 @@ export function buildReveal(
     finalCoordinates,
     actualGuessCount: lockedAfterClue,
     totalScore: scored.totalScore,
-    maxScore: SCORING.MAX_TOTAL_POINTS,
+    maxScore: maxScoreForProfile(scoring),
     clueMaximum: scored.clueMaximum,
     accuracyFactor: scored.accuracyFactor,
     finalDistanceMeters: Math.round(finalDistanceMeters),

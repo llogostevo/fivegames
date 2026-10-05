@@ -43,9 +43,54 @@ describe("Daily / Football isolation", () => {
       SESSION_COOKIE_BY_MODE.football,
       "fivegames_session_football",
     );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["football-italy"],
+      "fivegames_session_football_italy",
+    );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["football-germany"],
+      "fivegames_session_football_germany",
+    );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["football-france"],
+      "fivegames_session_football_france",
+    );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["football-spain"],
+      "fivegames_session_football_spain",
+    );
+    assert.equal(SESSION_COOKIE_BY_MODE.world, "fivegames_session_world");
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["london-pubs"],
+      "fivegames_session_london_pubs",
+    );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE["london-stations"],
+      "fivegames_session_london_stations",
+    );
+    assert.notEqual(
+      sessionCookieOptions("daily").name,
+      sessionCookieOptions("world").name,
+    );
     assert.notEqual(
       sessionCookieOptions("daily").name,
       sessionCookieOptions("football").name,
+    );
+    assert.notEqual(
+      sessionCookieOptions("football").name,
+      sessionCookieOptions("football-italy").name,
+    );
+    assert.notEqual(
+      sessionCookieOptions("football-italy").name,
+      sessionCookieOptions("football-germany").name,
+    );
+    assert.notEqual(
+      sessionCookieOptions("football-germany").name,
+      sessionCookieOptions("football-france").name,
+    );
+    assert.notEqual(
+      sessionCookieOptions("football-france").name,
+      sessionCookieOptions("football-spain").name,
     );
   });
 
@@ -195,7 +240,49 @@ describe("Daily / Football isolation", () => {
       historyStorageKey("football"),
       PLAYER_HISTORY_KEY_BY_MODE.football,
     );
+    assert.equal(
+      historyStorageKey("football-italy"),
+      PLAYER_HISTORY_KEY_BY_MODE["football-italy"],
+    );
+    assert.equal(
+      historyStorageKey("football-germany"),
+      PLAYER_HISTORY_KEY_BY_MODE["football-germany"],
+    );
+    assert.equal(
+      historyStorageKey("football-france"),
+      PLAYER_HISTORY_KEY_BY_MODE["football-france"],
+    );
+    assert.equal(
+      historyStorageKey("football-spain"),
+      PLAYER_HISTORY_KEY_BY_MODE["football-spain"],
+    );
+    assert.equal(historyStorageKey("world"), PLAYER_HISTORY_KEY_BY_MODE.world);
+    assert.equal(
+      historyStorageKey("london-pubs"),
+      PLAYER_HISTORY_KEY_BY_MODE["london-pubs"],
+    );
+    assert.equal(
+      historyStorageKey("london-stations"),
+      PLAYER_HISTORY_KEY_BY_MODE["london-stations"],
+    );
+    assert.notEqual(historyStorageKey("daily"), historyStorageKey("world"));
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("football"));
+    assert.notEqual(
+      historyStorageKey("football"),
+      historyStorageKey("football-italy"),
+    );
+    assert.notEqual(
+      historyStorageKey("football-italy"),
+      historyStorageKey("football-germany"),
+    );
+    assert.notEqual(
+      historyStorageKey("football-germany"),
+      historyStorageKey("football-france"),
+    );
+    assert.notEqual(
+      historyStorageKey("football-france"),
+      historyStorageKey("football-spain"),
+    );
 
     const storage = multiKeyStorage();
     const date = "2026-09-28";
@@ -313,5 +400,82 @@ describe("Daily / Football isolation", () => {
 
     const rebuilt = buildReveal(football, pin.session, now, { now });
     assert.equal(rebuilt.answer.stadium, football.answerDetail?.stadium);
+  });
+
+  it("loads Italy as an independent football mode", async () => {
+    const now = londonWallTimeToUtc("2026-09-28", 12, 0);
+    const england = await getTodaysGameForMode("football", now, { now });
+    const italy = await getTodaysGameForMode("football-italy", now, { now });
+
+    assert.equal(england.mode, "football");
+    assert.equal(italy.mode, "football-italy");
+    assert.equal(england.id, italy.id);
+    assert.notEqual(england.answerDetail?.clubId, italy.answerDetail?.clubId);
+
+    const italyStart = resolveStartGame({
+      game: italy,
+      existingSession: null,
+      now,
+      clockOptions: { now },
+    });
+    assert.equal(sessionMode(italyStart.session), "football-italy");
+    assert.equal(italyStart.mintedNewSession, true);
+  });
+
+  it("loads Germany as an independent football mode", async () => {
+    const now = londonWallTimeToUtc("2026-09-28", 12, 0);
+    const germany = await getTodaysGameForMode("football-germany", now, {
+      now,
+    });
+
+    assert.equal(germany.mode, "football-germany");
+    assert.ok(germany.answerDetail?.stadium);
+
+    const germanyStart = resolveStartGame({
+      game: germany,
+      existingSession: null,
+      now,
+      clockOptions: { now },
+    });
+    assert.equal(sessionMode(germanyStart.session), "football-germany");
+    assert.equal(germanyStart.mintedNewSession, true);
+  });
+
+  it("loads France as an independent football mode", async () => {
+    const now = londonWallTimeToUtc("2026-09-28", 12, 0);
+    const france = await getTodaysGameForMode("football-france", now, {
+      now,
+    });
+
+    assert.equal(france.mode, "football-france");
+    assert.ok(france.answerDetail?.stadium);
+
+    const franceStart = resolveStartGame({
+      game: france,
+      existingSession: null,
+      now,
+      clockOptions: { now },
+    });
+    assert.equal(sessionMode(franceStart.session), "football-france");
+    assert.equal(franceStart.mintedNewSession, true);
+  });
+
+  it("loads Spain as an independent football mode", async () => {
+    const now = londonWallTimeToUtc("2026-09-28", 12, 0);
+    const spain = await getTodaysGameForMode("football-spain", now, {
+      now,
+    });
+
+    assert.equal(spain.mode, "football-spain");
+    assert.ok(spain.answerDetail?.stadium);
+
+    const spainStart = resolveStartGame({
+      game: spain,
+      existingSession: null,
+      now,
+      clockOptions: { now },
+    });
+    assert.equal(sessionMode(spainStart.session), "football-spain");
+    assert.equal(spainStart.mintedNewSession, true);
   });
 });

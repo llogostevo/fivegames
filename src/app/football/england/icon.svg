@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 Football England">
+  <rect width="32" height="32" rx="8" fill="#15803d"/>
+  <g transform="translate(4 7)">
+    <rect width="24" height="18" rx="2" fill="#ffffff"/>
+    <path d="M12 0v18M0 9h24" stroke="#C8102E" stroke-width="3.2"/>
+  </g>
+</svg>

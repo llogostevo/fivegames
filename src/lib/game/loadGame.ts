@@ -13,8 +13,24 @@ import {
   getReleasedFootballGameByDate,
   getTodaysFootballGame,
 } from "@/lib/game/football/loadFootballGame";
+import { footballLeagueForMode } from "@/lib/game/football/leagues";
+import {
+  getReleasedLondonPubsGameByDate,
+  getTodaysLondonPubsGame,
+  getLondonPubsGameByDate,
+} from "@/lib/game/londonpubs/loadLondonPubsGame";
+import {
+  getReleasedLondonStationsGameByDate,
+  getTodaysLondonStationsGame,
+  getLondonStationsGameByDate,
+} from "@/lib/game/londonstations/loadLondonStationsGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
+import {
+  getReleasedWorldGameByDate,
+  getTodaysWorldGame,
+  getWorldGameByDate,
+} from "@/lib/game/world/loadWorldGame";
 import type { GameDefinition } from "@/types/game";
 
 export class GameNotFoundError extends Error {
@@ -186,14 +202,24 @@ export async function getTodaysGame(
   return getGameByDate(date);
 }
 
-/** Load today's game for a mode (daily JSON or Football schedule). */
+/** Load today's game for a mode (daily JSON, World, London editions, or Football). */
 export async function getTodaysGameForMode(
   mode: GameMode,
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
-  if (mode === "football") {
-    return getTodaysFootballGame(now, options);
+  if (mode === "world") {
+    return getTodaysWorldGame(now, options);
+  }
+  if (mode === "london-pubs") {
+    return getTodaysLondonPubsGame(now, options);
+  }
+  if (mode === "london-stations") {
+    return getTodaysLondonStationsGame(now, options);
+  }
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
+    return getTodaysFootballGame(now, options, leagueId);
   }
   return getTodaysGame(now, options);
 }
@@ -220,8 +246,18 @@ export async function getReleasedGameForMode(
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
-  if (mode === "football") {
-    return getReleasedFootballGameByDate(date, now, options);
+  if (mode === "world") {
+    return getReleasedWorldGameByDate(date, now, options);
+  }
+  if (mode === "london-pubs") {
+    return getReleasedLondonPubsGameByDate(date, now, options);
+  }
+  if (mode === "london-stations") {
+    return getReleasedLondonStationsGameByDate(date, now, options);
+  }
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
+    return getReleasedFootballGameByDate(date, now, options, leagueId);
   }
   return getReleasedGameByDate(date, now, options);
 }
@@ -231,11 +267,21 @@ export async function getGameForModeByDate(
   mode: GameMode,
   date: string,
 ): Promise<GameDefinition> {
-  if (mode === "football") {
+  if (mode === "world") {
+    return getWorldGameByDate(date);
+  }
+  if (mode === "london-pubs") {
+    return getLondonPubsGameByDate(date);
+  }
+  if (mode === "london-stations") {
+    return getLondonStationsGameByDate(date);
+  }
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
     const { getFootballGameByDate } = await import(
       "@/lib/game/football/loadFootballGame"
     );
-    return getFootballGameByDate(date);
+    return getFootballGameByDate(date, leagueId);
   }
   return getGameByDate(date);
 }

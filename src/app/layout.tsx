@@ -19,9 +19,9 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["600", "700"],
 });
 
-const siteTitle = "Pin5 · UK Edition";
+const siteTitle = "PIN5";
 const siteDescription =
-  "Five clues. Five pins. Find the place. Pin5 UK Edition.";
+  "PIN5 — daily location games. Play Daily 5, London Pubs, Train & Tube, World, and Football 5.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     title: siteTitle,
     description: siteDescription,
-    siteName: siteTitle,
+    siteName: "PIN5",
     locale: "en_GB",
   },
   twitter: {

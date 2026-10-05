@@ -1,5 +1,12 @@
 /** Copy for the How to play modal — kept testable and consistent with in-game UX. */
 
+import {
+  DEFAULT_GAME_MODE,
+  scoringProfileForMode,
+  type GameMode,
+} from "@/lib/game/modes";
+import { maxScoreForProfile } from "@/lib/game/scoring";
+
 export type HowToPlayStep = {
   title: string;
   body: string;
@@ -9,30 +16,40 @@ export type HowToPlayStep = {
   emphasize?: string;
 };
 
-export const HOW_TO_PLAY_STEPS: HowToPlayStep[] = [
-  {
-    title: "Five clues, one place",
-    body: "Each day hides a UK location. Clues get more specific.",
-  },
-  {
-    title: "📍 Place your pin",
-    body: "Press and hold on the map to lock in your guess. Once the pin drops, your guess is final.",
-    emphasize: "Press and hold",
-    showHoldDemo: true,
-  },
-  {
-    title: "Finish or buy a clue",
-    body: "Finish here with your current pin, or get another clue — each clue lowers the maximum score you can achieve.",
-  },
-  {
-    title: "Warmer or colder",
-    body: "Only after you get another clue will you learn if you got warmer or colder.",
-  },
-  {
-    title: "One score out of 25,000",
-    body: "Your final score is based on how few clues you needed and how close your final pin was. Perfect score: find it on Clue 1.",
-  },
-];
+export function howToPlayStepsForMode(
+  mode: GameMode = DEFAULT_GAME_MODE,
+): HowToPlayStep[] {
+  const maxScore = maxScoreForProfile(scoringProfileForMode(mode));
+  const maxLabel = maxScore.toLocaleString("en-GB");
+
+  return [
+    {
+      title: "Five clues, one place",
+      body: "Each day hides a location. Clues get more specific.",
+    },
+    {
+      title: "📍 Place your pin",
+      body: "Press and hold on the map to lock in your guess. Once the pin drops, your guess is final.",
+      emphasize: "Press and hold",
+      showHoldDemo: true,
+    },
+    {
+      title: "Finish or buy a clue",
+      body: "Finish here with your current pin, or get another clue — each clue lowers the maximum score you can achieve.",
+    },
+    {
+      title: "Warmer or colder",
+      body: "Only after you get another clue will you learn if you got warmer or colder.",
+    },
+    {
+      title: `One score out of ${maxLabel}`,
+      body: "Your final score is based on how few clues you needed and how close your final pin was. Perfect score: find it on Clue 1.",
+    },
+  ];
+}
+
+/** @deprecated Prefer howToPlayStepsForMode(mode) */
+export const HOW_TO_PLAY_STEPS = howToPlayStepsForMode(DEFAULT_GAME_MODE);
 
 /** Split body so the emphasized phrase can be bolded in the UI. */
 export function splitEmphasizedBody(

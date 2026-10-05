@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import { FOUND_CELEBRATION_DURATION_MS } from "@/lib/game/found";
+import { isFootballMode } from "@/lib/game/modes";
 import type { GameReveal } from "@/types/game";
 
 type FoundCelebrationProps = {
@@ -115,7 +116,9 @@ export function FoundCelebration({
         </h2>
         <p
           className={`mt-3 font-display text-2xl font-semibold text-white ${
-            reveal.mode === "football" ? "uppercase tracking-wide" : ""
+            isFootballMode(reveal.mode ?? "daily")
+              ? "uppercase tracking-wide"
+              : ""
           }`}
         >
           {reveal.answer.name}
