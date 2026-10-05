@@ -59,6 +59,11 @@ describe("Daily / Football isolation", () => {
       SESSION_COOKIE_BY_MODE["football-spain"],
       "fivegames_session_football_spain",
     );
+    assert.equal(SESSION_COOKIE_BY_MODE.world, "fivegames_session_world");
+    assert.notEqual(
+      sessionCookieOptions("daily").name,
+      sessionCookieOptions("world").name,
+    );
     assert.notEqual(
       sessionCookieOptions("daily").name,
       sessionCookieOptions("football").name,
@@ -243,6 +248,8 @@ describe("Daily / Football isolation", () => {
       historyStorageKey("football-spain"),
       PLAYER_HISTORY_KEY_BY_MODE["football-spain"],
     );
+    assert.equal(historyStorageKey("world"), PLAYER_HISTORY_KEY_BY_MODE.world);
+    assert.notEqual(historyStorageKey("daily"), historyStorageKey("world"));
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("football"));
     assert.notEqual(
       historyStorageKey("football"),

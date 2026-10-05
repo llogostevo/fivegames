@@ -12,6 +12,7 @@ export const THEME_IDS = [
   "culture",
   "wildcard",
   "football",
+  "world",
 ] as const;
 
 export type ThemeId = (typeof THEME_IDS)[number];
@@ -94,6 +95,14 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accent: "#15803d",
     accentSoft: "#dcfce7",
     emoji: "⚽",
+  },
+  world: {
+    id: "world",
+    displayName: "World",
+    label: "World",
+    accent: "#1d4ed8",
+    accentSoft: "#dbeafe",
+    emoji: "🌍",
   },
 };
 

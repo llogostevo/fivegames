@@ -1,6 +1,6 @@
 /**
  * A pin has FOUND the location when its distance is at or within this radius.
- * Tune here only — do not scatter the metre value elsewhere.
+ * Country profile uses this; world (and other) profiles may override via ScoringProfile.
  */
 export const FOUND_LOCATION_RADIUS_METRES = 1_000;
 
@@ -11,11 +11,17 @@ export const FOUND_CELEBRATION_DURATION_MS = 2_800;
  * Authoritative FOUND threshold.
  * distanceMetres must come from the same geodesic helper used for scoring.
  *
- * 999 → true, 1000 → true, 1001 → false
+ * With the default 1 km radius: 999 → true, 1000 → true, 1001 → false
  */
-export function isFoundLocation(distanceMetres: number): boolean {
+export function isFoundLocation(
+  distanceMetres: number,
+  foundRadiusMetres: number = FOUND_LOCATION_RADIUS_METRES,
+): boolean {
   if (!Number.isFinite(distanceMetres) || distanceMetres < 0) {
     return false;
   }
-  return distanceMetres <= FOUND_LOCATION_RADIUS_METRES;
+  if (!Number.isFinite(foundRadiusMetres) || foundRadiusMetres < 0) {
+    return false;
+  }
+  return distanceMetres <= foundRadiusMetres;
 }

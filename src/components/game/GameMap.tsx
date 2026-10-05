@@ -30,6 +30,7 @@ import {
   DEFAULT_MAP_CENTER,
   DEFAULT_MAP_ZOOM,
   MAP_MAX_ZOOM,
+  type MapProjection,
 } from "@/lib/map/provider";
 import { loadMapStyle, setIdentifyingLabelsVisible } from "@/lib/map/style";
 import { ensureMapLibreWorker } from "@/lib/map/worker";
@@ -43,6 +44,8 @@ export type LockedMapGuess = {
 type GameMapProps = {
   initialCenter?: Coordinates;
   initialZoom?: number;
+  /** Opening projection (globe for World). */
+  initialProjection?: MapProjection;
   /** Hide place names, POIs and other identifying labels on first load. */
   gameMode?: boolean;
   /** Show identifying labels (used for the reveal). */
@@ -152,6 +155,7 @@ function HoldProgressRing({
 export function GameMap({
   initialCenter = DEFAULT_MAP_CENTER,
   initialZoom = DEFAULT_MAP_ZOOM,
+  initialProjection = "mercator",
   gameMode = true,
   showLabels = false,
   interactive = true,
@@ -358,6 +362,9 @@ export function GameMap({
           attributionControl: { compact: true },
         });
 
+        if (initialProjection === "globe") {
+          map.setProjection({ type: "globe" });
+        }
         if (showControls) {
           map.addControl(
             new NavigationControl({ showCompass: false }),

@@ -1,0 +1,5980 @@
+{
+  "dataset": "pin5-world",
+  "count": 314,
+  "clueDesign": {
+    "1": "a fact or piece of history, hard to place on its own",
+    "2": "what it is known for",
+    "3": "wider geography or a famous association",
+    "4": "narrower geography: country, region or nearby landmarks",
+    "5": "the answer: the place's name, plus where it is (and the exact pin point for big areas)"
+  },
+  "difficulty": "easy / medium / hard, for planning the week",
+  "places": [
+    {
+      "id": "london",
+      "name": "London",
+      "type": "city",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "difficulty": "easy",
+      "target": {
+        "lat": 51.508,
+        "lng": -0.1281
+      },
+      "clues": [
+        "The Romans founded a settlement here around AD 47, at the lowest point where they could bridge a great river.",
+        "It has hosted the Summer Olympics three times, more than any other city.",
+        "Its underground railway, opened in 1863, is the oldest in the world.",
+        "It stands on the River Thames in south-east England.",
+        "This is London, the capital of the United Kingdom."
+      ]
+    },
+    {
+      "id": "paris",
+      "name": "Paris",
+      "type": "city",
+      "region": "Europe",
+      "country": "France",
+      "difficulty": "easy",
+      "target": {
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "clues": [
+        "In Roman times it was a small town called Lutetia, on an island in its river.",
+        "The Louvre, home of the Mona Lisa, is here.",
+        "It hosted the Summer Olympics in 1900, 1924 and 2024.",
+        "It sits on the River Seine in northern France.",
+        "This is Paris, the capital of France."
+      ]
+    },
+    {
+      "id": "rome",
+      "name": "Rome",
+      "type": "city",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.9028,
+        "lng": 12.4964
+      },
+      "clues": [
+        "Legend says it was founded in 753 BC by twins raised by a she-wolf.",
+        "It completely surrounds the world's smallest country.",
+        "Visitors throw coins over their shoulder into its Trevi Fountain.",
+        "It lies on the River Tiber in central Italy.",
+        "This is Rome, the capital of Italy."
+      ]
+    },
+    {
+      "id": "berlin",
+      "name": "Berlin",
+      "type": "city",
+      "region": "Europe",
+      "country": "Germany",
+      "difficulty": "easy",
+      "target": {
+        "lat": 52.52,
+        "lng": 13.405
+      },
+      "clues": [
+        "A wall split this city in two from 1961 to 1989.",
+        "Its parliament building, the Reichstag, has a glass dome visitors can walk up.",
+        "It is known for currywurst and techno clubs.",
+        "It lies on the River Spree in north-eastern Germany.",
+        "This is Berlin, the capital of Germany."
+      ]
+    },
+    {
+      "id": "madrid",
+      "name": "Madrid",
+      "type": "city",
+      "region": "Europe",
+      "country": "Spain",
+      "difficulty": "easy",
+      "target": {
+        "lat": 40.4168,
+        "lng": -3.7038
+      },
+      "clues": [
+        "King Philip II made it the seat of the royal court in 1561.",
+        "The Prado museum here holds famous works by Velázquez and Goya.",
+        "At about 650 m above sea level, it is one of Europe's highest capital cities.",
+        "It sits almost at the geographic centre of the Iberian Peninsula.",
+        "This is Madrid, the capital of Spain."
+      ]
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona",
+      "type": "city",
+      "region": "Europe",
+      "country": "Spain",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.3874,
+        "lng": 2.1686
+      },
+      "clues": [
+        "It hosted the 1992 Summer Olympics.",
+        "Its streets are full of buildings by the architect Antoni Gaudí.",
+        "Its most famous avenue, La Rambla, runs down to the old harbour.",
+        "It is the capital of Catalonia, on the Mediterranean coast.",
+        "This is Barcelona, in north-eastern Spain."
+      ]
+    },
+    {
+      "id": "amsterdam",
+      "name": "Amsterdam",
+      "type": "city",
+      "region": "Europe",
+      "country": "Netherlands",
+      "difficulty": "easy",
+      "target": {
+        "lat": 52.3676,
+        "lng": 4.9041
+      },
+      "clues": [
+        "It began in the 13th century as a fishing village beside a dam on a river.",
+        "Anne Frank hid from the Nazis in a house here.",
+        "Its ring of 17th-century canals is a UNESCO World Heritage Site.",
+        "It is the capital of a low-lying country famous for windmills and tulips.",
+        "This is Amsterdam, the capital of the Netherlands."
+      ]
+    },
+    {
+      "id": "vienna",
+      "name": "Vienna",
+      "type": "city",
+      "region": "Europe",
+      "country": "Austria",
+      "difficulty": "medium",
+      "target": {
+        "lat": 48.2082,
+        "lng": 16.3738
+      },
+      "clues": [
+        "Ottoman armies besieged it twice, in 1529 and 1683.",
+        "Mozart, Beethoven and Haydn all worked here.",
+        "It is famous for its coffee houses and Sachertorte chocolate cake.",
+        "It lies on the Danube in central Europe, close to the Slovak border.",
+        "This is Vienna, the capital of Austria."
+      ]
+    },
+    {
+      "id": "prague",
+      "name": "Prague",
+      "type": "city",
+      "region": "Europe",
+      "country": "Czech Republic",
+      "difficulty": "medium",
+      "target": {
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      "clues": [
+        "In 1618 officials were thrown from a window here, an event that helped start the Thirty Years' War.",
+        "Its astronomical clock, first installed in 1410, still works.",
+        "The statue-lined Charles Bridge crosses its river.",
+        "It lies on the Vltava river in central Europe.",
+        "This is Prague, the capital of the Czech Republic."
+      ]
+    },
+    {
+      "id": "athens",
+      "name": "Athens",
+      "type": "city",
+      "region": "Europe",
+      "country": "Greece",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.9838,
+        "lng": 23.7275
+      },
+      "clues": [
+        "It is often called the birthplace of democracy.",
+        "It hosted the first modern Olympic Games, in 1896.",
+        "It is named after the goddess of wisdom.",
+        "It is the capital of a country made up of a mainland and thousands of islands in south-east Europe.",
+        "This is Athens, the capital of Greece."
+      ]
+    },
+    {
+      "id": "lisbon",
+      "name": "Lisbon",
+      "type": "city",
+      "region": "Europe",
+      "country": "Portugal",
+      "difficulty": "medium",
+      "target": {
+        "lat": 38.7223,
+        "lng": -9.1393
+      },
+      "clues": [
+        "A huge earthquake and tsunami destroyed much of it in 1755.",
+        "Yellow trams climb its steep hills.",
+        "It is the home of the mournful music called fado.",
+        "It lies where the River Tagus meets the Atlantic, on Europe's western edge.",
+        "This is Lisbon, the capital of Portugal."
+      ]
+    },
+    {
+      "id": "dublin",
+      "name": "Dublin",
+      "type": "city",
+      "region": "Europe",
+      "country": "Ireland",
+      "difficulty": "easy",
+      "target": {
+        "lat": 53.3498,
+        "lng": -6.2603
+      },
+      "clues": [
+        "Vikings founded a settlement here in the 9th century.",
+        "Guinness has been brewed here since 1759.",
+        "James Joyce set his novel Ulysses here.",
+        "It sits on the River Liffey on the east coast of an island west of Britain.",
+        "This is Dublin, the capital of Ireland."
+      ]
+    },
+    {
+      "id": "edinburgh",
+      "name": "Edinburgh",
+      "type": "city",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "difficulty": "medium",
+      "target": {
+        "lat": 55.9533,
+        "lng": -3.1883
+      },
+      "clues": [
+        "Its medieval Old Town and Georgian New Town together form a UNESCO World Heritage Site.",
+        "It hosts the world's largest arts festival every August.",
+        "A castle sits on an extinct volcanic plug in the city centre.",
+        "It is a capital city on the Firth of Forth, in the north of Britain.",
+        "This is Edinburgh, the capital of Scotland."
+      ]
+    },
+    {
+      "id": "copenhagen",
+      "name": "Copenhagen",
+      "type": "city",
+      "region": "Europe",
+      "country": "Denmark",
+      "difficulty": "medium",
+      "target": {
+        "lat": 55.6761,
+        "lng": 12.5683
+      },
+      "clues": [
+        "Hans Christian Andersen lived and wrote here.",
+        "A small statue of the Little Mermaid sits on its waterfront.",
+        "The Tivoli Gardens amusement park opened here in 1843.",
+        "It lies on the Øresund strait, linked by bridge to Sweden.",
+        "This is Copenhagen, the capital of Denmark."
+      ]
+    },
+    {
+      "id": "stockholm",
+      "name": "Stockholm",
+      "type": "city",
+      "region": "Europe",
+      "country": "Sweden",
+      "difficulty": "medium",
+      "target": {
+        "lat": 59.3293,
+        "lng": 18.0686
+      },
+      "clues": [
+        "Most of the Nobel Prizes are awarded here every December.",
+        "It is built across 14 islands.",
+        "The Vasa warship, which sank on its maiden voyage in 1628, is displayed in a museum here.",
+        "It sits where Lake Mälaren meets the Baltic Sea, in Scandinavia.",
+        "This is Stockholm, the capital of Sweden."
+      ]
+    },
+    {
+      "id": "oslo",
+      "name": "Oslo",
+      "type": "city",
+      "region": "Europe",
+      "country": "Norway",
+      "difficulty": "medium",
+      "target": {
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      "clues": [
+        "The Nobel Peace Prize is awarded here.",
+        "Versions of Edvard Munch's The Scream hang in its museums.",
+        "Its opera house has a sloping marble roof you can walk on.",
+        "It sits at the head of a long fjord in southern Scandinavia.",
+        "This is Oslo, the capital of Norway."
+      ]
+    },
+    {
+      "id": "helsinki",
+      "name": "Helsinki",
+      "type": "city",
+      "region": "Europe",
+      "country": "Finland",
+      "difficulty": "medium",
+      "target": {
+        "lat": 60.1699,
+        "lng": 24.9384
+      },
+      "clues": [
+        "It became a capital in 1812, under Russian rule.",
+        "It hosted the Summer Olympics in 1952.",
+        "A sea fortress, Suomenlinna, guards its harbour.",
+        "It is on the Gulf of Finland, across the water from Tallinn.",
+        "This is Helsinki, the capital of Finland."
+      ]
+    },
+    {
+      "id": "reykjavik",
+      "name": "Reykjavík",
+      "type": "city",
+      "region": "Europe",
+      "country": "Iceland",
+      "difficulty": "medium",
+      "target": {
+        "lat": 64.1466,
+        "lng": -21.9426
+      },
+      "clues": [
+        "It is the northernmost capital of a sovereign state.",
+        "Much of it is heated by natural geothermal water.",
+        "Its tall Hallgrímskirkja church was inspired by basalt columns.",
+        "It lies on an island in the North Atlantic, just south of the Arctic Circle.",
+        "This is Reykjavík, the capital of Iceland."
+      ]
+    },
+    {
+      "id": "budapest",
+      "name": "Budapest",
+      "type": "city",
+      "region": "Europe",
+      "country": "Hungary",
+      "difficulty": "medium",
+      "target": {
+        "lat": 47.4979,
+        "lng": 19.0402
+      },
+      "clues": [
+        "It was formed in 1873 when three towns on opposite riverbanks merged.",
+        "Its parliament building is one of the largest in Europe.",
+        "It is famous for its thermal baths.",
+        "The Danube divides it into a hilly west side and a flat east side.",
+        "This is Budapest, the capital of Hungary."
+      ]
+    },
+    {
+      "id": "warsaw",
+      "name": "Warsaw",
+      "type": "city",
+      "region": "Europe",
+      "country": "Poland",
+      "difficulty": "medium",
+      "target": {
+        "lat": 52.2297,
+        "lng": 21.0122
+      },
+      "clues": [
+        "Most of it was destroyed in the Second World War and later rebuilt.",
+        "Marie Curie was born here.",
+        "Chopin's heart is kept in one of its churches.",
+        "It lies on the Vistula river in central Poland.",
+        "This is Warsaw, the capital of Poland."
+      ]
+    },
+    {
+      "id": "brussels",
+      "name": "Brussels",
+      "type": "city",
+      "region": "Europe",
+      "country": "Belgium",
+      "difficulty": "medium",
+      "target": {
+        "lat": 50.8503,
+        "lng": 4.3517
+      },
+      "clues": [
+        "It is home to the headquarters of NATO and the European Commission.",
+        "Its Grand-Place is ringed by ornate guildhalls.",
+        "A tiny statue of a boy urinating, Manneken Pis, is one of its symbols.",
+        "It is the capital of a small country famous for chocolate and waffles.",
+        "This is Brussels, the capital of Belgium."
+      ]
+    },
+    {
+      "id": "moscow",
+      "name": "Moscow",
+      "type": "city",
+      "region": "Europe",
+      "country": "Russia",
+      "difficulty": "easy",
+      "target": {
+        "lat": 55.7558,
+        "lng": 37.6173
+      },
+      "clues": [
+        "Napoleon captured it in 1812, but much of it burned soon afterwards.",
+        "Its metro stations are famous for chandeliers and mosaics.",
+        "St Basil's Cathedral, with colourful onion domes, stands at its heart.",
+        "It lies on the Moskva river in western Russia.",
+        "This is Moscow, the capital of Russia."
+      ]
+    },
+    {
+      "id": "st-petersburg",
+      "name": "St Petersburg",
+      "type": "city",
+      "region": "Europe",
+      "country": "Russia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 59.9311,
+        "lng": 30.3609
+      },
+      "clues": [
+        "Peter the Great founded it in 1703.",
+        "It was called Leningrad for most of the 20th century.",
+        "The Hermitage, one of the world's largest art museums, is here.",
+        "It sits at the mouth of the River Neva on the Baltic Sea.",
+        "This is St Petersburg, in north-western Russia."
+      ]
+    },
+    {
+      "id": "istanbul",
+      "name": "Istanbul",
+      "type": "city",
+      "region": "Europe",
+      "country": "Turkey",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.0082,
+        "lng": 28.9784
+      },
+      "clues": [
+        "It was the capital of both the Byzantine and Ottoman empires.",
+        "Its Grand Bazaar is one of the oldest covered markets in the world.",
+        "It was once called Constantinople.",
+        "It straddles the Bosphorus strait, partly in Europe and partly in Asia.",
+        "This is Istanbul, Turkey's largest city."
+      ]
+    },
+    {
+      "id": "venice",
+      "name": "Venice",
+      "type": "city",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "easy",
+      "target": {
+        "lat": 45.4408,
+        "lng": 12.3155
+      },
+      "clues": [
+        "It was the capital of a powerful maritime republic for about 1,000 years.",
+        "It is built on more than 100 small islands.",
+        "Gondolas carry visitors along its canals.",
+        "It sits in a lagoon at the top of the Adriatic Sea.",
+        "This is Venice, in north-eastern Italy."
+      ]
+    },
+    {
+      "id": "florence",
+      "name": "Florence",
+      "type": "city",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "medium",
+      "target": {
+        "lat": 43.7696,
+        "lng": 11.2558
+      },
+      "clues": [
+        "The Medici family ruled it and paid for much of its Renaissance art.",
+        "Michelangelo's statue of David stands in a gallery here.",
+        "Brunelleschi's huge brick dome tops its cathedral.",
+        "It lies on the River Arno in Tuscany.",
+        "This is Florence, in central Italy."
+      ]
+    },
+    {
+      "id": "kyiv",
+      "name": "Kyiv",
+      "type": "city",
+      "region": "Europe",
+      "country": "Ukraine",
+      "difficulty": "medium",
+      "target": {
+        "lat": 50.4501,
+        "lng": 30.5234
+      },
+      "clues": [
+        "Over 1,000 years ago it was the centre of a medieval state called Kievan Rus'.",
+        "Its Pechersk Lavra monastery has caves where monks are buried.",
+        "Its main square, the Maidan, was the centre of protests in 2004 and 2013–14.",
+        "It lies on the Dnipro river in eastern Europe.",
+        "This is Kyiv, the capital of Ukraine."
+      ]
+    },
+    {
+      "id": "dubrovnik",
+      "name": "Dubrovnik",
+      "type": "city",
+      "region": "Europe",
+      "country": "Croatia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 42.6507,
+        "lng": 18.0944
+      },
+      "clues": [
+        "It was the centre of the independent Republic of Ragusa.",
+        "You can walk all the way round its medieval city walls.",
+        "It was a filming location for King's Landing in Game of Thrones.",
+        "It sits on the southern Adriatic coast, close to Montenegro.",
+        "This is Dubrovnik, in southern Croatia."
+      ]
+    },
+    {
+      "id": "eiffel-tower",
+      "name": "Eiffel Tower",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "France",
+      "difficulty": "easy",
+      "target": {
+        "lat": 48.8584,
+        "lng": 2.2945
+      },
+      "clues": [
+        "It was built for the 1889 World's Fair, and many artists protested against it.",
+        "It was the tallest man-made structure in the world until 1930.",
+        "It is made of wrought iron and is repainted roughly every seven years.",
+        "It stands on the Champ de Mars beside the Seine.",
+        "This is the Eiffel Tower, in Paris."
+      ]
+    },
+    {
+      "id": "colosseum",
+      "name": "Colosseum",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.8902,
+        "lng": 12.4922
+      },
+      "clues": [
+        "Emperor Vespasian began building it around AD 70.",
+        "It could hold around 50,000 spectators for gladiator fights.",
+        "It is the largest amphitheatre ever built.",
+        "It stands next to the Roman Forum in Italy's capital.",
+        "This is the Colosseum, in Rome."
+      ]
+    },
+    {
+      "id": "leaning-tower-of-pisa",
+      "name": "Leaning Tower of Pisa",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "easy",
+      "target": {
+        "lat": 43.723,
+        "lng": 10.3966
+      },
+      "clues": [
+        "It began to lean during construction in the 12th century because of soft ground.",
+        "Engineers reduced its tilt by about 40 cm between 1990 and 2001.",
+        "It is the bell tower of a cathedral on the Square of Miracles.",
+        "It is in Tuscany, near the coast at the mouth of the Arno.",
+        "This is the Leaning Tower of Pisa, in Italy."
+      ]
+    },
+    {
+      "id": "sagrada-familia",
+      "name": "Sagrada Família",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Spain",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.4036,
+        "lng": 2.1744
+      },
+      "clues": [
+        "Construction began in 1882 and it is still not finished.",
+        "Its architect died in 1926 after being hit by a tram.",
+        "When complete, its central tower will make it the tallest church in the world.",
+        "It is a basilica in the capital of Catalonia.",
+        "This is the Sagrada Família, in Barcelona."
+      ]
+    },
+    {
+      "id": "acropolis",
+      "name": "Acropolis",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Greece",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.9715,
+        "lng": 23.7257
+      },
+      "clues": [
+        "Pericles ordered its great building programme in the 5th century BC.",
+        "The Parthenon, a temple to the goddess Athena, stands on top.",
+        "Some of its marble sculptures are in the British Museum.",
+        "It is a rocky hill rising above the capital of Greece.",
+        "This is the Acropolis, in Athens."
+      ]
+    },
+    {
+      "id": "stonehenge",
+      "name": "Stonehenge",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "difficulty": "easy",
+      "target": {
+        "lat": 51.1789,
+        "lng": -1.8262
+      },
+      "clues": [
+        "Its smaller 'bluestones' were brought about 150 miles from Wales.",
+        "Its stones line up with the sunrise on the summer solstice.",
+        "It was built in stages, starting around 3000 BC.",
+        "It stands on Salisbury Plain in southern England.",
+        "This is Stonehenge, in Wiltshire, England."
+      ]
+    },
+    {
+      "id": "big-ben",
+      "name": "Big Ben",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "difficulty": "easy",
+      "target": {
+        "lat": 51.5007,
+        "lng": -0.1246
+      },
+      "clues": [
+        "Strictly speaking, its name belongs to the great bell inside, not the tower.",
+        "The tower was renamed Elizabeth Tower in 2012.",
+        "Its chimes are broadcast on the radio to mark the New Year.",
+        "It stands at the north end of the Houses of Parliament, beside the Thames.",
+        "This is Big Ben, in London."
+      ]
+    },
+    {
+      "id": "vatican-city",
+      "name": "Vatican City",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Vatican City",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.9022,
+        "lng": 12.4573
+      },
+      "clues": [
+        "It became an independent state in 1929.",
+        "It is the smallest country in the world.",
+        "Michelangelo painted the ceiling of its Sistine Chapel.",
+        "It is entirely surrounded by Italy's capital.",
+        "This is Vatican City, home of the Pope. The pin is in St Peter's Square."
+      ]
+    },
+    {
+      "id": "brandenburg-gate",
+      "name": "Brandenburg Gate",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Germany",
+      "difficulty": "medium",
+      "target": {
+        "lat": 52.5163,
+        "lng": 13.3777
+      },
+      "clues": [
+        "It was completed in 1791 and is topped by a chariot pulled by four horses.",
+        "Napoleon took the chariot statue to Paris in 1806.",
+        "While a wall divided the city, it stood stranded in the border zone.",
+        "It stands at the end of the Unter den Linden boulevard in Germany's capital.",
+        "This is the Brandenburg Gate, in Berlin."
+      ]
+    },
+    {
+      "id": "neuschwanstein-castle",
+      "name": "Neuschwanstein Castle",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Germany",
+      "difficulty": "medium",
+      "target": {
+        "lat": 47.5576,
+        "lng": 10.7498
+      },
+      "clues": [
+        "It was built for King Ludwig II, who died before it was finished.",
+        "It inspired Sleeping Beauty's castle at Disneyland.",
+        "It sits on a rocky ridge above a gorge, in the foothills of the Alps.",
+        "It is in southern Bavaria, close to the Austrian border.",
+        "This is Neuschwanstein Castle, in southern Germany."
+      ]
+    },
+    {
+      "id": "mont-saint-michel",
+      "name": "Mont-Saint-Michel",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "France",
+      "difficulty": "medium",
+      "target": {
+        "lat": 48.6361,
+        "lng": -1.5115
+      },
+      "clues": [
+        "An abbey has stood on top of it since the 10th century.",
+        "Its tides are among the strongest in Europe and once cut it off from the mainland.",
+        "A bridge opened in 2014 so visitors can reach it at any tide.",
+        "It is a rocky tidal island on the border of Normandy and Brittany.",
+        "This is Mont-Saint-Michel, in northern France."
+      ]
+    },
+    {
+      "id": "red-square",
+      "name": "Red Square",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Russia",
+      "difficulty": "easy",
+      "target": {
+        "lat": 55.7539,
+        "lng": 37.6208
+      },
+      "clues": [
+        "Its name comes from an old Russian word for 'beautiful', not the colour.",
+        "Lenin's embalmed body lies in a mausoleum here.",
+        "Military parades are held here each May.",
+        "It lies beside the Kremlin in Russia's capital.",
+        "This is Red Square, in Moscow."
+      ]
+    },
+    {
+      "id": "hagia-sophia",
+      "name": "Hagia Sophia",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Turkey",
+      "difficulty": "medium",
+      "target": {
+        "lat": 41.0086,
+        "lng": 28.9802
+      },
+      "clues": [
+        "Emperor Justinian completed it in AD 537.",
+        "It has been a cathedral, a mosque, a museum and, since 2020, a mosque again.",
+        "For almost 1,000 years it was the largest cathedral in the world.",
+        "It faces the Blue Mosque in a city that straddles Europe and Asia.",
+        "This is Hagia Sophia, in Istanbul."
+      ]
+    },
+    {
+      "id": "alhambra",
+      "name": "Alhambra",
+      "type": "landmark",
+      "region": "Europe",
+      "country": "Spain",
+      "difficulty": "medium",
+      "target": {
+        "lat": 37.1761,
+        "lng": -3.5881
+      },
+      "clues": [
+        "It was the palace of the Nasrids, the last Muslim rulers in Spain.",
+        "Ferdinand and Isabella took it in 1492.",
+        "Its Court of the Lions has a fountain held up by 12 stone lions.",
+        "It sits on a hill in Andalusia, with the Sierra Nevada behind it.",
+        "This is the Alhambra, in Granada, southern Spain."
+      ]
+    },
+    {
+      "id": "matterhorn",
+      "name": "Matterhorn",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Switzerland / Italy",
+      "difficulty": "medium",
+      "target": {
+        "lat": 45.9763,
+        "lng": 7.6586
+      },
+      "clues": [
+        "Four of the first party to climb it, in 1865, died on the way down.",
+        "Its pyramid shape is said to have inspired the Toblerone logo.",
+        "It is about 4,478 m high.",
+        "It rises above the village of Zermatt on the border between two countries.",
+        "This is the Matterhorn, on the Swiss–Italian border."
+      ]
+    },
+    {
+      "id": "mont-blanc",
+      "name": "Mont Blanc",
+      "type": "natural",
+      "region": "Europe",
+      "country": "France / Italy",
+      "difficulty": "medium",
+      "target": {
+        "lat": 45.8326,
+        "lng": 6.8652
+      },
+      "clues": [
+        "Its first ascent in 1786 is often seen as the birth of mountaineering.",
+        "It is the highest mountain in the Alps.",
+        "A road tunnel more than 11 km long runs beneath it.",
+        "It rises above the town of Chamonix.",
+        "This is Mont Blanc, on the French–Italian border."
+      ]
+    },
+    {
+      "id": "cliffs-of-moher",
+      "name": "Cliffs of Moher",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Ireland",
+      "difficulty": "medium",
+      "target": {
+        "lat": 52.9715,
+        "lng": -9.4309
+      },
+      "clues": [
+        "O'Brien's Tower was built near the top in 1835 for sightseers.",
+        "They rise to about 214 m above the Atlantic.",
+        "They appeared in Harry Potter and the Half-Blood Prince.",
+        "They are on the west coast, in County Clare.",
+        "These are the Cliffs of Moher, in Ireland."
+      ]
+    },
+    {
+      "id": "giant-s-causeway",
+      "name": "Giant's Causeway",
+      "type": "natural",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "difficulty": "medium",
+      "target": {
+        "lat": 55.2408,
+        "lng": -6.5116
+      },
+      "clues": [
+        "Legend says the giant Finn McCool built it to cross the sea to Scotland.",
+        "It is made of about 40,000 interlocking basalt columns.",
+        "The columns formed when lava cooled more than 50 million years ago.",
+        "It is on the north coast of County Antrim.",
+        "This is the Giant's Causeway, in Northern Ireland."
+      ]
+    },
+    {
+      "id": "santorini",
+      "name": "Santorini",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Greece",
+      "difficulty": "easy",
+      "target": {
+        "lat": 36.4618,
+        "lng": 25.3753
+      },
+      "clues": [
+        "A huge volcanic eruption here around 1600 BC may have helped end the Minoan civilisation.",
+        "Its whitewashed houses with blue domes cling to cliffs.",
+        "The island curves around a flooded volcanic crater.",
+        "It is in the Cyclades, in the southern Aegean Sea.",
+        "This is Santorini, in Greece. The pin is at the village of Oia."
+      ]
+    },
+    {
+      "id": "lake-bled",
+      "name": "Lake Bled",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Slovenia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 46.3624,
+        "lng": 14.0906
+      },
+      "clues": [
+        "Ringing the bell in its island church is said to make a wish come true.",
+        "Its island is said to be the only natural island in its country.",
+        "A medieval castle sits on a cliff above the water.",
+        "It is in the Julian Alps, in north-western Slovenia.",
+        "This is Lake Bled, in Slovenia. The pin is on the island."
+      ]
+    },
+    {
+      "id": "amalfi-coast",
+      "name": "Amalfi Coast",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "medium",
+      "target": {
+        "lat": 40.634,
+        "lng": 14.6027
+      },
+      "clues": [
+        "Its main town was a powerful maritime republic in the Middle Ages.",
+        "Lemons grown on its terraces are made into limoncello.",
+        "Its colourful clifftop villages include Positano and Ravello.",
+        "It runs along the south of the Sorrento peninsula, south of Naples.",
+        "This is the Amalfi Coast, in Italy. The pin is at the town of Amalfi."
+      ]
+    },
+    {
+      "id": "plitvice-lakes",
+      "name": "Plitvice Lakes",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Croatia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 44.8654,
+        "lng": 15.582
+      },
+      "clues": [
+        "A clash here in 1991 is often called the first battle of the Croatian War of Independence.",
+        "It has 16 terraced lakes linked by waterfalls.",
+        "Wooden boardwalks let visitors walk across the water.",
+        "It is a national park in the mountains between Zagreb and Zadar.",
+        "These are the Plitvice Lakes, in Croatia."
+      ]
+    },
+    {
+      "id": "mount-etna",
+      "name": "Mount Etna",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Italy",
+      "difficulty": "medium",
+      "target": {
+        "lat": 37.751,
+        "lng": 14.9934
+      },
+      "clues": [
+        "Greek myth placed the forge of the god Hephaestus beneath it.",
+        "It is the tallest active volcano in Europe.",
+        "Its eruptions sometimes close the nearby airport at Catania.",
+        "It rises over the east coast of the largest island in the Mediterranean.",
+        "This is Mount Etna, in Sicily."
+      ]
+    },
+    {
+      "id": "lofoten-islands",
+      "name": "Lofoten Islands",
+      "type": "natural",
+      "region": "Europe",
+      "country": "Norway",
+      "difficulty": "hard",
+      "target": {
+        "lat": 67.9326,
+        "lng": 13.089
+      },
+      "clues": [
+        "Dried cod from here has been exported to Europe for over 1,000 years.",
+        "Red fishermen's cabins called rorbuer line its harbours.",
+        "Its jagged peaks rise straight out of the sea north of the Arctic Circle.",
+        "It is an archipelago off the coast of northern Norway.",
+        "These are the Lofoten Islands, in Norway. The pin is at the village of Reine."
+      ]
+    },
+    {
+      "id": "washington-dc",
+      "name": "Washington, DC",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 38.8895,
+        "lng": -77.0353
+      },
+      "clues": [
+        "Its street plan was laid out by the French-born engineer Pierre L'Enfant.",
+        "British troops burned many of its government buildings in 1814.",
+        "The National Mall stretches from the Capitol to the Lincoln Memorial.",
+        "It sits on the Potomac River between Maryland and Virginia.",
+        "This is Washington, DC, the capital of the United States."
+      ]
+    },
+    {
+      "id": "new-york-city",
+      "name": "New York City",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "clues": [
+        "The Dutch called it New Amsterdam.",
+        "It was the first capital of the United States under the Constitution.",
+        "Its subway runs 24 hours a day.",
+        "Its five boroughs sit around the mouth of the Hudson River.",
+        "This is New York City."
+      ]
+    },
+    {
+      "id": "los-angeles",
+      "name": "Los Angeles",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 34.0522,
+        "lng": -118.2437
+      },
+      "clues": [
+        "Spanish settlers founded it in 1781.",
+        "It is the centre of the American film industry.",
+        "It hosted the Summer Olympics in 1932 and 1984 and will host them again in 2028.",
+        "It is the largest city in southern California.",
+        "This is Los Angeles."
+      ]
+    },
+    {
+      "id": "chicago",
+      "name": "Chicago",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 41.8781,
+        "lng": -87.6298
+      },
+      "clues": [
+        "A great fire destroyed much of it in 1871.",
+        "The Home Insurance Building, often called the first skyscraper, was built here in 1885.",
+        "Its river is dyed green every St Patrick's Day.",
+        "It sits on the south-western shore of Lake Michigan.",
+        "This is Chicago, Illinois."
+      ]
+    },
+    {
+      "id": "san-francisco",
+      "name": "San Francisco",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "clues": [
+        "The 1849 Gold Rush turned it from a village into a city.",
+        "An earthquake and fire destroyed much of it in 1906.",
+        "Its cable cars are the last manually operated system of their kind in the world.",
+        "It sits on a peninsula between the Pacific and a large bay in northern California.",
+        "This is San Francisco."
+      ]
+    },
+    {
+      "id": "las-vegas",
+      "name": "Las Vegas",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 36.1147,
+        "lng": -115.1728
+      },
+      "clues": [
+        "It was founded as a railway town in 1905.",
+        "Its state legalised gambling in 1931, and the city grew up around casinos.",
+        "Its famous Strip has replicas of the Eiffel Tower and the canals of Venice.",
+        "It lies in the Mojave Desert in the south-western US.",
+        "This is Las Vegas, Nevada. The pin is on the Strip."
+      ]
+    },
+    {
+      "id": "new-orleans",
+      "name": "New Orleans",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 29.9511,
+        "lng": -90.0715
+      },
+      "clues": [
+        "France sold it to the US in 1803 as part of the Louisiana Purchase.",
+        "It is often called the birthplace of jazz.",
+        "Hurricane Katrina flooded about 80% of it in 2005.",
+        "It sits on the Mississippi River, near the Gulf of Mexico.",
+        "This is New Orleans, Louisiana."
+      ]
+    },
+    {
+      "id": "miami",
+      "name": "Miami",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 25.7617,
+        "lng": -80.1918
+      },
+      "clues": [
+        "It became a city in 1896, just after a railway reached it.",
+        "Its Little Havana district is the heart of its Cuban community.",
+        "Its South Beach is famous for Art Deco hotels.",
+        "It is near the south-eastern tip of the US mainland, beside the Everglades.",
+        "This is Miami, Florida."
+      ]
+    },
+    {
+      "id": "ottawa",
+      "name": "Ottawa",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Canada",
+      "difficulty": "medium",
+      "target": {
+        "lat": 45.4215,
+        "lng": -75.6972
+      },
+      "clues": [
+        "Queen Victoria chose it as the capital in 1857.",
+        "In winter its Rideau Canal becomes one of the world's largest skating rinks.",
+        "Its Parliament buildings stand on a bluff above a river.",
+        "It sits on the border between Ontario and Quebec.",
+        "This is Ottawa, the capital of Canada."
+      ]
+    },
+    {
+      "id": "toronto",
+      "name": "Toronto",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Canada",
+      "difficulty": "easy",
+      "target": {
+        "lat": 43.6532,
+        "lng": -79.3832
+      },
+      "clues": [
+        "It was called York until 1834.",
+        "Its CN Tower was the world's tallest free-standing structure for over 30 years.",
+        "It is the largest city in its country.",
+        "It sits on the north-western shore of Lake Ontario.",
+        "This is Toronto, Canada."
+      ]
+    },
+    {
+      "id": "vancouver",
+      "name": "Vancouver",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Canada",
+      "difficulty": "medium",
+      "target": {
+        "lat": 49.2827,
+        "lng": -123.1207
+      },
+      "clues": [
+        "It is named after a British naval captain who explored the coast in 1792.",
+        "It hosted the 2010 Winter Olympics.",
+        "Stanley Park, bigger than New York's Central Park, is on its edge.",
+        "It is on the Pacific coast, just north of the US border.",
+        "This is Vancouver, British Columbia, Canada."
+      ]
+    },
+    {
+      "id": "montreal",
+      "name": "Montreal",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Canada",
+      "difficulty": "medium",
+      "target": {
+        "lat": 45.5017,
+        "lng": -73.5673
+      },
+      "clues": [
+        "It hosted the 1976 Summer Olympics.",
+        "It is one of the largest French-speaking cities in the world.",
+        "It is built around a hill called Mount Royal.",
+        "It sits on an island in the St Lawrence River.",
+        "This is Montreal, Quebec, Canada."
+      ]
+    },
+    {
+      "id": "mexico-city",
+      "name": "Mexico City",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Mexico",
+      "difficulty": "easy",
+      "target": {
+        "lat": 19.4326,
+        "lng": -99.1332
+      },
+      "clues": [
+        "It was built on the ruins of the Aztec capital, Tenochtitlan.",
+        "It is slowly sinking because it sits on an old lake bed.",
+        "It hosted the 1968 Olympics and the World Cup finals of 1970 and 1986.",
+        "It lies in a high valley about 2,240 m above sea level.",
+        "This is Mexico City, the capital of Mexico."
+      ]
+    },
+    {
+      "id": "havana",
+      "name": "Havana",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Cuba",
+      "difficulty": "medium",
+      "target": {
+        "lat": 23.1136,
+        "lng": -82.3666
+      },
+      "clues": [
+        "Spanish treasure fleets gathered here before crossing the Atlantic.",
+        "American cars from the 1950s still drive its streets.",
+        "Its seafront promenade is called the Malecón.",
+        "It is the capital of the largest island in the Caribbean.",
+        "This is Havana, the capital of Cuba."
+      ]
+    },
+    {
+      "id": "panama-city",
+      "name": "Panama City",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Panama",
+      "difficulty": "medium",
+      "target": {
+        "lat": 8.9824,
+        "lng": -79.5199
+      },
+      "clues": [
+        "The pirate Henry Morgan sacked the original city in 1671.",
+        "Its skyline is one of the tallest in Latin America.",
+        "Ships queue offshore to enter a famous canal nearby.",
+        "It sits on the Pacific side of the narrowest part of the Americas.",
+        "This is Panama City, the capital of Panama."
+      ]
+    },
+    {
+      "id": "statue-of-liberty",
+      "name": "Statue of Liberty",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 40.6892,
+        "lng": -74.0445
+      },
+      "clues": [
+        "It was a gift from France, dedicated in 1886.",
+        "Gustave Eiffel designed its internal iron frame.",
+        "It is made of copper, which turned green over time.",
+        "It stands on an island in New York Harbor.",
+        "This is the Statue of Liberty, in New York."
+      ]
+    },
+    {
+      "id": "golden-gate-bridge",
+      "name": "Golden Gate Bridge",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.8199,
+        "lng": -122.4783
+      },
+      "clues": [
+        "When it opened in 1937 it had the longest main span of any suspension bridge.",
+        "Its official colour is called International Orange.",
+        "It is often hidden by sea fog.",
+        "It crosses the strait between a famous Californian bay and the Pacific.",
+        "This is the Golden Gate Bridge, in San Francisco."
+      ]
+    },
+    {
+      "id": "hollywood-sign",
+      "name": "Hollywood Sign",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 34.1341,
+        "lng": -118.3215
+      },
+      "clues": [
+        "It was put up in 1923 to advertise a housing development.",
+        "Each of its letters is about 14 m tall.",
+        "It originally read 'Hollywoodland'.",
+        "It is on Mount Lee in the hills above Los Angeles.",
+        "This is the Hollywood Sign, in Los Angeles."
+      ]
+    },
+    {
+      "id": "mount-rushmore",
+      "name": "Mount Rushmore",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 43.8791,
+        "lng": -103.4591
+      },
+      "clues": [
+        "Sculptor Gutzon Borglum worked on it from 1927 to 1941.",
+        "It shows four faces, each about 18 m tall.",
+        "The faces are of Washington, Jefferson, Theodore Roosevelt and Lincoln.",
+        "It is carved into a granite peak in the Black Hills.",
+        "This is Mount Rushmore, in South Dakota."
+      ]
+    },
+    {
+      "id": "white-house",
+      "name": "White House",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 38.8977,
+        "lng": -77.0365
+      },
+      "clues": [
+        "John Adams was the first president to live here, in 1800.",
+        "British troops set it on fire in 1814.",
+        "Its address is 1600 Pennsylvania Avenue.",
+        "It looks south over a park called the Ellipse in the US capital.",
+        "This is the White House, in Washington, DC."
+      ]
+    },
+    {
+      "id": "times-square",
+      "name": "Times Square",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 40.758,
+        "lng": -73.9855
+      },
+      "clues": [
+        "It is named after a newspaper that moved here in 1904.",
+        "A ball drops here at midnight every New Year's Eve.",
+        "It is lined with giant digital billboards and Broadway theatres.",
+        "It is where Broadway crosses Seventh Avenue in Midtown Manhattan.",
+        "This is Times Square, in New York City."
+      ]
+    },
+    {
+      "id": "alcatraz",
+      "name": "Alcatraz",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.8267,
+        "lng": -122.423
+      },
+      "clues": [
+        "Its prisoners included Al Capone.",
+        "It closed as a federal prison in 1963.",
+        "Its nickname is 'The Rock'.",
+        "It is a small island in a bay in northern California.",
+        "This is Alcatraz, in San Francisco Bay."
+      ]
+    },
+    {
+      "id": "chichen-itza",
+      "name": "Chichén Itzá",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "Mexico",
+      "difficulty": "medium",
+      "target": {
+        "lat": 20.6843,
+        "lng": -88.5678
+      },
+      "clues": [
+        "At the equinoxes, shadows make a serpent appear to slither down its main pyramid.",
+        "It was one of the largest Maya cities.",
+        "It was named one of the New Seven Wonders of the World in 2007.",
+        "It is in the Yucatán Peninsula.",
+        "This is Chichén Itzá, in Mexico."
+      ]
+    },
+    {
+      "id": "teotihuacan",
+      "name": "Teotihuacan",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "Mexico",
+      "difficulty": "hard",
+      "target": {
+        "lat": 19.6925,
+        "lng": -98.8438
+      },
+      "clues": [
+        "It was already in ruins when the Aztecs found it and gave it its name.",
+        "Its Pyramid of the Sun is one of the largest pyramids in the world.",
+        "Its main road is called the Avenue of the Dead.",
+        "It is about 40 km north-east of Mexico City.",
+        "This is Teotihuacan, in Mexico."
+      ]
+    },
+    {
+      "id": "panama-canal",
+      "name": "Panama Canal",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "Panama",
+      "difficulty": "medium",
+      "target": {
+        "lat": 8.9973,
+        "lng": -79.5917
+      },
+      "clues": [
+        "France tried to build it in the 1880s, but the project collapsed after thousands of workers died.",
+        "It opened in 1914.",
+        "Locks lift ships about 26 m to cross it.",
+        "It cuts across the narrowest part of Central America.",
+        "This is the Panama Canal. The pin is at the Miraflores Locks."
+      ]
+    },
+    {
+      "id": "grand-canyon",
+      "name": "Grand Canyon",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "easy",
+      "target": {
+        "lat": 36.0544,
+        "lng": -112.1401
+      },
+      "clues": [
+        "John Wesley Powell led the first recorded expedition through it by boat in 1869.",
+        "Its walls expose rock nearly two billion years old.",
+        "It was carved by the Colorado River.",
+        "Most visitors see it from the South Rim, in the American Southwest.",
+        "This is the Grand Canyon, in northern Arizona. The pin is at Grand Canyon Village on the South Rim."
+      ]
+    },
+    {
+      "id": "niagara-falls",
+      "name": "Niagara Falls",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States / Canada",
+      "difficulty": "easy",
+      "target": {
+        "lat": 43.0779,
+        "lng": -79.075
+      },
+      "clues": [
+        "Annie Edson Taylor survived going over it in a barrel in 1901.",
+        "Some of its water is diverted at night to generate hydroelectric power.",
+        "Its tour boats are called the Maid of the Mist.",
+        "It sits on a river between Lake Erie and Lake Ontario.",
+        "This is Niagara Falls, on the US–Canada border. The pin is at Horseshoe Falls."
+      ]
+    },
+    {
+      "id": "yellowstone",
+      "name": "Yellowstone",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 44.4605,
+        "lng": -110.8281
+      },
+      "clues": [
+        "It became the world's first national park in 1872.",
+        "It sits on top of a supervolcano.",
+        "Its Old Faithful geyser erupts roughly every 90 minutes.",
+        "It is mostly in the north-west corner of Wyoming.",
+        "This is Yellowstone National Park. The pin is at Old Faithful."
+      ]
+    },
+    {
+      "id": "yosemite",
+      "name": "Yosemite",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 37.7456,
+        "lng": -119.5936
+      },
+      "clues": [
+        "Abraham Lincoln signed a law protecting it in 1864.",
+        "Its granite cliff El Capitan is famous among climbers.",
+        "It has giant sequoia trees and huge waterfalls.",
+        "It is in the Sierra Nevada mountains of California.",
+        "This is Yosemite National Park. The pin is in Yosemite Valley."
+      ]
+    },
+    {
+      "id": "lake-louise",
+      "name": "Lake Louise",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "Canada",
+      "difficulty": "hard",
+      "target": {
+        "lat": 51.4254,
+        "lng": -116.1773
+      },
+      "clues": [
+        "It was named after a daughter of Queen Victoria in 1884.",
+        "Its turquoise colour comes from fine rock dust washed down by glaciers.",
+        "A grand hotel, the Fairmont Chateau, stands on its shore.",
+        "It is in Banff National Park in the Canadian Rockies.",
+        "This is Lake Louise, in Alberta, Canada."
+      ]
+    },
+    {
+      "id": "death-valley",
+      "name": "Death Valley",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 36.2297,
+        "lng": -116.7672
+      },
+      "clues": [
+        "It recorded the highest air temperature on Earth, 56.7°C, in 1913.",
+        "Its lowest point is 86 m below sea level.",
+        "Rocks mysteriously slide across a dry lakebed called Racetrack Playa.",
+        "It is in the Mojave Desert near the California–Nevada border.",
+        "This is Death Valley, in California. The pin is at Badwater Basin."
+      ]
+    },
+    {
+      "id": "denali",
+      "name": "Denali",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "United States",
+      "difficulty": "hard",
+      "target": {
+        "lat": 63.0692,
+        "lng": -151.007
+      },
+      "clues": [
+        "Its official name has switched between a Native name and a president's name.",
+        "It is the highest peak in North America, at about 6,190 m.",
+        "From base to summit it rises further than Everest does.",
+        "It is in the Alaska Range.",
+        "This is Denali (also called Mount McKinley), in Alaska."
+      ]
+    },
+    {
+      "id": "brasilia",
+      "name": "Brasília",
+      "type": "city",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "medium",
+      "target": {
+        "lat": -15.7975,
+        "lng": -47.8919
+      },
+      "clues": [
+        "It was built almost from scratch and became the capital in 1960.",
+        "Its city plan is shaped like an aeroplane or a bird.",
+        "Oscar Niemeyer designed its modernist buildings.",
+        "It sits on a high plateau in the centre of South America's largest country.",
+        "This is Brasília, the capital of Brazil."
+      ]
+    },
+    {
+      "id": "rio-de-janeiro",
+      "name": "Rio de Janeiro",
+      "type": "city",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "easy",
+      "target": {
+        "lat": -22.9068,
+        "lng": -43.1729
+      },
+      "clues": [
+        "It was the capital of the Portuguese Empire from 1808 to 1821.",
+        "Its carnival is the biggest in the world.",
+        "Sugarloaf Mountain rises over its bay.",
+        "It sits on Guanabara Bay on the Atlantic coast.",
+        "This is Rio de Janeiro, in Brazil."
+      ]
+    },
+    {
+      "id": "sao-paulo",
+      "name": "São Paulo",
+      "type": "city",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "medium",
+      "target": {
+        "lat": -23.5505,
+        "lng": -46.6333
+      },
+      "clues": [
+        "It has the largest Japanese community outside Japan.",
+        "It is the largest city in the Southern Hemisphere.",
+        "Its Avenida Paulista is the financial heart of the country.",
+        "It sits on a plateau about 70 km inland from the port of Santos.",
+        "This is São Paulo, in Brazil."
+      ]
+    },
+    {
+      "id": "buenos-aires",
+      "name": "Buenos Aires",
+      "type": "city",
+      "region": "South America",
+      "country": "Argentina",
+      "difficulty": "easy",
+      "target": {
+        "lat": -34.6037,
+        "lng": -58.3816
+      },
+      "clues": [
+        "Its name means 'fair winds'.",
+        "Tango was born in its port districts.",
+        "Its Avenida 9 de Julio is one of the widest avenues in the world.",
+        "It sits on the Río de la Plata estuary, across the water from Uruguay.",
+        "This is Buenos Aires, the capital of Argentina."
+      ]
+    },
+    {
+      "id": "lima",
+      "name": "Lima",
+      "type": "city",
+      "region": "South America",
+      "country": "Peru",
+      "difficulty": "medium",
+      "target": {
+        "lat": -12.0464,
+        "lng": -77.0428
+      },
+      "clues": [
+        "Francisco Pizarro founded it in 1535 as the 'City of Kings'.",
+        "It was the capital of Spain's richest colony in South America.",
+        "It is one of the driest capitals in the world and rarely sees real rain.",
+        "It is on the Pacific coast of South America.",
+        "This is Lima, the capital of Peru."
+      ]
+    },
+    {
+      "id": "bogota",
+      "name": "Bogotá",
+      "type": "city",
+      "region": "South America",
+      "country": "Colombia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 4.711,
+        "lng": -74.0721
+      },
+      "clues": [
+        "Its Gold Museum holds the world's largest collection of pre-Hispanic gold.",
+        "Every Sunday it closes main roads to cars for cyclists.",
+        "At about 2,640 m, it is one of the highest capitals in the world.",
+        "It is in the Andes, in the north of South America.",
+        "This is Bogotá, the capital of Colombia."
+      ]
+    },
+    {
+      "id": "santiago",
+      "name": "Santiago",
+      "type": "city",
+      "region": "South America",
+      "country": "Chile",
+      "difficulty": "medium",
+      "target": {
+        "lat": -33.4489,
+        "lng": -70.6693
+      },
+      "clues": [
+        "Pedro de Valdivia founded it in 1541.",
+        "Its Gran Torre Costanera is the tallest building in South America.",
+        "The snow-capped Andes are visible from its streets.",
+        "It sits in the central valley of a long, thin country.",
+        "This is Santiago, the capital of Chile."
+      ]
+    },
+    {
+      "id": "quito",
+      "name": "Quito",
+      "type": "city",
+      "region": "South America",
+      "country": "Ecuador",
+      "difficulty": "medium",
+      "target": {
+        "lat": -0.1807,
+        "lng": -78.4678
+      },
+      "clues": [
+        "In 1978 it was one of the first two places named UNESCO World Heritage Sites.",
+        "At about 2,850 m, it is one of the highest capitals in the world.",
+        "A monument just north of the city marks the Equator.",
+        "It sits in an Andean valley surrounded by volcanoes.",
+        "This is Quito, the capital of Ecuador."
+      ]
+    },
+    {
+      "id": "la-paz",
+      "name": "La Paz",
+      "type": "city",
+      "region": "South America",
+      "country": "Bolivia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -16.4897,
+        "lng": -68.1193
+      },
+      "clues": [
+        "It is the highest seat of government in the world.",
+        "Its cable-car network is one of the largest city systems in the world.",
+        "Its Witches' Market sells charms and dried llama foetuses.",
+        "It lies in a canyon on the high Altiplano, not far from Lake Titicaca.",
+        "This is La Paz, the seat of government of Bolivia."
+      ]
+    },
+    {
+      "id": "montevideo",
+      "name": "Montevideo",
+      "type": "city",
+      "region": "South America",
+      "country": "Uruguay",
+      "difficulty": "hard",
+      "target": {
+        "lat": -34.9011,
+        "lng": -56.1645
+      },
+      "clues": [
+        "It hosted the first FIFA World Cup final, in 1930.",
+        "Its waterfront promenade, the Rambla, runs for over 20 km.",
+        "Its people are famous for drinking mate tea and grilling meat.",
+        "It sits on the Río de la Plata, across the water from Buenos Aires.",
+        "This is Montevideo, the capital of Uruguay."
+      ]
+    },
+    {
+      "id": "caracas",
+      "name": "Caracas",
+      "type": "city",
+      "region": "South America",
+      "country": "Venezuela",
+      "difficulty": "hard",
+      "target": {
+        "lat": 10.4806,
+        "lng": -66.9036
+      },
+      "clues": [
+        "Simón Bolívar was born here in 1783.",
+        "A mountain called El Ávila separates it from the sea.",
+        "It sits in a valley about 900 m above sea level.",
+        "It is near the Caribbean coast of northern South America.",
+        "This is Caracas, the capital of Venezuela."
+      ]
+    },
+    {
+      "id": "cartagena",
+      "name": "Cartagena",
+      "type": "city",
+      "region": "South America",
+      "country": "Colombia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 10.391,
+        "lng": -75.4794
+      },
+      "clues": [
+        "The English privateer Francis Drake captured it in 1586.",
+        "Its old town is surrounded by colonial walls.",
+        "Gabriel García Márquez set stories in its streets.",
+        "It is a port on the Caribbean coast of South America.",
+        "This is Cartagena, in Colombia."
+      ]
+    },
+    {
+      "id": "christ-the-redeemer",
+      "name": "Christ the Redeemer",
+      "type": "landmark",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "easy",
+      "target": {
+        "lat": -22.9519,
+        "lng": -43.2105
+      },
+      "clues": [
+        "It was completed in 1931.",
+        "Its outstretched arms are about 28 m wide.",
+        "It stands on top of Corcovado mountain.",
+        "It overlooks a city famous for Carnival and Copacabana Beach.",
+        "This is Christ the Redeemer, in Rio de Janeiro."
+      ]
+    },
+    {
+      "id": "machu-picchu",
+      "name": "Machu Picchu",
+      "type": "landmark",
+      "region": "South America",
+      "country": "Peru",
+      "difficulty": "easy",
+      "target": {
+        "lat": -13.1631,
+        "lng": -72.545
+      },
+      "clues": [
+        "Hiram Bingham brought it to international attention in 1911.",
+        "It was built for an Inca emperor in the 15th century.",
+        "It sits on a mountain ridge about 2,430 m up.",
+        "It is above the Urubamba Valley, near Cusco.",
+        "This is Machu Picchu, in Peru."
+      ]
+    },
+    {
+      "id": "copacabana-beach",
+      "name": "Copacabana Beach",
+      "type": "landmark",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "medium",
+      "target": {
+        "lat": -22.9711,
+        "lng": -43.1822
+      },
+      "clues": [
+        "It is named after a Virgin Mary shrine that originally comes from Bolivia.",
+        "Its promenade is paved in a famous black-and-white wave mosaic.",
+        "Huge crowds gather here to watch New Year's fireworks.",
+        "It is a 4 km beach in the South Zone of Brazil's most famous city.",
+        "This is Copacabana Beach, in Rio de Janeiro."
+      ]
+    },
+    {
+      "id": "easter-island",
+      "name": "Easter Island",
+      "type": "landmark",
+      "region": "South America",
+      "country": "Chile",
+      "difficulty": "medium",
+      "target": {
+        "lat": -27.1258,
+        "lng": -109.2769
+      },
+      "clues": [
+        "Dutch explorers named it after the day they arrived in 1722.",
+        "Nearly 1,000 giant stone statues called moai stand on it.",
+        "It is one of the most remote inhabited islands in the world.",
+        "It is in the South Pacific, about 3,500 km west of South America.",
+        "This is Easter Island (Rapa Nui), part of Chile. The pin is at Ahu Tongariki."
+      ]
+    },
+    {
+      "id": "iguazu-falls",
+      "name": "Iguazu Falls",
+      "type": "natural",
+      "region": "South America",
+      "country": "Argentina / Brazil",
+      "difficulty": "medium",
+      "target": {
+        "lat": -25.6953,
+        "lng": -54.4367
+      },
+      "clues": [
+        "Eleanor Roosevelt is said to have exclaimed 'Poor Niagara!' when she saw them.",
+        "They are made up of about 275 separate drops.",
+        "The biggest drop is called the Devil's Throat.",
+        "They are on the border of Argentina and Brazil.",
+        "These are the Iguazu Falls. The pin is at the Devil's Throat."
+      ]
+    },
+    {
+      "id": "angel-falls",
+      "name": "Angel Falls",
+      "type": "natural",
+      "region": "South America",
+      "country": "Venezuela",
+      "difficulty": "hard",
+      "target": {
+        "lat": 5.9701,
+        "lng": -62.5362
+      },
+      "clues": [
+        "It is named after a US pilot who flew over it in 1933.",
+        "It is the world's highest uninterrupted waterfall, at 979 m.",
+        "It plunges off a flat-topped mountain called a tepui.",
+        "It is in Canaima National Park in northern South America.",
+        "This is Angel Falls, in Venezuela."
+      ]
+    },
+    {
+      "id": "galapagos-islands",
+      "name": "Galápagos Islands",
+      "type": "natural",
+      "region": "South America",
+      "country": "Ecuador",
+      "difficulty": "medium",
+      "target": {
+        "lat": -0.7432,
+        "lng": -90.3155
+      },
+      "clues": [
+        "Charles Darwin visited in 1835.",
+        "Giant tortoises gave the islands their name.",
+        "Its marine iguanas are the only lizards that swim in the sea.",
+        "They sit on the Equator about 1,000 km off South America.",
+        "These are the Galápagos Islands, part of Ecuador. The pin is at Puerto Ayora on Santa Cruz island."
+      ]
+    },
+    {
+      "id": "salar-de-uyuni",
+      "name": "Salar de Uyuni",
+      "type": "natural",
+      "region": "South America",
+      "country": "Bolivia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -20.1338,
+        "lng": -67.4891
+      },
+      "clues": [
+        "It is the largest salt flat in the world.",
+        "It holds a large share of the world's lithium.",
+        "After rain it becomes a giant mirror.",
+        "It is on the Altiplano in south-western Bolivia.",
+        "This is the Salar de Uyuni, in Bolivia."
+      ]
+    },
+    {
+      "id": "torres-del-paine",
+      "name": "Torres del Paine",
+      "type": "natural",
+      "region": "South America",
+      "country": "Chile",
+      "difficulty": "hard",
+      "target": {
+        "lat": -50.9423,
+        "lng": -73.4068
+      },
+      "clues": [
+        "It is named after three granite towers.",
+        "Its 'W' trek is one of the world's most famous hikes.",
+        "Its glacial lakes are a vivid turquoise.",
+        "It is in Patagonia, near the southern tip of South America.",
+        "This is Torres del Paine National Park, in Chile."
+      ]
+    },
+    {
+      "id": "lake-titicaca",
+      "name": "Lake Titicaca",
+      "type": "natural",
+      "region": "South America",
+      "country": "Peru / Bolivia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -15.818,
+        "lng": -69.969
+      },
+      "clues": [
+        "Inca legend says the children of the Sun rose from its waters.",
+        "People live on floating islands made of reeds.",
+        "It is often called the highest navigable lake in the world.",
+        "It lies on the border of Peru and Bolivia.",
+        "This is Lake Titicaca. The pin is at the Uros floating islands near Puno, Peru."
+      ]
+    },
+    {
+      "id": "perito-moreno-glacier",
+      "name": "Perito Moreno Glacier",
+      "type": "natural",
+      "region": "South America",
+      "country": "Argentina",
+      "difficulty": "hard",
+      "target": {
+        "lat": -50.4967,
+        "lng": -73.1377
+      },
+      "clues": [
+        "Unlike most glaciers, it is not shrinking.",
+        "Every few years it dams part of a lake and then bursts through dramatically.",
+        "Its ice front towers about 70 m above the water.",
+        "It is in Los Glaciares National Park in Patagonia.",
+        "This is the Perito Moreno Glacier, in Argentina."
+      ]
+    },
+    {
+      "id": "atacama-desert",
+      "name": "Atacama Desert",
+      "type": "natural",
+      "region": "South America",
+      "country": "Chile",
+      "difficulty": "medium",
+      "target": {
+        "lat": -22.9087,
+        "lng": -68.1997
+      },
+      "clues": [
+        "Some weather stations here have never recorded rain.",
+        "NASA tests Mars rovers here.",
+        "Its clear skies host some of the world's biggest telescopes.",
+        "It stretches along the Pacific side of the Andes in South America.",
+        "This is the Atacama Desert, in Chile. The pin is at San Pedro de Atacama."
+      ]
+    },
+    {
+      "id": "manaus-amazon",
+      "name": "Manaus (Amazon)",
+      "type": "city",
+      "region": "South America",
+      "country": "Brazil",
+      "difficulty": "hard",
+      "target": {
+        "lat": -3.119,
+        "lng": -60.0217
+      },
+      "clues": [
+        "An opera house was built here in 1896 with money from the rubber boom.",
+        "Nearby, two rivers meet but run side by side for kilometres without mixing.",
+        "It is the main gateway to the world's largest rainforest.",
+        "It is deep in the north of South America's largest country, about 1,500 km from the sea.",
+        "This is Manaus, in the heart of the Brazilian Amazon."
+      ]
+    },
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "type": "city",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "easy",
+      "target": {
+        "lat": 30.0444,
+        "lng": 31.2357
+      },
+      "clues": [
+        "Its Al-Azhar University, founded around AD 970, is one of the oldest in the world.",
+        "It is the largest city in the Arab world.",
+        "Its old Islamic quarter is known as the 'city of a thousand minarets'.",
+        "It sits on the Nile just south of the river's delta.",
+        "This is Cairo, the capital of Egypt."
+      ]
+    },
+    {
+      "id": "cape-town",
+      "name": "Cape Town",
+      "type": "city",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "easy",
+      "target": {
+        "lat": -33.9249,
+        "lng": 18.4241
+      },
+      "clues": [
+        "It began in 1652 as a supply station for Dutch ships.",
+        "Nelson Mandela gave his first speech after his release here in 1990.",
+        "A flat-topped mountain overlooks the city.",
+        "It sits near the southern tip of Africa.",
+        "This is Cape Town, in South Africa."
+      ]
+    },
+    {
+      "id": "johannesburg",
+      "name": "Johannesburg",
+      "type": "city",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -26.2041,
+        "lng": 28.0473
+      },
+      "clues": [
+        "It was founded in 1886 after gold was discovered.",
+        "Nelson Mandela lived in its Soweto township.",
+        "It hosted the 2010 World Cup final.",
+        "It is on the high plateau known as the Highveld.",
+        "This is Johannesburg, South Africa's largest city."
+      ]
+    },
+    {
+      "id": "nairobi",
+      "name": "Nairobi",
+      "type": "city",
+      "region": "Africa",
+      "country": "Kenya",
+      "difficulty": "medium",
+      "target": {
+        "lat": -1.2864,
+        "lng": 36.8172
+      },
+      "clues": [
+        "This city grew from a railway depot built in 1899 on the line from the coast to Lake Victoria.",
+        "Lions, giraffes and rhinos roam a national park on the edge of the city.",
+        "It sits about 1,800 m up on a high plateau in East Africa.",
+        "It lies just south of the Equator, in the country named after Africa's second-highest mountain.",
+        "This is Nairobi, the capital of Kenya."
+      ]
+    },
+    {
+      "id": "lagos",
+      "name": "Lagos",
+      "type": "city",
+      "region": "Africa",
+      "country": "Nigeria",
+      "difficulty": "medium",
+      "target": {
+        "lat": 6.5244,
+        "lng": 3.3792
+      },
+      "clues": [
+        "It was its country's capital until 1991.",
+        "It is one of the largest cities in Africa.",
+        "Its film industry, Nollywood, makes thousands of films a year.",
+        "It sits on lagoons along the Gulf of Guinea.",
+        "This is Lagos, Nigeria's largest city."
+      ]
+    },
+    {
+      "id": "marrakech",
+      "name": "Marrakech",
+      "type": "city",
+      "region": "Africa",
+      "country": "Morocco",
+      "difficulty": "easy",
+      "target": {
+        "lat": 31.6295,
+        "lng": -7.9811
+      },
+      "clues": [
+        "It was founded around 1070 by the Almoravid dynasty.",
+        "Its main square, Jemaa el-Fnaa, fills with storytellers and snake charmers.",
+        "The Majorelle Garden, once owned by Yves Saint Laurent, is here.",
+        "It lies at the foot of the Atlas Mountains in North Africa.",
+        "This is Marrakech, in Morocco."
+      ]
+    },
+    {
+      "id": "casablanca",
+      "name": "Casablanca",
+      "type": "city",
+      "region": "Africa",
+      "country": "Morocco",
+      "difficulty": "medium",
+      "target": {
+        "lat": 33.5731,
+        "lng": -7.5898
+      },
+      "clues": [
+        "Its name means 'white house' in Spanish.",
+        "A 1942 film starring Humphrey Bogart is named after it.",
+        "Its Hassan II Mosque has one of the tallest minarets in the world.",
+        "It is a port on the Atlantic coast of North Africa.",
+        "This is Casablanca, in Morocco."
+      ]
+    },
+    {
+      "id": "addis-ababa",
+      "name": "Addis Ababa",
+      "type": "city",
+      "region": "Africa",
+      "country": "Ethiopia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 9.03,
+        "lng": 38.74
+      },
+      "clues": [
+        "Its name means 'new flower'.",
+        "It is home to the headquarters of the African Union.",
+        "The fossil skeleton known as 'Lucy' is kept in its national museum.",
+        "It is a high capital city in the Horn of Africa.",
+        "This is Addis Ababa, the capital of Ethiopia."
+      ]
+    },
+    {
+      "id": "accra",
+      "name": "Accra",
+      "type": "city",
+      "region": "Africa",
+      "country": "Ghana",
+      "difficulty": "hard",
+      "target": {
+        "lat": 5.6037,
+        "lng": -0.187
+      },
+      "clues": [
+        "In 1957 its country became the first in sub-Saharan Africa to win independence from colonial rule.",
+        "A mausoleum here honours Kwame Nkrumah, the country's first leader.",
+        "Its craftsmen make 'fantasy coffins' shaped like fish, cars or bottles.",
+        "It is on the Gulf of Guinea in West Africa.",
+        "This is Accra, the capital of Ghana."
+      ]
+    },
+    {
+      "id": "dakar",
+      "name": "Dakar",
+      "type": "city",
+      "region": "Africa",
+      "country": "Senegal",
+      "difficulty": "hard",
+      "target": {
+        "lat": 14.7167,
+        "lng": -17.4677
+      },
+      "clues": [
+        "A famous car rally from Paris used to finish here.",
+        "Its African Renaissance Monument is taller than the Statue of Liberty.",
+        "Gorée Island, a memorial to the slave trade, lies just offshore.",
+        "It is on the westernmost point of mainland Africa.",
+        "This is Dakar, the capital of Senegal."
+      ]
+    },
+    {
+      "id": "tunis",
+      "name": "Tunis",
+      "type": "city",
+      "region": "Africa",
+      "country": "Tunisia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 36.8065,
+        "lng": 10.1815
+      },
+      "clues": [
+        "The ruins of ancient Carthage are in its suburbs.",
+        "Its medina is a UNESCO World Heritage Site.",
+        "Nearby Sidi Bou Said is famous for blue-and-white houses.",
+        "It is on the North African coast, facing Sicily.",
+        "This is Tunis, the capital of Tunisia."
+      ]
+    },
+    {
+      "id": "stone-town",
+      "name": "Stone Town",
+      "type": "city",
+      "region": "Africa",
+      "country": "Tanzania",
+      "difficulty": "hard",
+      "target": {
+        "lat": -6.1622,
+        "lng": 39.1921
+      },
+      "clues": [
+        "Freddie Mercury was born here in 1946.",
+        "It was a centre of the spice and slave trades.",
+        "It is famous for its carved wooden doors.",
+        "It is on an island off the coast of East Africa.",
+        "This is Stone Town, on Zanzibar, part of Tanzania."
+      ]
+    },
+    {
+      "id": "timbuktu",
+      "name": "Timbuktu",
+      "type": "city",
+      "region": "Africa",
+      "country": "Mali",
+      "difficulty": "medium",
+      "target": {
+        "lat": 16.7666,
+        "lng": -3.0026
+      },
+      "clues": [
+        "In English its name became shorthand for the remotest place imaginable.",
+        "Its mud-built mosques date back to the 14th century.",
+        "It was a great centre of Islamic learning, with thousands of old manuscripts.",
+        "It is near the Niger River, on the edge of the Sahara.",
+        "This is Timbuktu, in Mali."
+      ]
+    },
+    {
+      "id": "pyramids-of-giza",
+      "name": "Pyramids of Giza",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "easy",
+      "target": {
+        "lat": 29.9792,
+        "lng": 31.1342
+      },
+      "clues": [
+        "The Great Pyramid was the tallest man-made structure in the world for over 3,800 years.",
+        "It is the only one of the Seven Wonders of the Ancient World still standing.",
+        "The Great Sphinx guards the site.",
+        "They stand on a plateau at the edge of Egypt's capital.",
+        "These are the Pyramids of Giza, near Cairo."
+      ]
+    },
+    {
+      "id": "abu-simbel",
+      "name": "Abu Simbel",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "hard",
+      "target": {
+        "lat": 22.3372,
+        "lng": 31.6258
+      },
+      "clues": [
+        "Ramesses II built its two temples around 1260 BC.",
+        "Twice a year, sunlight reaches the statues in its innermost sanctuary.",
+        "In the 1960s it was cut into blocks and moved to escape a rising reservoir.",
+        "It is on Lake Nasser, near the Sudanese border.",
+        "This is Abu Simbel, in southern Egypt."
+      ]
+    },
+    {
+      "id": "valley-of-the-kings",
+      "name": "Valley of the Kings",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "medium",
+      "target": {
+        "lat": 25.7402,
+        "lng": 32.6014
+      },
+      "clues": [
+        "Howard Carter found Tutankhamun's tomb here in 1922.",
+        "More than 60 tombs have been found here.",
+        "Pharaohs were buried here for around 500 years.",
+        "It is on the west bank of the Nile, opposite Luxor.",
+        "This is the Valley of the Kings, in Egypt."
+      ]
+    },
+    {
+      "id": "robben-island",
+      "name": "Robben Island",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -33.8076,
+        "lng": 18.3712
+      },
+      "clues": [
+        "Nelson Mandela was imprisoned here for 18 years.",
+        "It was also once used as a leper colony.",
+        "Its name comes from the Dutch word for seals.",
+        "It is in Table Bay, off a South African city.",
+        "This is Robben Island, off Cape Town."
+      ]
+    },
+    {
+      "id": "lalibela",
+      "name": "Lalibela",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Ethiopia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 12.0317,
+        "lng": 39.0476
+      },
+      "clues": [
+        "Around 1200 a king had its churches built as a 'New Jerusalem'.",
+        "Its churches were carved downwards into solid rock.",
+        "Its Church of St George is shaped like a cross.",
+        "It is in the highlands of northern Ethiopia.",
+        "These are the rock-hewn churches of Lalibela, in Ethiopia."
+      ]
+    },
+    {
+      "id": "victoria-falls",
+      "name": "Victoria Falls",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Zambia / Zimbabwe",
+      "difficulty": "easy",
+      "target": {
+        "lat": -17.9243,
+        "lng": 25.8572
+      },
+      "clues": [
+        "David Livingstone named it after his queen in 1855.",
+        "Its local name means 'the smoke that thunders'.",
+        "It is often called the world's largest sheet of falling water.",
+        "It is on the Zambezi River.",
+        "This is Victoria Falls, on the border of Zambia and Zimbabwe."
+      ]
+    },
+    {
+      "id": "mount-kilimanjaro",
+      "name": "Mount Kilimanjaro",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Tanzania",
+      "difficulty": "easy",
+      "target": {
+        "lat": -3.0674,
+        "lng": 37.3556
+      },
+      "clues": [
+        "It is the tallest free-standing mountain in the world.",
+        "Its summit, Uhuru Peak, is 5,895 m high.",
+        "Its glaciers are shrinking fast.",
+        "It rises near the Kenyan border in East Africa.",
+        "This is Mount Kilimanjaro, in Tanzania."
+      ]
+    },
+    {
+      "id": "table-mountain",
+      "name": "Table Mountain",
+      "type": "natural",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -33.9628,
+        "lng": 18.4098
+      },
+      "clues": [
+        "Cloud spilling over its top is called the 'tablecloth'.",
+        "A rotating cable car climbs to its flat summit.",
+        "A constellation, Mensa, is named after it.",
+        "It overlooks a city at the south-western tip of Africa.",
+        "This is Table Mountain, in Cape Town."
+      ]
+    },
+    {
+      "id": "cape-of-good-hope",
+      "name": "Cape of Good Hope",
+      "type": "natural",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -34.3568,
+        "lng": 18.474
+      },
+      "clues": [
+        "Bartolomeu Dias sailed round it in 1488.",
+        "It was once called the Cape of Storms.",
+        "Baboons roam its nature reserve.",
+        "It is at the end of a peninsula south of Cape Town.",
+        "This is the Cape of Good Hope, in South Africa."
+      ]
+    },
+    {
+      "id": "serengeti",
+      "name": "Serengeti",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Tanzania",
+      "difficulty": "medium",
+      "target": {
+        "lat": -2.45,
+        "lng": 34.8333
+      },
+      "clues": [
+        "Its name comes from a Maasai word meaning 'endless plains'.",
+        "Over a million wildebeest migrate across it every year.",
+        "It has one of the largest lion populations in Africa.",
+        "It is in northern Tanzania, bordering Kenya's Maasai Mara.",
+        "This is the Serengeti, in Tanzania. The pin is at Seronera."
+      ]
+    },
+    {
+      "id": "ngorongoro-crater",
+      "name": "Ngorongoro Crater",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Tanzania",
+      "difficulty": "hard",
+      "target": {
+        "lat": -3.1615,
+        "lng": 35.5877
+      },
+      "clues": [
+        "It is the world's largest unbroken, unflooded volcanic caldera.",
+        "Its floor is home to rare black rhinos.",
+        "Its walls are about 600 m high.",
+        "It is near the Serengeti in northern Tanzania.",
+        "This is the Ngorongoro Crater, in Tanzania."
+      ]
+    },
+    {
+      "id": "okavango-delta",
+      "name": "Okavango Delta",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Botswana",
+      "difficulty": "hard",
+      "target": {
+        "lat": -19.9833,
+        "lng": 23.4167
+      },
+      "clues": [
+        "It is a river delta that never reaches the sea.",
+        "It floods in the dry season with rain that fell months earlier in Angola.",
+        "Guides pole visitors through it in dug-out canoes called mokoros.",
+        "It is on the edge of the Kalahari in northern Botswana.",
+        "This is the Okavango Delta, in Botswana. The pin is at Maun, the gateway town."
+      ]
+    },
+    {
+      "id": "sahara",
+      "name": "Sahara",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Morocco",
+      "difficulty": "medium",
+      "target": {
+        "lat": 31.15,
+        "lng": -3.98
+      },
+      "clues": [
+        "It is the largest hot desert in the world.",
+        "It covers parts of around 11 countries.",
+        "Some of its dunes, like Erg Chebbi, reach about 150 m high.",
+        "It stretches right across North Africa.",
+        "This is the Sahara. The pin is at the Erg Chebbi dunes near Merzouga, Morocco."
+      ]
+    },
+    {
+      "id": "avenue-of-the-baobabs",
+      "name": "Avenue of the Baobabs",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Madagascar",
+      "difficulty": "hard",
+      "target": {
+        "lat": -20.2508,
+        "lng": 44.4183
+      },
+      "clues": [
+        "Its trees are thought to be up to 800 years old.",
+        "The baobabs here are a species found only on this island.",
+        "It is famous for sunset photographs.",
+        "It lines a dirt road near Morondava, on a huge island off East Africa.",
+        "This is the Avenue of the Baobabs, in Madagascar."
+      ]
+    },
+    {
+      "id": "dubai",
+      "name": "Dubai",
+      "type": "city",
+      "region": "Middle East",
+      "country": "United Arab Emirates",
+      "difficulty": "easy",
+      "target": {
+        "lat": 25.2048,
+        "lng": 55.2708
+      },
+      "clues": [
+        "It grew rich from pearl diving and trade before oil was found in 1966.",
+        "Its Palm Jumeirah islands are shaped like a palm tree.",
+        "It has the tallest building in the world.",
+        "It is on the Persian Gulf coast of the Arabian Peninsula.",
+        "This is Dubai, in the United Arab Emirates."
+      ]
+    },
+    {
+      "id": "abu-dhabi",
+      "name": "Abu Dhabi",
+      "type": "city",
+      "region": "Middle East",
+      "country": "United Arab Emirates",
+      "difficulty": "medium",
+      "target": {
+        "lat": 24.4539,
+        "lng": 54.3773
+      },
+      "clues": [
+        "It sits on an island and became a national capital in 1971.",
+        "Its Sheikh Zayed Grand Mosque has one of the world's largest hand-knotted carpets.",
+        "A branch of the Louvre opened here in 2017.",
+        "It is on the Persian Gulf, south-west of Dubai.",
+        "This is Abu Dhabi, the capital of the United Arab Emirates."
+      ]
+    },
+    {
+      "id": "doha",
+      "name": "Doha",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Qatar",
+      "difficulty": "medium",
+      "target": {
+        "lat": 25.2854,
+        "lng": 51.531
+      },
+      "clues": [
+        "Its country hosted the 2022 World Cup, with the final played just north of the city.",
+        "Its Museum of Islamic Art was designed by I. M. Pei.",
+        "Its waterfront promenade is called the Corniche.",
+        "It is on a peninsula sticking out into the Persian Gulf.",
+        "This is Doha, the capital of Qatar."
+      ]
+    },
+    {
+      "id": "riyadh",
+      "name": "Riyadh",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Saudi Arabia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 24.7136,
+        "lng": 46.6753
+      },
+      "clues": [
+        "The capture of its Masmak Fort in 1902 began the founding of a modern kingdom.",
+        "Its Kingdom Centre tower has a sky bridge near the top.",
+        "It will host Expo 2030.",
+        "It sits in the centre of the Arabian Peninsula.",
+        "This is Riyadh, the capital of Saudi Arabia."
+      ]
+    },
+    {
+      "id": "jerusalem",
+      "name": "Jerusalem",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Disputed (Israel / Palestine)",
+      "difficulty": "easy",
+      "target": {
+        "lat": 31.7767,
+        "lng": 35.2345
+      },
+      "clues": [
+        "King David is said to have made it his capital around 1000 BC.",
+        "It is holy to Jews, Christians and Muslims.",
+        "The Western Wall and the Church of the Holy Sepulchre are in its Old City.",
+        "It sits in the hills between the Mediterranean and the Dead Sea.",
+        "This is Jerusalem. The pin is in the Old City."
+      ]
+    },
+    {
+      "id": "tehran",
+      "name": "Tehran",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Iran",
+      "difficulty": "medium",
+      "target": {
+        "lat": 35.6892,
+        "lng": 51.389
+      },
+      "clues": [
+        "It became a capital in 1786.",
+        "The Azadi Tower marks its western entrance.",
+        "The Alborz mountains rise behind it.",
+        "It is south of the Caspian Sea in western Asia.",
+        "This is Tehran, the capital of Iran."
+      ]
+    },
+    {
+      "id": "beirut",
+      "name": "Beirut",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Lebanon",
+      "difficulty": "medium",
+      "target": {
+        "lat": 33.8938,
+        "lng": 35.5018
+      },
+      "clues": [
+        "A huge explosion in its port devastated much of it in 2020.",
+        "It was once called the 'Paris of the Middle East'.",
+        "Its Pigeon Rocks stand just offshore.",
+        "It sits on the eastern Mediterranean coast.",
+        "This is Beirut, the capital of Lebanon."
+      ]
+    },
+    {
+      "id": "muscat",
+      "name": "Muscat",
+      "type": "city",
+      "region": "Middle East",
+      "country": "Oman",
+      "difficulty": "hard",
+      "target": {
+        "lat": 23.588,
+        "lng": 58.3829
+      },
+      "clues": [
+        "Portugal controlled it for much of the 16th and 17th centuries.",
+        "Its Sultan Qaboos Grand Mosque has a huge Persian carpet.",
+        "Rugged mountains rise right behind its coast.",
+        "It is on the Gulf of Oman, at the eastern tip of Arabia.",
+        "This is Muscat, the capital of Oman."
+      ]
+    },
+    {
+      "id": "burj-khalifa",
+      "name": "Burj Khalifa",
+      "type": "landmark",
+      "region": "Middle East",
+      "country": "United Arab Emirates",
+      "difficulty": "easy",
+      "target": {
+        "lat": 25.1972,
+        "lng": 55.2744
+      },
+      "clues": [
+        "It opened in 2010 at a height of 828 m.",
+        "Its highest observation deck is on the 148th floor.",
+        "Tom Cruise climbed its outside in a Mission: Impossible film.",
+        "It rises over a giant fountain in a Gulf city's downtown.",
+        "This is the Burj Khalifa, in Dubai."
+      ]
+    },
+    {
+      "id": "petra",
+      "name": "Petra",
+      "type": "landmark",
+      "region": "Middle East",
+      "country": "Jordan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 30.3285,
+        "lng": 35.4444
+      },
+      "clues": [
+        "More than 2,000 years ago, the Nabataeans grew rich here by controlling the incense trade routes.",
+        "Its most famous building, the Treasury, is carved straight into rose-red sandstone.",
+        "It appeared in Indiana Jones and the Last Crusade.",
+        "It's in a desert valley between the Dead Sea and the Gulf of Aqaba.",
+        "This is Petra, in southern Jordan."
+      ]
+    },
+    {
+      "id": "mecca",
+      "name": "Mecca",
+      "type": "landmark",
+      "region": "Middle East",
+      "country": "Saudi Arabia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 21.4225,
+        "lng": 39.8262
+      },
+      "clues": [
+        "Its Grand Mosque surrounds a cube-shaped building called the Kaaba.",
+        "Millions of pilgrims come here for the Hajj every year.",
+        "Muslims around the world face towards it when they pray.",
+        "It is in a valley in western Arabia, inland from Jeddah.",
+        "This is Mecca, in Saudi Arabia. The pin is at the Masjid al-Haram."
+      ]
+    },
+    {
+      "id": "persepolis",
+      "name": "Persepolis",
+      "type": "landmark",
+      "region": "Middle East",
+      "country": "Iran",
+      "difficulty": "hard",
+      "target": {
+        "lat": 29.9355,
+        "lng": 52.8916
+      },
+      "clues": [
+        "Alexander the Great burned it in 330 BC.",
+        "Darius the Great began building it around 518 BC.",
+        "Its staircases are carved with rows of people bringing tribute.",
+        "It is near Shiraz in south-western Iran.",
+        "This is Persepolis, in Iran."
+      ]
+    },
+    {
+      "id": "dome-of-the-rock",
+      "name": "Dome of the Rock",
+      "type": "landmark",
+      "region": "Middle East",
+      "country": "Disputed (Israel / Palestine)",
+      "difficulty": "medium",
+      "target": {
+        "lat": 31.778,
+        "lng": 35.2354
+      },
+      "clues": [
+        "It was completed around AD 691.",
+        "Its golden dome covers a rock sacred to both Jews and Muslims.",
+        "It stands on the site known as the Temple Mount or Haram al-Sharif.",
+        "It is in the Old City of a city holy to three faiths.",
+        "This is the Dome of the Rock, in Jerusalem."
+      ]
+    },
+    {
+      "id": "dead-sea",
+      "name": "Dead Sea",
+      "type": "natural",
+      "region": "Middle East",
+      "country": "Israel / Jordan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 31.2003,
+        "lng": 35.3628
+      },
+      "clues": [
+        "Its shores are the lowest land on Earth, about 430 m below sea level.",
+        "It is so salty that people float easily.",
+        "Ancient scrolls found in caves nearby are among the oldest known biblical manuscripts.",
+        "It lies between Israel, the West Bank and Jordan.",
+        "This is the Dead Sea. The pin is at Ein Bokek on the western shore."
+      ]
+    },
+    {
+      "id": "wadi-rum",
+      "name": "Wadi Rum",
+      "type": "natural",
+      "region": "Middle East",
+      "country": "Jordan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 29.5763,
+        "lng": 35.4206
+      },
+      "clues": [
+        "T. E. Lawrence (Lawrence of Arabia) passed through it during the Arab Revolt.",
+        "Its red sands stood in for Mars in the film The Martian.",
+        "Bedouin camps here offer nights under the stars.",
+        "It is in the desert of southern Jordan.",
+        "This is Wadi Rum, in Jordan."
+      ]
+    },
+    {
+      "id": "new-delhi",
+      "name": "New Delhi",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "easy",
+      "target": {
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "clues": [
+        "It was designed by the British architects Edwin Lutyens and Herbert Baker.",
+        "India Gate, a war memorial, stands at its heart.",
+        "It was officially inaugurated as the capital of British India in 1931.",
+        "It is on the Yamuna river in northern India.",
+        "This is New Delhi, the capital of India."
+      ]
+    },
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "easy",
+      "target": {
+        "lat": 19.076,
+        "lng": 72.8777
+      },
+      "clues": [
+        "It was built on what were once seven separate islands.",
+        "It is home to the Bollywood film industry.",
+        "The Gateway of India arch stands on its waterfront.",
+        "It is on the west coast of India, facing the Arabian Sea.",
+        "This is Mumbai, in India."
+      ]
+    },
+    {
+      "id": "kolkata",
+      "name": "Kolkata",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "medium",
+      "target": {
+        "lat": 22.5726,
+        "lng": 88.3639
+      },
+      "clues": [
+        "It was the capital of British India until 1911.",
+        "Mother Teresa worked among its poorest people.",
+        "The Howrah Bridge crosses its river.",
+        "It is on the Hooghly river in eastern India.",
+        "This is Kolkata, in India."
+      ]
+    },
+    {
+      "id": "jaipur",
+      "name": "Jaipur",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "medium",
+      "target": {
+        "lat": 26.9124,
+        "lng": 75.7873
+      },
+      "clues": [
+        "It was planned in 1727 by Maharaja Jai Singh II.",
+        "It is known as the 'Pink City'.",
+        "Its Hawa Mahal palace has 953 small windows.",
+        "It is the capital of the desert state of Rajasthan.",
+        "This is Jaipur, in India."
+      ]
+    },
+    {
+      "id": "varanasi",
+      "name": "Varanasi",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "medium",
+      "target": {
+        "lat": 25.3176,
+        "lng": 82.9739
+      },
+      "clues": [
+        "It is often called one of the oldest continuously inhabited cities in the world.",
+        "Hindus come here to bathe, and to cremate the dead beside the river.",
+        "Its riverside steps are called ghats.",
+        "It is on the Ganges in northern India.",
+        "This is Varanasi, in India."
+      ]
+    },
+    {
+      "id": "kathmandu",
+      "name": "Kathmandu",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Nepal",
+      "difficulty": "medium",
+      "target": {
+        "lat": 27.7172,
+        "lng": 85.324
+      },
+      "clues": [
+        "Its valley has seven UNESCO-listed monument zones.",
+        "An earthquake in 2015 damaged many of its temples.",
+        "Its Swayambhunath stupa is nicknamed the Monkey Temple.",
+        "It is the gateway city for climbers heading into the Himalaya.",
+        "This is Kathmandu, the capital of Nepal."
+      ]
+    },
+    {
+      "id": "colombo",
+      "name": "Colombo",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Sri Lanka",
+      "difficulty": "hard",
+      "target": {
+        "lat": 6.9271,
+        "lng": 79.8612
+      },
+      "clues": [
+        "Portuguese, Dutch and British traders all ruled it at different times.",
+        "Its seafront park is called Galle Face Green.",
+        "Its Lotus Tower is the tallest structure in South Asia.",
+        "It is on the west coast of an island south of India.",
+        "This is Colombo, Sri Lanka's largest city."
+      ]
+    },
+    {
+      "id": "dhaka",
+      "name": "Dhaka",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Bangladesh",
+      "difficulty": "hard",
+      "target": {
+        "lat": 23.8103,
+        "lng": 90.4125
+      },
+      "clues": [
+        "It is often called the 'rickshaw capital of the world'.",
+        "Its parliament building was designed by Louis Kahn.",
+        "It is one of the most densely populated cities on Earth.",
+        "It sits near the great delta of the Ganges and Brahmaputra.",
+        "This is Dhaka, the capital of Bangladesh."
+      ]
+    },
+    {
+      "id": "islamabad",
+      "name": "Islamabad",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Pakistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 33.6844,
+        "lng": 73.0479
+      },
+      "clues": [
+        "It was built in the 1960s to replace Karachi as the capital.",
+        "Its Faisal Mosque is shaped like a Bedouin tent.",
+        "It sits at the foot of the Margalla Hills.",
+        "It stands next to the older city of Rawalpindi.",
+        "This is Islamabad, the capital of Pakistan."
+      ]
+    },
+    {
+      "id": "male",
+      "name": "Malé",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Maldives",
+      "difficulty": "hard",
+      "target": {
+        "lat": 4.1755,
+        "lng": 73.5093
+      },
+      "clues": [
+        "It is one of the most densely populated islands in the world.",
+        "Its international airport is on a separate island.",
+        "The country it governs is the lowest-lying in the world.",
+        "It is in the Indian Ocean, south-west of Sri Lanka.",
+        "This is Malé, the capital of the Maldives."
+      ]
+    },
+    {
+      "id": "samarkand",
+      "name": "Samarkand",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Uzbekistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 39.6547,
+        "lng": 66.9758
+      },
+      "clues": [
+        "Timur (Tamerlane) made it his capital in the 14th century.",
+        "It was one of the great cities of the Silk Road.",
+        "Its Registan square is framed by three tiled madrasas.",
+        "It is in Central Asia, between Tashkent and Bukhara.",
+        "This is Samarkand, in Uzbekistan. The pin is at the Registan."
+      ]
+    },
+    {
+      "id": "taj-mahal",
+      "name": "Taj Mahal",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "easy",
+      "target": {
+        "lat": 27.1751,
+        "lng": 78.0421
+      },
+      "clues": [
+        "A Mughal emperor built it in memory of his favourite wife, who died in childbirth.",
+        "It took about 20,000 workers some 20 years to build.",
+        "Its white marble seems to change colour with the light.",
+        "It stands on the Yamuna river in Agra, northern India.",
+        "This is the Taj Mahal, in India."
+      ]
+    },
+    {
+      "id": "golden-temple",
+      "name": "Golden Temple",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "India",
+      "difficulty": "medium",
+      "target": {
+        "lat": 31.62,
+        "lng": 74.8765
+      },
+      "clues": [
+        "Its upper floors are covered in gold leaf.",
+        "Its free kitchen feeds up to 100,000 people a day.",
+        "It is the holiest site of Sikhism.",
+        "It is in the Punjab, near the Pakistani border.",
+        "This is the Golden Temple, in Amritsar, India."
+      ]
+    },
+    {
+      "id": "sigiriya",
+      "name": "Sigiriya",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "Sri Lanka",
+      "difficulty": "hard",
+      "target": {
+        "lat": 7.957,
+        "lng": 80.7603
+      },
+      "clues": [
+        "King Kashyapa built a palace on top of it in the 5th century.",
+        "Visitors climb between two giant stone lion's paws.",
+        "Its walls once held hundreds of frescoes of women.",
+        "It is a rock fortress in central Sri Lanka.",
+        "This is Sigiriya, in Sri Lanka."
+      ]
+    },
+    {
+      "id": "mount-everest",
+      "name": "Mount Everest",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Nepal / China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 27.9881,
+        "lng": 86.925
+      },
+      "clues": [
+        "Edmund Hillary and Tenzing Norgay first reached the top in 1953.",
+        "It is 8,849 m high.",
+        "Its Tibetan name is Chomolungma.",
+        "It is on the border of Nepal and Tibet.",
+        "This is Mount Everest, the highest mountain on Earth."
+      ]
+    },
+    {
+      "id": "k2",
+      "name": "K2",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Pakistan / China",
+      "difficulty": "hard",
+      "target": {
+        "lat": 35.88,
+        "lng": 76.5151
+      },
+      "clues": [
+        "An Italian team made the first ascent in 1954.",
+        "It is the second-highest mountain in the world.",
+        "Its nickname is the 'Savage Mountain'.",
+        "It is in the Karakoram, on the Pakistan–China border.",
+        "This is K2."
+      ]
+    },
+    {
+      "id": "tokyo",
+      "name": "Tokyo",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "easy",
+      "target": {
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "clues": [
+        "It was called Edo until 1868.",
+        "Its Shibuya crossing is one of the busiest pedestrian crossings in the world.",
+        "It hosted the Summer Olympics in 1964 and 2021.",
+        "It is on a bay on the east coast of Honshu.",
+        "This is Tokyo, the capital of Japan."
+      ]
+    },
+    {
+      "id": "kyoto",
+      "name": "Kyoto",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 35.0116,
+        "lng": 135.7681
+      },
+      "clues": [
+        "It was the imperial capital for more than 1,000 years.",
+        "It has around 1,600 Buddhist temples.",
+        "Its Fushimi Inari shrine has thousands of red torii gates.",
+        "It is in central Honshu, near Osaka.",
+        "This is Kyoto, in Japan."
+      ]
+    },
+    {
+      "id": "osaka",
+      "name": "Osaka",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 34.6937,
+        "lng": 135.5023
+      },
+      "clues": [
+        "It is nicknamed 'the nation's kitchen'.",
+        "Its Dotonbori district has a famous neon sign of a running man.",
+        "It hosted Expo 2025.",
+        "It is on a bay in western Honshu.",
+        "This is Osaka, in Japan."
+      ]
+    },
+    {
+      "id": "hiroshima",
+      "name": "Hiroshima",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 34.3853,
+        "lng": 132.4553
+      },
+      "clues": [
+        "An atomic bomb destroyed most of it on 6 August 1945.",
+        "Its ruined A-Bomb Dome was kept as a memorial.",
+        "It is known for okonomiyaki, a savoury pancake.",
+        "It is on the Seto Inland Sea, in western Honshu.",
+        "This is Hiroshima, in Japan."
+      ]
+    },
+    {
+      "id": "beijing",
+      "name": "Beijing",
+      "type": "city",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 39.9042,
+        "lng": 116.4074
+      },
+      "clues": [
+        "It has hosted both the Summer (2008) and Winter (2022) Olympics.",
+        "Emperors prayed for good harvests at its Temple of Heaven.",
+        "Its old narrow alleyways are called hutongs.",
+        "It is in north-eastern China.",
+        "This is Beijing, the capital of China."
+      ]
+    },
+    {
+      "id": "shanghai",
+      "name": "Shanghai",
+      "type": "city",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 31.2304,
+        "lng": 121.4737
+      },
+      "clues": [
+        "It was opened to foreign trade in 1842 after the First Opium War.",
+        "Its waterfront promenade is called the Bund.",
+        "Its skyline includes a twisting glass skyscraper that is one of the tallest buildings in the world.",
+        "It sits near the mouth of the Yangtze.",
+        "This is Shanghai, China's largest city."
+      ]
+    },
+    {
+      "id": "hong-kong",
+      "name": "Hong Kong",
+      "type": "city",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 22.3193,
+        "lng": 114.1694
+      },
+      "clues": [
+        "Britain handed it back to China in 1997.",
+        "Its Star Ferry has crossed the harbour since 1888.",
+        "Victoria Peak looks down over its skyscrapers.",
+        "It is on China's south coast, by the Pearl River Delta.",
+        "This is Hong Kong."
+      ]
+    },
+    {
+      "id": "xi-an",
+      "name": "Xi'an",
+      "type": "city",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "hard",
+      "target": {
+        "lat": 34.3416,
+        "lng": 108.9398
+      },
+      "clues": [
+        "It was the eastern end of the Silk Road.",
+        "It was China's capital, on and off, for more than 1,000 years.",
+        "Its city walls are among the best preserved in China.",
+        "It is in the Wei River valley in central China.",
+        "This is Xi'an, in China."
+      ]
+    },
+    {
+      "id": "seoul",
+      "name": "Seoul",
+      "type": "city",
+      "region": "East Asia",
+      "country": "South Korea",
+      "difficulty": "easy",
+      "target": {
+        "lat": 37.5665,
+        "lng": 126.978
+      },
+      "clues": [
+        "It hosted the 1988 Summer Olympics.",
+        "Its Gyeongbokgung Palace dates from 1395.",
+        "Many K-pop companies are based in its Gangnam district.",
+        "It sits on the Han River, about 50 km from a heavily fortified border.",
+        "This is Seoul, the capital of South Korea."
+      ]
+    },
+    {
+      "id": "pyongyang",
+      "name": "Pyongyang",
+      "type": "city",
+      "region": "East Asia",
+      "country": "North Korea",
+      "difficulty": "medium",
+      "target": {
+        "lat": 39.0392,
+        "lng": 125.7625
+      },
+      "clues": [
+        "Its pyramid-shaped Ryugyong Hotel stood unfinished for decades.",
+        "Mass games with tens of thousands of performers have been held here.",
+        "Huge bronze statues of two leaders stand on Mansu Hill.",
+        "It is on the Taedong River, in the north of a divided peninsula.",
+        "This is Pyongyang, the capital of North Korea."
+      ]
+    },
+    {
+      "id": "taipei",
+      "name": "Taipei",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Taiwan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 25.033,
+        "lng": 121.5654
+      },
+      "clues": [
+        "Its 101-storey tower was the world's tallest building from 2004 to 2010.",
+        "Its night markets are famous for street food.",
+        "Its National Palace Museum holds treasures from China's imperial collection.",
+        "It is near the northern tip of an island off south-east China.",
+        "This is Taipei, in Taiwan."
+      ]
+    },
+    {
+      "id": "ulaanbaatar",
+      "name": "Ulaanbaatar",
+      "type": "city",
+      "region": "East Asia",
+      "country": "Mongolia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 47.8864,
+        "lng": 106.9057
+      },
+      "clues": [
+        "It is the coldest capital city in the world.",
+        "A giant statue of Genghis Khan on horseback stands outside it.",
+        "Many residents live in round felt tents called gers.",
+        "It is on the steppe between Russia and China.",
+        "This is Ulaanbaatar, the capital of Mongolia."
+      ]
+    },
+    {
+      "id": "forbidden-city",
+      "name": "Forbidden City",
+      "type": "landmark",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 39.9163,
+        "lng": 116.3972
+      },
+      "clues": [
+        "Chinese emperors lived here from 1420 to 1912.",
+        "Legend says it has 9,999 rooms.",
+        "Mao's portrait hangs over its gate facing Tiananmen Square.",
+        "It is in the centre of China's capital.",
+        "This is the Forbidden City, in Beijing."
+      ]
+    },
+    {
+      "id": "great-wall-of-china",
+      "name": "Great Wall of China",
+      "type": "landmark",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "easy",
+      "target": {
+        "lat": 40.3594,
+        "lng": 116.02
+      },
+      "clues": [
+        "Most of the sections tourists visit were built during the Ming dynasty.",
+        "Despite the myth, it cannot be seen with the naked eye from space.",
+        "Its sections stretch for thousands of kilometres.",
+        "Its most visited section is about 70 km north-west of Beijing.",
+        "This is the Great Wall of China. The pin is at Badaling."
+      ]
+    },
+    {
+      "id": "terracotta-army",
+      "name": "Terracotta Army",
+      "type": "landmark",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "medium",
+      "target": {
+        "lat": 34.3853,
+        "lng": 109.2785
+      },
+      "clues": [
+        "Farmers digging a well discovered it in 1974.",
+        "It has around 8,000 soldiers, each with a different face.",
+        "It was buried with China's first emperor.",
+        "It is near Xi'an in central China.",
+        "This is the Terracotta Army, in China."
+      ]
+    },
+    {
+      "id": "tokyo-tower",
+      "name": "Tokyo Tower",
+      "type": "landmark",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "medium",
+      "target": {
+        "lat": 35.6586,
+        "lng": 139.7454
+      },
+      "clues": [
+        "It was completed in 1958, inspired by the Eiffel Tower.",
+        "It is painted white and orange for air safety.",
+        "It was its country's tallest structure until 2012.",
+        "It is in the Minato district of Japan's capital.",
+        "This is Tokyo Tower, in Tokyo."
+      ]
+    },
+    {
+      "id": "potala-palace",
+      "name": "Potala Palace",
+      "type": "landmark",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "hard",
+      "target": {
+        "lat": 29.6578,
+        "lng": 91.117
+      },
+      "clues": [
+        "It was the Dalai Lama's winter palace until 1959.",
+        "It has more than 1,000 rooms.",
+        "It stands about 3,700 m above sea level.",
+        "It overlooks Lhasa on the Tibetan Plateau.",
+        "This is the Potala Palace, in Lhasa, Tibet."
+      ]
+    },
+    {
+      "id": "mount-fuji",
+      "name": "Mount Fuji",
+      "type": "natural",
+      "region": "East Asia",
+      "country": "Japan",
+      "difficulty": "easy",
+      "target": {
+        "lat": 35.3606,
+        "lng": 138.7274
+      },
+      "clues": [
+        "It last erupted in 1707.",
+        "It is 3,776 m tall.",
+        "The artist Hokusai made a famous series of prints showing it.",
+        "It rises about 100 km west of Japan's capital.",
+        "This is Mount Fuji, in Japan."
+      ]
+    },
+    {
+      "id": "zhangjiajie",
+      "name": "Zhangjiajie",
+      "type": "natural",
+      "region": "East Asia",
+      "country": "China",
+      "difficulty": "hard",
+      "target": {
+        "lat": 29.315,
+        "lng": 110.4343
+      },
+      "clues": [
+        "It became China's first national forest park in 1982.",
+        "Its sandstone pillars inspired the floating mountains in the film Avatar.",
+        "A glass bridge stretches across one of its canyons.",
+        "It is in Hunan province in central China.",
+        "This is Zhangjiajie, in China."
+      ]
+    },
+    {
+      "id": "gobi-desert",
+      "name": "Gobi Desert",
+      "type": "natural",
+      "region": "East Asia",
+      "country": "Mongolia / China",
+      "difficulty": "hard",
+      "target": {
+        "lat": 43.5708,
+        "lng": 104.425
+      },
+      "clues": [
+        "Roy Chapman Andrews found the first known dinosaur eggs here in the 1920s.",
+        "It is a cold desert, where winter temperatures plunge far below freezing.",
+        "Two-humped Bactrian camels live here.",
+        "It covers southern Mongolia and northern China.",
+        "This is the Gobi Desert. The pin is at Dalanzadgad, Mongolia."
+      ]
+    },
+    {
+      "id": "bangkok",
+      "name": "Bangkok",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Thailand",
+      "difficulty": "easy",
+      "target": {
+        "lat": 13.7563,
+        "lng": 100.5018
+      },
+      "clues": [
+        "Its full ceremonial name is the longest place name in the world.",
+        "The Grand Palace and the Emerald Buddha are here.",
+        "Long-tail boats speed along its river and canals.",
+        "It is on the Chao Phraya river in South-East Asia.",
+        "This is Bangkok, the capital of Thailand."
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Singapore",
+      "difficulty": "easy",
+      "target": {
+        "lat": 1.2903,
+        "lng": 103.8519
+      },
+      "clues": [
+        "Stamford Raffles founded a British trading post here in 1819.",
+        "It became an independent country in 1965.",
+        "Selling chewing gum is banned here.",
+        "It is an island at the southern tip of the Malay Peninsula.",
+        "This is Singapore."
+      ]
+    },
+    {
+      "id": "kuala-lumpur",
+      "name": "Kuala Lumpur",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Malaysia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 3.139,
+        "lng": 101.6869
+      },
+      "clues": [
+        "It began as a tin-mining town in the 1850s.",
+        "Its name means 'muddy confluence'.",
+        "Its Batu Caves are guarded by a giant golden statue.",
+        "It is on the Malay Peninsula.",
+        "This is Kuala Lumpur, the capital of Malaysia."
+      ]
+    },
+    {
+      "id": "jakarta",
+      "name": "Jakarta",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Indonesia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -6.2088,
+        "lng": 106.8456
+      },
+      "clues": [
+        "The Dutch called it Batavia.",
+        "It is sinking so fast that a new capital is being built on Borneo.",
+        "Its National Monument is topped by a gold-covered flame.",
+        "It is on the north coast of Java.",
+        "This is Jakarta, in Indonesia."
+      ]
+    },
+    {
+      "id": "manila",
+      "name": "Manila",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Philippines",
+      "difficulty": "medium",
+      "target": {
+        "lat": 14.5995,
+        "lng": 120.9842
+      },
+      "clues": [
+        "Its walled old city is called Intramuros.",
+        "It is one of the most densely populated cities in the world.",
+        "Its bay is famous for sunsets.",
+        "It is on the largest island of a South-East Asian archipelago.",
+        "This is Manila, the capital of the Philippines."
+      ]
+    },
+    {
+      "id": "hanoi",
+      "name": "Hanoi",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Vietnam",
+      "difficulty": "medium",
+      "target": {
+        "lat": 21.0278,
+        "lng": 105.8342
+      },
+      "clues": [
+        "Its Temple of Literature housed the country's first university, from 1076.",
+        "Ho Chi Minh's embalmed body lies in a mausoleum here.",
+        "In its Old Quarter, a train squeezes down a narrow residential street.",
+        "It is on the Red River in northern Vietnam.",
+        "This is Hanoi, the capital of Vietnam."
+      ]
+    },
+    {
+      "id": "ho-chi-minh-city",
+      "name": "Ho Chi Minh City",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Vietnam",
+      "difficulty": "medium",
+      "target": {
+        "lat": 10.8231,
+        "lng": 106.6297
+      },
+      "clues": [
+        "It was called Saigon until 1976.",
+        "Millions of motorbikes fill its streets.",
+        "The Cu Chi tunnels lie nearby.",
+        "It is close to the Mekong Delta in southern Vietnam.",
+        "This is Ho Chi Minh City, in Vietnam."
+      ]
+    },
+    {
+      "id": "phnom-penh",
+      "name": "Phnom Penh",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Cambodia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 11.5564,
+        "lng": 104.9282
+      },
+      "clues": [
+        "The Khmer Rouge forced almost everyone out of it in 1975.",
+        "Its Silver Pagoda has a floor of about 5,000 silver tiles.",
+        "It sits where the Tonlé Sap river meets the Mekong.",
+        "It is in South-East Asia, south-east of Angkor Wat.",
+        "This is Phnom Penh, the capital of Cambodia."
+      ]
+    },
+    {
+      "id": "yangon",
+      "name": "Yangon",
+      "type": "city",
+      "region": "South-East Asia",
+      "country": "Myanmar",
+      "difficulty": "hard",
+      "target": {
+        "lat": 16.8409,
+        "lng": 96.1735
+      },
+      "clues": [
+        "It was the capital until 2006, when the government moved to Naypyidaw.",
+        "Its Shwedagon Pagoda is covered in gold.",
+        "Its colonial buildings are among the best preserved in Asia.",
+        "It is near the Andaman Sea in South-East Asia.",
+        "This is Yangon, Myanmar's largest city."
+      ]
+    },
+    {
+      "id": "angkor-wat",
+      "name": "Angkor Wat",
+      "type": "landmark",
+      "region": "South-East Asia",
+      "country": "Cambodia",
+      "difficulty": "easy",
+      "target": {
+        "lat": 13.4125,
+        "lng": 103.867
+      },
+      "clues": [
+        "It was built in the early 12th century for King Suryavarman II.",
+        "It is the largest religious monument in the world.",
+        "It appears on its country's national flag.",
+        "It is near Siem Reap in north-western Cambodia.",
+        "This is Angkor Wat, in Cambodia."
+      ]
+    },
+    {
+      "id": "petronas-towers",
+      "name": "Petronas Towers",
+      "type": "landmark",
+      "region": "South-East Asia",
+      "country": "Malaysia",
+      "difficulty": "medium",
+      "target": {
+        "lat": 3.1579,
+        "lng": 101.7116
+      },
+      "clues": [
+        "They were the tallest buildings in the world from 1998 to 2004.",
+        "A sky bridge joins them at the 41st and 42nd floors.",
+        "Their floor plan is based on an Islamic geometric pattern.",
+        "They stand in the centre of Malaysia's capital.",
+        "These are the Petronas Towers, in Kuala Lumpur."
+      ]
+    },
+    {
+      "id": "marina-bay-sands",
+      "name": "Marina Bay Sands",
+      "type": "landmark",
+      "region": "South-East Asia",
+      "country": "Singapore",
+      "difficulty": "medium",
+      "target": {
+        "lat": 1.2834,
+        "lng": 103.8607
+      },
+      "clues": [
+        "It opened in 2010.",
+        "A boat-shaped deck with an infinity pool sits on top of its three towers.",
+        "It was designed by the architect Moshe Safdie.",
+        "It overlooks a bay in a city-state at the tip of the Malay Peninsula.",
+        "This is Marina Bay Sands, in Singapore."
+      ]
+    },
+    {
+      "id": "borobudur",
+      "name": "Borobudur",
+      "type": "landmark",
+      "region": "South-East Asia",
+      "country": "Indonesia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -7.6079,
+        "lng": 110.2038
+      },
+      "clues": [
+        "It was built in the 8th and 9th centuries and later buried under volcanic ash.",
+        "It is the world's largest Buddhist temple.",
+        "It has 504 Buddha statues.",
+        "It is in central Java, near Yogyakarta.",
+        "This is Borobudur, in Indonesia."
+      ]
+    },
+    {
+      "id": "bagan",
+      "name": "Bagan",
+      "type": "landmark",
+      "region": "South-East Asia",
+      "country": "Myanmar",
+      "difficulty": "hard",
+      "target": {
+        "lat": 21.1717,
+        "lng": 94.8585
+      },
+      "clues": [
+        "More than 2,000 temples and pagodas survive here.",
+        "It was the capital of the Pagan Kingdom from the 9th to the 13th centuries.",
+        "Hot-air balloons float over it at sunrise.",
+        "It is on the Irrawaddy River in central Myanmar.",
+        "This is Bagan, in Myanmar."
+      ]
+    },
+    {
+      "id": "ha-long-bay",
+      "name": "Ha Long Bay",
+      "type": "natural",
+      "region": "South-East Asia",
+      "country": "Vietnam",
+      "difficulty": "medium",
+      "target": {
+        "lat": 20.9101,
+        "lng": 107.1839
+      },
+      "clues": [
+        "Legend says dragons spat out jewels that became its islands.",
+        "It has nearly 2,000 limestone islands and islets.",
+        "Visitors stay overnight on traditional junk boats.",
+        "It is on the Gulf of Tonkin in northern Vietnam.",
+        "This is Ha Long Bay, in Vietnam."
+      ]
+    },
+    {
+      "id": "bali",
+      "name": "Bali",
+      "type": "natural",
+      "region": "South-East Asia",
+      "country": "Indonesia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -8.5069,
+        "lng": 115.2625
+      },
+      "clues": [
+        "Most of its people are Hindu, unlike the rest of its country.",
+        "Its rice terraces use a 1,000-year-old irrigation system called subak.",
+        "It is nicknamed the 'Island of the Gods'.",
+        "It is an island just east of Java.",
+        "This is Bali, in Indonesia. The pin is at Ubud."
+      ]
+    },
+    {
+      "id": "komodo-island",
+      "name": "Komodo Island",
+      "type": "natural",
+      "region": "South-East Asia",
+      "country": "Indonesia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -8.55,
+        "lng": 119.4833
+      },
+      "clues": [
+        "It is home to the world's largest lizard.",
+        "Its Pink Beach gets its colour from fragments of red coral.",
+        "It is part of a UNESCO-listed national park.",
+        "It is in the Lesser Sunda Islands, east of Bali.",
+        "This is Komodo Island, in Indonesia."
+      ]
+    },
+    {
+      "id": "sydney",
+      "name": "Sydney",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -33.8688,
+        "lng": 151.2093
+      },
+      "clues": [
+        "Britain's First Fleet arrived here in 1788 to found a penal colony.",
+        "It hosted the 2000 Summer Olympics.",
+        "Bondi Beach is in its eastern suburbs.",
+        "It sits around a huge natural harbour on Australia's east coast.",
+        "This is Sydney, Australia's largest city."
+      ]
+    },
+    {
+      "id": "canberra",
+      "name": "Canberra",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -35.2809,
+        "lng": 149.13
+      },
+      "clues": [
+        "It was chosen as a compromise between two rival cities.",
+        "The American architects Walter Burley Griffin and Marion Mahony Griffin designed it.",
+        "Its Parliament House is partly built into a hill.",
+        "It is built around an artificial lake in south-eastern Australia.",
+        "This is Canberra, the capital of Australia."
+      ]
+    },
+    {
+      "id": "melbourne",
+      "name": "Melbourne",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -37.8136,
+        "lng": 144.9631
+      },
+      "clues": [
+        "It was the seat of Australia's national government from 1901 to 1927.",
+        "Its cricket ground, the MCG, holds about 100,000 people.",
+        "It hosts the Australian Open tennis tournament.",
+        "It is on Port Phillip Bay in south-eastern Australia.",
+        "This is Melbourne, in Australia."
+      ]
+    },
+    {
+      "id": "perth",
+      "name": "Perth",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -31.9505,
+        "lng": 115.8605
+      },
+      "clues": [
+        "It is often called the most isolated big city in the world.",
+        "Its Kings Park is one of the world's largest inner-city parks.",
+        "Nearby Rottnest Island is home to the smiling quokka.",
+        "It is on the Swan River on Australia's west coast.",
+        "This is Perth, in Western Australia."
+      ]
+    },
+    {
+      "id": "auckland",
+      "name": "Auckland",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "easy",
+      "target": {
+        "lat": -36.8485,
+        "lng": 174.7633
+      },
+      "clues": [
+        "It was its country's capital until 1865.",
+        "It is built on about 50 volcanic cones.",
+        "Its Sky Tower is the tallest free-standing structure in the Southern Hemisphere.",
+        "It sits on a narrow isthmus in the North Island.",
+        "This is Auckland, New Zealand's largest city."
+      ]
+    },
+    {
+      "id": "wellington",
+      "name": "Wellington",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "medium",
+      "target": {
+        "lat": -41.2865,
+        "lng": 174.7762
+      },
+      "clues": [
+        "It is the southernmost capital of a sovereign state.",
+        "It is famously windy.",
+        "Peter Jackson's Weta film studios are here.",
+        "It is at the southern tip of the North Island.",
+        "This is Wellington, the capital of New Zealand."
+      ]
+    },
+    {
+      "id": "queenstown",
+      "name": "Queenstown",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "medium",
+      "target": {
+        "lat": -45.0312,
+        "lng": 168.6626
+      },
+      "clues": [
+        "It grew up during a gold rush in the 1860s.",
+        "Commercial bungee jumping began near here in 1988.",
+        "It is on Lake Wakatipu, below a mountain range called the Remarkables.",
+        "It is in the south-west of the South Island.",
+        "This is Queenstown, in New Zealand."
+      ]
+    },
+    {
+      "id": "sydney-opera-house",
+      "name": "Sydney Opera House",
+      "type": "landmark",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -33.8568,
+        "lng": 151.2153
+      },
+      "clues": [
+        "Its Danish architect, Jørn Utzon, quit before it was finished.",
+        "It opened in 1973.",
+        "Its roof shells are covered in more than a million tiles.",
+        "It sits on Bennelong Point in a famous harbour.",
+        "This is the Sydney Opera House."
+      ]
+    },
+    {
+      "id": "sydney-harbour-bridge",
+      "name": "Sydney Harbour Bridge",
+      "type": "landmark",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -33.8523,
+        "lng": 151.2108
+      },
+      "clues": [
+        "It opened in 1932.",
+        "It is nicknamed 'the Coathanger'.",
+        "Visitors can climb over the top of its arch.",
+        "It crosses a harbour on Australia's east coast.",
+        "This is the Sydney Harbour Bridge."
+      ]
+    },
+    {
+      "id": "uluru",
+      "name": "Uluru",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -25.3444,
+        "lng": 131.0369
+      },
+      "clues": [
+        "It was handed back to its Aboriginal owners in 1985.",
+        "Climbing it was banned in 2019.",
+        "It seems to glow red at sunset.",
+        "It is a huge sandstone rock in the centre of Australia.",
+        "This is Uluru, in the Northern Territory of Australia."
+      ]
+    },
+    {
+      "id": "great-barrier-reef",
+      "name": "Great Barrier Reef",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "easy",
+      "target": {
+        "lat": -16.76,
+        "lng": 145.973
+      },
+      "clues": [
+        "It is the largest structure on Earth built by living things.",
+        "It can be seen from space.",
+        "Warming seas have caused mass coral bleaching.",
+        "It stretches more than 2,300 km along the coast of Queensland.",
+        "This is the Great Barrier Reef. The pin is at Green Island, off Cairns."
+      ]
+    },
+    {
+      "id": "milford-sound",
+      "name": "Milford Sound",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "medium",
+      "target": {
+        "lat": -44.6414,
+        "lng": 167.8974
+      },
+      "clues": [
+        "Rudyard Kipling is said to have called it the 'eighth wonder of the world'.",
+        "Despite its name, it is a fiord, not a sound.",
+        "Mitre Peak rises straight out of its water.",
+        "It is in Fiordland, in the south-west of the South Island.",
+        "This is Milford Sound, in New Zealand."
+      ]
+    },
+    {
+      "id": "bora-bora",
+      "name": "Bora Bora",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "French Polynesia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -16.5004,
+        "lng": -151.7415
+      },
+      "clues": [
+        "US forces used it as a supply base in the Second World War.",
+        "It is famous for overwater bungalows.",
+        "Mount Otemanu rises from the middle of the island.",
+        "It is in the Society Islands of French Polynesia.",
+        "This is Bora Bora."
+      ]
+    },
+    {
+      "id": "aoraki-mount-cook",
+      "name": "Aoraki / Mount Cook",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "hard",
+      "target": {
+        "lat": -43.595,
+        "lng": 170.1418
+      },
+      "clues": [
+        "Edmund Hillary trained on it before climbing Everest.",
+        "It is the highest mountain in its country, at about 3,724 m.",
+        "Its Māori name is often translated as 'cloud piercer'.",
+        "It is in the Southern Alps of the South Island.",
+        "This is Aoraki / Mount Cook, in New Zealand."
+      ]
+    },
+    {
+      "id": "algiers",
+      "name": "Algiers",
+      "type": "city",
+      "region": "Africa",
+      "country": "Algeria",
+      "difficulty": "hard",
+      "target": {
+        "lat": 36.7538,
+        "lng": 3.0588
+      },
+      "clues": [
+        "Its old Casbah is a UNESCO World Heritage Site.",
+        "It was the setting for a famous 1966 film about its country's war of independence.",
+        "Its white buildings rising above the bay earned it the nickname 'the White'.",
+        "It is on the Mediterranean coast of Africa's largest country.",
+        "This is Algiers, the capital of Algeria."
+      ]
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria",
+      "type": "city",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "medium",
+      "target": {
+        "lat": 31.2001,
+        "lng": 29.9187
+      },
+      "clues": [
+        "Its ancient lighthouse was one of the Seven Wonders of the Ancient World.",
+        "Its ancient library was the greatest in the classical world.",
+        "Cleopatra ruled from here.",
+        "It is on the Mediterranean, at the western edge of the Nile Delta.",
+        "This is Alexandria, in Egypt."
+      ]
+    },
+    {
+      "id": "fez",
+      "name": "Fez",
+      "type": "city",
+      "region": "Africa",
+      "country": "Morocco",
+      "difficulty": "hard",
+      "target": {
+        "lat": 34.0181,
+        "lng": -5.0078
+      },
+      "clues": [
+        "Its University of al-Qarawiyyin, founded in 859, is often called the oldest existing university.",
+        "Its old medina is one of the largest car-free urban areas in the world.",
+        "Its leather tanneries use rows of stone vats filled with dye.",
+        "It is in northern Morocco, between the Rif and Atlas mountains.",
+        "This is Fez, in Morocco."
+      ]
+    },
+    {
+      "id": "khartoum",
+      "name": "Khartoum",
+      "type": "city",
+      "region": "Africa",
+      "country": "Sudan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 15.5007,
+        "lng": 32.5599
+      },
+      "clues": [
+        "British general Charles Gordon was killed here in 1885.",
+        "Its name may mean 'elephant's trunk', after the shape of the land.",
+        "The Blue Nile and the White Nile meet here.",
+        "It is in north-east Africa, south of Egypt.",
+        "This is Khartoum, the capital of Sudan."
+      ]
+    },
+    {
+      "id": "kampala",
+      "name": "Kampala",
+      "type": "city",
+      "region": "Africa",
+      "country": "Uganda",
+      "difficulty": "hard",
+      "target": {
+        "lat": 0.3476,
+        "lng": 32.5825
+      },
+      "clues": [
+        "It was originally built on seven hills.",
+        "The Kasubi Tombs here hold the graves of Buganda kings.",
+        "It is near the northern shore of Lake Victoria.",
+        "It lies just north of the Equator in East Africa.",
+        "This is Kampala, the capital of Uganda."
+      ]
+    },
+    {
+      "id": "kigali",
+      "name": "Kigali",
+      "type": "city",
+      "region": "Africa",
+      "country": "Rwanda",
+      "difficulty": "hard",
+      "target": {
+        "lat": -1.9441,
+        "lng": 30.0619
+      },
+      "clues": [
+        "It became a capital in 1962.",
+        "Its genocide memorial remembers the victims of the 1994 genocide against the Tutsi.",
+        "It is known as one of Africa's cleanest cities, and plastic bags are banned.",
+        "It is in the hilly heart of a small East African country.",
+        "This is Kigali, the capital of Rwanda."
+      ]
+    },
+    {
+      "id": "dar-es-salaam",
+      "name": "Dar es Salaam",
+      "type": "city",
+      "region": "Africa",
+      "country": "Tanzania",
+      "difficulty": "hard",
+      "target": {
+        "lat": -6.7924,
+        "lng": 39.2083
+      },
+      "clues": [
+        "Its name means 'house of peace'.",
+        "It was its country's capital until the government moved to Dodoma.",
+        "Ferries leave here for Zanzibar.",
+        "It is on the Indian Ocean coast of East Africa.",
+        "This is Dar es Salaam, in Tanzania."
+      ]
+    },
+    {
+      "id": "mombasa",
+      "name": "Mombasa",
+      "type": "city",
+      "region": "Africa",
+      "country": "Kenya",
+      "difficulty": "hard",
+      "target": {
+        "lat": -4.0435,
+        "lng": 39.6682
+      },
+      "clues": [
+        "The Portuguese built Fort Jesus here in 1593.",
+        "Its old town mixes Swahili and Arab architecture.",
+        "It is the largest port in East Africa.",
+        "It is on an island on the coast of Kenya.",
+        "This is Mombasa, in Kenya."
+      ]
+    },
+    {
+      "id": "kinshasa",
+      "name": "Kinshasa",
+      "type": "city",
+      "region": "Africa",
+      "country": "Democratic Republic of the Congo",
+      "difficulty": "medium",
+      "target": {
+        "lat": -4.4419,
+        "lng": 15.2663
+      },
+      "clues": [
+        "Muhammad Ali fought George Foreman here in the 'Rumble in the Jungle' in 1974.",
+        "It is the largest French-speaking city in the world.",
+        "It faces another capital, Brazzaville, across a river.",
+        "It is on the Congo River in Central Africa.",
+        "This is Kinshasa, the capital of the Democratic Republic of the Congo."
+      ]
+    },
+    {
+      "id": "luanda",
+      "name": "Luanda",
+      "type": "city",
+      "region": "Africa",
+      "country": "Angola",
+      "difficulty": "hard",
+      "target": {
+        "lat": -8.839,
+        "lng": 13.2894
+      },
+      "clues": [
+        "The Portuguese founded it in 1576.",
+        "It has often been ranked one of the most expensive cities in the world for foreign workers.",
+        "Its palm-lined seafront promenade is called the Marginal.",
+        "It is on the Atlantic coast of south-western Africa.",
+        "This is Luanda, the capital of Angola."
+      ]
+    },
+    {
+      "id": "maputo",
+      "name": "Maputo",
+      "type": "city",
+      "region": "Africa",
+      "country": "Mozambique",
+      "difficulty": "hard",
+      "target": {
+        "lat": -25.9692,
+        "lng": 32.5732
+      },
+      "clues": [
+        "It was called Lourenço Marques until 1976.",
+        "Many of its avenues are named after socialist leaders such as Mao and Lenin.",
+        "It is famous for its prawns and seafood.",
+        "It is on a bay in the far south of a long Indian Ocean country.",
+        "This is Maputo, the capital of Mozambique."
+      ]
+    },
+    {
+      "id": "harare",
+      "name": "Harare",
+      "type": "city",
+      "region": "Africa",
+      "country": "Zimbabwe",
+      "difficulty": "hard",
+      "target": {
+        "lat": -17.8252,
+        "lng": 31.0335
+      },
+      "clues": [
+        "It was called Salisbury until 1982.",
+        "Its jacaranda trees turn the streets purple in spring.",
+        "Its Mbare market is one of the busiest in the region.",
+        "It is on a high plateau in southern Africa.",
+        "This is Harare, the capital of Zimbabwe."
+      ]
+    },
+    {
+      "id": "lusaka",
+      "name": "Lusaka",
+      "type": "city",
+      "region": "Africa",
+      "country": "Zambia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -15.3875,
+        "lng": 28.3228
+      },
+      "clues": [
+        "It became its country's capital in 1935.",
+        "It grew from a village named after a local chief.",
+        "It sits on a limestone plateau about 1,280 m up.",
+        "It is in south-central Africa, north of the Zambezi.",
+        "This is Lusaka, the capital of Zambia."
+      ]
+    },
+    {
+      "id": "windhoek",
+      "name": "Windhoek",
+      "type": "city",
+      "region": "Africa",
+      "country": "Namibia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -22.5609,
+        "lng": 17.0658
+      },
+      "clues": [
+        "It was founded under German colonial rule, and German is still spoken here.",
+        "Its Christ Church, from 1910, is a city landmark.",
+        "It sits in the highlands between two deserts.",
+        "It is in south-western Africa.",
+        "This is Windhoek, the capital of Namibia."
+      ]
+    },
+    {
+      "id": "durban",
+      "name": "Durban",
+      "type": "city",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -29.8587,
+        "lng": 31.0218
+      },
+      "clues": [
+        "Mahatma Gandhi lived and worked in the area as a young lawyer.",
+        "It has one of the largest Indian communities outside India.",
+        "Its Golden Mile beachfront is popular with surfers.",
+        "It is on the Indian Ocean coast of South Africa.",
+        "This is Durban, in South Africa."
+      ]
+    },
+    {
+      "id": "antananarivo",
+      "name": "Antananarivo",
+      "type": "city",
+      "region": "Africa",
+      "country": "Madagascar",
+      "difficulty": "hard",
+      "target": {
+        "lat": -18.8792,
+        "lng": 47.5079
+      },
+      "clues": [
+        "Its royal palace, the Rova, sits on its highest hill.",
+        "Its name refers to 'a thousand' soldiers said to have guarded it.",
+        "It is about 1,280 m up on the central highlands.",
+        "It is the capital of a large island off south-east Africa.",
+        "This is Antananarivo, the capital of Madagascar."
+      ]
+    },
+    {
+      "id": "abidjan",
+      "name": "Abidjan",
+      "type": "city",
+      "region": "Africa",
+      "country": "Côte d'Ivoire",
+      "difficulty": "hard",
+      "target": {
+        "lat": 5.36,
+        "lng": -4.0083
+      },
+      "clues": [
+        "It was its country's capital until 1983.",
+        "Its St Paul's Cathedral has a dramatic modern design.",
+        "Its business district, Le Plateau, is nicknamed the 'Manhattan of West Africa'.",
+        "It is on a lagoon on the Gulf of Guinea.",
+        "This is Abidjan, Côte d'Ivoire's largest city."
+      ]
+    },
+    {
+      "id": "bamako",
+      "name": "Bamako",
+      "type": "city",
+      "region": "Africa",
+      "country": "Mali",
+      "difficulty": "hard",
+      "target": {
+        "lat": 12.6392,
+        "lng": -8.0029
+      },
+      "clues": [
+        "Its name is often said to mean 'crocodile river'.",
+        "It is one of the fastest-growing cities in Africa.",
+        "Its Grand Marché is a huge open-air market.",
+        "It is on the Niger River in West Africa.",
+        "This is Bamako, the capital of Mali."
+      ]
+    },
+    {
+      "id": "asmara",
+      "name": "Asmara",
+      "type": "city",
+      "region": "Africa",
+      "country": "Eritrea",
+      "difficulty": "hard",
+      "target": {
+        "lat": 15.3229,
+        "lng": 38.9251
+      },
+      "clues": [
+        "It is a UNESCO World Heritage Site for its 1930s modernist buildings.",
+        "Its Fiat Tagliero service station is shaped like an aeroplane.",
+        "Italian influence means espresso bars are everywhere.",
+        "It is high on a plateau in the Horn of Africa.",
+        "This is Asmara, the capital of Eritrea."
+      ]
+    },
+    {
+      "id": "port-louis",
+      "name": "Port Louis",
+      "type": "city",
+      "region": "Africa",
+      "country": "Mauritius",
+      "difficulty": "hard",
+      "target": {
+        "lat": -20.1609,
+        "lng": 57.5012
+      },
+      "clues": [
+        "The famous Blue Mauritius stamp was issued here in 1847.",
+        "Its Champ de Mars racecourse is one of the oldest in the Southern Hemisphere.",
+        "Its harbour was a base for French ships in the Indian Ocean.",
+        "It is the capital of an island east of Madagascar.",
+        "This is Port Louis, the capital of Mauritius."
+      ]
+    },
+    {
+      "id": "great-mosque-of-djenne",
+      "name": "Great Mosque of Djenné",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Mali",
+      "difficulty": "hard",
+      "target": {
+        "lat": 13.9053,
+        "lng": -4.555
+      },
+      "clues": [
+        "It is the largest mud-brick building in the world.",
+        "Townspeople replaster it with fresh mud every year in a festival.",
+        "Wooden beams stick out of its walls to act as permanent scaffolding.",
+        "It is in the inland delta of the Niger in West Africa.",
+        "This is the Great Mosque of Djenné, in Mali."
+      ]
+    },
+    {
+      "id": "great-zimbabwe",
+      "name": "Great Zimbabwe",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Zimbabwe",
+      "difficulty": "hard",
+      "target": {
+        "lat": -20.2667,
+        "lng": 30.9333
+      },
+      "clues": [
+        "Its stone walls were built without mortar.",
+        "It was the capital of a trading kingdom from the 11th to the 15th centuries.",
+        "Carved soapstone birds found here became a national symbol.",
+        "It is near Masvingo in southern Africa.",
+        "This is Great Zimbabwe, in Zimbabwe."
+      ]
+    },
+    {
+      "id": "karnak-temple",
+      "name": "Karnak Temple",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Egypt",
+      "difficulty": "medium",
+      "target": {
+        "lat": 25.7188,
+        "lng": 32.6573
+      },
+      "clues": [
+        "It was built and expanded over about 2,000 years.",
+        "Its Great Hypostyle Hall has 134 huge columns.",
+        "It is one of the largest religious complexes ever built.",
+        "It is on the east bank of the Nile in Luxor.",
+        "This is Karnak Temple, in Luxor, Egypt."
+      ]
+    },
+    {
+      "id": "goree-island",
+      "name": "Gorée Island",
+      "type": "landmark",
+      "region": "Africa",
+      "country": "Senegal",
+      "difficulty": "hard",
+      "target": {
+        "lat": 14.667,
+        "lng": -17.399
+      },
+      "clues": [
+        "Its House of Slaves is a memorial to the Atlantic slave trade.",
+        "Nelson Mandela and Barack Obama have both visited it.",
+        "No cars are allowed on the island.",
+        "It is a small island just off Dakar.",
+        "This is Gorée Island, in Senegal."
+      ]
+    },
+    {
+      "id": "chefchaouen",
+      "name": "Chefchaouen",
+      "type": "city",
+      "region": "Africa",
+      "country": "Morocco",
+      "difficulty": "hard",
+      "target": {
+        "lat": 35.1688,
+        "lng": -5.2636
+      },
+      "clues": [
+        "It was founded in 1471 as a fortress.",
+        "Its streets and houses are painted in shades of blue.",
+        "It sits in the Rif Mountains.",
+        "It is in northern Morocco.",
+        "This is Chefchaouen, the 'blue town' of Morocco."
+      ]
+    },
+    {
+      "id": "mount-kenya",
+      "name": "Mount Kenya",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Kenya",
+      "difficulty": "hard",
+      "target": {
+        "lat": -0.1521,
+        "lng": 37.3084
+      },
+      "clues": [
+        "Its country is named after it.",
+        "It is Africa's second-highest mountain, at 5,199 m.",
+        "It sits almost exactly on the Equator.",
+        "It is in the central highlands of East Africa.",
+        "This is Mount Kenya."
+      ]
+    },
+    {
+      "id": "sossusvlei",
+      "name": "Sossusvlei",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Namibia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -24.7333,
+        "lng": 15.2917
+      },
+      "clues": [
+        "Its Deadvlei clay pan is dotted with dead camel-thorn trees hundreds of years old.",
+        "Its red dunes are among the tallest in the world.",
+        "Dune 45 is a favourite climb at sunrise.",
+        "It is in the Namib Desert.",
+        "This is Sossusvlei, in Namibia."
+      ]
+    },
+    {
+      "id": "fish-river-canyon",
+      "name": "Fish River Canyon",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Namibia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -27.5833,
+        "lng": 17.5833
+      },
+      "clues": [
+        "It is one of the largest canyons in Africa.",
+        "Its five-day hiking trail is only open in the cooler months.",
+        "Hot springs at Ai-Ais lie at its southern end.",
+        "It is in southern Namibia.",
+        "This is Fish River Canyon, in Namibia."
+      ]
+    },
+    {
+      "id": "mount-nyiragongo",
+      "name": "Mount Nyiragongo",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Democratic Republic of the Congo",
+      "difficulty": "hard",
+      "target": {
+        "lat": -1.52,
+        "lng": 29.25
+      },
+      "clues": [
+        "Its crater holds one of the world's largest lava lakes.",
+        "Its 2002 eruption sent lava into the city of Goma.",
+        "Its lava is unusually runny and fast-flowing.",
+        "It is in the Virunga Mountains of Central Africa.",
+        "This is Mount Nyiragongo, in the Democratic Republic of the Congo."
+      ]
+    },
+    {
+      "id": "bwindi-impenetrable-forest",
+      "name": "Bwindi Impenetrable Forest",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Uganda",
+      "difficulty": "hard",
+      "target": {
+        "lat": -1.05,
+        "lng": 29.6167
+      },
+      "clues": [
+        "About half of the world's mountain gorillas live here.",
+        "Its forest is thought to be more than 25,000 years old.",
+        "Gorilla-trekking permits here cost hundreds of dollars.",
+        "It is in south-western Uganda, near the Congolese border.",
+        "This is Bwindi Impenetrable National Park, in Uganda."
+      ]
+    },
+    {
+      "id": "danakil-depression",
+      "name": "Danakil Depression",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Ethiopia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 14.2417,
+        "lng": 40.2994
+      },
+      "clues": [
+        "It is one of the hottest places on Earth all year round.",
+        "Its Dallol area has neon yellow and green hot springs.",
+        "Afar people still mine salt here by hand.",
+        "It is in the far north-east of Ethiopia, near Eritrea.",
+        "This is the Danakil Depression, in Ethiopia. The pin is at Dallol."
+      ]
+    },
+    {
+      "id": "lake-malawi",
+      "name": "Lake Malawi",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Malawi",
+      "difficulty": "hard",
+      "target": {
+        "lat": -14.0333,
+        "lng": 34.8333
+      },
+      "clues": [
+        "David Livingstone called it the 'lake of stars'.",
+        "It has more species of fish than any other lake.",
+        "It is one of the deepest lakes in Africa.",
+        "It lies in the Great Rift Valley in south-east Africa.",
+        "This is Lake Malawi. The pin is at Cape Maclear."
+      ]
+    },
+    {
+      "id": "kruger-national-park",
+      "name": "Kruger National Park",
+      "type": "natural",
+      "region": "Africa",
+      "country": "South Africa",
+      "difficulty": "medium",
+      "target": {
+        "lat": -24.9948,
+        "lng": 31.5969
+      },
+      "clues": [
+        "It became a national park in 1926.",
+        "It is one of the best places to see the 'Big Five'.",
+        "It is roughly the size of Wales.",
+        "It is in north-eastern South Africa, on the border with Mozambique.",
+        "This is Kruger National Park, in South Africa. The pin is at Skukuza."
+      ]
+    },
+    {
+      "id": "etosha-pan",
+      "name": "Etosha Pan",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Namibia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -18.7833,
+        "lng": 16.25
+      },
+      "clues": [
+        "Its name is usually translated as 'great white place'.",
+        "Its salt pan is so large it can be seen from space.",
+        "Animals gather at its floodlit waterholes at night.",
+        "It is in northern Namibia.",
+        "This is the Etosha Pan, in Namibia."
+      ]
+    },
+    {
+      "id": "anse-source-d-argent",
+      "name": "Anse Source d'Argent",
+      "type": "natural",
+      "region": "Africa",
+      "country": "Seychelles",
+      "difficulty": "hard",
+      "target": {
+        "lat": -4.37,
+        "lng": 55.827
+      },
+      "clues": [
+        "It is often called one of the most photographed beaches in the world.",
+        "Huge pink-grey granite boulders line its sand.",
+        "It is on the small island of La Digue.",
+        "It is in an Indian Ocean archipelago north-east of Madagascar.",
+        "This is Anse Source d'Argent, in the Seychelles."
+      ]
+    },
+    {
+      "id": "tashkent",
+      "name": "Tashkent",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Uzbekistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 41.2995,
+        "lng": 69.2401
+      },
+      "clues": [
+        "An earthquake destroyed much of it in 1966.",
+        "Its metro stations are lavishly decorated.",
+        "It is the largest city in Central Asia.",
+        "It is near the Kazakh border in Central Asia.",
+        "This is Tashkent, the capital of Uzbekistan."
+      ]
+    },
+    {
+      "id": "bukhara",
+      "name": "Bukhara",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Uzbekistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 39.7681,
+        "lng": 64.4556
+      },
+      "clues": [
+        "Legend says Genghis Khan was so impressed by its Kalyan Minaret that he spared it.",
+        "It has more than 140 protected historic monuments.",
+        "It was one of the great trading cities of the Silk Road.",
+        "It is in the desert west of Samarkand.",
+        "This is Bukhara, in Uzbekistan."
+      ]
+    },
+    {
+      "id": "khiva",
+      "name": "Khiva",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Uzbekistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 41.3775,
+        "lng": 60.3639
+      },
+      "clues": [
+        "Its walled inner town was the first site in Central Asia on the UNESCO list.",
+        "Its Kalta Minor minaret is covered in turquoise tiles and was never finished.",
+        "It was a stop for caravans crossing the desert to Persia.",
+        "It is near the Amu Darya river in western Uzbekistan.",
+        "This is Khiva, in Uzbekistan."
+      ]
+    },
+    {
+      "id": "almaty",
+      "name": "Almaty",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Kazakhstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 43.222,
+        "lng": 76.8512
+      },
+      "clues": [
+        "It was its country's capital until 1997.",
+        "Apples are thought to have originated in the forests around it.",
+        "The Medeu ice rink sits in the mountains above it.",
+        "It is at the foot of the Tian Shan mountains.",
+        "This is Almaty, Kazakhstan's largest city."
+      ]
+    },
+    {
+      "id": "astana",
+      "name": "Astana",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Kazakhstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 51.1694,
+        "lng": 71.4491
+      },
+      "clues": [
+        "It has changed its name several times since the 1990s.",
+        "Its Bayterek tower represents a tree holding a golden egg.",
+        "It is one of the coldest capital cities in the world.",
+        "It is on the steppe in northern Central Asia.",
+        "This is Astana, the capital of Kazakhstan."
+      ]
+    },
+    {
+      "id": "bishkek",
+      "name": "Bishkek",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Kyrgyzstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 42.8746,
+        "lng": 74.5698
+      },
+      "clues": [
+        "It was called Frunze in Soviet times.",
+        "Its main square has a statue of the epic hero Manas.",
+        "Snow-capped mountains are visible from its streets.",
+        "It is near the Kazakh border, in a mountainous Central Asian country.",
+        "This is Bishkek, the capital of Kyrgyzstan."
+      ]
+    },
+    {
+      "id": "dushanbe",
+      "name": "Dushanbe",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Tajikistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 38.5598,
+        "lng": 68.787
+      },
+      "clues": [
+        "Its name means 'Monday', after a weekly market held here.",
+        "It has one of the tallest flagpoles in the world.",
+        "It sits in a valley below the foothills of the Pamirs.",
+        "It is in Central Asia, north of Afghanistan.",
+        "This is Dushanbe, the capital of Tajikistan."
+      ]
+    },
+    {
+      "id": "ashgabat",
+      "name": "Ashgabat",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Turkmenistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 37.9601,
+        "lng": 58.3261
+      },
+      "clues": [
+        "It holds a world record for having the most white-marble buildings.",
+        "An earthquake in 1948 destroyed most of it.",
+        "Its Neutrality Monument once had a golden statue that turned to face the sun.",
+        "It is near the Iranian border, south of the Karakum Desert.",
+        "This is Ashgabat, the capital of Turkmenistan."
+      ]
+    },
+    {
+      "id": "kabul",
+      "name": "Kabul",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Afghanistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 34.5553,
+        "lng": 69.2075
+      },
+      "clues": [
+        "The Mughal emperor Babur is buried in a garden here.",
+        "It sits about 1,800 m up, surrounded by mountains.",
+        "Many empires have fought over it.",
+        "It is in a high valley in the Hindu Kush region.",
+        "This is Kabul, the capital of Afghanistan."
+      ]
+    },
+    {
+      "id": "tbilisi",
+      "name": "Tbilisi",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Georgia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 41.7151,
+        "lng": 44.8271
+      },
+      "clues": [
+        "Its name comes from a word meaning 'warm', after its hot springs.",
+        "Its old town has sulphur baths under brick domes.",
+        "The Narikala fortress looks down over it.",
+        "It is on the Kura river in the Caucasus.",
+        "This is Tbilisi, the capital of Georgia."
+      ]
+    },
+    {
+      "id": "yerevan",
+      "name": "Yerevan",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Armenia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 40.1792,
+        "lng": 44.4991
+      },
+      "clues": [
+        "It traces its founding to a fortress built in 782 BC, making it older than Rome.",
+        "Its pinkish stone buildings give it the nickname 'the Pink City'.",
+        "Mount Ararat towers over it from across the border.",
+        "It is in the southern Caucasus.",
+        "This is Yerevan, the capital of Armenia."
+      ]
+    },
+    {
+      "id": "baku",
+      "name": "Baku",
+      "type": "city",
+      "region": "South and Central Asia",
+      "country": "Azerbaijan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 40.4093,
+        "lng": 49.8671
+      },
+      "clues": [
+        "One of the world's first industrial oil wells was drilled nearby in the 1840s.",
+        "Its three Flame Towers light up at night like fire.",
+        "It is the largest city on the Caspian Sea.",
+        "It sits on a peninsula on the Caspian coast.",
+        "This is Baku, the capital of Azerbaijan."
+      ]
+    },
+    {
+      "id": "darvaza-gas-crater",
+      "name": "Darvaza gas crater",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "Turkmenistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 40.2526,
+        "lng": 58.4398
+      },
+      "clues": [
+        "It has been burning almost continuously since the early 1970s.",
+        "It formed when a drilling site collapsed into an underground pocket of natural gas.",
+        "Locals call it the 'Door to Hell'.",
+        "It's in the Karakum Desert in Central Asia.",
+        "This is the Darvaza gas crater in Turkmenistan, about 260 km north of the capital, Ashgabat."
+      ]
+    },
+    {
+      "id": "baikonur-cosmodrome",
+      "name": "Baikonur Cosmodrome",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "Kazakhstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 45.9646,
+        "lng": 63.3052
+      },
+      "clues": [
+        "Sputnik was launched from here in 1957.",
+        "Yuri Gagarin began the first human spaceflight here in 1961.",
+        "Russia leases it from the country it is in.",
+        "It is on the steppe in southern Kazakhstan.",
+        "This is the Baikonur Cosmodrome, in Kazakhstan."
+      ]
+    },
+    {
+      "id": "bamiyan-valley",
+      "name": "Bamiyan Valley",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "Afghanistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 34.8327,
+        "lng": 67.825
+      },
+      "clues": [
+        "Two giant Buddha statues stood in its cliffs for about 1,500 years.",
+        "The Taliban blew them up in 2001.",
+        "Its valley lies on an old Silk Road route.",
+        "It is in the central highlands of Afghanistan.",
+        "This is the Bamiyan Valley, in Afghanistan."
+      ]
+    },
+    {
+      "id": "old-city-of-baku",
+      "name": "Old City of Baku",
+      "type": "landmark",
+      "region": "South and Central Asia",
+      "country": "Azerbaijan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 40.3664,
+        "lng": 49.8336
+      },
+      "clues": [
+        "Its Maiden Tower is the subject of many legends.",
+        "Its 15th-century Palace of the Shirvanshahs is a UNESCO World Heritage Site.",
+        "It is still enclosed by medieval walls.",
+        "It is on the Caspian shore in the Caucasus.",
+        "This is the Old City (Icherisheher) of Baku, in Azerbaijan."
+      ]
+    },
+    {
+      "id": "lake-issyk-kul",
+      "name": "Lake Issyk-Kul",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Kyrgyzstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 42.6492,
+        "lng": 77.0817
+      },
+      "clues": [
+        "It never freezes, despite being high in the mountains.",
+        "It is one of the largest mountain lakes in the world.",
+        "The remains of ancient settlements have been found under its waters.",
+        "It is in the Tian Shan mountains of eastern Kyrgyzstan.",
+        "This is Lake Issyk-Kul, in Kyrgyzstan. The pin is at Cholpon-Ata."
+      ]
+    },
+    {
+      "id": "charyn-canyon",
+      "name": "Charyn Canyon",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Kazakhstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 43.35,
+        "lng": 79.08
+      },
+      "clues": [
+        "It is often compared to the Grand Canyon.",
+        "Its 'Valley of Castles' is lined with red rock towers.",
+        "Rare Sogdian ash trees grow along its river.",
+        "It is about 200 km east of Almaty.",
+        "This is Charyn Canyon, in Kazakhstan."
+      ]
+    },
+    {
+      "id": "aral-sea",
+      "name": "Aral Sea",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Uzbekistan / Kazakhstan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 43.7683,
+        "lng": 59.0214
+      },
+      "clues": [
+        "It was once the fourth-largest lake in the world.",
+        "Soviet irrigation projects made it shrink dramatically.",
+        "Rusting fishing boats now sit stranded in the desert where it used to be.",
+        "It lies between Kazakhstan and Uzbekistan.",
+        "This is the Aral Sea. The pin is at the ship graveyard at Moynaq, Uzbekistan."
+      ]
+    },
+    {
+      "id": "mount-ararat",
+      "name": "Mount Ararat",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Turkey",
+      "difficulty": "hard",
+      "target": {
+        "lat": 39.7019,
+        "lng": 44.2983
+      },
+      "clues": [
+        "Noah's Ark is said to have come to rest on it.",
+        "It is a dormant volcano about 5,137 m high.",
+        "It is a national symbol of Armenia, but it lies in another country.",
+        "It is in eastern Turkey, near the borders with Iran and Armenia.",
+        "This is Mount Ararat, in Turkey."
+      ]
+    },
+    {
+      "id": "pamir-mountains",
+      "name": "Pamir Mountains",
+      "type": "natural",
+      "region": "South and Central Asia",
+      "country": "Tajikistan",
+      "difficulty": "hard",
+      "target": {
+        "lat": 38.172,
+        "lng": 73.9629
+      },
+      "clues": [
+        "The region is known as the 'Roof of the World'.",
+        "A Soviet-built highway crosses it at more than 4,600 m.",
+        "The Marco Polo sheep is named after the explorer who described it here.",
+        "It is mostly in eastern Tajikistan.",
+        "These are the Pamir Mountains. The pin is at Murghab on the Pamir Highway."
+      ]
+    },
+    {
+      "id": "honolulu",
+      "name": "Honolulu",
+      "type": "city",
+      "region": "Oceania",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 21.3069,
+        "lng": -157.8583
+      },
+      "clues": [
+        "Its Iolani Palace is the only royal palace in the US.",
+        "Barack Obama was born here.",
+        "Waikiki Beach is within the city.",
+        "It is on the island of Oahu, in the middle of the Pacific.",
+        "This is Honolulu, Hawaii."
+      ]
+    },
+    {
+      "id": "brisbane",
+      "name": "Brisbane",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -27.4698,
+        "lng": 153.0251
+      },
+      "clues": [
+        "It began as a penal settlement in 1825.",
+        "It will host the 2032 Summer Olympics.",
+        "Its Story Bridge is lit up at night.",
+        "It is on a winding river in south-east Queensland.",
+        "This is Brisbane, in Australia."
+      ]
+    },
+    {
+      "id": "hobart",
+      "name": "Hobart",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -42.8821,
+        "lng": 147.3272
+      },
+      "clues": [
+        "It is Australia's second-oldest capital city.",
+        "A famous Boxing Day yacht race from Sydney finishes here.",
+        "Its MONA art museum is carved into a riverside cliff.",
+        "It sits below Mount Wellington on an island state.",
+        "This is Hobart, the capital of Tasmania."
+      ]
+    },
+    {
+      "id": "darwin",
+      "name": "Darwin",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -12.4634,
+        "lng": 130.8456
+      },
+      "clues": [
+        "Japanese planes bombed it in 1942.",
+        "Cyclone Tracy destroyed most of it on Christmas Day 1974.",
+        "Saltwater crocodiles live in its harbour.",
+        "It is on the Timor Sea, at the top of Australia.",
+        "This is Darwin, in Australia's Northern Territory."
+      ]
+    },
+    {
+      "id": "christchurch",
+      "name": "Christchurch",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "medium",
+      "target": {
+        "lat": -43.532,
+        "lng": 172.6306
+      },
+      "clues": [
+        "It is known as the 'Garden City'.",
+        "An earthquake in 2011 destroyed much of its centre.",
+        "Its temporary cathedral was built partly from cardboard tubes.",
+        "It is on the east coast of the South Island.",
+        "This is Christchurch, in New Zealand."
+      ]
+    },
+    {
+      "id": "rotorua",
+      "name": "Rotorua",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "hard",
+      "target": {
+        "lat": -38.1368,
+        "lng": 176.2497
+      },
+      "clues": [
+        "It smells of sulphur because of its geothermal activity.",
+        "Its Pōhutu geyser erupts many times a day.",
+        "It is a centre of Māori culture.",
+        "It is on a lake in the middle of the North Island.",
+        "This is Rotorua, in New Zealand."
+      ]
+    },
+    {
+      "id": "suva",
+      "name": "Suva",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Fiji",
+      "difficulty": "hard",
+      "target": {
+        "lat": -18.1416,
+        "lng": 178.4419
+      },
+      "clues": [
+        "It became its country's capital in 1882.",
+        "It is one of the largest cities in the Pacific islands.",
+        "It is a rainy harbour city on the island of Viti Levu.",
+        "It is in Melanesia, east of Vanuatu.",
+        "This is Suva, the capital of Fiji."
+      ]
+    },
+    {
+      "id": "apia",
+      "name": "Apia",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Samoa",
+      "difficulty": "hard",
+      "target": {
+        "lat": -13.8333,
+        "lng": -171.7667
+      },
+      "clues": [
+        "Robert Louis Stevenson lived and is buried nearby.",
+        "In 1889 a cyclone wrecked several warships in its harbour.",
+        "Its country jumped to the other side of the International Date Line in 2011.",
+        "It is on the island of Upolu, in Polynesia.",
+        "This is Apia, the capital of Samoa."
+      ]
+    },
+    {
+      "id": "nukualofa",
+      "name": "Nukuʻalofa",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Tonga",
+      "difficulty": "hard",
+      "target": {
+        "lat": -21.1394,
+        "lng": -175.2018
+      },
+      "clues": [
+        "It is the capital of the only Pacific island kingdom never formally colonised.",
+        "Its Royal Palace is a white wooden building from 1867.",
+        "Humpback whales come to breed in the nearby waters.",
+        "It is on the island of Tongatapu, in Polynesia.",
+        "This is Nukuʻalofa, the capital of Tonga."
+      ]
+    },
+    {
+      "id": "port-moresby",
+      "name": "Port Moresby",
+      "type": "city",
+      "region": "Oceania",
+      "country": "Papua New Guinea",
+      "difficulty": "hard",
+      "target": {
+        "lat": -9.4438,
+        "lng": 147.1803
+      },
+      "clues": [
+        "It is named after a British admiral.",
+        "More than 800 languages are spoken in its country.",
+        "Its parliament building is shaped like a traditional spirit house.",
+        "It is on the south coast of the eastern half of New Guinea.",
+        "This is Port Moresby, the capital of Papua New Guinea."
+      ]
+    },
+    {
+      "id": "noumea",
+      "name": "Nouméa",
+      "type": "city",
+      "region": "Oceania",
+      "country": "New Caledonia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -22.2758,
+        "lng": 166.458
+      },
+      "clues": [
+        "France used the territory as a penal colony in the 19th century.",
+        "Its Tjibaou Cultural Centre was designed by Renzo Piano.",
+        "It is surrounded by one of the world's largest lagoons.",
+        "It is on the main island of New Caledonia in the South Pacific.",
+        "This is Nouméa, the capital of New Caledonia."
+      ]
+    },
+    {
+      "id": "papeete",
+      "name": "Papeete",
+      "type": "city",
+      "region": "Oceania",
+      "country": "French Polynesia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -17.5516,
+        "lng": -149.5585
+      },
+      "clues": [
+        "Paul Gauguin painted on its island.",
+        "Its covered market sells flowers, vanilla and black pearls.",
+        "It is the capital of a French overseas territory.",
+        "It is on Tahiti, in the Society Islands.",
+        "This is Papeete, the capital of French Polynesia."
+      ]
+    },
+    {
+      "id": "pearl-harbor",
+      "name": "Pearl Harbor",
+      "type": "landmark",
+      "region": "Oceania",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 21.3649,
+        "lng": -157.95
+      },
+      "clues": [
+        "A surprise attack here on 7 December 1941 brought the US into the Second World War.",
+        "The USS Arizona Memorial sits above a sunken battleship.",
+        "It is still an active naval base.",
+        "It is on Oahu, near Honolulu.",
+        "This is Pearl Harbor, in Hawaii."
+      ]
+    },
+    {
+      "id": "nan-madol",
+      "name": "Nan Madol",
+      "type": "landmark",
+      "region": "Oceania",
+      "country": "Federated States of Micronesia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 6.8442,
+        "lng": 158.3356
+      },
+      "clues": [
+        "It is a ruined city built on nearly 100 artificial islets.",
+        "It was built from huge stacked basalt columns.",
+        "It was the seat of the Saudeleur dynasty.",
+        "It is off the island of Pohnpei in the western Pacific.",
+        "This is Nan Madol, in the Federated States of Micronesia."
+      ]
+    },
+    {
+      "id": "kilauea",
+      "name": "Kīlauea",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "United States",
+      "difficulty": "medium",
+      "target": {
+        "lat": 19.4069,
+        "lng": -155.2834
+      },
+      "clues": [
+        "In Hawaiian tradition it is home to Pele, goddess of volcanoes.",
+        "Its 2018 eruption destroyed more than 700 homes.",
+        "It is one of the most active volcanoes in the world.",
+        "It is on the south-east of Hawaii's Big Island.",
+        "This is Kīlauea, in Hawaii."
+      ]
+    },
+    {
+      "id": "twelve-apostles",
+      "name": "Twelve Apostles",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -38.665,
+        "lng": 143.105
+      },
+      "clues": [
+        "They were once known as the Sow and Piglets.",
+        "There were never twelve of them, and some have collapsed.",
+        "They are limestone stacks rising out of the Southern Ocean.",
+        "They are on the Great Ocean Road in Victoria.",
+        "These are the Twelve Apostles, in Australia."
+      ]
+    },
+    {
+      "id": "k-gari-fraser-island",
+      "name": "K'gari (Fraser Island)",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -25.4467,
+        "lng": 153.0558
+      },
+      "clues": [
+        "It is the largest sand island in the world.",
+        "Its official name was changed back to its traditional one in 2023.",
+        "Its beaches double as highways for four-wheel-drive vehicles.",
+        "It is off the coast of Queensland.",
+        "This is K'gari (Fraser Island), in Australia. The pin is at Lake McKenzie."
+      ]
+    },
+    {
+      "id": "kakadu-national-park",
+      "name": "Kakadu National Park",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -12.66,
+        "lng": 132.84
+      },
+      "clues": [
+        "It contains Aboriginal rock art up to 20,000 years old.",
+        "It is Australia's largest national park.",
+        "Saltwater crocodiles live in its rivers.",
+        "It is east of Darwin in the Northern Territory.",
+        "This is Kakadu National Park, in Australia. The pin is at Jabiru."
+      ]
+    },
+    {
+      "id": "bungle-bungle-range",
+      "name": "Bungle Bungle Range",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -17.4167,
+        "lng": 128.4167
+      },
+      "clues": [
+        "Most Australians had never heard of it until the 1980s.",
+        "Its beehive-shaped rock domes are striped orange and black.",
+        "It is in Purnululu National Park.",
+        "It is in the Kimberley region of Western Australia.",
+        "This is the Bungle Bungle Range, in Australia."
+      ]
+    },
+    {
+      "id": "whitsunday-islands",
+      "name": "Whitsunday Islands",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "medium",
+      "target": {
+        "lat": -20.2827,
+        "lng": 149.0388
+      },
+      "clues": [
+        "James Cook named them in 1770, believing it was Whit Sunday.",
+        "Their Whitehaven Beach has almost pure white silica sand.",
+        "They sit close to the Great Barrier Reef.",
+        "They are off the coast of central Queensland.",
+        "These are the Whitsunday Islands, in Australia. The pin is at Whitehaven Beach."
+      ]
+    },
+    {
+      "id": "tongariro",
+      "name": "Tongariro",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "hard",
+      "target": {
+        "lat": -39.2,
+        "lng": 175.5833
+      },
+      "clues": [
+        "It became New Zealand's first national park in 1887.",
+        "Mount Ngauruhoe here stood in for Mount Doom in The Lord of the Rings.",
+        "Its Alpine Crossing hike passes the bright Emerald Lakes.",
+        "It is in the centre of the North Island.",
+        "This is Tongariro National Park, in New Zealand."
+      ]
+    },
+    {
+      "id": "rock-islands-of-palau",
+      "name": "Rock Islands of Palau",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Palau",
+      "difficulty": "hard",
+      "target": {
+        "lat": 7.14,
+        "lng": 134.35
+      },
+      "clues": [
+        "Its Jellyfish Lake is full of jellyfish with very weak stings.",
+        "There are hundreds of mushroom-shaped limestone islands.",
+        "It is one of the world's top diving destinations.",
+        "It is in Micronesia, east of the Philippines.",
+        "These are the Rock Islands of Palau."
+      ]
+    },
+    {
+      "id": "lord-howe-island",
+      "name": "Lord Howe Island",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Australia",
+      "difficulty": "hard",
+      "target": {
+        "lat": -31.5553,
+        "lng": 159.0821
+      },
+      "clues": [
+        "Only about 400 tourists are allowed on it at any one time.",
+        "It has the world's southernmost coral reef.",
+        "Ball's Pyramid, a towering sea stack, rises nearby.",
+        "It is in the Tasman Sea, east of mainland Australia.",
+        "This is Lord Howe Island, in Australia."
+      ]
+    },
+    {
+      "id": "aitutaki",
+      "name": "Aitutaki",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "Cook Islands",
+      "difficulty": "hard",
+      "target": {
+        "lat": -18.8574,
+        "lng": -159.7856
+      },
+      "clues": [
+        "Captain Bligh arrived here shortly before the mutiny on the Bounty in 1789.",
+        "Its turquoise lagoon is ringed by small islands.",
+        "On one islet, One Foot Island, you can get your passport stamped.",
+        "It is in the Cook Islands in the South Pacific.",
+        "This is Aitutaki, in the Cook Islands."
+      ]
+    },
+    {
+      "id": "cape-reinga",
+      "name": "Cape Reinga",
+      "type": "natural",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "difficulty": "hard",
+      "target": {
+        "lat": -34.428,
+        "lng": 172.6797
+      },
+      "clues": [
+        "In Māori tradition, spirits depart from here on their journey to the afterlife.",
+        "Off its lighthouse, two seas meet in a visible line of waves.",
+        "It is at the end of the road beyond Ninety Mile Beach.",
+        "It is near the northern tip of the North Island.",
+        "This is Cape Reinga, in New Zealand."
+      ]
+    },
+    {
+      "id": "kingston",
+      "name": "Kingston",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Jamaica",
+      "difficulty": "medium",
+      "target": {
+        "lat": 17.9714,
+        "lng": -76.7936
+      },
+      "clues": [
+        "An earthquake in 1692 destroyed nearby Port Royal, once called the 'wickedest city on Earth'.",
+        "Bob Marley's former home is now a museum here.",
+        "It has one of the largest natural harbours in the world.",
+        "It is on the south coast of a Caribbean island.",
+        "This is Kingston, the capital of Jamaica."
+      ]
+    },
+    {
+      "id": "san-juan",
+      "name": "San Juan",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Puerto Rico",
+      "difficulty": "medium",
+      "target": {
+        "lat": 18.4655,
+        "lng": -66.1057
+      },
+      "clues": [
+        "Its El Morro fort guarded Spanish ships for centuries.",
+        "Its old town is painted in bright colours.",
+        "It is the capital of a US territory.",
+        "It is on the north coast of a Caribbean island east of Hispaniola.",
+        "This is San Juan, the capital of Puerto Rico."
+      ]
+    },
+    {
+      "id": "santo-domingo",
+      "name": "Santo Domingo",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Dominican Republic",
+      "difficulty": "hard",
+      "target": {
+        "lat": 18.4861,
+        "lng": -69.9312
+      },
+      "clues": [
+        "It is the oldest permanent European-founded city in the Americas.",
+        "Christopher Columbus's son Diego built a palace here.",
+        "It has the oldest cathedral in the Americas.",
+        "It is on the south coast of Hispaniola.",
+        "This is Santo Domingo, the capital of the Dominican Republic."
+      ]
+    },
+    {
+      "id": "nassau",
+      "name": "Nassau",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Bahamas",
+      "difficulty": "hard",
+      "target": {
+        "lat": 25.0443,
+        "lng": -77.3504
+      },
+      "clues": [
+        "It was a pirate base in the early 18th century.",
+        "Its Queen's Staircase has 66 steps cut into limestone.",
+        "Huge cruise ships dock at its harbour.",
+        "It is on New Providence island, east of Florida.",
+        "This is Nassau, the capital of the Bahamas."
+      ]
+    },
+    {
+      "id": "bridgetown",
+      "name": "Bridgetown",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Barbados",
+      "difficulty": "hard",
+      "target": {
+        "lat": 13.0975,
+        "lng": -59.6167
+      },
+      "clues": [
+        "George Washington stayed here in 1751, his only trip outside America.",
+        "Its historic town and garrison are a UNESCO World Heritage Site.",
+        "The singer Rihanna grew up here.",
+        "It is the capital of the easternmost island of the Caribbean.",
+        "This is Bridgetown, the capital of Barbados."
+      ]
+    },
+    {
+      "id": "the-pitons",
+      "name": "The Pitons",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "Saint Lucia",
+      "difficulty": "hard",
+      "target": {
+        "lat": 13.8106,
+        "lng": -61.0675
+      },
+      "clues": [
+        "They appear on their island's flag.",
+        "They are two steep volcanic spires rising from the sea.",
+        "A 'drive-in' volcano with sulphur springs is nearby.",
+        "They are near the town of Soufrière on a Caribbean island.",
+        "These are the Pitons, in Saint Lucia."
+      ]
+    },
+    {
+      "id": "tikal",
+      "name": "Tikal",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "Guatemala",
+      "difficulty": "hard",
+      "target": {
+        "lat": 17.222,
+        "lng": -89.6237
+      },
+      "clues": [
+        "It was one of the most powerful Maya cities.",
+        "Its temples rise above the jungle canopy.",
+        "It appeared as a rebel base in the first Star Wars film, in 1977.",
+        "It is in the rainforest of northern Guatemala.",
+        "This is Tikal, in Guatemala."
+      ]
+    },
+    {
+      "id": "antigua-guatemala",
+      "name": "Antigua Guatemala",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Guatemala",
+      "difficulty": "hard",
+      "target": {
+        "lat": 14.5586,
+        "lng": -90.7295
+      },
+      "clues": [
+        "It was the Spanish capital of Central America until earthquakes in 1773.",
+        "Its yellow Santa Catalina Arch is a famous landmark.",
+        "Three volcanoes surround it.",
+        "It is a short drive west of its country's capital, in Central America.",
+        "This is Antigua Guatemala."
+      ]
+    },
+    {
+      "id": "san-jose",
+      "name": "San José",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Costa Rica",
+      "difficulty": "hard",
+      "target": {
+        "lat": 9.9281,
+        "lng": -84.0907
+      },
+      "clues": [
+        "In 1884 it became one of the first cities in the world with electric street lighting.",
+        "Its country abolished its army in 1948.",
+        "Its National Theatre was paid for with a tax on coffee.",
+        "It is in the central valley of a country between Nicaragua and Panama.",
+        "This is San José, the capital of Costa Rica."
+      ]
+    },
+    {
+      "id": "arenal-volcano",
+      "name": "Arenal Volcano",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "Costa Rica",
+      "difficulty": "hard",
+      "target": {
+        "lat": 10.463,
+        "lng": -84.7032
+      },
+      "clues": [
+        "A surprise eruption in 1968 buried three villages.",
+        "It was almost constantly active until 2010.",
+        "Hot springs at its foot are heated by the volcano.",
+        "It is in northern Costa Rica.",
+        "This is Arenal Volcano, in Costa Rica."
+      ]
+    },
+    {
+      "id": "belize-barrier-reef",
+      "name": "Belize Barrier Reef",
+      "type": "natural",
+      "region": "North and Central America",
+      "country": "Belize",
+      "difficulty": "hard",
+      "target": {
+        "lat": 17.3161,
+        "lng": -87.5347
+      },
+      "clues": [
+        "Charles Darwin called it the most remarkable reef in the West Indies.",
+        "Jacques Cousteau made its Great Blue Hole famous.",
+        "It is the second-largest barrier reef in the world.",
+        "It is off the Caribbean coast of Central America.",
+        "This is the Belize Barrier Reef. The pin is at the Great Blue Hole."
+      ]
+    },
+    {
+      "id": "tulum",
+      "name": "Tulum",
+      "type": "landmark",
+      "region": "North and Central America",
+      "country": "Mexico",
+      "difficulty": "medium",
+      "target": {
+        "lat": 20.2148,
+        "lng": -87.429
+      },
+      "clues": [
+        "It is one of the few Maya cities built on the coast.",
+        "Its main temple, El Castillo, stands on a cliff above the sea.",
+        "It was still inhabited when the Spanish arrived.",
+        "It is on the Caribbean coast of the Yucatán Peninsula.",
+        "This is Tulum, in Mexico."
+      ]
+    },
+    {
+      "id": "nuuk",
+      "name": "Nuuk",
+      "type": "city",
+      "region": "North and Central America",
+      "country": "Greenland",
+      "difficulty": "hard",
+      "target": {
+        "lat": 64.1814,
+        "lng": -51.6941
+      },
+      "clues": [
+        "It was founded in 1728 by the missionary Hans Egede.",
+        "It is the capital of the world's largest island.",
+        "Its houses are painted bright colours.",
+        "It is on the south-west coast of an Arctic island.",
+        "This is Nuuk, the capital of Greenland."
+      ]
+    },
+    {
+      "id": "longyearbyen",
+      "name": "Longyearbyen",
+      "type": "city",
+      "region": "Europe",
+      "country": "Norway",
+      "difficulty": "hard",
+      "target": {
+        "lat": 78.2232,
+        "lng": 15.6267
+      },
+      "clues": [
+        "A seed vault storing crops from around the world is built into a mountain nearby.",
+        "The sun doesn't rise for months in winter.",
+        "People carry rifles outside town because of polar bears.",
+        "It is on Svalbard, far north of mainland Norway.",
+        "This is Longyearbyen, on Svalbard."
+      ]
+    },
+    {
+      "id": "rovaniemi",
+      "name": "Rovaniemi",
+      "type": "city",
+      "region": "Europe",
+      "country": "Finland",
+      "difficulty": "medium",
+      "target": {
+        "lat": 66.5039,
+        "lng": 25.7294
+      },
+      "clues": [
+        "It was almost completely burned in 1944 and rebuilt to a plan by Alvar Aalto.",
+        "It is promoted as the official home town of Santa Claus.",
+        "It sits on the Arctic Circle.",
+        "It is the capital of Finnish Lapland.",
+        "This is Rovaniemi, in Finland."
+      ]
+    }
+  ]
+}

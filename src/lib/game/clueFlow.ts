@@ -1,4 +1,6 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
+import type { GameMode } from "@/lib/game/modes";
+import { scoringProfileForMode } from "@/lib/game/modes";
 import { getClueMaxScore, getNextClueMaxScore } from "@/lib/game/scoring";
 import type { TemperatureResult } from "@/types/game";
 
@@ -37,14 +39,18 @@ export function isFinalClueNumber(pinNumber: number): boolean {
   return pinNumber === CLUE_COUNT;
 }
 
-export function decisionScoreContext(pinNumber: number): {
+export function decisionScoreContext(
+  pinNumber: number,
+  mode?: GameMode,
+): {
   currentMaxScore: number;
   nextMaxScore: number | null;
   isFinalClue: boolean;
 } {
+  const profile = mode ? scoringProfileForMode(mode) : undefined;
   return {
-    currentMaxScore: getClueMaxScore(pinNumber),
-    nextMaxScore: getNextClueMaxScore(pinNumber),
+    currentMaxScore: getClueMaxScore(pinNumber, profile),
+    nextMaxScore: getNextClueMaxScore(pinNumber, profile),
     isFinalClue: isFinalClueNumber(pinNumber),
   };
 }

@@ -2,9 +2,13 @@ import { addCalendarDays, isValidIsoDate } from "@/lib/game/date";
 import {
   DEFAULT_GAME_MODE,
   PLAYER_HISTORY_KEY_BY_MODE,
+  scoringProfileForMode,
   type GameMode,
 } from "@/lib/game/modes";
-import { SCORING } from "@/lib/game/scoring";
+import {
+  maxScoreForProfile,
+  SCORING,
+} from "@/lib/game/scoring";
 import { isThemeId, type ThemeId } from "@/lib/game/themes";
 import { getWeekDates, getWeekdayIndex } from "@/lib/game/week";
 import type { GameReveal } from "@/types/game";
@@ -12,7 +16,15 @@ import type { GameReveal } from "@/types/game";
 /** Daily history key — kept for backwards compatibility with existing localStorage. */
 export const PLAYER_HISTORY_KEY = PLAYER_HISTORY_KEY_BY_MODE.daily;
 export const PLAYER_HISTORY_VERSION = 1;
+
+/** @deprecated Prefer maxWeeklyScoreForMode(mode) */
 export const MAX_WEEKLY_SCORE = SCORING.MAX_TOTAL_POINTS * 7;
+
+export function maxWeeklyScoreForMode(
+  mode: GameMode = DEFAULT_GAME_MODE,
+): number {
+  return maxScoreForProfile(scoringProfileForMode(mode)) * 7;
+}
 
 export function historyStorageKey(mode: GameMode = DEFAULT_GAME_MODE): string {
   return PLAYER_HISTORY_KEY_BY_MODE[mode];
@@ -285,6 +297,7 @@ export function recordCompletedReveal(
 export function getWeeklyStats(
   history: PlayerHistory,
   referenceDate: string,
+  mode: GameMode = DEFAULT_GAME_MODE,
 ): WeeklyStats {
   const weekDates = getWeekDates(referenceDate);
   let weeklyScore = 0;
@@ -320,7 +333,7 @@ export function getWeeklyStats(
   return {
     weekDates,
     weeklyScore,
-    maxWeeklyScore: MAX_WEEKLY_SCORE,
+    maxWeeklyScore: maxWeeklyScoreForMode(mode),
     days,
   };
 }

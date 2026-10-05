@@ -109,15 +109,19 @@ function dayTitle(day: WeeklyStats["days"][number]): string {
 }
 
 function modeRowLabel(def: GameModeDefinition): string {
-  return def.family === "football"
+  return def.family === "football" || def.family === "world"
     ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
     : def.title;
 }
 
 function modeRowHint(def: GameModeDefinition): string {
-  return def.family === "football"
-    ? "5 clues · find today's home ground"
-    : "5 clues · one UK place";
+  if (def.family === "football") {
+    return "5 clues · find today's home ground";
+  }
+  if (def.family === "world") {
+    return "5 clues · find today's place anywhere";
+  }
+  return "5 clues · one UK place";
 }
 
 function pickOtherMode(current: GameMode, played: Set<GameMode>): GameMode {
@@ -185,7 +189,7 @@ export function ResultsPopup({
 
   const mode = reveal.mode ?? DEFAULT_GAME_MODE;
   const modeHistory = readPlayerHistory(undefined, mode);
-  const weekly = getWeeklyStats(modeHistory, reveal.date);
+  const weekly = getWeeklyStats(modeHistory, reveal.date, mode);
   const streak = getCurrentStreak(modeHistory, reveal.date);
 
   const playable = listPlayableModes();
@@ -246,15 +250,16 @@ export function ResultsPopup({
   const otherGame = {
     href: modePath(otherMode),
     label:
-      otherDef.family === "football"
+      otherDef.family === "football" || otherDef.family === "world"
         ? `Play ${otherDef.title} · ${otherDef.subtitle}`
         : `Play ${otherDef.title}`,
   };
 
-  // Show football leagues first, then Daily — matches prior England-first order.
+  // World first, then Daily UK, then football leagues.
   const orderedStatuses = [
-    ...modeStatuses.filter((row) => row.def.family === "football"),
+    ...modeStatuses.filter((row) => row.def.family === "world"),
     ...modeStatuses.filter((row) => row.def.family === "daily"),
+    ...modeStatuses.filter((row) => row.def.family === "football"),
   ];
 
   return (

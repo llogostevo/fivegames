@@ -229,7 +229,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           setFlowModal({
             type: "decision",
             pinNumber,
-            ...decisionScoreContext(pinNumber),
+            ...decisionScoreContext(pinNumber, mode),
           });
           setHowToPlayOpen(false);
           setResultsOpen(false);
@@ -338,7 +338,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           setFlowModal({
             type: "decision",
             pinNumber: currentPin,
-            ...decisionScoreContext(currentPin),
+            ...decisionScoreContext(currentPin, mode),
           });
         } catch (checkError) {
           // Roll back optimistic pin so the player can try again.
@@ -430,7 +430,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         clueNumber: nextClueNumber,
         clueText: continueData.clue,
         nextPinNumber: nextClueNumber,
-        currentMaxScore: getClueMaxScore(nextClueNumber),
+        currentMaxScore: getClueMaxScore(nextClueNumber, modeDef.scoring),
       });
     } catch (nextError) {
       const message =
@@ -615,9 +615,9 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
       : lockedGuesses;
 
   const liveClueMax = canPlacePin
-    ? getClueMaxScore(currentPinNumber)
+    ? getClueMaxScore(currentPinNumber, modeDef.scoring)
     : awaitingDecision && pinNumber >= 1
-      ? getClueMaxScore(pinNumber)
+      ? getClueMaxScore(pinNumber, modeDef.scoring)
       : null;
 
   const latestLockedIndex = lockedCount - 1;
@@ -666,7 +666,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
               <span>{modeDef.chipLabel}</span>
             </span>
           )}
-          {theme && !isFootballMode(mode) ? (
+          {theme && mode === "daily" ? (
             <span className="hidden rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course sm:inline">
               {theme}
             </span>
@@ -719,6 +719,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
       <HowToPlayModal
         open={howToPlayOpen}
         primaryLabel={howToPlayCta}
+        mode={mode}
         onClose={() => setHowToPlayOpen(false)}
       />
 
@@ -905,6 +906,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           }`}
           initialCenter={modeDef.mapStart.center}
           initialZoom={modeDef.mapStart.zoom}
+          initialProjection={modeDef.mapStart.projection ?? "mercator"}
           gameMode
           showLabels={isComplete}
           interactive={mapInteractive}

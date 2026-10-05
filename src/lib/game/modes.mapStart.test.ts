@@ -20,6 +20,12 @@ describe("mode map starts", () => {
     }
   });
 
+  it("opens World on a globe projection at Earth scale", () => {
+    const world = GAME_MODE_DEFINITIONS.world.mapStart;
+    assert.equal(world.projection, "globe");
+    assert.ok(world.zoom < 3);
+  });
+
   it("keeps football opening views distinct from each other", () => {
     const england = GAME_MODE_DEFINITIONS.football.mapStart;
     const italy = GAME_MODE_DEFINITIONS["football-italy"].mapStart;

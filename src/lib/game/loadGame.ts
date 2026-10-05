@@ -16,6 +16,11 @@ import {
 import { footballLeagueForMode } from "@/lib/game/football/leagues";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
+import {
+  getReleasedWorldGameByDate,
+  getTodaysWorldGame,
+  getWorldGameByDate,
+} from "@/lib/game/world/loadWorldGame";
 import type { GameDefinition } from "@/types/game";
 
 export class GameNotFoundError extends Error {
@@ -187,12 +192,15 @@ export async function getTodaysGame(
   return getGameByDate(date);
 }
 
-/** Load today's game for a mode (daily JSON or Football schedule). */
+/** Load today's game for a mode (daily JSON, World schedule, or Football). */
 export async function getTodaysGameForMode(
   mode: GameMode,
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
+  if (mode === "world") {
+    return getTodaysWorldGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -222,6 +230,9 @@ export async function getReleasedGameForMode(
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
+  if (mode === "world") {
+    return getReleasedWorldGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -234,6 +245,9 @@ export async function getGameForModeByDate(
   mode: GameMode,
   date: string,
 ): Promise<GameDefinition> {
+  if (mode === "world") {
+    return getWorldGameByDate(date);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     const { getFootballGameByDate } = await import(

@@ -3,15 +3,20 @@
 import { useEffect, useId, useRef } from "react";
 
 import {
-  HOW_TO_PLAY_STEPS,
+  howToPlayStepsForMode,
   splitEmphasizedBody,
 } from "@/lib/game/howToPlay";
+import {
+  DEFAULT_GAME_MODE,
+  type GameMode,
+} from "@/lib/game/modes";
 
 type HowToPlayModalProps = {
   open: boolean;
   onClose: () => void;
   /** Primary CTA label — "Play now" on first visit, "Got it" from the header. */
   primaryLabel?: string;
+  mode?: GameMode;
 };
 
 function HoldDemo() {
@@ -67,9 +72,11 @@ export function HowToPlayModal({
   open,
   onClose,
   primaryLabel = "Got it",
+  mode = DEFAULT_GAME_MODE,
 }: HowToPlayModalProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const steps = howToPlayStepsForMode(mode);
 
   useEffect(() => {
     if (!open) {
@@ -130,7 +137,7 @@ export function HowToPlayModal({
         </div>
 
         <ol className="space-y-2.5 px-4 py-3">
-          {HOW_TO_PLAY_STEPS.map((step, index) => {
+          {steps.map((step, index) => {
             const parts = splitEmphasizedBody(step.body, step.emphasize);
             return (
               <li key={step.title} className="flex gap-2.5">

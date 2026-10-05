@@ -7,14 +7,22 @@
  * `football-germany` = Germany (/football/germany)
  * `football-france` = France (/football/france)
  * `football-spain` = Spain (/football/spain)
+ * `world` = World places (/world)
  */
 
 import {
   DEFAULT_MAP_START,
+  WORLD_MAP_START,
   type MapStartView,
 } from "@/lib/map/provider";
+import {
+  COUNTRY_SCORING_PROFILE,
+  WORLD_SCORING_PROFILE,
+  type ScoringProfile,
+} from "@/lib/game/scoring";
 
 export const GAME_MODES = [
+  "world",
   "daily",
   "football",
   "football-italy",
@@ -47,12 +55,14 @@ export type GameModeDefinition = {
   shareTitle: string;
   /** Results / OG mode label. */
   modeLabel: string;
-  family: "daily" | "football";
+  family: "daily" | "football" | "world";
   /**
    * Fixed opening map camera for this mode.
    * Country/region overview only — must not encode the day’s answer.
    */
   mapStart: MapStartView;
+  /** Distance → points curve for this mode. */
+  scoring: ScoringProfile;
 };
 
 export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
@@ -71,6 +81,24 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "DAILY 5",
     family: "daily",
     mapStart: DEFAULT_MAP_START,
+    scoring: COUNTRY_SCORING_PROFILE,
+  },
+  world: {
+    id: "world",
+    path: "/world",
+    title: "Daily 5",
+    subtitle: "World",
+    chipLabel: "World",
+    emoji: "🌍",
+    detail: "Five clues to find today’s place anywhere on Earth.",
+    sessionCookie: "fivegames_session_world",
+    historyKey: "pin5_world_player_history",
+    sharePath: "/world",
+    shareTitle: "PIN5 🌍 WORLD",
+    modeLabel: "WORLD",
+    family: "world",
+    mapStart: WORLD_MAP_START,
+    scoring: WORLD_SCORING_PROFILE,
   },
   football: {
     id: "football",
@@ -91,6 +119,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 52.8, lng: -1.5 },
       zoom: 5.8,
     },
+    scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-italy": {
     id: "football-italy",
@@ -110,6 +139,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 42.0, lng: 12.5 },
       zoom: 5.4,
     },
+    scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-germany": {
     id: "football-germany",
@@ -129,6 +159,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 51.2, lng: 10.4 },
       zoom: 5.7,
     },
+    scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-france": {
     id: "football-france",
@@ -148,6 +179,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 46.6, lng: 2.2 },
       zoom: 5.4,
     },
+    scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-spain": {
     id: "football-spain",
@@ -167,12 +199,14 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 39.8, lng: -3.5 },
       zoom: 5.4,
     },
+    scoring: COUNTRY_SCORING_PROFILE,
   },
 };
 
 /** Session cookie names — one per mode so games can be in progress together. */
 export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.sessionCookie,
+  world: GAME_MODE_DEFINITIONS.world.sessionCookie,
   football: GAME_MODE_DEFINITIONS.football.sessionCookie,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].sessionCookie,
   "football-germany":
@@ -184,6 +218,7 @@ export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
 /** localStorage keys for player history — one per mode. */
 export const PLAYER_HISTORY_KEY_BY_MODE: Record<GameMode, string> = {
   daily: GAME_MODE_DEFINITIONS.daily.historyKey,
+  world: GAME_MODE_DEFINITIONS.world.historyKey,
   football: GAME_MODE_DEFINITIONS.football.historyKey,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].historyKey,
   "football-germany":
@@ -204,6 +239,10 @@ export const UPCOMING_FOOTBALL_LEAGUES: readonly UpcomingFootballLeague[] = [];
 
 export function getModeDefinition(mode: GameMode): GameModeDefinition {
   return GAME_MODE_DEFINITIONS[mode];
+}
+
+export function scoringProfileForMode(mode: GameMode): ScoringProfile {
+  return getModeDefinition(mode).scoring;
 }
 
 export function isGameMode(value: unknown): value is GameMode {
@@ -231,7 +270,7 @@ export function modeApiPath(path: string, mode: GameMode): string {
 
 export function modeDisplayName(mode: GameMode): string {
   const def = getModeDefinition(mode);
-  return def.family === "football"
+  return def.family === "football" || def.family === "world"
     ? `${def.title} · ${def.subtitle}`
     : def.title;
 }
@@ -248,6 +287,10 @@ export function isFootballMode(mode: GameMode): boolean {
   return getModeDefinition(mode).family === "football";
 }
 
+export function isWorldMode(mode: GameMode): boolean {
+  return getModeDefinition(mode).family === "world";
+}
+
 /** Modes listed on the landing hub and results cross-sell. */
 export function listPlayableModes(): GameModeDefinition[] {
   return GAME_MODES.map((id) => GAME_MODE_DEFINITIONS[id]);
@@ -255,4 +298,12 @@ export function listPlayableModes(): GameModeDefinition[] {
 
 export function listFootballModes(): GameModeDefinition[] {
   return listPlayableModes().filter((mode) => mode.family === "football");
+}
+
+/** Daily UK + World (non-football) hub section — World first. */
+export function listGeneralKnowledgeModes(): GameModeDefinition[] {
+  return [
+    GAME_MODE_DEFINITIONS.world,
+    GAME_MODE_DEFINITIONS.daily,
+  ];
 }

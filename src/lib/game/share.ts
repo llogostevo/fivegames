@@ -1,14 +1,13 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import {
   DEFAULT_GAME_MODE,
-  isFootballMode,
   modeShareTitle,
   type GameMode,
 } from "@/lib/game/modes";
 import {
   formatStreakLabel,
   getWeeklyStats,
-  MAX_WEEKLY_SCORE,
+  maxWeeklyScoreForMode,
   type PlayerHistory,
   type WeeklyStats,
 } from "@/lib/game/playerHistory";
@@ -77,9 +76,10 @@ function revealMode(reveal: GameReveal): GameMode {
 
 export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
   const mode = revealMode(reveal);
-  const title = isFootballMode(mode)
-    ? `${modeShareTitle(mode)} #${reveal.gameNumber}`
-    : `PIN5 #${reveal.gameNumber} — ${reveal.theme}`;
+  const title =
+    mode === "daily"
+      ? `PIN5 #${reveal.gameNumber} — ${reveal.theme}`
+      : `${modeShareTitle(mode)} #${reveal.gameNumber}`;
 
   const lines = [
     title,
@@ -143,16 +143,17 @@ export function buildWeeklyShareText({
   streak = 0,
   mode = DEFAULT_GAME_MODE,
 }: WeeklyShareInput): string {
-  const weekly = getWeeklyStats(history, referenceDate);
+  const weekly = getWeeklyStats(history, referenceDate, mode);
   const daysPlayed = countDaysPlayed(weekly);
   const weekNumber = getPin5WeekNumber(referenceDate);
-  const weekTitle = isFootballMode(mode)
-    ? `${modeShareTitle(mode)} — WEEK ${weekNumber}`
-    : `PIN5 — WEEK ${weekNumber}`;
+  const weekTitle =
+    mode === "daily"
+      ? `PIN5 — WEEK ${weekNumber}`
+      : `${modeShareTitle(mode)} — WEEK ${weekNumber}`;
 
   const lines = [
     weekTitle,
-    `🏆 ${weekly.weeklyScore.toLocaleString("en-GB")} / ${MAX_WEEKLY_SCORE.toLocaleString("en-GB")}`,
+    `🏆 ${weekly.weeklyScore.toLocaleString("en-GB")} / ${maxWeeklyScoreForMode(mode).toLocaleString("en-GB")}`,
     `📅 ${daysPlayed}/7 played`,
     buildWeeklyDayPattern(weekly),
   ];
