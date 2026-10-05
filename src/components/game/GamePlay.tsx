@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import { ClueFlowModal } from "@/components/game/ClueFlowModal";
 import { FoundCelebration } from "@/components/game/FoundCelebration";
 import { GameMap } from "@/components/game/GameMap";
+import { GamesMenuModal } from "@/components/game/GamesMenuModal";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
@@ -136,6 +137,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
   >("idle");
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   const [howToPlayCta, setHowToPlayCta] = useState("Got it");
+  const [gamesMenuOpen, setGamesMenuOpen] = useState(false);
   const [resultsOpen, setResultsOpen] = useState(false);
   const [showHoldTip, setShowHoldTip] = useState(() =>
     shouldShowHoldTip(readHoldTipSeen()),
@@ -631,9 +633,15 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
     >
       <header className="flex shrink-0 items-center justify-between gap-3 border-b border-rule px-4 py-3 sm:gap-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-          <h1 className="font-display text-2xl font-bold tracking-tight">
+          <button
+            type="button"
+            onClick={() => setGamesMenuOpen(true)}
+            className="rounded-md font-display text-2xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
+            aria-haspopup="dialog"
+            aria-expanded={gamesMenuOpen}
+          >
             Pin5
-          </h1>
+          </button>
           {mode === "football" ? (
             <span
               className="inline-flex items-center gap-1 rounded-md border border-course/30 bg-course-soft px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-course sm:px-2 sm:text-[11px]"
@@ -709,6 +717,12 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         open={howToPlayOpen}
         primaryLabel={howToPlayCta}
         onClose={() => setHowToPlayOpen(false)}
+      />
+
+      <GamesMenuModal
+        open={gamesMenuOpen}
+        currentMode={mode}
+        onClose={() => setGamesMenuOpen(false)}
       />
 
       {foundCelebration ? (
