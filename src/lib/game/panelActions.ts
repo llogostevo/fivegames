@@ -1,20 +1,5 @@
+import { getMapPlacementCopy } from "@/lib/game/clueFlow";
 import { CLUE_COUNT } from "@/lib/game/constants";
-
-export type PanelActionState = {
-  /** Primary panel button label. */
-  primaryLabel: string;
-  /** Secondary panel button label, or null on the final clue. */
-  secondaryLabel: string | null;
-  /** Whether panel actions may be activated. */
-  canAct: boolean;
-  /**
-   * Whether Submit / Lock actions should be visible.
-   * Hidden (not merely disabled) until the current pin exists.
-   */
-  showActions: boolean;
-  /** True when the primary action finishes the game. */
-  isFinalClue: boolean;
-};
 
 export type PlacementPrompt = {
   title: string;
@@ -22,38 +7,37 @@ export type PlacementPrompt = {
 };
 
 /**
- * Explicit pin-placement copy for the active clue.
- * Makes “place another pin” obvious after each submit.
+ * @deprecated Prefer getMapPlacementCopy from clueFlow.
+ * Kept for transitional tests / call sites.
  */
 export function getPlacementPrompt(options: {
   pinNumber: number;
   hasPin: boolean;
 }): PlacementPrompt {
-  const pinNumber = Math.min(Math.max(options.pinNumber, 1), CLUE_COUNT);
-
-  if (options.hasPin) {
-    return {
-      title: `📍 Pin ${pinNumber} ready`,
-      detail: "Drag the pin if you want to adjust it.",
-    };
-  }
-
-  if (pinNumber === 1) {
-    return {
-      title: `📍 Place pin 1 of ${CLUE_COUNT}`,
-      detail: "Tap the map to make your first guess.",
-    };
-  }
-
-  return {
-    title: `📍 Place pin ${pinNumber} of ${CLUE_COUNT}`,
-    detail: "Tap the map to make your next guess.",
-  };
+  return (
+    getMapPlacementCopy({
+      pinNumber: options.pinNumber,
+      hasPin: options.hasPin,
+      isAdjusting: false,
+      modalOpen: false,
+    }) ?? {
+      title: `📍 Place pin ${options.pinNumber} of ${CLUE_COUNT}`,
+      detail: "Tap the map to make your next guess.",
+    }
+  );
 }
 
+export type PanelActionState = {
+  primaryLabel: string;
+  secondaryLabel: string | null;
+  canAct: boolean;
+  showActions: boolean;
+  isFinalClue: boolean;
+};
+
 /**
- * Derive right-hand panel action labels/enabled state.
- * The map only selects a pin; these actions commit the gameplay decision.
+ * Legacy panel actions — the map UI no longer surfaces these persistently.
+ * Decision actions live in ClueFlowModal after a pin is placed.
  */
 export function getPanelActionState(options: {
   hasPin: boolean;
@@ -71,9 +55,10 @@ export function getPanelActionState(options: {
   } = options;
 
   const isFinalClue = clueNumber === CLUE_COUNT;
-  const showActions = hasPin && !isComplete && !isConfirming;
+  // New flow: never show persistent Submit/Lock chrome.
+  const showActions = false;
   const canAct =
-    showActions && !isBusy && clueNumber >= 1;
+    hasPin && !isBusy && !isComplete && !isConfirming && clueNumber >= 1;
 
   return {
     primaryLabel: isFinalClue ? "Submit Final Guess →" : "Submit Guess →",

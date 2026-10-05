@@ -24,80 +24,21 @@ describe("getPlacementPrompt", () => {
       detail: "Tap the map to make your next guess.",
     });
   });
-
-  it("placing pin reveals Pin X ready copy", () => {
-    assert.deepEqual(getPlacementPrompt({ pinNumber: 1, hasPin: true }), {
-      title: "📍 Pin 1 ready",
-      detail: "Drag the pin if you want to adjust it.",
-    });
-    assert.deepEqual(getPlacementPrompt({ pinNumber: 2, hasPin: true }), {
-      title: "📍 Pin 2 ready",
-      detail: "Drag the pin if you want to adjust it.",
-    });
-  });
 });
 
 describe("getPanelActionState", () => {
-  it("hides Submit Guess and Lock Final Answer before current pin exists", () => {
-    const state = getPanelActionState({ hasPin: false, clueNumber: 1 });
-    assert.equal(state.showActions, false);
-    assert.equal(state.canAct, false);
-    assert.equal(state.primaryLabel, "Submit Guess →");
-    assert.equal(state.secondaryLabel, "🎯 Lock Final Answer");
+  it("does not show persistent Submit / Lock actions (modal owns them)", () => {
+    const beforePin = getPanelActionState({ hasPin: false, clueNumber: 1 });
+    assert.equal(beforePin.showActions, false);
+    assert.equal(beforePin.canAct, false);
+
+    const afterPin = getPanelActionState({ hasPin: true, clueNumber: 2 });
+    assert.equal(afterPin.showActions, false);
   });
 
-  it("placing pin reveals actions", () => {
-    const state = getPanelActionState({ hasPin: true, clueNumber: 3 });
-    assert.equal(state.showActions, true);
-    assert.equal(state.canAct, true);
-    assert.equal(state.primaryLabel, "Submit Guess →");
-    assert.equal(state.secondaryLabel, "🎯 Lock Final Answer");
-    assert.equal(state.isFinalClue, false);
-  });
-
-  it("submitting removes actions again for next clue (no pin yet)", () => {
-    const afterSubmit = getPanelActionState({ hasPin: false, clueNumber: 3 });
-    assert.equal(afterSubmit.showActions, false);
-    assert.equal(afterSubmit.canAct, false);
-    assert.deepEqual(getPlacementPrompt({ pinNumber: 3, hasPin: false }), {
-      title: "📍 Place pin 3 of 5",
-      detail: "Tap the map to make your next guess.",
-    });
-  });
-
-  it("shows Submit Final Guess on clue 5 with no Lock Final Answer", () => {
+  it("still identifies the final clue for modal branching", () => {
     const state = getPanelActionState({ hasPin: true, clueNumber: 5 });
-    assert.equal(state.showActions, true);
-    assert.equal(state.canAct, true);
-    assert.equal(state.primaryLabel, "Submit Final Guess →");
-    assert.equal(state.secondaryLabel, null);
     assert.equal(state.isFinalClue, true);
-  });
-
-  it("keeps actions unavailable while confirming or busy", () => {
-    assert.equal(
-      getPanelActionState({
-        hasPin: true,
-        clueNumber: 2,
-        isConfirming: true,
-      }).showActions,
-      false,
-    );
-    assert.equal(
-      getPanelActionState({
-        hasPin: true,
-        clueNumber: 2,
-        isBusy: true,
-      }).canAct,
-      false,
-    );
-    assert.equal(
-      getPanelActionState({
-        hasPin: true,
-        clueNumber: 2,
-        isBusy: true,
-      }).showActions,
-      true,
-    );
+    assert.equal(state.secondaryLabel, null);
   });
 });

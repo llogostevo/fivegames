@@ -158,10 +158,11 @@ describe("early lock answer", () => {
     assert.equal(continued.session.revealedClueCount, 2);
   });
 
-  it("Submit Guess flow locks the current guess and advances in one step", () => {
+  it("Get Another Clue commits the pin, then reveals the next clue", () => {
     let session = createEmptySession(game.id);
     const locked = lockGuess({ game, session, guess: farAway });
     session = locked.session;
+    // Pin 1 has no previous pin → no warmer/colder.
     assert.equal(locked.response.temperature, null);
 
     const continued = continueToNextClue({ game, session });
@@ -171,13 +172,14 @@ describe("early lock answer", () => {
     assert.equal(session.revealedClueCount, 2);
 
     const second = lockGuess({ game, session, guess: nearTarget });
+    // Warmer/colder only exists once Pin 2 is committed (Get Another Clue).
     assert.equal(second.response.temperature, "warmer");
     session = continueToNextClue({ game, session: second.session }).session;
     assert.equal(session.revealedClueCount, 3);
     assert.equal(session.guesses.length, 2);
   });
 
-  it("Lock Final Answer flow locks the current guess then completes", () => {
+  it("Lock Final Answer commits the current provisional pin then completes", () => {
     let session = createEmptySession(game.id);
     session = lockGuess({ game, session, guess: farAway }).session;
     session = continueToNextClue({ game, session }).session;
@@ -188,7 +190,26 @@ describe("early lock answer", () => {
     assert.equal(answer.response.reveal.actualGuessCount, 2);
   });
 
-  it("clue 5 completes with Submit Final Guess (guess only, no continue)", () => {
+  it("placing/adjusting is client-only: session guesses do not change without lockGuess", () => {
+    const session = createEmptySession(game.id);
+    assert.equal(session.guesses.length, 0);
+    assert.equal(session.revealedClueCount, 1);
+    // No adjust endpoint — repeated client repositioning cannot request temperature.
+    assert.equal(session.guesses.length, 0);
+  });
+
+  it("warmer/colder is only returned when a pin is committed via lockGuess", () => {
+    let session = createEmptySession(game.id);
+    session = lockGuess({ game, session, guess: farAway }).session;
+    session = continueToNextClue({ game, session }).session;
+    assert.equal(session.guesses.length, 1);
+
+    const committed = lockGuess({ game, session, guess: nearTarget });
+    assert.equal(committed.response.temperature, "warmer");
+    assert.equal(committed.session.guesses.length, 2);
+  });
+
+  it("clue 5 completes with Lock (guess only, no continue / no clue 6)", () => {
     let session = createEmptySession(game.id);
     const pins = [farAway, mid, farAway, mid, nearTarget];
     for (let i = 0; i < 4; i += 1) {
