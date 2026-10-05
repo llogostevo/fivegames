@@ -12,7 +12,7 @@ import {
 } from "./dataset";
 
 describe("London stations dataset", () => {
-  it("parses the on-disk inventory", async () => {
+  it("parses the on-disk inventory with full clues", async () => {
     resetLondonStationsDatasetCache();
     const raw = await readFile(
       path.join(
@@ -27,6 +27,30 @@ describe("London stations dataset", () => {
     assert.equal(dataset.stations.length, LONDON_STATIONS_COUNT);
     assert.equal(dataset.region, "Greater London");
     assert.ok(dataset.stations.every((station) => station.modes.length > 0));
+    assert.ok(dataset.stations.every((station) => station.clues.length === 5));
+    assert.ok(
+      dataset.stations.every((station) => Array.isArray(station.lines)),
+    );
+  });
+
+  it("uses researched clues when present", async () => {
+    resetLondonStationsDatasetCache();
+    const raw = await readFile(
+      path.join(
+        process.cwd(),
+        "data",
+        "londonstations",
+        "pin5-london-stations.json",
+      ),
+      "utf8",
+    );
+    const dataset = parseLondonStationsDataset(JSON.parse(raw));
+    const abbey = dataset.stations.find((station) => station.id === "abbey-road");
+    assert.ok(abbey);
+    const clues = cluesForStation(abbey);
+    assert.equal(clues.length, 5);
+    assert.match(clues[0]!, /Beatles/i);
+    assert.equal(clues[3], "The station is Abbey Road.");
   });
 
   it("supplies provisional clues when researched clues are empty", () => {
@@ -37,6 +61,7 @@ describe("London stations dataset", () => {
       modes: ["DLR"],
       target: { lat: 51.53, lng: 0.0 },
       clues: [],
+      lines: [],
     });
     assert.equal(clues.length, 5);
     assert.match(clues[3]!, /Abbey Road/);
@@ -48,6 +73,7 @@ describe("London stations dataset", () => {
         modes: ["DLR"],
         target: { lat: 51.53, lng: 0.0 },
         clues: [],
+        lines: [],
       }).length,
       5,
     );
@@ -62,7 +88,7 @@ describe("London stations dataset", () => {
           stationCount: 1,
           stations: [],
         }),
-      /exactly 470/,
+      /exactly 495/,
     );
   });
 });

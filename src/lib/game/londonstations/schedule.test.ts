@@ -43,8 +43,8 @@ describe("London stations schedule", () => {
   });
 
   it("cycles after the full station pool", () => {
-    // 470 days after 2026-09-28
-    assert.equal(londonStationsGameNumber("2028-01-11"), LONDON_STATIONS_COUNT + 1);
+    // 495 days after 2026-09-28
+    assert.equal(londonStationsGameNumber("2028-02-05"), LONDON_STATIONS_COUNT + 1);
   });
 
   it("uses the city scoring profile", () => {

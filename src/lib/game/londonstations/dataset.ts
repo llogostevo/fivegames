@@ -7,7 +7,7 @@ import path from "node:path";
 
 import { CLUE_COUNT } from "@/lib/game/constants";
 
-export const LONDON_STATIONS_COUNT = 470;
+export const LONDON_STATIONS_COUNT = 495;
 
 export const LONDON_STATIONS_DATASET_FILE = "pin5-london-stations.json";
 
@@ -17,8 +17,10 @@ export type LondonStation = {
   borough: string;
   modes: string[];
   target: { lat: number; lng: number };
-  /** Empty until researched clue batches land; loader supplies stubs. */
+  /** Researched clues when present; loader falls back to stubs if empty. */
   clues: string[];
+  /** Optional line names (Tube / Overground / etc.). May be empty. */
+  lines: string[];
 };
 
 export type LondonStationsDataset = {
@@ -159,6 +161,23 @@ export function parseLondonStationsDataset(
       );
     }
 
+    let lines: string[] | undefined;
+    if (stationRaw.lines !== undefined) {
+      if (!Array.isArray(stationRaw.lines)) {
+        throw new InvalidLondonStationsDatasetError(
+          `stations[${index}].lines must be an array when present`,
+        );
+      }
+      lines = stationRaw.lines.map((line, lineIndex) => {
+        if (typeof line !== "string" || line.trim().length === 0) {
+          throw new InvalidLondonStationsDatasetError(
+            `stations[${index}].lines[${lineIndex}] must be a non-empty string`,
+          );
+        }
+        return line.trim();
+      });
+    }
+
     return {
       id: stationRaw.id.trim(),
       station: stationRaw.station.trim(),
@@ -166,6 +185,7 @@ export function parseLondonStationsDataset(
       modes,
       target: { lat, lng },
       clues: parseClues(stationRaw.clues, index),
+      lines: lines ?? [],
     };
   });
 
