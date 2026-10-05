@@ -11,21 +11,21 @@ describe("getPlacementPrompt", () => {
   it("clue 1 before pin → Press & hold compact copy", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 1, hasPin: false }), {
       title: "📍 Press & hold to place pin 1 of 5",
-      detail: "Keep holding until the circle fills.",
+      detail: "Keep holding until the circle fills above your finger.",
     });
   });
 
   it("clue 2 before pin → Press & hold compact copy", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 2, hasPin: false }), {
       title: "📍 Press & hold to place pin 2 of 5",
-      detail: "Keep holding until the circle fills.",
+      detail: "Keep holding until the circle fills above your finger.",
     });
   });
 
   it("resumed game at clue 3 with no current pin shows Press & hold", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 3, hasPin: false }), {
       title: "📍 Press & hold to place pin 3 of 5",
-      detail: "Keep holding until the circle fills.",
+      detail: "Keep holding until the circle fills above your finger.",
     });
   });
 });

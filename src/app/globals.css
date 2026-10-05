@@ -64,6 +64,17 @@ body {
   filter: drop-shadow(0 1px 3px rgba(30, 30, 36, 0.35));
 }
 
+/* Exact pin landing mark — visible under / around the finger contact. */
+.fg-hold-target {
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  border: 2.5px solid var(--course);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 3px rgba(30, 30, 36, 0.3);
+}
+
 .fg-hold-ring--pulse {
   animation: fg-hold-pulse 220ms ease-out;
 }
