@@ -23,13 +23,12 @@ import type { GameReveal, RevealedGuess } from "@/types/game";
 
 function guess(
   partial: Partial<RevealedGuess> &
-    Pick<RevealedGuess, "temperature" | "carriedForward" | "isFinalAnswer">,
+    Pick<RevealedGuess, "temperature" | "isFinalAnswer">,
 ): RevealedGuess {
   return {
     lat: 51.5,
     lng: -0.1,
     distanceMeters: 1000,
-    score: 4000,
     ...partial,
   };
 }
@@ -38,29 +37,19 @@ function reveal(overrides: Partial<GameReveal> = {}): GameReveal {
   const guesses = overrides.guesses ?? [
     guess({
       temperature: null,
-      carriedForward: false,
       isFinalAnswer: false,
     }),
     guess({
       temperature: "warmer",
-      carriedForward: false,
       isFinalAnswer: false,
     }),
     guess({
       temperature: "warmer",
-      carriedForward: false,
       isFinalAnswer: false,
     }),
     guess({
       temperature: "warmer",
-      carriedForward: false,
       isFinalAnswer: true,
-    }),
-    guess({
-      temperature: null,
-      carriedForward: true,
-      isFinalAnswer: false,
-      distanceMeters: null,
     }),
   ];
 
@@ -80,8 +69,11 @@ function reveal(overrides: Partial<GameReveal> = {}): GameReveal {
     complete: true,
     finalCoordinates: { lat: 51.5, lng: -0.1 },
     actualGuessCount: 4,
-    totalScore: 22_315,
+    totalScore: 15_835,
     maxScore: 25_000,
+    clueMaximum: 17_500,
+    accuracyFactor: 0.9048,
+    finalDistanceMeters: 10_000,
     foundLocation: false,
     foundOnPin: null,
     ...overrides,
@@ -130,35 +122,26 @@ describe("buildSharePinTrail", () => {
 
   it("uses colder and same markers for mid pins", () => {
     const trail = buildSharePinTrail([
-      guess({ temperature: null, carriedForward: false, isFinalAnswer: false }),
+      guess({ temperature: null, isFinalAnswer: false }),
       guess({
         temperature: "colder",
-        carriedForward: false,
         isFinalAnswer: false,
       }),
-      guess({ temperature: "same", carriedForward: false, isFinalAnswer: false }),
+      guess({ temperature: "same", isFinalAnswer: false }),
       guess({
         temperature: "warmer",
-        carriedForward: false,
         isFinalAnswer: true,
       }),
     ]);
     assert.equal(trail, "📍 🧊 ➡️ 🎯");
   });
 
-  it("ignores carried-forward slots", () => {
+  it("includes only actual journey pins", () => {
     assert.equal(
       buildSharePinTrail([
         guess({
           temperature: null,
-          carriedForward: false,
           isFinalAnswer: true,
-        }),
-        guess({
-          temperature: null,
-          carriedForward: true,
-          isFinalAnswer: false,
-          distanceMeters: null,
         }),
       ]),
       "🎯",
@@ -173,7 +156,7 @@ describe("buildDailyShareText", () => {
       text,
       [
         "PIN5 #4 — History",
-        "🎯 22,315 / 25,000",
+        "🎯 15,835 / 25,000",
         "📍 🔥 🔥 🎯",
         "🔒 Locked on clue 4/5",
         "📍 1.0 km away",
@@ -193,37 +176,14 @@ describe("buildDailyShareText", () => {
         guesses: [
           guess({
             temperature: null,
-            carriedForward: false,
             isFinalAnswer: true,
             distanceMeters: 842,
-          }),
-          guess({
-            temperature: null,
-            carriedForward: true,
-            isFinalAnswer: false,
-            distanceMeters: null,
-          }),
-          guess({
-            temperature: null,
-            carriedForward: true,
-            isFinalAnswer: false,
-            distanceMeters: null,
-          }),
-          guess({
-            temperature: null,
-            carriedForward: true,
-            isFinalAnswer: false,
-            distanceMeters: null,
-          }),
-          guess({
-            temperature: null,
-            carriedForward: true,
-            isFinalAnswer: false,
-            distanceMeters: null,
           }),
         ],
         lockedAfterClue: 1,
         actualGuessCount: 1,
+        clueMaximum: 25_000,
+        finalDistanceMeters: 842,
       }),
       0,
     );

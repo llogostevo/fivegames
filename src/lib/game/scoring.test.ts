@@ -1,87 +1,142 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { SCORING, calculateScore } from "./scoring";
+import {
+  CLUE_MAX_SCORES,
+  SCORING,
+  accuracyFactorFromDistanceKm,
+  calculateFinalScore,
+  getClueMaxScore,
+  getNextClueMaxScore,
+} from "./scoring";
 
 const SAMPLE_DISTANCES_KM = [
-  0, 0.1, 1, 5, 10, 25, 50, 100, 250, 500, 1_000, 2_500, 5_000, 10_000,
+  0, 0.5, 1, 2, 5, 10, 25, 50, 100, 250, 500, 1_000, 5_000,
 ] as const;
 
-describe("calculateScore", () => {
-  it("returns 5000 for an effectively exact location", () => {
-    assert.equal(calculateScore(0), SCORING.MAX_POINTS_PER_GUESS);
-    assert.equal(
-      calculateScore(SCORING.PERFECT_DISTANCE_KM),
-      SCORING.MAX_POINTS_PER_GUESS,
-    );
+describe("CLUE_MAX_SCORES", () => {
+  it("defines the five clue ceilings", () => {
+    assert.deepEqual([...CLUE_MAX_SCORES], [25_000, 22_500, 20_000, 17_500, 15_000]);
+    assert.equal(getClueMaxScore(1), 25_000);
+    assert.equal(getClueMaxScore(5), 15_000);
+    assert.equal(getNextClueMaxScore(1), 22_500);
+    assert.equal(getNextClueMaxScore(5), null);
+    assert.equal(SCORING.MAX_TOTAL_POINTS, 25_000);
   });
 
-  it("never returns below 0 or above 5000", () => {
-    for (const distanceKm of [
-      ...SAMPLE_DISTANCES_KM,
-      -1,
-      -100,
-      Number.POSITIVE_INFINITY,
-      Number.NaN,
-    ]) {
-      const score = calculateScore(distanceKm);
-      assert.ok(Number.isInteger(score));
-      assert.ok(score >= 0);
-      assert.ok(score <= SCORING.MAX_POINTS_PER_GUESS);
+  it("never allows a result above its clue maximum or 25,000", () => {
+    for (let clue = 1; clue <= 5; clue += 1) {
+      const max = getClueMaxScore(clue);
+      const perfect = calculateFinalScore({ clueNumber: clue, distanceMeters: 0 });
+      assert.equal(perfect.totalScore, max);
+      assert.ok(perfect.totalScore <= 25_000);
+      assert.ok(perfect.totalScore <= max);
     }
   });
+});
 
-  it("treats negative distance as a perfect score", () => {
-    assert.equal(calculateScore(-1), SCORING.MAX_POINTS_PER_GUESS);
+describe("accuracyFactorFromDistanceKm", () => {
+  it("is 100% at or inside the 1km FOUND radius", () => {
+    assert.equal(accuracyFactorFromDistanceKm(0), 1);
+    assert.equal(accuracyFactorFromDistanceKm(0.5), 1);
+    assert.equal(accuracyFactorFromDistanceKm(1), 1);
   });
 
-  it("returns a sensible near-zero score for extremely large distances", () => {
-    assert.equal(calculateScore(5_000), 0);
-    assert.equal(calculateScore(10_000), 0);
-  });
-
-  it("never increases as distance increases", () => {
-    let previous = calculateScore(SAMPLE_DISTANCES_KM[0]);
-    for (const distanceKm of SAMPLE_DISTANCES_KM.slice(1)) {
-      const score = calculateScore(distanceKm);
-      assert.ok(
-        score <= previous,
-        `expected score(${distanceKm})=${score} <= previous=${previous}`,
-      );
-      previous = score;
-    }
-  });
-
-  it("produces the expected sample table for play-testing", () => {
+  it("matches the product curve targets approximately", () => {
     const table = SAMPLE_DISTANCES_KM.map((distanceKm) => ({
       distanceKm,
-      score: calculateScore(distanceKm),
+      percent: Math.round(accuracyFactorFromDistanceKm(distanceKm) * 10_000) / 100,
     }));
 
-    // Snapshot-style checks for the current decay curve (DECAY_LENGTH_KM=100).
     assert.deepEqual(table, [
-      { distanceKm: 0, score: 5000 },
-      { distanceKm: 0.1, score: 4995 },
-      { distanceKm: 1, score: 4950 },
-      { distanceKm: 5, score: 4756 },
-      { distanceKm: 10, score: 4524 },
-      { distanceKm: 25, score: 3894 },
-      { distanceKm: 50, score: 3033 },
-      { distanceKm: 100, score: 1839 },
-      { distanceKm: 250, score: 410 },
-      { distanceKm: 500, score: 34 },
-      { distanceKm: 1_000, score: 0 },
-      { distanceKm: 2_500, score: 0 },
-      { distanceKm: 5_000, score: 0 },
-      { distanceKm: 10_000, score: 0 },
+      { distanceKm: 0, percent: 100 },
+      { distanceKm: 0.5, percent: 100 },
+      { distanceKm: 1, percent: 100 },
+      { distanceKm: 2, percent: 98.02 },
+      { distanceKm: 5, percent: 95.12 },
+      { distanceKm: 10, percent: 90.48 },
+      { distanceKm: 25, percent: 77.88 },
+      { distanceKm: 50, percent: 60.65 },
+      { distanceKm: 100, percent: 36.79 },
+      { distanceKm: 250, percent: 8.21 },
+      { distanceKm: 500, percent: 0.67 },
+      { distanceKm: 1_000, percent: 0 },
+      { distanceKm: 5_000, percent: 0 },
     ]);
   });
 
-  it("keeps max total at 25,000 for five perfect guesses", () => {
-    const total = Array.from({ length: 5 }, () => calculateScore(0)).reduce(
-      (sum, score) => sum + score,
-      0,
+  it("never increases as distance increases", () => {
+    let previous = accuracyFactorFromDistanceKm(SAMPLE_DISTANCES_KM[0]);
+    for (const distanceKm of SAMPLE_DISTANCES_KM.slice(1)) {
+      const next = accuracyFactorFromDistanceKm(distanceKm);
+      assert.ok(next <= previous + 1e-12);
+      previous = next;
+    }
+  });
+});
+
+describe("calculateFinalScore", () => {
+  it("FOUND / 100% accuracy awards the full clue maximum", () => {
+    assert.equal(
+      calculateFinalScore({ clueNumber: 1, distanceMeters: 999 }).totalScore,
+      25_000,
     );
-    assert.equal(total, SCORING.MAX_TOTAL_POINTS);
+    assert.equal(
+      calculateFinalScore({ clueNumber: 2, distanceMeters: 500 }).totalScore,
+      22_500,
+    );
+    assert.equal(
+      calculateFinalScore({ clueNumber: 3, distanceMeters: 1_000 }).totalScore,
+      20_000,
+    );
+    assert.equal(
+      calculateFinalScore({ clueNumber: 4, distanceMeters: 0 }).totalScore,
+      17_500,
+    );
+    assert.equal(
+      calculateFinalScore({ clueNumber: 5, distanceMeters: 250 }).totalScore,
+      15_000,
+    );
+  });
+
+  it("applies accuracy against the current clue maximum only", () => {
+    // ~90% at 10km
+    const clue1 = calculateFinalScore({ clueNumber: 1, distanceMeters: 10_000 });
+    assert.equal(clue1.totalScore, 22_621);
+    assert.equal(clue1.clueMaximum, 25_000);
+
+    const clue3 = calculateFinalScore({ clueNumber: 3, distanceMeters: 10_000 });
+    assert.equal(clue3.totalScore, 18_097);
+    assert.equal(clue3.clueMaximum, 20_000);
+
+    // ~60% at 50km
+    const clue2 = calculateFinalScore({ clueNumber: 2, distanceMeters: 50_000 });
+    assert.equal(clue2.totalScore, 13_647);
+  });
+
+  it("returns integer scores clamped to the clue ceiling", () => {
+    for (const distanceKm of SAMPLE_DISTANCES_KM) {
+      for (let clue = 1; clue <= 5; clue += 1) {
+        const result = calculateFinalScore({
+          clueNumber: clue,
+          distanceMeters: distanceKm * 1000,
+        });
+        assert.ok(Number.isInteger(result.totalScore));
+        assert.ok(result.totalScore >= 0);
+        assert.ok(result.totalScore <= result.clueMaximum);
+        assert.ok(result.totalScore <= 25_000);
+      }
+    }
+  });
+
+  it("only Clue 1 can produce 25,000", () => {
+    for (let clue = 2; clue <= 5; clue += 1) {
+      const result = calculateFinalScore({
+        clueNumber: clue,
+        distanceMeters: 0,
+      });
+      assert.ok(result.totalScore < 25_000);
+      assert.equal(result.totalScore, getClueMaxScore(clue));
+    }
   });
 });

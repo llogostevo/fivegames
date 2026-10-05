@@ -26,16 +26,14 @@ export type GuessEvaluation = {
 };
 
 /**
- * One of the five scoring slots in the final results.
- * Carried-forward rows reuse the final locked pin for scoring only.
+ * One actual committed pin in the player's journey.
+ * Distances are only present on completed reveals — not mid-game.
+ * Pins do not each contribute points; only the final pin scores.
  */
 export type RevealedGuess = Guess & {
-  distanceMeters: number | null;
-  score: number;
+  distanceMeters: number;
   temperature: TemperatureResult | null;
-  /** True when this slot was not an actual player guess. */
-  carriedForward: boolean;
-  /** True for the clue where the player committed their final answer. */
+  /** True for the pin used as the final answer / FOUND pin. */
   isFinalAnswer: boolean;
 };
 
@@ -56,9 +54,8 @@ export type GameReveal = {
     coordinates: Coordinates;
   };
   /**
-   * Five scoring rows (actual guesses + carried-forward slots).
-   * Does not invent fake map markers — use `actualGuessCount` / filter
-   * `carriedForward` for the map.
+   * Actual committed pins only (journey history).
+   * Final score is NOT the sum of these pins.
    */
   guesses: RevealedGuess[];
   /** How many clues the player actually used (1–5). */
@@ -71,14 +68,22 @@ export type GameReveal = {
   finalCoordinates: Coordinates;
   /** Number of pins the player physically placed. */
   actualGuessCount: number;
+  /** Single final daily score (clue maximum × accuracy). */
   totalScore: number;
+  /** Absolute daily maximum (Clue 1 ceiling = 25,000). */
   maxScore: number;
+  /** Maximum available for the clue the player finished on. */
+  clueMaximum: number;
+  /** Accuracy factor in [0, 1] for the final pin. */
+  accuracyFactor: number;
+  /** Rounded metres from final pin to target. */
+  finalDistanceMeters: number;
   /**
    * True when completion was an automatic FOUND (pin within the found radius).
    * Always server-derived — never accepted from the client.
    */
   foundLocation: boolean;
-  /** Pin number that found the location, or null for a normal lock/finish. */
+  /** Pin number that found the location, or null for Finish Here. */
   foundOnPin: number | null;
 };
 

@@ -9,10 +9,10 @@ import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
 import {
+  decisionScoreContext,
   getMapPlacementCopy,
-  isFinalClueNumber,
-  toDecisionFromLockConfirm,
-  toLockConfirmState,
+  toDecisionFromFinishConfirm,
+  toFinishConfirmState,
   type ClueFlowModalState,
 } from "@/lib/game/clueFlow";
 import { CLUE_COUNT } from "@/lib/game/constants";
@@ -26,6 +26,7 @@ import {
   readPlayerHistory,
   recordCompletedReveal,
 } from "@/lib/game/playerHistory";
+import { getClueMaxScore } from "@/lib/game/scoring";
 import {
   buildDailyShareText,
   buildWeeklyShareText,
@@ -60,10 +61,6 @@ function formatDistance(meters: number): string {
     return `${Math.round(meters / 1000)} km`;
   }
   return `${Math.round(meters / 1000).toLocaleString()} km`;
-}
-
-function formatPoints(points: number): string {
-  return `${points.toLocaleString()} pts`;
 }
 
 const TEMPERATURE = {
@@ -212,14 +209,14 @@ export function GamePlay() {
           });
         }
 
-        // Committed pin awaiting Get Another Clue / Lock — restore decision modal.
+        // Committed pin awaiting Finish Here / Get Another Clue — restore decision.
         if (data.awaitingDecision) {
           setRows(rowsFromStart);
           const pinNumber = data.guesses.length;
           setFlowModal({
             type: "decision",
             pinNumber,
-            isFinalClue: isFinalClueNumber(pinNumber),
+            ...decisionScoreContext(pinNumber),
           });
           setHowToPlayOpen(false);
           setResultsOpen(false);
@@ -328,7 +325,7 @@ export function GamePlay() {
           setFlowModal({
             type: "decision",
             pinNumber: currentPin,
-            isFinalClue: isFinalClueNumber(currentPin),
+            ...decisionScoreContext(currentPin),
           });
         } catch (checkError) {
           // Roll back optimistic pin so the player can try again.
@@ -350,20 +347,20 @@ export function GamePlay() {
     [reveal, isBusy, foundCelebration, rows, finishWithFoundReveal],
   );
 
-  function handleRequestLock() {
+  function handleRequestFinish() {
     // Confirmation only — pin is already committed; does not call the server.
     if (!flowModal || flowModal.type !== "decision") {
       return;
     }
-    setFlowModal(toLockConfirmState(flowModal));
+    setFlowModal(toFinishConfirmState(flowModal));
   }
 
-  function handleCancelLock() {
+  function handleCancelFinish() {
     // Return to decision modal — committed pin cannot be moved.
-    if (!flowModal || flowModal.type !== "lockConfirm") {
+    if (!flowModal || flowModal.type !== "finishConfirm") {
       return;
     }
-    setFlowModal(toDecisionFromLockConfirm(flowModal));
+    setFlowModal(toDecisionFromFinishConfirm(flowModal));
   }
 
   async function handleGetAnotherClue() {
@@ -410,12 +407,14 @@ export function GamePlay() {
           temperature: null,
         },
       ]);
+      const nextClueNumber = continueData.clueIndex + 1;
       setFlowModal({
         type: "nextClue",
         temperature: continueData.temperature,
-        clueNumber: continueData.clueIndex + 1,
+        clueNumber: nextClueNumber,
         clueText: continueData.clue,
-        nextPinNumber: continueData.clueIndex + 1,
+        nextPinNumber: nextClueNumber,
+        currentMaxScore: getClueMaxScore(nextClueNumber),
       });
     } catch (nextError) {
       const message =
@@ -432,7 +431,7 @@ export function GamePlay() {
     }
   }
 
-  async function handleLockFinalAnswer() {
+  async function handleFinishHere() {
     if (isBusy || reveal) {
       return;
     }
@@ -475,7 +474,7 @@ export function GamePlay() {
       setFlowModal({
         type: "error",
         message: `${message} Try again.`,
-        retry: "lock",
+        retry: "finish",
       });
     } finally {
       setIsBusy(false);
@@ -494,7 +493,7 @@ export function GamePlay() {
       void handleGetAnotherClue();
       return;
     }
-    void handleLockFinalAnswer();
+    void handleFinishHere();
   }
 
   async function handleShareScore() {
@@ -553,7 +552,7 @@ export function GamePlay() {
   const placingIndex = rows.findIndex((row) => row.coordinates === null);
   const modalOpen = flowModal !== null;
   const awaitingDecision =
-    flowModal?.type === "decision" || flowModal?.type === "lockConfirm";
+    flowModal?.type === "decision" || flowModal?.type === "finishConfirm";
   // While a committed pin awaits a decision, show that clue (no null-coordinate row).
   const activeIndex =
     placingIndex >= 0
@@ -585,22 +584,24 @@ export function GamePlay() {
     canPlacePin;
 
   const actualDistances =
-    reveal?.guesses
-      .filter((guess) => !guess.carriedForward)
-      .map((guess) => guess.distanceMeters ?? Number.POSITIVE_INFINITY) ?? [];
+    reveal?.guesses.map((guess) => guess.distanceMeters) ?? [];
   const closestActualIndex = actualDistances.length
     ? actualDistances.indexOf(Math.min(...actualDistances))
     : -1;
 
   const mapGuesses =
     isComplete && reveal
-      ? reveal.guesses
-          .filter((guess) => !guess.carriedForward)
-          .map((guess, index) => ({
-            number: index + 1,
-            coordinates: { lat: guess.lat, lng: guess.lng },
-          }))
+      ? reveal.guesses.map((guess, index) => ({
+          number: index + 1,
+          coordinates: { lat: guess.lat, lng: guess.lng },
+        }))
       : lockedGuesses;
+
+  const liveClueMax = canPlacePin
+    ? getClueMaxScore(currentPinNumber)
+    : awaitingDecision && pinNumber >= 1
+      ? getClueMaxScore(pinNumber)
+      : null;
 
   const latestLockedIndex = lockedCount - 1;
   const latestLocked =
@@ -704,9 +705,9 @@ export function GamePlay() {
           howToPlayOpen || resultsOpen || foundCelebration ? null : flowModal
         }
         isBusy={isBusy}
-        onRequestLock={handleRequestLock}
-        onConfirmLock={() => void handleLockFinalAnswer()}
-        onCancelLock={handleCancelLock}
+        onRequestFinish={handleRequestFinish}
+        onConfirmFinish={() => void handleFinishHere()}
+        onCancelFinish={handleCancelFinish}
         onGetAnotherClue={() => void handleGetAnotherClue()}
         onPlaceNextPin={handlePlaceNextPin}
         onRetry={handleFlowRetry}
@@ -754,12 +755,12 @@ export function GamePlay() {
                     {reveal.answer.name}
                   </h2>
                   <p className="mt-1 text-xs font-semibold text-course sm:text-sm">
-                    {reveal.lockedAfterClue < CLUE_COUNT
-                      ? `🎯 Answer locked on clue ${reveal.lockedAfterClue}`
-                      : "Completed in 5 clues"}
+                    {reveal.foundLocation && reveal.foundOnPin
+                      ? `🎯 Found on pin ${reveal.foundOnPin}`
+                      : `Finished on pin ${reveal.lockedAfterClue}`}
                   </p>
                   <p className="mt-3 hidden text-sm font-medium uppercase tracking-[0.16em] text-muted lg:block">
-                    Total score
+                    Final score
                   </p>
                   <p className="mt-1 font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
                     {reveal.totalScore.toLocaleString()}
@@ -768,39 +769,14 @@ export function GamePlay() {
                       / {reveal.maxScore.toLocaleString()}
                     </span>
                   </p>
-                  {closestActualIndex >= 0 ? (
-                    <p className="mt-1 text-xs text-muted sm:text-sm">
-                      Closest pin: {closestActualIndex + 1} (
-                      {formatDistance(actualDistances[closestActualIndex])})
-                    </p>
-                  ) : null}
+                  <p className="mt-1 text-xs text-muted sm:text-sm">
+                    Clue {reveal.lockedAfterClue} of {CLUE_COUNT} · Max{" "}
+                    {reveal.clueMaximum.toLocaleString()}
+                    {typeof reveal.finalDistanceMeters === "number"
+                      ? ` · ${formatDistance(reveal.finalDistanceMeters)}`
+                      : null}
+                  </p>
                 </div>
-
-                <ol
-                  className="shrink-0 space-y-1 pt-0.5 lg:hidden"
-                  aria-label="Guess scores"
-                >
-                  {reveal.guesses.map((guess, index) => (
-                    <li
-                      key={index}
-                      className={`flex items-center justify-end gap-2 text-sm tabular-nums ${
-                        guess.carriedForward ? "text-muted" : "text-foreground"
-                      }`}
-                    >
-                      <span className="w-4 text-right font-display font-bold text-course">
-                        {index + 1}
-                      </span>
-                      <span className="w-14 text-right text-muted">
-                        {typeof guess.distanceMeters === "number"
-                          ? formatDistance(guess.distanceMeters)
-                          : "—"}
-                      </span>
-                      <span className="w-[4.25rem] text-right font-semibold">
-                        {guess.score.toLocaleString()}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
@@ -849,6 +825,11 @@ export function GamePlay() {
               <div>
                 <p className="text-sm font-medium text-course">
                   Clue {pinNumber} of {CLUE_COUNT}
+                  {liveClueMax !== null ? (
+                    <span className="ml-2 font-normal text-muted">
+                      · Max {liveClueMax.toLocaleString()}
+                    </span>
+                  ) : null}
                 </p>
                 <p className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl lg:text-[1.7rem]">
                   {activeRow.text}
@@ -949,25 +930,6 @@ export function GamePlay() {
                 const revealedGuess = reveal?.guesses[index];
                 const isActive = index === activeIndex && !isComplete;
 
-                if (revealedGuess?.carriedForward) {
-                  return (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 py-2.5 text-sm text-muted"
-                    >
-                      <PinBadge number={index + 1} state="carried" />
-                      <div className="min-w-0 flex-1">
-                        <p className="leading-snug">
-                          Final answer carried forward
-                        </p>
-                        <p className="mt-0.5 font-semibold tabular-nums text-foreground/70">
-                          {formatPoints(revealedGuess.score)}
-                        </p>
-                      </div>
-                    </li>
-                  );
-                }
-
                 if (isActive && row) {
                   return (
                     <li key={index} className="flex items-start gap-3 py-3">
@@ -996,11 +958,7 @@ export function GamePlay() {
                 const temperature =
                   revealedGuess?.temperature ?? row?.temperature ?? null;
                 const distance = revealedGuess?.distanceMeters;
-                const score = revealedGuess?.score;
-                const isClosest =
-                  isComplete &&
-                  !revealedGuess?.carriedForward &&
-                  index === closestActualIndex;
+                const isClosest = isComplete && index === closestActualIndex;
 
                 return (
                   <li key={index} className="flex items-start gap-3 py-3">
@@ -1009,11 +967,11 @@ export function GamePlay() {
                       <p className="text-sm leading-snug">
                         {row?.text ?? `Clue ${index + 1}`}
                       </p>
-                      {revealedGuess?.isFinalAnswer &&
-                      reveal &&
-                      reveal.lockedAfterClue < CLUE_COUNT ? (
+                      {revealedGuess?.isFinalAnswer ? (
                         <p className="mt-1 text-xs font-semibold text-course">
-                          🎯 Final answer
+                          {reveal?.foundLocation
+                            ? "🎯 Found here"
+                            : "🎯 Finished here"}
                         </p>
                       ) : null}
                       {isComplete && typeof distance === "number" ? (
@@ -1023,11 +981,6 @@ export function GamePlay() {
                           >
                             {formatDistance(distance)}
                           </span>
-                          {typeof score === "number" ? (
-                            <span className="font-semibold tabular-nums">
-                              {formatPoints(score)}
-                            </span>
-                          ) : null}
                           {temperature ? (
                             <span
                               className={`rounded px-1.5 py-0.5 text-xs font-semibold ${TEMPERATURE[temperature].tone}`}

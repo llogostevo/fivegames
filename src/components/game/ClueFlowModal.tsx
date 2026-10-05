@@ -3,7 +3,8 @@
 import { useEffect, useId, useRef } from "react";
 
 import {
-  lockConfirmExplanation,
+  finishConfirmExplanation,
+  formatScoreCeiling,
   temperatureFeedbackCopy,
   type ClueFlowModalState,
 } from "@/lib/game/clueFlow";
@@ -11,12 +12,12 @@ import {
 type ClueFlowModalProps = {
   state: ClueFlowModalState | null;
   isBusy?: boolean;
-  /** Opens lock confirmation — must not finish the game. */
-  onRequestLock: () => void;
-  /** Confirms lock — runs the existing final-answer action. */
-  onConfirmLock: () => void;
-  /** Returns from lock confirmation to the decision state. */
-  onCancelLock: () => void;
+  /** Opens finish confirmation — must not finish the game. */
+  onRequestFinish: () => void;
+  /** Confirms finish — runs the final-answer action. */
+  onConfirmFinish: () => void;
+  /** Returns from finish confirmation to the decision state. */
+  onCancelFinish: () => void;
   onGetAnotherClue: () => void;
   onPlaceNextPin: () => void;
   onRetry: () => void;
@@ -25,9 +26,9 @@ type ClueFlowModalProps = {
 export function ClueFlowModal({
   state,
   isBusy = false,
-  onRequestLock,
-  onConfirmLock,
-  onCancelLock,
+  onRequestFinish,
+  onConfirmFinish,
+  onCancelFinish,
   onGetAnotherClue,
   onPlaceNextPin,
   onRetry,
@@ -86,50 +87,13 @@ export function ClueFlowModal({
               Your pin is locked in
             </h2>
             <p className="mt-1 text-sm text-muted">
+              Maximum score{" "}
+              <span className="font-semibold text-foreground">
+                {formatScoreCeiling(state.currentMaxScore)}
+              </span>
               {state.isFinalClue
-                ? "Choose whether to lock your answer."
-                : "Choose whether to lock your answer or spend another clue for more information."}
-            </p>
-
-            <div className="mt-4 flex flex-col gap-2">
-              {!state.isFinalClue ? (
-                <button
-                  ref={firstActionRef}
-                  type="button"
-                  disabled={isBusy}
-                  onClick={onGetAnotherClue}
-                  className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
-                >
-                  💡 Get another clue →
-                </button>
-              ) : null}
-              <button
-                ref={state.isFinalClue ? firstActionRef : undefined}
-                type="button"
-                disabled={isBusy}
-                onClick={onRequestLock}
-                className={
-                  state.isFinalClue
-                    ? "rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
-                    : "rounded-md border border-course px-4 py-2.5 text-sm font-semibold text-course transition hover:bg-course-soft disabled:opacity-60"
-                }
-              >
-                🎯 Lock final answer
-              </button>
-            </div>
-          </>
-        ) : null}
-
-        {state.type === "lockConfirm" ? (
-          <>
-            <h2
-              id={titleId}
-              className="font-display text-xl font-bold tracking-tight"
-            >
-              🎯 Lock final answer?
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              {lockConfirmExplanation(state.isFinalClue)}
+                ? "."
+                : ". Finish now, or spend a clue for more information."}
             </p>
 
             <div className="mt-4 flex flex-col gap-2">
@@ -137,15 +101,56 @@ export function ClueFlowModal({
                 ref={firstActionRef}
                 type="button"
                 disabled={isBusy}
-                onClick={onConfirmLock}
+                onClick={onRequestFinish}
                 className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
               >
-                🎯 Yes, lock it in
+                🎯 Finish here
+              </button>
+              {!state.isFinalClue && state.nextMaxScore !== null ? (
+                <button
+                  type="button"
+                  disabled={isBusy}
+                  onClick={onGetAnotherClue}
+                  className="rounded-md border border-course px-4 py-2.5 text-left text-sm font-semibold text-course transition hover:bg-course-soft disabled:opacity-60"
+                >
+                  <span className="block">💡 Get another clue →</span>
+                  <span className="mt-0.5 block text-xs font-medium text-muted">
+                    Maximum score drops:{" "}
+                    {formatScoreCeiling(state.currentMaxScore)} →{" "}
+                    {formatScoreCeiling(state.nextMaxScore)}
+                  </span>
+                </button>
+              ) : null}
+            </div>
+          </>
+        ) : null}
+
+        {state.type === "finishConfirm" ? (
+          <>
+            <h2
+              id={titleId}
+              className="font-display text-xl font-bold tracking-tight"
+            >
+              🎯 Finish here?
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              {finishConfirmExplanation()}
+            </p>
+
+            <div className="mt-4 flex flex-col gap-2">
+              <button
+                ref={firstActionRef}
+                type="button"
+                disabled={isBusy}
+                onClick={onConfirmFinish}
+                className="rounded-md bg-course px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
+              >
+                Yes, finish here
               </button>
               <button
                 type="button"
                 disabled={isBusy}
-                onClick={onCancelLock}
+                onClick={onCancelFinish}
                 className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold transition hover:bg-neutral-50 disabled:opacity-60"
               >
                 ← Go back
@@ -174,7 +179,8 @@ export function ClueFlowModal({
             ) : null}
 
             <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-              Clue {state.clueNumber} of 5
+              Clue {state.clueNumber} of 5 · Max{" "}
+              {formatScoreCeiling(state.currentMaxScore)}
             </p>
             <h2
               id={titleId}

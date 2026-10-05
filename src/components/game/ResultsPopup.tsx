@@ -108,17 +108,13 @@ export function ResultsPopup({
   const closeRef = useRef<HTMLButtonElement>(null);
   const [page, setPage] = useState<1 | 2>(1);
 
-  const actualGuesses = reveal.guesses.filter((guess) => !guess.carriedForward);
-  const actualDistances = actualGuesses.map(
-    (guess) => guess.distanceMeters ?? Number.POSITIVE_INFINITY,
-  );
+  const actualGuesses = reveal.guesses;
+  const actualDistances = actualGuesses.map((guess) => guess.distanceMeters);
   const closestIndex = actualDistances.length
     ? actualDistances.indexOf(Math.min(...actualDistances))
     : -1;
   const closestDistance =
-    closestIndex >= 0 && Number.isFinite(actualDistances[closestIndex])
-      ? actualDistances[closestIndex]
-      : null;
+    closestIndex >= 0 ? actualDistances[closestIndex]! : null;
 
   useEffect(() => {
     if (!open) {
@@ -247,7 +243,7 @@ export function ResultsPopup({
               <div className="flex items-end justify-between gap-3">
                 <div>
                   <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-                    Total score
+                    Final score
                   </p>
                   <p className="font-display text-2xl font-bold tracking-tight">
                     {reveal.totalScore.toLocaleString()}
@@ -256,11 +252,19 @@ export function ResultsPopup({
                       / {reveal.maxScore.toLocaleString()}
                     </span>
                   </p>
-                  {reveal.foundLocation && reveal.foundOnPin ? (
-                    <p className="mt-1 text-xs font-semibold text-course">
-                      🎯 Found on pin {reveal.foundOnPin}
-                    </p>
-                  ) : null}
+                  <p className="mt-1 text-xs text-muted">
+                    {reveal.foundLocation && reveal.foundOnPin
+                      ? `🎯 Found on pin ${reveal.foundOnPin}`
+                      : `Finished on pin ${reveal.lockedAfterClue}`}
+                    {" · "}
+                    Clue {reveal.lockedAfterClue} of 5
+                  </p>
+                  <p className="text-xs text-muted">
+                    Maximum available: {reveal.clueMaximum.toLocaleString()}
+                    {typeof reveal.finalDistanceMeters === "number"
+                      ? ` · ${formatDistance(reveal.finalDistanceMeters)}`
+                      : null}
+                  </p>
                 </div>
                 {closestDistance !== null ? (
                   <p className="text-right text-xs text-muted">
@@ -277,27 +281,18 @@ export function ResultsPopup({
                 {reveal.guesses.map((guess, index) => (
                   <li
                     key={index}
-                    className={`flex items-center justify-between gap-2 px-2.5 py-1.5 text-xs tabular-nums ${
-                      guess.carriedForward ? "bg-neutral-50 text-muted" : ""
-                    }`}
+                    className="flex items-center justify-between gap-2 px-2.5 py-1.5 text-xs tabular-nums"
                   >
                     <span className="font-display font-bold text-course">
                       Pin {index + 1}
-                      {guess.carriedForward ? (
-                        <span className="ml-1.5 text-[10px] font-medium text-muted">
-                          carried
+                      {guess.isFinalAnswer ? (
+                        <span className="ml-1.5 text-[10px] font-medium text-course">
+                          {reveal.foundLocation ? "found" : "finish"}
                         </span>
                       ) : null}
                     </span>
-                    <span className="flex items-center gap-2">
-                      <span className="w-12 text-right text-muted">
-                        {typeof guess.distanceMeters === "number"
-                          ? formatDistance(guess.distanceMeters)
-                          : "—"}
-                      </span>
-                      <span className="w-14 text-right font-semibold text-foreground">
-                        {guess.score.toLocaleString()}
-                      </span>
+                    <span className="w-14 text-right text-muted">
+                      {formatDistance(guess.distanceMeters)}
                     </span>
                   </li>
                 ))}

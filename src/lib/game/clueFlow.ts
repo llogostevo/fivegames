@@ -1,10 +1,23 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
+import { getClueMaxScore, getNextClueMaxScore } from "@/lib/game/scoring";
 import type { TemperatureResult } from "@/types/game";
 
 /** Non-dismissible gameplay modal after the How to play / results layers. */
 export type ClueFlowModalState =
-  | { type: "decision"; pinNumber: number; isFinalClue: boolean }
-  | { type: "lockConfirm"; pinNumber: number; isFinalClue: boolean }
+  | {
+      type: "decision";
+      pinNumber: number;
+      isFinalClue: boolean;
+      currentMaxScore: number;
+      nextMaxScore: number | null;
+    }
+  | {
+      type: "finishConfirm";
+      pinNumber: number;
+      isFinalClue: boolean;
+      currentMaxScore: number;
+      nextMaxScore: number | null;
+    }
   | {
       type: "nextClue";
       /** Null for Pin 1 → Clue 2 (no previous pin to compare). */
@@ -12,51 +25,68 @@ export type ClueFlowModalState =
       clueNumber: number;
       clueText: string;
       nextPinNumber: number;
+      currentMaxScore: number;
     }
   | {
       type: "error";
       message: string;
-      retry: "getClue" | "lock";
+      retry: "getClue" | "finish";
     };
 
 export function isFinalClueNumber(pinNumber: number): boolean {
   return pinNumber === CLUE_COUNT;
 }
 
-/** Pure transition: decision → lock confirmation (no server side-effects). */
-export function toLockConfirmState(decision: {
-  pinNumber: number;
+export function decisionScoreContext(pinNumber: number): {
+  currentMaxScore: number;
+  nextMaxScore: number | null;
   isFinalClue: boolean;
-}): Extract<ClueFlowModalState, { type: "lockConfirm" }> {
+} {
   return {
-    type: "lockConfirm",
-    pinNumber: decision.pinNumber,
-    isFinalClue: decision.isFinalClue,
+    currentMaxScore: getClueMaxScore(pinNumber),
+    nextMaxScore: getNextClueMaxScore(pinNumber),
+    isFinalClue: isFinalClueNumber(pinNumber),
   };
 }
 
-/** Pure transition: lock confirmation → decision (no server side-effects). */
-export function toDecisionFromLockConfirm(confirm: {
+/** Pure transition: decision → finish confirmation (no server side-effects). */
+export function toFinishConfirmState(decision: {
   pinNumber: number;
   isFinalClue: boolean;
+  currentMaxScore: number;
+  nextMaxScore: number | null;
+}): Extract<ClueFlowModalState, { type: "finishConfirm" }> {
+  return {
+    type: "finishConfirm",
+    pinNumber: decision.pinNumber,
+    isFinalClue: decision.isFinalClue,
+    currentMaxScore: decision.currentMaxScore,
+    nextMaxScore: decision.nextMaxScore,
+  };
+}
+
+/** Pure transition: finish confirmation → decision (no server side-effects). */
+export function toDecisionFromFinishConfirm(confirm: {
+  pinNumber: number;
+  isFinalClue: boolean;
+  currentMaxScore: number;
+  nextMaxScore: number | null;
 }): Extract<ClueFlowModalState, { type: "decision" }> {
   return {
     type: "decision",
     pinNumber: confirm.pinNumber,
     isFinalClue: confirm.isFinalClue,
+    currentMaxScore: confirm.currentMaxScore,
+    nextMaxScore: confirm.nextMaxScore,
   };
 }
 
-/** Context-aware lock confirmation body copy. */
-export function lockConfirmExplanation(isFinalClue: boolean): string {
-  if (isFinalClue) {
-    return "This ends today's game. Your current pin will be used as your final answer.";
-  }
-  return "This ends today's game. Your current pin will be used as your final answer for all remaining clues.";
+export function finishConfirmExplanation(): string {
+  return "This ends today's game using your current location.";
 }
 
-/** Opening lock confirmation must never count as committing a guess. */
-export function lockConfirmCommitsGuess(): false {
+/** Opening finish confirmation must never count as committing a guess. */
+export function finishConfirmCommitsGuess(): false {
   return false;
 }
 
@@ -97,6 +127,10 @@ export function temperatureFeedbackCopy(
     word: "Same",
     sentence: "Your last pin was about as far away.",
   };
+}
+
+export function formatScoreCeiling(score: number): string {
+  return score.toLocaleString("en-GB");
 }
 
 export function getMapPlacementCopy(options: {

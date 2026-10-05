@@ -21,16 +21,16 @@ export const HOW_TO_PLAY_STEPS: HowToPlayStep[] = [
     showHoldDemo: true,
   },
   {
-    title: "Lock or continue",
-    body: "After each pin, lock your final answer or spend another clue for more information.",
+    title: "Finish or buy a clue",
+    body: "Finish here with your current pin, or get another clue — each clue lowers the maximum score you can achieve.",
   },
   {
     title: "Warmer or colder",
     body: "Only after you get another clue will you learn if you got warmer or colder.",
   },
   {
-    title: "Score at the end",
-    body: "Up to 5,000 per pin, 25,000 total. Distances show when you finish.",
+    title: "One score out of 25,000",
+    body: "Your final score is based on how few clues you needed and how close your final pin was. Perfect score: find it on Clue 1.",
   },
 ];
 

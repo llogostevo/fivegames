@@ -21,6 +21,15 @@ describe("How to play press-and-hold copy", () => {
     assert.equal(/click the map/i.test(joined), false);
   });
 
+  it("explains the clue-ceiling scoring model", () => {
+    const scoreStep = HOW_TO_PLAY_STEPS.find((step) =>
+      step.title.toLowerCase().includes("25,000"),
+    );
+    assert.ok(scoreStep);
+    assert.ok(scoreStep!.body.toLowerCase().includes("clue"));
+    assert.ok(!scoreStep!.body.includes("5,000 per pin"));
+  });
+
   it("splits body so Press and hold can be emphasized", () => {
     const parts = splitEmphasizedBody(
       "Press and hold on the map to lock in your guess.",

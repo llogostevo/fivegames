@@ -22,8 +22,7 @@ const TEMPERATURE_EMOJI: Record<TemperatureResult, string> = {
 
 /** Build the emoji trail for actual pins only (final answer ends with 🎯). */
 export function buildSharePinTrail(guesses: RevealedGuess[]): string {
-  const actual = guesses.filter((guess) => !guess.carriedForward);
-  return actual
+  return guesses
     .map((guess, index) => {
       if (guess.isFinalAnswer) {
         return "🎯";

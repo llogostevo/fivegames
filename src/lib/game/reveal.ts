@@ -1,11 +1,9 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import { getNextReleaseAt, type ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
-import { FOUND_PIN_SCORE } from "@/lib/game/found";
-import { SCORING, calculateScore } from "@/lib/game/scoring";
+import { calculateFinalScore, SCORING } from "@/lib/game/scoring";
 import type { GameSession } from "@/lib/game/session";
 import { getTheme } from "@/lib/game/themes";
-import type { Coordinates } from "@/types/coordinates";
 import type {
   GameDefinition,
   GameReveal,
@@ -13,30 +11,12 @@ import type {
   TemperatureResult,
 } from "@/types/game";
 
-function scoreGuess(
-  guess: Coordinates,
-  target: Coordinates,
-  previous: Coordinates | undefined,
-): Pick<RevealedGuess, "distanceMeters" | "score" | "temperature"> {
-  const meters = distanceMeters(guess, target);
-  let temperature: TemperatureResult | null = null;
-  if (previous) {
-    temperature = compareGuessTemperature(previous, guess, target);
-  }
-
-  return {
-    distanceMeters: Math.round(meters),
-    score: calculateScore(meters / 1000),
-    temperature,
-  };
-}
-
 /**
- * Build the final reveal payload from a completed session.
- * Actual guesses remain distinguishable from carried-forward scoring slots.
+ * Build the final reveal from a completed session.
  *
- * When session.foundLocation is true, the successful pin and all carried-forward
- * slots score FOUND_PIN_SCORE (5,000) regardless of exact distance inside the radius.
+ * One final score = current clue maximum × accuracy of the final pin.
+ * Journey pins are included for map/share/warmer-colder history only —
+ * they do not add to the total.
  */
 export function buildReveal(
   game: GameDefinition,
@@ -63,54 +43,30 @@ export function buildReveal(
     : null;
 
   const target = { lat: game.answer.lat, lng: game.answer.lng };
-  const finalCoordinates = session.guesses[session.guesses.length - 1];
-  const finalScoreParts = scoreGuess(
-    finalCoordinates,
-    target,
-    session.guesses[session.guesses.length - 2],
-  );
+  const finalCoordinates = session.guesses[session.guesses.length - 1]!;
+  const finalDistanceMeters = distanceMeters(finalCoordinates, target);
+  const scored = calculateFinalScore({
+    clueNumber: lockedAfterClue,
+    distanceMeters: finalDistanceMeters,
+  });
 
-  if (foundLocation) {
-    finalScoreParts.score = FOUND_PIN_SCORE;
-  }
-
-  const guesses: RevealedGuess[] = [];
-
-  for (let index = 0; index < CLUE_COUNT; index += 1) {
-    const clueNumber = index + 1;
-
-    if (clueNumber <= lockedAfterClue) {
-      const guess = session.guesses[index];
-      const previous = session.guesses[index - 1];
-      const scored = scoreGuess(guess, target, previous);
-
-      if (foundLocation && clueNumber === lockedAfterClue) {
-        scored.score = FOUND_PIN_SCORE;
-      }
-
-      guesses.push({
-        lat: guess.lat,
-        lng: guess.lng,
-        ...scored,
-        carriedForward: false,
-        isFinalAnswer: clueNumber === lockedAfterClue,
-      });
-      continue;
+  const guesses: RevealedGuess[] = session.guesses.map((guess, index) => {
+    const previous = session.guesses[index - 1];
+    let temperature: TemperatureResult | null = null;
+    if (previous) {
+      temperature = compareGuessTemperature(previous, guess, target);
     }
 
-    // Unused clues: score the final pin again, but mark as carried forward.
-    guesses.push({
-      lat: finalCoordinates.lat,
-      lng: finalCoordinates.lng,
-      distanceMeters: null,
-      score: finalScoreParts.score,
-      temperature: null,
-      carriedForward: true,
-      isFinalAnswer: false,
-    });
-  }
+    const meters = distanceMeters(guess, target);
+    return {
+      lat: guess.lat,
+      lng: guess.lng,
+      distanceMeters: Math.round(meters),
+      temperature,
+      isFinalAnswer: index === session.guesses.length - 1,
+    };
+  });
 
-  const totalScore = guesses.reduce((sum, guess) => sum + guess.score, 0);
   const theme = getTheme(game.theme);
 
   return {
@@ -132,8 +88,11 @@ export function buildReveal(
     complete: true,
     finalCoordinates,
     actualGuessCount: lockedAfterClue,
-    totalScore,
+    totalScore: scored.totalScore,
     maxScore: SCORING.MAX_TOTAL_POINTS,
+    clueMaximum: scored.clueMaximum,
+    accuracyFactor: scored.accuracyFactor,
+    finalDistanceMeters: Math.round(finalDistanceMeters),
     foundLocation,
     foundOnPin,
   };
