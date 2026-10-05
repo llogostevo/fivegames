@@ -22,7 +22,10 @@ import {
 } from "@/lib/game/holdTip";
 import {
   holdProgress,
+  holdRingOffsetYPx,
+  holdRingScreenPosition,
   shouldCancelHoldForMovement,
+  triggerPinCommitHaptic,
 } from "@/lib/game/pinHold";
 import {
   DEFAULT_MAP_CENTER,
@@ -168,6 +171,7 @@ export function GameMap({
   const submittingRef = useRef(false);
   const holdRef = useRef<{
     pointerId: number;
+    pointerType: string;
     startX: number;
     startY: number;
     lng: number;
@@ -183,9 +187,13 @@ export function GameMap({
   const [mapReady, setMapReady] = useState(false);
   const [styleError, setStyleError] = useState<string | null>(null);
   const [holdVisual, setHoldVisual] = useState<HoldVisual | null>(null);
-  const [holdScreen, setHoldScreen] = useState<{ x: number; y: number } | null>(
-    null,
-  );
+  /** Touch point (commit) + ring centre (may be offset above the finger). */
+  const [holdScreen, setHoldScreen] = useState<{
+    touchX: number;
+    touchY: number;
+    ringX: number;
+    ringY: number;
+  } | null>(null);
   const [coachMessage, setCoachMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -240,13 +248,34 @@ export function GameMap({
     setHoldScreen(null);
   }
 
-  function projectHold(lng: number, lat: number) {
+  function setHoldScreenFromPoint(
+    touchX: number,
+    touchY: number,
+    pointerType: string,
+  ) {
+    const container = containerRef.current;
+    const ring = holdRingScreenPosition({
+      touchX,
+      touchY,
+      offsetY: holdRingOffsetYPx(pointerType),
+      ringSize: HOLD_RING_SIZE,
+      containerHeight: container?.clientHeight ?? 0,
+    });
+    setHoldScreen({
+      touchX,
+      touchY,
+      ringX: ring.x,
+      ringY: ring.y,
+    });
+  }
+
+  function projectHold(lng: number, lat: number, pointerType: string) {
     const map = mapRef.current;
     if (!map) {
       return;
     }
     const point = map.project([lng, lat]);
-    setHoldScreen({ x: point.x, y: point.y });
+    setHoldScreenFromPoint(point.x, point.y, pointerType);
   }
 
   function completeHold(lng: number, lat: number) {
@@ -261,11 +290,12 @@ export function GameMap({
     }
 
     setHoldVisual({ lng, lat, progress: 1, pulsing: true });
-    projectHold(lng, lat);
+    projectHold(lng, lat, hold.pointerType);
     submittingRef.current = true;
     shortTapCountRef.current = 0;
     clearCoachTimer();
     setCoachMessage(null);
+    triggerPinCommitHaptic();
 
     // Briefly suppress drag so the leftover pointer doesn't pan the map.
     const map = mapRef.current;
@@ -299,7 +329,7 @@ export function GameMap({
       progress,
       pulsing: false,
     });
-    projectHold(hold.lng, hold.lat);
+    projectHold(hold.lng, hold.lat, hold.pointerType);
 
     if (progress >= 1) {
       completeHold(hold.lng, hold.lat);
@@ -364,6 +394,7 @@ export function GameMap({
           cancelHold();
           holdRef.current = {
             pointerId: event.pointerId,
+            pointerType: event.pointerType || "touch",
             startX: event.clientX,
             startY: event.clientY,
             lng: lngLat.lng,
@@ -379,7 +410,7 @@ export function GameMap({
             progress: 0,
             pulsing: false,
           });
-          setHoldScreen({ x, y });
+          setHoldScreenFromPoint(x, y, event.pointerType || "touch");
         };
 
         const onPointerMove = (event: PointerEvent) => {
@@ -470,11 +501,8 @@ export function GameMap({
         // Keep the hold ring anchored while the map pans/zooms.
         map.on("move", () => {
           const hold = holdRef.current;
-          const visual = hold
-            ? { lng: hold.lng, lat: hold.lat }
-            : null;
-          if (visual) {
-            projectHold(visual.lng, visual.lat);
+          if (hold) {
+            projectHold(hold.lng, hold.lat, hold.pointerType);
           }
         });
 
@@ -663,24 +691,36 @@ export function GameMap({
         ref={containerRef}
         className={`absolute inset-0 ${interactive ? "fg-map--placing" : ""}`}
         role="application"
-        aria-label="Map. Press and hold to place your pin. Keep holding until the circle fills."
+        aria-label="Map. Press and hold to place your pin. Keep holding until the circle fills above your finger."
       />
       {holdVisual && holdScreen ? (
-        <div
-          className="pointer-events-none absolute z-10"
-          style={{
-            left: holdScreen.x,
-            top: holdScreen.y,
-            width: HOLD_RING_SIZE,
-            height: HOLD_RING_SIZE,
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <HoldProgressRing
-            progress={holdVisual.progress}
-            pulsing={holdVisual.pulsing}
+        <>
+          {/* Exact commit point — stays under the finger. */}
+          <div
+            className="fg-hold-target pointer-events-none absolute z-10"
+            style={{
+              left: holdScreen.touchX,
+              top: holdScreen.touchY,
+            }}
+            aria-hidden="true"
           />
-        </div>
+          {/* Progress ring — offset above the thumb on touch/pen. */}
+          <div
+            className="pointer-events-none absolute z-10"
+            style={{
+              left: holdScreen.ringX,
+              top: holdScreen.ringY,
+              width: HOLD_RING_SIZE,
+              height: HOLD_RING_SIZE,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <HoldProgressRing
+              progress={holdVisual.progress}
+              pulsing={holdVisual.pulsing}
+            />
+          </div>
+        </>
       ) : null}
       {coachMessage ? (
         <p

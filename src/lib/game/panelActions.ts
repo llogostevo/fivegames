@@ -21,7 +21,7 @@ export function getPlacementPrompt(options: {
       modalOpen: false,
     }) ?? {
       title: `📍 Press & hold to place pin ${options.pinNumber} of ${CLUE_COUNT}`,
-      detail: "Keep holding until the circle fills.",
+      detail: "Keep holding until the circle fills above your finger.",
     }
   );
 }
