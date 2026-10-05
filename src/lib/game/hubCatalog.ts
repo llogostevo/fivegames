@@ -158,10 +158,10 @@ export function pickFeaturedGame(
   playedToday: ReadonlySet<GameMode> | ReadonlyMap<GameMode, boolean>,
 ): HubGameEntry | null {
   const isPlayed = (id: GameMode) => {
-    if (playedToday instanceof Set) {
-      return playedToday.has(id);
+    if ("get" in playedToday) {
+      return playedToday.get(id) === true;
     }
-    return playedToday.get(id) === true;
+    return playedToday.has(id);
   };
 
   const preferred = HUB_GAMES.find((game) => game.featured && !isPlayed(game.id));

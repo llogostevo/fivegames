@@ -9,6 +9,7 @@ import { GameMap } from "@/components/game/GameMap";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
+import { Pin5Mark } from "@/components/hub/Pin5Mark";
 import {
   decisionScoreContext,
   getMapPlacementCopy,
@@ -641,9 +642,10 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           <Link
             href="/"
-            className="rounded-md font-display text-2xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
+            className="flex items-center gap-2 rounded-md font-display text-2xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
           >
-            Pin5
+            <Pin5Mark size="sm" className="h-8 w-8" />
+            <span>Pin5</span>
           </Link>
           {isFootballMode(mode) ? (
             <span
@@ -673,6 +675,12 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           ) : null}
         </div>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <Link
+            href="/"
+            className="rounded-md border border-[#c4157a] px-2.5 py-1.5 text-xs font-semibold text-[#c4157a] transition hover:bg-[#fbe7f2] sm:px-3 sm:text-sm"
+          >
+            More games
+          </Link>
           <button
             type="button"
             onClick={() => {

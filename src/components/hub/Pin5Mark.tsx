@@ -1,5 +1,17 @@
-/** PIN5 orienteering-control mark for the hub header. */
-export function Pin5Mark({ className }: { className?: string }) {
+/** PIN5 orienteering-control mark (magenta disc + white 5). */
+export function Pin5Mark({
+  className,
+  size = "lg",
+}: {
+  className?: string;
+  /** Hub header uses lg; in-game header uses sm. */
+  size?: "sm" | "lg";
+}) {
+  const digitClass =
+    size === "sm"
+      ? "text-[1.15rem]"
+      : "text-[2.05rem] sm:text-[2.35rem]";
+
   return (
     <div
       className={`relative inline-flex shrink-0 items-center justify-center ${className ?? ""}`}
@@ -22,7 +34,9 @@ export function Pin5Mark({ className }: { className?: string }) {
         />
       </svg>
       {/* HTML flex-centers the digit — SVG <text> baselines sit too low. */}
-      <span className="relative font-display text-[2.05rem] font-bold leading-none text-white sm:text-[2.35rem]">
+      <span
+        className={`relative font-display font-bold leading-none text-white ${digitClass}`}
+      >
         5
       </span>
     </div>
