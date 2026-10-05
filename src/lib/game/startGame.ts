@@ -21,15 +21,23 @@ export type StartGameResult = {
   mintedNewSession: boolean;
 };
 
+/**
+ * Public locked pins for resume.
+ * Warmer/colder for a guess is only included after the player has continued
+ * past it (Get Another Clue) — never while still awaiting that decision.
+ */
 function buildPublicGuesses(
   session: GameSession,
   game: GameDefinition,
 ): PublicLockedGuess[] {
   const target = { lat: game.answer.lat, lng: game.answer.lng };
+  const gameComplete = session.lockedAfterClue !== null;
 
   return session.guesses.map((guess, index) => {
     let temperature: TemperatureResult | null = null;
-    if (index > 0) {
+    const temperatureEarned =
+      gameComplete || session.revealedClueCount > index + 1;
+    if (temperatureEarned && index > 0) {
       temperature = compareGuessTemperature(
         session.guesses[index - 1]!,
         guess,

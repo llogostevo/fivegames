@@ -28,6 +28,13 @@ export type GameSession = {
    * Proves the game was released at that instant (checked on later actions).
    */
   startedAt: string;
+  /**
+   * True when the game completed because a pin was within the FOUND radius.
+   * Optional for backwards-compatible session cookies.
+   */
+  foundLocation?: boolean;
+  /** Pin number (1–5) that found the location, when foundLocation is true. */
+  foundOnPin?: number | null;
 };
 
 export class SessionSecretConfigError extends Error {
@@ -172,12 +179,26 @@ export function decodeSession(token: string | undefined): GameSession | null {
       return null;
     }
 
+    const foundLocation = session.foundLocation === true;
+    let foundOnPin: number | null = null;
+    if (
+      foundLocation &&
+      typeof session.foundOnPin === "number" &&
+      Number.isInteger(session.foundOnPin) &&
+      session.foundOnPin >= 1 &&
+      session.foundOnPin <= 5
+    ) {
+      foundOnPin = session.foundOnPin;
+    }
+
     return {
       gameId: session.gameId,
       guesses: session.guesses,
       revealedClueCount,
       lockedAfterClue,
       startedAt: session.startedAt,
+      foundLocation,
+      foundOnPin,
     };
   } catch {
     return null;
@@ -194,6 +215,8 @@ export function createEmptySession(
     revealedClueCount: 1,
     lockedAfterClue: null,
     startedAt: startedAt.toISOString(),
+    foundLocation: false,
+    foundOnPin: null,
   };
 }
 

@@ -60,7 +60,7 @@ export function lockConfirmCommitsGuess(): false {
   return false;
 }
 
-/** Decision modal never includes warmer/colder — only pin placement confirmation. */
+/** Decision modal never includes warmer/colder — only post-commit choices. */
 export function decisionModalShowsTemperature(): false {
   return false;
 }
@@ -101,40 +101,19 @@ export function temperatureFeedbackCopy(
 
 export function getMapPlacementCopy(options: {
   pinNumber: number;
-  hasPin: boolean;
-  isAdjusting: boolean;
+  /** True while a hold/commit is in flight or decision modal owns the UI. */
   modalOpen: boolean;
+  /** True when the active clue already has a committed pin. */
+  pinCommitted: boolean;
 }): { title: string; detail: string } | null {
   const pinNumber = Math.min(Math.max(options.pinNumber, 1), CLUE_COUNT);
 
-  // Modal owns the interaction while open (except adjust, when map is active).
-  if (options.modalOpen && !options.isAdjusting) {
+  if (options.modalOpen || options.pinCommitted) {
     return null;
   }
 
-  if (options.isAdjusting) {
-    return {
-      title: `📍 Adjust pin ${pinNumber}`,
-      detail: "Drag or tap the map to reposition. No feedback until you decide.",
-    };
-  }
-
-  if (options.hasPin) {
-    return {
-      title: `📍 Pin ${pinNumber} ready`,
-      detail: "Choose what to do next.",
-    };
-  }
-
-  if (pinNumber === 1) {
-    return {
-      title: `📍 Place pin 1 of ${CLUE_COUNT}`,
-      detail: "Tap the map to make your first guess.",
-    };
-  }
-
   return {
-    title: `📍 Place pin ${pinNumber} of ${CLUE_COUNT}`,
-    detail: "Tap the map to make your next guess.",
+    title: `📍 Press & hold to place pin ${pinNumber} of ${CLUE_COUNT}`,
+    detail: "Keep holding until the circle fills.",
   };
 }

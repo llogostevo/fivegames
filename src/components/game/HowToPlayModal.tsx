@@ -2,6 +2,11 @@
 
 import { useEffect, useId, useRef } from "react";
 
+import {
+  HOW_TO_PLAY_STEPS,
+  splitEmphasizedBody,
+} from "@/lib/game/howToPlay";
+
 type HowToPlayModalProps = {
   open: boolean;
   onClose: () => void;
@@ -9,28 +14,54 @@ type HowToPlayModalProps = {
   primaryLabel?: string;
 };
 
-const STEPS = [
-  {
-    title: "Five clues, one place",
-    body: "Each day hides a UK location. Clues get more specific.",
-  },
-  {
-    title: "Drop a pin",
-    body: "Tap the map to place your pin. Then decide what to do next.",
-  },
-  {
-    title: "Lock, adjust, or continue",
-    body: "Lock your answer, adjust the same pin with no feedback, or spend a clue.",
-  },
-  {
-    title: "Warmer or colder",
-    body: "Only after you get another clue will you learn if you got warmer or colder.",
-  },
-  {
-    title: "Score at the end",
-    body: "Up to 5,000 per pin, 25,000 total. Distances show when you finish.",
-  },
-] as const;
+function HoldDemo() {
+  return (
+    <div
+      className="fg-hold-demo mt-2 flex items-center justify-center gap-2 rounded-md bg-neutral-50 px-2 py-2"
+      aria-hidden="true"
+    >
+      <span className="text-[10px] font-semibold uppercase tracking-wide text-muted">
+        Press
+      </span>
+      <span className="text-muted" aria-hidden="true">
+        →
+      </span>
+      <div className="fg-hold-demo-ring">
+        <svg width="28" height="28" viewBox="0 0 56 56">
+          <circle
+            cx="28"
+            cy="28"
+            r="20"
+            fill="none"
+            stroke="rgba(30,30,36,0.12)"
+            strokeWidth="5"
+          />
+          <circle
+            className="fg-hold-demo-progress"
+            cx="28"
+            cy="28"
+            r="20"
+            fill="none"
+            stroke="var(--course)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeDasharray={125.6}
+            transform="rotate(-90 28 28)"
+          />
+        </svg>
+      </div>
+      <span className="text-muted" aria-hidden="true">
+        →
+      </span>
+      <span
+        className="fg-hold-demo-pin flex h-6 w-6 items-center justify-center rounded-full border-[2.5px] border-course bg-white font-display text-[11px] font-bold text-course"
+        aria-hidden="true"
+      >
+        📍
+      </span>
+    </div>
+  );
+}
 
 export function HowToPlayModal({
   open,
@@ -99,24 +130,38 @@ export function HowToPlayModal({
         </div>
 
         <ol className="space-y-2.5 px-4 py-3">
-          {STEPS.map((step, index) => (
-            <li key={step.title} className="flex gap-2.5">
-              <span
-                className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-course-soft font-display text-xs font-bold text-course"
-                aria-hidden="true"
-              >
-                {index + 1}
-              </span>
-              <div className="min-w-0">
-                <h3 className="font-display text-sm font-semibold tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="mt-0.5 text-xs leading-snug text-muted">
-                  {step.body}
-                </p>
-              </div>
-            </li>
-          ))}
+          {HOW_TO_PLAY_STEPS.map((step, index) => {
+            const parts = splitEmphasizedBody(step.body, step.emphasize);
+            return (
+              <li key={step.title} className="flex gap-2.5">
+                <span
+                  className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-course-soft font-display text-xs font-bold text-course"
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-sm font-semibold tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="mt-0.5 text-xs leading-snug text-muted">
+                    {parts ? (
+                      <>
+                        {parts.before}
+                        <strong className="font-semibold text-foreground">
+                          {parts.emphasis}
+                        </strong>
+                        {parts.after}
+                      </>
+                    ) : (
+                      step.body
+                    )}
+                  </p>
+                  {step.showHoldDemo ? <HoldDemo /> : null}
+                </div>
+              </li>
+            );
+          })}
         </ol>
 
         <div className="px-4 pb-4 pt-1">

@@ -2,26 +2,30 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { getPanelActionState, getPlacementPrompt } from "./panelActions";
+import {
+  PIN_COMMIT_HOLD_DURATION_MS,
+  PIN_HOLD_MOVE_TOLERANCE_PX,
+} from "./pinHold";
 
 describe("getPlacementPrompt", () => {
-  it("clue 1 before pin → Place pin 1 of 5", () => {
+  it("clue 1 before pin → Press & hold compact copy", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 1, hasPin: false }), {
-      title: "📍 Place pin 1 of 5",
-      detail: "Tap the map to make your first guess.",
+      title: "📍 Press & hold to place pin 1 of 5",
+      detail: "Keep holding until the circle fills.",
     });
   });
 
-  it("clue 2 before pin → Place pin 2 of 5", () => {
+  it("clue 2 before pin → Press & hold compact copy", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 2, hasPin: false }), {
-      title: "📍 Place pin 2 of 5",
-      detail: "Tap the map to make your next guess.",
+      title: "📍 Press & hold to place pin 2 of 5",
+      detail: "Keep holding until the circle fills.",
     });
   });
 
-  it("resumed game at clue 3 with no current pin shows Place pin 3 of 5", () => {
+  it("resumed game at clue 3 with no current pin shows Press & hold", () => {
     assert.deepEqual(getPlacementPrompt({ pinNumber: 3, hasPin: false }), {
-      title: "📍 Place pin 3 of 5",
-      detail: "Tap the map to make your next guess.",
+      title: "📍 Press & hold to place pin 3 of 5",
+      detail: "Keep holding until the circle fills.",
     });
   });
 });
@@ -40,5 +44,12 @@ describe("getPanelActionState", () => {
     const state = getPanelActionState({ hasPin: true, clueNumber: 5 });
     assert.equal(state.isFinalClue, true);
     assert.equal(state.secondaryLabel, null);
+  });
+});
+
+describe("hold mechanic constants unchanged by discoverability work", () => {
+  it("keeps the existing hold duration and movement tolerance", () => {
+    assert.equal(PIN_COMMIT_HOLD_DURATION_MS, 800);
+    assert.equal(PIN_HOLD_MOVE_TOLERANCE_PX, 12);
   });
 });

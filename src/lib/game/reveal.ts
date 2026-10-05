@@ -1,6 +1,7 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import { getNextReleaseAt, type ClockOptions } from "@/lib/game/date";
 import { compareGuessTemperature, distanceMeters } from "@/lib/game/distance";
+import { FOUND_PIN_SCORE } from "@/lib/game/found";
 import { SCORING, calculateScore } from "@/lib/game/scoring";
 import type { GameSession } from "@/lib/game/session";
 import { getTheme } from "@/lib/game/themes";
@@ -33,6 +34,9 @@ function scoreGuess(
 /**
  * Build the final reveal payload from a completed session.
  * Actual guesses remain distinguishable from carried-forward scoring slots.
+ *
+ * When session.foundLocation is true, the successful pin and all carried-forward
+ * slots score FOUND_PIN_SCORE (5,000) regardless of exact distance inside the radius.
  */
 export function buildReveal(
   game: GameDefinition,
@@ -53,6 +57,11 @@ export function buildReveal(
     throw new Error("Guess count must match lockedAfterClue");
   }
 
+  const foundLocation = session.foundLocation === true;
+  const foundOnPin = foundLocation
+    ? (session.foundOnPin ?? lockedAfterClue)
+    : null;
+
   const target = { lat: game.answer.lat, lng: game.answer.lng };
   const finalCoordinates = session.guesses[session.guesses.length - 1];
   const finalScoreParts = scoreGuess(
@@ -60,6 +69,10 @@ export function buildReveal(
     target,
     session.guesses[session.guesses.length - 2],
   );
+
+  if (foundLocation) {
+    finalScoreParts.score = FOUND_PIN_SCORE;
+  }
 
   const guesses: RevealedGuess[] = [];
 
@@ -70,6 +83,10 @@ export function buildReveal(
       const guess = session.guesses[index];
       const previous = session.guesses[index - 1];
       const scored = scoreGuess(guess, target, previous);
+
+      if (foundLocation && clueNumber === lockedAfterClue) {
+        scored.score = FOUND_PIN_SCORE;
+      }
 
       guesses.push({
         lat: guess.lat,
@@ -117,5 +134,7 @@ export function buildReveal(
     actualGuessCount: lockedAfterClue,
     totalScore,
     maxScore: SCORING.MAX_TOTAL_POINTS,
+    foundLocation,
+    foundOnPin,
   };
 }

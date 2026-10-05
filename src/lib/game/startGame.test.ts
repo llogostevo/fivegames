@@ -75,8 +75,8 @@ describe("resolveStartGame", () => {
     assert.equal(payload.includes("distanceMeters"), false);
     assert.equal(payload.includes('"score"'), false);
 
-    // Warmer/colder preserved on guess 2.
-    assert.ok(first.body.guesses[1]?.temperature);
+    // Warmer/colder stays gated until Get Another Clue — not on awaiting decision.
+    assert.equal(first.body.guesses[1]?.temperature, null);
   });
 
   it("resumes after next clue revealed with no guess yet", async () => {
@@ -97,6 +97,28 @@ describe("resolveStartGame", () => {
     assert.equal(result.body.clueIndex, 1);
     assert.equal(result.body.clue, game.clues[1]);
     assert.equal(result.body.clues.length, 2);
+  });
+
+  it("reveals warmer/colder on resume only after Get Another Clue", async () => {
+    const game = await getGameByDate("2026-09-28");
+    let session = createEmptySession(game.id, londonWallTimeToUtc("2026-09-28", 12, 0));
+    session = lockGuess({
+      game,
+      session,
+      guess: { lat: 51.5, lng: -0.12 },
+    }).session;
+    session = continueToNextClue({ game, session }).session;
+    session = lockGuess({
+      game,
+      session,
+      guess: { lat: 53.0, lng: -2.0 },
+    }).session;
+    session = continueToNextClue({ game, session }).session;
+
+    const result = resolveStartGame({ game, existingSession: session });
+    assert.equal(result.body.awaitingDecision, false);
+    assert.equal(result.body.guesses.length, 2);
+    assert.ok(result.body.guesses[1]?.temperature);
   });
 
   it("repeated /start does not mint fresh attempts", async () => {
@@ -155,10 +177,11 @@ describe("resolveStartGame", () => {
   it("returns completed results after early Lock Final Answer", async () => {
     const game = await getGameByDate("2026-09-28");
     let session = createEmptySession(game.id, londonWallTimeToUtc("2026-09-28", 12, 0));
+    // Outside FOUND radius — normal early lock, not auto-FOUND.
     session = lockGuess({
       game,
       session,
-      guess: { lat: game.answer.lat, lng: game.answer.lng },
+      guess: { lat: 53.48, lng: -2.24 },
     }).session;
     session = lockFinalAnswer({ game, session }).session;
     assert.equal(session.lockedAfterClue, 1);
@@ -167,6 +190,28 @@ describe("resolveStartGame", () => {
     assert.equal(result.body.status, "completed");
     assert.equal(result.body.reveal!.lockedAfterClue, 1);
     assert.equal(result.body.reveal!.actualGuessCount, 1);
+    assert.equal(result.body.reveal!.foundLocation, false);
+    assert.ok(result.body.reveal!.totalScore > 0);
+    assert.ok(result.body.reveal!.totalScore <= 25_000);
+  });
+
+  it("returns completed FOUND results after finding the location", async () => {
+    const game = await getGameByDate("2026-09-28");
+    let session = createEmptySession(game.id, londonWallTimeToUtc("2026-09-28", 12, 0));
+    const found = lockGuess({
+      game,
+      session,
+      guess: { lat: game.answer.lat, lng: game.answer.lng },
+    });
+    session = found.session;
+    assert.equal(found.response.complete, true);
+    assert.equal(session.lockedAfterClue, 1);
+    assert.equal(session.foundLocation, true);
+
+    const result = resolveStartGame({ game, existingSession: session });
+    assert.equal(result.body.status, "completed");
+    assert.equal(result.body.reveal!.foundLocation, true);
+    assert.equal(result.body.reveal!.foundOnPin, 1);
     assert.equal(result.body.reveal!.totalScore, 25_000);
   });
 

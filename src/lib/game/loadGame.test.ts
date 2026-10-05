@@ -217,14 +217,16 @@ describe("public payload safety", () => {
     assert.equal(continued.response.clue, game.clues[1]);
     assert.equal(JSON.stringify(continued.response).includes("Liverpool"), false);
 
+    // Outside the FOUND radius so the game continues to a normal early lock.
     session = lockGuess({
       game,
       session: continued.session,
-      guess: { lat: 53.4, lng: -2.99 },
+      guess: { lat: 53.2, lng: -2.5 },
     }).session;
     const answer = lockFinalAnswer({ game, session });
     assert.equal(answer.response.reveal.answer.name, "Liverpool");
     assert.equal(answer.response.reveal.complete, true);
+    assert.equal(answer.response.reveal.foundLocation, false);
     assert.ok(answer.response.reveal.totalScore >= 0);
     assert.equal(answer.response.reveal.maxScore, 25_000);
   });

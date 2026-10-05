@@ -34,65 +34,61 @@ describe("clue flow decision rules", () => {
 });
 
 describe("map placement copy", () => {
-  it("clue 1 before pin → Place pin 1 of 5", () => {
+  it("uses compact Press & hold instruction with current pin number", () => {
     assert.deepEqual(
       getMapPlacementCopy({
         pinNumber: 1,
-        hasPin: false,
-        isAdjusting: false,
+        pinCommitted: false,
         modalOpen: false,
       }),
       {
-        title: "📍 Place pin 1 of 5",
-        detail: "Tap the map to make your first guess.",
+        title: "📍 Press & hold to place pin 1 of 5",
+        detail: "Keep holding until the circle fills.",
       },
     );
   });
 
-  it("clue 2 before pin → Place pin 2 of 5", () => {
+  it("updates the pin number for later clues", () => {
     assert.deepEqual(
       getMapPlacementCopy({
         pinNumber: 2,
-        hasPin: false,
-        isAdjusting: false,
+        pinCommitted: false,
         modalOpen: false,
       }),
       {
-        title: "📍 Place pin 2 of 5",
-        detail: "Tap the map to make your next guess.",
+        title: "📍 Press & hold to place pin 2 of 5",
+        detail: "Keep holding until the circle fills.",
       },
     );
   });
 
-  it("resumed clue 3 with no pin shows Place pin 3 of 5", () => {
+  it("resumed clue 3 keeps the compact Press & hold instruction", () => {
     assert.deepEqual(
       getMapPlacementCopy({
         pinNumber: 3,
-        hasPin: false,
-        isAdjusting: false,
+        pinCommitted: false,
         modalOpen: false,
       })?.title,
-      "📍 Place pin 3 of 5",
+      "📍 Press & hold to place pin 3 of 5",
     );
   });
 
-  it("adjust mode explains no feedback", () => {
-    const copy = getMapPlacementCopy({
-      pinNumber: 2,
-      hasPin: true,
-      isAdjusting: true,
-      modalOpen: false,
-    });
-    assert.ok(copy?.title.includes("Adjust pin 2"));
-    assert.ok(copy?.detail.toLowerCase().includes("no feedback"));
+  it("hides placement chrome once a pin is committed", () => {
+    assert.equal(
+      getMapPlacementCopy({
+        pinNumber: 2,
+        pinCommitted: true,
+        modalOpen: false,
+      }),
+      null,
+    );
   });
 
   it("hides placement chrome while decision/next-clue modal is open", () => {
     assert.equal(
       getMapPlacementCopy({
         pinNumber: 2,
-        hasPin: true,
-        isAdjusting: false,
+        pinCommitted: false,
         modalOpen: true,
       }),
       null,

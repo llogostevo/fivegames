@@ -17,12 +17,11 @@ export function getPlacementPrompt(options: {
   return (
     getMapPlacementCopy({
       pinNumber: options.pinNumber,
-      hasPin: options.hasPin,
-      isAdjusting: false,
+      pinCommitted: options.hasPin,
       modalOpen: false,
     }) ?? {
-      title: `📍 Place pin ${options.pinNumber} of ${CLUE_COUNT}`,
-      detail: "Tap the map to make your next guess.",
+      title: `📍 Press & hold to place pin ${options.pinNumber} of ${CLUE_COUNT}`,
+      detail: "Keep holding until the circle fills.",
     }
   );
 }
@@ -37,7 +36,7 @@ export type PanelActionState = {
 
 /**
  * Legacy panel actions — the map UI no longer surfaces these persistently.
- * Decision actions live in ClueFlowModal after a pin is placed.
+ * Decision actions live in ClueFlowModal after a pin is committed.
  */
 export function getPanelActionState(options: {
   hasPin: boolean;
@@ -55,7 +54,6 @@ export function getPanelActionState(options: {
   } = options;
 
   const isFinalClue = clueNumber === CLUE_COUNT;
-  // New flow: never show persistent Submit/Lock chrome.
   const showActions = false;
   const canAct =
     hasPin && !isBusy && !isComplete && !isConfirming && clueNumber >= 1;
