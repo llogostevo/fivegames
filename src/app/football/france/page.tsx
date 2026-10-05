@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 import { GamePlay } from "@/components/game/GamePlay";
 
-const title = "PIN5 ⚽ Football · UK Edition";
+const title = "PIN5 ⚽ Football · France";
 const description =
-  "Daily PIN5 Football — find today's Football 92 home ground from five clues.";
+  "Daily PIN5 Football France — find today's Ligue 1 / Ligue 2 home ground from five clues.";
 
 export const metadata: Metadata = {
   title,
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    siteName: "PIN5 Football",
+    siteName: "PIN5 Football France",
   },
   twitter: {
     card: "summary_large_image",
@@ -21,6 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FootballPage() {
-  return <GamePlay mode="football" />;
+export default function FootballFrancePage() {
+  return <GamePlay mode="football-france" />;
 }

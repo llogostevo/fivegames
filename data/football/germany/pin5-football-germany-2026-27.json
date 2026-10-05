@@ -1,0 +1,667 @@
+{
+  "dataset": "pin5-football-germany",
+  "season": "2026-27",
+  "country": "Germany",
+  "competitions": [
+    "Bundesliga",
+    "2. Bundesliga"
+  ],
+  "clubCount": 36,
+  "clueDesign": {
+    "1": "hard historical/identity clue",
+    "2": "nickname/colours",
+    "3": "stadium name (or a description where the name gives the club or place away)",
+    "4": "explicit club name",
+    "5": "where the ground sits within its town/city"
+  },
+  "clubs": [
+    {
+      "id": "bayern-munich",
+      "club": "Bayern Munich",
+      "division": "Bundesliga",
+      "stadium": "Allianz Arena",
+      "city": "Munich",
+      "target": {
+        "lat": 48.2188,
+        "lng": 11.6247
+      },
+      "clues": [
+        "This club won the European Cup three years in a row in the mid-1970s, captained by Franz Beckenbauer.",
+        "The club is nicknamed Die Roten and plays in red and white.",
+        "The stadium you are looking for is Allianz Arena.",
+        "The club is Bayern Munich.",
+        "The ground is in Fröttmaning on Munich's northern edge, beside the A9 motorway; its outer shell can light up in different colours."
+      ]
+    },
+    {
+      "id": "borussia-dortmund",
+      "club": "Borussia Dortmund",
+      "division": "Bundesliga",
+      "stadium": "Signal Iduna Park",
+      "city": "Dortmund",
+      "target": {
+        "lat": 51.4926,
+        "lng": 7.4519
+      },
+      "clues": [
+        "In 1966 this club became the first German side to win a major European trophy, the Cup Winners' Cup.",
+        "The club plays in black and yellow, and its huge standing terrace is known as the Yellow Wall.",
+        "The stadium you are looking for is Signal Iduna Park.",
+        "The club is Borussia Dortmund.",
+        "The ground is just south of Dortmund's city centre, next to the Westfalenhallen and the old Stadion Rote Erde."
+      ]
+    },
+    {
+      "id": "rb-leipzig",
+      "club": "RB Leipzig",
+      "division": "Bundesliga",
+      "stadium": "Red Bull Arena",
+      "city": "Leipzig",
+      "target": {
+        "lat": 51.3458,
+        "lng": 12.3483
+      },
+      "clues": [
+        "Founded in 2009, this club reached the Bundesliga in 2016 and the Champions League semi-finals in 2020.",
+        "The club plays in white and red and is often called Die Roten Bullen.",
+        "The stadium you are looking for was built inside the bowl of the old Zentralstadion, once East Germany's largest stadium.",
+        "The club is RB Leipzig.",
+        "The ground is on the western edge of Leipzig's city centre, beside the Elster flood channel."
+      ]
+    },
+    {
+      "id": "bayer-leverkusen",
+      "club": "Bayer Leverkusen",
+      "division": "Bundesliga",
+      "stadium": "BayArena",
+      "city": "Leverkusen",
+      "target": {
+        "lat": 51.0383,
+        "lng": 7.0022
+      },
+      "clues": [
+        "In 2023–24 this club became the first to go through an entire Bundesliga season unbeaten.",
+        "The club plays in black and red and is nicknamed Die Werkself (the factory team).",
+        "The stadium you are looking for opened in 1958 and was known as the Ulrich-Haberland-Stadion until 1998.",
+        "The club is Bayer Leverkusen.",
+        "The ground is a short distance north-east of Leverkusen's centre at Wiesdorf."
+      ]
+    },
+    {
+      "id": "tsg-hoffenheim",
+      "club": "TSG Hoffenheim",
+      "division": "Bundesliga",
+      "stadium": "SNP Arena",
+      "city": "Sinsheim",
+      "target": {
+        "lat": 49.2381,
+        "lng": 8.8876
+      },
+      "clues": [
+        "This village club reached the Bundesliga in 2008, backed by SAP co-founder Dietmar Hopp.",
+        "The club plays in blue and white.",
+        "The stadium you are looking for is SNP Arena.",
+        "The club is TSG Hoffenheim.",
+        "The ground is not in Hoffenheim itself: it stands beside the A6 motorway on the edge of the nearby town of Sinsheim."
+      ]
+    },
+    {
+      "id": "sc-freiburg",
+      "club": "SC Freiburg",
+      "division": "Bundesliga",
+      "stadium": "Europa-Park Stadion",
+      "city": "Freiburg im Breisgau",
+      "target": {
+        "lat": 48.0216,
+        "lng": 7.8297
+      },
+      "clues": [
+        "Christian Streich coached this club for more than 12 years until 2024.",
+        "The club plays in red and white and was once nicknamed the Breisgau Brazilians.",
+        "The stadium you are looking for is Europa-Park Stadion.",
+        "The club is SC Freiburg.",
+        "The ground is in the Wolfswinkel area on Freiburg's north-western edge, next to the airfield."
+      ]
+    },
+    {
+      "id": "vfb-stuttgart",
+      "club": "VfB Stuttgart",
+      "division": "Bundesliga",
+      "stadium": "MHPArena",
+      "city": "Stuttgart",
+      "target": {
+        "lat": 48.7923,
+        "lng": 9.2321
+      },
+      "clues": [
+        "This club won the Bundesliga in 1984, 1992 and 2007, and the DFB-Pokal in 2025.",
+        "The club plays in white with a red chest band.",
+        "The stadium you are looking for is MHPArena.",
+        "The club is VfB Stuttgart.",
+        "The ground is in Bad Cannstatt beside the River Neckar, next to the Cannstatter Wasen festival ground and the Mercedes-Benz Museum."
+      ]
+    },
+    {
+      "id": "eintracht-frankfurt",
+      "club": "Eintracht Frankfurt",
+      "division": "Bundesliga",
+      "stadium": "Deutsche Bank Park",
+      "city": "Frankfurt am Main",
+      "target": {
+        "lat": 50.0686,
+        "lng": 8.6455
+      },
+      "clues": [
+        "This club lost the 1960 European Cup final 7–3 to Real Madrid and won the Europa League in 2022.",
+        "The club is nicknamed Die Adler (the Eagles) and plays in black, white and red.",
+        "The stadium you are looking for is Deutsche Bank Park.",
+        "The club is Eintracht Frankfurt.",
+        "The ground is in the Stadtwald forest south-west of Frankfurt's centre, on the way to the airport."
+      ]
+    },
+    {
+      "id": "mainz-05",
+      "club": "Mainz 05",
+      "division": "Bundesliga",
+      "stadium": "Mewa Arena",
+      "city": "Mainz",
+      "target": {
+        "lat": 49.9839,
+        "lng": 8.2244
+      },
+      "clues": [
+        "Jürgen Klopp began his coaching career here, leading the club into the Bundesliga for the first time in 2004.",
+        "The club plays in red and white and is nicknamed Die Nullfünfer.",
+        "The stadium you are looking for is Mewa Arena.",
+        "The club is Mainz 05.",
+        "The ground is on the south-western edge of Mainz, beside the A60 motorway."
+      ]
+    },
+    {
+      "id": "1-fc-koeln",
+      "club": "1. FC Köln",
+      "division": "Bundesliga",
+      "stadium": "RheinEnergieStadion",
+      "city": "Cologne",
+      "target": {
+        "lat": 50.9335,
+        "lng": 6.875
+      },
+      "clues": [
+        "This club won the very first Bundesliga title, in 1963–64.",
+        "The club plays in red and white, and its mascot is a billy goat named Hennes.",
+        "The stadium you are looking for is RheinEnergieStadion.",
+        "The club is 1. FC Köln.",
+        "The ground is in Müngersdorf on Cologne's western edge, inside the city's green-belt sports park."
+      ]
+    },
+    {
+      "id": "fc-augsburg",
+      "club": "FC Augsburg",
+      "division": "Bundesliga",
+      "stadium": "WWK Arena",
+      "city": "Augsburg",
+      "target": {
+        "lat": 48.3232,
+        "lng": 10.8863
+      },
+      "clues": [
+        "This club reached the Bundesliga for the first time in 2011.",
+        "The club plays in red, green and white and is nicknamed the Fuggerstädter.",
+        "The stadium you are looking for is WWK Arena.",
+        "The club is FC Augsburg.",
+        "The ground is on the southern edge of Augsburg, beside the B17 road."
+      ]
+    },
+    {
+      "id": "borussia-moenchengladbach",
+      "club": "Borussia Mönchengladbach",
+      "division": "Bundesliga",
+      "stadium": "ista-Borussia-Park",
+      "city": "Mönchengladbach",
+      "target": {
+        "lat": 51.1745,
+        "lng": 6.3855
+      },
+      "clues": [
+        "This club won five Bundesliga titles in the 1970s under Hennes Weisweiler and Udo Lattek.",
+        "The club plays in black, white and green and is nicknamed Die Fohlen (the Foals).",
+        "The stadium you are looking for opened in 2004 to replace the club's old Bökelberg ground and took a sponsor's name for the first time in 2026.",
+        "The club is Borussia Mönchengladbach.",
+        "The ground is in the Nordpark area on Mönchengladbach's western edge, close to the A61 motorway."
+      ]
+    },
+    {
+      "id": "hamburger-sv",
+      "club": "Hamburger SV",
+      "division": "Bundesliga",
+      "stadium": "Volksparkstadion",
+      "city": "Hamburg",
+      "target": {
+        "lat": 53.5872,
+        "lng": 9.8986
+      },
+      "clues": [
+        "This club won the European Cup in 1983 and was never relegated from the Bundesliga until 2018.",
+        "The club plays in white and red with a blue diamond badge and is nicknamed Die Rothosen (the red shorts).",
+        "The stadium you are looking for is Volksparkstadion.",
+        "The club is Hamburger SV.",
+        "The ground is in the Volkspark in Bahrenfeld, west of Hamburg's centre, near the A7 motorway."
+      ]
+    },
+    {
+      "id": "schalke-04",
+      "club": "Schalke 04",
+      "division": "Bundesliga",
+      "stadium": "Veltins-Arena",
+      "city": "Gelsenkirchen",
+      "target": {
+        "lat": 51.5546,
+        "lng": 7.0679
+      },
+      "clues": [
+        "This club has won seven German titles, but none since 1958.",
+        "The club plays in royal blue and is nicknamed Die Knappen (the miners).",
+        "The stadium you are looking for is Veltins-Arena.",
+        "The club is Schalke 04.",
+        "The ground is in the Erle district in the north of Gelsenkirchen, right beside the club's old Parkstadion."
+      ]
+    },
+    {
+      "id": "werder-bremen",
+      "club": "Werder Bremen",
+      "division": "Bundesliga",
+      "stadium": "Weserstadion",
+      "city": "Bremen",
+      "target": {
+        "lat": 53.0664,
+        "lng": 8.8376
+      },
+      "clues": [
+        "This club won the Cup Winners' Cup in 1992 and the domestic double in 2004.",
+        "The club plays in green and white.",
+        "The stadium you are looking for is a riverside ground whose roof and outer walls are covered in solar panels.",
+        "The club is Werder Bremen.",
+        "The ground is on the riverbank in the Peterswerder district, east of Bremen's old town."
+      ]
+    },
+    {
+      "id": "union-berlin",
+      "club": "Union Berlin",
+      "division": "Bundesliga",
+      "stadium": "Stadion An der Alten Försterei",
+      "city": "Berlin",
+      "target": {
+        "lat": 52.4572,
+        "lng": 13.568
+      },
+      "clues": [
+        "Thousands of fans volunteered to rebuild this club's stadium in 2008–09; the club later played in the Champions League in 2023–24.",
+        "The club plays in red and white and is nicknamed Die Eisernen (the Iron Ones).",
+        "The stadium you are looking for is Stadion An der Alten Försterei.",
+        "The club is Union Berlin.",
+        "The ground is in Köpenick in south-east Berlin, on the edge of the Wuhlheide woods."
+      ]
+    },
+    {
+      "id": "sc-paderborn",
+      "club": "SC Paderborn",
+      "division": "Bundesliga",
+      "stadium": "Home Deluxe Arena",
+      "city": "Paderborn",
+      "target": {
+        "lat": 51.7308,
+        "lng": 8.711
+      },
+      "clues": [
+        "This club reached the Bundesliga for the first time in 2014 and briefly went top of the table.",
+        "The club plays in blue and black.",
+        "The stadium you are looking for is Home Deluxe Arena.",
+        "The club is SC Paderborn.",
+        "The ground is in the Almeauen area on Paderborn's north-western side, about 3 km from the centre."
+      ]
+    },
+    {
+      "id": "sv-elversberg",
+      "club": "SV Elversberg",
+      "division": "Bundesliga",
+      "stadium": "Ursapharm-Arena an der Kaiserlinde",
+      "city": "Spiesen-Elversberg",
+      "target": {
+        "lat": 49.3186,
+        "lng": 7.1217
+      },
+      "clues": [
+        "In 2026 this club made its home town the smallest ever to be represented in the Bundesliga.",
+        "The club plays in black and white.",
+        "The stadium you are looking for is Ursapharm-Arena an der Kaiserlinde.",
+        "The club is SV Elversberg.",
+        "The ground is on the wooded edge of Elversberg, a village in Saarland about 15 km north-east of Saarbrücken."
+      ]
+    },
+    {
+      "id": "vfl-wolfsburg",
+      "club": "VfL Wolfsburg",
+      "division": "2. Bundesliga",
+      "stadium": "Volkswagen Arena",
+      "city": "Wolfsburg",
+      "target": {
+        "lat": 52.4327,
+        "lng": 10.8038
+      },
+      "clues": [
+        "This club won the Bundesliga in 2009 with Grafite and Edin Džeko up front, then was relegated in 2026 after 29 top-flight seasons.",
+        "The club plays in green and white and is nicknamed Die Wölfe (the Wolves).",
+        "The stadium you are looking for is a 30,000-seat ground opened in 2002 to replace the club's old stadium on the Elsterweg.",
+        "The club is VfL Wolfsburg.",
+        "The ground is in the Allerpark leisure area on the east side of Wolfsburg, near the Mittelland Canal."
+      ]
+    },
+    {
+      "id": "1-fc-heidenheim",
+      "club": "1. FC Heidenheim",
+      "division": "2. Bundesliga",
+      "stadium": "Voith-Arena",
+      "city": "Heidenheim an der Brenz",
+      "target": {
+        "lat": 48.6686,
+        "lng": 10.1394
+      },
+      "clues": [
+        "Under coach Frank Schmidt, in charge since 2007, this club rose from the Oberliga to the Bundesliga and the Conference League.",
+        "The club plays in red and blue.",
+        "The stadium you are looking for is Voith-Arena.",
+        "The club is 1. FC Heidenheim.",
+        "The ground sits on the Schlossberg hill above Heidenheim, next to Hellenstein Castle."
+      ]
+    },
+    {
+      "id": "fc-st-pauli",
+      "club": "FC St. Pauli",
+      "division": "2. Bundesliga",
+      "stadium": "Millerntor-Stadion",
+      "city": "Hamburg",
+      "target": {
+        "lat": 53.5546,
+        "lng": 9.9677
+      },
+      "clues": [
+        "After beating Bayern in 2002, this club printed shirts calling itself the 'Weltpokalsiegerbesieger' (world club champion beaters).",
+        "The club plays in brown and white, and its fans fly the skull and crossbones.",
+        "The stadium you are looking for is Millerntor-Stadion.",
+        "The club is FC St. Pauli.",
+        "The ground is on the Heiligengeistfeld in the St. Pauli district, a short walk from the Reeperbahn."
+      ]
+    },
+    {
+      "id": "hannover-96",
+      "club": "Hannover 96",
+      "division": "2. Bundesliga",
+      "stadium": "Heinz von Heiden Arena",
+      "city": "Hanover",
+      "target": {
+        "lat": 52.36,
+        "lng": 9.7312
+      },
+      "clues": [
+        "This club won the DFB-Pokal in 1992 while playing in the second division.",
+        "The club plays in red and is nicknamed Die Roten.",
+        "The stadium you are looking for is Heinz von Heiden Arena.",
+        "The club is Hannover 96.",
+        "The ground is beside the Maschsee lake, just south of Hanover's city centre."
+      ]
+    },
+    {
+      "id": "sv-darmstadt-98",
+      "club": "SV Darmstadt 98",
+      "division": "2. Bundesliga",
+      "stadium": "Merck-Stadion am Böllenfalltor",
+      "city": "Darmstadt",
+      "target": {
+        "lat": 49.8578,
+        "lng": 8.6724
+      },
+      "clues": [
+        "This club won promotion in two successive seasons, from the third tier in 2014 to the Bundesliga in 2015.",
+        "The club plays in blue and white and is nicknamed Die Lilien (the Lilies).",
+        "The stadium you are looking for is Merck-Stadion am Böllenfalltor.",
+        "The club is SV Darmstadt 98.",
+        "The ground is on the south-eastern edge of Darmstadt, beside the woods near the university's Lichtwiese campus."
+      ]
+    },
+    {
+      "id": "1-fc-kaiserslautern",
+      "club": "1. FC Kaiserslautern",
+      "division": "2. Bundesliga",
+      "stadium": "Fritz-Walter-Stadion",
+      "city": "Kaiserslautern",
+      "target": {
+        "lat": 49.4345,
+        "lng": 7.7764
+      },
+      "clues": [
+        "This club won the Bundesliga in 1998 in its first season back after promotion.",
+        "The club plays in red and white and is nicknamed Die Roten Teufel (the Red Devils).",
+        "The stadium you are looking for is named after the captain of West Germany's 1954 World Cup winners, who spent his whole career at the club.",
+        "The club is 1. FC Kaiserslautern.",
+        "The ground stands on top of the Betzenberg hill, just south-west of Kaiserslautern's centre."
+      ]
+    },
+    {
+      "id": "hertha-bsc",
+      "club": "Hertha BSC",
+      "division": "2. Bundesliga",
+      "stadium": "Olympiastadion",
+      "city": "Berlin",
+      "target": {
+        "lat": 52.5147,
+        "lng": 13.2395
+      },
+      "clues": [
+        "This club was founded in 1892 and takes its name from a steamboat.",
+        "The club plays in blue and white and is nicknamed Die Alte Dame (the Old Lady).",
+        "The stadium you are looking for was built for the 1936 Olympics and hosted the 2006 World Cup final.",
+        "The club is Hertha BSC.",
+        "The ground is in the Olympiapark in Westend, in the west of Berlin."
+      ]
+    },
+    {
+      "id": "1-fc-nuernberg",
+      "club": "1. FC Nürnberg",
+      "division": "2. Bundesliga",
+      "stadium": "Max-Morlock-Stadion",
+      "city": "Nuremberg",
+      "target": {
+        "lat": 49.4263,
+        "lng": 11.1258
+      },
+      "clues": [
+        "This club won the Bundesliga in 1968 and was relegated the following season.",
+        "The club plays in red and black and is known simply as Der Club.",
+        "The stadium you are looking for is named after a club legend who scored in the 1954 World Cup final.",
+        "The club is 1. FC Nürnberg.",
+        "The ground is south-east of Nuremberg's centre, by the Dutzendteich lake and the former Nazi party rally grounds."
+      ]
+    },
+    {
+      "id": "vfl-bochum",
+      "club": "VfL Bochum",
+      "division": "2. Bundesliga",
+      "stadium": "Vonovia Ruhrstadion",
+      "city": "Bochum",
+      "target": {
+        "lat": 51.49,
+        "lng": 7.2365
+      },
+      "clues": [
+        "This club qualified for the UEFA Cup in 1997 and again in 2004.",
+        "The club plays in blue and white and was once nicknamed Die Unabsteigbaren (the unrelegatables).",
+        "The stadium you are looking for is Vonovia Ruhrstadion.",
+        "The club is VfL Bochum.",
+        "The ground is on Castroper Straße, just north-east of Bochum's city centre, next to the Starlight Express theatre."
+      ]
+    },
+    {
+      "id": "karlsruher-sc",
+      "club": "Karlsruher SC",
+      "division": "2. Bundesliga",
+      "stadium": "BBBank Wildpark",
+      "city": "Karlsruhe",
+      "target": {
+        "lat": 49.02,
+        "lng": 8.413
+      },
+      "clues": [
+        "This club beat Valencia 7–0 in the 1993 UEFA Cup, and both Oliver Kahn and Mehmet Scholl started out here.",
+        "The club plays in blue and white.",
+        "The stadium you are looking for is BBBank Wildpark.",
+        "The club is Karlsruher SC.",
+        "The ground is in the Hardtwald woods just north-east of Karlsruhe Palace."
+      ]
+    },
+    {
+      "id": "dynamo-dresden",
+      "club": "Dynamo Dresden",
+      "division": "2. Bundesliga",
+      "stadium": "Rudolf-Harbig-Stadion",
+      "city": "Dresden",
+      "target": {
+        "lat": 51.0408,
+        "lng": 13.7477
+      },
+      "clues": [
+        "This club won eight East German league titles.",
+        "The club plays in black and yellow.",
+        "The stadium you are looking for is Rudolf-Harbig-Stadion.",
+        "The club is Dynamo Dresden.",
+        "The ground is beside the Großer Garten park, just south-east of Dresden's old town."
+      ]
+    },
+    {
+      "id": "holstein-kiel",
+      "club": "Holstein Kiel",
+      "division": "2. Bundesliga",
+      "stadium": "Holstein-Stadion",
+      "city": "Kiel",
+      "target": {
+        "lat": 54.3493,
+        "lng": 10.1238
+      },
+      "clues": [
+        "This club were German champions in 1912 and played their first Bundesliga season in 2024–25.",
+        "The club plays in blue, white and red and is nicknamed Die Störche (the Storks).",
+        "The stadium you are looking for is a compact ground now being redeveloped after the club's first Bundesliga season.",
+        "The club is Holstein Kiel.",
+        "The ground is in the north of Kiel, about 3 km from the city centre."
+      ]
+    },
+    {
+      "id": "arminia-bielefeld",
+      "club": "Arminia Bielefeld",
+      "division": "2. Bundesliga",
+      "stadium": "SchücoArena",
+      "city": "Bielefeld",
+      "target": {
+        "lat": 52.0315,
+        "lng": 8.5167
+      },
+      "clues": [
+        "This club reached the 2025 DFB-Pokal final while playing in the third tier.",
+        "The club plays in black, white and blue.",
+        "The stadium you are looking for is SchücoArena.",
+        "The club is Arminia Bielefeld.",
+        "The ground is about 1.5 km north-west of Bielefeld's centre; fans still call it the Alm."
+      ]
+    },
+    {
+      "id": "1-fc-magdeburg",
+      "club": "1. FC Magdeburg",
+      "division": "2. Bundesliga",
+      "stadium": "Avnet Arena",
+      "city": "Magdeburg",
+      "target": {
+        "lat": 52.1256,
+        "lng": 11.6708
+      },
+      "clues": [
+        "This club won the 1974 Cup Winners' Cup, the only European trophy ever won by an East German side.",
+        "The club plays in blue and white.",
+        "The stadium you are looking for is Avnet Arena.",
+        "The club is 1. FC Magdeburg.",
+        "The ground is on the east bank of the Elbe, about 2.5 km from Magdeburg's city centre."
+      ]
+    },
+    {
+      "id": "eintracht-braunschweig",
+      "club": "Eintracht Braunschweig",
+      "division": "2. Bundesliga",
+      "stadium": "Eintracht-Stadion",
+      "city": "Braunschweig",
+      "target": {
+        "lat": 52.2901,
+        "lng": 10.5215
+      },
+      "clues": [
+        "This club won the Bundesliga in 1967 and in 1973 became the first to wear a shirt sponsor (Jägermeister).",
+        "The club plays in blue and yellow and is nicknamed Die Löwen (the Lions).",
+        "The stadium you are looking for is a ground on Hamburger Straße that first opened in 1923.",
+        "The club is Eintracht Braunschweig.",
+        "The ground is about 3 km north of Braunschweig's city centre."
+      ]
+    },
+    {
+      "id": "spvgg-greuther-fuerth",
+      "club": "SpVgg Greuther Fürth",
+      "division": "2. Bundesliga",
+      "stadium": "Sportpark Ronhof Thomas Sommer",
+      "city": "Fürth",
+      "target": {
+        "lat": 49.4871,
+        "lng": 10.999
+      },
+      "clues": [
+        "This club won three German titles before 1930, but went through its first Bundesliga season in 2012–13 without a home win.",
+        "The club plays in green and white and is nicknamed the Kleeblatt (cloverleaf).",
+        "The stadium you are looking for is Sportpark Ronhof Thomas Sommer.",
+        "The club is SpVgg Greuther Fürth.",
+        "The ground is in the Ronhof district on Fürth's northern edge, a few kilometres from Nuremberg."
+      ]
+    },
+    {
+      "id": "vfl-osnabrueck",
+      "club": "VfL Osnabrück",
+      "division": "2. Bundesliga",
+      "stadium": "Bremer Brücke",
+      "city": "Osnabrück",
+      "target": {
+        "lat": 52.28,
+        "lng": 8.0703
+      },
+      "clues": [
+        "This club returned to the second division in 2026 and plays at a ground in use since 1931.",
+        "The club plays in purple and white and is nicknamed Die Lila-Weißen.",
+        "The stadium you are looking for is Bremer Brücke.",
+        "The club is VfL Osnabrück.",
+        "The ground is about 1.5 km east of Osnabrück's old town, named after the nearby bridge on the road to Bremen."
+      ]
+    },
+    {
+      "id": "energie-cottbus",
+      "club": "Energie Cottbus",
+      "division": "2. Bundesliga",
+      "stadium": "LEAG Energie Stadion",
+      "city": "Cottbus",
+      "target": {
+        "lat": 51.7514,
+        "lng": 14.3456
+      },
+      "clues": [
+        "This club spent six seasons in the Bundesliga, from 2000 to 2003 and from 2006 to 2009.",
+        "The club plays in red and white.",
+        "The stadium you are looking for was known for decades as the Stadion der Freundschaft (Stadium of Friendship).",
+        "The club is Energie Cottbus.",
+        "The ground is right on the River Spree, just south-east of Cottbus's centre and east of the main station."
+      ]
+    }
+  ]
+}

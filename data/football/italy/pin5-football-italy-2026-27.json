@@ -1,0 +1,739 @@
+{
+  "dataset": "pin5-football-italy",
+  "season": "2026-27",
+  "country": "Italy",
+  "competitions": [
+    "Serie A",
+    "Serie B"
+  ],
+  "clubCount": 40,
+  "clubs": [
+    {
+      "id": "atalanta",
+      "club": "Atalanta",
+      "division": "Serie A",
+      "stadium": "New Balance Arena",
+      "city": "Bergamo",
+      "target": {
+        "lat": 45.7089,
+        "lng": 9.6808
+      },
+      "clues": [
+        "One of this club's greatest European nights came in Dublin in 2024, when a Nigerian forward scored a hat-trick in a major final.",
+        "The club is nicknamed La Dea and traditionally wears black and blue.",
+        "The stadium you are looking for is New Balance Arena.",
+        "The club is Atalanta.",
+        "The ground is in Borgo Santa Caterina in Bergamo's lower town, below the walled hilltop Città Alta."
+      ]
+    },
+    {
+      "id": "bologna",
+      "club": "Bologna",
+      "division": "Serie A",
+      "stadium": "Stadio Renato Dall'Ara",
+      "city": "Bologna",
+      "target": {
+        "lat": 44.4923,
+        "lng": 11.31
+      },
+      "clues": [
+        "This club won seven Italian league titles, although most of those championships came before the Second World War.",
+        "The Rossoblù share their red-and-blue colours with several other Italian clubs.",
+        "The stadium you are looking for is Stadio Renato Dall'Ara.",
+        "The club is Bologna.",
+        "The ground is about 2.5 km west of Bologna's centre, beside the start of the long portico that climbs to the Sanctuary of San Luca."
+      ]
+    },
+    {
+      "id": "cagliari",
+      "club": "Cagliari",
+      "division": "Serie A",
+      "stadium": "Unipol Domus",
+      "city": "Cagliari",
+      "target": {
+        "lat": 39.1995,
+        "lng": 9.1373
+      },
+      "clues": [
+        "This club's only Italian league title was won in 1969–70, inspired by Luigi Riva.",
+        "The team is known as the Rossoblù and represents an island rather than mainland Italy.",
+        "The stadium you are looking for is Unipol Domus.",
+        "The club is Cagliari.",
+        "The ground is in the Sant'Elia district on the eastern edge of Cagliari, near the sea, built beside the site of the old Stadio Sant'Elia."
+      ]
+    },
+    {
+      "id": "como",
+      "club": "Como",
+      "division": "Serie A",
+      "stadium": "Stadio Giuseppe Sinigaglia",
+      "city": "Como",
+      "target": {
+        "lat": 45.8139,
+        "lng": 9.072
+      },
+      "clues": [
+        "This club returned to Italy's top flight in 2024 after an absence of more than two decades.",
+        "Its home ground sits unusually close to one of Italy's most famous lakes.",
+        "The stadium you are looking for is Stadio Giuseppe Sinigaglia.",
+        "The club is Como.",
+        "The ground sits right on the shore of Lake Como, beside the lakeside promenade and the Tempio Voltiano."
+      ]
+    },
+    {
+      "id": "fiorentina",
+      "club": "Fiorentina",
+      "division": "Serie A",
+      "stadium": "Stadio Artemio Franchi",
+      "city": "Florence",
+      "target": {
+        "lat": 43.7808,
+        "lng": 11.2822
+      },
+      "clues": [
+        "This club won the first edition of the European Cup Winners' Cup in 1961.",
+        "The team is famous for wearing purple and is nicknamed La Viola.",
+        "The stadium you are looking for is Stadio Artemio Franchi.",
+        "The club is Fiorentina.",
+        "The ground is in the Campo di Marte district, about 2 km north-east of Florence's centre, near Firenze Campo di Marte station."
+      ]
+    },
+    {
+      "id": "frosinone",
+      "club": "Frosinone",
+      "division": "Serie A",
+      "stadium": "Stadio Benito Stirpe",
+      "city": "Frosinone",
+      "target": {
+        "lat": 41.6341,
+        "lng": 13.3218
+      },
+      "clues": [
+        "This club first reached Italy's top division in the 2015–16 season.",
+        "The team is known as the Canarini, reflecting its traditional yellow colours.",
+        "The stadium you are looking for is Stadio Benito Stirpe.",
+        "The club is Frosinone.",
+        "The ground is in the Casaleno area on the south-western side of Frosinone, about 2 km from the old town."
+      ]
+    },
+    {
+      "id": "genoa",
+      "club": "Genoa",
+      "division": "Serie A",
+      "stadium": "Stadio Luigi Ferraris",
+      "city": "Genoa",
+      "target": {
+        "lat": 44.4165,
+        "lng": 8.9525
+      },
+      "clues": [
+        "Founded in 1893, this is generally regarded as Italy's oldest existing football club.",
+        "The club has nine Italian league titles and wears red and blue.",
+        "The stadium you are looking for is Stadio Luigi Ferraris.",
+        "The club is Genoa.",
+        "The ground is in the Marassi district, in the Bisagno valley north-east of Genoa's centre, right next to the city's prison."
+      ]
+    },
+    {
+      "id": "inter",
+      "club": "Inter",
+      "division": "Serie A",
+      "stadium": "Stadio Giuseppe Meazza (San Siro)",
+      "city": "Milan",
+      "target": {
+        "lat": 45.4781,
+        "lng": 9.1241
+      },
+      "clues": [
+        "This club became the first Italian side to win a league, domestic cup and European Cup treble in the same season.",
+        "Its traditional colours are black and blue, giving rise to the Nerazzurri nickname.",
+        "The stadium you are looking for is Stadio Giuseppe Meazza (San Siro).",
+        "The club is Inter.",
+        "The ground is in the San Siro district, about 6 km north-west of Milan's centre, next to the San Siro racecourse."
+      ]
+    },
+    {
+      "id": "juventus",
+      "club": "Juventus",
+      "division": "Serie A",
+      "stadium": "Allianz Stadium",
+      "city": "Turin",
+      "target": {
+        "lat": 45.1096,
+        "lng": 7.6413
+      },
+      "clues": [
+        "This club's name comes from the Latin word for youth, despite being one of Italy's oldest major clubs.",
+        "The Bianconeri are famous for their black-and-white striped shirts.",
+        "The stadium you are looking for is Allianz Stadium.",
+        "The club is Juventus.",
+        "The ground is on the north-western edge of Turin, on the site of the old Stadio delle Alpi."
+      ]
+    },
+    {
+      "id": "lazio",
+      "club": "Lazio",
+      "division": "Serie A",
+      "stadium": "Stadio Olimpico",
+      "city": "Rome",
+      "target": {
+        "lat": 41.9352,
+        "lng": 12.4543
+      },
+      "clues": [
+        "This club won the last UEFA Cup Winners' Cup, defeating Mallorca in the 1999 final.",
+        "Its colours are sky blue and white, and an eagle is central to its identity.",
+        "The stadium you are looking for is Stadio Olimpico.",
+        "The club is Lazio.",
+        "The ground is in the Foro Italico sports complex, beside the River Tiber at the foot of Monte Mario, north of Rome's centre."
+      ]
+    },
+    {
+      "id": "lecce",
+      "club": "Lecce",
+      "division": "Serie A",
+      "stadium": "Stadio Via del Mare",
+      "city": "Lecce",
+      "target": {
+        "lat": 40.3653,
+        "lng": 18.2088
+      },
+      "clues": [
+        "This southern club has frequently moved between Italy's top two divisions and first reached Serie A in the 1980s.",
+        "The team is known as the Giallorossi because of its yellow-and-red colours.",
+        "The stadium you are looking for is Stadio Via del Mare.",
+        "The club is Lecce.",
+        "The ground is on the north-eastern edge of Lecce, on the road leading out towards the Adriatic coast."
+      ]
+    },
+    {
+      "id": "milan",
+      "club": "AC Milan",
+      "division": "Serie A",
+      "stadium": "San Siro",
+      "city": "Milan",
+      "target": {
+        "lat": 45.4781,
+        "lng": 9.1241
+      },
+      "clues": [
+        "This club won the European Cup twice under Arrigo Sacchi at the end of the 1980s.",
+        "Its red-and-black colours give the team the nickname Rossoneri.",
+        "The stadium you are looking for is San Siro.",
+        "The club is AC Milan.",
+        "The ground is in the San Siro district, about 6 km north-west of Milan's centre, next to the San Siro racecourse."
+      ]
+    },
+    {
+      "id": "monza",
+      "club": "Monza",
+      "division": "Serie A",
+      "stadium": "U-Power Stadium",
+      "city": "Monza",
+      "target": {
+        "lat": 45.5831,
+        "lng": 9.3079
+      },
+      "clues": [
+        "This club reached Serie A for the first time in its history in 2022.",
+        "The team traditionally wears red and white and represents a city famous for motor racing.",
+        "The stadium you are looking for is U-Power Stadium.",
+        "The club is Monza.",
+        "The ground is on the eastern edge of Monza, about 2.5 km from the centre and across town from the Autodromo in Monza Park."
+      ]
+    },
+    {
+      "id": "napoli",
+      "club": "Napoli",
+      "division": "Serie A",
+      "stadium": "Stadio Diego Armando Maradona",
+      "city": "Naples",
+      "target": {
+        "lat": 40.828,
+        "lng": 14.1929
+      },
+      "clues": [
+        "This club's first two league titles came during the era of Diego Maradona.",
+        "The Partenopei are strongly associated with sky blue.",
+        "The stadium you are looking for was known as the San Paolo until 2020, when it was renamed after the club's greatest player.",
+        "The club is Napoli.",
+        "The ground is in the Fuorigrotta district, west of Naples city centre, next to the Mostra d'Oltremare exhibition grounds."
+      ]
+    },
+    {
+      "id": "parma",
+      "club": "Parma",
+      "division": "Serie A",
+      "stadium": "Stadio Ennio Tardini",
+      "city": "Parma",
+      "target": {
+        "lat": 44.7948,
+        "lng": 10.3382
+      },
+      "clues": [
+        "This club won two UEFA Cups and the European Cup Winners' Cup during its celebrated 1990s era.",
+        "Its traditional identity includes yellow and blue, although a white shirt with a black cross is also iconic.",
+        "The stadium you are looking for is Stadio Ennio Tardini.",
+        "The club is Parma.",
+        "The ground is in a residential area about 1 km south-east of Parma's historic centre."
+      ]
+    },
+    {
+      "id": "roma",
+      "club": "Roma",
+      "division": "Serie A",
+      "stadium": "Stadio Olimpico",
+      "city": "Rome",
+      "target": {
+        "lat": 41.9352,
+        "lng": 12.4543
+      },
+      "clues": [
+        "This club won the inaugural UEFA Europa Conference League in 2022.",
+        "Its colours are associated with the red and gold of the Italian capital, and its badge features the Capitoline wolf.",
+        "The stadium you are looking for is Stadio Olimpico.",
+        "The club is Roma.",
+        "The ground is in the Foro Italico sports complex, beside the River Tiber at the foot of Monte Mario, north of Rome's centre."
+      ]
+    },
+    {
+      "id": "sassuolo",
+      "club": "Sassuolo",
+      "division": "Serie A",
+      "stadium": "Mapei Stadium – Città del Tricolore",
+      "city": "Reggio Emilia",
+      "target": {
+        "lat": 44.7147,
+        "lng": 10.6497
+      },
+      "clues": [
+        "This club rose from Italy's lower leagues to make its Serie A debut in 2013.",
+        "The Neroverdi play in black and green.",
+        "The stadium you are looking for is Mapei Stadium – Città del Tricolore.",
+        "The club is Sassuolo.",
+        "The ground is not in Sassuolo at all: it is on the north-eastern edge of Reggio Emilia, about 25 km away, close to the A1 motorway."
+      ]
+    },
+    {
+      "id": "torino",
+      "club": "Torino",
+      "division": "Serie A",
+      "stadium": "Stadio Olimpico Grande Torino",
+      "city": "Turin",
+      "target": {
+        "lat": 45.0419,
+        "lng": 7.6502
+      },
+      "clues": [
+        "The Grande Torino side that dominated Italian football in the 1940s was lost in the Superga air disaster.",
+        "The club's traditional colour is maroon and its symbol is a bull.",
+        "The stadium you are looking for was built for the 1934 World Cup and renovated for the 2006 Winter Olympics.",
+        "The club is Torino.",
+        "The ground is in the Santa Rita district, about 3 km south-west of Turin's centre."
+      ]
+    },
+    {
+      "id": "udinese",
+      "club": "Udinese",
+      "division": "Serie A",
+      "stadium": "Bluenergy Stadium",
+      "city": "Udine",
+      "target": {
+        "lat": 46.0814,
+        "lng": 13.1997
+      },
+      "clues": [
+        "This club is one of Italy's oldest football organisations and has spent much of the modern era in Serie A.",
+        "The Bianconeri wear black and white but are based far from Turin.",
+        "The stadium you are looking for is Bluenergy Stadium.",
+        "The club is Udinese.",
+        "The ground is in the Rizzi district on the north-western edge of Udine, about 3 km from the centre."
+      ]
+    },
+    {
+      "id": "venezia",
+      "club": "Venezia",
+      "division": "Serie A",
+      "stadium": "Stadio Pier Luigi Penzo",
+      "city": "Venice",
+      "target": {
+        "lat": 45.4278,
+        "lng": 12.364
+      },
+      "clues": [
+        "This club won the Coppa Italia in 1941 and plays at one of Italy's most unusually located stadiums.",
+        "Its modern identity combines orange, black and green.",
+        "The stadium you are looking for is Stadio Pier Luigi Penzo.",
+        "The club is Venezia.",
+        "The ground is on the island of Sant'Elena at the eastern tip of Venice, just beyond the Biennale gardens."
+      ]
+    },
+    {
+      "id": "arezzo",
+      "club": "Arezzo",
+      "division": "Serie B",
+      "stadium": "Stadio Città di Arezzo",
+      "city": "Arezzo",
+      "target": {
+        "lat": 43.4511,
+        "lng": 11.8944
+      },
+      "clues": [
+        "This Tuscan club won promotion to Serie B in 2026, returning to the second tier after 19 years away.",
+        "The club is nicknamed the Amaranto after its deep-red shirts.",
+        "The stadium you are looking for is the city's municipal ground, opened in 1961 and being rebuilt stand by stand by 2030.",
+        "The club is Arezzo.",
+        "The ground is on Viale Gramsci, about 1.5 km south-east of Arezzo's historic centre."
+      ]
+    },
+    {
+      "id": "ascoli",
+      "club": "Ascoli",
+      "division": "Serie B",
+      "stadium": "Stadio Cino e Lillo Del Duca",
+      "city": "Ascoli Piceno",
+      "target": {
+        "lat": 42.861,
+        "lng": 13.5934
+      },
+      "clues": [
+        "This club enjoyed several spells in Serie A after first reaching the top flight in the 1970s.",
+        "Its traditional colours are black and white and it is nicknamed the Picchio.",
+        "The stadium you are looking for is Stadio Cino e Lillo Del Duca.",
+        "The club is Ascoli.",
+        "The ground is on Via delle Zeppelle, about 1.5 km east of Ascoli Piceno's historic centre."
+      ]
+    },
+    {
+      "id": "avellino",
+      "club": "Avellino",
+      "division": "Serie B",
+      "stadium": "Stadio Partenio-Adriano Lombardi",
+      "city": "Avellino",
+      "target": {
+        "lat": 40.9272,
+        "lng": 14.7927
+      },
+      "clues": [
+        "This southern club spent ten consecutive seasons in Serie A from the late 1970s through the 1980s.",
+        "Its traditional colours are green and white and the wolf is a key symbol.",
+        "The stadium you are looking for is Stadio Partenio-Adriano Lombardi.",
+        "The club is Avellino.",
+        "The ground is in the Partenio district, north of Avellino's historic centre and about a 20-minute walk from Piazza della Libertà."
+      ]
+    },
+    {
+      "id": "benevento",
+      "club": "Benevento",
+      "division": "Serie B",
+      "stadium": "Stadio Ciro Vigorito",
+      "city": "Benevento",
+      "target": {
+        "lat": 41.1166,
+        "lng": 14.7812
+      },
+      "clues": [
+        "This club's first Serie A campaign began with a record-breaking sequence of defeats before an extraordinary late equaliser by its goalkeeper.",
+        "The team is nicknamed the Streghe — the Witches — and wears yellow and red.",
+        "The stadium you are looking for is Stadio Ciro Vigorito.",
+        "The club is Benevento.",
+        "The ground is on Via Santa Colomba on the southern edge of Benevento, about 2 km from the historic centre."
+      ]
+    },
+    {
+      "id": "carrarese",
+      "club": "Carrarese",
+      "division": "Serie B",
+      "stadium": "Stadio dei Marmi",
+      "city": "Carrara",
+      "target": {
+        "lat": 44.0653,
+        "lng": 10.0768
+      },
+      "clues": [
+        "This Tuscan club returned to Serie B in 2024 for the first time since the 1940s.",
+        "Its traditional colours are blue and yellow.",
+        "The stadium you are looking for is officially dedicated to four local athletes who competed at the 1936 Olympics.",
+        "The club is Carrarese.",
+        "The ground is in the lower part of Carrara, between the old town and the coast, about 2 km south-west of the centre."
+      ]
+    },
+    {
+      "id": "catanzaro",
+      "club": "Catanzaro",
+      "division": "Serie B",
+      "stadium": "Stadio Nicola Ceravolo",
+      "city": "Catanzaro",
+      "target": {
+        "lat": 38.909,
+        "lng": 16.5877
+      },
+      "clues": [
+        "This club became the first team from Calabria to play in Serie A.",
+        "Its traditional colours are red and yellow and the eagle is a club symbol.",
+        "The stadium you are looking for is Stadio Nicola Ceravolo.",
+        "The club is Catanzaro.",
+        "The ground is in the Corallo area near the slopes of Monte Spezzano, about 20 minutes on foot from Piazza Matteotti in the city centre."
+      ]
+    },
+    {
+      "id": "cesena",
+      "club": "Cesena",
+      "division": "Serie B",
+      "stadium": "Orogel Stadium – Dino Manuzzi",
+      "city": "Cesena",
+      "target": {
+        "lat": 44.1392,
+        "lng": 12.2611
+      },
+      "clues": [
+        "This club qualified for the UEFA Cup in the 1970s after one of the finest top-flight seasons in its history.",
+        "Its traditional colours are black and white and its badge features a seahorse.",
+        "The stadium you are looking for is Orogel Stadium – Dino Manuzzi.",
+        "The club is Cesena.",
+        "The ground is in the Fiorenzuola neighbourhood, about 2 km east of Cesena's old town and railway station."
+      ]
+    },
+    {
+      "id": "cremonese",
+      "club": "Cremonese",
+      "division": "Serie B",
+      "stadium": "Stadio Giovanni Zini",
+      "city": "Cremona",
+      "target": {
+        "lat": 45.1334,
+        "lng": 10.0268
+      },
+      "clues": [
+        "This Lombardy club reached the Coppa Italia semi-finals in 2023 after knocking out Napoli and Roma.",
+        "Its traditional colours are grey and red.",
+        "The stadium you are looking for is Stadio Giovanni Zini.",
+        "The club is Cremonese.",
+        "The ground is on Via Persico, north-east of Cremona's historic centre and about a 10–15 minute walk from it."
+      ]
+    },
+    {
+      "id": "empoli",
+      "club": "Empoli",
+      "division": "Serie B",
+      "stadium": "Stadio Carlo Castellani – Computer Gross Arena",
+      "city": "Empoli",
+      "target": {
+        "lat": 43.7265,
+        "lng": 10.9548
+      },
+      "clues": [
+        "This Tuscan club is noted for developing players and has repeatedly returned to Serie A despite representing a relatively small city.",
+        "Its traditional home colour is blue.",
+        "The stadium you are looking for is Stadio Carlo Castellani – Computer Gross Arena.",
+        "The club is Empoli.",
+        "The ground is about 1 km north-east of Empoli's centre, close to the River Arno."
+      ]
+    },
+    {
+      "id": "hellas-verona",
+      "club": "Hellas Verona",
+      "division": "Serie B",
+      "stadium": "Stadio Marcantonio Bentegodi",
+      "city": "Verona",
+      "target": {
+        "lat": 45.4354,
+        "lng": 10.9686
+      },
+      "clues": [
+        "This club produced one of Italian football's great surprises by winning the Serie A title in 1984–85.",
+        "Its colours are yellow and blue and it has a fierce city rivalry with Chievo historically.",
+        "The stadium you are looking for is Stadio Marcantonio Bentegodi.",
+        "The club is Hellas Verona.",
+        "The ground is about 2 km west of Verona's Roman Arena and the old town."
+      ]
+    },
+    {
+      "id": "juve-stabia",
+      "club": "Juve Stabia",
+      "division": "Serie B",
+      "stadium": "Stadio Romeo Menti",
+      "city": "Castellammare di Stabia",
+      "target": {
+        "lat": 40.704,
+        "lng": 14.49
+      },
+      "clues": [
+        "This club's name reflects an ancient name associated with the area destroyed by the eruption of Vesuvius in AD 79.",
+        "The team is known as the Vespe — the Wasps — and wears yellow and blue.",
+        "The stadium you are looking for is Stadio Romeo Menti.",
+        "The club is Juve Stabia.",
+        "The ground is on Via Giuseppe Cosenza at the northern edge of Castellammare di Stabia, hemmed in by apartment blocks, about a 15-minute walk from the town centre."
+      ]
+    },
+    {
+      "id": "mantova",
+      "club": "Mantova",
+      "division": "Serie B",
+      "stadium": "Stadio Danilo Martelli",
+      "city": "Mantua",
+      "target": {
+        "lat": 45.1481,
+        "lng": 10.8046
+      },
+      "clues": [
+        "This Lombardy club's strongest historic period included several seasons in Serie A during the 1960s.",
+        "Its traditional colours are red and white.",
+        "The stadium you are looking for is Stadio Danilo Martelli.",
+        "The club is Mantova.",
+        "The ground is on the southern side of Mantua, about a 10-minute walk from Palazzo Te."
+      ]
+    },
+    {
+      "id": "modena",
+      "club": "Modena",
+      "division": "Serie B",
+      "stadium": "Stadio Alberto Braglia",
+      "city": "Modena",
+      "target": {
+        "lat": 44.6534,
+        "lng": 10.9231
+      },
+      "clues": [
+        "This Emilia-Romagna club has won Italy's second tier multiple times and last played in Serie A in the 2000s.",
+        "Its traditional colours are yellow and blue and it is nicknamed the Canarini.",
+        "The stadium you are looking for is Stadio Alberto Braglia.",
+        "The club is Modena.",
+        "The ground is on Viale Monte Kosica, about a 15-minute walk north of Piazza Grande and close to Modena railway station."
+      ]
+    },
+    {
+      "id": "padova",
+      "club": "Padova",
+      "division": "Serie B",
+      "stadium": "Stadio Euganeo",
+      "city": "Padua",
+      "target": {
+        "lat": 45.4324,
+        "lng": 11.8583
+      },
+      "clues": [
+        "This club's greatest top-flight period came in the 1950s under coach Nereo Rocco.",
+        "Its traditional colours are red and white and the team is often called the Biancoscudati.",
+        "The stadium you are looking for is Stadio Euganeo.",
+        "The club is Padova.",
+        "The ground is on Viale Nereo Rocco on the north-western outskirts of Padua, surrounded by farmland, just under 4 km from the historic centre."
+      ]
+    },
+    {
+      "id": "palermo",
+      "club": "Palermo",
+      "division": "Serie B",
+      "stadium": "Stadio Renzo Barbera",
+      "city": "Palermo",
+      "target": {
+        "lat": 38.1528,
+        "lng": 13.3418
+      },
+      "clues": [
+        "This club reached the Coppa Italia final three times without winning the trophy.",
+        "Its pink-and-black colours are among the most distinctive in European football.",
+        "The stadium you are looking for is Stadio Renzo Barbera.",
+        "The club is Palermo.",
+        "The ground is in the Favorita area, north of Palermo's centre, at the foot of Monte Pellegrino."
+      ]
+    },
+    {
+      "id": "pisa",
+      "club": "Pisa",
+      "division": "Serie B",
+      "stadium": "Cetilar Arena",
+      "city": "Pisa",
+      "target": {
+        "lat": 43.7253,
+        "lng": 10.4
+      },
+      "clues": [
+        "This Tuscan club had several Serie A spells under owner Romeo Anconetani during the 1980s.",
+        "Its traditional colours are black and blue.",
+        "The stadium you are looking for is Cetilar Arena.",
+        "The club is Pisa.",
+        "The ground is on Via Ugo Rindi, a few hundred metres north-east of the Leaning Tower."
+      ]
+    },
+    {
+      "id": "sampdoria",
+      "club": "Sampdoria",
+      "division": "Serie B",
+      "stadium": "Stadio Luigi Ferraris",
+      "city": "Genoa",
+      "target": {
+        "lat": 44.4165,
+        "lng": 8.9525
+      },
+      "clues": [
+        "This club won its only Serie A title in 1990–91 and reached the European Cup final the following season.",
+        "Its distinctive shirts combine blue with white, red and black bands.",
+        "The stadium you are looking for is Stadio Luigi Ferraris.",
+        "The club is Sampdoria.",
+        "The ground is in the Marassi district, in the Bisagno valley north-east of Genoa's centre, right next to the city's prison."
+      ]
+    },
+    {
+      "id": "sudtirol",
+      "club": "Südtirol",
+      "division": "Serie B",
+      "stadium": "Stadio Druso",
+      "city": "Bolzano",
+      "target": {
+        "lat": 46.4921,
+        "lng": 11.346
+      },
+      "clues": [
+        "This club reached Serie B for the first time in 2022 and made the play-offs in its very first season.",
+        "Its identity uses both German and Italian naming in a bilingual region.",
+        "The stadium you are looking for is Stadio Druso.",
+        "The club is Südtirol.",
+        "The ground is on the western side of Bolzano, across the Talvera river from the old town."
+      ]
+    },
+    {
+      "id": "vicenza",
+      "club": "L.R. Vicenza",
+      "division": "Serie B",
+      "stadium": "Stadio Romeo Menti",
+      "city": "Vicenza",
+      "target": {
+        "lat": 45.5447,
+        "lng": 11.555
+      },
+      "clues": [
+        "This club finished second in Serie A in 1977–78, with Paolo Rossi leading the attack.",
+        "Its traditional colours are red and white and it won the Coppa Italia in the 1990s.",
+        "The stadium you are looking for is Stadio Romeo Menti.",
+        "The club is L.R. Vicenza.",
+        "The ground is on Via Schio, a short walk east of Vicenza's historic centre."
+      ]
+    },
+    {
+      "id": "virtus-entella",
+      "club": "Virtus Entella",
+      "division": "Serie B",
+      "stadium": "Stadio Enrico Sannazzari",
+      "city": "Chiavari",
+      "target": {
+        "lat": 44.3155,
+        "lng": 9.3372
+      },
+      "clues": [
+        "This Ligurian club takes part of its name from the river that reaches the sea beside its home town.",
+        "Its traditional colours are white and light blue.",
+        "The stadium you are looking for is Stadio Enrico Sannazzari.",
+        "The club is Virtus Entella.",
+        "The ground is on Via Aldo Gastaldi in a residential part of Chiavari, about a 15-minute walk from the old town."
+      ]
+    }
+  ],
+  "clueDesign": {
+    "1": "hard historical/identity clue",
+    "2": "nickname/colours",
+    "3": "stadium name (or a description where the name gives the club or place away)",
+    "4": "explicit club name",
+    "5": "where the ground sits within its town/city"
+  }
+}

@@ -1,0 +1,667 @@
+{
+  "dataset": "pin5-football-france",
+  "season": "2026-27",
+  "country": "France",
+  "competitions": [
+    "Ligue 1",
+    "Ligue 2"
+  ],
+  "clubCount": 36,
+  "clueDesign": {
+    "1": "hard historical/identity clue",
+    "2": "nickname/colours",
+    "3": "stadium name (or a description where the name gives the club or place away)",
+    "4": "explicit club name",
+    "5": "where the ground sits within its town/city"
+  },
+  "clubs": [
+    {
+      "id": "paris-saint-germain",
+      "club": "Paris Saint-Germain",
+      "division": "Ligue 1",
+      "stadium": "Parc des Princes",
+      "city": "Paris",
+      "target": {
+        "lat": 48.8414,
+        "lng": 2.253
+      },
+      "clues": [
+        "This club won its first Champions League in 2025, beating Inter 5–0 in the final.",
+        "The club plays in dark blue with a red stripe edged in white.",
+        "The stadium you are looking for is Parc des Princes.",
+        "The club is Paris Saint-Germain.",
+        "The ground is on the south-western edge of Paris by the Boulevard Périphérique, directly across the road from the Stade Jean-Bouin."
+      ]
+    },
+    {
+      "id": "olympique-de-marseille",
+      "club": "Olympique de Marseille",
+      "division": "Ligue 1",
+      "stadium": "Orange Vélodrome",
+      "city": "Marseille",
+      "target": {
+        "lat": 43.2698,
+        "lng": 5.3959
+      },
+      "clues": [
+        "In 1993 this club became the first French side to win the Champions League.",
+        "The club plays in white and sky blue and is nicknamed Les Phocéens.",
+        "The stadium you are looking for is Orange Vélodrome.",
+        "The club is Olympique de Marseille.",
+        "The ground is in the south of Marseille near the Prado, about 3 km from the Vieux-Port."
+      ]
+    },
+    {
+      "id": "as-monaco",
+      "club": "AS Monaco",
+      "division": "Ligue 1",
+      "stadium": "Stade Louis II",
+      "city": "Monaco",
+      "target": {
+        "lat": 43.7277,
+        "lng": 7.4156
+      },
+      "clues": [
+        "This club reached the 2004 Champions League final and won the French title in 2017 with a teenage Kylian Mbappé.",
+        "The club plays in shirts split diagonally into red and white.",
+        "The stadium you are looking for is built on top of a car park and aquatic centre, with a row of arches along one stand.",
+        "The club is AS Monaco.",
+        "The ground is in Fontvieille, on land reclaimed from the sea below the Rock."
+      ]
+    },
+    {
+      "id": "ogc-nice",
+      "club": "OGC Nice",
+      "division": "Ligue 1",
+      "stadium": "Allianz Riviera",
+      "city": "Nice",
+      "target": {
+        "lat": 43.7051,
+        "lng": 7.1926
+      },
+      "clues": [
+        "This club won four French titles in the 1950s.",
+        "The club plays in red and black and is nicknamed Les Aiglons (the Eaglets).",
+        "The stadium you are looking for is Allianz Riviera.",
+        "The club is OGC Nice.",
+        "The ground is in the Var valley on the western edge of Nice, close to the airport and the A8 motorway."
+      ]
+    },
+    {
+      "id": "losc-lille",
+      "club": "LOSC Lille",
+      "division": "Ligue 1",
+      "stadium": "Decathlon Arena – Stade Pierre-Mauroy",
+      "city": "Villeneuve-d'Ascq",
+      "target": {
+        "lat": 50.6119,
+        "lng": 3.1305
+      },
+      "clues": [
+        "This club won the league and cup double in 2011 and the French title again in 2021.",
+        "The club plays in red and is nicknamed Les Dogues (the Mastiffs).",
+        "The stadium you are looking for is Decathlon Arena – Stade Pierre-Mauroy.",
+        "The club is LOSC Lille.",
+        "The ground is in Villeneuve-d'Ascq, just south-east of Lille, beside the motorway junctions; its roof and pitch can both retract."
+      ]
+    },
+    {
+      "id": "olympique-lyonnais",
+      "club": "Olympique Lyonnais",
+      "division": "Ligue 1",
+      "stadium": "Groupama Stadium",
+      "city": "Décines-Charpieu",
+      "target": {
+        "lat": 45.7653,
+        "lng": 4.9822
+      },
+      "clues": [
+        "This club won seven French titles in a row between 2002 and 2008.",
+        "The club plays in white with red and blue trim and is nicknamed Les Gones.",
+        "The stadium you are looking for is Groupama Stadium.",
+        "The club is Olympique Lyonnais.",
+        "The ground is in Décines-Charpieu on Lyon's eastern outskirts, about 10 km from the city centre."
+      ]
+    },
+    {
+      "id": "rc-strasbourg",
+      "club": "RC Strasbourg",
+      "division": "Ligue 1",
+      "stadium": "Stade de la Meinau",
+      "city": "Strasbourg",
+      "target": {
+        "lat": 48.5601,
+        "lng": 7.7553
+      },
+      "clues": [
+        "This club won its only French title in 1979.",
+        "The club plays in blue and white and is known simply as Le Racing.",
+        "The stadium you are looking for is Stade de la Meinau.",
+        "The club is RC Strasbourg.",
+        "The ground is in the Meinau district, about 3 km south of Strasbourg's historic Grande Île."
+      ]
+    },
+    {
+      "id": "rc-lens",
+      "club": "RC Lens",
+      "division": "Ligue 1",
+      "stadium": "Stade Bollaert-Delelis",
+      "city": "Lens",
+      "target": {
+        "lat": 50.4329,
+        "lng": 2.815
+      },
+      "clues": [
+        "This club won its only French title in 1998.",
+        "The club's colours are red and gold, known as 'sang et or' (blood and gold).",
+        "The stadium you are looking for is Stade Bollaert-Delelis.",
+        "The club is RC Lens.",
+        "The ground is close to the railway station in the centre of this former mining town; it holds more people than the town's population."
+      ]
+    },
+    {
+      "id": "stade-brestois",
+      "club": "Stade Brestois",
+      "division": "Ligue 1",
+      "stadium": "Stade Francis-Le Blé",
+      "city": "Brest",
+      "target": {
+        "lat": 48.4029,
+        "lng": -4.4617
+      },
+      "clues": [
+        "This club played in the Champions League for the first time in 2024–25.",
+        "The club plays in red and white and is nicknamed Les Pirates.",
+        "The stadium you are looking for is Stade Francis-Le Blé.",
+        "The club is Stade Brestois.",
+        "The ground is about 2 km north-east of Brest's city centre; it is the smallest stadium in Ligue 1."
+      ]
+    },
+    {
+      "id": "toulouse-fc",
+      "club": "Toulouse FC",
+      "division": "Ligue 1",
+      "stadium": "Stadium de Toulouse",
+      "city": "Toulouse",
+      "target": {
+        "lat": 43.5833,
+        "lng": 1.4342
+      },
+      "clues": [
+        "This club won the Coupe de France in 2023.",
+        "The club plays in purple and white and is nicknamed Les Violets.",
+        "The stadium you are looking for is nicknamed the 'little Maracanã' and was a 1998 World Cup venue.",
+        "The club is Toulouse FC.",
+        "The ground is on the Île du Ramier, an island in the River Garonne just south of Toulouse's centre."
+      ]
+    },
+    {
+      "id": "aj-auxerre",
+      "club": "AJ Auxerre",
+      "division": "Ligue 1",
+      "stadium": "Stade de l'Abbé-Deschamps",
+      "city": "Auxerre",
+      "target": {
+        "lat": 47.7867,
+        "lng": 3.5886
+      },
+      "clues": [
+        "Guy Roux coached this club for more than 40 years and led it to the league and cup double in 1996.",
+        "The club plays in white and blue.",
+        "The stadium you are looking for is Stade de l'Abbé-Deschamps.",
+        "The club is AJ Auxerre.",
+        "The ground is on the banks of the River Yonne, just east of Auxerre's old town."
+      ]
+    },
+    {
+      "id": "stade-rennais",
+      "club": "Stade Rennais",
+      "division": "Ligue 1",
+      "stadium": "Roazhon Park",
+      "city": "Rennes",
+      "target": {
+        "lat": 48.1075,
+        "lng": -1.7128
+      },
+      "clues": [
+        "This club won the Coupe de France in 2019, beating PSG on penalties.",
+        "The club plays in red and black.",
+        "The stadium you are looking for was long known as the Stade de la Route de Lorient and now carries the Breton name of its city.",
+        "The club is Stade Rennais.",
+        "The ground is on the western side of Rennes, beside the River Vilaine on the road towards Lorient."
+      ]
+    },
+    {
+      "id": "angers-sco",
+      "club": "Angers SCO",
+      "division": "Ligue 1",
+      "stadium": "Stade Raymond-Kopa",
+      "city": "Angers",
+      "target": {
+        "lat": 47.4605,
+        "lng": -0.5306
+      },
+      "clues": [
+        "This club reached the Coupe de France final in 2017.",
+        "The club plays in black and white and is known as Le SCO.",
+        "The stadium you are looking for is Stade Raymond-Kopa.",
+        "The club is Angers SCO.",
+        "The ground is in the Saint-Léonard district, about 1.5 km east of Angers' château."
+      ]
+    },
+    {
+      "id": "le-havre-ac",
+      "club": "Le Havre AC",
+      "division": "Ligue 1",
+      "stadium": "Stade Océane",
+      "city": "Le Havre",
+      "target": {
+        "lat": 49.4988,
+        "lng": 0.1696
+      },
+      "clues": [
+        "Founded in 1872, this club is regarded as the oldest football club in France.",
+        "The club plays in sky blue and navy and is known as Le HAC.",
+        "The stadium you are looking for is Stade Océane.",
+        "The club is Le Havre AC.",
+        "The ground is in the Soquence district near the port, about 3 km east of Le Havre's centre; its outer skin is a striking blue membrane."
+      ]
+    },
+    {
+      "id": "fc-lorient",
+      "club": "FC Lorient",
+      "division": "Ligue 1",
+      "stadium": "Stade du Moustoir",
+      "city": "Lorient",
+      "target": {
+        "lat": 47.7489,
+        "lng": -3.3693
+      },
+      "clues": [
+        "This club won the Coupe de France in 2002.",
+        "The club plays in orange and black and is nicknamed Les Merlus (the Hakes).",
+        "The stadium you are looking for is Stade du Moustoir.",
+        "The club is FC Lorient.",
+        "The ground is in the centre of Lorient, a short walk from the railway station."
+      ]
+    },
+    {
+      "id": "paris-fc",
+      "club": "Paris FC",
+      "division": "Ligue 1",
+      "stadium": "Stade Jean-Bouin",
+      "city": "Paris",
+      "target": {
+        "lat": 48.8432,
+        "lng": 2.2529
+      },
+      "clues": [
+        "Backed by the Arnault family, this club was promoted to Ligue 1 in 2025.",
+        "The club plays in dark blue and white.",
+        "The stadium you are looking for is Stade Jean-Bouin.",
+        "The club is Paris FC.",
+        "The ground is on the south-western edge of Paris, directly across the road from the Parc des Princes."
+      ]
+    },
+    {
+      "id": "estac-troyes",
+      "club": "ESTAC Troyes",
+      "division": "Ligue 1",
+      "stadium": "Stade de l'Aube",
+      "city": "Troyes",
+      "target": {
+        "lat": 48.3075,
+        "lng": 4.0985
+      },
+      "clues": [
+        "Part of the City Football Group since 2020, this club returned to Ligue 1 in 2026.",
+        "The club plays in blue and white and is known as ESTAC.",
+        "The stadium you are looking for is Stade de l'Aube.",
+        "The club is ESTAC Troyes.",
+        "The ground is just north-east of Troyes' old town, which is famously shaped like a champagne cork."
+      ]
+    },
+    {
+      "id": "le-mans-fc",
+      "club": "Le Mans FC",
+      "division": "Ligue 1",
+      "stadium": "Stade Marie-Marvingt",
+      "city": "Le Mans",
+      "target": {
+        "lat": 47.9591,
+        "lng": 0.2231
+      },
+      "clues": [
+        "Didier Drogba began his professional career at this club, which returned to Ligue 1 in 2026 after 16 years away.",
+        "The club's local rivalry with Laval is known as the Derby du Maine.",
+        "The stadium you are looking for was renamed in 2022 after an aviation pioneer, becoming the first big French stadium named after a woman.",
+        "The club is Le Mans FC.",
+        "The ground is on the south side of Le Mans, right beside the 24 Hours circuit and the Mulsanne Straight."
+      ]
+    },
+    {
+      "id": "fc-annecy",
+      "club": "FC Annecy",
+      "division": "Ligue 2",
+      "stadium": "Parc des Sports",
+      "city": "Annecy",
+      "target": {
+        "lat": 45.9165,
+        "lng": 6.1181
+      },
+      "clues": [
+        "This club reached Ligue 2 in 2022.",
+        "The club plays in red and white.",
+        "The stadium you are looking for is Parc des Sports.",
+        "The club is FC Annecy.",
+        "The ground is in the north of Annecy, just under 2 km from the old town and the lake."
+      ]
+    },
+    {
+      "id": "us-boulogne",
+      "club": "US Boulogne",
+      "division": "Ligue 2",
+      "stadium": "Stade de la Libération",
+      "city": "Boulogne-sur-Mer",
+      "target": {
+        "lat": 50.7237,
+        "lng": 1.6194
+      },
+      "clues": [
+        "This club spent a single season in Ligue 1, in 2009–10.",
+        "The club plays in red and black.",
+        "The stadium you are looking for is Stade de la Libération.",
+        "The club is US Boulogne.",
+        "The ground is on Boulevard Eurvin, a few minutes' walk from the walled old town and the fishing port."
+      ]
+    },
+    {
+      "id": "clermont-foot",
+      "club": "Clermont Foot",
+      "division": "Ligue 2",
+      "stadium": "Stade Gabriel-Montpied",
+      "city": "Clermont-Ferrand",
+      "target": {
+        "lat": 45.8158,
+        "lng": 3.1218
+      },
+      "clues": [
+        "This club reached Ligue 1 for the first time in 2021.",
+        "The club plays in red and blue.",
+        "The stadium you are looking for is Stade Gabriel-Montpied.",
+        "The club is Clermont Foot.",
+        "The ground is in the north-east of Clermont-Ferrand, towards the old town of Montferrand, with the volcanoes of the Chaîne des Puys to the west."
+      ]
+    },
+    {
+      "id": "dijon-fco",
+      "club": "Dijon FCO",
+      "division": "Ligue 2",
+      "stadium": "Stade Gaston-Gérard",
+      "city": "Dijon",
+      "target": {
+        "lat": 47.3245,
+        "lng": 5.0684
+      },
+      "clues": [
+        "This club first reached Ligue 1 in 2011.",
+        "The club plays in red and white and is known as the DFCO.",
+        "The stadium you are looking for is Stade Gaston-Gérard.",
+        "The club is Dijon FCO.",
+        "The ground is about 1.5 km south-east of Dijon's historic centre."
+      ]
+    },
+    {
+      "id": "usl-dunkerque",
+      "club": "USL Dunkerque",
+      "division": "Ligue 2",
+      "stadium": "Stade Marcel-Tribut",
+      "city": "Dunkirk",
+      "target": {
+        "lat": 51.0356,
+        "lng": 2.3903
+      },
+      "clues": [
+        "This club reached the Coupe de France semi-finals in 2025.",
+        "The club plays in blue and white and is nicknamed Les Maritimes.",
+        "The stadium you are looking for is Stade Marcel-Tribut.",
+        "The club is USL Dunkerque.",
+        "The ground is on the Avenue de Rosendaël, east of Dunkirk's centre towards the beach at Malo-les-Bains."
+      ]
+    },
+    {
+      "id": "grenoble-foot-38",
+      "club": "Grenoble Foot 38",
+      "division": "Ligue 2",
+      "stadium": "Stade des Alpes",
+      "city": "Grenoble",
+      "target": {
+        "lat": 45.1874,
+        "lng": 5.7404
+      },
+      "clues": [
+        "This club played two seasons in Ligue 1, from 2008 to 2010.",
+        "The club plays in blue and white.",
+        "The stadium you are looking for is Stade des Alpes.",
+        "The club is Grenoble Foot 38.",
+        "The ground is in the Parc Paul-Mistral in central Grenoble, beside the town hall, with mountains on every side."
+      ]
+    },
+    {
+      "id": "en-avant-guingamp",
+      "club": "En Avant Guingamp",
+      "division": "Ligue 2",
+      "stadium": "Stade de Roudourou",
+      "city": "Guingamp",
+      "target": {
+        "lat": 48.5662,
+        "lng": -3.1648
+      },
+      "clues": [
+        "This club won the Coupe de France in 2009 and 2014.",
+        "The club plays in red and black.",
+        "The stadium you are looking for is Stade de Roudourou.",
+        "The club is En Avant Guingamp.",
+        "The ground is on the edge of Guingamp, a Breton town of only about 7,000 people."
+      ]
+    },
+    {
+      "id": "stade-lavallois",
+      "club": "Stade Lavallois",
+      "division": "Ligue 2",
+      "stadium": "Stade Francis Le Basser",
+      "city": "Laval",
+      "target": {
+        "lat": 48.0767,
+        "lng": -0.7703
+      },
+      "clues": [
+        "This club spent much of the 1970s and 1980s in the French top flight.",
+        "The club plays in orange and black and is nicknamed Les Tango.",
+        "The stadium you are looking for is Stade Francis Le Basser.",
+        "The club is Stade Lavallois.",
+        "The ground is a short distance from Laval's city centre."
+      ]
+    },
+    {
+      "id": "fc-metz",
+      "club": "FC Metz",
+      "division": "Ligue 2",
+      "stadium": "Stade Saint-Symphorien",
+      "city": "Longeville-lès-Metz",
+      "target": {
+        "lat": 49.1098,
+        "lng": 6.1597
+      },
+      "clues": [
+        "This club won the Coupe de France in 1984 and 1988.",
+        "The club plays in maroon and is nicknamed Les Grenats.",
+        "The stadium you are looking for is Stade Saint-Symphorien.",
+        "The club is FC Metz.",
+        "The ground is on an island in the River Moselle at Longeville-lès-Metz, just west of Metz's centre."
+      ]
+    },
+    {
+      "id": "montpellier-hsc",
+      "club": "Montpellier HSC",
+      "division": "Ligue 2",
+      "stadium": "Stade de la Mosson",
+      "city": "Montpellier",
+      "target": {
+        "lat": 43.6222,
+        "lng": 3.8121
+      },
+      "clues": [
+        "This club won Ligue 1 in 2012, finishing ahead of PSG.",
+        "The club plays in orange and blue and is nicknamed La Paillade.",
+        "The stadium you are looking for is Stade de la Mosson.",
+        "The club is Montpellier HSC.",
+        "The ground is in the La Paillade district on Montpellier's north-western edge, beside the River Mosson."
+      ]
+    },
+    {
+      "id": "as-nancy-lorraine",
+      "club": "AS Nancy-Lorraine",
+      "division": "Ligue 2",
+      "stadium": "Stade Marcel Picot",
+      "city": "Tomblaine",
+      "target": {
+        "lat": 48.6955,
+        "lng": 6.2105
+      },
+      "clues": [
+        "Michel Platini began his career at this club.",
+        "The club plays in red and white, and its badge features a thistle.",
+        "The stadium you are looking for is Stade Marcel Picot.",
+        "The club is AS Nancy-Lorraine.",
+        "The ground is in Tomblaine, across the River Meurthe from Nancy's centre."
+      ]
+    },
+    {
+      "id": "fc-nantes",
+      "club": "FC Nantes",
+      "division": "Ligue 2",
+      "stadium": "Stade de la Beaujoire",
+      "city": "Nantes",
+      "target": {
+        "lat": 47.256,
+        "lng": -1.5251
+      },
+      "clues": [
+        "This club has won eight French titles and is famed for its passing style, the 'jeu à la nantaise'.",
+        "The club plays in yellow and green and is nicknamed Les Canaris.",
+        "The stadium you are looking for is Stade de la Beaujoire.",
+        "The club is FC Nantes.",
+        "The ground is on the north-eastern edge of Nantes, near the River Erdre."
+      ]
+    },
+    {
+      "id": "pau-fc",
+      "club": "Pau FC",
+      "division": "Ligue 2",
+      "stadium": "Nouste Camp",
+      "city": "Pau",
+      "target": {
+        "lat": 43.3077,
+        "lng": -0.3259
+      },
+      "clues": [
+        "As a third-tier side in 2020, this club knocked Bordeaux out of the Coupe de France.",
+        "The club plays in yellow and blue and is nicknamed Les Maynats.",
+        "The stadium you are looking for has a name meaning 'Our Ground' in the local Béarnese dialect.",
+        "The club is Pau FC.",
+        "The ground is in Bizanos on Pau's eastern edge, right beside the Stade du Hameau rugby ground."
+      ]
+    },
+    {
+      "id": "red-star",
+      "club": "Red Star",
+      "division": "Ligue 2",
+      "stadium": "Stade Bauer",
+      "city": "Saint-Ouen-sur-Seine",
+      "target": {
+        "lat": 48.9058,
+        "lng": 2.3408
+      },
+      "clues": [
+        "This club was founded in 1897 by Jules Rimet, the FIFA president behind the World Cup.",
+        "The club plays in green and white.",
+        "The stadium you are looking for is Stade Bauer.",
+        "The club is Red Star.",
+        "The ground is in Saint-Ouen, just north of Paris, a short walk from the famous flea market."
+      ]
+    },
+    {
+      "id": "stade-de-reims",
+      "club": "Stade de Reims",
+      "division": "Ligue 2",
+      "stadium": "Stade Auguste-Delaune",
+      "city": "Reims",
+      "target": {
+        "lat": 49.2467,
+        "lng": 4.0251
+      },
+      "clues": [
+        "This club reached two European Cup finals in the 1950s, losing both to Real Madrid.",
+        "The club plays in red and white.",
+        "The stadium you are looking for is Stade Auguste-Delaune.",
+        "The club is Stade de Reims.",
+        "The ground is just west of Reims' city centre, near the River Vesle."
+      ]
+    },
+    {
+      "id": "rodez-af",
+      "club": "Rodez AF",
+      "division": "Ligue 2",
+      "stadium": "Stade Paul-Lignon",
+      "city": "Rodez",
+      "target": {
+        "lat": 44.3517,
+        "lng": 2.5636
+      },
+      "clues": [
+        "This club returned to Ligue 2 in 2019 after 26 years in the lower leagues.",
+        "The club plays in red and yellow.",
+        "The stadium you are looking for is Stade Paul-Lignon.",
+        "The club is Rodez AF.",
+        "The ground is in the centre of Rodez, close to the Musée Soulages."
+      ]
+    },
+    {
+      "id": "as-saint-etienne",
+      "club": "AS Saint-Étienne",
+      "division": "Ligue 2",
+      "stadium": "Stade Geoffroy-Guichard",
+      "city": "Saint-Étienne",
+      "target": {
+        "lat": 45.4608,
+        "lng": 4.3903
+      },
+      "clues": [
+        "This club has won ten French titles and lost the 1976 European Cup final after hitting Hampden's square posts.",
+        "The club plays in green and is nicknamed Les Verts.",
+        "The stadium you are looking for is Stade Geoffroy-Guichard.",
+        "The club is AS Saint-Étienne.",
+        "The ground is in the north of Saint-Étienne, a short tram ride from the city centre; fans call it Le Chaudron (the Cauldron)."
+      ]
+    },
+    {
+      "id": "fc-sochaux",
+      "club": "FC Sochaux",
+      "division": "Ligue 2",
+      "stadium": "Stade Auguste-Bonal",
+      "city": "Montbéliard",
+      "target": {
+        "lat": 47.5122,
+        "lng": 6.8112
+      },
+      "clues": [
+        "Founded with the backing of the Peugeot car company, this club won the Coupe de France in 2007.",
+        "The club plays in yellow and blue and is nicknamed Les Lionceaux (the Lion Cubs).",
+        "The stadium you are looking for is Stade Auguste-Bonal.",
+        "The club is FC Sochaux.",
+        "The ground is in Montbéliard, close to the Peugeot works that the club grew up alongside."
+      ]
+    }
+  ]
+}

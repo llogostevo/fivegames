@@ -1,0 +1,776 @@
+{
+  "dataset": "pin5-football-spain",
+  "season": "2026-27",
+  "country": "Spain",
+  "competitions": [
+    "LaLiga",
+    "Segunda División"
+  ],
+  "clubCount": 42,
+  "clueDesign": {
+    "1": "hard historical/identity clue",
+    "2": "nickname/colours",
+    "3": "stadium name (or a description where the name gives the club or place away)",
+    "4": "explicit club name",
+    "5": "where the ground sits within its town/city"
+  },
+  "notes": "FC Andorra play in Andorra, not Spain. Rayo Vallecano and Leganés share Butarque; Celta Vigo and Celta Fortuna share Balaídos.",
+  "clubs": [
+    {
+      "id": "deportivo-alaves",
+      "club": "Deportivo Alavés",
+      "division": "LaLiga",
+      "stadium": "Mendizorrotza",
+      "city": "Vitoria-Gasteiz",
+      "target": {
+        "lat": 42.8372,
+        "lng": -2.688
+      },
+      "clues": [
+        "This club reached the 2001 UEFA Cup final, losing 5–4 to Liverpool to a golden goal.",
+        "The club plays in blue and white stripes and is nicknamed the Babazorros.",
+        "The stadium you are looking for is Mendizorrotza.",
+        "The club is Deportivo Alavés.",
+        "The ground is on the south-western side of Vitoria-Gasteiz, beside the Parque del Prado."
+      ]
+    },
+    {
+      "id": "athletic-club",
+      "club": "Athletic Club",
+      "division": "LaLiga",
+      "stadium": "San Mamés",
+      "city": "Bilbao",
+      "target": {
+        "lat": 43.2642,
+        "lng": -2.9493
+      },
+      "clues": [
+        "This club fields only players from the Basque Country and won the Copa del Rey in 2024.",
+        "The club plays in red and white stripes and is nicknamed Los Leones (the Lions).",
+        "The stadium you are looking for is San Mamés.",
+        "The club is Athletic Club.",
+        "The ground is on the bank of the Nervión estuary at the western edge of Bilbao's centre, next to the site of its predecessor."
+      ]
+    },
+    {
+      "id": "atletico-madrid",
+      "club": "Atlético Madrid",
+      "division": "LaLiga",
+      "stadium": "Riyadh Air Metropolitano",
+      "city": "Madrid",
+      "target": {
+        "lat": 40.4362,
+        "lng": -3.5995
+      },
+      "clues": [
+        "Under Diego Simeone this club won La Liga in 2014 and 2021.",
+        "The club plays in red and white stripes and is nicknamed Los Colchoneros (the mattress-makers).",
+        "The stadium you are looking for is Riyadh Air Metropolitano.",
+        "The club is Atlético Madrid.",
+        "The ground is in San Blas on Madrid's eastern edge, near the M-40 ring road and the airport."
+      ]
+    },
+    {
+      "id": "fc-barcelona",
+      "club": "FC Barcelona",
+      "division": "LaLiga",
+      "stadium": "Spotify Camp Nou",
+      "city": "Barcelona",
+      "target": {
+        "lat": 41.3809,
+        "lng": 2.1228
+      },
+      "clues": [
+        "This club won the treble under Pep Guardiola in 2009 and again under Luis Enrique in 2015.",
+        "The club plays in blue and claret, known as blaugrana.",
+        "The stadium you are looking for is Spotify Camp Nou.",
+        "The club is FC Barcelona.",
+        "The ground is in the Les Corts district in the west of Barcelona, just off the Avinguda Diagonal."
+      ]
+    },
+    {
+      "id": "celta-vigo",
+      "club": "Celta Vigo",
+      "division": "LaLiga",
+      "stadium": "Estadio ABANCA Balaídos",
+      "city": "Vigo",
+      "target": {
+        "lat": 42.2119,
+        "lng": -8.7398
+      },
+      "clues": [
+        "Captain Iago Aspas is this club's all-time leading scorer.",
+        "The club plays in sky blue and is nicknamed Os Celestes.",
+        "The stadium you are looking for is Estadio ABANCA Balaídos.",
+        "The club is Celta Vigo.",
+        "The ground is in south-west Vigo beside the River Lagares, across the road from the Stellantis car plant."
+      ]
+    },
+    {
+      "id": "deportivo-de-la-coruna",
+      "club": "Deportivo de La Coruña",
+      "division": "LaLiga",
+      "stadium": "Estadio ABANCA-Riazor",
+      "city": "A Coruña",
+      "target": {
+        "lat": 43.3687,
+        "lng": -8.4174
+      },
+      "clues": [
+        "This club won La Liga in 2000 and reached the Champions League semi-finals in 2004.",
+        "The club plays in blue and white stripes and is nicknamed the Branquiazuis.",
+        "The stadium you are looking for is a seafront ground that hosted matches at the 1982 World Cup.",
+        "The club is Deportivo de La Coruña.",
+        "The ground is right beside Riazor beach on the western side of the A Coruña peninsula."
+      ]
+    },
+    {
+      "id": "elche-cf",
+      "club": "Elche CF",
+      "division": "LaLiga",
+      "stadium": "Estadio Martínez Valero",
+      "city": "Elche",
+      "target": {
+        "lat": 38.2669,
+        "lng": -0.6634
+      },
+      "clues": [
+        "This club's stadium was a venue at the 1982 World Cup.",
+        "The club plays in white with a green band and is nicknamed Los Franjiverdes.",
+        "The stadium you are looking for is Estadio Martínez Valero.",
+        "The club is Elche CF.",
+        "The ground is on the southern edge of Elche, a city famous for its palm groves."
+      ]
+    },
+    {
+      "id": "rcd-espanyol",
+      "club": "RCD Espanyol",
+      "division": "LaLiga",
+      "stadium": "Estadi Cornellà-El Prat",
+      "city": "Cornellà de Llobregat",
+      "target": {
+        "lat": 41.3478,
+        "lng": 2.0757
+      },
+      "clues": [
+        "This club reached the UEFA Cup final in 1988 and 2007, losing both on penalties.",
+        "The club plays in blue and white stripes and is nicknamed Los Periquitos (the Parakeets).",
+        "The stadium you are looking for is Estadi Cornellà-El Prat.",
+        "The club is RCD Espanyol.",
+        "The ground is in Cornellà de Llobregat on Barcelona's south-western outskirts, close to the airport."
+      ]
+    },
+    {
+      "id": "getafe-cf",
+      "club": "Getafe CF",
+      "division": "LaLiga",
+      "stadium": "Coliseum",
+      "city": "Getafe",
+      "target": {
+        "lat": 40.3256,
+        "lng": -3.7146
+      },
+      "clues": [
+        "This club reached the Copa del Rey final in 2007 and 2008.",
+        "The club plays in blue and is nicknamed Los Azulones.",
+        "The stadium you are looking for is Coliseum.",
+        "The club is Getafe CF.",
+        "The ground is in the southern Madrid suburb of Getafe."
+      ]
+    },
+    {
+      "id": "levante-ud",
+      "club": "Levante UD",
+      "division": "LaLiga",
+      "stadium": "Estadi Ciutat de València",
+      "city": "Valencia",
+      "target": {
+        "lat": 39.4949,
+        "lng": -0.3642
+      },
+      "clues": [
+        "This club briefly topped La Liga in autumn 2011.",
+        "The club plays in blue and claret and is nicknamed Granotes (the Frogs).",
+        "The stadium you are looking for is Estadi Ciutat de València.",
+        "The club is Levante UD.",
+        "The ground is in the north of Valencia, about 2.5 km from Mestalla."
+      ]
+    },
+    {
+      "id": "malaga-cf",
+      "club": "Málaga CF",
+      "division": "LaLiga",
+      "stadium": "La Rosaleda",
+      "city": "Málaga",
+      "target": {
+        "lat": 36.734,
+        "lng": -4.4268
+      },
+      "clues": [
+        "This club reached the Champions League quarter-finals in 2013, losing to Dortmund in stoppage time.",
+        "The club plays in blue and white stripes and is nicknamed Los Boquerones (the Anchovies).",
+        "The stadium you are looking for is La Rosaleda.",
+        "The club is Málaga CF.",
+        "The ground is beside the Guadalmedina river, just north of Málaga's old town."
+      ]
+    },
+    {
+      "id": "ca-osasuna",
+      "club": "CA Osasuna",
+      "division": "LaLiga",
+      "stadium": "El Sadar",
+      "city": "Pamplona",
+      "target": {
+        "lat": 42.7966,
+        "lng": -1.637
+      },
+      "clues": [
+        "This club reached the Copa del Rey final in 2023.",
+        "The club plays in red and is nicknamed Los Rojillos.",
+        "The stadium you are looking for is El Sadar.",
+        "The club is CA Osasuna.",
+        "The ground is in the south of Pamplona, the city famous for its running of the bulls."
+      ]
+    },
+    {
+      "id": "racing-santander",
+      "club": "Racing Santander",
+      "division": "LaLiga",
+      "stadium": "Campos de Sport de El Sardinero",
+      "city": "Santander",
+      "target": {
+        "lat": 43.4762,
+        "lng": -3.7935
+      },
+      "clues": [
+        "This club returned to La Liga in 2026 after 14 years away.",
+        "The club plays in green and white.",
+        "The stadium you are looking for is Campos de Sport de El Sardinero.",
+        "The club is Racing Santander.",
+        "The ground is a short walk from El Sardinero beach on the north side of Santander."
+      ]
+    },
+    {
+      "id": "rayo-vallecano",
+      "club": "Rayo Vallecano",
+      "division": "LaLiga",
+      "stadium": "Estadio Ontime Butarque",
+      "city": "Leganés",
+      "target": {
+        "lat": 40.3404,
+        "lng": -3.7606
+      },
+      "clues": [
+        "This working-class Madrid club played in Europe in 2025–26 for the first time in 25 years.",
+        "The club plays in white with a diagonal red stripe and is nicknamed Los Franjirrojos.",
+        "The stadium you are looking for normally belongs to another club: Rayo moved here in 2026 after their own ground was closed on safety grounds.",
+        "The club is Rayo Vallecano.",
+        "The ground is in the southern suburb of Leganés, about 10 km from Rayo's home district of Vallecas."
+      ]
+    },
+    {
+      "id": "real-betis",
+      "club": "Real Betis",
+      "division": "LaLiga",
+      "stadium": "Estadio La Cartuja de Sevilla",
+      "city": "Seville",
+      "target": {
+        "lat": 37.4163,
+        "lng": -6.0034
+      },
+      "clues": [
+        "This club won La Liga in 1935 and the Copa del Rey in 2022.",
+        "The club plays in green and white stripes and is nicknamed Los Verdiblancos.",
+        "The stadium you are looking for is the 70,000-seat stadium that hosts the Copa del Rey final; it is the club's temporary home while its own ground is rebuilt.",
+        "The club is Real Betis.",
+        "The ground is on the Isla de la Cartuja in the north of Seville, by the Guadalquivir on the old Expo '92 site."
+      ]
+    },
+    {
+      "id": "real-madrid",
+      "club": "Real Madrid",
+      "division": "LaLiga",
+      "stadium": "Santiago Bernabéu",
+      "city": "Madrid",
+      "target": {
+        "lat": 40.4531,
+        "lng": -3.6883
+      },
+      "clues": [
+        "This club has won the European Cup a record 15 times.",
+        "The club plays in all white and is nicknamed Los Blancos.",
+        "The stadium you are looking for is Santiago Bernabéu.",
+        "The club is Real Madrid.",
+        "The ground is on the Paseo de la Castellana in Chamartín, north of Madrid's centre."
+      ]
+    },
+    {
+      "id": "real-sociedad",
+      "club": "Real Sociedad",
+      "division": "LaLiga",
+      "stadium": "Reale Arena",
+      "city": "San Sebastián",
+      "target": {
+        "lat": 43.3014,
+        "lng": -1.9737
+      },
+      "clues": [
+        "This club won back-to-back Liga titles in 1981 and 1982.",
+        "The club plays in blue and white stripes and is nicknamed Txuri-urdin.",
+        "The stadium you are looking for is Reale Arena.",
+        "The club is Real Sociedad.",
+        "The ground is in the Amara district of San Sebastián, about 2 km south of La Concha bay."
+      ]
+    },
+    {
+      "id": "sevilla-fc",
+      "club": "Sevilla FC",
+      "division": "LaLiga",
+      "stadium": "Estadio Ramón Sánchez-Pizjuán",
+      "city": "Seville",
+      "target": {
+        "lat": 37.384,
+        "lng": -5.9706
+      },
+      "clues": [
+        "This club has won the UEFA Cup / Europa League a record seven times.",
+        "The club plays in white with red trim and is nicknamed Los Nervionenses.",
+        "The stadium you are looking for is Estadio Ramón Sánchez-Pizjuán.",
+        "The club is Sevilla FC.",
+        "The ground is in the Nervión district, about 2 km east of Seville cathedral."
+      ]
+    },
+    {
+      "id": "valencia-cf",
+      "club": "Valencia CF",
+      "division": "LaLiga",
+      "stadium": "Mestalla",
+      "city": "Valencia",
+      "target": {
+        "lat": 39.4746,
+        "lng": -0.3583
+      },
+      "clues": [
+        "This club reached back-to-back Champions League finals in 2000 and 2001.",
+        "The club plays in white and black, and a bat sits on its badge.",
+        "The stadium you are looking for is Mestalla.",
+        "The club is Valencia CF.",
+        "The ground is close to Valencia's centre, by the Avenida de Blasco Ibáñez and the gardens in the old Turia riverbed."
+      ]
+    },
+    {
+      "id": "villarreal-cf",
+      "club": "Villarreal CF",
+      "division": "LaLiga",
+      "stadium": "Estadio de la Cerámica",
+      "city": "Villarreal",
+      "target": {
+        "lat": 39.9441,
+        "lng": -0.1036
+      },
+      "clues": [
+        "This club from a town of about 50,000 people won the Europa League in 2021.",
+        "The club plays in yellow and is nicknamed El Submarino Amarillo (the Yellow Submarine).",
+        "The stadium you are looking for is Estadio de la Cerámica.",
+        "The club is Villarreal CF.",
+        "The ground is in the centre of the small town of Villarreal, a few kilometres south of Castellón."
+      ]
+    },
+    {
+      "id": "albacete-balompie",
+      "club": "Albacete Balompié",
+      "division": "Segunda División",
+      "stadium": "Estadio Carlos Belmonte",
+      "city": "Albacete",
+      "target": {
+        "lat": 38.9986,
+        "lng": -1.8659
+      },
+      "clues": [
+        "Nicknamed the 'Queso Mecánico' (Mechanical Cheese), this club finished seventh in its first La Liga season in 1991–92.",
+        "The club plays in white.",
+        "The stadium you are looking for is Estadio Carlos Belmonte.",
+        "The club is Albacete Balompié.",
+        "The ground is close to the centre of Albacete, on the plains of La Mancha."
+      ]
+    },
+    {
+      "id": "ud-almeria",
+      "club": "UD Almería",
+      "division": "Segunda División",
+      "stadium": "UD Almería Stadium",
+      "city": "Almería",
+      "target": {
+        "lat": 36.8399,
+        "lng": -2.4351
+      },
+      "clues": [
+        "This club first reached La Liga in 2007.",
+        "The club plays in red and white stripes.",
+        "The stadium you are looking for was built for the 2005 Mediterranean Games.",
+        "The club is UD Almería.",
+        "The ground is on the eastern edge of Almería, close to the coast."
+      ]
+    },
+    {
+      "id": "fc-andorra",
+      "club": "FC Andorra",
+      "division": "Segunda División",
+      "stadium": "Estadi de la FAF",
+      "city": "Encamp",
+      "target": {
+        "lat": 42.5335,
+        "lng": 1.5759
+      },
+      "clues": [
+        "This club is owned by former Barcelona defender Gerard Piqué.",
+        "The club plays in the Spanish league even though it comes from another country.",
+        "The stadium you are looking for is the national stadium of a small mountain country, opened in 2025.",
+        "The club is FC Andorra.",
+        "The ground is in Encamp, high in the Pyrenees in the Principality of Andorra."
+      ]
+    },
+    {
+      "id": "burgos-cf",
+      "club": "Burgos CF",
+      "division": "Segunda División",
+      "stadium": "Estadio El Plantío",
+      "city": "Burgos",
+      "target": {
+        "lat": 42.3389,
+        "lng": -3.6799
+      },
+      "clues": [
+        "This club returned to the second tier in 2021 after many years in the lower leagues.",
+        "The club plays in white and black.",
+        "The stadium you are looking for is Estadio El Plantío.",
+        "The club is Burgos CF.",
+        "The ground is a short distance from the centre of Burgos and its Gothic cathedral."
+      ]
+    },
+    {
+      "id": "cadiz-cf",
+      "club": "Cádiz CF",
+      "division": "Segunda División",
+      "stadium": "JP Financial Estadio",
+      "city": "Cádiz",
+      "target": {
+        "lat": 36.5027,
+        "lng": -6.2732
+      },
+      "clues": [
+        "This club played in La Liga from 2020 to 2024.",
+        "The club plays in yellow shirts and blue shorts.",
+        "The stadium you are looking for was known for decades as the Ramón de Carranza and hosts the summer Trofeo Carranza tournament.",
+        "The club is Cádiz CF.",
+        "The ground is on the Atlantic seafront in the modern part of Cádiz, right beside Playa Victoria."
+      ]
+    },
+    {
+      "id": "cd-castellon",
+      "club": "CD Castellón",
+      "division": "Segunda División",
+      "stadium": "Estadio SkyFi Castàlia",
+      "city": "Castellón de la Plana",
+      "target": {
+        "lat": 39.9947,
+        "lng": -0.044
+      },
+      "clues": [
+        "This club returned to the second tier in 2024.",
+        "The club plays in black and white stripes and is nicknamed Los Albinegros.",
+        "The stadium you are looking for is Estadio SkyFi Castàlia.",
+        "The club is CD Castellón.",
+        "The ground is close to the centre of Castellón de la Plana."
+      ]
+    },
+    {
+      "id": "celta-fortuna",
+      "club": "Celta Fortuna",
+      "division": "Segunda División",
+      "stadium": "Estadio ABANCA Balaídos",
+      "city": "Vigo",
+      "target": {
+        "lat": 42.2119,
+        "lng": -8.7398
+      },
+      "clues": [
+        "This reserve side of a Galician top-flight club reached the second tier for the first time in 2026.",
+        "The club plays in sky blue, like its parent club.",
+        "The stadium you are looking for is Estadio ABANCA Balaídos.",
+        "The club is Celta Fortuna.",
+        "The ground is in south-west Vigo beside the River Lagares, across the road from the Stellantis car plant."
+      ]
+    },
+    {
+      "id": "ad-ceuta",
+      "club": "AD Ceuta",
+      "division": "Segunda División",
+      "stadium": "Estadio Alfonso Murube",
+      "city": "Ceuta",
+      "target": {
+        "lat": 35.887,
+        "lng": -5.324
+      },
+      "clues": [
+        "This club returned to the second tier in 2025.",
+        "The club plays in white and black, and locals are nicknamed Caballas (Mackerels).",
+        "The stadium you are looking for is Estadio Alfonso Murube.",
+        "The club is AD Ceuta.",
+        "The ground is on Avenida de Otero in Ceuta, the Spanish city on the African side of the Strait of Gibraltar."
+      ]
+    },
+    {
+      "id": "cordoba-cf",
+      "club": "Córdoba CF",
+      "division": "Segunda División",
+      "stadium": "Estadio Bahrain Victorious Nuevo Arcángel",
+      "city": "Córdoba",
+      "target": {
+        "lat": 37.8721,
+        "lng": -4.7613
+      },
+      "clues": [
+        "This club played a single La Liga season, in 2014–15.",
+        "The club plays in white and green stripes.",
+        "The stadium you are looking for is Estadio Bahrain Victorious Nuevo Arcángel.",
+        "The club is Córdoba CF.",
+        "The ground is on the south bank of the Guadalquivir, across the river from Córdoba's Mezquita."
+      ]
+    },
+    {
+      "id": "sd-eibar",
+      "club": "SD Eibar",
+      "division": "Segunda División",
+      "stadium": "Estadio Municipal de Ipurua",
+      "city": "Eibar",
+      "target": {
+        "lat": 43.1817,
+        "lng": -2.476
+      },
+      "clues": [
+        "This club from a town of about 27,000 people reached La Liga in 2014.",
+        "The club plays in claret and blue and is nicknamed Los Armeros (the Gunsmiths).",
+        "The stadium you are looking for is Estadio Municipal de Ipurua.",
+        "The club is SD Eibar.",
+        "The ground is squeezed between steep hillsides in the narrow valley town of Eibar."
+      ]
+    },
+    {
+      "id": "cd-eldense",
+      "club": "CD Eldense",
+      "division": "Segunda División",
+      "stadium": "Estadio Pepico Amat",
+      "city": "Elda",
+      "target": {
+        "lat": 38.4747,
+        "lng": -0.7903
+      },
+      "clues": [
+        "This club from a town famous for shoemaking reached the second tier in 2023.",
+        "The club plays in blue and red.",
+        "The stadium you are looking for is Estadio Pepico Amat.",
+        "The club is CD Eldense.",
+        "The ground is in Elda, an inland town in the province of Alicante."
+      ]
+    },
+    {
+      "id": "girona-fc",
+      "club": "Girona FC",
+      "division": "Segunda División",
+      "stadium": "Estadio Municipal de Montilivi",
+      "city": "Girona",
+      "target": {
+        "lat": 41.9612,
+        "lng": 2.8285
+      },
+      "clues": [
+        "This club played in the Champions League in 2024–25.",
+        "The club plays in red and white stripes.",
+        "The stadium you are looking for is Estadio Municipal de Montilivi.",
+        "The club is Girona FC.",
+        "The ground is on a hillside in the south-west of Girona, near the university's Montilivi campus."
+      ]
+    },
+    {
+      "id": "granada-cf",
+      "club": "Granada CF",
+      "division": "Segunda División",
+      "stadium": "Estadio Nuevo Los Cármenes",
+      "city": "Granada",
+      "target": {
+        "lat": 37.153,
+        "lng": -3.5957
+      },
+      "clues": [
+        "This club reached the Europa League quarter-finals in 2021.",
+        "The club plays in red and white hoops and is nicknamed Los Nazaríes.",
+        "The stadium you are looking for is Estadio Nuevo Los Cármenes.",
+        "The club is Granada CF.",
+        "The ground is in the Zaidín district south of Granada's centre, with the Sierra Nevada behind it."
+      ]
+    },
+    {
+      "id": "ud-las-palmas",
+      "club": "UD Las Palmas",
+      "division": "Segunda División",
+      "stadium": "Estadio Gran Canaria",
+      "city": "Las Palmas",
+      "target": {
+        "lat": 28.1,
+        "lng": -15.4567
+      },
+      "clues": [
+        "This club finished second in La Liga in 1969.",
+        "The club plays in yellow and blue.",
+        "The stadium you are looking for is a 32,000-seat bowl opened in 2003, whose running track was later removed.",
+        "The club is UD Las Palmas.",
+        "The ground is in the Siete Palmas district on the hills above Las Palmas, on Gran Canaria."
+      ]
+    },
+    {
+      "id": "cd-leganes",
+      "club": "CD Leganés",
+      "division": "Segunda División",
+      "stadium": "Estadio Ontime Butarque",
+      "city": "Leganés",
+      "target": {
+        "lat": 40.3404,
+        "lng": -3.7606
+      },
+      "clues": [
+        "This club first reached La Liga in 2016.",
+        "The club plays in blue and white stripes and is nicknamed Los Pepineros (the Cucumber Growers).",
+        "The stadium you are looking for is Estadio Ontime Butarque.",
+        "The club is CD Leganés.",
+        "The ground is on the southern edge of Leganés, a suburb south of Madrid."
+      ]
+    },
+    {
+      "id": "rcd-mallorca",
+      "club": "RCD Mallorca",
+      "division": "Segunda División",
+      "stadium": "Estadi Mallorca Son Moix",
+      "city": "Palma",
+      "target": {
+        "lat": 39.59,
+        "lng": 2.6301
+      },
+      "clues": [
+        "This club won the Copa del Rey in 2003 and reached the 1999 Cup Winners' Cup final.",
+        "The club plays in red and black and is nicknamed Los Bermellones.",
+        "The stadium you are looking for was built for the 1999 Summer Universiade.",
+        "The club is RCD Mallorca.",
+        "The ground is on the northern outskirts of Palma."
+      ]
+    },
+    {
+      "id": "real-oviedo",
+      "club": "Real Oviedo",
+      "division": "Segunda División",
+      "stadium": "Estadio Carlos Tartiere",
+      "city": "Oviedo",
+      "target": {
+        "lat": 43.3608,
+        "lng": -5.8705
+      },
+      "clues": [
+        "In 2025 this club returned to La Liga after 24 years away, but lasted only one season.",
+        "The club plays in blue and is nicknamed Los Carbayones.",
+        "The stadium you are looking for is Estadio Carlos Tartiere.",
+        "The club is Real Oviedo.",
+        "The ground is on the western side of Oviedo, the capital of Asturias."
+      ]
+    },
+    {
+      "id": "real-sociedad-b",
+      "club": "Real Sociedad B",
+      "division": "Segunda División",
+      "stadium": "Estadio de Zubieta",
+      "city": "San Sebastián",
+      "target": {
+        "lat": 43.2799,
+        "lng": -2.038
+      },
+      "clues": [
+        "This reserve team moved into a brand-new stadium at its parent club's training complex.",
+        "The club plays in blue and white stripes and is nicknamed Sanse.",
+        "The stadium you are looking for is a 4,000-seat ground at a top-flight club's training complex.",
+        "The club is Real Sociedad B.",
+        "The ground is at the Zubieta training complex, about 10 km south-west of San Sebastián near the Lasarte racecourse."
+      ]
+    },
+    {
+      "id": "ce-sabadell",
+      "club": "CE Sabadell",
+      "division": "Segunda División",
+      "stadium": "Nova Creu Alta",
+      "city": "Sabadell",
+      "target": {
+        "lat": 41.5582,
+        "lng": 2.1029
+      },
+      "clues": [
+        "This club reached the Copa del Rey final in 1935.",
+        "The club plays in white and blue quarters.",
+        "The stadium you are looking for is Nova Creu Alta.",
+        "The club is CE Sabadell.",
+        "The ground is in Sabadell, an industrial city about 20 km north of Barcelona."
+      ]
+    },
+    {
+      "id": "sporting-gijon",
+      "club": "Sporting Gijón",
+      "division": "Segunda División",
+      "stadium": "Estadio El Molinón-Enrique Castro 'Quini'",
+      "city": "Gijón",
+      "target": {
+        "lat": 43.5361,
+        "lng": -5.6371
+      },
+      "clues": [
+        "This club reached the Copa del Rey final in both 1981 and 1982.",
+        "The club plays in red and white stripes and is nicknamed Los Rojiblancos.",
+        "The stadium you are looking for is Estadio El Molinón-Enrique Castro 'Quini'.",
+        "The club is Sporting Gijón.",
+        "The ground is beside the River Piles near San Lorenzo beach, on the east side of Gijón."
+      ]
+    },
+    {
+      "id": "cd-tenerife",
+      "club": "CD Tenerife",
+      "division": "Segunda División",
+      "stadium": "Estadio Heliodoro Rodríguez López",
+      "city": "Santa Cruz de Tenerife",
+      "target": {
+        "lat": 28.463,
+        "lng": -16.26
+      },
+      "clues": [
+        "This club beat Real Madrid on the final day in both 1992 and 1993, costing them the league title each time.",
+        "The club plays in white and blue.",
+        "The stadium you are looking for is Estadio Heliodoro Rodríguez López.",
+        "The club is CD Tenerife.",
+        "The ground is in Santa Cruz de Tenerife, a short walk from the city centre and the port."
+      ]
+    },
+    {
+      "id": "real-valladolid",
+      "club": "Real Valladolid",
+      "division": "Segunda División",
+      "stadium": "Estadio José Zorrilla",
+      "city": "Valladolid",
+      "target": {
+        "lat": 41.6445,
+        "lng": -4.7612
+      },
+      "clues": [
+        "Brazilian striker Ronaldo was this club's majority owner from 2018 to 2025.",
+        "The club plays in purple and white stripes and is nicknamed Pucela.",
+        "The stadium you are looking for is Estadio José Zorrilla.",
+        "The club is Real Valladolid.",
+        "The ground is on the western edge of Valladolid."
+      ]
+    }
+  ]
+}

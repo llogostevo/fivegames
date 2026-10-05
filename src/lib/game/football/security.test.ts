@@ -20,6 +20,7 @@ describe("Football answer security", () => {
       process.cwd(),
       "data",
       "football",
+      "england",
       "pin5-football92-2026-27.json",
     );
     await access(serverPath, constants.R_OK);
@@ -28,6 +29,7 @@ describe("Football answer security", () => {
       process.cwd(),
       "public",
       "football",
+      "england",
       "pin5-football92-2026-27.json",
     );
     await assert.rejects(() => access(publicPath, constants.R_OK));
@@ -37,6 +39,7 @@ describe("Football answer security", () => {
       "public",
       "data",
       "football",
+      "england",
       "pin5-football92-2026-27.json",
     );
     await assert.rejects(() => access(publicDataPath, constants.R_OK));

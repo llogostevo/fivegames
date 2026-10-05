@@ -3,7 +3,15 @@
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
 
-import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
+import {
+  DEFAULT_GAME_MODE,
+  getModeDefinition,
+  isFootballMode,
+  listPlayableModes,
+  modePath,
+  type GameMode,
+  type GameModeDefinition,
+} from "@/lib/game/modes";
 import {
   formatStreakLabel,
   getCurrentStreak,
@@ -39,7 +47,7 @@ function formatDistance(meters: number): string {
 }
 
 function modeLabel(mode: GameMode): string {
-  return mode === "football" ? "FOOTBALL" : "UK EDITION";
+  return getModeDefinition(mode).modeLabel;
 }
 
 function ShareIcon({ className }: { className?: string }) {
@@ -100,6 +108,35 @@ function dayTitle(day: WeeklyStats["days"][number]): string {
   return `${weekday} — not completed`;
 }
 
+function modeRowLabel(def: GameModeDefinition): string {
+  return def.family === "football"
+    ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
+    : def.title;
+}
+
+function modeRowHint(def: GameModeDefinition): string {
+  return def.family === "football"
+    ? "5 clues · find today's home ground"
+    : "5 clues · one UK place";
+}
+
+function pickOtherMode(current: GameMode, played: Set<GameMode>): GameMode {
+  const unplayed = listPlayableModes().find(
+    (def) => def.id !== current && !played.has(def.id),
+  );
+  if (unplayed) {
+    return unplayed.id;
+  }
+  // Prefer another football league, then daily.
+  const otherFootball = listPlayableModes().find(
+    (def) => def.family === "football" && def.id !== current,
+  );
+  if (otherFootball) {
+    return otherFootball.id;
+  }
+  return current === "daily" ? "football" : "daily";
+}
+
 export function ResultsPopup({
   open,
   reveal,
@@ -151,22 +188,23 @@ export function ResultsPopup({
   const weekly = getWeeklyStats(modeHistory, reveal.date);
   const streak = getCurrentStreak(modeHistory, reveal.date);
 
-  const dailyHistory = readPlayerHistory(undefined, "daily");
-  const footballHistory = readPlayerHistory(undefined, "football");
-  const dailyPlayed =
-    mode === "daily" || Boolean(dailyHistory.games[reveal.date]);
-  const footballPlayed =
-    mode === "football" || Boolean(footballHistory.games[reveal.date]);
-  const dailyScore =
-    mode === "daily"
-      ? reveal.totalScore
-      : (dailyHistory.games[reveal.date]?.score ?? null);
-  const footballScore =
-    mode === "football"
-      ? reveal.totalScore
-      : (footballHistory.games[reveal.date]?.score ?? null);
-  const playedCount = Number(dailyPlayed) + Number(footballPlayed);
-  const otherPending = !(dailyPlayed && footballPlayed);
+  const playable = listPlayableModes();
+  const modeStatuses = playable.map((def) => {
+    const history = readPlayerHistory(undefined, def.id);
+    const played =
+      def.id === mode || Boolean(history.games[reveal.date]);
+    const score =
+      def.id === mode
+        ? reveal.totalScore
+        : (history.games[reveal.date]?.score ?? null);
+    return { def, played, score };
+  });
+  const playedModes = new Set(
+    modeStatuses.filter((row) => row.played).map((row) => row.def.id),
+  );
+  const playedCount = playedModes.size;
+  const totalModes = playable.length;
+  const otherPending = playedCount < totalModes;
 
   const shareLabel =
     shareStatus === "copied"
@@ -188,7 +226,7 @@ export function ResultsPopup({
         typeof reveal.finalDistanceMeters === "number"
           ? formatDistance(reveal.finalDistanceMeters)
           : null;
-      const place = mode === "football" ? "from the ground" : "away";
+      const place = isFootballMode(mode) ? "from the ground" : "away";
       return distance
         ? `Found on pin ${reveal.foundOnPin} · ${distance} ${place}`
         : `Found on pin ${reveal.foundOnPin}`;
@@ -203,16 +241,21 @@ export function ResultsPopup({
     .filter(Boolean)
     .join(" · ");
 
-  const otherGame =
-    mode === "football"
-      ? {
-          href: "/",
-          label: "Play UK Edition",
-        }
-      : {
-          href: "/football",
-          label: "Play Football Edition",
-        };
+  const otherMode = pickOtherMode(mode, playedModes);
+  const otherDef = getModeDefinition(otherMode);
+  const otherGame = {
+    href: modePath(otherMode),
+    label:
+      otherDef.family === "football"
+        ? `Play ${otherDef.title} · ${otherDef.subtitle}`
+        : `Play ${otherDef.title}`,
+  };
+
+  // Show football leagues first, then Daily — matches prior England-first order.
+  const orderedStatuses = [
+    ...modeStatuses.filter((row) => row.def.family === "football"),
+    ...modeStatuses.filter((row) => row.def.family === "daily"),
+  ];
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -235,7 +278,7 @@ export function ResultsPopup({
                 PIN5 #{reveal.gameNumber} · {modeLabel(mode)}
               </p>
               <p className="mt-1 text-xs text-muted">
-                {mode === "football" ? "The club was" : "The place was"}
+                {isFootballMode(mode) ? "The club was" : "The place was"}
               </p>
               <h2
                 id={titleId}
@@ -298,64 +341,41 @@ export function ResultsPopup({
               <h3 className="text-xs font-semibold text-foreground/80">
                 Today&apos;s Pin5
               </h3>
-              <p className="text-xs text-muted">{playedCount} of 2 played</p>
+              <p className="text-xs text-muted">
+                {playedCount} of {totalModes} played
+              </p>
             </div>
 
             <ul className="mt-3 space-y-2.5">
-              <li className="flex items-start gap-2.5">
-                <span
-                  className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                    footballPlayed
-                      ? "bg-course text-white"
-                      : "border border-dashed border-rule bg-white text-transparent"
-                  }`}
-                  aria-hidden="true"
-                >
-                  {footballPlayed ? <CheckIcon /> : null}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-sm font-semibold">Football</p>
-                    {footballScore !== null ? (
-                      <p className="text-sm font-semibold tabular-nums">
-                        {footballScore.toLocaleString()}
+              {orderedStatuses.map(({ def, played, score }) => (
+                <li key={def.id} className="flex items-start gap-2.5">
+                  <span
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+                      played
+                        ? "bg-course text-white"
+                        : "border border-dashed border-rule bg-white text-transparent"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {played ? <CheckIcon /> : null}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-sm font-semibold">
+                        {modeRowLabel(def)}
                       </p>
+                      {score !== null ? (
+                        <p className="text-sm font-semibold tabular-nums">
+                          {score.toLocaleString()}
+                        </p>
+                      ) : null}
+                    </div>
+                    {!played ? (
+                      <p className="text-xs text-muted">{modeRowHint(def)}</p>
                     ) : null}
                   </div>
-                  {!footballPlayed ? (
-                    <p className="text-xs text-muted">
-                      5 clues · find today&apos;s home ground
-                    </p>
-                  ) : null}
-                </div>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span
-                  className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                    dailyPlayed
-                      ? "bg-course text-white"
-                      : "border border-dashed border-rule bg-white text-transparent"
-                  }`}
-                  aria-hidden="true"
-                >
-                  {dailyPlayed ? <CheckIcon /> : null}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-sm font-semibold">UK Edition</p>
-                    {dailyScore !== null ? (
-                      <p className="text-sm font-semibold tabular-nums">
-                        {dailyScore.toLocaleString()}
-                      </p>
-                    ) : null}
-                  </div>
-                  {!dailyPlayed ? (
-                    <p className="text-xs text-muted">
-                      5 clues · one place somewhere in the UK
-                    </p>
-                  ) : null}
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
 
             {otherPending ? (
@@ -370,7 +390,7 @@ export function ResultsPopup({
               </Link>
             ) : (
               <p className="mt-3.5 text-center text-xs font-medium text-foreground/70">
-                Both games played today
+                All games played today
               </p>
             )}
           </section>

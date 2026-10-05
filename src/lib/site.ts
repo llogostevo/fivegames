@@ -1,3 +1,8 @@
+import {
+  getModeDefinition,
+  type GameMode,
+} from "@/lib/game/modes";
+
 /**
  * Public beta origin for PIN5.
  * Keep share / metadata on this host until pin5.co.uk launches.
@@ -11,15 +16,16 @@ export const BETA_SITE_URL = "https://fivegames.vercel.app";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? BETA_SITE_URL;
 
 /**
- * URL appended to shared Daily score messages during beta.
- * Stays on the Vercel deployment until the public launch cutover.
+ * @deprecated Prefer shareUrlForMode("daily") — root is now the hub.
+ * Kept for tests that assert the legacy constant shape.
  */
-export const SHARE_URL = `${BETA_SITE_URL}/`;
+export const SHARE_URL = `${BETA_SITE_URL}/daily`;
 
-/** Football share landing page. */
-export const FOOTBALL_SHARE_URL = `${BETA_SITE_URL}/football`;
+/** @deprecated Prefer shareUrlForMode("football"). */
+export const FOOTBALL_SHARE_URL = `${BETA_SITE_URL}/football/england`;
 
-/** Share URL for a given game mode. */
-export function shareUrlForMode(mode: "daily" | "football"): string {
-  return mode === "football" ? FOOTBALL_SHARE_URL : SHARE_URL;
+/** Absolute share URL for a game mode. */
+export function shareUrlForMode(mode: GameMode): string {
+  const path = getModeDefinition(mode).sharePath;
+  return `${BETA_SITE_URL}${path}`;
 }

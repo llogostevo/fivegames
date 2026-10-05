@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import { ClueFlowModal } from "@/components/game/ClueFlowModal";
 import { FoundCelebration } from "@/components/game/FoundCelebration";
 import { GameMap } from "@/components/game/GameMap";
-import { GamesMenuModal } from "@/components/game/GamesMenuModal";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
 import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
@@ -22,7 +22,13 @@ import {
   readHoldTipSeen,
   shouldShowHoldTip,
 } from "@/lib/game/holdTip";
-import { DEFAULT_GAME_MODE, modeApiPath, type GameMode } from "@/lib/game/modes";
+import {
+  DEFAULT_GAME_MODE,
+  getModeDefinition,
+  isFootballMode,
+  modeApiPath,
+  type GameMode,
+} from "@/lib/game/modes";
 import {
   getCurrentStreak,
   readPlayerHistory,
@@ -113,6 +119,7 @@ type GamePlayProps = {
 };
 
 export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
+  const modeDef = getModeDefinition(mode);
   const [round] = useState(0);
   const [theme, setTheme] = useState<string>("");
   const [themeId, setThemeId] = useState<ThemeId | null>(null);
@@ -137,7 +144,6 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
   >("idle");
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   const [howToPlayCta, setHowToPlayCta] = useState("Got it");
-  const [gamesMenuOpen, setGamesMenuOpen] = useState(false);
   const [resultsOpen, setResultsOpen] = useState(false);
   const [showHoldTip, setShowHoldTip] = useState(() =>
     shouldShowHoldTip(readHoldTipSeen()),
@@ -633,37 +639,34 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
     >
       <header className="flex shrink-0 items-center justify-between gap-3 border-b border-rule px-4 py-3 sm:gap-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-          <button
-            type="button"
-            onClick={() => setGamesMenuOpen(true)}
+          <Link
+            href="/"
             className="rounded-md font-display text-2xl font-bold tracking-tight transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
-            aria-haspopup="dialog"
-            aria-expanded={gamesMenuOpen}
           >
             Pin5
-          </button>
-          {mode === "football" ? (
+          </Link>
+          {isFootballMode(mode) ? (
             <span
               className="inline-flex items-center gap-1 rounded-md border border-course/30 bg-course-soft px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-course sm:px-2 sm:text-[11px]"
-              title="Pin5 Football Edition"
+              title={modeDef.chipLabel}
             >
               <span aria-hidden="true" className="text-[13px] leading-none tracking-normal">
-                ⚽
+                {modeDef.emoji}
               </span>
-              <span>Football Edition</span>
+              <span>{modeDef.chipLabel}</span>
             </span>
           ) : (
             <span
               className="inline-flex items-center gap-1 rounded-md border border-rule bg-neutral-50 px-1.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground/80 sm:px-2 sm:text-[11px]"
-              title="Pin5 UK Edition"
+              title={modeDef.chipLabel}
             >
               <span aria-hidden="true" className="text-[13px] leading-none tracking-normal">
-                🇬🇧
+                {modeDef.emoji}
               </span>
-              <span>UK Edition</span>
+              <span>{modeDef.chipLabel}</span>
             </span>
           )}
-          {theme && mode !== "football" ? (
+          {theme && !isFootballMode(mode) ? (
             <span className="hidden rounded-full bg-course-soft px-2.5 py-0.5 text-sm font-medium text-course sm:inline">
               {theme}
             </span>
@@ -717,12 +720,6 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         open={howToPlayOpen}
         primaryLabel={howToPlayCta}
         onClose={() => setHowToPlayOpen(false)}
-      />
-
-      <GamesMenuModal
-        open={gamesMenuOpen}
-        currentMode={mode}
-        onClose={() => setGamesMenuOpen(false)}
       />
 
       {foundCelebration ? (
@@ -784,7 +781,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
                     Pin5 #{reveal.gameNumber} · {reveal.theme}
                   </p>
                   <p className="mt-2 hidden text-sm text-muted lg:block">
-                    {mode === "football" ? "The club was" : "The place was"}
+                    {isFootballMode(mode) ? "The club was" : "The place was"}
                   </p>
                   <h2 className="mt-1 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:mt-0 lg:text-5xl">
                     {reveal.answer.name}
@@ -902,10 +899,12 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         </section>
 
         <GameMap
-          key={round}
+          key={`${mode}-${round}`}
           className={`relative w-full flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none ${
             isComplete ? "min-h-0" : "min-h-[50dvh]"
           }`}
+          initialCenter={modeDef.mapStart.center}
+          initialZoom={modeDef.mapStart.zoom}
           gameMode
           showLabels={isComplete}
           interactive={mapInteractive}

@@ -13,6 +13,7 @@ import {
   getReleasedFootballGameByDate,
   getTodaysFootballGame,
 } from "@/lib/game/football/loadFootballGame";
+import { footballLeagueForMode } from "@/lib/game/football/leagues";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import type { GameDefinition } from "@/types/game";
@@ -192,8 +193,9 @@ export async function getTodaysGameForMode(
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
-  if (mode === "football") {
-    return getTodaysFootballGame(now, options);
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
+    return getTodaysFootballGame(now, options, leagueId);
   }
   return getTodaysGame(now, options);
 }
@@ -220,8 +222,9 @@ export async function getReleasedGameForMode(
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
-  if (mode === "football") {
-    return getReleasedFootballGameByDate(date, now, options);
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
+    return getReleasedFootballGameByDate(date, now, options, leagueId);
   }
   return getReleasedGameByDate(date, now, options);
 }
@@ -231,11 +234,12 @@ export async function getGameForModeByDate(
   mode: GameMode,
   date: string,
 ): Promise<GameDefinition> {
-  if (mode === "football") {
+  const leagueId = footballLeagueForMode(mode);
+  if (leagueId) {
     const { getFootballGameByDate } = await import(
       "@/lib/game/football/loadFootballGame"
     );
-    return getFootballGameByDate(date);
+    return getFootballGameByDate(date, leagueId);
   }
   return getGameByDate(date);
 }

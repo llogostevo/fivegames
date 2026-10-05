@@ -1,6 +1,7 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
 import {
   DEFAULT_GAME_MODE,
+  isFootballMode,
   modeShareTitle,
   type GameMode,
 } from "@/lib/game/modes";
@@ -76,10 +77,9 @@ function revealMode(reveal: GameReveal): GameMode {
 
 export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
   const mode = revealMode(reveal);
-  const title =
-    mode === "football"
-      ? `${modeShareTitle(mode)} #${reveal.gameNumber}`
-      : `PIN5 #${reveal.gameNumber} — ${reveal.theme}`;
+  const title = isFootballMode(mode)
+    ? `${modeShareTitle(mode)} #${reveal.gameNumber}`
+    : `PIN5 #${reveal.gameNumber} — ${reveal.theme}`;
 
   const lines = [
     title,
@@ -146,10 +146,9 @@ export function buildWeeklyShareText({
   const weekly = getWeeklyStats(history, referenceDate);
   const daysPlayed = countDaysPlayed(weekly);
   const weekNumber = getPin5WeekNumber(referenceDate);
-  const weekTitle =
-    mode === "football"
-      ? `${modeShareTitle(mode)} — WEEK ${weekNumber}`
-      : `PIN5 — WEEK ${weekNumber}`;
+  const weekTitle = isFootballMode(mode)
+    ? `${modeShareTitle(mode)} — WEEK ${weekNumber}`
+    : `PIN5 — WEEK ${weekNumber}`;
 
   const lines = [
     weekTitle,

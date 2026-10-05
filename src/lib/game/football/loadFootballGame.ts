@@ -9,7 +9,10 @@ import {
   loadFootballDataset,
 } from "@/lib/game/football/dataset";
 import {
-  FOOTBALL_SCHEDULE,
+  FOOTBALL_LEAGUES,
+  type FootballLeagueId,
+} from "@/lib/game/football/leagues";
+import {
   footballCycleIndex,
   footballGameNumber,
   orderFootballClubIds,
@@ -17,36 +20,43 @@ import {
 import { GameNotFoundError } from "@/lib/game/loadGame";
 import type { GameDefinition } from "@/types/game";
 
-let cachedOrderedIds: string[] | null = null;
+const cachedOrderedIds = new Map<FootballLeagueId, string[]>();
 
-async function getOrderedClubIds(): Promise<string[]> {
-  if (cachedOrderedIds) {
-    return cachedOrderedIds;
+async function getOrderedClubIds(
+  leagueId: FootballLeagueId,
+): Promise<string[]> {
+  const cached = cachedOrderedIds.get(leagueId);
+  if (cached) {
+    return cached;
   }
-  const dataset = await loadFootballDataset();
-  cachedOrderedIds = orderFootballClubIds(
+  const league = FOOTBALL_LEAGUES[leagueId];
+  const dataset = await loadFootballDataset(leagueId);
+  const ordered = orderFootballClubIds(
     dataset.clubs.map((club) => club.id),
-    FOOTBALL_SCHEDULE.seed,
+    league.schedule.seed,
   );
-  return cachedOrderedIds;
+  cachedOrderedIds.set(leagueId, ordered);
+  return ordered;
 }
 
 /** Build a PIN5 GameDefinition for a Football club on a given date. */
 export async function getFootballGameByDate(
   date: string,
+  leagueId: FootballLeagueId = "england",
 ): Promise<GameDefinition> {
   if (!isValidIsoDate(date)) {
     throw new GameNotFoundError(date);
   }
 
-  if (date < FOOTBALL_SCHEDULE.cycleStartDate) {
+  const league = FOOTBALL_LEAGUES[leagueId];
+  if (date < league.schedule.cycleStartDate) {
     throw new GameNotFoundError(date);
   }
 
-  const dataset = await loadFootballDataset();
-  const orderedIds = await getOrderedClubIds();
+  const dataset = await loadFootballDataset(leagueId);
+  const orderedIds = await getOrderedClubIds(leagueId);
   const index = footballCycleIndex(date, {
-    cycleStartDate: FOOTBALL_SCHEDULE.cycleStartDate,
+    cycleStartDate: league.schedule.cycleStartDate,
     clubCount: orderedIds.length,
   });
   const clubId = orderedIds[index]!;
@@ -55,9 +65,9 @@ export async function getFootballGameByDate(
   return {
     id: date,
     date,
-    gameNumber: footballGameNumber(date),
+    gameNumber: footballGameNumber(date, leagueId),
     theme: "football",
-    mode: "football",
+    mode: league.mode,
     answer: {
       name: club.club,
       lat: club.target.lat,
@@ -76,23 +86,31 @@ export async function getFootballGameByDate(
 export async function getTodaysFootballGame(
   now: Date = new Date(),
   options: ClockOptions = {},
+  leagueId: FootballLeagueId = "england",
 ): Promise<GameDefinition> {
   const date = getAvailableGameDate(now, options);
-  return getFootballGameByDate(date);
+  return getFootballGameByDate(date, leagueId);
 }
 
 export async function getReleasedFootballGameByDate(
   date: string,
   now: Date = new Date(),
   options: ClockOptions = {},
+  leagueId: FootballLeagueId = "england",
 ): Promise<GameDefinition> {
   if (!isGameDateReleased(date, now, options)) {
     throw new GameNotFoundError(date);
   }
-  return getFootballGameByDate(date);
+  return getFootballGameByDate(date, leagueId);
 }
 
 /** Test helper. */
-export function resetFootballScheduleCache(): void {
-  cachedOrderedIds = null;
+export function resetFootballScheduleCache(
+  leagueId?: FootballLeagueId,
+): void {
+  if (leagueId) {
+    cachedOrderedIds.delete(leagueId);
+    return;
+  }
+  cachedOrderedIds.clear();
 }

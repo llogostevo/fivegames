@@ -18,7 +18,7 @@ import {
 } from "./share";
 import { WEEKLY_SHARE_BRAG_SCORE_THRESHOLD } from "./shareConfig";
 import { getWeeklyStats } from "./playerHistory";
-import { FOOTBALL_SHARE_URL, SHARE_URL } from "@/lib/site";
+import { BETA_SITE_URL, FOOTBALL_SHARE_URL, SHARE_URL } from "@/lib/site";
 import type { GameReveal, RevealedGuess } from "@/types/game";
 
 function guess(
@@ -168,7 +168,7 @@ describe("buildDailyShareText", () => {
       ].join("\n"),
     );
     assert.equal(buildShareText(reveal(), 4), text);
-    assert.equal(SHARE_URL, "https://fivegames.vercel.app/");
+    assert.equal(SHARE_URL, "https://fivegames.vercel.app/daily");
   });
 
   it("formats short final-pin distances in metres", () => {
@@ -206,9 +206,61 @@ describe("buildDailyShareText", () => {
       }),
       0,
     );
-    assert.ok(text.includes("PIN5 ⚽ FOOTBALL"));
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL · ENGLAND"));
     assert.equal(text.endsWith(FOOTBALL_SHARE_URL), true);
     assert.equal(text.endsWith(SHARE_URL), false);
+  });
+
+  it("uses the Italy URL for Football Italy shares", () => {
+    const text = buildDailyShareText(
+      reveal({
+        mode: "football-italy",
+        themeId: "football",
+        theme: "Football",
+      }),
+      0,
+    );
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL · ITALY"));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/italy`));
+  });
+
+  it("uses the Germany URL for Football Germany shares", () => {
+    const text = buildDailyShareText(
+      reveal({
+        mode: "football-germany",
+        themeId: "football",
+        theme: "Football",
+      }),
+      0,
+    );
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL · GERMANY"));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/germany`));
+  });
+
+  it("uses the France URL for Football France shares", () => {
+    const text = buildDailyShareText(
+      reveal({
+        mode: "football-france",
+        themeId: "football",
+        theme: "Football",
+      }),
+      0,
+    );
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL · FRANCE"));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/france`));
+  });
+
+  it("uses the Spain URL for Football Spain shares", () => {
+    const text = buildDailyShareText(
+      reveal({
+        mode: "football-spain",
+        themeId: "football",
+        theme: "Football",
+      }),
+      0,
+    );
+    assert.ok(text.includes("PIN5 ⚽ FOOTBALL · SPAIN"));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/spain`));
   });
 });
 
@@ -332,6 +384,6 @@ describe("weekly share content", () => {
     assert.ok(!text.includes("clue"));
     assert.ok(!text.includes("km"));
     assert.ok(text.endsWith(SHARE_URL));
-    assert.equal(SHARE_URL, "https://fivegames.vercel.app/");
+    assert.equal(SHARE_URL, "https://fivegames.vercel.app/daily");
   });
 });
