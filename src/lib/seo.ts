@@ -52,16 +52,16 @@ export const HUB_SEO: SeoPage = {
   path: "/",
   title: "PIN5 — Daily location games | Geography & football",
   description:
-    "Free daily location games: world geography, UK places, London pubs, tube stations, airports, Taylor Swift, and football stadiums. Five clues. Five pins. One place.",
+    "Free daily location games: world geography, UK places, London pubs, tube stations, airports, Taylor Swift, Harry Potter, and football stadiums. Five clues. Five pins. One place.",
   heading: "Daily location games",
   intro:
-    "PIN5 is a free daily puzzle hub. Each game gives you five clues and five map pins to find one place — from world landmarks and London pubs to tube stations, airports, Taylor Swift career places, and football grounds.",
+    "PIN5 is a free daily puzzle hub. Each game gives you five clues and five map pins to find one place — from world landmarks and London pubs to tube stations, airports, Taylor Swift career places, Harry Potter filming locations, and football grounds.",
   faqs: [
     ...SHARED_FAQS,
     {
       question: "What games are on PIN5?",
       answer:
-        "Play Daily 5 World, Airports, United Kingdom, London Pubs, London Train & Tube, Taylor Swift, and Football 5 for England, Italy, Germany, France, and Spain.",
+        "Play Daily 5 World, Airports, United Kingdom, London Pubs, London Train & Tube, Taylor Swift, Harry Potter, and Football 5 for England, Italy, Germany, France, and Spain.",
     },
   ],
 };
@@ -132,6 +132,17 @@ export const MODE_SEO: Record<GameMode, SeoPage> = {
       "PIN5 Taylor Swift is a free daily entertainment-geography puzzle. Use five clues and five map pins to find today's place from her public music career — venues, video sets, landmarks and more. New place every day.",
     faqs: SHARED_FAQS,
     siteName: "PIN5 Taylor Swift",
+  },
+  "harry-potter": {
+    path: GAME_MODE_DEFINITIONS["harry-potter"].path,
+    title: "Harry Potter Filming Locations Quiz — PIN5",
+    description:
+      "Free daily Harry Potter geography quiz. Five clues, five pins — find today's real-world Wizarding World filming location or franchise place.",
+    heading: "Harry Potter filming locations quiz",
+    intro:
+      "PIN5 Harry Potter is a free daily entertainment-geography puzzle. Use five clues and five map pins to find today's real-world place from the Wizarding World — filming locations, studios, theme parks and franchise landmarks. New place every day.",
+    faqs: SHARED_FAQS,
+    siteName: "PIN5 Harry Potter",
   },
   football: {
     path: GAME_MODE_DEFINITIONS.football.path,

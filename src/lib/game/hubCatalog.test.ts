@@ -64,16 +64,18 @@ describe("hubCatalog", () => {
     assert.equal(padded.length, 1);
   });
 
-  it("groups Places, London, Music and Football separately", () => {
+  it("groups Places, London, Music, Film and Football separately", () => {
     assert.deepEqual([...HUB_SECTION_ORDER], [
       "places",
       "london",
       "music",
+      "film",
       "football",
     ]);
     assert.equal(HUB_SECTION_META.places.title, "Places");
     assert.equal(HUB_SECTION_META.london.title, "London");
     assert.equal(HUB_SECTION_META.music.title, "Music");
+    assert.equal(HUB_SECTION_META.film.title, "Film & TV");
     assert.equal(HUB_SECTION_META.football.title, "Football 5");
 
     const places = hubGamesInGroup("places").map((game) => game.id);
@@ -97,6 +99,12 @@ describe("hubCatalog", () => {
     assert.equal(music[0]?.id, "taylor-swift");
     assert.equal(music[0]?.tileEmoji, "🎤");
     assert.equal(music[0]?.code, "TS");
+
+    const film = hubGamesInGroup("film");
+    assert.equal(film.length, 1);
+    assert.equal(film[0]?.id, "harry-potter");
+    assert.equal(film[0]?.tileEmoji, "⚡");
+    assert.equal(film[0]?.code, "HP");
   });
 
   it("lists London pubs under London with Pubs as the tile name", () => {
@@ -131,5 +139,14 @@ describe("hubCatalog", () => {
     assert.equal(taylor.tileEmoji, "🎤");
     assert.equal(taylor.code, "TS");
     assert.equal(taylor.shortLabel, "Career places");
+  });
+
+  it("lists Harry Potter under Film & TV", () => {
+    const potter = HUB_GAMES.find((game) => game.id === "harry-potter");
+    assert.ok(potter);
+    assert.equal(potter.group, "film");
+    assert.equal(potter.tileEmoji, "⚡");
+    assert.equal(potter.code, "HP");
+    assert.equal(potter.shortLabel, "Wizarding World");
   });
 });

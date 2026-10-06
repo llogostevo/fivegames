@@ -17,6 +17,7 @@ export const THEME_IDS = [
   "london-stations",
   "world-airports",
   "taylor-swift",
+  "harry-potter",
 ] as const;
 
 export type ThemeId = (typeof THEME_IDS)[number];
@@ -139,6 +140,14 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accent: "#c4157a",
     accentSoft: "#fbe7f2",
     emoji: "🎤",
+  },
+  "harry-potter": {
+    id: "harry-potter",
+    displayName: "Harry Potter",
+    label: "Harry Potter",
+    accent: "#7c3aed",
+    accentSoft: "#ede9fe",
+    emoji: "⚡",
   },
 };
 

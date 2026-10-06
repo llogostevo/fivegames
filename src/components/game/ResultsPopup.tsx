@@ -114,7 +114,8 @@ function modeRowLabel(def: GameModeDefinition): string {
     def.family === "pubs" ||
     def.family === "stations" ||
     def.family === "airports" ||
-    def.family === "taylor-swift"
+    def.family === "taylor-swift" ||
+    def.family === "harry-potter"
     ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
     : def.title;
 }
@@ -137,6 +138,9 @@ function modeRowHint(def: GameModeDefinition): string {
   }
   if (def.family === "taylor-swift") {
     return "5 clues · find today's Taylor Swift place";
+  }
+  if (def.family === "harry-potter") {
+    return "5 clues · find today's Wizarding World place";
   }
   return "5 clues · one UK place";
 }
@@ -272,12 +276,13 @@ export function ResultsPopup({
       otherDef.family === "pubs" ||
       otherDef.family === "stations" ||
       otherDef.family === "airports" ||
-      otherDef.family === "taylor-swift"
+      otherDef.family === "taylor-swift" ||
+      otherDef.family === "harry-potter"
         ? `Play ${otherDef.title} · ${otherDef.subtitle}`
         : `Play ${otherDef.title}`,
   };
 
-  // World first, then airports, Daily UK, London editions, Taylor Swift, then football.
+  // World first, then airports, Daily UK, London editions, Music, Film, then football.
   const orderedStatuses = [
     ...modeStatuses.filter((row) => row.def.family === "world"),
     ...modeStatuses.filter((row) => row.def.family === "airports"),
@@ -285,6 +290,7 @@ export function ResultsPopup({
     ...modeStatuses.filter((row) => row.def.family === "pubs"),
     ...modeStatuses.filter((row) => row.def.family === "stations"),
     ...modeStatuses.filter((row) => row.def.family === "taylor-swift"),
+    ...modeStatuses.filter((row) => row.def.family === "harry-potter"),
     ...modeStatuses.filter((row) => row.def.family === "football"),
   ];
 

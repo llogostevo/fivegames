@@ -27,6 +27,11 @@ export type GameDefinition = {
   answer: GameAnswer;
   /** Football (and future modes) extras for completed reveals only. */
   answerDetail?: GameAnswerDetail;
+  /**
+   * Optional mid-game label describing the target type
+   * (e.g. "Filming location", "Actor birthplace"). Safe to send publicly.
+   */
+  connectionLabel?: string;
   clues: string[];
 };
 
@@ -148,6 +153,11 @@ export type PublicGameState = {
   accentSoft: string;
   /** ISO timestamp of the next configured daily release. */
   nextReleaseAt: string;
+  /**
+   * Optional target-type label (e.g. "Filming location"). Present for modes
+   * with mixed connection types; omitted/null otherwise.
+   */
+  connectionLabel?: string | null;
   clueCount: number;
   /** How this /start response was produced. */
   status: "new" | "resumed" | "completed";

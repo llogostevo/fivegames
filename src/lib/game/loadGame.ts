@@ -34,6 +34,11 @@ import {
   getTodaysTaylorSwiftGame,
   getTaylorSwiftGameByDate,
 } from "@/lib/game/taylorswift/loadTaylorSwiftGame";
+import {
+  getReleasedHarryPotterGameByDate,
+  getTodaysHarryPotterGame,
+  getHarryPotterGameByDate,
+} from "@/lib/game/harrypotter/loadHarryPotterGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -233,6 +238,9 @@ export async function getTodaysGameForMode(
   if (mode === "taylor-swift") {
     return getTodaysTaylorSwiftGame(now, options);
   }
+  if (mode === "harry-potter") {
+    return getTodaysHarryPotterGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -277,6 +285,9 @@ export async function getReleasedGameForMode(
   if (mode === "taylor-swift") {
     return getReleasedTaylorSwiftGameByDate(date, now, options);
   }
+  if (mode === "harry-potter") {
+    return getReleasedHarryPotterGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -303,6 +314,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "taylor-swift") {
     return getTaylorSwiftGameByDate(date);
+  }
+  if (mode === "harry-potter") {
+    return getHarryPotterGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
@@ -332,6 +346,7 @@ export function getPublicGameMeta(
     accent: theme.accent,
     accentSoft: theme.accentSoft,
     nextReleaseAt: getNextReleaseAt(now, options).toISOString(),
+    connectionLabel: game.connectionLabel ?? null,
   };
 }
 

@@ -269,32 +269,32 @@ The target must correspond to where the player should actually place their pin �
 
 ---
 
-# 5. AVOID DUPLICATE MAP TARGETS
+# 5. MAP TARGETS, SPECIFICITY AND DUPLICATES
 
-I want as many **distinct real-world locations** as the evidence supports — not many pieces of Marvel trivia attached to a small number of cities.
+Prefer the most accurate pin you can support.
 
-Do not repeatedly use:
+Where possible, drill down to a specific place within a city (a studio, plaza, building, campus, park land, named landmark) rather than using the city as a generic target.
 
-- Atlanta
-- New York
-- Los Angeles
-- London
-- etc.
-
-as generic targets.
-
-Different specific locations within the same city ARE acceptable.
-
-For example, several Atlanta / Georgia locations could be included if each has:
+Different specific locations within the same city are encouraged when each has:
 
 - a distinct physical location;
 - its own coordinates;
 - a meaningful Marvel connection;
 - substantially different clues.
 
-Likewise, multiple London / LA / New York locations are acceptable if they are genuinely separate places.
+**Duplicates are allowed when they serve different questions.**
 
-Before writing the final dataset, deduplicate all coordinates and location identities.
+It is fine if more than one entry points at the same city — or even the same broader place — when each question has a different Marvel connection and its own clue set.
+
+For example:
+
+- several Atlanta / New York / London questions are welcome if they are about different scenes, productions or franchise sites;
+- a broader city-level target is acceptable when that is genuinely the right level for the question;
+- do not force an artificial “one pin per city” rule.
+
+Only treat two entries as unwanted duplicates when they are effectively the **same question** — same place, same connection, and substantially the same clues.
+
+Before writing the final dataset, review for true duplicate questions. Do not reject entries merely because they share a city or a nearby coordinate.
 
 ---
 

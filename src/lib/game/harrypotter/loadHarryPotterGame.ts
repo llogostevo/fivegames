@@ -6,15 +6,15 @@ import {
 } from "@/lib/game/date";
 import { GameNotFoundError } from "@/lib/game/loadGame";
 import {
-  getTaylorSwiftPlaceById,
-  loadTaylorSwiftDataset,
-} from "@/lib/game/taylorswift/dataset";
+  getHarryPotterPlaceById,
+  loadHarryPotterDataset,
+} from "@/lib/game/harrypotter/dataset";
 import {
-  TAYLOR_SWIFT_SCHEDULE,
-  orderTaylorSwiftPlaceIds,
-  taylorSwiftCycleIndex,
-  taylorSwiftGameNumber,
-} from "@/lib/game/taylorswift/schedule";
+  HARRY_POTTER_SCHEDULE,
+  harryPotterCycleIndex,
+  harryPotterGameNumber,
+  orderHarryPotterPlaceIds,
+} from "@/lib/game/harrypotter/schedule";
 import { formatConnectionLabel } from "@/lib/game/connectionLabel";
 import type { GameDefinition } from "@/types/game";
 
@@ -24,42 +24,42 @@ async function getOrderedPlaceIds(): Promise<string[]> {
   if (cachedOrderedIds) {
     return cachedOrderedIds;
   }
-  const dataset = await loadTaylorSwiftDataset();
-  cachedOrderedIds = orderTaylorSwiftPlaceIds(
+  const dataset = await loadHarryPotterDataset();
+  cachedOrderedIds = orderHarryPotterPlaceIds(
     dataset.locations.map((place) => place.id),
-    TAYLOR_SWIFT_SCHEDULE.seed,
+    HARRY_POTTER_SCHEDULE.seed,
   );
   return cachedOrderedIds;
 }
 
-/** Build a PIN5 GameDefinition for a Taylor Swift place on a given date. */
-export async function getTaylorSwiftGameByDate(
+/** Build a PIN5 GameDefinition for a Harry Potter place on a given date. */
+export async function getHarryPotterGameByDate(
   date: string,
 ): Promise<GameDefinition> {
   if (!isValidIsoDate(date)) {
     throw new GameNotFoundError(date);
   }
 
-  if (date < TAYLOR_SWIFT_SCHEDULE.cycleStartDate) {
+  if (date < HARRY_POTTER_SCHEDULE.cycleStartDate) {
     throw new GameNotFoundError(date);
   }
 
-  const dataset = await loadTaylorSwiftDataset();
+  const dataset = await loadHarryPotterDataset();
   const orderedIds = await getOrderedPlaceIds();
-  const index = taylorSwiftCycleIndex(date, {
-    cycleStartDate: TAYLOR_SWIFT_SCHEDULE.cycleStartDate,
+  const index = harryPotterCycleIndex(date, {
+    cycleStartDate: HARRY_POTTER_SCHEDULE.cycleStartDate,
     placeCount: orderedIds.length,
   });
   const placeId = orderedIds[index]!;
-  const place = getTaylorSwiftPlaceById(dataset, placeId);
+  const place = getHarryPotterPlaceById(dataset, placeId);
   const connectionLabel = formatConnectionLabel(place.connection);
 
   return {
     id: date,
     date,
-    gameNumber: taylorSwiftGameNumber(date),
-    theme: "taylor-swift",
-    mode: "taylor-swift",
+    gameNumber: harryPotterGameNumber(date),
+    theme: "harry-potter",
+    mode: "harry-potter",
     answer: {
       name: place.location,
       lat: place.target.lat,
@@ -75,15 +75,15 @@ export async function getTaylorSwiftGameByDate(
   };
 }
 
-export async function getTodaysTaylorSwiftGame(
+export async function getTodaysHarryPotterGame(
   now: Date = new Date(),
   options: ClockOptions = {},
 ): Promise<GameDefinition> {
   const date = getAvailableGameDate(now, options);
-  return getTaylorSwiftGameByDate(date);
+  return getHarryPotterGameByDate(date);
 }
 
-export async function getReleasedTaylorSwiftGameByDate(
+export async function getReleasedHarryPotterGameByDate(
   date: string,
   now: Date = new Date(),
   options: ClockOptions = {},
@@ -91,10 +91,10 @@ export async function getReleasedTaylorSwiftGameByDate(
   if (!isGameDateReleased(date, now, options)) {
     throw new GameNotFoundError(date);
   }
-  return getTaylorSwiftGameByDate(date);
+  return getHarryPotterGameByDate(date);
 }
 
 /** Test helper. */
-export function resetTaylorSwiftScheduleCache(): void {
+export function resetHarryPotterScheduleCache(): void {
   cachedOrderedIds = null;
 }

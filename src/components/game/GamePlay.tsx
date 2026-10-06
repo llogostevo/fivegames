@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import { ClueFlowModal } from "@/components/game/ClueFlowModal";
+import { ConnectionTypeChip } from "@/components/game/ConnectionTypeChip";
 import { FoundCelebration } from "@/components/game/FoundCelebration";
 import { GameMap } from "@/components/game/GameMap";
 import { HowToPlayModal } from "@/components/game/HowToPlayModal";
@@ -124,6 +125,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
   const [round] = useState(0);
   const [theme, setTheme] = useState<string>("");
   const [themeId, setThemeId] = useState<ThemeId | null>(null);
+  const [connectionLabel, setConnectionLabel] = useState<string | null>(null);
   const [unavailableMessage, setUnavailableMessage] = useState<string | null>(
     null,
   );
@@ -183,6 +185,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
         setTheme(data.theme);
         setThemeId(data.themeId);
+        setConnectionLabel(data.connectionLabel ?? null);
         setFlowModal(null);
         setShareStatus("idle");
         setWeekShareStatus("idle");
@@ -754,6 +757,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           howToPlayOpen || resultsOpen || foundCelebration ? null : flowModal
         }
         isBusy={isBusy}
+        connectionLabel={connectionLabel}
         onRequestFinish={handleRequestFinish}
         onConfirmFinish={() => void handleFinishHere()}
         onCancelFinish={handleCancelFinish}
@@ -889,15 +893,24 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           ) : activeRow ? (
             <div key={activeIndex} className="fg-feedback space-y-2">
               <div>
-                <p className="text-sm font-medium text-course">
-                  Clue {pinNumber} of {CLUE_COUNT}
+                {connectionLabel ? (
+                  <ConnectionTypeChip label={connectionLabel} className="mb-2" />
+                ) : null}
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                  <p className="text-sm font-medium text-course">
+                    {connectionLabel ? "Find this place" : null}
+                    {connectionLabel ? (
+                      <span className="text-muted"> · </span>
+                    ) : null}
+                    Clue {pinNumber} of {CLUE_COUNT}
+                  </p>
                   {liveClueMax !== null ? (
-                    <span className="ml-2 font-normal text-muted">
-                      · Max {liveClueMax.toLocaleString()}
-                    </span>
+                    <p className="text-xs text-muted sm:text-sm">
+                      Max {liveClueMax.toLocaleString()}
+                    </p>
                   ) : null}
-                </p>
-                <p className="mt-1 font-display text-xl font-semibold leading-snug sm:text-2xl lg:text-[1.7rem]">
+                </div>
+                <p className="mt-1.5 font-display text-xl font-semibold leading-snug sm:text-2xl lg:text-[1.7rem]">
                   {activeRow.text}
                 </p>
               </div>

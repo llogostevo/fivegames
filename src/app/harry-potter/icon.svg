@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 Harry Potter">
+  <rect width="32" height="32" rx="8" fill="#1e1e24"/>
+  <path d="M16 5.5 17.4 12.2 24 13.5 17.4 14.8 16 21.5 14.6 14.8 8 13.5 14.6 12.2Z" fill="#f5d76e"/>
+  <path d="M16 21.5v5" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 26.5h8" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/>
+</svg>

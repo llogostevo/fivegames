@@ -57,4 +57,17 @@ describe("Taylor Swift schedule", () => {
       WORLD_SCORING_PROFILE,
     );
   });
+
+  it("includes a connection label for today's game", async () => {
+    resetTaylorSwiftScheduleCache();
+    const now = new Date(
+      `${TAYLOR_SWIFT_SCHEDULE.cycleStartDate}T12:00:00+01:00`,
+    );
+    const first = await getTodaysGameForMode("taylor-swift", now, { now });
+    assert.ok(first.connectionLabel);
+    assert.match(
+      first.connectionLabel,
+      /venue|performance|video|song|career|recording|award|place/i,
+    );
+  });
 });

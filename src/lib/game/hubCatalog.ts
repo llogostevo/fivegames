@@ -8,13 +8,14 @@ import {
   type GameMode,
 } from "@/lib/game/modes";
 
-export type HubGameGroup = "places" | "london" | "music" | "football";
+export type HubGameGroup = "places" | "london" | "music" | "film" | "football";
 
 /** Section display order on the hub. */
 export const HUB_SECTION_ORDER: readonly HubGameGroup[] = [
   "places",
   "london",
   "music",
+  "film",
   "football",
 ] as const;
 
@@ -122,6 +123,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Music",
   },
   {
+    id: "harry-potter",
+    group: "film",
+    name: "Harry Potter",
+    shortLabel: "Wizarding World",
+    code: "HP",
+    tileEmoji: "⚡",
+    href: GAME_MODE_DEFINITIONS["harry-potter"].path,
+    mapImage: "/hub-maps/uk.webp",
+    groupLabel: "Film & TV",
+  },
+  {
     id: "football",
     group: "football",
     name: "England",
@@ -198,6 +210,12 @@ export const HUB_COMING_SOON: readonly HubComingSoonEntry[] = [
     label: "More music editions coming soon",
   },
   {
+    id: "coming-film",
+    group: "film",
+    comingSoon: true,
+    label: "More film & TV editions coming soon",
+  },
+  {
     id: "coming-football",
     group: "football",
     comingSoon: true,
@@ -212,6 +230,7 @@ export const HUB_SECTION_META: Record<
   places: { id: "places", title: "Places" },
   london: { id: "london", title: "London" },
   music: { id: "music", title: "Music" },
+  film: { id: "film-tv", title: "Film & TV" },
   football: { id: "football-5", title: "Football 5" },
 };
 

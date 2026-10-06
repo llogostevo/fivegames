@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef } from "react";
 
+import { ConnectionTypeChip } from "@/components/game/ConnectionTypeChip";
 import {
   finishConfirmExplanation,
   formatScoreCeiling,
@@ -12,6 +13,8 @@ import {
 type ClueFlowModalProps = {
   state: ClueFlowModalState | null;
   isBusy?: boolean;
+  /** Optional target-type label (e.g. Filming location). */
+  connectionLabel?: string | null;
   /** Opens finish confirmation — must not finish the game. */
   onRequestFinish: () => void;
   /** Confirms finish — runs the final-answer action. */
@@ -26,6 +29,7 @@ type ClueFlowModalProps = {
 export function ClueFlowModal({
   state,
   isBusy = false,
+  connectionLabel = null,
   onRequestFinish,
   onConfirmFinish,
   onCancelFinish,
@@ -178,13 +182,24 @@ export function ClueFlowModal({
               </div>
             ) : null}
 
-            <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted">
-              Clue {state.clueNumber} of 5 · Max{" "}
-              {formatScoreCeiling(state.currentMaxScore)}
-            </p>
+            {connectionLabel ? (
+              <ConnectionTypeChip label={connectionLabel} className="mb-2" />
+            ) : null}
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              <p className="text-sm font-medium text-course">
+                {connectionLabel ? "Find this place" : null}
+                {connectionLabel ? (
+                  <span className="text-muted"> · </span>
+                ) : null}
+                Clue {state.clueNumber} of 5
+              </p>
+              <p className="text-xs text-muted">
+                Max {formatScoreCeiling(state.currentMaxScore)}
+              </p>
+            </div>
             <h2
               id={titleId}
-              className="mt-1 font-display text-xl font-bold leading-snug tracking-tight"
+              className="mt-1.5 font-display text-xl font-bold leading-snug tracking-tight"
             >
               {state.clueText}
             </h2>
