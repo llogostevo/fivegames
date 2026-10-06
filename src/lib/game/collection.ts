@@ -13,19 +13,30 @@ export const COLLECTION_STORAGE_KEY = "pin5.collection.v1";
 export const COLLECTION_UPDATED_EVENT = "pin5:collection-updated";
 
 /**
- * Dataset sizes for "of N" — keep in sync with each mode's COUNT constant.
- * Duplicated here so client bundles never import server dataset loaders.
+ * Dataset sizes for "of N" — must match the pool each daily game actually serves
+ * (schedule placeCount / orderedIds.length from each mode's loader).
+ *
+ * Film/music datasets (Marvel, Harry Potter, Star Wars, Taylor Swift): parsers
+ * require status === "ready" and COUNT equals the validated array length, so the
+ * served pool is ready-only. If a future loader started including status
+ * "review" in selection without changing COUNT, flag that here — do not change
+ * selection behaviour from the collection layer.
+ *
+ * World / airports / stations / pubs / football: every validated dataset entry
+ * is cycled (stations may use provisional clues; all station ids are still served).
+ *
+ * Daily UK: one place per dated game file under data/games/ (no status field).
  */
 const PLACE_TOTAL_BY_MODE: Record<GameMode, number> = {
-  world: 314,
-  "world-airports": 890,
-  daily: 28,
-  "london-pubs": 107,
-  "london-stations": 495,
-  "taylor-swift": 94,
-  "harry-potter": 241,
-  marvel: 203,
-  "star-wars": 145,
+  world: 314, // WORLD_PLACE_COUNT
+  "world-airports": 890, // WORLD_AIRPORTS_COUNT
+  daily: 28, // data/games/*.json
+  "london-pubs": 107, // LONDON_PUBS_COUNT
+  "london-stations": 495, // LONDON_STATIONS_COUNT
+  "taylor-swift": 94, // TAYLOR_SWIFT_COUNT (ready-only via parser)
+  "harry-potter": 241, // HARRY_POTTER_COUNT (ready-only via parser)
+  marvel: 203, // MARVEL_COUNT (ready-only via parser)
+  "star-wars": 145, // STAR_WARS_COUNT (ready-only via parser)
   football: FOOTBALL_LEAGUES.england.expectedClubCount,
   "football-italy": FOOTBALL_LEAGUES.italy.expectedClubCount,
   "football-germany": FOOTBALL_LEAGUES.germany.expectedClubCount,
@@ -317,6 +328,201 @@ export function listCollectionPlaces(
       }
       return a.name.localeCompare(b.name);
     });
+}
+
+/** Friendly collection date, e.g. "Sun 25 Oct". */
+export function formatCollectionDate(isoDate: string): string {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {
+    return isoDate;
+  }
+  const [year, month, day] = isoDate.split("-").map(Number);
+  const utc = new Date(Date.UTC(year!, month! - 1, day!, 12));
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC",
+  })
+    .format(utc)
+    .replace(",", "");
+}
+
+export function getOverallCollectionCounts(
+  state: CollectionState = readCollectionState(),
+): Pick<CollectionCounts, "found" | "bagged"> {
+  let found = 0;
+  let bagged = 0;
+  for (const mode of GAME_MODES) {
+    const counts = getCollectionCounts(mode, state);
+    found += counts.found;
+    bagged += counts.bagged;
+  }
+  return { found, bagged };
+}
+
+export type TodayCollectionHighlight = {
+  status: CollectionStatus;
+  name: string;
+  mode: GameMode;
+};
+
+/** One highlight for today's finds — bagged preferred; never invents names. */
+export function getTodayCollectionHighlight(
+  today: string,
+  state: CollectionState = readCollectionState(),
+): TodayCollectionHighlight | null {
+  let foundFallback: TodayCollectionHighlight | null = null;
+  for (const mode of GAME_MODES) {
+    const places = state[mode] ?? {};
+    for (const record of Object.values(places)) {
+      if (record.date !== today) {
+        continue;
+      }
+      const hit = {
+        status: record.status,
+        name: record.name,
+        mode,
+      } as const;
+      if (record.status === "bagged") {
+        return hit;
+      }
+      if (!foundFallback) {
+        foundFallback = hit;
+      }
+    }
+  }
+  return foundFallback;
+}
+
+export type CollectionPlaceRow = CollectionPlaceRecord & {
+  placeId: string;
+  mode: GameMode;
+};
+
+export function latestCollectionDate(
+  mode: GameMode,
+  state: CollectionState,
+): string | null {
+  const places = listCollectionPlaces(mode, state);
+  return places[0]?.date ?? null;
+}
+
+export function listPlacesForModes(
+  modes: readonly GameMode[],
+  state: CollectionState,
+): CollectionPlaceRow[] {
+  const rows: CollectionPlaceRow[] = [];
+  for (const mode of modes) {
+    for (const place of listCollectionPlaces(mode, state)) {
+      rows.push({ ...place, mode });
+    }
+  }
+  return rows.sort((a, b) => {
+    if (a.date !== b.date) {
+      return a.date < b.date ? 1 : -1;
+    }
+    return a.name.localeCompare(b.name);
+  });
+}
+
+export type CollectionViewGroup =
+  | {
+      kind: "single";
+      mode: GameMode;
+      counts: CollectionCounts;
+      places: CollectionPlaceRow[];
+      latestDate: string | null;
+    }
+  | {
+      kind: "football";
+      modes: GameMode[];
+      counts: CollectionCounts;
+      places: CollectionPlaceRow[];
+      latestDate: string | null;
+      leagues: Array<{
+        mode: GameMode;
+        counts: CollectionCounts;
+      }>;
+    };
+
+function aggregateCounts(
+  modes: readonly GameMode[],
+  state: CollectionState,
+): CollectionCounts {
+  let found = 0;
+  let bagged = 0;
+  let total = 0;
+  for (const mode of modes) {
+    const counts = getCollectionCounts(mode, state);
+    found += counts.found;
+    bagged += counts.bagged;
+    total += counts.total;
+  }
+  return { found, bagged, total };
+}
+
+function latestDateAmong(
+  modes: readonly GameMode[],
+  state: CollectionState,
+): string | null {
+  let latest: string | null = null;
+  for (const mode of modes) {
+    const date = latestCollectionDate(mode, state);
+    if (date && (!latest || date > latest)) {
+      latest = date;
+    }
+  }
+  return latest;
+}
+
+/** Presentation groups for the collection page (storage stays per-mode). */
+export function buildCollectionView(
+  state: CollectionState = readCollectionState(),
+): {
+  started: CollectionViewGroup[];
+  notStarted: CollectionViewGroup[];
+} {
+  const footballModes = GAME_MODES.filter((mode) => isFootballMode(mode));
+  const otherModes = GAME_MODES.filter((mode) => !isFootballMode(mode));
+
+  const groups: CollectionViewGroup[] = [];
+
+  for (const mode of otherModes) {
+    const counts = getCollectionCounts(mode, state);
+    groups.push({
+      kind: "single",
+      mode,
+      counts,
+      places: listPlacesForModes([mode], state),
+      latestDate: latestCollectionDate(mode, state),
+    });
+  }
+
+  groups.push({
+    kind: "football",
+    modes: [...footballModes],
+    counts: aggregateCounts(footballModes, state),
+    places: listPlacesForModes(footballModes, state),
+    latestDate: latestDateAmong(footballModes, state),
+    leagues: footballModes.map((mode) => ({
+      mode,
+      counts: getCollectionCounts(mode, state),
+    })),
+  });
+
+  const started = groups
+    .filter((group) => group.counts.found > 0)
+    .sort((a, b) => {
+      const aDate = a.latestDate ?? "";
+      const bDate = b.latestDate ?? "";
+      if (aDate !== bDate) {
+        return aDate < bDate ? 1 : -1;
+      }
+      return 0;
+    });
+  const notStarted = groups.filter((group) => group.counts.found === 0);
+
+  return { started, notStarted };
 }
 
 /** England football expected count — used by tests / docs. */

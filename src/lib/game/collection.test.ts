@@ -3,10 +3,13 @@ import { describe, it } from "node:test";
 
 import {
   COLLECTION_STORAGE_KEY,
+  buildCollectionView,
   collectionOutcomeFromReveal,
   formatCollectionCountsCompact,
   formatCollectionCountsLine,
+  formatCollectionDate,
   getCollectionCounts,
+  getTodayCollectionHighlight,
   listCollectionPlaces,
   parseCollectionState,
   placeIdFromReveal,
@@ -206,6 +209,56 @@ describe("collection storage", () => {
       formatCollectionCountsCompact(counts),
       "2 found · 1 bagged of 92",
     );
+  });
+
+  it("formats friendly collection dates", () => {
+    assert.equal(formatCollectionDate("2026-10-25"), "Sun 25 Oct");
+  });
+
+  it("builds started vs not-started view with football grouped", () => {
+    const state: CollectionState = {
+      football: {
+        wrexham: { status: "bagged", date: "2026-10-06", name: "Wrexham" },
+      },
+      marvel: {
+        "disney-hq": {
+          status: "found",
+          date: "2026-10-05",
+          name: "Disney HQ",
+        },
+      },
+    };
+    const view = buildCollectionView(state);
+    assert.equal(view.started.length, 2);
+    assert.equal(view.started[0]!.kind, "football");
+    assert.equal(view.started[1]!.kind, "single");
+    if (view.started[1]!.kind === "single") {
+      assert.equal(view.started[1].mode, "marvel");
+    }
+    const football = view.started[0]!;
+    if (football.kind === "football") {
+      assert.equal(football.leagues.length, 5);
+      assert.equal(football.counts.found, 1);
+      assert.ok(football.leagues.some((league) => league.counts.found === 0));
+    }
+    assert.ok(view.notStarted.length > 0);
+    assert.ok(view.notStarted.every((group) => group.counts.found === 0));
+    assert.ok(!view.notStarted.some((group) => group.kind === "football"));
+  });
+
+  it("prefers bagged for today's highlight", () => {
+    const state: CollectionState = {
+      marvel: {
+        a: { status: "found", date: "2026-10-06", name: "Found Place" },
+      },
+      football: {
+        b: { status: "bagged", date: "2026-10-06", name: "Bagged Place" },
+      },
+    };
+    const highlight = getTodayCollectionHighlight("2026-10-06", state);
+    assert.ok(highlight);
+    assert.equal(highlight!.status, "bagged");
+    assert.equal(highlight!.name, "Bagged Place");
   });
 
   it("treats invalid storage as empty", () => {
