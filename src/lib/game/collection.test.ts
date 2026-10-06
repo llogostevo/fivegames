@@ -8,8 +8,11 @@ import {
   formatCollectionCountsCompact,
   formatCollectionCountsLine,
   formatCollectionDate,
+  formatCollectionDistance,
+  formatCollectionScore,
   getCollectionCounts,
   getTodayCollectionHighlight,
+  listActivityForModes,
   listCollectionPlaces,
   parseCollectionState,
   placeIdFromReveal,
@@ -18,6 +21,7 @@ import {
   upsertCollectionPlace,
   type CollectionState,
 } from "./collection";
+import { PLAYER_HISTORY_VERSION, type PlayerHistory } from "./playerHistory";
 import type { GameReveal } from "@/types/game";
 
 function memoryStorage(initial: string | null = null) {
@@ -228,7 +232,7 @@ describe("collection storage", () => {
         },
       },
     };
-    const view = buildCollectionView(state);
+    const view = buildCollectionView(state, {});
     assert.equal(view.started.length, 2);
     assert.equal(view.started[0]!.kind, "football");
     assert.equal(view.started[1]!.kind, "single");
@@ -244,6 +248,78 @@ describe("collection storage", () => {
     assert.ok(view.notStarted.length > 0);
     assert.ok(view.notStarted.every((group) => group.counts.found === 0));
     assert.ok(!view.notStarted.some((group) => group.kind === "football"));
+  });
+
+  it("merges scores and played-not-found activity without leaking names", () => {
+    const state: CollectionState = {
+      football: {
+        wrexham: { status: "bagged", date: "2026-10-06", name: "Wrexham" },
+      },
+    };
+    const historyByMode: Partial<Record<"football", PlayerHistory>> = {
+      football: {
+        version: PLAYER_HISTORY_VERSION,
+        games: {
+          "2026-10-06": {
+            gameId: "2026-10-06",
+            gameNumber: 9,
+            date: "2026-10-06",
+            theme: "football",
+            score: 25_000,
+            lockedAfterClue: 1,
+            completedAt: "2026-10-06T12:00:00.000Z",
+            foundLocation: true,
+            foundOnPin: 1,
+            finalDistanceMeters: 8,
+          },
+          "2026-10-05": {
+            gameId: "2026-10-05",
+            gameNumber: 8,
+            date: "2026-10-05",
+            theme: "football",
+            score: 12_400,
+            lockedAfterClue: 4,
+            completedAt: "2026-10-05T12:00:00.000Z",
+            foundLocation: false,
+            foundOnPin: null,
+            finalDistanceMeters: 4200,
+          },
+        },
+      },
+    };
+    const activity = listActivityForModes(
+      ["football"],
+      state,
+      historyByMode,
+    );
+    assert.equal(activity.length, 2);
+    assert.equal(activity[0]!.kind, "bagged");
+    if (activity[0]!.kind === "bagged") {
+      assert.equal(activity[0].score, 25_000);
+      assert.equal(activity[0].distanceMeters, 8);
+      assert.equal(activity[0].name, "Wrexham");
+    }
+    assert.equal(activity[1]!.kind, "played");
+    if (activity[1]!.kind === "played") {
+      assert.equal(activity[1].score, 12_400);
+      assert.equal(activity[1].distanceMeters, 4200);
+    }
+    assert.equal(formatCollectionScore(12_400), "12,400 pts");
+    assert.equal(formatCollectionDistance(8), "8 m");
+    assert.equal(formatCollectionDistance(4200), "4.2 km");
+
+    const view = buildCollectionView(
+      {},
+      {
+        marvel: historyByMode.football,
+      },
+    );
+    // Marvel has play history but no finds → still in Your games.
+    assert.ok(
+      view.started.some(
+        (group) => group.kind === "single" && group.mode === "marvel",
+      ),
+    );
   });
 
   it("prefers bagged for today's highlight", () => {

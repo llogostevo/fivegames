@@ -7,6 +7,10 @@ import {
   footballLeagueForMode,
 } from "@/lib/game/football/leagues";
 import { GAME_MODES, isFootballMode, type GameMode } from "@/lib/game/modes";
+import {
+  readPlayerHistory,
+  type PlayerHistory,
+} from "@/lib/game/playerHistory";
 import type { GameReveal } from "@/types/game";
 
 export const COLLECTION_STORAGE_KEY = "pin5.collection.v1";
@@ -399,6 +403,39 @@ export type CollectionPlaceRow = CollectionPlaceRecord & {
   mode: GameMode;
 };
 
+/** Activity row for the collection UI — never invents unplayed place names. */
+export type CollectionActivityRow =
+  | (CollectionPlaceRow & {
+      kind: "bagged" | "found";
+      score: number | null;
+      distanceMeters: number | null;
+    })
+  | {
+      kind: "played";
+      mode: GameMode;
+      date: string;
+      score: number;
+      distanceMeters: number | null;
+    };
+
+export function formatCollectionScore(score: number): string {
+  return `${score.toLocaleString("en-GB")} pts`;
+}
+
+/** Compact distance for collection rows (same bands as share copy). */
+export function formatCollectionDistance(meters: number): string {
+  if (meters < 1000) {
+    return `${Math.round(meters)} m`;
+  }
+  if (meters < 10_000) {
+    return `${(meters / 1000).toFixed(1)} km`;
+  }
+  if (meters < 100_000) {
+    return `${Math.round(meters / 1000)} km`;
+  }
+  return `${Math.round(meters / 1000).toLocaleString("en-GB")} km`;
+}
+
 export function latestCollectionDate(
   mode: GameMode,
   state: CollectionState,
@@ -425,23 +462,161 @@ export function listPlacesForModes(
   });
 }
 
+/**
+ * Merge Found/Bagged collection rows with played-but-not-found history.
+ * Played rows never include the answer name.
+ */
+export function listActivityForModes(
+  modes: readonly GameMode[],
+  state: CollectionState,
+  historyByMode: Partial<Record<GameMode, PlayerHistory>>,
+): CollectionActivityRow[] {
+  const rows: CollectionActivityRow[] = [];
+
+  for (const mode of modes) {
+    const places = listCollectionPlaces(mode, state);
+    const history = historyByMode[mode];
+    const collectedDates = new Set(places.map((place) => place.date));
+
+    for (const place of places) {
+      const game = history?.games[place.date];
+      const score = game?.score;
+      const distanceMeters = game?.finalDistanceMeters;
+      rows.push({
+        ...place,
+        mode,
+        kind: place.status,
+        score: typeof score === "number" ? score : null,
+        distanceMeters:
+          typeof distanceMeters === "number" ? distanceMeters : null,
+      });
+    }
+
+    if (history) {
+      for (const [date, game] of Object.entries(history.games)) {
+        if (collectedDates.has(date)) {
+          continue;
+        }
+        rows.push({
+          kind: "played",
+          mode,
+          date,
+          score: game.score,
+          distanceMeters:
+            typeof game.finalDistanceMeters === "number"
+              ? game.finalDistanceMeters
+              : null,
+        });
+      }
+    }
+  }
+
+  return rows.sort((a, b) => {
+    if (a.date !== b.date) {
+      return a.date < b.date ? 1 : -1;
+    }
+    if (a.kind === "played" && b.kind === "played") {
+      return 0;
+    }
+    if (a.kind === "played") {
+      return 1;
+    }
+    if (b.kind === "played") {
+      return -1;
+    }
+    return a.name.localeCompare(b.name);
+  });
+}
+
+export function readAllPlayerHistories(
+  storage: Pick<Storage, "getItem"> | null = typeof window !== "undefined"
+    ? window.localStorage
+    : null,
+): Partial<Record<GameMode, PlayerHistory>> {
+  const result: Partial<Record<GameMode, PlayerHistory>> = {};
+  for (const mode of GAME_MODES) {
+    result[mode] = readPlayerHistory(storage, mode);
+  }
+  return result;
+}
+
+export function modeHasPlayHistory(
+  mode: GameMode,
+  historyByMode: Partial<Record<GameMode, PlayerHistory>>,
+): boolean {
+  const history = historyByMode[mode];
+  return Boolean(history && Object.keys(history.games).length > 0);
+}
+
+export function latestPlayOrCollectionDate(
+  mode: GameMode,
+  state: CollectionState,
+  historyByMode: Partial<Record<GameMode, PlayerHistory>>,
+): string | null {
+  let latest = latestCollectionDate(mode, state);
+  const history = historyByMode[mode];
+  if (history) {
+    for (const date of Object.keys(history.games)) {
+      if (!latest || date > latest) {
+        latest = date;
+      }
+    }
+  }
+  return latest;
+}
+
+export function summarizePlayHistory(
+  modes: readonly GameMode[],
+  historyByMode: Partial<Record<GameMode, PlayerHistory>>,
+): { played: boolean; latestScore: number | null; playCount: number } {
+  let playCount = 0;
+  let latestDate: string | null = null;
+  let latestScore: number | null = null;
+  for (const mode of modes) {
+    const history = historyByMode[mode];
+    if (!history) {
+      continue;
+    }
+    for (const [date, game] of Object.entries(history.games)) {
+      playCount += 1;
+      if (!latestDate || date > latestDate) {
+        latestDate = date;
+        latestScore = game.score;
+      }
+    }
+  }
+  return {
+    played: playCount > 0,
+    latestScore,
+    playCount,
+  };
+}
+
 export type CollectionViewGroup =
   | {
       kind: "single";
       mode: GameMode;
       counts: CollectionCounts;
       places: CollectionPlaceRow[];
+      activity: CollectionActivityRow[];
       latestDate: string | null;
+      played: boolean;
+      latestScore: number | null;
     }
   | {
       kind: "football";
       modes: GameMode[];
       counts: CollectionCounts;
       places: CollectionPlaceRow[];
+      activity: CollectionActivityRow[];
       latestDate: string | null;
+      played: boolean;
+      latestScore: number | null;
       leagues: Array<{
         mode: GameMode;
         counts: CollectionCounts;
+        played: boolean;
+        latestScore: number | null;
       }>;
     };
 
@@ -464,10 +639,11 @@ function aggregateCounts(
 function latestDateAmong(
   modes: readonly GameMode[],
   state: CollectionState,
+  historyByMode: Partial<Record<GameMode, PlayerHistory>>,
 ): string | null {
   let latest: string | null = null;
   for (const mode of modes) {
-    const date = latestCollectionDate(mode, state);
+    const date = latestPlayOrCollectionDate(mode, state, historyByMode);
     if (date && (!latest || date > latest)) {
       latest = date;
     }
@@ -478,6 +654,7 @@ function latestDateAmong(
 /** Presentation groups for the collection page (storage stays per-mode). */
 export function buildCollectionView(
   state: CollectionState = readCollectionState(),
+  historyByMode: Partial<Record<GameMode, PlayerHistory>> = readAllPlayerHistories(),
 ): {
   started: CollectionViewGroup[];
   notStarted: CollectionViewGroup[];
@@ -489,29 +666,42 @@ export function buildCollectionView(
 
   for (const mode of otherModes) {
     const counts = getCollectionCounts(mode, state);
+    const play = summarizePlayHistory([mode], historyByMode);
     groups.push({
       kind: "single",
       mode,
       counts,
       places: listPlacesForModes([mode], state),
-      latestDate: latestCollectionDate(mode, state),
+      activity: listActivityForModes([mode], state, historyByMode),
+      latestDate: latestPlayOrCollectionDate(mode, state, historyByMode),
+      played: play.played,
+      latestScore: play.latestScore,
     });
   }
 
+  const footballPlay = summarizePlayHistory(footballModes, historyByMode);
   groups.push({
     kind: "football",
     modes: [...footballModes],
     counts: aggregateCounts(footballModes, state),
     places: listPlacesForModes(footballModes, state),
-    latestDate: latestDateAmong(footballModes, state),
-    leagues: footballModes.map((mode) => ({
-      mode,
-      counts: getCollectionCounts(mode, state),
-    })),
+    activity: listActivityForModes(footballModes, state, historyByMode),
+    latestDate: latestDateAmong(footballModes, state, historyByMode),
+    played: footballPlay.played,
+    latestScore: footballPlay.latestScore,
+    leagues: footballModes.map((mode) => {
+      const play = summarizePlayHistory([mode], historyByMode);
+      return {
+        mode,
+        counts: getCollectionCounts(mode, state),
+        played: play.played,
+        latestScore: play.latestScore,
+      };
+    }),
   });
 
   const started = groups
-    .filter((group) => group.counts.found > 0)
+    .filter((group) => group.counts.found > 0 || group.played)
     .sort((a, b) => {
       const aDate = a.latestDate ?? "";
       const bDate = b.latestDate ?? "";
@@ -520,7 +710,9 @@ export function buildCollectionView(
       }
       return 0;
     });
-  const notStarted = groups.filter((group) => group.counts.found === 0);
+  const notStarted = groups.filter(
+    (group) => group.counts.found === 0 && !group.played,
+  );
 
   return { started, notStarted };
 }

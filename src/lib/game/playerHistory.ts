@@ -42,6 +42,8 @@ export type PlayerHistoryGame = {
   /** Optional — older history records omit these. */
   foundLocation?: boolean;
   foundOnPin?: number | null;
+  /** Optional — metres from final pin to target. Older records omit this. */
+  finalDistanceMeters?: number;
 };
 
 export type PlayerHistory = {
@@ -152,6 +154,13 @@ function parseHistoryGame(
     foundOnPin = null;
   }
 
+  const finalDistanceMeters =
+    typeof record.finalDistanceMeters === "number" &&
+    Number.isFinite(record.finalDistanceMeters) &&
+    record.finalDistanceMeters >= 0
+      ? Math.round(record.finalDistanceMeters)
+      : undefined;
+
   return {
     gameId: record.gameId,
     gameNumber: record.gameNumber,
@@ -163,6 +172,7 @@ function parseHistoryGame(
     ...(record.foundLocation === true || record.foundLocation === false
       ? { foundLocation, foundOnPin: foundOnPin ?? null }
       : {}),
+    ...(finalDistanceMeters !== undefined ? { finalDistanceMeters } : {}),
   };
 }
 
@@ -254,6 +264,11 @@ export function historyGameFromReveal(
     completedAt: completedAt.toISOString(),
     foundLocation: reveal.foundLocation === true,
     foundOnPin: reveal.foundLocation ? (reveal.foundOnPin ?? null) : null,
+    ...(typeof reveal.finalDistanceMeters === "number" &&
+    Number.isFinite(reveal.finalDistanceMeters) &&
+    reveal.finalDistanceMeters >= 0
+      ? { finalDistanceMeters: Math.round(reveal.finalDistanceMeters) }
+      : {}),
   };
 }
 

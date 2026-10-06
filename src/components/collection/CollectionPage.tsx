@@ -8,36 +8,60 @@ import {
   COLLECTION_UPDATED_EVENT,
   buildCollectionView,
   formatCollectionDate,
+  formatCollectionDistance,
+  formatCollectionScore,
   getOverallCollectionCounts,
   getTodayCollectionHighlight,
+  readAllPlayerHistories,
   readCollectionState,
+  type CollectionActivityRow,
   type CollectionCounts,
-  type CollectionPlaceRow,
   type CollectionState,
   type CollectionViewGroup,
 } from "@/lib/game/collection";
 import { getAvailableGameDate } from "@/lib/game/date";
 import {
   GAME_MODE_DEFINITIONS,
+  GAME_MODES,
   modePath,
   type GameMode,
 } from "@/lib/game/modes";
+import {
+  PLAYER_HISTORY_UPDATED_EVENT,
+  historyStorageKey,
+} from "@/lib/game/playerHistory";
 import { buildCollectionModeShareText, shareText } from "@/lib/game/share";
 
+type CollectionPageSnapshot = {
+  collection: CollectionState;
+  historiesFingerprint: string;
+};
+
 const EMPTY_COLLECTION: CollectionState = {};
+const EMPTY_SNAPSHOT: CollectionPageSnapshot = {
+  collection: EMPTY_COLLECTION,
+  historiesFingerprint: "server",
+};
+
 let cachedFingerprint: string | null = null;
-let cachedSnapshot: CollectionState = EMPTY_COLLECTION;
+let cachedSnapshot: CollectionPageSnapshot = EMPTY_SNAPSHOT;
 
 const PLACE_LIST_PREVIEW = 10;
 const PROGRESS_BAR_MAX_TOTAL = 200;
 const PROGRESS_BAR_MIN_PX = 4;
 
-function collectionStorageFingerprint(): string {
+function pageStorageFingerprint(): string {
   try {
     if (typeof window === "undefined") {
       return "server";
     }
-    return window.localStorage.getItem(COLLECTION_STORAGE_KEY) ?? "";
+    const collection =
+      window.localStorage.getItem(COLLECTION_STORAGE_KEY) ?? "";
+    const histories = GAME_MODES.map(
+      (mode) =>
+        `${mode}:${window.localStorage.getItem(historyStorageKey(mode)) ?? ""}`,
+    ).join("|");
+    return `${collection}::${histories}`;
   } catch {
     return "unavailable";
   }
@@ -57,26 +81,31 @@ function subscribeCollection(onStoreChange: () => void): () => void {
   };
   window.addEventListener("storage", onChange);
   window.addEventListener(COLLECTION_UPDATED_EVENT, onChange);
+  window.addEventListener(PLAYER_HISTORY_UPDATED_EVENT, onChange);
   window.addEventListener("focus", onChange);
   return () => {
     window.removeEventListener("storage", onChange);
     window.removeEventListener(COLLECTION_UPDATED_EVENT, onChange);
+    window.removeEventListener(PLAYER_HISTORY_UPDATED_EVENT, onChange);
     window.removeEventListener("focus", onChange);
   };
 }
 
-function getClientCollectionSnapshot(): CollectionState {
-  const fingerprint = collectionStorageFingerprint();
+function getClientCollectionSnapshot(): CollectionPageSnapshot {
+  const fingerprint = pageStorageFingerprint();
   if (cachedFingerprint === fingerprint) {
     return cachedSnapshot;
   }
   cachedFingerprint = fingerprint;
-  cachedSnapshot = readCollectionState();
+  cachedSnapshot = {
+    collection: readCollectionState(),
+    historiesFingerprint: fingerprint,
+  };
   return cachedSnapshot;
 }
 
-function getServerCollectionSnapshot(): CollectionState {
-  return EMPTY_COLLECTION;
+function getServerCollectionSnapshot(): CollectionPageSnapshot {
+  return EMPTY_SNAPSHOT;
 }
 
 function singleModeTitle(mode: GameMode): string {
@@ -181,33 +210,67 @@ function CollectionProgressBar({ counts }: { counts: CollectionCounts }) {
   );
 }
 
-function PlaceList({ places }: { places: CollectionPlaceRow[] }) {
+function activityMetaLine(row: CollectionActivityRow): string {
+  const parts = [formatCollectionDate(row.date)];
+  if (typeof row.score === "number") {
+    parts.push(formatCollectionScore(row.score));
+  }
+  if (typeof row.distanceMeters === "number") {
+    parts.push(`${formatCollectionDistance(row.distanceMeters)} away`);
+  }
+  return parts.join(" · ");
+}
+
+function ActivityList({ activity }: { activity: CollectionActivityRow[] }) {
   const [expanded, setExpanded] = useState(false);
-  const needsToggle = places.length > PLACE_LIST_PREVIEW;
+  const needsToggle = activity.length > PLACE_LIST_PREVIEW;
   const visible =
-    needsToggle && !expanded ? places.slice(0, PLACE_LIST_PREVIEW) : places;
+    needsToggle && !expanded ? activity.slice(0, PLACE_LIST_PREVIEW) : activity;
+
+  if (activity.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-3">
       <ul className="divide-y divide-rule/70">
-        {visible.map((place) => {
-          const bagged = place.status === "bagged";
+        {visible.map((row) => {
+          if (row.kind === "played") {
+            return (
+              <li
+                key={`${row.mode}:played:${row.date}`}
+                className="flex items-baseline justify-between gap-3 py-2.5"
+              >
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-medium text-foreground">
+                    Played
+                  </p>
+                  <p className="text-xs text-muted">{activityMetaLine(row)}</p>
+                </div>
+                <p className="shrink-0 text-xs font-semibold text-muted">
+                  Not found
+                </p>
+              </li>
+            );
+          }
+
+          const bagged = row.kind === "bagged";
           return (
             <li
-              key={`${place.mode}:${place.placeId}`}
+              key={`${row.mode}:${row.placeId}`}
               className="flex items-baseline justify-between gap-3 py-2.5"
             >
               <div className="min-w-0">
                 <p
                   className={`truncate text-sm ${
-                    bagged ? "font-bold text-course" : "font-medium text-foreground"
+                    bagged
+                      ? "font-bold text-course"
+                      : "font-medium text-foreground"
                   }`}
                 >
-                  {place.name}
+                  {row.name}
                 </p>
-                <p className="text-xs text-muted">
-                  {formatCollectionDate(place.date)}
-                </p>
+                <p className="text-xs text-muted">{activityMetaLine(row)}</p>
               </div>
               <p
                 className={`shrink-0 text-xs font-semibold ${
@@ -226,9 +289,7 @@ function PlaceList({ places }: { places: CollectionPlaceRow[] }) {
           onClick={() => setExpanded((value) => !value)}
           className="mt-2 text-sm font-semibold text-course transition hover:brightness-90"
         >
-          {expanded
-            ? "Show less"
-            : `Show all (${places.length})`}
+          {expanded ? "Show less" : `Show all (${activity.length})`}
         </button>
       ) : null}
     </div>
@@ -289,8 +350,13 @@ function StartedSingleCard({
         onShare={() => void handleShare()}
         shareLabel={shareLabel}
       />
+      {group.counts.found === 0 && group.played && group.latestScore !== null ? (
+        <p className="mt-2 text-sm text-muted">
+          Played · last score {formatCollectionScore(group.latestScore)}
+        </p>
+      ) : null}
       <CollectionProgressBar counts={group.counts} />
-      <PlaceList places={group.places} />
+      <ActivityList activity={group.activity} />
     </article>
   );
 }
@@ -325,8 +391,8 @@ function StartedFootballCard({
   group: Extract<CollectionViewGroup, { kind: "football" }>;
 }) {
   const primaryMode =
-    group.leagues.find((league) => league.counts.found > 0)?.mode ??
-    group.modes[0]!;
+    group.leagues.find((league) => league.counts.found > 0 || league.played)
+      ?.mode ?? group.modes[0]!;
 
   return (
     <article className="rounded-2xl border border-rule bg-white px-4 py-4">
@@ -346,7 +412,7 @@ function StartedFootballCard({
 
       <ul className="mt-3 space-y-1.5">
         {group.leagues.map((league) => {
-          const muted = league.counts.found === 0;
+          const muted = league.counts.found === 0 && !league.played;
           return (
             <li
               key={league.mode}
@@ -360,6 +426,11 @@ function StartedFootballCard({
                   {" "}
                   · {league.counts.found} found · {league.counts.bagged} bagged
                   · of {league.counts.total}
+                  {league.counts.found === 0 &&
+                  league.played &&
+                  league.latestScore !== null
+                    ? ` · played ${formatCollectionScore(league.latestScore)}`
+                    : null}
                 </span>
               </p>
               <div className="flex shrink-0 items-center gap-2">
@@ -378,7 +449,7 @@ function StartedFootballCard({
         })}
       </ul>
 
-      <PlaceList places={group.places} />
+      <ActivityList activity={group.activity} />
     </article>
   );
 }
@@ -422,15 +493,18 @@ function NotStartedRow({ group }: { group: CollectionViewGroup }) {
 }
 
 export function CollectionPage() {
-  const state = useSyncExternalStore(
+  const snapshot = useSyncExternalStore(
     subscribeCollection,
     getClientCollectionSnapshot,
     getServerCollectionSnapshot,
   );
+  const state = snapshot.collection;
+  const histories = readAllPlayerHistories();
   const overall = getOverallCollectionCounts(state);
   const today = getAvailableGameDate(new Date());
   const todayHighlight = getTodayCollectionHighlight(today, state);
-  const { started, notStarted } = buildCollectionView(state);
+  const { started, notStarted } = buildCollectionView(state, histories);
+  const hasCollectedAnything = overall.found > 0;
 
   return (
     <main className="relative flex min-h-dvh flex-1 flex-col bg-[#f3f4f1]">
@@ -468,12 +542,14 @@ export function CollectionPage() {
           ) : null}
         </header>
 
-        {started.length === 0 ? (
+        {!hasCollectedAnything ? (
           <p className="mb-5 rounded-2xl border border-dashed border-rule bg-white/70 px-4 py-4 text-sm leading-relaxed text-[#5f6368]">
             Nothing collected yet. Find a place in any game to start your
             collection — get it on clue 1 to bag it.
           </p>
-        ) : (
+        ) : null}
+
+        {started.length > 0 ? (
           <section aria-labelledby="your-games-heading" className="mb-6">
             <h2
               id="your-games-heading"
@@ -490,7 +566,7 @@ export function CollectionPage() {
               ))}
             </div>
           </section>
-        )}
+        ) : null}
 
         {notStarted.length > 0 ? (
           <section aria-labelledby="not-started-heading">
