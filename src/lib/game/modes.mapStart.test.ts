@@ -74,6 +74,7 @@ describe("mode map labels", () => {
       "taylor-swift",
       "harry-potter",
       "marvel",
+      "star-wars",
     ] as const) {
       assert.deepEqual(
         GAME_MODE_DEFINITIONS[mode].mapLabels,

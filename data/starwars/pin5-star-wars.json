@@ -1,0 +1,4206 @@
+{
+  "dataset": "pin5-star-wars",
+  "scope": "Real-world public places connected to Star Wars: filming locations, studios, theme parks, premieres, franchise landmarks and actor/creator birthplaces",
+  "clueDesign": {
+    "1": "hard Star Wars superfan fact (stating what kind of place is being pinned)",
+    "2": "easier Star Wars fact or famous association",
+    "3": "strong narrowing clue such as film, series, in-universe place, park or city",
+    "4": "explicit real-world location name",
+    "5": "geographical hint to help locate the answer"
+  },
+  "locationCount": 145,
+  "cluesWrittenCount": 145,
+  "locations": [
+    {
+      "id": "hotel-sidi-driss",
+      "location": "Hotel Sidi Driss",
+      "city": "Matmata",
+      "region": "Gabès",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 33.5426,
+        "lng": 9.967
+      },
+      "status": "ready",
+      "clues": [
+        "This building's ceiling mural, painted around the time it opened in 1968, is still visible above the Lars family's dining table.",
+        "Its sunken courtyard became the interior of the Lars homestead, where Luke eats with Owen and Beru and drinks blue milk.",
+        "It is a troglodyte hotel built into pits, used in A New Hope and again in Attack of the Clones.",
+        "The location is Hotel Sidi Driss.",
+        "The location is in Matmata, Gabès Governorate, southern Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope",
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "lars-homestead"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hotel_Sidi_Driss"
+      }
+    },
+    {
+      "id": "chott-el-djerid-lars-homestead",
+      "location": "Lars homestead exterior, Chott el-Djerid",
+      "city": "Nefta",
+      "region": "Tozeur",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 33.8428,
+        "lng": 7.779
+      },
+      "status": "ready",
+      "clues": [
+        "Filming began here in March 1976, making this salt flat the first Star Wars filming location of all.",
+        "Luke gazes at the twin suns from the domed entrance of his family's homestead, which was built here.",
+        "It is a vast salt lake used for the Lars homestead in A New Hope, Attack of the Clones and Revenge of the Sith.",
+        "The location is Lars homestead exterior, Chott el-Djerid.",
+        "The location is on the salt flats west of Nefta, Tozeur Governorate, south-western Tunisia, near the Algerian border."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope",
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "lars-homestead"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chott_el_Djerid"
+      }
+    },
+    {
+      "id": "mos-espa-set-tozeur",
+      "location": "Mos Espa film set",
+      "city": "Tozeur",
+      "region": "Tozeur",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 33.9943,
+        "lng": 7.8427
+      },
+      "status": "ready",
+      "clues": [
+        "This town of fake domes was built among dunes beside a rock formation known as the Camel's Head, and much of it still stands.",
+        "Anakin, Shmi and Watto's junk shop are found in this Tatooine spaceport, built for The Phantom Menace.",
+        "It is the surviving Star Wars set near the oasis of Tozeur, a popular tourist attraction.",
+        "The location is Mos Espa film set.",
+        "The location is in the desert north-west of Tozeur, south of the Chott el-Gharsa, south-western Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-phantom-menace",
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "mos-espa"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mos_Espa"
+      }
+    },
+    {
+      "id": "ksar-ouled-soltane",
+      "location": "Ksar Ouled Soltane",
+      "city": "Tataouine",
+      "region": "Tataouine",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 32.7884,
+        "lng": 10.515
+      },
+      "status": "ready",
+      "clues": [
+        "This fortified granary, with its stacked barrel-vaulted rooms called ghorfas, dates back to the 15th century.",
+        "It played the Mos Espa slave quarters, where Anakin and Shmi Skywalker live.",
+        "It is a Berber ksar used in The Phantom Menace, near the town that gave Tatooine its name.",
+        "The location is Ksar Ouled Soltane.",
+        "The location is south of Tataouine, south-eastern Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "mos-espa"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ksar_Ouled_Soltane"
+      }
+    },
+    {
+      "id": "ajim-djerba-mos-eisley",
+      "location": "Ajim",
+      "city": "Ajim",
+      "region": "Medenine",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 33.7408,
+        "lng": 10.735
+      },
+      "status": "ready",
+      "clues": [
+        "Stormtroopers stop a landspeeder in this town's streets and are told these aren't the droids they're looking for.",
+        "Its whitewashed streets played Mos Eisley, and the cantina exterior was filmed here.",
+        "It is a fishing town on an island in the Gulf of Gabès, used in A New Hope.",
+        "The location is Ajim.",
+        "The location is on the west coast of Djerba island, south-eastern Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "mos-eisley"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ajim"
+      }
+    },
+    {
+      "id": "ben-kenobi-hut-djerba",
+      "location": "Ben Kenobi's hut, Djerba",
+      "city": "Djerba",
+      "region": "Medenine",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 33.8314,
+        "lng": 10.7479
+      },
+      "status": "ready",
+      "clues": [
+        "A small domed building on this island stood in for the home where an old hermit tells Luke about his father.",
+        "Obi-Wan gives Luke his father's lightsaber at the hermit's home filmed here.",
+        "It is the exterior of Ben Kenobi's hut in A New Hope, on a Tunisian island.",
+        "The location is Ben Kenobi's hut, Djerba.",
+        "The location is on Djerba island, in the Gulf of Gabès, south-eastern Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "tatooine"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Djerba"
+      }
+    },
+    {
+      "id": "sidi-bouhlel-star-wars-canyon",
+      "location": "Sidi Bouhlel canyon",
+      "city": "Tozeur",
+      "region": "Tozeur",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 34.0336,
+        "lng": 8.2818
+      },
+      "status": "ready",
+      "clues": [
+        "Locals call this gorge 'Star Wars Canyon' because so many scenes were filmed in it.",
+        "R2-D2 is captured by Jawas, and Luke is attacked by Tusken Raiders, in this rocky canyon.",
+        "It is a gorge near Tozeur used in A New Hope and The Phantom Menace.",
+        "The location is Sidi Bouhlel canyon.",
+        "The location is north of Tozeur, south-western Tunisia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope",
+          "the-phantom-menace"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "jundland-wastes"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "tataouine",
+      "location": "Tataouine",
+      "city": "Tataouine",
+      "region": "Tataouine",
+      "country": "Tunisia",
+      "continent": "AF",
+      "target": {
+        "lat": 32.9297,
+        "lng": 10.4518
+      },
+      "status": "ready",
+      "clues": [
+        "Despite the name, little filming took place in this town itself, though its ksour served as sets nearby.",
+        "George Lucas named Luke's desert home planet after this Tunisian town.",
+        "It is a Berber-region town in southern Tunisia that gave Tatooine its name.",
+        "The location is Tataouine.",
+        "The location is in Tataouine Governorate, south-eastern Tunisia."
+      ],
+      "facts": {
+        "connection": "other",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "tatooine"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tataouine"
+      }
+    },
+    {
+      "id": "tikal-temple-iv",
+      "location": "Temple IV, Tikal",
+      "city": "Tikal",
+      "region": "Petén",
+      "country": "Guatemala",
+      "continent": "NA",
+      "target": {
+        "lat": 17.222,
+        "lng": -89.637
+      },
+      "status": "ready",
+      "clues": [
+        "A Rebel lookout watches the Millennium Falcon fly in, with ancient pyramids poking above the jungle.",
+        "The view from this temple was used for the Rebel base on Yavin 4.",
+        "It is a Maya pyramid in a vast ancient city in Central America, used in A New Hope.",
+        "The location is Temple IV, Tikal.",
+        "The location is in Tikal National Park, Petén, northern Guatemala."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "yavin-4"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tikal_Temple_IV"
+      }
+    },
+    {
+      "id": "dantes-view-death-valley",
+      "location": "Dante's View, Death Valley",
+      "city": "Death Valley",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.2205,
+        "lng": -116.7258
+      },
+      "status": "ready",
+      "clues": [
+        "Obi-Wan's line about a 'wretched hive of scum and villainy' is spoken overlooking a view filmed here.",
+        "The overlook where Luke and Obi-Wan first see Mos Eisley was filmed at this viewpoint.",
+        "It is a mountain viewpoint high above a famous desert national park in California, used in A New Hope.",
+        "The location is Dante's View, Death Valley.",
+        "The location is in Death Valley National Park, eastern California, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "mos-eisley"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dante%27s_View"
+      }
+    },
+    {
+      "id": "artists-palette-death-valley",
+      "location": "Artist's Palette, Death Valley",
+      "city": "Death Valley",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.364,
+        "lng": -116.803
+      },
+      "status": "ready",
+      "clues": [
+        "R2-D2 rolls through these multi-coloured hills on his own, shortly before being captured.",
+        "R2-D2 trundles through this colourful canyon before he is ambushed by Jawas.",
+        "It is a colourful hillside in a famous desert national park, used in A New Hope.",
+        "The location is Artist's Palette, Death Valley.",
+        "The location is in Death Valley National Park, eastern California, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [
+          "tatooine"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Artist%27s_Palette"
+      }
+    },
+    {
+      "id": "buttercup-valley-yuma",
+      "location": "Buttercup Valley, Imperial Sand Dunes",
+      "city": "Yuma",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.73,
+        "lng": -114.89
+      },
+      "status": "ready",
+      "clues": [
+        "Jabba's sail barge was built full-size here, and the production called the film 'Blue Harvest' to keep it secret.",
+        "Luke, Han and Lando escape the Sarlacc pit in the Dune Sea scenes filmed here.",
+        "It is a desert of sand dunes near the Arizona border, used in Return of the Jedi.",
+        "The location is Buttercup Valley, Imperial Sand Dunes.",
+        "The location is in Imperial County, south-eastern California, United States, near Yuma, Arizona."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [
+          "tatooine",
+          "great-pit-of-carkoon"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Algodones_Dunes"
+      }
+    },
+    {
+      "id": "del-norte-redwoods-endor",
+      "location": "Redwood forests near Smith River",
+      "city": "Smith River",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.88,
+        "lng": -124.13
+      },
+      "status": "ready",
+      "clues": [
+        "Speeder bikes raced through these giant trees, with the scenes shot in a forest owned by a lumber company.",
+        "The forest moon of Endor, home of the Ewoks, was filmed among these redwoods.",
+        "It is a coastal redwood forest in northern California, used in Return of the Jedi.",
+        "The location is Redwood forests near Smith River.",
+        "The location is in Del Norte County, far northern California, United States, near the Oregon border."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [
+          "endor"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jedediah_Smith_Redwoods_State_Park"
+      }
+    },
+    {
+      "id": "hardangerjokulen",
+      "location": "Hardangerjøkulen glacier",
+      "city": "Finse",
+      "region": "Vestland",
+      "country": "Norway",
+      "continent": "EU",
+      "target": {
+        "lat": 60.54,
+        "lng": 7.45
+      },
+      "status": "ready",
+      "clues": [
+        "Mark Hamill's opening scenes were filmed just outside the crew's hotel during a severe blizzard.",
+        "It played the ice planet Hoth, where the Rebels' Echo Base is attacked by AT-ATs.",
+        "It is a Norwegian glacier used in The Empire Strikes Back.",
+        "The location is Hardangerjøkulen glacier.",
+        "The location is on the Hardanger Plateau in Vestland, western Norway, near Finse."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-empire-strikes-back"
+        ],
+        "inUniverse": [
+          "hoth"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hardangerj%C3%B8kulen"
+      }
+    },
+    {
+      "id": "finse-1222-hotel",
+      "location": "Finse 1222 hotel",
+      "city": "Finse",
+      "region": "Vestland",
+      "country": "Norway",
+      "continent": "EU",
+      "target": {
+        "lat": 60.6015,
+        "lng": 7.5044
+      },
+      "status": "ready",
+      "clues": [
+        "The crew of The Empire Strikes Back stayed at this hotel, which still has Star Wars memorabilia on display.",
+        "Hoth scenes were filmed close to this hotel, which sits on the Bergen Line.",
+        "It is a mountain hotel at the highest station on the Oslo–Bergen railway.",
+        "The location is Finse 1222 hotel.",
+        "The location is in Finse, Vestland, Norway, on the Bergen railway line."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [
+          "the-empire-strikes-back"
+        ],
+        "inUniverse": [
+          "hoth"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Finse"
+      }
+    },
+    {
+      "id": "whippendell-woods",
+      "location": "Whippendell Woods",
+      "city": "Watford",
+      "region": "Hertfordshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.662,
+        "lng": -0.442
+      },
+      "status": "ready",
+      "clues": [
+        "Qui-Gon Jinn meets a clumsy Gungan in this English woodland after escaping a Trade Federation landing.",
+        "It played the forests of Naboo, where Jar Jar Binks is introduced.",
+        "It is an ancient woodland near Watford, used in The Phantom Menace.",
+        "The location is Whippendell Woods.",
+        "The location is near Watford, Hertfordshire, England, close to Leavesden Studios."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [
+          "naboo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Whippendell_Wood"
+      }
+    },
+    {
+      "id": "puzzlewood",
+      "location": "Puzzlewood",
+      "city": "Coleford",
+      "region": "Gloucestershire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.7733,
+        "lng": -2.6074
+      },
+      "status": "ready",
+      "clues": [
+        "Its mossy rocks and twisting paths were also used in Doctor Who and Merlin.",
+        "Rey, Finn and Han Solo walk through these woods on Takodana near Maz Kanata's castle.",
+        "It is an ancient woodland attraction in the Forest of Dean, used in The Force Awakens.",
+        "The location is Puzzlewood.",
+        "The location is near Coleford in the Forest of Dean, Gloucestershire, England."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-force-awakens"
+        ],
+        "inUniverse": [
+          "takodana"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Puzzlewood"
+      }
+    },
+    {
+      "id": "skellig-michael",
+      "location": "Skellig Michael",
+      "city": "Portmagee",
+      "region": "County Kerry",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 51.7714,
+        "lng": -10.5408
+      },
+      "status": "ready",
+      "clues": [
+        "The puffins on this island inspired the porgs, which were added digitally to cover the real birds.",
+        "Rey finds Luke Skywalker here and offers him his lightsaber.",
+        "It is a rocky island with a medieval monastery, which played Ahch-To in The Force Awakens and The Last Jedi.",
+        "The location is Skellig Michael.",
+        "The location is in the Atlantic Ocean off the Iveragh Peninsula, County Kerry, south-west Ireland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-force-awakens",
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "ahch-to"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Skellig_Michael"
+      }
+    },
+    {
+      "id": "malin-head",
+      "location": "Malin Head",
+      "city": "Malin",
+      "region": "County Donegal",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 55.3812,
+        "lng": -7.3739
+      },
+      "status": "ready",
+      "clues": [
+        "The Millennium Falcon was parked on a clifftop here, causing a stir among local residents.",
+        "Parts of Luke's island hideaway on Ahch-To were filmed on this rugged headland.",
+        "It is the northernmost point of the island of Ireland, used in The Last Jedi.",
+        "The location is Malin Head.",
+        "The location is on the Inishowen Peninsula, County Donegal, Ireland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "ahch-to"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Malin_Head"
+      }
+    },
+    {
+      "id": "ceann-sibeal",
+      "location": "Ceann Sibéal (Sybil Head)",
+      "city": "Ballyferriter",
+      "region": "County Kerry",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 52.179,
+        "lng": -10.468
+      },
+      "status": "ready",
+      "clues": [
+        "A replica of the beehive huts of a famous island monastery was built on this headland for filming.",
+        "The village of the Lanai caretakers on Ahch-To was built here for The Last Jedi.",
+        "It is a headland on the Dingle Peninsula.",
+        "The location is Ceann Sibéal (Sybil Head).",
+        "The location is near Ballyferriter on the Dingle Peninsula, County Kerry, Ireland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "ahch-to"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "loop-head",
+      "location": "Loop Head",
+      "city": "Kilbaha",
+      "region": "County Clare",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 52.561,
+        "lng": -9.93
+      },
+      "status": "ready",
+      "clues": [
+        "Its lighthouse peninsula was one of several Irish coastal sites used for Luke's island scenes.",
+        "Scenes of Ahch-To in The Last Jedi were filmed at this headland.",
+        "It is a peninsula on Ireland's Wild Atlantic Way, at the mouth of the Shannon.",
+        "The location is Loop Head.",
+        "The location is at the western tip of County Clare, Ireland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "ahch-to"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Loop_Head"
+      }
+    },
+    {
+      "id": "canary-wharf-station",
+      "location": "Canary Wharf Underground station",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5035,
+        "lng": -0.0187
+      },
+      "status": "ready",
+      "clues": [
+        "Its vast concrete ticket hall became corridors of an Imperial facility in an anthology film.",
+        "This Jubilee line station was used for the Imperial base on Scarif, where the Death Star plans are stored.",
+        "It is a Norman Foster-designed Underground station, used in Rogue One.",
+        "The location is Canary Wharf Underground station.",
+        "The location is in the Canary Wharf business district, Docklands, east London, England."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [
+          "scarif"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Canary_Wharf_tube_station"
+      }
+    },
+    {
+      "id": "royal-palace-of-caserta",
+      "location": "Royal Palace of Caserta",
+      "city": "Caserta",
+      "region": "Campania",
+      "country": "Italy",
+      "continent": "EU",
+      "target": {
+        "lat": 41.073,
+        "lng": 14.327
+      },
+      "status": "ready",
+      "clues": [
+        "Its grand staircase and throne room were used for the palace of an elected teenage queen.",
+        "It played the interior of Queen Amidala's palace in Theed on Naboo.",
+        "It is a vast Bourbon royal palace near Naples, used in The Phantom Menace and Attack of the Clones.",
+        "The location is Royal Palace of Caserta.",
+        "The location is in Caserta, Campania, southern Italy, north of Naples."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-phantom-menace",
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [
+          "naboo",
+          "theed"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Royal_Palace_of_Caserta"
+      }
+    },
+    {
+      "id": "villa-del-balbianello",
+      "location": "Villa del Balbianello",
+      "city": "Lenno",
+      "region": "Lombardy",
+      "country": "Italy",
+      "continent": "EU",
+      "target": {
+        "lat": 45.966,
+        "lng": 9.202
+      },
+      "status": "ready",
+      "clues": [
+        "Its terraced gardens and loggia are where two characters fall in love by a lake on Naboo.",
+        "Anakin and Padmé are secretly married on this lakeside terrace.",
+        "It is an Italian lakeside villa used in Attack of the Clones.",
+        "The location is Villa del Balbianello.",
+        "The location is on Lake Como near Lenno, Lombardy, northern Italy."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [
+          "naboo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Villa_del_Balbianello"
+      }
+    },
+    {
+      "id": "mount-etna",
+      "location": "Mount Etna",
+      "city": "Catania",
+      "region": "Sicily",
+      "country": "Italy",
+      "continent": "EU",
+      "target": {
+        "lat": 37.751,
+        "lng": 14.9934
+      },
+      "status": "ready",
+      "clues": [
+        "Real footage of this volcano's 2002 eruption was filmed and added to the lava planet.",
+        "Its eruption footage was used for Mustafar, where Obi-Wan fights Anakin.",
+        "It is Europe's most active volcano, used in Revenge of the Sith.",
+        "The location is Mount Etna.",
+        "The location is on the east coast of Sicily, Italy, near Catania."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [
+          "mustafar"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mount_Etna"
+      }
+    },
+    {
+      "id": "plaza-de-espana-seville",
+      "location": "Plaza de España, Seville",
+      "city": "Seville",
+      "region": "Andalusia",
+      "country": "Spain",
+      "continent": "EU",
+      "target": {
+        "lat": 37.3772,
+        "lng": -5.9869
+      },
+      "status": "ready",
+      "clues": [
+        "Its semicircular colonnade was dressed as the capital city of a peaceful planet.",
+        "Anakin and Padmé arrive in Theed on Naboo, walking through this plaza.",
+        "It is a grand 1929 plaza in Andalusia, used in Attack of the Clones.",
+        "The location is Plaza de España, Seville.",
+        "The location is in María Luisa Park, Seville, Andalusia, southern Spain."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [
+          "naboo",
+          "theed"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Plaza_de_Espa%C3%B1a_(Seville)"
+      }
+    },
+    {
+      "id": "fuerteventura-solo",
+      "location": "Fuerteventura",
+      "city": "Puerto del Rosario",
+      "region": "Canary Islands",
+      "country": "Spain",
+      "continent": "AF",
+      "target": {
+        "lat": 28.3587,
+        "lng": -14.0537
+      },
+      "status": "ready",
+      "clues": [
+        "The windswept cliffs and beaches of this volcanic island hosted the climactic showdown over a stolen fuel supply.",
+        "Savareen, where Han shoots first against Beckett, was filmed here.",
+        "It is one of Spain's Canary Islands, used in Solo: A Star Wars Story.",
+        "The location is Fuerteventura.",
+        "The location is in the Atlantic Ocean off the coast of Morocco, part of Spain's Canary Islands."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "solo"
+        ],
+        "inUniverse": [
+          "savareen"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Fuerteventura"
+      }
+    },
+    {
+      "id": "liwa-oasis-jakku",
+      "location": "Liwa Oasis",
+      "city": "Liwa",
+      "region": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "continent": "AS",
+      "target": {
+        "lat": 23.117,
+        "lng": 53.77
+      },
+      "status": "ready",
+      "clues": [
+        "A whole junk town called Niima Outpost was built among these giant dunes.",
+        "Rey scavenges inside a crashed Star Destroyer on the desert planet Jakku, filmed here.",
+        "It is an oasis on the edge of the Empty Quarter, used in The Force Awakens.",
+        "The location is Liwa Oasis.",
+        "The location is in the south of the emirate of Abu Dhabi, United Arab Emirates, near the Saudi border."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-force-awakens"
+        ],
+        "inUniverse": [
+          "jakku"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Liwa_Oasis"
+      }
+    },
+    {
+      "id": "wadi-rum-rogue-one",
+      "location": "Wadi Rum",
+      "city": "Wadi Rum",
+      "region": "Aqaba",
+      "country": "Jordan",
+      "continent": "AS",
+      "target": {
+        "lat": 29.576,
+        "lng": 35.42
+      },
+      "status": "ready",
+      "clues": [
+        "The Holy City where Chirrut and Baze guard a ruined temple was set among these red canyons.",
+        "It played the moon Jedha, home of the Holy City and its kyber crystals.",
+        "It is a red-sand desert valley in southern Jordan, used in Rogue One.",
+        "The location is Wadi Rum.",
+        "The location is in Aqaba Governorate, southern Jordan."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [
+          "jedha"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Wadi_Rum"
+      }
+    },
+    {
+      "id": "wadi-rum-rise-of-skywalker",
+      "location": "Wadi Rum",
+      "city": "Wadi Rum",
+      "region": "Aqaba",
+      "country": "Jordan",
+      "continent": "AS",
+      "target": {
+        "lat": 29.577,
+        "lng": 35.421
+      },
+      "status": "ready",
+      "clues": [
+        "The Festival of the Ancestors, held every 42 years, was filmed in this desert.",
+        "Rey, Finn and Poe find a Sith dagger on the desert planet Pasaana, filmed here.",
+        "It is a red-sand desert valley in Jordan, used in The Rise of Skywalker.",
+        "The location is Wadi Rum.",
+        "The location is in Aqaba Governorate, southern Jordan."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [
+          "pasaana"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Wadi_Rum"
+      }
+    },
+    {
+      "id": "laamu-atoll-scarif",
+      "location": "Laamu Atoll",
+      "city": "Gan",
+      "region": "Laamu",
+      "country": "Maldives",
+      "continent": "AS",
+      "target": {
+        "lat": 1.93,
+        "lng": 73.54
+      },
+      "status": "ready",
+      "clues": [
+        "AT-ACT walkers stomp across beaches and palm groves from this tropical island chain in an anthology finale.",
+        "The beach battle on the planet Scarif was filmed here.",
+        "It is an atoll in the Maldives, used in Rogue One.",
+        "The location is Laamu Atoll.",
+        "The location is in the southern Maldives, Indian Ocean."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [
+          "scarif"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Laamu_Atoll"
+      }
+    },
+    {
+      "id": "phang-nga-bay",
+      "location": "Phang Nga Bay",
+      "city": "Phang Nga",
+      "region": "Phang Nga",
+      "country": "Thailand",
+      "continent": "AS",
+      "target": {
+        "lat": 8.275,
+        "lng": 98.5
+      },
+      "status": "ready",
+      "clues": [
+        "Its limestone towers rising from the sea were filmed to form the background of a Wookiee battle.",
+        "It was used for the landscape of Kashyyyk, the Wookiee home world.",
+        "It is a bay famous for limestone karst islands, used in Revenge of the Sith.",
+        "The location is Phang Nga Bay.",
+        "The location is in the Andaman Sea, southern Thailand, north-east of Phuket."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [
+          "kashyyyk"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Phang_Nga_Bay"
+      }
+    },
+    {
+      "id": "salar-de-uyuni",
+      "location": "Salar de Uyuni",
+      "city": "Uyuni",
+      "region": "Potosí",
+      "country": "Bolivia",
+      "continent": "SA",
+      "target": {
+        "lat": -20.1338,
+        "lng": -67.4891
+      },
+      "status": "ready",
+      "clues": [
+        "Aerial footage of this place helped create a planet where red earth lies under a white crust.",
+        "Its salt flats were used for Crait, the scene of the Resistance's last stand.",
+        "It is the world's largest salt flat, used for The Last Jedi.",
+        "The location is Salar de Uyuni.",
+        "The location is in the Altiplano, south-western Bolivia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "crait"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Salar_de_Uyuni"
+      }
+    },
+    {
+      "id": "dubrovnik",
+      "location": "Dubrovnik",
+      "city": "Dubrovnik",
+      "region": "Dubrovnik-Neretva",
+      "country": "Croatia",
+      "continent": "EU",
+      "target": {
+        "lat": 42.6407,
+        "lng": 18.1077
+      },
+      "status": "ready",
+      "clues": [
+        "Fathier racing and a rich casino city were filmed in these old-town streets.",
+        "Its walled old town played Canto Bight, where Finn and Rose free the fathiers.",
+        "It is a walled Adriatic city, used in The Last Jedi.",
+        "The location is Dubrovnik.",
+        "The location is on the Dalmatian coast, southern Croatia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [
+          "canto-bight"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dubrovnik"
+      }
+    },
+    {
+      "id": "cruachan-reservoir-andor",
+      "location": "Cruachan Reservoir",
+      "city": "Lochawe",
+      "region": "Argyll and Bute",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 56.41,
+        "lng": -5.11
+      },
+      "status": "ready",
+      "clues": [
+        "Its dam played the ancient valley where a rebel crew camp ahead of a meteor shower.",
+        "Cassian joins the heist of the Imperial garrison payroll on Aldhani, filmed in this Highland area.",
+        "It is a hydroelectric reservoir in the Scottish Highlands, used in Andor.",
+        "The location is Cruachan Reservoir.",
+        "The location is above Loch Awe, Argyll and Bute, western Scotland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "andor"
+        ],
+        "inUniverse": [
+          "aldhani"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Cruachan_Power_Station"
+      }
+    },
+    {
+      "id": "elstree-studios",
+      "location": "Elstree Studios",
+      "city": "Borehamwood",
+      "region": "Hertfordshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.6563,
+        "lng": -0.2722
+      },
+      "status": "ready",
+      "clues": [
+        "A huge purpose-built 'Star Wars Stage' was constructed here for The Empire Strikes Back in 1979.",
+        "The Death Star, the Millennium Falcon and Dagobah were built on stages at this studio for the original trilogy.",
+        "It is a film studio north of London, home of the original Star Wars films.",
+        "The location is Elstree Studios.",
+        "The location is in Borehamwood, Hertfordshire, England, north of London."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "a-new-hope",
+          "the-empire-strikes-back",
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [
+          "death-star",
+          "dagobah"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Elstree_Studios"
+      }
+    },
+    {
+      "id": "pinewood-studios-star-wars",
+      "location": "Pinewood Studios",
+      "city": "Iver Heath",
+      "region": "Buckinghamshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.549,
+        "lng": -0.537
+      },
+      "status": "ready",
+      "clues": [
+        "Maz Kanata's castle and Starkiller Base were built on stages and backlots at this studio.",
+        "The sequel trilogy, Rogue One, Solo and Andor were all made at this studio.",
+        "It is a historic English film studio west of London, also known as the home of James Bond.",
+        "The location is Pinewood Studios.",
+        "The location is in Iver Heath, Buckinghamshire, England, near the M25 west of London."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "the-force-awakens",
+          "the-last-jedi",
+          "the-rise-of-skywalker",
+          "rogue-one",
+          "solo",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pinewood_Studios"
+      }
+    },
+    {
+      "id": "leavesden-studios-phantom-menace",
+      "location": "Leavesden Studios",
+      "city": "Leavesden",
+      "region": "Hertfordshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.6935,
+        "lng": -0.4215
+      },
+      "status": "ready",
+      "clues": [
+        "This former aerodrome hosted the first prequel's sets, just a few years before it became the home of Harry Potter.",
+        "The Phantom Menace was filmed at this studio in 1997.",
+        "It is a studio in a former aircraft factory north of Watford, now owned by Warner Bros.",
+        "The location is Leavesden Studios.",
+        "The location is in Leavesden, Hertfordshire, England, just north of Watford."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Warner_Bros._Studios,_Leavesden"
+      }
+    },
+    {
+      "id": "fox-studios-australia-star-wars",
+      "location": "Fox Studios Australia",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.892,
+        "lng": 151.227
+      },
+      "status": "ready",
+      "clues": [
+        "Both of the later prequels were filmed here with digital cameras, against vast blue and green screens.",
+        "Attack of the Clones and Revenge of the Sith were filmed at this Australian studio.",
+        "It is a film studio in the eastern suburbs of an Australian harbour city, now called Disney Studios Australia.",
+        "The location is Fox Studios Australia.",
+        "The location is in Moore Park, Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Disney_Studios_Australia"
+      }
+    },
+    {
+      "id": "manhattan-beach-studios-stagecraft",
+      "location": "Manhattan Beach Studios",
+      "city": "Manhattan Beach",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.896,
+        "lng": -118.383
+      },
+      "status": "ready",
+      "clues": [
+        "This studio housed the first StageCraft 'Volume', a curved wall of LED screens showing real-time backgrounds.",
+        "The Mandalorian was filmed here using virtual production instead of location shooting.",
+        "It is a studio complex in the South Bay of Los Angeles, where The Mandalorian was made.",
+        "The location is Manhattan Beach Studios.",
+        "The location is in Manhattan Beach, Los Angeles County, California, United States."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/StageCraft"
+      }
+    },
+    {
+      "id": "skywalker-ranch",
+      "location": "Skywalker Ranch",
+      "city": "Nicasio",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.0644,
+        "lng": -122.6614
+      },
+      "status": "ready",
+      "clues": [
+        "This rural complex in Marin County has its own fire brigade, vineyard and sound studio.",
+        "George Lucas built his private filmmaking retreat here, home of Skywalker Sound.",
+        "It is Lucasfilm's ranch in the hills of Northern California.",
+        "The location is Skywalker Ranch.",
+        "The location is near Nicasio in Marin County, California, United States, north of San Francisco."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Skywalker_Ranch"
+      }
+    },
+    {
+      "id": "letterman-digital-arts-center",
+      "location": "Letterman Digital Arts Center",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.7985,
+        "lng": -122.451
+      },
+      "status": "ready",
+      "clues": [
+        "A fountain outside this campus is topped by a bronze statue of a small green Jedi Master.",
+        "Lucasfilm's headquarters and Industrial Light & Magic are based here, beside the Yoda Fountain.",
+        "It is a campus in the Presidio, a former army post at the northern tip of San Francisco.",
+        "The location is Letterman Digital Arts Center.",
+        "The location is in the Presidio of San Francisco, California, United States, near the Golden Gate Bridge."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Letterman_Digital_Arts_Center"
+      }
+    },
+    {
+      "id": "galaxys-edge-disneyland",
+      "location": "Star Wars: Galaxy's Edge, Disneyland",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8148,
+        "lng": -117.9227
+      },
+      "status": "ready",
+      "clues": [
+        "Black Spire Outpost is named after the remains of a huge petrified tree at its centre.",
+        "Visitors to Batuu can drink blue milk and visit Oga's Cantina in this land, which opened in May 2019.",
+        "It is the original Star Wars land, at the first Disney park.",
+        "The location is Star Wars: Galaxy's Edge, Disneyland.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [
+          "batuu",
+          "black-spire-outpost"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_Galaxy%27s_Edge"
+      }
+    },
+    {
+      "id": "galaxys-edge-hollywood-studios",
+      "location": "Star Wars: Galaxy's Edge, Disney's Hollywood Studios",
+      "city": "Bay Lake",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.3527,
+        "lng": -81.562
+      },
+      "status": "ready",
+      "clues": [
+        "This version of Batuu opened in August 2019, three months after its Californian twin.",
+        "A full-size Millennium Falcon stands in this Florida land, and Rise of the Resistance opened here first.",
+        "It is the Star Wars land at Walt Disney World.",
+        "The location is Star Wars: Galaxy's Edge, Disney's Hollywood Studios.",
+        "The location is at Walt Disney World Resort, near Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [
+          "batuu",
+          "black-spire-outpost"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_Galaxy%27s_Edge"
+      }
+    },
+    {
+      "id": "rise-of-the-resistance-hollywood-studios",
+      "location": "Star Wars: Rise of the Resistance, Disney's Hollywood Studios",
+      "city": "Bay Lake",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.354,
+        "lng": -81.561
+      },
+      "status": "ready",
+      "clues": [
+        "Riders are captured by a full-size Star Destroyer hangar of stormtroopers in this ride, which mixes several ride systems.",
+        "Kylo Ren interrogates guests in this ride, which opened in Florida in December 2019.",
+        "It is the Galaxy's Edge flagship attraction at Walt Disney World.",
+        "The location is Star Wars: Rise of the Resistance, Disney's Hollywood Studios.",
+        "The location is at Walt Disney World Resort, near Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_Rise_of_the_Resistance"
+      }
+    },
+    {
+      "id": "rise-of-the-resistance-disneyland",
+      "location": "Star Wars: Rise of the Resistance, Disneyland",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.816,
+        "lng": -117.924
+      },
+      "status": "ready",
+      "clues": [
+        "This version of the ride opened in January 2020, a few weeks after its Florida twin.",
+        "Guests escape a Star Destroyer after Kylo Ren and General Hux try to find the Resistance base.",
+        "It is the Galaxy's Edge flagship attraction in California.",
+        "The location is Star Wars: Rise of the Resistance, Disneyland.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_Rise_of_the_Resistance"
+      }
+    },
+    {
+      "id": "smugglers-run-disneyland",
+      "location": "Millennium Falcon: Smugglers Run, Disneyland",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.815,
+        "lng": -117.9235
+      },
+      "status": "ready",
+      "clues": [
+        "Each rider is given a job, as pilot, gunner or engineer, on a job for Hondo Ohnaka.",
+        "Guests fly the Millennium Falcon in this interactive ride.",
+        "It is a flight-simulator ride inside the full-size Falcon at Galaxy's Edge in California.",
+        "The location is Millennium Falcon: Smugglers Run, Disneyland.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [
+          "millennium-falcon"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Millennium_Falcon:_Smugglers_Run"
+      }
+    },
+    {
+      "id": "galactic-starcruiser",
+      "location": "Star Wars: Galactic Starcruiser",
+      "city": "Bay Lake",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.3575,
+        "lng": -81.565
+      },
+      "status": "ready",
+      "clues": [
+        "This immersive two-night 'hotel' voyage aboard the Halcyon closed in September 2023, after only around 18 months.",
+        "Guests boarded a luxury starship called the Halcyon for a live-action role-playing adventure.",
+        "It was a Star Wars-themed hotel at Walt Disney World.",
+        "The location is Star Wars: Galactic Starcruiser.",
+        "The location is at Walt Disney World Resort, near Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "galaxys-edge"
+        ],
+        "inUniverse": [
+          "halcyon"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_Galactic_Starcruiser"
+      }
+    },
+    {
+      "id": "star-tours-disneyland",
+      "location": "Star Tours, Disneyland",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8115,
+        "lng": -117.917
+      },
+      "status": "ready",
+      "clues": [
+        "This motion-simulator ride opened in January 1987, the first Star Wars attraction in a Disney park.",
+        "In the original ride, a rookie droid pilot named RX-24 crashes into a comet.",
+        "It is the Star Wars simulator ride in Tomorrowland at the original Disney park.",
+        "The location is Star Tours, Disneyland.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "star-tours"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Tours"
+      }
+    },
+    {
+      "id": "star-tours-hollywood-studios",
+      "location": "Star Tours, Disney's Hollywood Studios",
+      "city": "Bay Lake",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.3555,
+        "lng": -81.559
+      },
+      "status": "ready",
+      "clues": [
+        "An AT-AT walker stands outside this ride's entrance.",
+        "Guests board a Starspeeder 1000 piloted by C-3PO in this simulator ride, which opened in 1989.",
+        "It is the Star Wars simulator ride at Walt Disney World.",
+        "The location is Star Tours, Disney's Hollywood Studios.",
+        "The location is at Walt Disney World Resort, near Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "star-tours"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Tours"
+      }
+    },
+    {
+      "id": "star-tours-tokyo-disneyland",
+      "location": "Star Tours, Tokyo Disneyland",
+      "city": "Urayasu",
+      "region": "Chiba",
+      "country": "Japan",
+      "continent": "AS",
+      "target": {
+        "lat": 35.634,
+        "lng": 139.882
+      },
+      "status": "ready",
+      "clues": [
+        "This ride opened in 1989, as the first Star Wars attraction outside the United States.",
+        "C-3PO pilots a Starspeeder through the galaxy in Tokyo Disneyland's Tomorrowland.",
+        "It is the Star Wars simulator ride at Japan's first Disney park.",
+        "The location is Star Tours, Tokyo Disneyland.",
+        "The location is in Urayasu, Chiba Prefecture, Japan, east of Tokyo."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "star-tours"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Star_Tours"
+      }
+    },
+    {
+      "id": "hyperspace-mountain-disneyland-paris",
+      "location": "Star Wars Hyperspace Mountain, Disneyland Paris",
+      "city": "Chessy",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.8728,
+        "lng": 2.7802
+      },
+      "status": "ready",
+      "clues": [
+        "Originally inspired by Jules Verne, this coaster was rethemed in 2017 to put riders in an X-wing dogfight.",
+        "Riders join a Rebel attack on a Star Destroyer in this launched coaster.",
+        "It is the Star Wars coaster in Discoveryland at Disneyland Paris.",
+        "The location is Star Wars Hyperspace Mountain, Disneyland Paris.",
+        "The location is in Marne-la-Vallée, east of Paris, France."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "hyperspace-mountain"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hyperspace_Mountain"
+      }
+    },
+    {
+      "id": "tcl-chinese-theatre",
+      "location": "TCL Chinese Theatre",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.1022,
+        "lng": -118.3409
+      },
+      "status": "ready",
+      "clues": [
+        "In August 1977, C-3PO, R2-D2 and Darth Vader left their footprints in the forecourt here.",
+        "Star Wars opened at this theatre in May 1977, and fans queued around the block.",
+        "It is the famous Hollywood movie palace with celebrity handprints in its forecourt.",
+        "The location is TCL Chinese Theatre.",
+        "The location is on Hollywood Boulevard, Hollywood, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "a-new-hope",
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/TCL_Chinese_Theatre"
+      }
+    },
+    {
+      "id": "shrine-auditorium",
+      "location": "Shrine Auditorium",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.023,
+        "lng": -118.281
+      },
+      "status": "ready",
+      "clues": [
+        "This was Carrie Fisher's final Star Wars film, and it premiered here a year after her death.",
+        "The Last Jedi had its world premiere at this auditorium in December 2017.",
+        "It is a large Moorish-style auditorium near the University of Southern California.",
+        "The location is Shrine Auditorium.",
+        "The location is in University Park, south of downtown Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Shrine_Auditorium"
+      }
+    },
+    {
+      "id": "pantages-theatre",
+      "location": "Pantages Theatre",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.1018,
+        "lng": -118.3253
+      },
+      "status": "ready",
+      "clues": [
+        "The first live-action anthology film had its world premiere at this Art Deco theatre in December 2016.",
+        "Rogue One premiered here.",
+        "It is a historic Art Deco theatre on Hollywood Boulevard, near Hollywood and Vine.",
+        "The location is Pantages Theatre.",
+        "The location is on Hollywood Boulevard, Hollywood, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pantages_Theatre_(Hollywood)"
+      }
+    },
+    {
+      "id": "palais-des-festivals-cannes",
+      "location": "Palais des Festivals et des Congrès",
+      "city": "Cannes",
+      "region": "Provence-Alpes-Côte d'Azur",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 43.5513,
+        "lng": 7.0175
+      },
+      "status": "ready",
+      "clues": [
+        "Revenge of the Sith in 2005 and Solo in 2018 both had premieres here, out of competition.",
+        "This festival venue hosted the premieres of two Star Wars films on the French Riviera.",
+        "It is the home of the world's most famous film festival.",
+        "The location is Palais des Festivals et des Congrès.",
+        "The location is on the seafront of Cannes, on the French Riviera, south-east France."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "revenge-of-the-sith",
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Palais_des_Festivals_et_des_Congr%C3%A8s"
+      }
+    },
+    {
+      "id": "anaheim-convention-center-celebration",
+      "location": "Anaheim Convention Center",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8003,
+        "lng": -117.92
+      },
+      "status": "ready",
+      "clues": [
+        "Star Wars Celebration returned to this venue in 2022, after a three-year pandemic gap.",
+        "Star Wars Celebration, the official fan convention, has been held at this venue several times.",
+        "It is a convention centre opposite the Disneyland Resort.",
+        "The location is Anaheim Convention Center.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Anaheim_Convention_Center"
+      }
+    },
+    {
+      "id": "excel-london-celebration",
+      "location": "ExCeL London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5085,
+        "lng": 0.0295
+      },
+      "status": "ready",
+      "clues": [
+        "Star Wars Celebration Europe has been held at this Docklands venue, including in 2016 and 2023.",
+        "The official Star Wars fan convention came to this exhibition centre in east London.",
+        "It is a huge exhibition centre beside the Royal Victoria Dock.",
+        "The location is ExCeL London.",
+        "The location is in Custom House, Newham, east London, England."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/ExCeL_London"
+      }
+    },
+    {
+      "id": "makuhari-messe-celebration",
+      "location": "Makuhari Messe",
+      "city": "Chiba",
+      "region": "Chiba",
+      "country": "Japan",
+      "continent": "AS",
+      "target": {
+        "lat": 35.648,
+        "lng": 140.035
+      },
+      "status": "ready",
+      "clues": [
+        "Star Wars Celebration was held in Japan for the first time at this convention centre in 2025.",
+        "The official Star Wars fan convention was held at this Japanese venue in April 2025.",
+        "It is a large convention centre east of Tokyo.",
+        "The location is Makuhari Messe.",
+        "The location is in Mihama-ku, Chiba, Japan, on Tokyo Bay."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Makuhari_Messe"
+      }
+    },
+    {
+      "id": "national-air-and-space-museum-magic-of-myth",
+      "location": "National Air and Space Museum",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.8882,
+        "lng": -77.0199
+      },
+      "status": "ready",
+      "clues": [
+        "In 1997 this Smithsonian museum staged Star Wars: The Magic of Myth, linking the saga to Joseph Campbell.",
+        "Original costumes and models from the original trilogy went on display at this museum.",
+        "It is the Smithsonian's museum of flight and space, on the National Mall.",
+        "The location is National Air and Space Museum.",
+        "The location is on the National Mall, Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "exhibition",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Air_and_Space_Museum"
+      }
+    },
+    {
+      "id": "modesto-george-lucas",
+      "location": "Modesto, California",
+      "city": "Modesto",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.6391,
+        "lng": -120.9969
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this film-maker born? His early film American Graffiti was inspired by teenage car cruising here.",
+        "George Lucas, creator of Star Wars, was born and grew up in this city.",
+        "It is a city in California's Central Valley.",
+        "The location is Modesto, California.",
+        "The location is in Stanislaus County, California, United States, south of Sacramento."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/George_Lucas"
+      }
+    },
+    {
+      "id": "floral-park-john-williams",
+      "location": "Floral Park, New York",
+      "city": "Floral Park",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7237,
+        "lng": -73.7048
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this composer born? He wrote the music for all nine Skywalker saga films.",
+        "John Williams, who composed the Star Wars main title and the Imperial March, was born here.",
+        "It is a village on Long Island, just east of New York City.",
+        "The location is Floral Park, New York.",
+        "The location is in Nassau County, Long Island, New York, United States."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Williams"
+      }
+    },
+    {
+      "id": "gary-indiana-ralph-mcquarrie",
+      "location": "Gary, Indiana",
+      "city": "Gary",
+      "region": "Indiana",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.5934,
+        "lng": -87.3464
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this artist born? His paintings helped George Lucas sell the original film to the studio.",
+        "Ralph McQuarrie, who designed Darth Vader, C-3PO and R2-D2, was born here.",
+        "It is a steel city on Lake Michigan, south-east of Chicago.",
+        "The location is Gary, Indiana.",
+        "The location is in north-west Indiana, United States, on the shore of Lake Michigan."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ralph_McQuarrie"
+      }
+    },
+    {
+      "id": "hamill-oakland",
+      "location": "Oakland",
+      "city": "Oakland",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.8044,
+        "lng": -122.2712
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was badly hurt in a car crash shortly before filming The Empire Strikes Back.",
+        "He plays Luke Skywalker.",
+        "The actor is Mark Hamill, who was born here.",
+        "The location is Oakland, birthplace of Mark Hamill.",
+        "The location is in Oakland, California, United States, across the bay from San Francisco."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mark_Hamill"
+      }
+    },
+    {
+      "id": "ford-chicago-sw",
+      "location": "Chicago",
+      "city": "Chicago",
+      "region": "Illinois",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.8781,
+        "lng": -87.6298
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was working as a carpenter and reading lines for other actors' auditions when he won his part.",
+        "He plays Han Solo.",
+        "The actor is Harrison Ford, who was born here.",
+        "The location is Chicago, birthplace of Harrison Ford.",
+        "The location is in Chicago, Illinois, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Harrison_Ford"
+      }
+    },
+    {
+      "id": "fisher-beverly-hills",
+      "location": "Beverly Hills",
+      "city": "Beverly Hills",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0736,
+        "lng": -118.4004
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? The daughter of Debbie Reynolds, she also worked as a respected Hollywood script doctor.",
+        "She plays Princess, later General, Leia Organa.",
+        "The actor is Carrie Fisher, who was born here.",
+        "The location is Beverly Hills, birthplace of Carrie Fisher.",
+        "The location is in Beverly Hills, Los Angeles County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Carrie_Fisher"
+      }
+    },
+    {
+      "id": "guinness-marylebone",
+      "location": "Marylebone, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.52,
+        "lng": -0.154
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner for The Bridge on the River Kwai, he negotiated a share of the film's profits.",
+        "He plays Obi-Wan 'Ben' Kenobi in the original trilogy.",
+        "The actor is Alec Guinness, who was born here.",
+        "The location is Marylebone, London, birthplace of Alec Guinness.",
+        "The location is in Marylebone, central London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Alec_Guinness"
+      }
+    },
+    {
+      "id": "cushing-kenley",
+      "location": "Kenley",
+      "city": "Kenley",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.324,
+        "lng": -0.095
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His face was digitally recreated for Rogue One, more than two decades after his death.",
+        "He plays Grand Moff Tarkin, commander of the Death Star.",
+        "The actor is Peter Cushing, who was born here.",
+        "The location is Kenley, birthplace of Peter Cushing.",
+        "The location is in Kenley, in the London Borough of Croydon, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Peter_Cushing"
+      }
+    },
+    {
+      "id": "jones-arkabutla",
+      "location": "Arkabutla",
+      "city": "Arkabutla",
+      "region": "Mississippi",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.702,
+        "lng": -90.122
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was not credited for his voice role in the original 1977 release.",
+        "He provides the voice of Darth Vader.",
+        "The actor is James Earl Jones, who was born here.",
+        "The location is Arkabutla, birthplace of James Earl Jones.",
+        "The location is in Tate County, north-western Mississippi, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Earl_Jones"
+      }
+    },
+    {
+      "id": "prowse-bristol",
+      "location": "Bristol",
+      "city": "Bristol",
+      "region": "Bristol",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4545,
+        "lng": -2.5879
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A former weightlifter, he was also the Green Cross Code Man in British road-safety adverts.",
+        "He wore the Darth Vader suit in the original trilogy.",
+        "The actor is David Prowse, who was born here.",
+        "The location is Bristol, birthplace of David Prowse.",
+        "The location is in Bristol, south-west England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/David_Prowse"
+      }
+    },
+    {
+      "id": "daniels-salisbury",
+      "location": "Salisbury",
+      "city": "Salisbury",
+      "region": "Wiltshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.0688,
+        "lng": -1.7945
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He is the only actor to appear in all nine Skywalker saga films.",
+        "He plays C-3PO.",
+        "The actor is Anthony Daniels, who was born here.",
+        "The location is Salisbury, birthplace of Anthony Daniels.",
+        "The location is in Salisbury, Wiltshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Anthony_Daniels"
+      }
+    },
+    {
+      "id": "baker-birmingham",
+      "location": "Birmingham",
+      "city": "Birmingham",
+      "region": "West Midlands",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.4862,
+        "lng": -1.8904
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Just 3 feet 8 inches tall, he operated his character from inside its metal shell.",
+        "He played R2-D2.",
+        "The actor is Kenny Baker, who was born here.",
+        "The location is Birmingham, birthplace of Kenny Baker.",
+        "The location is in Birmingham, West Midlands, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kenny_Baker"
+      }
+    },
+    {
+      "id": "mayhew-barnes",
+      "location": "Barnes, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.471,
+        "lng": -0.244
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Standing 7 feet 3 inches tall, he reportedly got his role simply by standing up when George Lucas walked in.",
+        "He plays Chewbacca in the original trilogy.",
+        "The actor is Peter Mayhew, who was born here.",
+        "The location is Barnes, London, birthplace of Peter Mayhew.",
+        "The location is in Barnes, south-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Peter_Mayhew"
+      }
+    },
+    {
+      "id": "williams-harlem",
+      "location": "Harlem, New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8116,
+        "lng": -73.9465
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His cape-wearing character returned for The Rise of Skywalker, 36 years later.",
+        "He plays Lando Calrissian.",
+        "The actor is Billy Dee Williams, who was born here.",
+        "The location is Harlem, New York City, birthplace of Billy Dee Williams.",
+        "The location is in Harlem, Upper Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-empire-strikes-back",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Billy_Dee_Williams"
+      }
+    },
+    {
+      "id": "oz-hereford",
+      "location": "Hereford",
+      "city": "Hereford",
+      "region": "Herefordshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.0565,
+        "lng": -2.716
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Also the voice of Miss Piggy and Fozzie Bear, he performed a 900-year-old puppet.",
+        "He performs and voices Yoda.",
+        "The actor is Frank Oz, who was born here.",
+        "The location is Hereford, birthplace of Frank Oz.",
+        "The location is in Hereford, Herefordshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-empire-strikes-back",
+          "the-phantom-menace"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Frank_Oz"
+      }
+    },
+    {
+      "id": "mcdiarmid-carnoustie",
+      "location": "Carnoustie",
+      "city": "Carnoustie",
+      "region": "Angus",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 56.501,
+        "lng": -2.71
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was still in his thirties when he first played his ancient character under heavy make-up.",
+        "He plays Emperor Palpatine, Darth Sidious.",
+        "The actor is Ian McDiarmid, who was born here.",
+        "The location is Carnoustie, birthplace of Ian McDiarmid.",
+        "The location is in Carnoustie, Angus, on the east coast of Scotland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "return-of-the-jedi",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ian_McDiarmid"
+      }
+    },
+    {
+      "id": "davis-epsom-sw",
+      "location": "Epsom",
+      "city": "Epsom",
+      "region": "Surrey",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.336,
+        "lng": -0.267
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was cast aged 11 after his grandmother heard a radio appeal for short actors.",
+        "He plays Wicket the Ewok.",
+        "The actor is Warwick Davis, who was born here.",
+        "The location is Epsom, birthplace of Warwick Davis.",
+        "The location is in Epsom, Surrey, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Warwick_Davis"
+      }
+    },
+    {
+      "id": "lawson-crieff",
+      "location": "Crieff",
+      "city": "Crieff",
+      "region": "Perth and Kinross",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 56.374,
+        "lng": -3.838
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His nephew went on to play Obi-Wan Kenobi in the prequels.",
+        "He plays Wedge Antilles, the X-wing pilot.",
+        "The actor is Denis Lawson, who was born here.",
+        "The location is Crieff, birthplace of Denis Lawson.",
+        "The location is in Crieff, Perth and Kinross, Scotland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "a-new-hope",
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Denis_Lawson"
+      }
+    },
+    {
+      "id": "bulloch-market-harborough",
+      "location": "Market Harborough",
+      "city": "Market Harborough",
+      "region": "Leicestershire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.4772,
+        "lng": -0.921
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His bounty hunter had only a handful of lines but became a cult figure.",
+        "He plays Boba Fett in the original trilogy.",
+        "The actor is Jeremy Bulloch, who was born here.",
+        "The location is Market Harborough, birthplace of Jeremy Bulloch.",
+        "The location is in Market Harborough, Leicestershire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-empire-strikes-back",
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeremy_Bulloch"
+      }
+    },
+    {
+      "id": "shaw-holt",
+      "location": "Holt",
+      "city": "Holt",
+      "region": "Norfolk",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.907,
+        "lng": 1.092
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He appears as the unmasked face of a Sith lord, and as a Force ghost.",
+        "He plays the elderly Anakin Skywalker in Return of the Jedi.",
+        "The actor is Sebastian Shaw, who was born here.",
+        "The location is Holt, birthplace of Sebastian Shaw.",
+        "The location is in Holt, north Norfolk, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "return-of-the-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Sebastian_Shaw"
+      }
+    },
+    {
+      "id": "neeson-ballymena",
+      "location": "Ballymena",
+      "city": "Ballymena",
+      "region": "County Antrim",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 54.8636,
+        "lng": -6.276
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His Jedi is the first to notice a slave boy's extraordinary midi-chlorian count.",
+        "He plays Qui-Gon Jinn.",
+        "The actor is Liam Neeson, who was born here.",
+        "The location is Ballymena, birthplace of Liam Neeson.",
+        "The location is in Ballymena, County Antrim, Northern Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Liam_Neeson"
+      }
+    },
+    {
+      "id": "mcgregor-perth",
+      "location": "Perth",
+      "city": "Perth",
+      "region": "Perth and Kinross",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 56.395,
+        "lng": -3.4308
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His uncle Denis Lawson played Wedge Antilles in the original trilogy.",
+        "He plays the young Obi-Wan Kenobi, and returned in the series Obi-Wan Kenobi.",
+        "The actor is Ewan McGregor, who was born here.",
+        "The location is Perth, birthplace of Ewan McGregor.",
+        "The location is in Perth, Scotland, on the River Tay."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace",
+          "obi-wan-kenobi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ewan_McGregor"
+      }
+    },
+    {
+      "id": "portman-jerusalem-sw",
+      "location": "Jerusalem",
+      "city": "Jerusalem",
+      "region": "Jerusalem",
+      "country": "Israel",
+      "continent": "AS",
+      "target": {
+        "lat": 31.7683,
+        "lng": 35.2137
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She was a teenager when she was cast as an elected 14-year-old queen.",
+        "She plays Padmé Amidala.",
+        "The actor is Natalie Portman, who was born here.",
+        "The location is Jerusalem, birthplace of Natalie Portman.",
+        "The location is in Jerusalem."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Natalie_Portman"
+      }
+    },
+    {
+      "id": "lloyd-fort-collins",
+      "location": "Fort Collins",
+      "city": "Fort Collins",
+      "region": "Colorado",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.5853,
+        "lng": -105.0844
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was eight when he was chosen after a long search among thousands of boys.",
+        "He plays the young Anakin Skywalker.",
+        "The actor is Jake Lloyd, who was born here.",
+        "The location is Fort Collins, birthplace of Jake Lloyd.",
+        "The location is in Fort Collins, Colorado, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jake_Lloyd"
+      }
+    },
+    {
+      "id": "christensen-vancouver",
+      "location": "Vancouver",
+      "city": "Vancouver",
+      "region": "British Columbia",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 49.2827,
+        "lng": -123.1207
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He returned to his role in Obi-Wan Kenobi and Ahsoka nearly two decades later.",
+        "He plays Anakin Skywalker in Attack of the Clones and Revenge of the Sith.",
+        "The actor is Hayden Christensen, who was born here.",
+        "The location is Vancouver, birthplace of Hayden Christensen.",
+        "The location is in Vancouver, British Columbia, Canada."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hayden_Christensen"
+      }
+    },
+    {
+      "id": "lee-belgravia",
+      "location": "Belgravia, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.498,
+        "lng": -0.154
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A Hammer horror legend, he was nearly 80 when he played a lightsaber-wielding Sith lord.",
+        "He plays Count Dooku.",
+        "The actor is Christopher Lee, who was born here.",
+        "The location is Belgravia, London, birthplace of Christopher Lee.",
+        "The location is in Belgravia, central London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Christopher_Lee"
+      }
+    },
+    {
+      "id": "jackson-washington-dc-sw",
+      "location": "Washington, D.C.",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.9072,
+        "lng": -77.0369
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He asked for a purple lightsaber so he could find himself in the crowded battle scenes.",
+        "He plays Mace Windu.",
+        "The actor is Samuel L. Jackson, who was born here.",
+        "The location is Washington, D.C., birthplace of Samuel L. Jackson.",
+        "The location is in Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Samuel_L._Jackson"
+      }
+    },
+    {
+      "id": "park-glasgow",
+      "location": "Glasgow",
+      "city": "Glasgow",
+      "region": "Glasgow City",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.8642,
+        "lng": -4.2518
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A martial artist, he performed his character's double-bladed lightsaber fights.",
+        "He plays Darth Maul.",
+        "The actor is Ray Park, who was born here.",
+        "The location is Glasgow, birthplace of Ray Park.",
+        "The location is in Glasgow, Scotland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace",
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ray_Park"
+      }
+    },
+    {
+      "id": "morrison-rotorua",
+      "location": "Rotorua",
+      "city": "Rotorua",
+      "region": "Bay of Plenty",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -38.1368,
+        "lng": 176.2497
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the man used as the template for an entire army of clones.",
+        "He plays Jango Fett, and later Boba Fett.",
+        "The actor is Temuera Morrison, who was born here.",
+        "The location is Rotorua, birthplace of Temuera Morrison.",
+        "The location is in Rotorua, on New Zealand's North Island."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "the-book-of-boba-fett"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Temuera_Morrison"
+      }
+    },
+    {
+      "id": "logan-auckland",
+      "location": "Auckland",
+      "city": "Auckland",
+      "region": "Auckland",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -36.8485,
+        "lng": 174.7633
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character watches Mace Windu kill his father in the Geonosis arena.",
+        "He plays the young Boba Fett.",
+        "The actor is Daniel Logan, who was born here.",
+        "The location is Auckland, birthplace of Daniel Logan.",
+        "The location is in Auckland, New Zealand."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Daniel_Logan"
+      }
+    },
+    {
+      "id": "august-stockholm",
+      "location": "Stockholm",
+      "city": "Stockholm",
+      "region": "Stockholm",
+      "country": "Sweden",
+      "continent": "EU",
+      "target": {
+        "lat": 59.3293,
+        "lng": 18.0686
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character's capture by Tusken Raiders leads her son to massacre a village.",
+        "She plays Shmi Skywalker, Anakin's mother.",
+        "The actor is Pernilla August, who was born here.",
+        "The location is Stockholm, birthplace of Pernilla August.",
+        "The location is in Stockholm, Sweden."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace",
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pernilla_August"
+      }
+    },
+    {
+      "id": "stamp-stepney",
+      "location": "Stepney, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.517,
+        "lng": -0.046
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His Supreme Chancellor is removed by a vote of no confidence.",
+        "He plays Chancellor Valorum.",
+        "The actor is Terence Stamp, who was born here.",
+        "The location is Stepney, London, birthplace of Terence Stamp.",
+        "The location is in Stepney, east London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-phantom-menace"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Terence_Stamp"
+      }
+    },
+    {
+      "id": "smits-brooklyn",
+      "location": "Brooklyn",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.6782,
+        "lng": -73.9442
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character takes a newborn princess home to Alderaan.",
+        "He plays Bail Organa.",
+        "The actor is Jimmy Smits, who was born here.",
+        "The location is Brooklyn, birthplace of Jimmy Smits.",
+        "The location is in Brooklyn, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jimmy_Smits"
+      }
+    },
+    {
+      "id": "edgerton-blacktown",
+      "location": "Blacktown",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.771,
+        "lng": 150.906
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He returned to his role in Obi-Wan Kenobi, almost two decades after the prequels.",
+        "He plays Owen Lars, Luke's uncle.",
+        "The actor is Joel Edgerton, who was born here.",
+        "The location is Blacktown, birthplace of Joel Edgerton.",
+        "The location is in Blacktown, western Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones",
+          "obi-wan-kenobi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Joel_Edgerton"
+      }
+    },
+    {
+      "id": "byrne-sydney",
+      "location": "Sydney",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.86,
+        "lng": 151.18
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She had a small role as one of Padmé's handmaidens.",
+        "She plays Dormé in Attack of the Clones.",
+        "The actor is Rose Byrne, who was born here.",
+        "The location is Sydney, birthplace of Rose Byrne.",
+        "The location is in Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "attack-of-the-clones"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Rose_Byrne"
+      }
+    },
+    {
+      "id": "castle-hughes-donnybrook",
+      "location": "Donnybrook",
+      "city": "Donnybrook",
+      "region": "Western Australia",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.575,
+        "lng": 115.821
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She had a brief role as a ruler of Naboo, after being Oscar-nominated for Whale Rider.",
+        "She plays Queen Apailana in Revenge of the Sith.",
+        "The actor is Keisha Castle-Hughes, who was born here.",
+        "The location is Donnybrook, birthplace of Keisha Castle-Hughes.",
+        "The location is in south-west Western Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "revenge-of-the-sith"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Keisha_Castle-Hughes"
+      }
+    },
+    {
+      "id": "ridley-westminster",
+      "location": "Westminster, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4975,
+        "lng": -0.1357
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character's family name is revealed as Palpatine before she takes a new one.",
+        "She plays Rey, the scavenger from Jakku.",
+        "The actor is Daisy Ridley, who was born here.",
+        "The location is Westminster, London, birthplace of Daisy Ridley.",
+        "The location is in the City of Westminster, central London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Daisy_Ridley"
+      }
+    },
+    {
+      "id": "boyega-peckham",
+      "location": "Peckham, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.47,
+        "lng": -0.069
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is a stormtrooper with the number FN-2187.",
+        "He plays Finn.",
+        "The actor is John Boyega, who was born here.",
+        "The location is Peckham, London, birthplace of John Boyega.",
+        "The location is in Peckham, south London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Boyega"
+      }
+    },
+    {
+      "id": "driver-san-diego",
+      "location": "San Diego",
+      "city": "San Diego",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.7157,
+        "lng": -117.1611
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A former US Marine, he plays the son of Han and Leia.",
+        "He plays Kylo Ren, Ben Solo.",
+        "The actor is Adam Driver, who was born here.",
+        "The location is San Diego, birthplace of Adam Driver.",
+        "The location is in San Diego, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Adam_Driver"
+      }
+    },
+    {
+      "id": "isaac-guatemala-city-sw",
+      "location": "Guatemala City",
+      "city": "Guatemala City",
+      "region": "Guatemala",
+      "country": "Guatemala",
+      "continent": "NA",
+      "target": {
+        "lat": 14.6349,
+        "lng": -90.5069
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character's orange astromech droid is BB-8.",
+        "He plays Poe Dameron, the Resistance's best pilot.",
+        "The actor is Oscar Isaac, who was born here.",
+        "The location is Guatemala City, birthplace of Oscar Isaac.",
+        "The location is in Guatemala City, Guatemala."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Oscar_Isaac"
+      }
+    },
+    {
+      "id": "gleeson-dublin-sw",
+      "location": "Dublin",
+      "city": "Dublin",
+      "region": "County Dublin",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 53.3498,
+        "lng": -6.2603
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character gives a fiery speech to the troops just before Starkiller Base fires.",
+        "He plays General Hux.",
+        "The actor is Domhnall Gleeson, who was born here.",
+        "The location is Dublin, birthplace of Domhnall Gleeson.",
+        "The location is in Dublin, Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Domhnall_Gleeson"
+      }
+    },
+    {
+      "id": "christie-worthing",
+      "location": "Worthing",
+      "city": "Worthing",
+      "region": "West Sussex",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 50.8179,
+        "lng": -0.3729
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Famous as Brienne of Tarth, she wears chrome-plated armour.",
+        "She plays Captain Phasma.",
+        "The actor is Gwendoline Christie, who was born here.",
+        "The location is Worthing, birthplace of Gwendoline Christie.",
+        "The location is in Worthing, West Sussex, on England's south coast."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Gwendoline_Christie"
+      }
+    },
+    {
+      "id": "nyongo-mexico-city-sw",
+      "location": "Mexico City",
+      "city": "Mexico City",
+      "region": "Mexico City",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 19.4326,
+        "lng": -99.1332
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She performed a 1,000-year-old pirate through motion capture.",
+        "She plays Maz Kanata.",
+        "The actor is Lupita Nyong'o, who was born here.",
+        "The location is Mexico City, birthplace of Lupita Nyong'o.",
+        "The location is in Mexico City, Mexico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lupita_Nyong'o"
+      }
+    },
+    {
+      "id": "serkis-ruislip-sw",
+      "location": "Ruislip, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.576,
+        "lng": -0.421
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He performed a giant motion-capture villain on a throne, and later a prison foreman in Andor.",
+        "He plays Supreme Leader Snoke.",
+        "The actor is Andy Serkis, who was born here.",
+        "The location is Ruislip, London, birthplace of Andy Serkis.",
+        "The location is in Ruislip, north-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Andy_Serkis"
+      }
+    },
+    {
+      "id": "tran-san-diego",
+      "location": "San Diego",
+      "city": "San Diego",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.75,
+        "lng": -117.15
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character stuns Finn with an electro-shock as he tries to desert.",
+        "She plays Rose Tico, a Resistance mechanic.",
+        "The actor is Kelly Marie Tran, who was born here.",
+        "The location is San Diego, birthplace of Kelly Marie Tran.",
+        "The location is in San Diego, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kelly_Marie_Tran"
+      }
+    },
+    {
+      "id": "dern-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0522,
+        "lng": -118.2437
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character's lightspeed sacrifice became known as the 'Holdo manoeuvre'.",
+        "She plays Vice Admiral Holdo.",
+        "The actor is Laura Dern, who was born here.",
+        "The location is Los Angeles, birthplace of Laura Dern.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Laura_Dern"
+      }
+    },
+    {
+      "id": "del-toro-san-german",
+      "location": "San Germán",
+      "city": "San Germán",
+      "region": "Puerto Rico",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 18.0827,
+        "lng": -67.0436
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His stuttering codebreaker sells out the Resistance.",
+        "He plays DJ in The Last Jedi.",
+        "The actor is Benicio del Toro, who was born here.",
+        "The location is San Germán, birthplace of Benicio del Toro.",
+        "The location is in San Germán, south-western Puerto Rico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-last-jedi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Benicio_del_Toro"
+      }
+    },
+    {
+      "id": "von-sydow-lund",
+      "location": "Lund",
+      "city": "Lund",
+      "region": "Skåne",
+      "country": "Sweden",
+      "continent": "EU",
+      "target": {
+        "lat": 55.7047,
+        "lng": 13.191
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Known for The Seventh Seal, he gives Poe part of a map to Luke at the start of the sequel trilogy.",
+        "He plays Lor San Tekka in The Force Awakens.",
+        "The actor is Max von Sydow, who was born here.",
+        "The location is Lund, birthplace of Max von Sydow.",
+        "The location is in Lund, southern Sweden."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Max_von_Sydow"
+      }
+    },
+    {
+      "id": "pegg-brockworth-sw",
+      "location": "Brockworth",
+      "city": "Brockworth",
+      "region": "Gloucestershire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.851,
+        "lng": -2.151
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played a junk dealer under heavy prosthetics.",
+        "He plays Unkar Plutt, who buys Rey's salvage on Jakku.",
+        "The actor is Simon Pegg, who was born here.",
+        "The location is Brockworth, birthplace of Simon Pegg.",
+        "The location is in Brockworth, just east of Gloucester, Gloucestershire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Simon_Pegg"
+      }
+    },
+    {
+      "id": "grant-mbabane",
+      "location": "Mbabane",
+      "city": "Mbabane",
+      "region": "Hhohho",
+      "country": "Eswatini",
+      "continent": "AF",
+      "target": {
+        "lat": -26.3054,
+        "lng": 31.1367
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character shoots General Hux after exposing him as a spy.",
+        "He plays Allegiant General Pryde.",
+        "The actor is Richard E. Grant, who was born here.",
+        "The location is Mbabane, birthplace of Richard E. Grant.",
+        "The location is in Mbabane, the capital of Eswatini."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Richard_E._Grant"
+      }
+    },
+    {
+      "id": "russell-fountain-valley",
+      "location": "Fountain Valley",
+      "city": "Fountain Valley",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.7092,
+        "lng": -117.9537
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character's face is never seen under her helmet.",
+        "She plays Zorii Bliss in The Rise of Skywalker.",
+        "The actor is Keri Russell, who was born here.",
+        "The location is Fountain Valley, birthplace of Keri Russell.",
+        "The location is in Fountain Valley, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Keri_Russell"
+      }
+    },
+    {
+      "id": "monaghan-berlin",
+      "location": "Berlin",
+      "city": "Berlin",
+      "region": "Berlin",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 52.52,
+        "lng": 13.405
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Known from Lost and The Lord of the Rings, he plays a Resistance trooper.",
+        "He plays Beaumont Kin in The Rise of Skywalker.",
+        "The actor is Dominic Monaghan, who was born here.",
+        "The location is Berlin, birthplace of Dominic Monaghan.",
+        "The location is in Berlin, Germany."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dominic_Monaghan"
+      }
+    },
+    {
+      "id": "lourd-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.07,
+        "lng": -118.35
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her mother was Carrie Fisher.",
+        "She plays Lieutenant Connix.",
+        "The actor is Billie Lourd, who was born here.",
+        "The location is Los Angeles, birthplace of Billie Lourd.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "the-rise-of-skywalker"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Billie_Lourd"
+      }
+    },
+    {
+      "id": "jones-bournville",
+      "location": "Bournville",
+      "city": "Birmingham",
+      "region": "West Midlands",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.43,
+        "lng": -1.93
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is the daughter of the Death Star's designer and was raised by Saw Gerrera.",
+        "She plays Jyn Erso.",
+        "The actor is Felicity Jones, who was born here.",
+        "The location is Bournville, birthplace of Felicity Jones.",
+        "The location is in Bournville, Birmingham, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Felicity_Jones"
+      }
+    },
+    {
+      "id": "luna-mexico-city",
+      "location": "Mexico City",
+      "city": "Mexico City",
+      "region": "Mexico City",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 19.42,
+        "lng": -99.15
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character got his own two-season prequel series.",
+        "He plays Cassian Andor.",
+        "The actor is Diego Luna, who was born here.",
+        "The location is Mexico City, birthplace of Diego Luna.",
+        "The location is in Mexico City, Mexico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Diego_Luna"
+      }
+    },
+    {
+      "id": "tudyk-el-paso",
+      "location": "El Paso",
+      "city": "El Paso",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 31.7619,
+        "lng": -106.485
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He performed a reprogrammed Imperial security droid on set in a motion-capture suit.",
+        "He plays K-2SO.",
+        "The actor is Alan Tudyk, who was born here.",
+        "The location is El Paso, birthplace of Alan Tudyk.",
+        "The location is in El Paso, Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Alan_Tudyk"
+      }
+    },
+    {
+      "id": "ahmed-wembley",
+      "location": "Wembley, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.556,
+        "lng": -0.296
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is a defecting Imperial cargo pilot.",
+        "He plays Bodhi Rook.",
+        "The actor is Riz Ahmed, who was born here.",
+        "The location is Wembley, London, birthplace of Riz Ahmed.",
+        "The location is in Wembley, north-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Riz_Ahmed"
+      }
+    },
+    {
+      "id": "yen-guangzhou",
+      "location": "Guangzhou",
+      "city": "Guangzhou",
+      "region": "Guangdong",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 23.1291,
+        "lng": 113.2644
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His blind character chants 'I am one with the Force, and the Force is with me.'",
+        "He plays Chirrut Îmwe.",
+        "The actor is Donnie Yen, who was born here.",
+        "The location is Guangzhou, birthplace of Donnie Yen.",
+        "The location is in Guangzhou, Guangdong, southern China."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Donnie_Yen"
+      }
+    },
+    {
+      "id": "jiang-wen-tangshan",
+      "location": "Tangshan",
+      "city": "Tangshan",
+      "region": "Hebei",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 39.6309,
+        "lng": 118.1802
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character carries a heavy repeating blaster.",
+        "He plays Baze Malbus.",
+        "The actor is Jiang Wen, who was born here.",
+        "The location is Tangshan, birthplace of Jiang Wen.",
+        "The location is in Tangshan, Hebei, northern China."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jiang_Wen"
+      }
+    },
+    {
+      "id": "mikkelsen-copenhagen-sw",
+      "location": "Copenhagen",
+      "city": "Copenhagen",
+      "region": "Capital Region",
+      "country": "Denmark",
+      "continent": "EU",
+      "target": {
+        "lat": 55.7,
+        "lng": 12.58
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is a reluctant scientist who hides a weakness in his own super-weapon.",
+        "He plays Galen Erso.",
+        "The actor is Mads Mikkelsen, who was born here.",
+        "The location is Copenhagen, birthplace of Mads Mikkelsen.",
+        "The location is in Copenhagen, Denmark."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mads_Mikkelsen"
+      }
+    },
+    {
+      "id": "mendelsohn-melbourne-sw",
+      "location": "Melbourne",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.8136,
+        "lng": 144.9631
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His white-caped character is Director of Advanced Weapons Research.",
+        "He plays Orson Krennic.",
+        "The actor is Ben Mendelsohn, who was born here.",
+        "The location is Melbourne, birthplace of Ben Mendelsohn.",
+        "The location is in Melbourne, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Mendelsohn"
+      }
+    },
+    {
+      "id": "whitaker-longview-sw",
+      "location": "Longview",
+      "city": "Longview",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.5007,
+        "lng": -94.7405
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He reprised his extremist rebel character in Andor.",
+        "He plays Saw Gerrera.",
+        "The actor is Forest Whitaker, who was born here.",
+        "The location is Longview, birthplace of Forest Whitaker.",
+        "The location is in Longview, East Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Forest_Whitaker"
+      }
+    },
+    {
+      "id": "ehrenreich-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.06,
+        "lng": -118.3
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He took over a role made famous by Harrison Ford.",
+        "He plays the young Han Solo.",
+        "The actor is Alden Ehrenreich, who was born here.",
+        "The location is Los Angeles, birthplace of Alden Ehrenreich.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Alden_Ehrenreich"
+      }
+    },
+    {
+      "id": "glover-edwards-afb",
+      "location": "Edwards Air Force Base",
+      "city": "Edwards",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.9054,
+        "lng": -117.8839
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Also a musician known as Childish Gambino, he plays a young card-playing smuggler.",
+        "He plays the young Lando Calrissian.",
+        "The actor is Donald Glover, who was born here.",
+        "The location is Edwards Air Force Base, birthplace of Donald Glover.",
+        "The location is in the Mojave Desert, Kern County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Donald_Glover"
+      }
+    },
+    {
+      "id": "harrelson-midland",
+      "location": "Midland",
+      "city": "Midland",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 31.9973,
+        "lng": -102.0779
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is Han's mentor, who betrays him.",
+        "He plays Tobias Beckett.",
+        "The actor is Woody Harrelson, who was born here.",
+        "The location is Midland, birthplace of Woody Harrelson.",
+        "The location is in Midland, West Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Woody_Harrelson"
+      }
+    },
+    {
+      "id": "suotamo-espoo",
+      "location": "Espoo",
+      "city": "Espoo",
+      "region": "Uusimaa",
+      "country": "Finland",
+      "continent": "EU",
+      "target": {
+        "lat": 60.2055,
+        "lng": 24.6559
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A former basketball player, he took over a famous Wookiee role.",
+        "He plays Chewbacca in the sequels and Solo.",
+        "The actor is Joonas Suotamo, who was born here.",
+        "The location is Espoo, birthplace of Joonas Suotamo.",
+        "The location is in Espoo, Finland, just west of Helsinki."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-force-awakens",
+          "solo"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Joonas_Suotamo"
+      }
+    },
+    {
+      "id": "pascal-santiago-sw",
+      "location": "Santiago",
+      "city": "Santiago",
+      "region": "Santiago Metropolitan Region",
+      "country": "Chile",
+      "continent": "SA",
+      "target": {
+        "lat": -33.4489,
+        "lng": -70.6693
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character's face is rarely seen because his creed forbids removing his helmet.",
+        "He plays Din Djarin, the Mandalorian.",
+        "The actor is Pedro Pascal, who was born here.",
+        "The location is Santiago, birthplace of Pedro Pascal.",
+        "The location is in Santiago, Chile."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pedro_Pascal"
+      }
+    },
+    {
+      "id": "esposito-copenhagen",
+      "location": "Copenhagen",
+      "city": "Copenhagen",
+      "region": "Capital Region",
+      "country": "Denmark",
+      "continent": "EU",
+      "target": {
+        "lat": 55.6761,
+        "lng": 12.5683
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character wields the Darksaber against Din Djarin.",
+        "He plays Moff Gideon.",
+        "The actor is Giancarlo Esposito, who was born here.",
+        "The location is Copenhagen, birthplace of Giancarlo Esposito.",
+        "The location is in Copenhagen, Denmark."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Giancarlo_Esposito"
+      }
+    },
+    {
+      "id": "weathers-new-orleans",
+      "location": "New Orleans",
+      "city": "New Orleans",
+      "region": "Louisiana",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 29.9511,
+        "lng": -90.0715
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He also directed episodes of the series he starred in.",
+        "He plays Greef Karga.",
+        "The actor is Carl Weathers, who was born here.",
+        "The location is New Orleans, birthplace of Carl Weathers.",
+        "The location is in New Orleans, Louisiana, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Carl_Weathers"
+      }
+    },
+    {
+      "id": "dawson-new-york",
+      "location": "New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.73,
+        "lng": -73.99
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character was Anakin Skywalker's Padawan.",
+        "She plays Ahsoka Tano in live action.",
+        "The actor is Rosario Dawson, who was born here.",
+        "The location is New York City, birthplace of Rosario Dawson.",
+        "The location is in New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian",
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Rosario_Dawson"
+      }
+    },
+    {
+      "id": "ming-na-wen-coloane",
+      "location": "Coloane",
+      "city": "Coloane",
+      "region": "Macau",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.116,
+        "lng": 113.56
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her assassin character was saved with cybernetic implants after being left for dead.",
+        "She plays Fennec Shand.",
+        "The actor is Ming-Na Wen, who was born here.",
+        "The location is Coloane, birthplace of Ming-Na Wen.",
+        "The location is in Coloane, Macau, China."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian",
+          "the-book-of-boba-fett"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ming-Na_Wen"
+      }
+    },
+    {
+      "id": "sackhoff-portland",
+      "location": "Portland, Oregon",
+      "city": "Portland",
+      "region": "Oregon",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 45.5152,
+        "lng": -122.6784
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She voiced her character in The Clone Wars before playing her in live action.",
+        "She plays Bo-Katan Kryze.",
+        "The actor is Katee Sackhoff, who was born here.",
+        "The location is Portland, Oregon, birthplace of Katee Sackhoff.",
+        "The location is in Portland, Oregon, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Katee_Sackhoff"
+      }
+    },
+    {
+      "id": "herzog-munich",
+      "location": "Munich",
+      "city": "Munich",
+      "region": "Bavaria",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 48.1351,
+        "lng": 11.582
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A famous German film-maker, he plays an Imperial remnant who wants Grogu.",
+        "He plays 'the Client' in The Mandalorian.",
+        "The actor is Werner Herzog, who was born here.",
+        "The location is Munich, birthplace of Werner Herzog.",
+        "The location is in Munich, Bavaria, Germany."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Werner_Herzog"
+      }
+    },
+    {
+      "id": "waititi-raukokore-sw",
+      "location": "Raukokore",
+      "city": "Raukokore",
+      "region": "Bay of Plenty",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -37.629,
+        "lng": 177.892
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He directed the first season finale and voiced a bounty-hunting droid turned nurse.",
+        "He voices IG-11 in The Mandalorian.",
+        "The actor is Taika Waititi, who was born here.",
+        "The location is Raukokore, birthplace of Taika Waititi.",
+        "The location is on the East Cape of New Zealand's North Island."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-mandalorian"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Taika_Waititi"
+      }
+    },
+    {
+      "id": "ingram-baltimore",
+      "location": "Baltimore",
+      "city": "Baltimore",
+      "region": "Maryland",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.2904,
+        "lng": -76.6122
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her Inquisitor character is known as the Third Sister.",
+        "She plays Reva in Obi-Wan Kenobi.",
+        "The actor is Moses Ingram, who was born here.",
+        "The location is Baltimore, birthplace of Moses Ingram.",
+        "The location is in Baltimore, Maryland, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "obi-wan-kenobi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Moses_Ingram"
+      }
+    },
+    {
+      "id": "skarsgard-gothenburg-sw",
+      "location": "Gothenburg",
+      "city": "Gothenburg",
+      "region": "Västra Götaland",
+      "country": "Sweden",
+      "continent": "EU",
+      "target": {
+        "lat": 57.7089,
+        "lng": 11.9746
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character runs an antiques shop on Coruscant as a cover.",
+        "He plays Luthen Rael in Andor.",
+        "The actor is Stellan Skarsgård, who was born here.",
+        "The location is Gothenburg, birthplace of Stellan Skarsgård.",
+        "The location is in Gothenburg, on the west coast of Sweden."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stellan_Skarsgård"
+      }
+    },
+    {
+      "id": "oreilly-dublin",
+      "location": "Dublin",
+      "city": "Dublin",
+      "region": "County Dublin",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 53.34,
+        "lng": -6.27
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She first played her character in scenes cut from Revenge of the Sith.",
+        "She plays Mon Mothma.",
+        "The actor is Genevieve O'Reilly, who was born here.",
+        "The location is Dublin, birthplace of Genevieve O'Reilly.",
+        "The location is in Dublin, Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "rogue-one",
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Genevieve_O'Reilly"
+      }
+    },
+    {
+      "id": "shaw-cobh-sw",
+      "location": "Cobh",
+      "city": "Cobh",
+      "region": "County Cork",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 51.851,
+        "lng": -8.296
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character's funeral speech sparks an uprising on Ferrix.",
+        "She plays Maarva Andor.",
+        "The actor is Fiona Shaw, who was born here.",
+        "The location is Cobh, birthplace of Fiona Shaw.",
+        "The location is in Cobh, Cork Harbour, Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Fiona_Shaw"
+      }
+    },
+    {
+      "id": "gough-ennis",
+      "location": "Ennis",
+      "city": "Ennis",
+      "region": "County Clare",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 52.8436,
+        "lng": -8.9864
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is an ambitious supervisor in the Imperial Security Bureau.",
+        "She plays Dedra Meero in Andor.",
+        "The actor is Denise Gough, who was born here.",
+        "The location is Ennis, birthplace of Denise Gough.",
+        "The location is in Ennis, County Clare, Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Denise_Gough"
+      }
+    },
+    {
+      "id": "arjona-san-juan",
+      "location": "San Juan",
+      "city": "San Juan",
+      "region": "Puerto Rico",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 18.4655,
+        "lng": -66.1057
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is a mechanic on Ferrix.",
+        "She plays Bix Caleen in Andor.",
+        "The actor is Adria Arjona, who was born here.",
+        "The location is San Juan, birthplace of Adria Arjona.",
+        "The location is in San Juan, Puerto Rico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "andor"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Adria_Arjona"
+      }
+    },
+    {
+      "id": "winstead-rocky-mount",
+      "location": "Rocky Mount",
+      "city": "Rocky Mount",
+      "region": "North Carolina",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 35.9382,
+        "lng": -77.7905
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her Twi'lek general captains the starship Ghost.",
+        "She plays Hera Syndulla in Ahsoka.",
+        "The actor is Mary Elizabeth Winstead, who was born here.",
+        "The location is Rocky Mount, birthplace of Mary Elizabeth Winstead.",
+        "The location is in Rocky Mount, North Carolina, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mary_Elizabeth_Winstead"
+      }
+    },
+    {
+      "id": "stevenson-lisburn",
+      "location": "Lisburn",
+      "city": "Lisburn",
+      "region": "County Antrim",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 54.5162,
+        "lng": -6.058
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He died shortly before his series premiered in 2023.",
+        "He plays Baylan Skoll in Ahsoka.",
+        "The actor is Ray Stevenson, who was born here.",
+        "The location is Lisburn, birthplace of Ray Stevenson.",
+        "The location is in Lisburn, Northern Ireland, south-west of Belfast."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ray_Stevenson"
+      }
+    },
+    {
+      "id": "lars-mikkelsen-gladsaxe",
+      "location": "Gladsaxe",
+      "city": "Gladsaxe",
+      "region": "Capital Region",
+      "country": "Denmark",
+      "continent": "EU",
+      "target": {
+        "lat": 55.729,
+        "lng": 12.488
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His brother played Galen Erso in Rogue One.",
+        "He plays Grand Admiral Thrawn in Ahsoka.",
+        "The actor is Lars Mikkelsen, who was born here.",
+        "The location is Gladsaxe, birthplace of Lars Mikkelsen.",
+        "The location is in Gladsaxe, a suburb of Copenhagen, Denmark."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lars_Mikkelsen"
+      }
+    },
+    {
+      "id": "sakhno-kyiv",
+      "location": "Kyiv",
+      "city": "Kyiv",
+      "region": "Kyiv",
+      "country": "Ukraine",
+      "continent": "EU",
+      "target": {
+        "lat": 50.4501,
+        "lng": 30.5234
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is Baylan Skoll's apprentice.",
+        "She plays Shin Hati in Ahsoka.",
+        "The actor is Ivanna Sakhno, who was born here.",
+        "The location is Kyiv, birthplace of Ivanna Sakhno.",
+        "The location is in Kyiv, Ukraine."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ivanna_Sakhno"
+      }
+    },
+    {
+      "id": "bordizzo-sydney",
+      "location": "Sydney",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.88,
+        "lng": 151.21
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is a Mandalorian artist who paints her armour.",
+        "She plays Sabine Wren in Ahsoka.",
+        "The actor is Natasha Liu Bordizzo, who was born here.",
+        "The location is Sydney, birthplace of Natasha Liu Bordizzo.",
+        "The location is in Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ahsoka"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Natasha_Liu_Bordizzo"
+      }
+    }
+  ]
+}

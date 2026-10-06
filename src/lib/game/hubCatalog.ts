@@ -145,6 +145,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Film & TV",
   },
   {
+    id: "star-wars",
+    group: "film",
+    name: "Star Wars",
+    shortLabel: "A galaxy far away",
+    code: "SW",
+    tileEmoji: "⚔️",
+    href: GAME_MODE_DEFINITIONS["star-wars"].path,
+    mapImage: "/hub-maps/world.webp",
+    groupLabel: "Film & TV",
+  },
+  {
     id: "football",
     group: "football",
     name: "England",

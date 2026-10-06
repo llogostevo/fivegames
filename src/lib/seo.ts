@@ -155,6 +155,17 @@ export const MODE_SEO: Record<GameMode, SeoPage> = {
     faqs: SHARED_FAQS,
     siteName: "PIN5 Marvel",
   },
+  "star-wars": {
+    path: GAME_MODE_DEFINITIONS["star-wars"].path,
+    title: "Star Wars Filming Locations Quiz — PIN5",
+    description:
+      "Free daily Star Wars geography quiz. Five clues, five pins — find today's real-world filming location or franchise place.",
+    heading: "Star Wars filming locations quiz",
+    intro:
+      "PIN5 Star Wars is a free daily entertainment-geography puzzle. Use five clues and five map pins to find today's real-world place from Star Wars — filming locations, studios, theme parks, actor birthplaces and franchise landmarks. New place every day.",
+    faqs: SHARED_FAQS,
+    siteName: "PIN5 Star Wars",
+  },
   football: {
     path: GAME_MODE_DEFINITIONS.football.path,
     title: "Daily Football Stadium Quiz — England — PIN5",

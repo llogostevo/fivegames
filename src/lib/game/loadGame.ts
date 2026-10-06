@@ -44,6 +44,11 @@ import {
   getTodaysMarvelGame,
   getMarvelGameByDate,
 } from "@/lib/game/marvel/loadMarvelGame";
+import {
+  getReleasedStarWarsGameByDate,
+  getTodaysStarWarsGame,
+  getStarWarsGameByDate,
+} from "@/lib/game/starwars/loadStarWarsGame";
 import { DEFAULT_GAME_MODE, getModeDefinition, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import { DEFAULT_MAP_LABELS } from "@/lib/map/style";
@@ -250,6 +255,9 @@ export async function getTodaysGameForMode(
   if (mode === "marvel") {
     return getTodaysMarvelGame(now, options);
   }
+  if (mode === "star-wars") {
+    return getTodaysStarWarsGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -300,6 +308,9 @@ export async function getReleasedGameForMode(
   if (mode === "marvel") {
     return getReleasedMarvelGameByDate(date, now, options);
   }
+  if (mode === "star-wars") {
+    return getReleasedStarWarsGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -332,6 +343,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "marvel") {
     return getMarvelGameByDate(date);
+  }
+  if (mode === "star-wars") {
+    return getStarWarsGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {

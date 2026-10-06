@@ -18,7 +18,8 @@ export type ShareCardKind =
   | "airports"
   | "taylor-swift"
   | "harry-potter"
-  | "marvel";
+  | "marvel"
+  | "star-wars";
 
 export type FootballFlag = "ENG" | "ITA" | "GER" | "FRA" | "ESP";
 
@@ -342,6 +343,24 @@ function MarvelIcon({
   );
 }
 
+function StarWarsIcon({
+  size = 220,
+}: {
+  size?: number;
+  accent?: string;
+}) {
+  return (
+    <RoundedFrame background="#1e1e24" size={size}>
+      <EmojiStack
+        primary="⚔️"
+        secondary="⭐"
+        primarySize={Math.round(size * 0.42)}
+        secondarySize={Math.round(size * 0.2)}
+      />
+    </RoundedFrame>
+  );
+}
+
 function ShareIcon({
   kind,
   accent,
@@ -370,6 +389,8 @@ function ShareIcon({
       return <HarryPotterIcon accent={accent} />;
     case "marvel":
       return <MarvelIcon accent={accent} />;
+    case "star-wars":
+      return <StarWarsIcon accent={accent} />;
     case "football":
       return <FootballIcon accent={accent} flag={flag} />;
   }
@@ -389,7 +410,8 @@ export function shareCardImage({
     kind === "airports" ||
     kind === "taylor-swift" ||
     kind === "harry-potter" ||
-    kind === "marvel"
+    kind === "marvel" ||
+    kind === "star-wars"
       ? accent
       : "#1d1d1f";
   const bg =
@@ -407,7 +429,9 @@ export function shareCardImage({
                 ? "radial-gradient(circle at 50% 45%, #f5f3ff 0%, #ede9fe 55%, #ddd6fe 100%)"
                 : kind === "marvel"
                   ? "radial-gradient(circle at 50% 45%, #fff5f5 0%, #fee2e2 55%, #fecaca 100%)"
-                  : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
+                  : kind === "star-wars"
+                    ? "radial-gradient(circle at 50% 45%, #fffbeb 0%, #fef6d8 55%, #fde68a 100%)"
+                    : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
 
   return new ImageResponse(
     (
@@ -463,7 +487,8 @@ export function shareCardImage({
                   kind === "airports" ||
                   kind === "taylor-swift" ||
                   kind === "harry-potter" ||
-                  kind === "marvel"
+                  kind === "marvel" ||
+                  kind === "star-wars"
                     ? "0.08em"
                     : "-0.02em",
                 lineHeight: 1.05,

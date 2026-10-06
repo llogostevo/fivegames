@@ -24,7 +24,7 @@ const CONNECTION_LABELS: Record<string, string> = {
   career: "Career place",
   recording: "Recording location",
   "award-event": "Award event",
-  other: "Career place",
+  other: "Related place",
 };
 
 /** Map a dataset connection slug to a short UI label, or null if unknown/empty. */

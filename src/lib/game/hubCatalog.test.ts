@@ -101,13 +101,16 @@ describe("hubCatalog", () => {
     assert.equal(music[0]?.code, "TS");
 
     const film = hubGamesInGroup("film");
-    assert.equal(film.length, 2);
+    assert.equal(film.length, 3);
     assert.equal(film[0]?.id, "harry-potter");
     assert.equal(film[0]?.tileEmoji, "⚡");
     assert.equal(film[0]?.code, "HP");
     assert.equal(film[1]?.id, "marvel");
     assert.equal(film[1]?.tileEmoji, "🦸");
     assert.equal(film[1]?.code, "MV");
+    assert.equal(film[2]?.id, "star-wars");
+    assert.equal(film[2]?.tileEmoji, "⚔️");
+    assert.equal(film[2]?.code, "SW");
   });
 
   it("lists London pubs under London with Pubs as the tile name", () => {
@@ -160,5 +163,14 @@ describe("hubCatalog", () => {
     assert.equal(marvel.tileEmoji, "🦸");
     assert.equal(marvel.code, "MV");
     assert.equal(marvel.shortLabel, "MCU & comics");
+  });
+
+  it("lists Star Wars under Film & TV", () => {
+    const starWars = HUB_GAMES.find((game) => game.id === "star-wars");
+    assert.ok(starWars);
+    assert.equal(starWars.group, "film");
+    assert.equal(starWars.tileEmoji, "⚔️");
+    assert.equal(starWars.code, "SW");
+    assert.equal(starWars.shortLabel, "A galaxy far away");
   });
 });
