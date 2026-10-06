@@ -197,7 +197,7 @@ describe("public payload safety", () => {
     assert.equal(meta.accent, getTheme("music").accent);
     assert.ok(meta.nextReleaseAt);
     assert.deepEqual(meta.mapLabels, {
-      streets: false,
+      streets: true,
       places: false,
       water: false,
       shields: false,

@@ -29,6 +29,22 @@ export const DETAILED_MAP_LABELS: MapLabelPreset = {
   shields: true,
 };
 
+/** Streets + named water only — no place names or route shields. */
+export const STREETS_WATER_MAP_LABELS: MapLabelPreset = {
+  streets: true,
+  places: false,
+  water: true,
+  shields: false,
+};
+
+/** Street names only during play. */
+export const STREETS_ONLY_MAP_LABELS: MapLabelPreset = {
+  streets: true,
+  places: false,
+  water: false,
+  shields: false,
+};
+
 export type MapStyleOptions = {
   /**
    * When true (default), apply `mapLabels` (and hide POI/airport layers).

@@ -23,8 +23,9 @@ import {
   type MapStartView,
 } from "@/lib/map/provider";
 import {
-  DEFAULT_MAP_LABELS,
   DETAILED_MAP_LABELS,
+  STREETS_ONLY_MAP_LABELS,
+  STREETS_WATER_MAP_LABELS,
   type MapLabelPreset,
 } from "@/lib/map/style";
 import {
@@ -114,7 +115,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "DAILY 5",
     family: "daily",
     mapStart: DEFAULT_MAP_START,
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_ONLY_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   world: {
@@ -132,7 +133,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "WORLD",
     family: "world",
     mapStart: WORLD_MAP_START,
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_ONLY_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   "world-airports": {
@@ -150,7 +151,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "AIRPORTS",
     family: "airports",
     mapStart: WORLD_MAP_START,
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_ONLY_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   "london-pubs": {
@@ -264,7 +265,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 52.8, lng: -1.5 },
       zoom: 5.8,
     },
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_WATER_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-italy": {
@@ -285,7 +286,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 42.0, lng: 12.5 },
       zoom: 5.4,
     },
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_WATER_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-germany": {
@@ -306,7 +307,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 51.2, lng: 10.4 },
       zoom: 5.7,
     },
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_WATER_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-france": {
@@ -327,7 +328,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 46.6, lng: 2.2 },
       zoom: 5.4,
     },
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_WATER_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-spain": {
@@ -348,7 +349,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 39.8, lng: -3.5 },
       zoom: 5.4,
     },
-    mapLabels: DEFAULT_MAP_LABELS,
+    mapLabels: STREETS_WATER_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
 };
