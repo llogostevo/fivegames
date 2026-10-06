@@ -1,3 +1,4 @@
+import { sanitiseCampaignRef } from "@/lib/analytics/campaign";
 import {
   getModeDefinition,
   type GameMode,
@@ -25,7 +26,16 @@ export const SHARE_URL = `${SITE_URL}/daily`;
 export const FOOTBALL_SHARE_URL = `${SITE_URL}/football/england`;
 
 /** Absolute share URL for a game mode. */
-export function shareUrlForMode(mode: GameMode): string {
+export function shareUrlForMode(
+  mode: GameMode,
+  options?: { ref?: string | null },
+): string {
   const path = getModeDefinition(mode).sharePath;
-  return `${SITE_URL}${path}`;
+  const base = `${SITE_URL}${path}`;
+  const ref = sanitiseCampaignRef(options?.ref);
+  if (!ref) {
+    return base;
+  }
+  const params = new URLSearchParams({ ref });
+  return `${base}?${params.toString()}`;
 }

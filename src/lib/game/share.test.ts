@@ -18,7 +18,8 @@ import {
 } from "./share";
 import { WEEKLY_SHARE_BRAG_SCORE_THRESHOLD } from "./shareConfig";
 import { getWeeklyStats } from "./playerHistory";
-import { BETA_SITE_URL, FOOTBALL_SHARE_URL, SHARE_URL } from "@/lib/site";
+import { FRIEND_SHARE_REF } from "@/lib/analytics/campaign";
+import { BETA_SITE_URL, FOOTBALL_SHARE_URL, SHARE_URL, shareUrlForMode } from "@/lib/site";
 import type { GameReveal, RevealedGuess } from "@/types/game";
 
 function guess(
@@ -152,6 +153,7 @@ describe("buildSharePinTrail", () => {
 
 describe("buildDailyShareText", () => {
   it("matches the beta daily share layout with distance, streak and Vercel URL", () => {
+    const friendShareUrl = shareUrlForMode("daily", { ref: FRIEND_SHARE_REF });
     const text = buildDailyShareText(reveal(), 4);
     assert.equal(
       text,
@@ -164,11 +166,12 @@ describe("buildDailyShareText", () => {
         "🔥 4 day streak",
         "",
         "Can you beat me?",
-        SHARE_URL,
+        friendShareUrl,
       ].join("\n"),
     );
     assert.equal(buildShareText(reveal(), 4), text);
     assert.equal(SHARE_URL, "https://pin5.co.uk/daily");
+    assert.equal(friendShareUrl, "https://pin5.co.uk/daily?ref=friend-share");
   });
 
   it("formats short final-pin distances in metres", () => {
@@ -207,7 +210,10 @@ describe("buildDailyShareText", () => {
       0,
     );
     assert.ok(text.includes("PIN5 ⚽ FOOTBALL · ENGLAND"));
-    assert.equal(text.endsWith(FOOTBALL_SHARE_URL), true);
+    assert.equal(
+      text.endsWith(shareUrlForMode("football", { ref: FRIEND_SHARE_REF })),
+      true,
+    );
     assert.equal(text.endsWith(SHARE_URL), false);
   });
 
@@ -221,7 +227,7 @@ describe("buildDailyShareText", () => {
       0,
     );
     assert.ok(text.includes("PIN5 ⚽ FOOTBALL · ITALY"));
-    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/italy`));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/italy?ref=friend-share`));
   });
 
   it("uses the Germany URL for Football Germany shares", () => {
@@ -234,7 +240,7 @@ describe("buildDailyShareText", () => {
       0,
     );
     assert.ok(text.includes("PIN5 ⚽ FOOTBALL · GERMANY"));
-    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/germany`));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/germany?ref=friend-share`));
   });
 
   it("uses the France URL for Football France shares", () => {
@@ -247,7 +253,7 @@ describe("buildDailyShareText", () => {
       0,
     );
     assert.ok(text.includes("PIN5 ⚽ FOOTBALL · FRANCE"));
-    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/france`));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/france?ref=friend-share`));
   });
 
   it("uses the Spain URL for Football Spain shares", () => {
@@ -260,7 +266,7 @@ describe("buildDailyShareText", () => {
       0,
     );
     assert.ok(text.includes("PIN5 ⚽ FOOTBALL · SPAIN"));
-    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/spain`));
+    assert.ok(text.endsWith(`${BETA_SITE_URL}/football/spain?ref=friend-share`));
   });
 });
 
@@ -300,7 +306,7 @@ describe("weekly share content", () => {
         "🔥 9 day streak",
         "",
         "You can't beat my week.",
-        SHARE_URL,
+        shareUrlForMode("daily", { ref: FRIEND_SHARE_REF }),
       ].join("\n"),
     );
   });
@@ -383,7 +389,7 @@ describe("weekly share content", () => {
     assert.ok(!text.includes("lat"));
     assert.ok(!text.includes("clue"));
     assert.ok(!text.includes("km"));
-    assert.ok(text.endsWith(SHARE_URL));
+    assert.ok(text.endsWith(shareUrlForMode("daily", { ref: FRIEND_SHARE_REF })));
     assert.equal(SHARE_URL, "https://pin5.co.uk/daily");
   });
 });

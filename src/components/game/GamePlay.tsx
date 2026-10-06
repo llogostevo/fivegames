@@ -12,6 +12,22 @@ import { NextGameCountdown } from "@/components/game/NextGameCountdown";
 import { ResultsPopup } from "@/components/game/ResultsPopup";
 import { Pin5Mark } from "@/components/hub/Pin5Mark";
 import {
+  getCampaignRefForEvents,
+  recordGameCompletedLocally,
+  recordGameStartedLocally,
+} from "@/lib/analytics/visitor";
+import {
+  claimAnalyticsOnce,
+  markGameStartTime,
+  takeGameDurationSeconds,
+} from "@/lib/analytics/sessionDedupe";
+import {
+  scoreBandFromTotal,
+  trackGameCompleted,
+  trackGameStarted,
+  trackResultShared,
+} from "@/lib/analytics/track";
+import {
   decisionScoreContext,
   getMapPlacementCopy,
   toDecisionFromFinishConfirm,
@@ -75,6 +91,41 @@ function formatDistance(meters: number): string {
     return `${Math.round(meters / 1000)} km`;
   }
   return `${Math.round(meters / 1000).toLocaleString()} km`;
+}
+
+function analyticsGameKey(mode: GameMode, date: string): string {
+  return `${mode}:${date}`;
+}
+
+/** Fire once per browser tab session for a live completion (not resume). */
+function reportLiveGameCompleted(reveal: GameReveal, mode: GameMode): void {
+  const gameMode = reveal.mode ?? mode;
+  const key = analyticsGameKey(gameMode, reveal.date);
+  if (!claimAnalyticsOnce(`pin5_completed:${key}`)) {
+    return;
+  }
+  recordGameCompletedLocally();
+  trackGameCompleted({
+    game: gameMode,
+    scoreBand: scoreBandFromTotal(reveal.totalScore),
+    cluesUsed: reveal.cluesUsed ?? reveal.lockedAfterClue,
+    durationSeconds: takeGameDurationSeconds(key),
+    foundLocation: reveal.foundLocation === true,
+    campaignRef: getCampaignRefForEvents(),
+  });
+}
+
+function reportLiveGameStarted(mode: GameMode, date: string): void {
+  const key = analyticsGameKey(mode, date);
+  if (!claimAnalyticsOnce(`pin5_started:${key}`)) {
+    return;
+  }
+  markGameStartTime(key);
+  recordGameStartedLocally();
+  trackGameStarted({
+    game: mode,
+    campaignRef: getCampaignRefForEvents(),
+  });
 }
 
 const TEMPERATURE = {
@@ -201,6 +252,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         if (data.complete && data.reveal) {
           // Server session already completed today's game — show results.
           // Do not replay FOUND celebration on resume.
+          // Do not fire game_started / game_completed (resume, not live play).
           recordCompletedReveal(data.reveal);
           setReveal(data.reveal);
           setRows([]);
@@ -211,6 +263,9 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
         // New or resumed in-progress game from the signed session.
         setReveal(null);
+        if (data.status === "new") {
+          reportLiveGameStarted(mode, data.date);
+        }
         const rowsFromStart: ClueRow[] = data.clues.map((text, index) => {
           const guess = data.guesses[index];
           return {
@@ -292,13 +347,14 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
   const finishWithFoundReveal = useCallback((foundReveal: GameReveal) => {
     recordCompletedReveal(foundReveal);
+    reportLiveGameCompleted(foundReveal, mode);
     setReveal(foundReveal);
     setFlowModal(null);
     setShareStatus("idle");
     setWeekShareStatus("idle");
     setFoundCelebration(foundReveal);
     setResultsOpen(false);
-  }, []);
+  }, [mode]);
 
   const handleCommitPin = useCallback(
     (coordinates: Coordinates) => {
@@ -340,6 +396,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
             // Pin 5 not found — game complete, no decision modal.
             setFlowModal(null);
             recordCompletedReveal(check.reveal);
+            reportLiveGameCompleted(check.reveal, mode);
             setReveal(check.reveal);
             setShareStatus("idle");
             setWeekShareStatus("idle");
@@ -489,6 +546,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
       } else {
         setFlowModal(null);
         recordCompletedReveal(answerData.reveal);
+        reportLiveGameCompleted(answerData.reveal, mode);
         setReveal(answerData.reveal);
         setShareStatus("idle");
         setWeekShareStatus("idle");
@@ -535,6 +593,11 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
     if (result.status === "shared" || result.status === "copied") {
       setShareStatus(result.status);
+      trackResultShared({
+        game: mode,
+        shareMethod: result.status === "shared" ? "web_share" : "clipboard",
+        campaignRef: getCampaignRefForEvents(),
+      });
       return;
     }
     if (result.status === "aborted") {
@@ -565,6 +628,11 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
     if (result.status === "shared" || result.status === "copied") {
       setWeekShareStatus(result.status);
+      trackResultShared({
+        game: mode,
+        shareMethod: result.status === "shared" ? "web_share" : "clipboard",
+        campaignRef: getCampaignRefForEvents(),
+      });
       return;
     }
     if (result.status === "aborted") {

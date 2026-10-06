@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
 
+import { getCampaignRefForEvents } from "@/lib/analytics/visitor";
+import { trackPlayAnother } from "@/lib/analytics/track";
 import {
   DEFAULT_GAME_MODE,
   getModeDefinition,
@@ -410,6 +412,15 @@ export function ResultsPopup({
                 <li key={def.id}>
                   <Link
                     href={modePath(def.id)}
+                    onClick={() => {
+                      if (def.id !== mode) {
+                        trackPlayAnother({
+                          fromGame: mode,
+                          toGame: def.id,
+                          campaignRef: getCampaignRefForEvents(),
+                        });
+                      }
+                    }}
                     className="flex items-start gap-2.5 rounded-lg px-1.5 py-1.5 transition hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-course"
                     aria-label={
                       played && score !== null
@@ -450,6 +461,13 @@ export function ResultsPopup({
             {otherPending ? (
               <Link
                 href={otherGame.href}
+                onClick={() => {
+                  trackPlayAnother({
+                    fromGame: mode,
+                    toGame: otherMode,
+                    campaignRef: getCampaignRefForEvents(),
+                  });
+                }}
                 className="mt-3.5 flex h-12 w-full items-center justify-center rounded-xl bg-neutral-900 text-sm font-semibold text-white transition hover:brightness-110"
               >
                 {otherGame.label}

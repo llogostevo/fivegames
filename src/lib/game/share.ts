@@ -16,6 +16,7 @@ import {
   getPin5WeekNumber,
   isWeeklyShareAvailable,
 } from "@/lib/game/week";
+import { FRIEND_SHARE_REF } from "@/lib/analytics/campaign";
 import { shareUrlForMode } from "@/lib/site";
 import type { GameReveal, RevealedGuess, TemperatureResult } from "@/types/game";
 
@@ -97,7 +98,7 @@ export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
     lines.push(`🔥 ${formatStreakLabel(streak)}`);
   }
 
-  lines.push("", "Can you beat me?", shareUrlForMode(mode));
+  lines.push("", "Can you beat me?", shareUrlForMode(mode, { ref: FRIEND_SHARE_REF }));
   return lines.join("\n");
 }
 
@@ -165,7 +166,7 @@ export function buildWeeklyShareText({
   lines.push(
     "",
     weeklyShareBragLine(weekly.weeklyScore, daysPlayed),
-    shareUrlForMode(mode),
+    shareUrlForMode(mode, { ref: FRIEND_SHARE_REF }),
   );
 
   return lines.join("\n");

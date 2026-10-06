@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 
+import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
 import { DevDateToolbarHost } from "@/components/dev/DevDateToolbarHost";
 import { HUB_SEO } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -58,6 +59,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col font-sans">
         <DevDateToolbarHost />
+        <AnalyticsBootstrap />
         {children}
         <Analytics />
       </body>
