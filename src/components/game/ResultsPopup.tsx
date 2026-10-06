@@ -6,6 +6,11 @@ import { useEffect, useId, useRef } from "react";
 import { getCampaignRefForEvents } from "@/lib/analytics/visitor";
 import { trackPlayAnother } from "@/lib/analytics/track";
 import {
+  collectionOutcomeFromReveal,
+  formatCollectionCountsLine,
+  getCollectionCounts,
+} from "@/lib/game/collection";
+import {
   DEFAULT_GAME_MODE,
   getModeDefinition,
   isFootballMode,
@@ -272,6 +277,15 @@ export function ResultsPopup({
     return `Finished on pin ${reveal.lockedAfterClue}`;
   })();
 
+  const collectionOutcome = collectionOutcomeFromReveal(reveal);
+  const collectionCounts = getCollectionCounts(mode);
+  const collectionMessage =
+    collectionOutcome === "bagged"
+      ? "🎯 Bagged! You found it on clue 1."
+      : collectionOutcome === "found"
+        ? "Found! Get it on clue 1 to bag it."
+        : null;
+
   const subtitle = [reveal.answer.stadium, reveal.answer.city]
     .filter(Boolean)
     .join(" · ");
@@ -372,6 +386,21 @@ export function ResultsPopup({
               </span>
             </p>
             <p className="mt-1.5 text-xs text-muted">{resultLine}</p>
+            {collectionMessage ? (
+              <p className="mt-2 text-sm font-semibold text-course">
+                {collectionMessage}
+              </p>
+            ) : null}
+            <p className="mt-2 text-xs text-muted">
+              {formatCollectionCountsLine(collectionCounts)}
+              {" · "}
+              <Link
+                href="/collection"
+                className="font-semibold text-course transition hover:brightness-90"
+              >
+                Your collection
+              </Link>
+            </p>
           </div>
 
           <div className="mt-5">

@@ -1,3 +1,4 @@
+import { recordCollectionFromReveal } from "@/lib/game/collection";
 import { addCalendarDays, isValidIsoDate } from "@/lib/game/date";
 import {
   DEFAULT_GAME_MODE,
@@ -294,6 +295,8 @@ export function recordCompletedReveal(
     historyGameFromReveal(reveal, completedAt),
   );
   writePlayerHistory(next, storage, mode);
+  // Found/Bagged collection — same storage, never throws into gameplay.
+  recordCollectionFromReveal(reveal, storage);
   return next;
 }
 

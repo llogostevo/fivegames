@@ -78,6 +78,11 @@ export type GameReveal = {
     stadium?: string;
     city?: string;
     division?: string;
+    /**
+     * Stable dataset place id when available (club/pub/station/…).
+     * Used for Found/Bagged collection — never show as a spoiler mid-game.
+     */
+    placeId?: string;
   };
   /** Which PIN5 mode produced this reveal. */
   mode: GameMode;

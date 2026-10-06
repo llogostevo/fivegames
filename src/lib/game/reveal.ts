@@ -97,6 +97,7 @@ export function buildReveal(
       ...(detail?.stadium ? { stadium: detail.stadium } : {}),
       ...(detail?.city ? { city: detail.city } : {}),
       ...(detail?.division ? { division: detail.division } : {}),
+      ...(detail?.clubId ? { placeId: detail.clubId } : {}),
     },
     guesses,
     lockedAfterClue,

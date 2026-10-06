@@ -164,6 +164,7 @@ describe("buildDailyShareText", () => {
         "🔒 Locked on clue 4/5",
         "📍 1.0 km away",
         "🔥 4 day streak",
+        "0 found · 0 bagged of 28",
         "",
         "Can you beat me?",
         friendShareUrl,

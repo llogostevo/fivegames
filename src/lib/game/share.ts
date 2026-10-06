@@ -1,6 +1,15 @@
+import { FRIEND_SHARE_REF } from "@/lib/analytics/campaign";
+import {
+  collectionOutcomeFromReveal,
+  formatCollectionCountsCompact,
+  getCollectionCounts,
+  type CollectionCounts,
+  type CollectionOutcome,
+} from "@/lib/game/collection";
 import { CLUE_COUNT } from "@/lib/game/constants";
 import {
   DEFAULT_GAME_MODE,
+  getModeDefinition,
   modeShareTitle,
   type GameMode,
 } from "@/lib/game/modes";
@@ -16,7 +25,6 @@ import {
   getPin5WeekNumber,
   isWeeklyShareAvailable,
 } from "@/lib/game/week";
-import { FRIEND_SHARE_REF } from "@/lib/analytics/campaign";
 import { shareUrlForMode } from "@/lib/site";
 import type { GameReveal, RevealedGuess, TemperatureResult } from "@/types/game";
 
@@ -75,6 +83,39 @@ function revealMode(reveal: GameReveal): GameMode {
   return reveal.mode ?? DEFAULT_GAME_MODE;
 }
 
+/** Collection line for daily share — never includes place names. */
+export function buildCollectionShareLine(
+  outcome: CollectionOutcome,
+  counts: CollectionCounts,
+): string {
+  const compact = formatCollectionCountsCompact(counts);
+  if (outcome === "bagged") {
+    return `🎯 Bagged today! · ${compact}`;
+  }
+  if (outcome === "found") {
+    return `Found today! · ${compact}`;
+  }
+  return compact;
+}
+
+/** Per-game collection brag from the collection screen. */
+export function buildCollectionModeShareText(
+  mode: GameMode,
+  counts: CollectionCounts = getCollectionCounts(mode),
+): string {
+  const def = getModeDefinition(mode);
+  const label =
+    mode === "football"
+      ? "Football"
+      : def.family === "football"
+        ? `Football · ${def.subtitle}`
+        : def.chipLabel || def.title;
+  return [
+    `My Pin5 ${label} collection: ${formatCollectionCountsCompact(counts)} 🎯`,
+    shareUrlForMode(mode, { ref: FRIEND_SHARE_REF }),
+  ].join("\n");
+}
+
 export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
   const mode = revealMode(reveal);
   const title =
@@ -97,6 +138,10 @@ export function buildDailyShareText(reveal: GameReveal, streak = 0): string {
   if (streak > 0) {
     lines.push(`🔥 ${formatStreakLabel(streak)}`);
   }
+
+  const outcome = collectionOutcomeFromReveal(reveal);
+  const counts = getCollectionCounts(mode);
+  lines.push(buildCollectionShareLine(outcome, counts));
 
   lines.push("", "Can you beat me?", shareUrlForMode(mode, { ref: FRIEND_SHARE_REF }));
   return lines.join("\n");

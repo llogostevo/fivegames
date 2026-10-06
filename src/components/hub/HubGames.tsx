@@ -555,6 +555,16 @@ export function HubGames({
           />
         );
       })}
+
+      <div className="pt-1">
+        <Link
+          href="/collection"
+          className={`inline-flex items-center gap-1.5 text-sm font-semibold text-[#1d1d1f] underline decoration-[#c4157a]/40 underline-offset-4 transition hover:decoration-[#c4157a] ${FOCUS_RING} rounded-sm`}
+        >
+          Your collection
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
     </div>
   );
 }
