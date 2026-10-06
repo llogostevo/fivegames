@@ -134,6 +134,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Film & TV",
   },
   {
+    id: "marvel",
+    group: "film",
+    name: "Marvel",
+    shortLabel: "MCU & comics",
+    code: "MV",
+    tileEmoji: "🦸",
+    href: GAME_MODE_DEFINITIONS.marvel.path,
+    mapImage: "/hub-maps/world.webp",
+    groupLabel: "Film & TV",
+  },
+  {
     id: "football",
     group: "football",
     name: "England",

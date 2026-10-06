@@ -80,6 +80,10 @@ describe("Daily / Football isolation", () => {
       SESSION_COOKIE_BY_MODE["harry-potter"],
       "fivegames_session_harry_potter",
     );
+    assert.equal(
+      SESSION_COOKIE_BY_MODE.marvel,
+      "fivegames_session_marvel",
+    );
     assert.notEqual(
       sessionCookieOptions("daily").name,
       sessionCookieOptions("world").name,
@@ -288,6 +292,10 @@ describe("Daily / Football isolation", () => {
     assert.equal(
       historyStorageKey("harry-potter"),
       PLAYER_HISTORY_KEY_BY_MODE["harry-potter"],
+    );
+    assert.equal(
+      historyStorageKey("marvel"),
+      PLAYER_HISTORY_KEY_BY_MODE.marvel,
     );
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("world"));
     assert.notEqual(historyStorageKey("daily"), historyStorageKey("football"));

@@ -39,6 +39,11 @@ import {
   getTodaysHarryPotterGame,
   getHarryPotterGameByDate,
 } from "@/lib/game/harrypotter/loadHarryPotterGame";
+import {
+  getReleasedMarvelGameByDate,
+  getTodaysMarvelGame,
+  getMarvelGameByDate,
+} from "@/lib/game/marvel/loadMarvelGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -241,6 +246,9 @@ export async function getTodaysGameForMode(
   if (mode === "harry-potter") {
     return getTodaysHarryPotterGame(now, options);
   }
+  if (mode === "marvel") {
+    return getTodaysMarvelGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -288,6 +296,9 @@ export async function getReleasedGameForMode(
   if (mode === "harry-potter") {
     return getReleasedHarryPotterGameByDate(date, now, options);
   }
+  if (mode === "marvel") {
+    return getReleasedMarvelGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -317,6 +328,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "harry-potter") {
     return getHarryPotterGameByDate(date);
+  }
+  if (mode === "marvel") {
+    return getMarvelGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {

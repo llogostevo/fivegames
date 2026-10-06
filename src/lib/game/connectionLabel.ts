@@ -13,6 +13,9 @@ const CONNECTION_LABELS: Record<string, string> = {
   literary: "Literary place",
   "actor-birthplace": "Actor birthplace",
   "franchise-landmark": "Franchise landmark",
+  // Marvel (shared + franchise-specific)
+  "in-universe": "Story location",
+  publishing: "Publishing place",
   // Taylor Swift
   tour: "Tour venue",
   performance: "Performance",

@@ -1,0 +1,5818 @@
+{
+  "dataset": "pin5-marvel",
+  "scope": "Real-world public places connected to Marvel: filming locations, studios, theme parks, premieres, franchise landmarks, real places where stories are set, and actor birthplaces",
+  "clueDesign": {
+    "1": "hard Marvel superfan fact (stating what kind of place is being pinned)",
+    "2": "easier Marvel fact or famous association",
+    "3": "strong narrowing clue such as film, series, in-universe place, park or city",
+    "4": "explicit real-world location name",
+    "5": "geographical hint to help locate the answer"
+  },
+  "locationCount": 203,
+  "cluesWrittenCount": 203,
+  "locations": [
+    {
+      "id": "trilith-studios",
+      "location": "Trilith Studios",
+      "city": "Fayetteville",
+      "region": "Georgia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.406,
+        "lng": -84.469
+      },
+      "status": "ready",
+      "clues": [
+        "This studio opened as Pinewood Atlanta in 2014, and Ant-Man was one of the first Marvel films made here.",
+        "Avengers: Infinity War and Avengers: Endgame were filmed back-to-back on its stages.",
+        "It is the main production home of the MCU's Phase Three, renamed in 2020, south of Atlanta.",
+        "The location is Trilith Studios.",
+        "The location is in Fayette County, Georgia, United States, about 25 miles south of downtown Atlanta."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "ant-man",
+          "avengers-infinity-war",
+          "avengers-endgame",
+          "guardians-of-the-galaxy-vol-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Trilith_Studios"
+      }
+    },
+    {
+      "id": "village-roadshow-studios",
+      "location": "Village Roadshow Studios",
+      "city": "Oxenford",
+      "region": "Queensland",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -27.902,
+        "lng": 153.315
+      },
+      "status": "ready",
+      "clues": [
+        "The Grandmaster's arena on Sakaar, where Thor faces Hulk, was built on this studio's stages.",
+        "Taika Waititi shot Thor: Ragnarok here in 2016.",
+        "It is an Australian studio next to the Warner Bros. Movie World theme park.",
+        "The location is Village Roadshow Studios.",
+        "The location is in Oxenford on the Gold Coast, Queensland, Australia."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "thor-ragnarok"
+        ],
+        "inUniverse": [
+          "sakaar"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Village_Roadshow_Studios"
+      }
+    },
+    {
+      "id": "disney-studios-australia",
+      "location": "Disney Studios Australia",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.892,
+        "lng": 151.227
+      },
+      "status": "ready",
+      "clues": [
+        "A full-size San Francisco bus fight and the hidden village of Ta Lo were filmed on this studio's stages.",
+        "Shang-Chi and the Legend of the Ten Rings and Thor: Love and Thunder were both filmed here.",
+        "It is the former Fox Studios Australia, in the eastern suburbs of an Australian harbour city.",
+        "The location is Disney Studios Australia.",
+        "The location is in Moore Park, Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "studio",
+        "productions": [
+          "shang-chi",
+          "thor-love-and-thunder"
+        ],
+        "inUniverse": [
+          "ta-lo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Disney_Studios_Australia"
+      }
+    },
+    {
+      "id": "avengers-campus-dca",
+      "location": "Avengers Campus at Disney California Adventure",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8066,
+        "lng": -117.9184
+      },
+      "status": "ready",
+      "clues": [
+        "Pym Test Kitchen here serves food that has been shrunk or super-sized with Pym Particles.",
+        "Spider-Man, Black Panther's Dora Milaje and Doctor Strange appear around this land, which opened in June 2021.",
+        "It is the first Avengers Campus, inside the second park of the Disneyland Resort.",
+        "The location is Avengers Campus at Disney California Adventure.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "avengers-campus"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Avengers_Campus"
+      }
+    },
+    {
+      "id": "guardians-mission-breakout",
+      "location": "Guardians of the Galaxy – Mission: BREAKOUT!",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8063,
+        "lng": -117.9174
+      },
+      "status": "ready",
+      "clues": [
+        "This ride's tower is the Collector's fortress, and Rocket breaks the Guardians out of their display cases inside it.",
+        "This drop-tower ride opened in 2017, rebuilt from the former Twilight Zone Tower of Terror.",
+        "It is a Guardians of the Galaxy ride at Disney California Adventure, now part of Avengers Campus.",
+        "The location is Guardians of the Galaxy – Mission: BREAKOUT!.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "avengers-campus",
+          "guardians-of-the-galaxy"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_%E2%80%93_Mission:_Breakout!"
+      }
+    },
+    {
+      "id": "web-slingers-dca",
+      "location": "WEB SLINGERS: A Spider-Man Adventure",
+      "city": "Anaheim",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.807,
+        "lng": -117.919
+      },
+      "status": "ready",
+      "clues": [
+        "Riders help the Worldwide Engineering Brigade catch escaped Spider-Bots by flinging webs with hand gestures.",
+        "Peter Parker's malfunctioning Spider-Bots are the villains of this interactive ride.",
+        "It is Avengers Campus's Spider-Man ride at Disney California Adventure.",
+        "The location is WEB SLINGERS: A Spider-Man Adventure.",
+        "The location is in Anaheim, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "avengers-campus"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Web_Slingers:_A_Spider-Man_Adventure"
+      }
+    },
+    {
+      "id": "avengers-campus-paris",
+      "location": "Avengers Campus at Walt Disney Studios Park",
+      "city": "Chessy",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.867,
+        "lng": 2.779
+      },
+      "status": "ready",
+      "clues": [
+        "Europe's first Avengers land opened here in July 2022, with a Spider-Man ride and a restaurant called Pym Kitchen.",
+        "Visitors can ride Spider-Man W.E.B. Adventure and Avengers Assemble: Flight Force here.",
+        "It is the Avengers land at the second park of Disneyland Paris.",
+        "The location is Avengers Campus at Walt Disney Studios Park.",
+        "The location is in Marne-la-Vallée, east of Paris, France."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "avengers-campus"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Avengers_Campus"
+      }
+    },
+    {
+      "id": "avengers-assemble-flight-force",
+      "location": "Avengers Assemble: Flight Force",
+      "city": "Chessy",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.8668,
+        "lng": 2.78
+      },
+      "status": "ready",
+      "clues": [
+        "This launched coaster was rethemed from Rock 'n' Roller Coaster Starring Aerosmith.",
+        "Riders join Iron Man and Captain Marvel to stop an incoming meteor.",
+        "It is the Avengers coaster at Walt Disney Studios Park, Disneyland Paris.",
+        "The location is Avengers Assemble: Flight Force.",
+        "The location is in Marne-la-Vallée, east of Paris, France."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "avengers-campus"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Avengers_Assemble:_Flight_Force"
+      }
+    },
+    {
+      "id": "disneys-hotel-new-york-art-of-marvel",
+      "location": "Disney's Hotel New York – The Art of Marvel",
+      "city": "Chessy",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.8723,
+        "lng": 2.7859
+      },
+      "status": "ready",
+      "clues": [
+        "This hotel reopened in 2021 displaying hundreds of pieces of Marvel art, from comic pages to concept art.",
+        "Its suites and lobby celebrate Marvel heroes, and Spider-Man and other characters greet guests here.",
+        "It is a Manhattan-themed hotel at Disneyland Paris.",
+        "The location is Disney's Hotel New York – The Art of Marvel.",
+        "The location is beside Lake Disney, Marne-la-Vallée, east of Paris, France."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Disney%27s_Hotel_New_York_%E2%80%93_The_Art_of_Marvel"
+      }
+    },
+    {
+      "id": "iron-man-experience-hong-kong",
+      "location": "Iron Man Experience, Hong Kong Disneyland",
+      "city": "Hong Kong",
+      "region": "Lantau Island",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.313,
+        "lng": 114.045
+      },
+      "status": "ready",
+      "clues": [
+        "Disney's first Marvel-themed ride opened here in 2017, set during a Stark Expo in this very city.",
+        "Riders fly with Iron Man over the city's skyline to fight Hydra.",
+        "It is the Stark Expo attraction at Hong Kong Disneyland.",
+        "The location is Iron Man Experience, Hong Kong Disneyland.",
+        "The location is on Lantau Island, Hong Kong, China."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "iron-man"
+        ],
+        "inUniverse": [
+          "stark-expo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Iron_Man_Experience"
+      }
+    },
+    {
+      "id": "ant-man-nano-battle-hong-kong",
+      "location": "Ant-Man and The Wasp: Nano Battle!, Hong Kong Disneyland",
+      "city": "Hong Kong",
+      "region": "Lantau Island",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.3133,
+        "lng": 114.0455
+      },
+      "status": "ready",
+      "clues": [
+        "This shooting ride replaced Buzz Lightyear Astro Blasters in 2019.",
+        "Riders shrink down to help Ant-Man and the Wasp fight Arnim Zola's swarm bots.",
+        "It is an Ant-Man ride in Stark Expo at Hong Kong Disneyland.",
+        "The location is Ant-Man and The Wasp: Nano Battle!, Hong Kong Disneyland.",
+        "The location is on Lantau Island, Hong Kong, China."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "ant-man"
+        ],
+        "inUniverse": [
+          "stark-expo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ant-Man_and_The_Wasp:_Nano_Battle!"
+      }
+    },
+    {
+      "id": "guardians-cosmic-rewind",
+      "location": "Guardians of the Galaxy: Cosmic Rewind",
+      "city": "Bay Lake",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.374,
+        "lng": -81.549
+      },
+      "status": "ready",
+      "clues": [
+        "This coaster opened in 2022 with ride vehicles that rotate, and it starts with a reverse launch.",
+        "Guests enter the Wonders of Xandar pavilion before joining the Guardians to save the Earth.",
+        "It is a Guardians of the Galaxy coaster at EPCOT, Walt Disney World.",
+        "The location is Guardians of the Galaxy: Cosmic Rewind.",
+        "The location is at Walt Disney World Resort, near Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [
+          "guardians-of-the-galaxy"
+        ],
+        "inUniverse": [
+          "xandar"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy:_Cosmic_Rewind"
+      }
+    },
+    {
+      "id": "marvel-super-hero-island",
+      "location": "Marvel Super Hero Island, Universal Islands of Adventure",
+      "city": "Orlando",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.4705,
+        "lng": -81.4677
+      },
+      "status": "ready",
+      "clues": [
+        "This land opened in 1999, and its comic-style facades are painted with flat colours and comic-panel shading.",
+        "Doctor Doom's Fearfall and Storm Force Accelatron stand among its rides.",
+        "It is Universal's Marvel land in Orlando; Universal holds Marvel theme-park rights here, which is why Disney's Marvel rides are elsewhere.",
+        "The location is Marvel Super Hero Island, Universal Islands of Adventure.",
+        "The location is at Universal Orlando Resort, Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Marvel_Super_Hero_Island"
+      }
+    },
+    {
+      "id": "amazing-adventures-of-spider-man",
+      "location": "The Amazing Adventures of Spider-Man",
+      "city": "Orlando",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.4709,
+        "lng": -81.4685
+      },
+      "status": "ready",
+      "clues": [
+        "In this ride's story, the Sinister Syndicate has stolen the Statue of Liberty with an anti-gravity gun.",
+        "Riders become Daily Bugle reporters in this 3D dark ride, which opened in 1999.",
+        "It is the Spider-Man ride at Universal's Islands of Adventure.",
+        "The location is The Amazing Adventures of Spider-Man.",
+        "The location is at Universal Orlando Resort, Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/The_Amazing_Adventures_of_Spider-Man"
+      }
+    },
+    {
+      "id": "incredible-hulk-coaster",
+      "location": "The Incredible Hulk Coaster",
+      "city": "Orlando",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.4717,
+        "lng": -81.4685
+      },
+      "status": "ready",
+      "clues": [
+        "This coaster launches riders up and out of a tube, and it was rebuilt with new track and trains in 2016.",
+        "Its green track loops over the lagoon at the front of its theme park.",
+        "It is a Hulk-themed coaster at Universal's Islands of Adventure.",
+        "The location is The Incredible Hulk Coaster.",
+        "The location is at Universal Orlando Resort, Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "theme-park",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/The_Incredible_Hulk_Coaster"
+      }
+    },
+    {
+      "id": "el-capitan-theatre",
+      "location": "El Capitan Theatre",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.1015,
+        "lng": -118.3395
+      },
+      "status": "ready",
+      "clues": [
+        "Joss Whedon's team-up film had its world premiere at this Disney-owned movie palace in April 2012.",
+        "The Avengers premiered here, with the cast on a red carpet across the boulevard.",
+        "It is Disney's flagship Hollywood cinema, opposite the Dolby Theatre.",
+        "The location is El Capitan Theatre.",
+        "The location is on Hollywood Boulevard, Hollywood, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "the-avengers"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/El_Capitan_Theatre"
+      }
+    },
+    {
+      "id": "dolby-theatre",
+      "location": "Dolby Theatre",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.1023,
+        "lng": -118.3405
+      },
+      "status": "ready",
+      "clues": [
+        "In January 2018, guests were asked to wear 'royal attire' for a premiere here.",
+        "Black Panther had its world premiere at this theatre, which also hosted Avengers: Age of Ultron's.",
+        "It is the Hollywood home of the Academy Awards.",
+        "The location is Dolby Theatre.",
+        "The location is on Hollywood Boulevard, Hollywood, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "premiere",
+        "productions": [
+          "black-panther",
+          "avengers-age-of-ultron"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dolby_Theatre"
+      }
+    },
+    {
+      "id": "san-diego-convention-center-hall-h",
+      "location": "San Diego Convention Center (Hall H)",
+      "city": "San Diego",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.7062,
+        "lng": -117.162
+      },
+      "status": "ready",
+      "clues": [
+        "In 2010 the full Avengers line-up was introduced on stage together here, two years before the film.",
+        "Marvel Studios has made many of its biggest announcements in Hall H here, including the Phase Four slate in 2019.",
+        "It is the home of San Diego Comic-Con.",
+        "The location is San Diego Convention Center (Hall H).",
+        "The location is on the waterfront of downtown San Diego, California, United States."
+      ],
+      "facts": {
+        "connection": "franchise-landmark",
+        "productions": [
+          "the-avengers"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/San_Diego_Convention_Center"
+      }
+    },
+    {
+      "id": "steve-ditko-johnstown",
+      "location": "Johnstown, Pennsylvania",
+      "city": "Johnstown",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.3267,
+        "lng": -78.922
+      },
+      "status": "ready",
+      "clues": [
+        "The artist born here co-created Doctor Strange in 1963.",
+        "Steve Ditko, the co-creator of Spider-Man, was born in this city.",
+        "It is a Pennsylvania steel city famous for its devastating flood of 1889.",
+        "The location is Johnstown, Pennsylvania.",
+        "The location is in western Pennsylvania, United States, east of Pittsburgh."
+      ],
+      "facts": {
+        "connection": "publishing",
+        "productions": [],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Steve_Ditko"
+      }
+    },
+    {
+      "id": "alabama-hills",
+      "location": "Alabama Hills",
+      "city": "Lone Pine",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.606,
+        "lng": -118.125
+      },
+      "status": "ready",
+      "clues": [
+        "These boulder-strewn hills under Mount Whitney stood in for Afghanistan's Kunar Province.",
+        "Tony Stark's Humvee convoy is ambushed here just after his Jericho missile demonstration.",
+        "It is a classic Western filming area in California's Owens Valley, used for the opening of Iron Man.",
+        "The location is Alabama Hills.",
+        "The location is near Lone Pine, Inyo County, eastern California, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "iron-man"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Alabama_Hills"
+      }
+    },
+    {
+      "id": "point-dume",
+      "location": "Point Dume",
+      "city": "Malibu",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.001,
+        "lng": -118.806
+      },
+      "status": "ready",
+      "clues": [
+        "A digital mansion was placed on top of this rocky headland, and it was blown into the sea in Iron Man 3.",
+        "Tony Stark's clifftop Malibu home stands here on screen.",
+        "It is a Pacific headland in Malibu, the on-screen site of the Stark mansion.",
+        "The location is Point Dume.",
+        "The location is in Malibu, Los Angeles County, California, United States, at the western end of Santa Monica Bay."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "iron-man",
+          "iron-man-3"
+        ],
+        "inUniverse": [
+          "stark-mansion"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Point_Dume"
+      }
+    },
+    {
+      "id": "caesars-palace",
+      "location": "Caesars Palace",
+      "city": "Las Vegas",
+      "region": "Nevada",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1162,
+        "lng": -115.1745
+      },
+      "status": "ready",
+      "clues": [
+        "Rhodey presents an award to an empty stage here because the winner is at the craps table.",
+        "Tony skips his own Apogee Award ceremony at this casino resort in the first Iron Man.",
+        "It is a Roman-themed casino resort on the Las Vegas Strip.",
+        "The location is Caesars Palace.",
+        "The location is on the Las Vegas Strip, Paradise, Nevada, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "iron-man"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Caesars_Palace"
+      }
+    },
+    {
+      "id": "randys-donuts",
+      "location": "Randy's Donuts",
+      "city": "Inglewood",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.9617,
+        "lng": -118.3703
+      },
+      "status": "ready",
+      "clues": [
+        "Nick Fury finds a hungover Tony here and tells him he is not the centre of the universe.",
+        "Tony Stark sits inside the giant rooftop doughnut of this shop, still wearing part of his suit.",
+        "It is a famous 1950s doughnut stand seen in Iron Man 2, near a major airport.",
+        "The location is Randy's Donuts.",
+        "The location is in Inglewood, Los Angeles County, California, United States, near LAX airport."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "iron-man-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Randy%27s_Donuts"
+      }
+    },
+    {
+      "id": "galisteo-new-mexico",
+      "location": "Galisteo, New Mexico",
+      "city": "Galisteo",
+      "region": "New Mexico",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 35.394,
+        "lng": -105.949
+      },
+      "status": "ready",
+      "clues": [
+        "Kenneth Branagh's crew built a whole fake desert town's main street here for the Destroyer to wreck.",
+        "Thor lands in the town of Puente Antiguo, which was built in this village, and later fights the Destroyer there.",
+        "It is a small New Mexico village used for the first Thor film.",
+        "The location is Galisteo, New Mexico.",
+        "The location is in Santa Fe County, New Mexico, United States, south of Santa Fe."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "thor"
+        ],
+        "inUniverse": [
+          "puente-antiguo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Galisteo,_New_Mexico"
+      }
+    },
+    {
+      "id": "lincoln-memorial-reflecting-pool",
+      "location": "Lincoln Memorial Reflecting Pool",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.8893,
+        "lng": -77.045
+      },
+      "status": "ready",
+      "clues": [
+        "Sam Wilson's first meeting with Steve Rogers happens here at dawn, as Steve keeps overtaking him.",
+        "'On your left!' Steve laps Sam on a morning run around this landmark.",
+        "It is the long pool on the National Mall, seen in the opening of Captain America: The Winter Soldier.",
+        "The location is Lincoln Memorial Reflecting Pool.",
+        "The location is on the National Mall, Washington, D.C., United States, below the Lincoln Memorial."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "captain-america-the-winter-soldier"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lincoln_Memorial_Reflecting_Pool"
+      }
+    },
+    {
+      "id": "grady-high-school-atlanta",
+      "location": "Henry W. Grady High School",
+      "city": "Atlanta",
+      "region": "Georgia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.781,
+        "lng": -84.372
+      },
+      "status": "ready",
+      "clues": [
+        "Cheesy educational videos starring Captain America are shown to students at this real public school.",
+        "It played Midtown School of Science and Technology, where Peter Parker goes to school.",
+        "It is an Atlanta high school used in Spider-Man: Homecoming, now called Midtown High School in real life.",
+        "The location is Henry W. Grady High School.",
+        "The location is in Midtown Atlanta, Georgia, United States, near Piedmont Park."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "spider-man-homecoming"
+        ],
+        "inUniverse": [
+          "midtown-school-of-science-and-technology"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Midtown_High_School_(Atlanta)"
+      }
+    },
+    {
+      "id": "high-museum-of-art",
+      "location": "High Museum of Art",
+      "city": "Atlanta",
+      "region": "Georgia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.79,
+        "lng": -84.3855
+      },
+      "status": "ready",
+      "clues": [
+        "Killmonger asks a museum curator about a West African axe in its galleries, shortly before she collapses from poisoned coffee.",
+        "It played the 'Museum of Great Britain', where Killmonger and Klaue steal a vibranium artefact.",
+        "It is a white modernist art museum in Atlanta, used in Black Panther.",
+        "The location is High Museum of Art.",
+        "The location is on Peachtree Street in Midtown Atlanta, Georgia, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/High_Museum_of_Art"
+      }
+    },
+    {
+      "id": "flatiron-building",
+      "location": "Flatiron Building",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7411,
+        "lng": -73.9897
+      },
+      "status": "ready",
+      "clues": [
+        "J. Jonah Jameson barks orders from inside this wedge-shaped landmark in Sam Raimi's trilogy.",
+        "It served as the exterior of the Daily Bugle in Raimi's Spider-Man films.",
+        "It is a triangular 1902 skyscraper at Madison Square.",
+        "The location is Flatiron Building.",
+        "The location is at Fifth Avenue and Broadway, Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "spider-man-2002",
+          "spider-man-2"
+        ],
+        "inUniverse": [
+          "daily-bugle"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Flatiron_Building"
+      }
+    },
+    {
+      "id": "roosevelt-island-tramway",
+      "location": "Roosevelt Island Tramway",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7611,
+        "lng": -73.964
+      },
+      "status": "ready",
+      "clues": [
+        "The Green Goblin forces Spider-Man to choose between Mary Jane and a dangling cable car full of children.",
+        "The climax of the 2002 Spider-Man takes place at this aerial tramway beside the Queensboro Bridge.",
+        "It is an aerial cable car over the East River.",
+        "The location is Roosevelt Island Tramway.",
+        "The location is beside the Queensboro Bridge over the East River, Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "spider-man-2002"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Roosevelt_Island_Tramway"
+      }
+    },
+    {
+      "id": "georgia-viaduct-vancouver",
+      "location": "Georgia Viaduct",
+      "city": "Vancouver",
+      "region": "British Columbia",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 49.278,
+        "lng": -123.101
+      },
+      "status": "ready",
+      "clues": [
+        "Wade counts his bullets during a fight on this elevated road, even though he has only twelve.",
+        "Deadpool's highway battle with Ajax's convoy was filmed on this viaduct.",
+        "It is an elevated roadway in downtown Vancouver, used in Deadpool.",
+        "The location is Georgia Viaduct.",
+        "The location is in downtown Vancouver, British Columbia, Canada, near BC Place stadium."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "deadpool"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Georgia_Viaduct"
+      }
+    },
+    {
+      "id": "hatley-castle",
+      "location": "Hatley Castle",
+      "city": "Colwood",
+      "region": "British Columbia",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 48.434,
+        "lng": -123.473
+      },
+      "status": "ready",
+      "clues": [
+        "Deadpool jokes that whenever he visits this mansion, he only ever sees two X-Men.",
+        "It played Xavier's School for Gifted Youngsters in several X-Men films.",
+        "It is an Edwardian castle near Victoria, British Columbia, which appears in X2 and Deadpool.",
+        "The location is Hatley Castle.",
+        "The location is in Colwood, near Victoria, Vancouver Island, British Columbia, Canada."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "x2",
+          "x-men-the-last-stand",
+          "deadpool",
+          "deadpool-2"
+        ],
+        "inUniverse": [
+          "xavier-mansion"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hatley_Castle"
+      }
+    },
+    {
+      "id": "parkwood-estate",
+      "location": "Parkwood Estate",
+      "city": "Oshawa",
+      "region": "Ontario",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 43.913,
+        "lng": -78.87
+      },
+      "status": "ready",
+      "clues": [
+        "The first X-Men film shot the home of its mutant school at this former General Motors executive's estate.",
+        "It played Xavier's mansion in X-Men (2000).",
+        "It is a historic mansion and garden in Ontario, east of Toronto.",
+        "The location is Parkwood Estate.",
+        "The location is in Oshawa, Ontario, Canada, east of Toronto."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "x-men-2000"
+        ],
+        "inUniverse": [
+          "xavier-mansion"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Parkwood_Estate"
+      }
+    },
+    {
+      "id": "yonge-street-toronto",
+      "location": "Yonge Street",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 43.656,
+        "lng": -79.381
+      },
+      "status": "ready",
+      "clues": [
+        "General Ross's soldiers and a super-soldier called Blonsky battle the Hulk on this Canadian street dressed as Harlem.",
+        "The Hulk vs Abomination fight in The Incredible Hulk was filmed here.",
+        "It is Toronto's main street, dressed as New York for the 2008 Hulk film.",
+        "The location is Yonge Street.",
+        "The location is in downtown Toronto, Ontario, Canada."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-incredible-hulk"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Yonge_Street"
+      }
+    },
+    {
+      "id": "university-of-toronto",
+      "location": "University of Toronto",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 43.6629,
+        "lng": -79.3957
+      },
+      "status": "ready",
+      "clues": [
+        "The army's sonic cannons fire at the Hulk on the lawns of this campus.",
+        "It played Culver University, where Betty Ross works.",
+        "It is Canada's oldest university, in downtown Toronto, seen in The Incredible Hulk.",
+        "The location is University of Toronto.",
+        "The location is in downtown Toronto, Ontario, Canada, near Queen's Park."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-incredible-hulk"
+        ],
+        "inUniverse": [
+          "culver-university"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/University_of_Toronto"
+      }
+    },
+    {
+      "id": "northern-quarter-manchester",
+      "location": "Northern Quarter, Manchester",
+      "city": "Manchester",
+      "region": "Greater Manchester",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.4835,
+        "lng": -2.236
+      },
+      "status": "ready",
+      "clues": [
+        "Its red-brick warehouses were dressed with 1940s cars and shopfronts to play Brooklyn and Manhattan.",
+        "Steve Rogers chases a Hydra spy through 1940s New York streets filmed here.",
+        "It is an English city-centre district that stood in for wartime New York in Captain America: The First Avenger.",
+        "The location is Northern Quarter, Manchester.",
+        "The location is in Manchester city centre, north-west England."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Northern_Quarter_(Manchester)"
+      }
+    },
+    {
+      "id": "old-royal-naval-college",
+      "location": "Old Royal Naval College",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.483,
+        "lng": -0.006
+      },
+      "status": "ready",
+      "clues": [
+        "Thor and Malekith tumble between worlds during a battle centred on these Wren-designed colonnades.",
+        "The climactic Convergence battle of Thor: The Dark World takes place here.",
+        "It is a World Heritage riverside complex designed by Christopher Wren in south-east London.",
+        "The location is Old Royal Naval College.",
+        "The location is in Greenwich, south-east London, England, on the River Thames."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "thor-the-dark-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Old_Royal_Naval_College"
+      }
+    },
+    {
+      "id": "stonehenge",
+      "location": "Stonehenge",
+      "city": "Amesbury",
+      "region": "Wiltshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.1789,
+        "lng": -1.8262
+      },
+      "status": "ready",
+      "clues": [
+        "Erik Selvig is detained after running naked around this ancient monument.",
+        "The scientist investigating the Convergence turns up at this prehistoric site in Thor: The Dark World.",
+        "It is a prehistoric stone circle on Salisbury Plain.",
+        "The location is Stonehenge.",
+        "The location is on Salisbury Plain, Wiltshire, England, near Amesbury."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "thor-the-dark-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stonehenge"
+      }
+    },
+    {
+      "id": "edinburgh-waverley-station",
+      "location": "Edinburgh Waverley station",
+      "city": "Edinburgh",
+      "region": "City of Edinburgh",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.952,
+        "lng": -3.189
+      },
+      "status": "ready",
+      "clues": [
+        "Captain America steps out of the shadows of this station after a train passes, to rescue his friends.",
+        "Steve, Sam and Natasha save Wanda and Vision from Thanos's Black Order here.",
+        "It is the main railway station in Scotland's capital, seen in Avengers: Infinity War.",
+        "The location is Edinburgh Waverley station.",
+        "The location is in central Edinburgh, Scotland, below Princes Street."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "avengers-infinity-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Edinburgh_Waverley_railway_station"
+      }
+    },
+    {
+      "id": "cockburn-street-edinburgh",
+      "location": "Cockburn Street, Edinburgh",
+      "city": "Edinburgh",
+      "region": "City of Edinburgh",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.9505,
+        "lng": -3.1895
+      },
+      "status": "ready",
+      "clues": [
+        "Corvus Glaive stabs Vision in a night-time ambush on this winding Old Town street.",
+        "Wanda and Vision are attacked by the Black Order while in hiding in this city.",
+        "It is a curving street linking the Royal Mile and Waverley station, seen in Avengers: Infinity War.",
+        "The location is Cockburn Street, Edinburgh.",
+        "The location is in Edinburgh's Old Town, Scotland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "avengers-infinity-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Cockburn_Street"
+      }
+    },
+    {
+      "id": "st-abbs",
+      "location": "St Abbs",
+      "city": "St Abbs",
+      "region": "Scottish Borders",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.899,
+        "lng": -2.13
+      },
+      "status": "ready",
+      "clues": [
+        "Valkyrie greets the Avengers by a quayside here, as fishermen unload their catch for the Asgardian refugees.",
+        "This fishing village played New Asgard, where a depressed Thor lives after the Snap.",
+        "It is a small harbour village on the Scottish coast, used in Avengers: Endgame.",
+        "The location is St Abbs.",
+        "The location is on the Berwickshire coast, Scottish Borders, Scotland, north of Berwick-upon-Tweed."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "avengers-endgame"
+        ],
+        "inUniverse": [
+          "new-asgard"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/St_Abbs"
+      }
+    },
+    {
+      "id": "skaftafell",
+      "location": "Skaftafell",
+      "city": "Skaftafell",
+      "region": "Austurland",
+      "country": "Iceland",
+      "continent": "EU",
+      "target": {
+        "lat": 64.015,
+        "lng": -16.966
+      },
+      "status": "ready",
+      "clues": [
+        "Bor's Asgardian army defeats the Dark Elves on this volcanic land, filmed at the start of the second Thor film.",
+        "It stood in for Svartalfheim, home of the Dark Elves.",
+        "It is a glacier-fed wilderness in Vatnajökull National Park, seen in Thor: The Dark World.",
+        "The location is Skaftafell.",
+        "The location is in south-east Iceland, inside Vatnajökull National Park."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "thor-the-dark-world"
+        ],
+        "inUniverse": [
+          "svartalfheim"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Skaftafell"
+      }
+    },
+    {
+      "id": "fort-bard",
+      "location": "Fort Bard",
+      "city": "Bard",
+      "region": "Aosta Valley",
+      "country": "Italy",
+      "continent": "EU",
+      "target": {
+        "lat": 45.607,
+        "lng": 7.747
+      },
+      "status": "ready",
+      "clues": [
+        "The Avengers storm this Alpine fortress in a single long take of the team in action, and Hawkeye is wounded.",
+        "It played Baron Strucker's Hydra fortress in Sokovia, where the Avengers retrieve Loki's sceptre.",
+        "It is a 19th-century fortress in the Italian Alps, used in the opening of Avengers: Age of Ultron.",
+        "The location is Fort Bard.",
+        "The location is in the Aosta Valley, north-west Italy, near the borders with France and Switzerland."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "avengers-age-of-ultron"
+        ],
+        "inUniverse": [
+          "sokovia"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Fort_Bard"
+      }
+    },
+    {
+      "id": "venice-far-from-home",
+      "location": "Grand Canal, Venice",
+      "city": "Venice",
+      "region": "Veneto",
+      "country": "Italy",
+      "continent": "EU",
+      "target": {
+        "lat": 45.434,
+        "lng": 12.338
+      },
+      "status": "ready",
+      "clues": [
+        "Peter swings into action without a suit here, using a jester mask from a souvenir stall.",
+        "A water Elemental attacks this city during Peter's school trip.",
+        "It is the main waterway of the canal city, seen in Spider-Man: Far From Home.",
+        "The location is Grand Canal, Venice.",
+        "The location is in Venice, Veneto, north-east Italy."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "spider-man-far-from-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Grand_Canal_(Venice)"
+      }
+    },
+    {
+      "id": "jagalchi-market-busan",
+      "location": "Jagalchi Fish Market",
+      "city": "Busan",
+      "region": "Busan",
+      "country": "South Korea",
+      "continent": "AS",
+      "target": {
+        "lat": 35.0966,
+        "lng": 129.0306
+      },
+      "status": "ready",
+      "clues": [
+        "T'Challa, Nakia and Okoye go undercover at an illegal casino near this harbour seafront.",
+        "Black Panther's casino fight and the start of the car chase were filmed around this fish market.",
+        "It is South Korea's largest seafood market, in the country's second city.",
+        "The location is Jagalchi Fish Market.",
+        "The location is on the harbour in Busan, South Korea."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jagalchi_Market"
+      }
+    },
+    {
+      "id": "johannesburg-age-of-ultron",
+      "location": "Johannesburg",
+      "city": "Johannesburg",
+      "region": "Gauteng",
+      "country": "South Africa",
+      "continent": "AF",
+      "target": {
+        "lat": -26.2041,
+        "lng": 28.0473
+      },
+      "status": "ready",
+      "clues": [
+        "Wanda puts a vision in the Hulk's head, and he goes on a rampage through this African city.",
+        "Iron Man fights the Hulk here in the Hulkbuster armour.",
+        "It is South Africa's largest city, used in Avengers: Age of Ultron.",
+        "The location is Johannesburg.",
+        "The location is in Gauteng province, north-eastern South Africa."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "avengers-age-of-ultron"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Johannesburg"
+      }
+    },
+    {
+      "id": "rocinha-rio",
+      "location": "Rocinha",
+      "city": "Rio de Janeiro",
+      "region": "Rio de Janeiro",
+      "country": "Brazil",
+      "continent": "SA",
+      "target": {
+        "lat": -22.988,
+        "lng": -43.248
+      },
+      "status": "ready",
+      "clues": [
+        "Bruce Banner works in a bottling plant here and learns breathing techniques to control his pulse.",
+        "Banner flees across the rooftops of this favela as soldiers close in.",
+        "It is one of Brazil's largest favelas, used in the opening of The Incredible Hulk.",
+        "The location is Rocinha.",
+        "The location is in the South Zone of Rio de Janeiro, Brazil."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "the-incredible-hulk"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Rocinha"
+      }
+    },
+    {
+      "id": "kathmandu-durbar-square",
+      "location": "Kathmandu Durbar Square",
+      "city": "Kathmandu",
+      "region": "Bagmati",
+      "country": "Nepal",
+      "continent": "AS",
+      "target": {
+        "lat": 27.7045,
+        "lng": 85.307
+      },
+      "status": "ready",
+      "clues": [
+        "Stephen Strange is mugged in a dark alley in this city before Mordo rescues him.",
+        "Strange searches these streets for Kamar-Taj after his surgical career ends.",
+        "It is the old royal square of Nepal's capital, used in Doctor Strange.",
+        "The location is Kathmandu Durbar Square.",
+        "The location is in Kathmandu, Nepal."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "doctor-strange"
+        ],
+        "inUniverse": [
+          "kamar-taj"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kathmandu_Durbar_Square"
+      }
+    },
+    {
+      "id": "merdeka-118",
+      "location": "Merdeka 118",
+      "city": "Kuala Lumpur",
+      "region": "Federal Territory of Kuala Lumpur",
+      "country": "Malaysia",
+      "continent": "AS",
+      "target": {
+        "lat": 3.1418,
+        "lng": 101.7007
+      },
+      "status": "ready",
+      "clues": [
+        "Florence Pugh performed her own leap off the world's second-tallest building for the opening shot of this film.",
+        "Yelena Belova jumps from the top of this skyscraper at the start of Thunderbolts*.",
+        "It is a skyscraper in Malaysia's capital, completed in 2023.",
+        "The location is Merdeka 118.",
+        "The location is in Kuala Lumpur, Malaysia."
+      ],
+      "facts": {
+        "connection": "filming",
+        "productions": [
+          "thunderbolts"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Merdeka_118"
+      }
+    },
+    {
+      "id": "metlife-building",
+      "location": "MetLife Building",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7533,
+        "lng": -73.9765
+      },
+      "status": "ready",
+      "clues": [
+        "In the MCU's New York, this skyscraper above Grand Central was replaced by an arc-reactor-powered tower.",
+        "Stark Tower, later Avengers Tower, stands on the site of this building on screen.",
+        "It is a skyscraper on Park Avenue, behind Grand Central Terminal, where the Battle of New York is centred.",
+        "The location is MetLife Building.",
+        "The location is on Park Avenue in Midtown Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "the-avengers",
+          "avengers-age-of-ultron",
+          "thunderbolts"
+        ],
+        "inUniverse": [
+          "avengers-tower"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/MetLife_Building"
+      }
+    },
+    {
+      "id": "bleecker-street",
+      "location": "Bleecker Street, Greenwich Village",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.729,
+        "lng": -74.001
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, the address on this street, 177A, has been home to a magical building since the comics of 1963.",
+        "Doctor Strange's New York Sanctum Sanctorum stands on this street.",
+        "It is a Greenwich Village street, famous for its music clubs and cafés, that hosts Strange's Sanctum on screen.",
+        "The location is Bleecker Street, Greenwich Village.",
+        "The location is in Greenwich Village, Lower Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "doctor-strange",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [
+          "new-york-sanctum"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bleecker_Street"
+      }
+    },
+    {
+      "id": "forest-hills-queens",
+      "location": "Forest Hills, Queens",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7181,
+        "lng": -73.8448
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Peter Parker lives here with Aunt May at 20 Ingram Street in the comics.",
+        "Spider-Man grows up in this Queens neighbourhood.",
+        "It is a leafy neighbourhood in the New York borough of Queens.",
+        "The location is Forest Hills, Queens.",
+        "The location is in central Queens, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "spider-man-2002",
+          "spider-man-homecoming"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Forest_Hills,_Queens"
+      }
+    },
+    {
+      "id": "hells-kitchen",
+      "location": "Hell's Kitchen",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7638,
+        "lng": -73.9918
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Matt Murdock's father, a boxer, trained at Fogwell's Gym in this neighbourhood.",
+        "Daredevil protects this Manhattan neighbourhood, also Kingpin's power base.",
+        "It is the West Side Manhattan neighbourhood at the centre of Daredevil and Daredevil: Born Again.",
+        "The location is Hell's Kitchen.",
+        "The location is on the West Side of Midtown Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "daredevil",
+          "daredevil-born-again"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hell%27s_Kitchen,_Manhattan"
+      }
+    },
+    {
+      "id": "harlem",
+      "location": "Harlem",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8116,
+        "lng": -73.9465
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Pop's barbershop in this neighbourhood is a 'Switzerland' where no one is allowed to fight.",
+        "Luke Cage defends this neighbourhood, and Cottonmouth's nightclub is named after it.",
+        "It is the Upper Manhattan neighbourhood at the heart of Luke Cage.",
+        "The location is Harlem.",
+        "The location is in Upper Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "luke-cage"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Harlem"
+      }
+    },
+    {
+      "id": "statue-of-liberty-no-way-home",
+      "location": "Statue of Liberty",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.6892,
+        "lng": -74.0445
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, this monument is under scaffolding and has been given Captain America's shield to hold.",
+        "Three Spider-Men battle five multiverse villains on this landmark in No Way Home.",
+        "It is the copper colossus on Liberty Island, centre of the No Way Home finale.",
+        "The location is Statue of Liberty.",
+        "The location is on Liberty Island in New York Harbor, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Statue_of_Liberty"
+      }
+    },
+    {
+      "id": "statue-of-liberty-x-men",
+      "location": "Statue of Liberty",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.6892,
+        "lng": -74.0445
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Magneto's mutation machine is installed in the torch here during a world summit on Ellis Island.",
+        "The X-Men fight the Brotherhood on top of this landmark in the climax of the first X-Men film.",
+        "It is a New York Harbor monument, seen in X-Men (2000).",
+        "The location is Statue of Liberty.",
+        "The location is on Liberty Island in New York Harbor, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "x-men-2000"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Statue_of_Liberty"
+      }
+    },
+    {
+      "id": "washington-monument",
+      "location": "Washington Monument",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.8895,
+        "lng": -77.0353
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a Chitauri energy core explodes inside the elevator of this obelisk.",
+        "Spider-Man climbs this landmark to rescue his decathlon team from a stuck lift.",
+        "It is the tall obelisk on the National Mall, seen in Spider-Man: Homecoming.",
+        "The location is Washington Monument.",
+        "The location is on the National Mall, Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "spider-man-homecoming"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Washington_Monument"
+      }
+    },
+    {
+      "id": "theodore-roosevelt-island",
+      "location": "Theodore Roosevelt Island",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.896,
+        "lng": -77.064
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, three Helicarriers rise from beneath the agency headquarters built on this island.",
+        "S.H.I.E.L.D.'s Triskelion headquarters stands on this island.",
+        "It is an island in the Potomac River beside Washington, D.C., in Captain America: The Winter Soldier.",
+        "The location is Theodore Roosevelt Island.",
+        "The location is in the Potomac River, between Washington, D.C. and Arlington, Virginia, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-the-winter-soldier"
+        ],
+        "inUniverse": [
+          "triskelion"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Theodore_Roosevelt_Island"
+      }
+    },
+    {
+      "id": "flushing-meadows-corona-park",
+      "location": "Flushing Meadows–Corona Park",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.746,
+        "lng": -73.845
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Tony revives his father's World's Fair-style show here, and Howard's 1974 model inspires a new element.",
+        "The Stark Expo takes place here in Iron Man 2.",
+        "It is a Queens park with the giant Unisphere globe, built for the World's Fairs.",
+        "The location is Flushing Meadows–Corona Park.",
+        "The location is in Queens, New York City, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "iron-man-2",
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [
+          "stark-expo"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Flushing_Meadows%E2%80%93Corona_Park"
+      }
+    },
+    {
+      "id": "white-house",
+      "location": "The White House",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.8977,
+        "lng": -77.0365
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a newly elected President Ross is transformed into a giant red monster near this building.",
+        "Red Hulk wreaks havoc around this famous residence in Captain America: Brave New World.",
+        "It is the home of the US President.",
+        "The location is The White House.",
+        "The location is on Pennsylvania Avenue, Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-brave-new-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/White_House"
+      }
+    },
+    {
+      "id": "mit",
+      "location": "Massachusetts Institute of Technology",
+      "city": "Cambridge",
+      "region": "Massachusetts",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.3601,
+        "lng": -71.0942
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a student here builds a machine that can detect vibranium, which puts her in danger.",
+        "Riri Williams is a student here when Shuri and Okoye come looking for her in Wakanda Forever.",
+        "It is a famous technology university in Massachusetts.",
+        "The location is Massachusetts Institute of Technology.",
+        "The location is in Cambridge, Massachusetts, United States, on the Charles River opposite Boston."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "black-panther-wakanda-forever"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology"
+      }
+    },
+    {
+      "id": "alcatraz-x-men",
+      "location": "Alcatraz Island",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.8267,
+        "lng": -122.423
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a pharmaceutical company makes a 'cure' for mutation from a boy named Leech on this island.",
+        "Magneto's army attacks the mutant-cure facility here in X-Men: The Last Stand.",
+        "It is a former prison island in San Francisco Bay.",
+        "The location is Alcatraz Island.",
+        "The location is in San Francisco Bay, California, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "x-men-the-last-stand"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Alcatraz_Island"
+      }
+    },
+    {
+      "id": "golden-gate-bridge-x-men",
+      "location": "Golden Gate Bridge",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.8199,
+        "lng": -122.4783
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Magneto tears a whole section out of this bridge to use as a walkway.",
+        "Magneto moves this bridge so his army can reach Alcatraz in X-Men: The Last Stand.",
+        "It is San Francisco's famous red suspension bridge.",
+        "The location is Golden Gate Bridge.",
+        "The location is at the entrance to San Francisco Bay, California, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "x-men-the-last-stand"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+      }
+    },
+    {
+      "id": "oakland-black-panther",
+      "location": "Oakland",
+      "city": "Oakland",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.8044,
+        "lng": -122.2712
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, King T'Chaka kills his brother N'Jobu in an apartment here in 1992.",
+        "Erik Killmonger grows up in this city, and T'Challa opens Wakanda's first outreach centre here.",
+        "It is the Bay Area city where Black Panther opens and closes.",
+        "The location is Oakland.",
+        "The location is on the east side of San Francisco Bay, California, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Oakland,_California"
+      }
+    },
+    {
+      "id": "jersey-city",
+      "location": "Jersey City",
+      "city": "Jersey City",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7178,
+        "lng": -74.0431
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a teenage superfan from this city sneaks off to AvengerCon in a homemade Captain Marvel costume.",
+        "Kamala Khan lives with her family in this city, just across the Hudson from Manhattan.",
+        "It is the home town of Ms. Marvel.",
+        "The location is Jersey City.",
+        "The location is in Hudson County, New Jersey, United States, opposite Lower Manhattan."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "ms-marvel",
+          "the-marvels"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jersey_City,_New_Jersey"
+      }
+    },
+    {
+      "id": "san-francisco-shang-chi",
+      "location": "San Francisco",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.799,
+        "lng": -122.418
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Shaun and Katy work as hotel valets here and race a client's car up the steep hills.",
+        "Shang-Chi fights his father's Ten Rings agents on a runaway bus through this city.",
+        "It is the city where Shang-Chi lives at the start of his film.",
+        "The location is San Francisco.",
+        "The location is at the tip of the San Francisco Peninsula, California, United States."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/San_Francisco"
+      }
+    },
+    {
+      "id": "tonsberg-norway",
+      "location": "Tønsberg",
+      "city": "Tønsberg",
+      "region": "Vestfold",
+      "country": "Norway",
+      "continent": "EU",
+      "target": {
+        "lat": 59.2675,
+        "lng": 10.4076
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Odin's warriors left an ancient artefact here, and Hydra's Red Skull steals it from a church in 1942.",
+        "The Tesseract was hidden in this Norwegian town for centuries.",
+        "It is Norway's oldest town, named in Thor and Captain America: The First Avenger.",
+        "The location is Tønsberg.",
+        "The location is on the Oslofjord in Vestfold, south-east Norway."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "thor",
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [
+          "tesseract"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/T%C3%B8nsberg"
+      }
+    },
+    {
+      "id": "stuttgart-the-avengers",
+      "location": "Stuttgart",
+      "city": "Stuttgart",
+      "region": "Baden-Württemberg",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 48.7758,
+        "lng": 9.1829
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Loki steals a scientist's eye during a gala at a museum in this city.",
+        "Loki orders a crowd to kneel before him in this German city, until Captain America arrives.",
+        "It is a German city seen in The Avengers.",
+        "The location is Stuttgart.",
+        "The location is in Baden-Württemberg, south-western Germany."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "the-avengers"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stuttgart"
+      }
+    },
+    {
+      "id": "lagos-civil-war",
+      "location": "Lagos",
+      "city": "Lagos",
+      "region": "Lagos State",
+      "country": "Nigeria",
+      "continent": "AF",
+      "target": {
+        "lat": 6.5244,
+        "lng": 3.3792
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Crossbones tries to steal a biological weapon from an institute for infectious diseases here.",
+        "Wanda accidentally kills Wakandan aid workers in this city, which leads to the Sokovia Accords.",
+        "It is the Nigerian city where Captain America: Civil War opens.",
+        "The location is Lagos.",
+        "The location is on the Atlantic coast of south-western Nigeria."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lagos"
+      }
+    },
+    {
+      "id": "vienna-international-centre",
+      "location": "Vienna International Centre",
+      "city": "Vienna",
+      "region": "Vienna",
+      "country": "Austria",
+      "continent": "EU",
+      "target": {
+        "lat": 48.2346,
+        "lng": 16.417
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, a bomb explodes during a speech by King T'Chaka here, and Bucky is framed for it.",
+        "The Sokovia Accords are to be signed at this UN complex.",
+        "It is the United Nations complex in the Austrian capital, seen in Captain America: Civil War.",
+        "The location is Vienna International Centre.",
+        "The location is beside the Danube in Vienna, Austria."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Vienna_International_Centre"
+      }
+    },
+    {
+      "id": "bucharest-civil-war",
+      "location": "Bucharest",
+      "city": "Bucharest",
+      "region": "Bucharest",
+      "country": "Romania",
+      "continent": "EU",
+      "target": {
+        "lat": 44.4268,
+        "lng": 26.1025
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Bucky keeps a notebook and a supply of plums in his flat in this city.",
+        "Black Panther and the police chase Bucky and Cap through a tunnel and over the rooftops here.",
+        "It is the Romanian capital, seen in Captain America: Civil War.",
+        "The location is Bucharest.",
+        "The location is in southern Romania."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bucharest"
+      }
+    },
+    {
+      "id": "leipzig-halle-airport",
+      "location": "Leipzig/Halle Airport",
+      "city": "Schkeuditz",
+      "region": "Saxony",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4239,
+        "lng": 12.2364
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Ant-Man becomes Giant-Man for the first time on the apron of this German airport.",
+        "Team Cap and Team Iron Man fight their airport battle here.",
+        "It is a German cargo-hub airport, the setting of the airport battle in Captain America: Civil War.",
+        "The location is Leipzig/Halle Airport.",
+        "The location is between Leipzig and Halle, Saxony, eastern Germany."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Leipzig/Halle_Airport"
+      }
+    },
+    {
+      "id": "circuit-de-monaco",
+      "location": "Circuit de Monaco",
+      "city": "Monaco",
+      "region": "Monaco",
+      "country": "Monaco",
+      "continent": "EU",
+      "target": {
+        "lat": 43.7347,
+        "lng": 7.4206
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Tony buys a race car and enters a historic Grand Prix here himself.",
+        "Whiplash attacks Tony on the track here with electrified whips.",
+        "It is the street circuit of the Mediterranean principality, seen in Iron Man 2.",
+        "The location is Circuit de Monaco.",
+        "The location is in Monte Carlo, Monaco, on the French Riviera."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "iron-man-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Circuit_de_Monaco"
+      }
+    },
+    {
+      "id": "tower-bridge",
+      "location": "Tower Bridge",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5055,
+        "lng": -0.0754
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Peter's classmates hide in a nearby medieval fortress while Mysterio's drones attack this landmark.",
+        "Peter Parker defeats Mysterio on and around this London landmark.",
+        "It is the bascule bridge over the Thames, seen at the climax of Spider-Man: Far From Home.",
+        "The location is Tower Bridge.",
+        "The location is over the River Thames beside the Tower of London, England."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "spider-man-far-from-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tower_Bridge"
+      }
+    },
+    {
+      "id": "hong-kong-doctor-strange",
+      "location": "Hong Kong",
+      "city": "Hong Kong",
+      "region": "Hong Kong Island",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.282,
+        "lng": 114.158
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Wong is killed when the third Sanctum in this city falls, and Strange reverses time to save him.",
+        "Kaecilius attacks the Sanctum here, and Strange's 'Dormammu, I've come to bargain' trick unfolds above it.",
+        "It is the city of Doctor Strange's climax, home to one of the three Sanctums.",
+        "The location is Hong Kong.",
+        "The location is on the southern coast of China."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "doctor-strange"
+        ],
+        "inUniverse": [
+          "hong-kong-sanctum"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hong_Kong"
+      }
+    },
+    {
+      "id": "macau-shang-chi",
+      "location": "Macau",
+      "city": "Macau",
+      "region": "Macau",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.1987,
+        "lng": 113.5439
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Shang-Chi's sister runs an underground fight club called the Golden Daggers Club here.",
+        "Shang-Chi and his sister fight across bamboo scaffolding on the side of a skyscraper here.",
+        "It is the gambling city where Xialing runs her fight club in Shang-Chi.",
+        "The location is Macau.",
+        "The location is on the south coast of China, west of Hong Kong."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "shang-chi"
+        ],
+        "inUniverse": [
+          "golden-daggers-club"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Macau"
+      }
+    },
+    {
+      "id": "tokyo-endgame",
+      "location": "Tokyo",
+      "city": "Tokyo",
+      "region": "Tokyo",
+      "country": "Japan",
+      "continent": "AS",
+      "target": {
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Clint Barton, as Ronin, kills yakuza in a rain-soaked alley in this city.",
+        "Hawkeye goes on a killing spree here during the Blip until Natasha finds him.",
+        "It is the Japanese capital, seen in Avengers: Endgame.",
+        "The location is Tokyo.",
+        "The location is in Japan."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tokyo"
+      }
+    },
+    {
+      "id": "babylon-eternals",
+      "location": "Babylon",
+      "city": "Hillah",
+      "region": "Babil Governorate",
+      "country": "Iraq",
+      "continent": "AS",
+      "target": {
+        "lat": 32.5422,
+        "lng": 44.421
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Phastos teaches farmers to build ploughs in this ancient city in 575 BC.",
+        "The Eternals live in this Mesopotamian city's royal court, protecting it from Deviants.",
+        "It is the ancient Mesopotamian city recreated in Eternals.",
+        "The location is Babylon.",
+        "The location is on the Euphrates near Hillah, Iraq."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Babylon"
+      }
+    },
+    {
+      "id": "tenochtitlan-eternals",
+      "location": "Templo Mayor (Tenochtitlan)",
+      "city": "Mexico City",
+      "region": "Mexico City",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 19.4345,
+        "lng": -99.1318
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Ajak forbids the Eternals from stopping the Spanish conquest of this city in 1521.",
+        "Druig disobeys orders and uses mind control during the fall of this Aztec capital.",
+        "It is the Aztec capital seen in Eternals, under modern Mexico City.",
+        "The location is Templo Mayor (Tenochtitlan).",
+        "The location is in the Centro Histórico of Mexico City, Mexico."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Templo_Mayor"
+      }
+    },
+    {
+      "id": "hiroshima-eternals",
+      "location": "Hiroshima",
+      "city": "Hiroshima",
+      "region": "Hiroshima Prefecture",
+      "country": "Japan",
+      "continent": "AS",
+      "target": {
+        "lat": 34.3853,
+        "lng": 132.4553
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Phastos weeps in the ruins of this city, blaming himself for humanity's technology.",
+        "The Eternal who helped humanity advance loses faith in people after the atomic bomb here.",
+        "It is the Japanese city destroyed in 1945, shown in Eternals.",
+        "The location is Hiroshima.",
+        "The location is on the Seto Inland Sea coast of Honshu, Japan."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hiroshima"
+      }
+    },
+    {
+      "id": "mumbai-eternals",
+      "location": "Mumbai",
+      "city": "Mumbai",
+      "region": "Maharashtra",
+      "country": "India",
+      "continent": "AS",
+      "target": {
+        "lat": 19.076,
+        "lng": 72.8777
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Kingo has posed as a family of Bollywood stars in this city for generations.",
+        "The Eternals visit Kingo's mansion here, and his valet Karun records everything.",
+        "It is India's film capital, seen in Eternals.",
+        "The location is Mumbai.",
+        "The location is on the west coast of India."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mumbai"
+      }
+    },
+    {
+      "id": "haiti-wakanda-forever",
+      "location": "Haiti",
+      "city": "Port-au-Prince",
+      "region": "Haiti",
+      "country": "Haiti",
+      "continent": "NA",
+      "target": {
+        "lat": 18.5944,
+        "lng": -72.3074
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Nakia has been raising T'Challa's son here in secret.",
+        "Nakia runs a school in this Caribbean country, where Shuri meets her nephew Toussaint.",
+        "It is the Caribbean country seen at the end of Black Panther: Wakanda Forever.",
+        "The location is Haiti.",
+        "The location is on the western third of the island of Hispaniola, in the Caribbean."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "black-panther-wakanda-forever"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Haiti"
+      }
+    },
+    {
+      "id": "giza-moon-knight",
+      "location": "Giza pyramid complex",
+      "city": "Giza",
+      "region": "Giza Governorate",
+      "country": "Egypt",
+      "continent": "AF",
+      "target": {
+        "lat": 29.9792,
+        "lng": 31.1342
+      },
+      "status": "ready",
+      "clues": [
+        "In the story, Khonshu and Ammit fight as giants among these monuments.",
+        "Moon Knight's final battle against Arthur Harrow takes place here.",
+        "It is Egypt's famous pyramid site, seen at the climax of Moon Knight.",
+        "The location is Giza pyramid complex.",
+        "The location is on the west bank of the Nile, beside Cairo, Egypt."
+      ],
+      "facts": {
+        "connection": "in-universe",
+        "productions": [
+          "moon-knight"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Giza_pyramid_complex"
+      }
+    },
+    {
+      "id": "downey-manhattan",
+      "location": "Manhattan, New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7831,
+        "lng": -73.9712
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His 2008 casting was seen as a big risk after his troubled years, and it launched the MCU.",
+        "He plays Tony Stark, Iron Man, and is returning as Doctor Doom.",
+        "The actor is Robert Downey Jr., who was born here.",
+        "The location is Manhattan, New York City, birthplace of Robert Downey Jr..",
+        "The location is in Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Downey_Jr."
+      }
+    },
+    {
+      "id": "evans-boston",
+      "location": "Boston",
+      "city": "Boston",
+      "region": "Massachusetts",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.3601,
+        "lng": -71.0589
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the Human Torch in Fox's Fantastic Four before joining the MCU.",
+        "He plays Steve Rogers, Captain America.",
+        "The actor is Chris Evans, who was born here.",
+        "The location is Boston, birthplace of Chris Evans.",
+        "The location is in Boston, Massachusetts, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-first-avenger",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chris_Evans"
+      }
+    },
+    {
+      "id": "hemsworth-melbourne",
+      "location": "Melbourne",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.8136,
+        "lng": 144.9631
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His younger brother Liam was also reportedly in the running for the same role.",
+        "He plays Thor, God of Thunder.",
+        "The actor is Chris Hemsworth, who was born here.",
+        "The location is Melbourne, birthplace of Chris Hemsworth.",
+        "The location is in Melbourne, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chris_Hemsworth"
+      }
+    },
+    {
+      "id": "ruffalo-kenosha",
+      "location": "Kenosha",
+      "city": "Kenosha",
+      "region": "Wisconsin",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.5847,
+        "lng": -87.8212
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He became the third actor to play his character on the big screen, after Eric Bana and Edward Norton.",
+        "He plays Bruce Banner, the Hulk.",
+        "The actor is Mark Ruffalo, who was born here.",
+        "The location is Kenosha, birthplace of Mark Ruffalo.",
+        "The location is in Kenosha, Wisconsin, United States, on Lake Michigan."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-avengers",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mark_Ruffalo"
+      }
+    },
+    {
+      "id": "johansson-manhattan",
+      "location": "Manhattan, New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.78,
+        "lng": -73.965
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She took over a role from Emily Blunt, who had to drop out of Iron Man 2.",
+        "She plays Natasha Romanoff, Black Widow.",
+        "The actor is Scarlett Johansson, who was born here.",
+        "The location is Manhattan, New York City, birthplace of Scarlett Johansson.",
+        "The location is in Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-2",
+          "black-widow"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Scarlett_Johansson"
+      }
+    },
+    {
+      "id": "renner-modesto",
+      "location": "Modesto",
+      "city": "Modesto",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.6391,
+        "lng": -120.9969
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character first appears in a cameo in Thor, aiming an arrow from a crane in New Mexico.",
+        "He plays Clint Barton, Hawkeye.",
+        "The actor is Jeremy Renner, who was born here.",
+        "The location is Modesto, birthplace of Jeremy Renner.",
+        "The location is in Modesto, in California's Central Valley, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-avengers",
+          "hawkeye"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeremy_Renner"
+      }
+    },
+    {
+      "id": "hiddleston-westminster",
+      "location": "Westminster, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4975,
+        "lng": -0.1357
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He originally auditioned to play Thor before being cast as his brother.",
+        "He plays Loki, God of Mischief.",
+        "The actor is Tom Hiddleston, who was born here.",
+        "The location is Westminster, London, birthplace of Tom Hiddleston.",
+        "The location is in the City of Westminster, central London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "loki"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Hiddleston"
+      }
+    },
+    {
+      "id": "jackson-washington-dc",
+      "location": "Washington, D.C.",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.9072,
+        "lng": -77.0369
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Marvel's Ultimate comics modelled his character's look on him years before he was cast.",
+        "He plays Nick Fury, director of S.H.I.E.L.D.",
+        "The actor is Samuel L. Jackson, who was born here.",
+        "The location is Washington, D.C., birthplace of Samuel L. Jackson.",
+        "The location is in Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man",
+          "secret-invasion"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Samuel_L._Jackson"
+      }
+    },
+    {
+      "id": "olsen-sherman-oaks",
+      "location": "Sherman Oaks, Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.149,
+        "lng": -118.4514
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her older sisters are the famous twins Mary-Kate and Ashley.",
+        "She plays Wanda Maximoff, the Scarlet Witch.",
+        "The actor is Elizabeth Olsen, who was born here.",
+        "The location is Sherman Oaks, Los Angeles, birthplace of Elizabeth Olsen.",
+        "The location is in Sherman Oaks, in the San Fernando Valley, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "avengers-age-of-ultron",
+          "wandavision"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Olsen"
+      }
+    },
+    {
+      "id": "mackie-new-orleans",
+      "location": "New Orleans",
+      "city": "New Orleans",
+      "region": "Louisiana",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 29.9511,
+        "lng": -90.0715
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character first meets Steve Rogers on a morning run in Washington.",
+        "He plays Sam Wilson, the Falcon, who later becomes Captain America.",
+        "The actor is Anthony Mackie, who was born here.",
+        "The location is New Orleans, birthplace of Anthony Mackie.",
+        "The location is in New Orleans, Louisiana, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-winter-soldier",
+          "captain-america-brave-new-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Anthony_Mackie"
+      }
+    },
+    {
+      "id": "stan-constanta",
+      "location": "Constanța",
+      "city": "Constanța",
+      "region": "Constanța County",
+      "country": "Romania",
+      "continent": "EU",
+      "target": {
+        "lat": 44.1598,
+        "lng": 28.6348
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character spent decades as a brainwashed Soviet assassin, triggered by ten Russian words.",
+        "He plays Bucky Barnes, the Winter Soldier.",
+        "The actor is Sebastian Stan, who was born here.",
+        "The location is Constanța, birthplace of Sebastian Stan.",
+        "The location is on the Black Sea coast of Romania."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-winter-soldier",
+          "thunderbolts"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Sebastian_Stan"
+      }
+    },
+    {
+      "id": "cheadle-kansas-city",
+      "location": "Kansas City, Missouri",
+      "city": "Kansas City",
+      "region": "Missouri",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.0997,
+        "lng": -94.5786
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He took over his role from Terrence Howard in Iron Man 2.",
+        "He plays James Rhodes, War Machine.",
+        "The actor is Don Cheadle, who was born here.",
+        "The location is Kansas City, Missouri, birthplace of Don Cheadle.",
+        "The location is in Kansas City, Missouri, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-2",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Don_Cheadle"
+      }
+    },
+    {
+      "id": "rudd-passaic",
+      "location": "Passaic",
+      "city": "Passaic",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8568,
+        "lng": -74.1285
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He also helped rewrite the script of his first Marvel film and shares the writing credit.",
+        "He plays Scott Lang, Ant-Man.",
+        "The actor is Paul Rudd, who was born here.",
+        "The location is Passaic, birthplace of Paul Rudd.",
+        "The location is in Passaic, New Jersey, United States, north-west of New York City."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ant-man",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Paul_Rudd"
+      }
+    },
+    {
+      "id": "saldana-passaic",
+      "location": "Passaic",
+      "city": "Passaic",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.858,
+        "lng": -74.13
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She also starred in Avatar and Star Trek, making her one of the highest-grossing film actors ever.",
+        "She plays Gamora, adopted daughter of Thanos.",
+        "The actor is Zoe Saldaña, who was born here.",
+        "The location is Passaic, birthplace of Zoe Saldaña.",
+        "The location is in Passaic, New Jersey, United States, north-west of New York City."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy",
+          "avengers-infinity-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Zoe_Saldaña"
+      }
+    },
+    {
+      "id": "lilly-fort-saskatchewan",
+      "location": "Fort Saskatchewan",
+      "city": "Fort Saskatchewan",
+      "region": "Alberta",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 53.713,
+        "lng": -113.213
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Famous from Lost, she plays the daughter of the original Ant-Man.",
+        "She plays Hope van Dyne, the Wasp.",
+        "The actor is Evangeline Lilly, who was born here.",
+        "The location is Fort Saskatchewan, birthplace of Evangeline Lilly.",
+        "The location is in Alberta, Canada, north-east of Edmonton."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ant-man",
+          "ant-man-and-the-wasp"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Evangeline_Lilly"
+      }
+    },
+    {
+      "id": "douglas-new-brunswick",
+      "location": "New Brunswick, New Jersey",
+      "city": "New Brunswick",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.4862,
+        "lng": -74.4518
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was digitally de-aged for scenes of his character in 1989.",
+        "He plays Hank Pym, the original Ant-Man.",
+        "The actor is Michael Douglas, who was born here.",
+        "The location is New Brunswick, New Jersey, birthplace of Michael Douglas.",
+        "The location is in New Brunswick, New Jersey, United States, home of Rutgers University."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ant-man",
+          "ant-man-and-the-wasp-quantumania"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Douglas"
+      }
+    },
+    {
+      "id": "cumberbatch-hammersmith",
+      "location": "Hammersmith, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4927,
+        "lng": -0.224
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He also performed the motion capture for the face of the villain Dormammu.",
+        "He plays Doctor Stephen Strange.",
+        "The actor is Benedict Cumberbatch, who was born here.",
+        "The location is Hammersmith, London, birthplace of Benedict Cumberbatch.",
+        "The location is in Hammersmith, west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "doctor-strange",
+          "doctor-strange-in-the-multiverse-of-madness"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Benedict_Cumberbatch"
+      }
+    },
+    {
+      "id": "wong-eccles",
+      "location": "Eccles",
+      "city": "Eccles",
+      "region": "Greater Manchester",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.483,
+        "lng": -2.334
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character becomes Sorcerer Supreme while Strange is gone during the Blip.",
+        "He plays Wong, guardian of the Kamar-Taj library.",
+        "The actor is Benedict Wong, who was born here.",
+        "The location is Eccles, birthplace of Benedict Wong.",
+        "The location is in Eccles, Salford, Greater Manchester, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "doctor-strange",
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Benedict_Wong"
+      }
+    },
+    {
+      "id": "ejiofor-forest-gate",
+      "location": "Forest Gate, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.549,
+        "lng": 0.025
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character leaves the Masters of the Mystic Arts to hunt down sorcerers who break the rules.",
+        "He plays Karl Mordo.",
+        "The actor is Chiwetel Ejiofor, who was born here.",
+        "The location is Forest Gate, London, birthplace of Chiwetel Ejiofor.",
+        "The location is in Forest Gate, east London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "doctor-strange"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chiwetel_Ejiofor"
+      }
+    },
+    {
+      "id": "boseman-anderson",
+      "location": "Anderson, South Carolina",
+      "city": "Anderson",
+      "region": "South Carolina",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.5034,
+        "lng": -82.6501
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He first played his character in Captain America: Civil War, and he died in 2020.",
+        "He plays T'Challa, the Black Panther.",
+        "The actor is Chadwick Boseman, who was born here.",
+        "The location is Anderson, South Carolina, birthplace of Chadwick Boseman.",
+        "The location is in Anderson, upstate South Carolina, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-civil-war",
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chadwick_Boseman"
+      }
+    },
+    {
+      "id": "nyongo-mexico-city",
+      "location": "Mexico City",
+      "city": "Mexico City",
+      "region": "Mexico City",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 19.4326,
+        "lng": -99.1332
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner for 12 Years a Slave, she plays a Wakandan spy.",
+        "She plays Nakia, a War Dog of Wakanda.",
+        "The actor is Lupita Nyong'o, who was born here.",
+        "The location is Mexico City, birthplace of Lupita Nyong'o.",
+        "The location is in Mexico City, Mexico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther",
+          "black-panther-wakanda-forever"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lupita_Nyong'o"
+      }
+    },
+    {
+      "id": "gurira-grinnell",
+      "location": "Grinnell",
+      "city": "Grinnell",
+      "region": "Iowa",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.7431,
+        "lng": -92.7224
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Also a playwright and The Walking Dead's Michonne, she leads the Dora Milaje.",
+        "She plays Okoye, general of Wakanda's army.",
+        "The actor is Danai Gurira, who was born here.",
+        "The location is Grinnell, birthplace of Danai Gurira.",
+        "The location is in Grinnell, Iowa, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther",
+          "avengers-infinity-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Danai_Gurira"
+      }
+    },
+    {
+      "id": "wright-georgetown",
+      "location": "Georgetown",
+      "city": "Georgetown",
+      "region": "Demerara-Mahaica",
+      "country": "Guyana",
+      "continent": "SA",
+      "target": {
+        "lat": 6.8013,
+        "lng": -58.1551
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character mocks her brother's sandals by asking 'What are those?'",
+        "She plays Shuri, who later becomes the Black Panther.",
+        "The actor is Letitia Wright, who was born here.",
+        "The location is Georgetown, birthplace of Letitia Wright.",
+        "The location is in Georgetown, Guyana, on South America's Atlantic coast."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther",
+          "black-panther-wakanda-forever"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Letitia_Wright"
+      }
+    },
+    {
+      "id": "jordan-santa-ana",
+      "location": "Santa Ana",
+      "city": "Santa Ana",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.7455,
+        "lng": -117.8677
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the Human Torch in the 2015 Fantastic Four before joining the MCU.",
+        "He plays Erik Killmonger.",
+        "The actor is Michael B. Jordan, who was born here.",
+        "The location is Santa Ana, birthplace of Michael B. Jordan.",
+        "The location is in Santa Ana, Orange County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_B._Jordan"
+      }
+    },
+    {
+      "id": "bassett-new-york",
+      "location": "New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8,
+        "lng": -73.95
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She became the first actor nominated for an Oscar for a Marvel film role.",
+        "She plays Queen Ramonda, mother of T'Challa and Shuri.",
+        "The actor is Angela Bassett, who was born here.",
+        "The location is New York City, birthplace of Angela Bassett.",
+        "The location is in New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther",
+          "black-panther-wakanda-forever"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Angela_Bassett"
+      }
+    },
+    {
+      "id": "whitaker-longview",
+      "location": "Longview, Texas",
+      "city": "Longview",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.5007,
+        "lng": -94.7405
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner for The Last King of Scotland, he plays a Wakandan elder who keeps the heart-shaped herb.",
+        "He plays Zuri in Black Panther.",
+        "The actor is Forest Whitaker, who was born here.",
+        "The location is Longview, Texas, birthplace of Forest Whitaker.",
+        "The location is in Longview, East Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Forest_Whitaker"
+      }
+    },
+    {
+      "id": "serkis-ruislip",
+      "location": "Ruislip, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.576,
+        "lng": -0.421
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Famous for performance capture, he plays an arms dealer whose arm is cut off by Ultron.",
+        "He plays Ulysses Klaue.",
+        "The actor is Andy Serkis, who was born here.",
+        "The location is Ruislip, London, birthplace of Andy Serkis.",
+        "The location is in Ruislip, north-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "avengers-age-of-ultron",
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Andy_Serkis"
+      }
+    },
+    {
+      "id": "freeman-aldershot",
+      "location": "Aldershot",
+      "city": "Aldershot",
+      "region": "Hampshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.248,
+        "lng": -0.758
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Famous as Bilbo Baggins, he plays a CIA agent healed with Wakandan technology.",
+        "He plays Everett Ross.",
+        "The actor is Martin Freeman, who was born here.",
+        "The location is Aldershot, birthplace of Martin Freeman.",
+        "The location is in Aldershot, Hampshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-civil-war",
+          "black-panther"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Martin_Freeman"
+      }
+    },
+    {
+      "id": "pratt-virginia-minnesota",
+      "location": "Virginia, Minnesota",
+      "city": "Virginia",
+      "region": "Minnesota",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 47.5233,
+        "lng": -92.5366
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He lost around 60 pounds to play a space outlaw who loves 1970s pop music.",
+        "He plays Peter Quill, Star-Lord.",
+        "The actor is Chris Pratt, who was born here.",
+        "The location is Virginia, Minnesota, birthplace of Chris Pratt.",
+        "The location is in Virginia, on the Iron Range of northern Minnesota, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy",
+          "avengers-infinity-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Chris_Pratt"
+      }
+    },
+    {
+      "id": "bautista-washington-dc",
+      "location": "Washington, D.C.",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.9,
+        "lng": -77.03
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A former WWE champion, he plays a character who takes everything literally.",
+        "He plays Drax the Destroyer.",
+        "The actor is Dave Bautista, who was born here.",
+        "The location is Washington, D.C., birthplace of Dave Bautista.",
+        "The location is in Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dave_Bautista"
+      }
+    },
+    {
+      "id": "cooper-philadelphia",
+      "location": "Philadelphia",
+      "city": "Philadelphia",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.9526,
+        "lng": -75.1652
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He voices a genetically modified raccoon, while Sean Gunn performed the character on set.",
+        "He voices Rocket.",
+        "The actor is Bradley Cooper, who was born here.",
+        "The location is Philadelphia, birthplace of Bradley Cooper.",
+        "The location is in Philadelphia, Pennsylvania, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bradley_Cooper"
+      }
+    },
+    {
+      "id": "gillan-inverness",
+      "location": "Inverness",
+      "city": "Inverness",
+      "region": "Highland",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 57.4778,
+        "lng": -4.2247
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She shaved her head to play a blue-skinned cyborg.",
+        "She plays Nebula, adopted daughter of Thanos.",
+        "The actor is Karen Gillan, who was born here.",
+        "The location is Inverness, birthplace of Karen Gillan.",
+        "The location is in Inverness, Scottish Highlands."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Karen_Gillan"
+      }
+    },
+    {
+      "id": "klementieff-quebec-city",
+      "location": "Quebec City",
+      "city": "Quebec City",
+      "region": "Quebec",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 46.8139,
+        "lng": -71.208
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is an empath with antennae who can put people to sleep.",
+        "She plays Mantis.",
+        "The actor is Pom Klementieff, who was born here.",
+        "The location is Quebec City, birthplace of Pom Klementieff.",
+        "The location is in Quebec City, Quebec, Canada."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy-vol-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pom_Klementieff"
+      }
+    },
+    {
+      "id": "rooker-jasper",
+      "location": "Jasper, Alabama",
+      "city": "Jasper",
+      "region": "Alabama",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.8312,
+        "lng": -87.2775
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His blue-skinned character controls a flying arrow by whistling.",
+        "He plays Yondu Udonta.",
+        "The actor is Michael Rooker, who was born here.",
+        "The location is Jasper, Alabama, birthplace of Michael Rooker.",
+        "The location is in Jasper, north-west Alabama, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy",
+          "guardians-of-the-galaxy-vol-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Rooker"
+      }
+    },
+    {
+      "id": "russell-springfield",
+      "location": "Springfield, Massachusetts",
+      "city": "Springfield",
+      "region": "Massachusetts",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.1015,
+        "lng": -72.5898
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was digitally de-aged for 1980 scenes set in Missouri.",
+        "He plays Ego the Living Planet, Star-Lord's father.",
+        "The actor is Kurt Russell, who was born here.",
+        "The location is Springfield, Massachusetts, birthplace of Kurt Russell.",
+        "The location is in Springfield, western Massachusetts, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "guardians-of-the-galaxy-vol-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kurt_Russell"
+      }
+    },
+    {
+      "id": "holland-kingston",
+      "location": "Kingston upon Thames",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4123,
+        "lng": -0.3007
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He trained as a dancer and starred in Billy Elliot the Musical in the West End.",
+        "He plays Peter Parker, Spider-Man.",
+        "The actor is Tom Holland, who was born here.",
+        "The location is Kingston upon Thames, birthplace of Tom Holland.",
+        "The location is in Kingston upon Thames, south-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-homecoming",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Holland"
+      }
+    },
+    {
+      "id": "zendaya-oakland",
+      "location": "Oakland",
+      "city": "Oakland",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.8044,
+        "lng": -122.2712
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character takes her nickname from her initials, which stand for Michelle Jones.",
+        "She plays MJ in the Spider-Man films.",
+        "The actor is Zendaya, who was born here.",
+        "The location is Oakland, birthplace of Zendaya.",
+        "The location is in Oakland, California, United States, across the bay from San Francisco."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-homecoming",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Zendaya"
+      }
+    },
+    {
+      "id": "batalon-honolulu",
+      "location": "Honolulu",
+      "city": "Honolulu",
+      "region": "Hawaii",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 21.3069,
+        "lng": -157.8583
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character proudly calls himself Peter's 'guy in the chair'.",
+        "He plays Ned Leeds.",
+        "The actor is Jacob Batalon, who was born here.",
+        "The location is Honolulu, birthplace of Jacob Batalon.",
+        "The location is in Honolulu, Oahu, Hawaii, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-homecoming"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jacob_Batalon"
+      }
+    },
+    {
+      "id": "tomei-brooklyn",
+      "location": "Brooklyn",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.6782,
+        "lng": -73.9442
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner for My Cousin Vinny, she plays a much younger version of a famous aunt.",
+        "She plays May Parker.",
+        "The actor is Marisa Tomei, who was born here.",
+        "The location is Brooklyn, birthplace of Marisa Tomei.",
+        "The location is in Brooklyn, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-homecoming",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Marisa_Tomei"
+      }
+    },
+    {
+      "id": "gyllenhaal-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.06,
+        "lng": -118.25
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was nearly brought in as Spider-Man himself when Tobey Maguire hurt his back.",
+        "He plays Quentin Beck, Mysterio.",
+        "The actor is Jake Gyllenhaal, who was born here.",
+        "The location is Los Angeles, birthplace of Jake Gyllenhaal.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-far-from-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jake_Gyllenhaal"
+      }
+    },
+    {
+      "id": "favreau-flushing",
+      "location": "Flushing, Queens",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7675,
+        "lng": -73.8331
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He directed the first two Iron Man films.",
+        "He plays Happy Hogan, Tony Stark's bodyguard.",
+        "The actor is Jon Favreau, who was born here.",
+        "The location is Flushing, Queens, birthplace of Jon Favreau.",
+        "The location is in Flushing, Queens, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man",
+          "spider-man-homecoming"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jon_Favreau"
+      }
+    },
+    {
+      "id": "paltrow-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.07,
+        "lng": -118.4
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character briefly gains Extremis powers and defeats Aldrich Killian.",
+        "She plays Pepper Potts.",
+        "The actor is Gwyneth Paltrow, who was born here.",
+        "The location is Los Angeles, birthplace of Gwyneth Paltrow.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man",
+          "iron-man-3"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Gwyneth_Paltrow"
+      }
+    },
+    {
+      "id": "bridges-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.05,
+        "lng": -118.3
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He shaved his head to play the villain of the first MCU film.",
+        "He plays Obadiah Stane, the Iron Monger.",
+        "The actor is Jeff Bridges, who was born here.",
+        "The location is Los Angeles, birthplace of Jeff Bridges.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Bridges"
+      }
+    },
+    {
+      "id": "rourke-schenectady",
+      "location": "Schenectady",
+      "city": "Schenectady",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.8142,
+        "lng": -73.9396
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He learned Russian phrases for his role as a vengeful physicist.",
+        "He plays Ivan Vanko, Whiplash.",
+        "The actor is Mickey Rourke, who was born here.",
+        "The location is Schenectady, birthplace of Mickey Rourke.",
+        "The location is in Schenectady, upstate New York, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mickey_Rourke"
+      }
+    },
+    {
+      "id": "rockwell-daly-city",
+      "location": "Daly City",
+      "city": "Daly City",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.6879,
+        "lng": -122.4702
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character reappears in prison in the One-Shot All Hail the King.",
+        "He plays Justin Hammer, Tony's rival arms dealer.",
+        "The actor is Sam Rockwell, who was born here.",
+        "The location is Daly City, birthplace of Sam Rockwell.",
+        "The location is in Daly City, just south of San Francisco, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Sam_Rockwell"
+      }
+    },
+    {
+      "id": "pearce-ely",
+      "location": "Ely",
+      "city": "Ely",
+      "region": "Cambridgeshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.399,
+        "lng": 0.262
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character created the Extremis virus.",
+        "He plays Aldrich Killian.",
+        "The actor is Guy Pearce, who was born here.",
+        "The location is Ely, birthplace of Guy Pearce.",
+        "The location is in Ely, Cambridgeshire, England, a cathedral city in the Fens."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-3"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Guy_Pearce"
+      }
+    },
+    {
+      "id": "kingsley-snainton",
+      "location": "Snainton",
+      "city": "Snainton",
+      "region": "North Yorkshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 54.228,
+        "lng": -0.583
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His supposed terrorist turns out to be an actor called Trevor Slattery.",
+        "He plays 'the Mandarin' in Iron Man 3.",
+        "The actor is Ben Kingsley, who was born here.",
+        "The location is Snainton, birthplace of Ben Kingsley.",
+        "The location is in Snainton, North Yorkshire, England, near Scarborough."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man-3",
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Kingsley"
+      }
+    },
+    {
+      "id": "howard-chicago",
+      "location": "Chicago",
+      "city": "Chicago",
+      "region": "Illinois",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.88,
+        "lng": -87.63
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His role was taken over by another actor for the sequel.",
+        "He plays James Rhodes in the first Iron Man.",
+        "The actor is Terrence Howard, who was born here.",
+        "The location is Chicago, birthplace of Terrence Howard.",
+        "The location is in Chicago, Illinois, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "iron-man"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Terrence_Howard"
+      }
+    },
+    {
+      "id": "portman-jerusalem",
+      "location": "Jerusalem",
+      "city": "Jerusalem",
+      "region": "Jerusalem",
+      "country": "Israel",
+      "continent": "AS",
+      "target": {
+        "lat": 31.7683,
+        "lng": 35.2137
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She returned to the series as a Mighty Thor battling cancer.",
+        "She plays Jane Foster.",
+        "The actor is Natalie Portman, who was born here.",
+        "The location is Jerusalem, birthplace of Natalie Portman.",
+        "The location is in Jerusalem."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "thor-love-and-thunder"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Natalie_Portman"
+      }
+    },
+    {
+      "id": "hopkins-margam",
+      "location": "Margam, Port Talbot",
+      "city": "Port Talbot",
+      "region": "Neath Port Talbot",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.56,
+        "lng": -3.73
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character dies peacefully on a Norwegian clifftop.",
+        "He plays Odin, the All-Father.",
+        "The actor is Anthony Hopkins, who was born here.",
+        "The location is Margam, Port Talbot, birthplace of Anthony Hopkins.",
+        "The location is in Port Talbot, south Wales."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Anthony_Hopkins"
+      }
+    },
+    {
+      "id": "elba-hackney",
+      "location": "Hackney, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.545,
+        "lng": -0.0553
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character guards the Bifrost and can see across the Nine Realms.",
+        "He plays Heimdall.",
+        "The actor is Idris Elba, who was born here.",
+        "The location is Hackney, London, birthplace of Idris Elba.",
+        "The location is in Hackney, east London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Idris_Elba"
+      }
+    },
+    {
+      "id": "skarsgard-gothenburg",
+      "location": "Gothenburg",
+      "city": "Gothenburg",
+      "region": "Västra Götaland",
+      "country": "Sweden",
+      "continent": "EU",
+      "target": {
+        "lat": 57.7089,
+        "lng": 11.9746
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character ends up running naked around Stonehenge.",
+        "He plays Erik Selvig.",
+        "The actor is Stellan Skarsgård, who was born here.",
+        "The location is Gothenburg, birthplace of Stellan Skarsgård.",
+        "The location is in Gothenburg, on the west coast of Sweden."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "thor-the-dark-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stellan_Skarsgård"
+      }
+    },
+    {
+      "id": "dennings-bryn-mawr",
+      "location": "Bryn Mawr",
+      "city": "Bryn Mawr",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.021,
+        "lng": -75.316
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character tasers Thor in the New Mexico desert.",
+        "She plays Darcy Lewis.",
+        "The actor is Kat Dennings, who was born here.",
+        "The location is Bryn Mawr, birthplace of Kat Dennings.",
+        "The location is in Bryn Mawr, on Philadelphia's Main Line, Pennsylvania, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor",
+          "wandavision"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kat_Dennings"
+      }
+    },
+    {
+      "id": "blanchett-melbourne",
+      "location": "Melbourne",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.76,
+        "lng": 145.06
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character crushes Mjolnir with one hand.",
+        "She plays Hela, Goddess of Death.",
+        "The actor is Cate Blanchett, who was born here.",
+        "The location is Melbourne, birthplace of Cate Blanchett.",
+        "The location is in Melbourne, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Cate_Blanchett"
+      }
+    },
+    {
+      "id": "goldblum-west-homestead",
+      "location": "West Homestead, Pennsylvania",
+      "city": "West Homestead",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.394,
+        "lng": -79.912
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character runs gladiator contests on a garbage planet.",
+        "He plays the Grandmaster.",
+        "The actor is Jeff Goldblum, who was born here.",
+        "The location is West Homestead, Pennsylvania, birthplace of Jeff Goldblum.",
+        "The location is near Pittsburgh, Pennsylvania, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Goldblum"
+      }
+    },
+    {
+      "id": "thompson-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.03,
+        "lng": -118.26
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character becomes King of New Asgard.",
+        "She plays Valkyrie.",
+        "The actor is Tessa Thompson, who was born here.",
+        "The location is Los Angeles, birthplace of Tessa Thompson.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-ragnarok",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tessa_Thompson"
+      }
+    },
+    {
+      "id": "waititi-raukokore",
+      "location": "Raukokore",
+      "city": "Raukokore",
+      "region": "Bay of Plenty",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -37.629,
+        "lng": 177.892
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? As well as directing two Thor films, he voices a gentle rock alien.",
+        "He plays Korg.",
+        "The actor is Taika Waititi, who was born here.",
+        "The location is Raukokore, birthplace of Taika Waititi.",
+        "The location is on the East Cape of New Zealand's North Island."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-ragnarok",
+          "thor-love-and-thunder"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Taika_Waititi"
+      }
+    },
+    {
+      "id": "urban-wellington",
+      "location": "Wellington",
+      "city": "Wellington",
+      "region": "Wellington",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -41.2865,
+        "lng": 174.7762
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His Asgardian character switches sides and dies firing two machine guns.",
+        "He plays Skurge.",
+        "The actor is Karl Urban, who was born here.",
+        "The location is Wellington, birthplace of Karl Urban.",
+        "The location is in Wellington, New Zealand."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-ragnarok"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Karl_Urban"
+      }
+    },
+    {
+      "id": "crowe-wellington",
+      "location": "Wellington",
+      "city": "Wellington",
+      "region": "Wellington",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -41.29,
+        "lng": 174.78
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His Greek god wields a golden lightning bolt.",
+        "He plays Zeus in Thor: Love and Thunder.",
+        "The actor is Russell Crowe, who was born here.",
+        "The location is Wellington, birthplace of Russell Crowe.",
+        "The location is in Wellington, New Zealand."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-love-and-thunder"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Russell_Crowe"
+      }
+    },
+    {
+      "id": "bale-haverfordwest",
+      "location": "Haverfordwest",
+      "city": "Haverfordwest",
+      "region": "Pembrokeshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.8016,
+        "lng": -4.969
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played Batman for Christopher Nolan before playing a Marvel villain.",
+        "He plays Gorr the God Butcher.",
+        "The actor is Christian Bale, who was born here.",
+        "The location is Haverfordwest, birthplace of Christian Bale.",
+        "The location is in Haverfordwest, Pembrokeshire, south-west Wales."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "thor-love-and-thunder"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Christian_Bale"
+      }
+    },
+    {
+      "id": "weaving-ibadan",
+      "location": "Ibadan",
+      "city": "Ibadan",
+      "region": "Oyo State",
+      "country": "Nigeria",
+      "continent": "AF",
+      "target": {
+        "lat": 7.3775,
+        "lng": 3.947
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the role once and did not return, so it was later recast.",
+        "He plays the Red Skull in Captain America: The First Avenger.",
+        "The actor is Hugo Weaving, who was born here.",
+        "The location is Ibadan, birthplace of Hugo Weaving.",
+        "The location is in Ibadan, south-western Nigeria."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hugo_Weaving"
+      }
+    },
+    {
+      "id": "jones-san-saba",
+      "location": "San Saba",
+      "city": "San Saba",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 31.1957,
+        "lng": -98.7181
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His gruff character trains the candidates for a super-soldier programme.",
+        "He plays Colonel Chester Phillips.",
+        "The actor is Tommy Lee Jones, who was born here.",
+        "The location is San Saba, birthplace of Tommy Lee Jones.",
+        "The location is in San Saba, central Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tommy_Lee_Jones"
+      }
+    },
+    {
+      "id": "cooper-greenwich",
+      "location": "Greenwich, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4826,
+        "lng": -0.0077
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the father of a famous Avenger as a young man in the 1940s.",
+        "He plays Howard Stark in Captain America: The First Avenger.",
+        "The actor is Dominic Cooper, who was born here.",
+        "The location is Greenwich, London, birthplace of Dominic Cooper.",
+        "The location is in Greenwich, south-east London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-first-avenger"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Dominic_Cooper"
+      }
+    },
+    {
+      "id": "redford-santa-monica",
+      "location": "Santa Monica",
+      "city": "Santa Monica",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0195,
+        "lng": -118.4912
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A star of 1970s political thrillers, he plays a S.H.I.E.L.D. leader secretly working for Hydra.",
+        "He plays Alexander Pierce in The Winter Soldier.",
+        "The actor is Robert Redford, who was born here.",
+        "The location is Santa Monica, birthplace of Robert Redford.",
+        "The location is in Santa Monica, Los Angeles County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-winter-soldier"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Redford"
+      }
+    },
+    {
+      "id": "brolin-santa-monica",
+      "location": "Santa Monica",
+      "city": "Santa Monica",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.025,
+        "lng": -118.48
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? In 2018 he played both a Marvel villain and Deadpool's time-travelling enemy Cable.",
+        "He plays Thanos, the Mad Titan.",
+        "The actor is Josh Brolin, who was born here.",
+        "The location is Santa Monica, birthplace of Josh Brolin.",
+        "The location is in Santa Monica, Los Angeles County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "avengers-infinity-war",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Josh_Brolin"
+      }
+    },
+    {
+      "id": "grillo-new-york",
+      "location": "New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8448,
+        "lng": -73.8648
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character wears a skull-faced mask after being badly burned.",
+        "He plays Brock Rumlow, Crossbones.",
+        "The actor is Frank Grillo, who was born here.",
+        "The location is New York City, birthplace of Frank Grillo.",
+        "The location is in New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-winter-soldier",
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Frank_Grillo"
+      }
+    },
+    {
+      "id": "vancamp-port-perry",
+      "location": "Port Perry",
+      "city": "Port Perry",
+      "region": "Ontario",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 44.106,
+        "lng": -78.944
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is the great-niece of Peggy Carter.",
+        "She plays Sharon Carter, Agent 13.",
+        "The actor is Emily VanCamp, who was born here.",
+        "The location is Port Perry, birthplace of Emily VanCamp.",
+        "The location is in Port Perry, Ontario, Canada, north-east of Toronto."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-the-winter-soldier",
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Emily_VanCamp"
+      }
+    },
+    {
+      "id": "bruhl-barcelona",
+      "location": "Barcelona",
+      "city": "Barcelona",
+      "region": "Catalonia",
+      "country": "Spain",
+      "continent": "EU",
+      "target": {
+        "lat": 41.3851,
+        "lng": 2.1734
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character plots the Avengers' downfall to avenge his family's deaths in Sokovia.",
+        "He plays Helmut Zemo.",
+        "The actor is Daniel Brühl, who was born here.",
+        "The location is Barcelona, birthplace of Daniel Brühl.",
+        "The location is in Barcelona, Catalonia, Spain."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-civil-war",
+          "the-falcon-and-the-winter-soldier"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Daniel_Brühl"
+      }
+    },
+    {
+      "id": "hurt-washington-dc",
+      "location": "Washington, D.C.",
+      "city": "Washington, D.C.",
+      "region": "District of Columbia",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.91,
+        "lng": -77.04
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played the same general in 2008's The Incredible Hulk and in later Avengers films.",
+        "He plays Thaddeus 'Thunderbolt' Ross.",
+        "The actor is William Hurt, who was born here.",
+        "The location is Washington, D.C., birthplace of William Hurt.",
+        "The location is in Washington, D.C., United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-incredible-hulk",
+          "captain-america-civil-war"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/William_Hurt"
+      }
+    },
+    {
+      "id": "ford-chicago",
+      "location": "Chicago",
+      "city": "Chicago",
+      "region": "Illinois",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.87,
+        "lng": -87.64
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He took over a role from the late William Hurt, and his character transforms into a giant red monster.",
+        "He plays President Thaddeus Ross, the Red Hulk.",
+        "The actor is Harrison Ford, who was born here.",
+        "The location is Chicago, birthplace of Harrison Ford.",
+        "The location is in Chicago, Illinois, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-america-brave-new-world"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Harrison_Ford"
+      }
+    },
+    {
+      "id": "spader-boston",
+      "location": "Boston",
+      "city": "Boston",
+      "region": "Massachusetts",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.35,
+        "lng": -71.07
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He provided both the voice and the motion capture for an artificial intelligence villain.",
+        "He plays Ultron.",
+        "The actor is James Spader, who was born here.",
+        "The location is Boston, birthplace of James Spader.",
+        "The location is in Boston, Massachusetts, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "avengers-age-of-ultron"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Spader"
+      }
+    },
+    {
+      "id": "taylor-johnson-high-wycombe",
+      "location": "High Wycombe",
+      "city": "High Wycombe",
+      "region": "Buckinghamshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.6287,
+        "lng": -0.7482
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played Kick-Ass before playing a super-fast Sokovian.",
+        "He plays Pietro Maximoff, Quicksilver.",
+        "The actor is Aaron Taylor-Johnson, who was born here.",
+        "The location is High Wycombe, birthplace of Aaron Taylor-Johnson.",
+        "The location is in High Wycombe, Buckinghamshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "avengers-age-of-ultron"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Aaron_Taylor-Johnson"
+      }
+    },
+    {
+      "id": "larson-sacramento",
+      "location": "Sacramento",
+      "city": "Sacramento",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.5816,
+        "lng": -121.4944
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner for Room, she plays a pilot who absorbed energy from the Tesseract.",
+        "She plays Carol Danvers, Captain Marvel.",
+        "The actor is Brie Larson, who was born here.",
+        "The location is Sacramento, birthplace of Brie Larson.",
+        "The location is in Sacramento, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-marvel",
+          "the-marvels"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Brie_Larson"
+      }
+    },
+    {
+      "id": "mendelsohn-melbourne",
+      "location": "Melbourne",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.8,
+        "lng": 144.95
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is a shape-shifting Skrull general.",
+        "He plays Talos.",
+        "The actor is Ben Mendelsohn, who was born here.",
+        "The location is Melbourne, birthplace of Ben Mendelsohn.",
+        "The location is in Melbourne, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-marvel",
+          "secret-invasion"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Mendelsohn"
+      }
+    },
+    {
+      "id": "bening-topeka",
+      "location": "Topeka",
+      "city": "Topeka",
+      "region": "Kansas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.0473,
+        "lng": -95.6752
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character appears to Carol as the Supreme Intelligence.",
+        "She plays Dr Wendy Lawson, the Kree scientist Mar-Vell.",
+        "The actor is Annette Bening, who was born here.",
+        "The location is Topeka, birthplace of Annette Bening.",
+        "The location is in Topeka, Kansas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "captain-marvel"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Annette_Bening"
+      }
+    },
+    {
+      "id": "pugh-oxford",
+      "location": "Oxford",
+      "city": "Oxford",
+      "region": "Oxfordshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.752,
+        "lng": -1.2577
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character mocks Natasha's 'poser' superhero landing.",
+        "She plays Yelena Belova.",
+        "The actor is Florence Pugh, who was born here.",
+        "The location is Oxford, birthplace of Florence Pugh.",
+        "The location is in Oxford, Oxfordshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-widow",
+          "thunderbolts"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Florence_Pugh"
+      }
+    },
+    {
+      "id": "harbour-white-plains",
+      "location": "White Plains",
+      "city": "White Plains",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.034,
+        "lng": -73.7629
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character insists he once fought Captain America.",
+        "He plays Alexei Shostakov, the Red Guardian.",
+        "The actor is David Harbour, who was born here.",
+        "The location is White Plains, birthplace of David Harbour.",
+        "The location is in White Plains, Westchester County, New York, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-widow",
+          "thunderbolts"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/David_Harbour"
+      }
+    },
+    {
+      "id": "kurylenko-berdiansk",
+      "location": "Berdiansk",
+      "city": "Berdiansk",
+      "region": "Zaporizhzhia Oblast",
+      "country": "Ukraine",
+      "continent": "EU",
+      "target": {
+        "lat": 46.755,
+        "lng": 36.788
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character can copy any fighting style she sees.",
+        "She plays Antonia Dreykov, the Taskmaster.",
+        "The actor is Olga Kurylenko, who was born here.",
+        "The location is Berdiansk, birthplace of Olga Kurylenko.",
+        "The location is on the Sea of Azov coast of south-eastern Ukraine."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "black-widow"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Olga_Kurylenko"
+      }
+    },
+    {
+      "id": "liu-harbin",
+      "location": "Harbin",
+      "city": "Harbin",
+      "region": "Heilongjiang",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 45.8038,
+        "lng": 126.535
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He tweeted at Marvel asking for an Asian superhero role years before he was cast.",
+        "He plays Shang-Chi.",
+        "The actor is Simu Liu, who was born here.",
+        "The location is Harbin, birthplace of Simu Liu.",
+        "The location is in Harbin, Heilongjiang, north-east China."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Simu_Liu"
+      }
+    },
+    {
+      "id": "awkwafina-stony-brook",
+      "location": "Stony Brook",
+      "city": "Stony Brook",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.9257,
+        "lng": -73.1409
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A rapper as well as an actor, she plays a valet who becomes a skilled archer.",
+        "She plays Katy in Shang-Chi.",
+        "The actor is Awkwafina, who was born here.",
+        "The location is Stony Brook, birthplace of Awkwafina.",
+        "The location is on Long Island, New York, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Awkwafina"
+      }
+    },
+    {
+      "id": "leung-hong-kong",
+      "location": "Hong Kong",
+      "city": "Hong Kong",
+      "region": "Hong Kong",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 22.3193,
+        "lng": 114.1694
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A star of Wong Kar-wai films, he made his Hollywood debut in this role.",
+        "He plays Xu Wenwu, leader of the Ten Rings.",
+        "The actor is Tony Leung Chiu-wai, who was born here.",
+        "The location is Hong Kong, birthplace of Tony Leung Chiu-wai.",
+        "The location is in Hong Kong, China."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "shang-chi"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tony_Leung_Chiu-wai"
+      }
+    },
+    {
+      "id": "yeoh-ipoh",
+      "location": "Ipoh",
+      "city": "Ipoh",
+      "region": "Perak",
+      "country": "Malaysia",
+      "continent": "AS",
+      "target": {
+        "lat": 4.5975,
+        "lng": 101.0901
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She also appeared briefly as a Ravager captain in Guardians of the Galaxy Vol. 2.",
+        "She plays Ying Nan, Shang-Chi's aunt, in Ta Lo.",
+        "The actor is Michelle Yeoh, who was born here.",
+        "The location is Ipoh, birthplace of Michelle Yeoh.",
+        "The location is in Ipoh, Perak, Malaysia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "shang-chi",
+          "guardians-of-the-galaxy-vol-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+      }
+    },
+    {
+      "id": "madden-elderslie",
+      "location": "Elderslie",
+      "city": "Elderslie",
+      "region": "Renfrewshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.832,
+        "lng": -4.482
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character can fly and fire beams from his eyes, and he betrays the team.",
+        "He plays Ikaris in Eternals.",
+        "The actor is Richard Madden, who was born here.",
+        "The location is Elderslie, birthplace of Richard Madden.",
+        "The location is in Elderslie, Renfrewshire, Scotland, west of Glasgow."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Richard_Madden"
+      }
+    },
+    {
+      "id": "nanjiani-karachi",
+      "location": "Karachi",
+      "city": "Karachi",
+      "region": "Sindh",
+      "country": "Pakistan",
+      "continent": "AS",
+      "target": {
+        "lat": 24.8607,
+        "lng": 67.0011
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character has posed as a Bollywood star for generations.",
+        "He plays Kingo in Eternals.",
+        "The actor is Kumail Nanjiani, who was born here.",
+        "The location is Karachi, birthplace of Kumail Nanjiani.",
+        "The location is in Karachi, Pakistan."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kumail_Nanjiani"
+      }
+    },
+    {
+      "id": "vellani-karachi",
+      "location": "Karachi",
+      "city": "Karachi",
+      "region": "Sindh",
+      "country": "Pakistan",
+      "continent": "AS",
+      "target": {
+        "lat": 24.87,
+        "lng": 67.03
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? A lifelong Marvel fan, she was cast straight out of high school.",
+        "She plays Kamala Khan, Ms. Marvel.",
+        "The actor is Iman Vellani, who was born here.",
+        "The location is Karachi, birthplace of Iman Vellani.",
+        "The location is in Karachi, Pakistan."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "ms-marvel",
+          "the-marvels"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Iman_Vellani"
+      }
+    },
+    {
+      "id": "hayek-coatzacoalcos",
+      "location": "Coatzacoalcos",
+      "city": "Coatzacoalcos",
+      "region": "Veracruz",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 18.1345,
+        "lng": -94.459
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character can communicate with the Celestials.",
+        "She plays Ajak, leader of the Eternals.",
+        "The actor is Salma Hayek, who was born here.",
+        "The location is Coatzacoalcos, birthplace of Salma Hayek.",
+        "The location is on the Gulf coast of Veracruz, Mexico."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Salma_Hayek"
+      }
+    },
+    {
+      "id": "jolie-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.08,
+        "lng": -118.33
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character suffers from Mahd Wy'ry, a memory disorder.",
+        "She plays Thena in Eternals.",
+        "The actor is Angelina Jolie, who was born here.",
+        "The location is Los Angeles, birthplace of Angelina Jolie.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Angelina_Jolie"
+      }
+    },
+    {
+      "id": "henry-fayetteville",
+      "location": "Fayetteville, North Carolina",
+      "city": "Fayetteville",
+      "region": "North Carolina",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 35.0527,
+        "lng": -78.8784
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is an inventor with a husband and young son.",
+        "He plays Phastos in Eternals.",
+        "The actor is Brian Tyree Henry, who was born here.",
+        "The location is Fayetteville, North Carolina, birthplace of Brian Tyree Henry.",
+        "The location is in Fayetteville, North Carolina, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Brian_Tyree_Henry"
+      }
+    },
+    {
+      "id": "keoghan-dublin",
+      "location": "Dublin",
+      "city": "Dublin",
+      "region": "County Dublin",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 53.3498,
+        "lng": -6.2603
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character can control minds.",
+        "He plays Druig in Eternals.",
+        "The actor is Barry Keoghan, who was born here.",
+        "The location is Dublin, birthplace of Barry Keoghan.",
+        "The location is in Dublin, Ireland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Barry_Keoghan"
+      }
+    },
+    {
+      "id": "harington-acton",
+      "location": "Acton, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.508,
+        "lng": -0.273
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character works at a museum and is drawn to the cursed Ebony Blade.",
+        "He plays Dane Whitman in Eternals.",
+        "The actor is Kit Harington, who was born here.",
+        "The location is Acton, London, birthplace of Kit Harington.",
+        "The location is in Acton, west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "eternals"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kit_Harington"
+      }
+    },
+    {
+      "id": "isaac-guatemala-city",
+      "location": "Guatemala City",
+      "city": "Guatemala City",
+      "region": "Guatemala",
+      "country": "Guatemala",
+      "continent": "NA",
+      "target": {
+        "lat": 14.6349,
+        "lng": -90.5069
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character has dissociative identity disorder, switching between an American mercenary and a London museum gift-shop worker.",
+        "He plays Marc Spector, Moon Knight.",
+        "The actor is Oscar Isaac, who was born here.",
+        "The location is Guatemala City, birthplace of Oscar Isaac.",
+        "The location is in Guatemala City, Guatemala."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "moon-knight"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Oscar_Isaac"
+      }
+    },
+    {
+      "id": "hawke-austin",
+      "location": "Austin",
+      "city": "Austin",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 30.2672,
+        "lng": -97.7431
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character keeps broken glass in his sandals as a penance.",
+        "He plays Arthur Harrow in Moon Knight.",
+        "The actor is Ethan Hawke, who was born here.",
+        "The location is Austin, birthplace of Ethan Hawke.",
+        "The location is in Austin, Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "moon-knight"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ethan_Hawke"
+      }
+    },
+    {
+      "id": "maslany-regina",
+      "location": "Regina",
+      "city": "Regina",
+      "region": "Saskatchewan",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 50.4452,
+        "lng": -104.6189
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character breaks the fourth wall and argues with an AI called K.E.V.I.N.",
+        "She plays Jennifer Walters, She-Hulk.",
+        "The actor is Tatiana Maslany, who was born here.",
+        "The location is Regina, birthplace of Tatiana Maslany.",
+        "The location is in Regina, Saskatchewan, Canada."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "she-hulk"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tatiana_Maslany"
+      }
+    },
+    {
+      "id": "steinfeld-tarzana",
+      "location": "Tarzana, Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.1736,
+        "lng": -118.5531
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character took up archery after seeing Hawkeye in the Battle of New York.",
+        "She plays Kate Bishop.",
+        "The actor is Hailee Steinfeld, who was born here.",
+        "The location is Tarzana, Los Angeles, birthplace of Hailee Steinfeld.",
+        "The location is in Tarzana, in the San Fernando Valley, Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "hawkeye"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hailee_Steinfeld"
+      }
+    },
+    {
+      "id": "wilson-dallas",
+      "location": "Dallas",
+      "city": "Dallas",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 32.7767,
+        "lng": -96.797
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character is a Time Variance Authority agent who loves jet skis.",
+        "He plays Mobius in Loki.",
+        "The actor is Owen Wilson, who was born here.",
+        "The location is Dallas, birthplace of Owen Wilson.",
+        "The location is in Dallas, Texas, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "loki"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Owen_Wilson"
+      }
+    },
+    {
+      "id": "di-martino-nottingham",
+      "location": "Nottingham",
+      "city": "Nottingham",
+      "region": "Nottinghamshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 52.9548,
+        "lng": -1.1581
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is a female variant of the God of Mischief.",
+        "She plays Sylvie in Loki.",
+        "The actor is Sophia Di Martino, who was born here.",
+        "The location is Nottingham, birthplace of Sophia Di Martino.",
+        "The location is in Nottingham, the East Midlands, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "loki"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Sophia_Di_Martino"
+      }
+    },
+    {
+      "id": "hahn-westchester",
+      "location": "Westchester, Illinois",
+      "city": "Westchester",
+      "region": "Illinois",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.8503,
+        "lng": -87.882
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her nosy-neighbour act hides a centuries-old witch, revealed in the song 'Agatha All Along'.",
+        "She plays Agatha Harkness.",
+        "The actor is Kathryn Hahn, who was born here.",
+        "The location is Westchester, Illinois, birthplace of Kathryn Hahn.",
+        "The location is in a western suburb of Chicago, Illinois, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "wandavision",
+          "agatha-all-along"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kathryn_Hahn"
+      }
+    },
+    {
+      "id": "parris-hopkins",
+      "location": "Hopkins, South Carolina",
+      "city": "Hopkins",
+      "region": "South Carolina",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.9043,
+        "lng": -80.877
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character gains powers after passing through the barrier of the Westview Hex.",
+        "She plays Monica Rambeau.",
+        "The actor is Teyonah Parris, who was born here.",
+        "The location is Hopkins, South Carolina, birthplace of Teyonah Parris.",
+        "The location is near Columbia, South Carolina, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "wandavision",
+          "the-marvels"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Teyonah_Parris"
+      }
+    },
+    {
+      "id": "donofrio-brooklyn",
+      "location": "Brooklyn",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.69,
+        "lng": -73.95
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character's empire grows from Hell's Kitchen crime to the mayor's office.",
+        "He plays Wilson Fisk, the Kingpin.",
+        "The actor is Vincent D'Onofrio, who was born here.",
+        "The location is Brooklyn, birthplace of Vincent D'Onofrio.",
+        "The location is in Brooklyn, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "daredevil",
+          "daredevil-born-again"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Vincent_D'Onofrio"
+      }
+    },
+    {
+      "id": "colter-columbia",
+      "location": "Columbia, South Carolina",
+      "city": "Columbia",
+      "region": "South Carolina",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0007,
+        "lng": -81.0348
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character gained unbreakable skin from a prison experiment.",
+        "He plays Luke Cage.",
+        "The actor is Mike Colter, who was born here.",
+        "The location is Columbia, South Carolina, birthplace of Mike Colter.",
+        "The location is in Columbia, South Carolina, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "luke-cage"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mike_Colter"
+      }
+    },
+    {
+      "id": "ritter-bloomsburg",
+      "location": "Bloomsburg",
+      "city": "Bloomsburg",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.0037,
+        "lng": -76.4549
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character runs a detective agency called Alias Investigations.",
+        "She plays Jessica Jones.",
+        "The actor is Krysten Ritter, who was born here.",
+        "The location is Bloomsburg, birthplace of Krysten Ritter.",
+        "The location is in Bloomsburg, Pennsylvania, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "jessica-jones"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Krysten_Ritter"
+      }
+    },
+    {
+      "id": "pascal-santiago",
+      "location": "Santiago",
+      "city": "Santiago",
+      "region": "Santiago Metropolitan Region",
+      "country": "Chile",
+      "continent": "SA",
+      "target": {
+        "lat": -33.4489,
+        "lng": -70.6693
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character leads a team in a retro-futuristic 1960s world.",
+        "He plays Reed Richards, Mister Fantastic.",
+        "The actor is Pedro Pascal, who was born here.",
+        "The location is Santiago, birthplace of Pedro Pascal.",
+        "The location is in Santiago, Chile."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-fantastic-four-first-steps"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Pedro_Pascal"
+      }
+    },
+    {
+      "id": "kirby-wimbledon",
+      "location": "Wimbledon, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4214,
+        "lng": -0.2064
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character gives birth to her son Franklin in space.",
+        "She plays Sue Storm, the Invisible Woman.",
+        "The actor is Vanessa Kirby, who was born here.",
+        "The location is Wimbledon, London, birthplace of Vanessa Kirby.",
+        "The location is in Wimbledon, south-west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-fantastic-four-first-steps"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Vanessa_Kirby"
+      }
+    },
+    {
+      "id": "moss-bachrach-amherst",
+      "location": "Amherst, Massachusetts",
+      "city": "Amherst",
+      "region": "Massachusetts",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 42.3732,
+        "lng": -72.5199
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Also known for The Bear, his character is made of orange rock.",
+        "He plays Ben Grimm, the Thing.",
+        "The actor is Ebon Moss-Bachrach, who was born here.",
+        "The location is Amherst, Massachusetts, birthplace of Ebon Moss-Bachrach.",
+        "The location is in Amherst, western Massachusetts, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-fantastic-four-first-steps"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ebon_Moss-Bachrach"
+      }
+    },
+    {
+      "id": "reynolds-vancouver",
+      "location": "Vancouver",
+      "city": "Vancouver",
+      "region": "British Columbia",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 49.2827,
+        "lng": -123.1207
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He first played his character in X-Men Origins: Wolverine, with his mouth sewn shut.",
+        "He plays Deadpool.",
+        "The actor is Ryan Reynolds, who was born here.",
+        "The location is Vancouver, birthplace of Ryan Reynolds.",
+        "The location is in Vancouver, British Columbia, Canada."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "deadpool",
+          "deadpool-and-wolverine"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ryan_Reynolds"
+      }
+    },
+    {
+      "id": "jackman-sydney",
+      "location": "Sydney",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.8688,
+        "lng": 151.2093
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He was a late replacement for Dougray Scott in the role that made him famous.",
+        "He plays Wolverine.",
+        "The actor is Hugh Jackman, who was born here.",
+        "The location is Sydney, birthplace of Hugh Jackman.",
+        "The location is in Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-2000",
+          "deadpool-and-wolverine"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hugh_Jackman"
+      }
+    },
+    {
+      "id": "stewart-mirfield",
+      "location": "Mirfield",
+      "city": "Mirfield",
+      "region": "West Yorkshire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.675,
+        "lng": -1.696
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He returned to his role in Multiverse of Madness as a member of the Illuminati.",
+        "He plays Professor Charles Xavier.",
+        "The actor is Patrick Stewart, who was born here.",
+        "The location is Mirfield, birthplace of Patrick Stewart.",
+        "The location is in Mirfield, West Yorkshire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-2000",
+          "doctor-strange-in-the-multiverse-of-madness"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Patrick_Stewart"
+      }
+    },
+    {
+      "id": "mckellen-burnley",
+      "location": "Burnley",
+      "city": "Burnley",
+      "region": "Lancashire",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.789,
+        "lng": -2.248
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character survived a Nazi concentration camp as a boy.",
+        "He plays Magneto.",
+        "The actor is Ian McKellen, who was born here.",
+        "The location is Burnley, birthplace of Ian McKellen.",
+        "The location is in Burnley, Lancashire, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-2000"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ian_McKellen"
+      }
+    },
+    {
+      "id": "berry-cleveland",
+      "location": "Cleveland",
+      "city": "Cleveland",
+      "region": "Ohio",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.4993,
+        "lng": -81.6944
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? An Oscar winner, she plays a mutant who controls the weather.",
+        "She plays Storm.",
+        "The actor is Halle Berry, who was born here.",
+        "The location is Cleveland, birthplace of Halle Berry.",
+        "The location is in Cleveland, Ohio, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-2000"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Halle_Berry"
+      }
+    },
+    {
+      "id": "mcavoy-glasgow",
+      "location": "Glasgow",
+      "city": "Glasgow",
+      "region": "Glasgow City",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.8642,
+        "lng": -4.2518
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played a younger version of a character made famous by Patrick Stewart.",
+        "He plays Charles Xavier in X-Men: First Class.",
+        "The actor is James McAvoy, who was born here.",
+        "The location is Glasgow, birthplace of James McAvoy.",
+        "The location is in Glasgow, Scotland."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-first-class"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/James_McAvoy"
+      }
+    },
+    {
+      "id": "fassbender-heidelberg",
+      "location": "Heidelberg",
+      "city": "Heidelberg",
+      "region": "Baden-Württemberg",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 49.3988,
+        "lng": 8.6724
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He played a younger version of Ian McKellen's character.",
+        "He plays Erik Lehnsherr, Magneto, in X-Men: First Class.",
+        "The actor is Michael Fassbender, who was born here.",
+        "The location is Heidelberg, birthplace of Michael Fassbender.",
+        "The location is in Heidelberg, Baden-Württemberg, Germany."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-first-class"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Fassbender"
+      }
+    },
+    {
+      "id": "lawrence-louisville",
+      "location": "Louisville",
+      "city": "Louisville",
+      "region": "Kentucky",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 38.2527,
+        "lng": -85.7585
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? She spent hours being painted blue for her role.",
+        "She plays Mystique in X-Men: First Class.",
+        "The actor is Jennifer Lawrence, who was born here.",
+        "The location is Louisville, birthplace of Jennifer Lawrence.",
+        "The location is in Louisville, Kentucky, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-first-class"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Jennifer_Lawrence"
+      }
+    },
+    {
+      "id": "janssen-amstelveen",
+      "location": "Amstelveen",
+      "city": "Amstelveen",
+      "region": "North Holland",
+      "country": "Netherlands",
+      "continent": "EU",
+      "target": {
+        "lat": 52.308,
+        "lng": 4.863
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character is consumed by the Phoenix Force.",
+        "She plays Jean Grey.",
+        "The actor is Famke Janssen, who was born here.",
+        "The location is Amstelveen, birthplace of Famke Janssen.",
+        "The location is just south of Amsterdam, Netherlands."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "x-men-2000",
+          "x-men-the-last-stand"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Famke_Janssen"
+      }
+    },
+    {
+      "id": "maguire-santa-monica",
+      "location": "Santa Monica",
+      "city": "Santa Monica",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.015,
+        "lng": -118.495
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He returned to his role in No Way Home, nearly two decades after his first film.",
+        "He plays Peter Parker in Sam Raimi's Spider-Man films.",
+        "The actor is Tobey Maguire, who was born here.",
+        "The location is Santa Monica, birthplace of Tobey Maguire.",
+        "The location is in Santa Monica, Los Angeles County, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-2002",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tobey_Maguire"
+      }
+    },
+    {
+      "id": "dunst-point-pleasant",
+      "location": "Point Pleasant, New Jersey",
+      "city": "Point Pleasant",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.0832,
+        "lng": -74.0682
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character shares an upside-down kiss in the rain.",
+        "She plays Mary Jane Watson.",
+        "The actor is Kirsten Dunst, who was born here.",
+        "The location is Point Pleasant, New Jersey, birthplace of Kirsten Dunst.",
+        "The location is on the Jersey Shore, New Jersey, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-2002"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Kirsten_Dunst"
+      }
+    },
+    {
+      "id": "dafoe-appleton",
+      "location": "Appleton",
+      "city": "Appleton",
+      "region": "Wisconsin",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 44.2619,
+        "lng": -88.4154
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His character argues with his own split personality in a mirror.",
+        "He plays Norman Osborn, the Green Goblin.",
+        "The actor is Willem Dafoe, who was born here.",
+        "The location is Appleton, birthplace of Willem Dafoe.",
+        "The location is in Appleton, Wisconsin, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "spider-man-2002",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Willem_Dafoe"
+      }
+    },
+    {
+      "id": "garfield-los-angeles",
+      "location": "Los Angeles",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.04,
+        "lng": -118.26
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He grew up in Surrey, England, before playing a New York superhero.",
+        "He plays Peter Parker in The Amazing Spider-Man films.",
+        "The actor is Andrew Garfield, who was born here.",
+        "The location is Los Angeles, birthplace of Andrew Garfield.",
+        "The location is in Los Angeles, California, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-amazing-spider-man",
+          "spider-man-no-way-home"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Andrew_Garfield"
+      }
+    },
+    {
+      "id": "stone-scottsdale",
+      "location": "Scottsdale",
+      "city": "Scottsdale",
+      "region": "Arizona",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.4942,
+        "lng": -111.9261
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? Her character dies after a fall in a clock tower.",
+        "She plays Gwen Stacy.",
+        "The actor is Emma Stone, who was born here.",
+        "The location is Scottsdale, birthplace of Emma Stone.",
+        "The location is in Scottsdale, Arizona, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-amazing-spider-man",
+          "the-amazing-spider-man-2"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Emma_Stone"
+      }
+    },
+    {
+      "id": "hardy-hammersmith",
+      "location": "Hammersmith, London",
+      "city": "London",
+      "region": "Greater London",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.49,
+        "lng": -0.23
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His alien symbiote loves chocolate and live lobsters.",
+        "He plays Eddie Brock, Venom.",
+        "The actor is Tom Hardy, who was born here.",
+        "The location is Hammersmith, London, birthplace of Tom Hardy.",
+        "The location is in Hammersmith, west London, England."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "venom"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Hardy"
+      }
+    },
+    {
+      "id": "snipes-orlando",
+      "location": "Orlando",
+      "city": "Orlando",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.5383,
+        "lng": -81.3792
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? His 1998 vampire-hunter film was one of Marvel's first big box-office hits.",
+        "He plays Blade.",
+        "The actor is Wesley Snipes, who was born here.",
+        "The location is Orlando, birthplace of Wesley Snipes.",
+        "The location is in Orlando, Florida, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "blade"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Wesley_Snipes"
+      }
+    },
+    {
+      "id": "stan-lee-manhattan",
+      "location": "Manhattan, New York City",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.795,
+        "lng": -73.97
+      },
+      "status": "ready",
+      "clues": [
+        "Where was this actor born? He made cameo appearances in almost every Marvel film until his death in 2018.",
+        "He co-created Spider-Man, the X-Men, Iron Man and the Fantastic Four.",
+        "The actor is Stan Lee, who was born here.",
+        "The location is Manhattan, New York City, birthplace of Stan Lee.",
+        "The location is in Manhattan, New York City, United States."
+      ],
+      "facts": {
+        "connection": "actor-birthplace",
+        "productions": [
+          "the-avengers",
+          "avengers-endgame"
+        ],
+        "inUniverse": [],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stan_Lee"
+      }
+    }
+  ]
+}

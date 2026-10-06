@@ -13,6 +13,7 @@
  * `world-airports` = World airports (/airports)
  * `taylor-swift` = Taylor Swift places (/taylor-swift)
  * `harry-potter` = Harry Potter places (/harry-potter)
+ * `marvel` = Marvel places (/marvel)
  */
 
 import {
@@ -36,6 +37,7 @@ export const GAME_MODES = [
   "london-stations",
   "taylor-swift",
   "harry-potter",
+  "marvel",
   "football",
   "football-italy",
   "football-germany",
@@ -75,7 +77,8 @@ export type GameModeDefinition = {
     | "stations"
     | "airports"
     | "taylor-swift"
-    | "harry-potter";
+    | "harry-potter"
+    | "marvel";
   /**
    * Fixed opening map camera for this mode.
    * Country/region overview only — must not encode the day’s answer.
@@ -206,6 +209,24 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     mapStart: WORLD_MAP_START,
     scoring: WORLD_SCORING_PROFILE,
   },
+  marvel: {
+    id: "marvel",
+    path: "/marvel",
+    title: "Marvel",
+    subtitle: "MCU & comics",
+    chipLabel: "Marvel",
+    emoji: "🦸",
+    detail:
+      "Five clues to find today’s Marvel filming location or franchise place.",
+    sessionCookie: "fivegames_session_marvel",
+    historyKey: "pin5_marvel_player_history",
+    sharePath: "/marvel",
+    shareTitle: "PIN5 🦸 MARVEL",
+    modeLabel: "MARVEL",
+    family: "marvel",
+    mapStart: WORLD_MAP_START,
+    scoring: WORLD_SCORING_PROFILE,
+  },
   football: {
     id: "football",
     path: "/football/england",
@@ -318,6 +339,7 @@ export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].sessionCookie,
   "taylor-swift": GAME_MODE_DEFINITIONS["taylor-swift"].sessionCookie,
   "harry-potter": GAME_MODE_DEFINITIONS["harry-potter"].sessionCookie,
+  marvel: GAME_MODE_DEFINITIONS.marvel.sessionCookie,
   football: GAME_MODE_DEFINITIONS.football.sessionCookie,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].sessionCookie,
   "football-germany":
@@ -335,6 +357,7 @@ export const PLAYER_HISTORY_KEY_BY_MODE: Record<GameMode, string> = {
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].historyKey,
   "taylor-swift": GAME_MODE_DEFINITIONS["taylor-swift"].historyKey,
   "harry-potter": GAME_MODE_DEFINITIONS["harry-potter"].historyKey,
+  marvel: GAME_MODE_DEFINITIONS.marvel.historyKey,
   football: GAME_MODE_DEFINITIONS.football.historyKey,
   "football-italy": GAME_MODE_DEFINITIONS["football-italy"].historyKey,
   "football-germany":
@@ -392,7 +415,8 @@ export function modeDisplayName(mode: GameMode): string {
     def.family === "stations" ||
     def.family === "airports" ||
     def.family === "taylor-swift" ||
-    def.family === "harry-potter"
+    def.family === "harry-potter" ||
+    def.family === "marvel"
     ? `${def.title} · ${def.subtitle}`
     : def.title;
 }
@@ -433,6 +457,10 @@ export function isHarryPotterMode(mode: GameMode): boolean {
   return getModeDefinition(mode).family === "harry-potter";
 }
 
+export function isMarvelMode(mode: GameMode): boolean {
+  return getModeDefinition(mode).family === "marvel";
+}
+
 /** Modes listed on the landing hub and results cross-sell. */
 export function listPlayableModes(): GameModeDefinition[] {
   return GAME_MODES.map((id) => GAME_MODE_DEFINITIONS[id]);
@@ -452,5 +480,6 @@ export function listGeneralKnowledgeModes(): GameModeDefinition[] {
     GAME_MODE_DEFINITIONS["london-stations"],
     GAME_MODE_DEFINITIONS["taylor-swift"],
     GAME_MODE_DEFINITIONS["harry-potter"],
+    GAME_MODE_DEFINITIONS.marvel,
   ];
 }

@@ -43,8 +43,8 @@ describe("Harry Potter schedule", () => {
   });
 
   it("cycles after the full place pool", () => {
-    // 185 days after 2026-10-06 → game number 186
-    const afterCycleDate = "2027-04-09";
+    // 241 days after 2026-10-06 → game number 242
+    const afterCycleDate = "2027-06-04";
     assert.equal(
       harryPotterGameNumber(afterCycleDate),
       HARRY_POTTER_COUNT + 1,

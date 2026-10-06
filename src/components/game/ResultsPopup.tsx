@@ -115,7 +115,8 @@ function modeRowLabel(def: GameModeDefinition): string {
     def.family === "stations" ||
     def.family === "airports" ||
     def.family === "taylor-swift" ||
-    def.family === "harry-potter"
+    def.family === "harry-potter" ||
+    def.family === "marvel"
     ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
     : def.title;
 }
@@ -141,6 +142,9 @@ function modeRowHint(def: GameModeDefinition): string {
   }
   if (def.family === "harry-potter") {
     return "5 clues · find today's Wizarding World place";
+  }
+  if (def.family === "marvel") {
+    return "5 clues · find today's Marvel place";
   }
   return "5 clues · one UK place";
 }
@@ -277,7 +281,8 @@ export function ResultsPopup({
       otherDef.family === "stations" ||
       otherDef.family === "airports" ||
       otherDef.family === "taylor-swift" ||
-      otherDef.family === "harry-potter"
+      otherDef.family === "harry-potter" ||
+      otherDef.family === "marvel"
         ? `Play ${otherDef.title} · ${otherDef.subtitle}`
         : `Play ${otherDef.title}`,
   };
@@ -291,6 +296,7 @@ export function ResultsPopup({
     ...modeStatuses.filter((row) => row.def.family === "stations"),
     ...modeStatuses.filter((row) => row.def.family === "taylor-swift"),
     ...modeStatuses.filter((row) => row.def.family === "harry-potter"),
+    ...modeStatuses.filter((row) => row.def.family === "marvel"),
     ...modeStatuses.filter((row) => row.def.family === "football"),
   ];
 

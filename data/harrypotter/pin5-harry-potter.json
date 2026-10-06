@@ -530,7 +530,7 @@
         "lat": 51.4147,
         "lng": -2.118
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Rooms off its medieval cloisters became Hogwarts classrooms, including the one where Snape gives his first Potions lesson.",
         "Harry sees his parents looking back at him from the Mirror of Erised in one of its rooms.",
@@ -561,7 +561,7 @@
         "lat": 54.7733,
         "lng": -1.5763
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Its Chapter House became Professor McGonagall's classroom, where she turns from a tabby cat back into a teacher in front of Harry and Ron.",
         "Harry lets Hedwig fly from its snowy cloister garth, and Ron later belches slugs in the same courtyard.",
@@ -925,7 +925,7 @@
         "lat": 51.406,
         "lng": -0.718
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Only the first film used this real modern cul-de-sac; later films built a replica street at Leavesden.",
         "Its houses played Privet Drive in Little Whinging, where Harry lives in a cupboard under the stairs.",
@@ -955,7 +955,7 @@
         "lat": 56.838,
         "lng": -5.52
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Bonnie Prince Charlie raised his standard at the head of this long freshwater loch in 1745, and its waters later appeared beside Hogwarts.",
         "Its waters stood in for the Black Lake in the Hogwarts grounds.",
@@ -1043,7 +1043,7 @@
         "lat": 56.676,
         "lng": -5.05
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "For the third film a new wooden hut and pumpkin patch were built on this Highland hillside, away from the earlier studio version.",
         "Hagrid's hut stood here, where Buckbeak awaits his execution.",
@@ -1101,7 +1101,7 @@
         "lat": 51.5103,
         "lng": -0.1301
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Kenneth Branagh joined the young cast on this red carpet in November 2002, promoting his turn as a celebrity author.",
         "The film that introduced Gilderoy Lockhart and Dobby had its world premiere here.",
@@ -1129,7 +1129,7 @@
         "lat": 51.5103,
         "lng": -0.1301
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Robert Pattinson, then a newcomer playing Cedric Diggory, walked this red carpet in November 2005.",
         "The fourth film, the one featuring the Triwizard Tournament, had its world premiere here.",
@@ -1523,7 +1523,7 @@
         "lat": 28.473,
         "lng": -81.445
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Guests enter this land through Métro-Floo fireplaces, and Le Cirque Arcanus puts on a Fantastic Beasts-era circus show.",
         "Its headline ride is Harry Potter and the Battle at the Ministry, set in 1920s Paris and at the British Ministry of Magic.",
@@ -1706,7 +1706,7 @@
         "lat": 37.7876,
         "lng": -122.4105
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Its run of the two-part play opened in late 2019 and was cut short by the 2020 pandemic shutdown.",
         "The play here showed Albus Potter and Scorpius Malfoy using a Time-Turner.",
@@ -1734,7 +1734,7 @@
         "lat": 43.6555,
         "lng": -79.3797
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This was the play's first Canadian home, and it opened in 2022 in the shorter one-part version.",
         "A grown-up Harry, Ginny and their son Albus are at the heart of the play that ran here.",
@@ -1762,7 +1762,7 @@
         "lat": 53.541,
         "lng": 10.0265
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Harry Potter und das verwunschene Kind, the first non-English production of the play, opened in a converted market hall here.",
         "The play here follows Albus Potter and Scorpius Malfoy, translated into German.",
@@ -1790,7 +1790,7 @@
         "lat": -37.8107,
         "lng": 144.9735
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This theatre is famous for its resident ghost, Federici, and it hosted the play's first production in the Southern Hemisphere.",
         "The Australian staging of Harry and Albus's story opened here in 2019.",
@@ -1818,7 +1818,7 @@
         "lat": 35.6716,
         "lng": 139.7363
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This theatre was rebuilt specifically to host the first Asian production of the play, which opened in 2022.",
         "The Japanese-language staging of Harry and Albus Potter's story runs here.",
@@ -1846,7 +1846,7 @@
         "lat": 40.7403,
         "lng": -73.9896
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This flagship shop opened in June 2021 across several themed floors, complete with a Butterbeer bar.",
         "It is billed as the largest Harry Potter store in the world.",
@@ -1900,7 +1900,7 @@
         "lat": 40.76,
         "lng": -73.98
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Alfonso Cuarón's only film in the series had its premiere at this Art Deco theatre in May 2004.",
         "Prisoner of Azkaban premiered at this famous Manhattan music hall.",
@@ -1928,7 +1928,7 @@
         "lat": 48.8714,
         "lng": 2.3011
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "The second Fantastic Beasts film premiered in the city where most of its story takes place.",
         "The Crimes of Grindelwald had its world premiere at this cinema in November 2018.",
@@ -1956,7 +1956,7 @@
         "lat": 40.7794,
         "lng": -73.9741
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "After its London run, A History of Magic moved here in October 2018, adding original artwork by US illustrator Mary GrandPré.",
         "This museum hosted Harry Potter: A History of Magic, which combined Rowling's drafts with real magical history.",
@@ -1982,7 +1982,7 @@
         "lat": 41.7906,
         "lng": -87.5831
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Harry Potter: The Exhibition opened its world tour here in April 2009.",
         "Visitors could see real costumes and props and walk through recreated sets such as the Great Hall.",
@@ -2124,7 +2124,7 @@
         "lat": 24.234,
         "lng": 141.462
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Students at this school's wizarding academy wear robes that change colour as their knowledge grows.",
         "Rowling places Mahoutokoro, Japan's wizarding school, on the highest point of this island.",
@@ -2152,7 +2152,7 @@
         "lat": 0.3861,
         "lng": 29.8719
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Students at this school arrive after a dream-messenger appears to them, and its pupils are known for wandless magic.",
         "Rowling places Uagadou, Africa's great wizarding school, in this range.",
@@ -2209,7 +2209,7 @@
         "lat": 48.8614,
         "lng": 2.3933
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Grindelwald draws his followers to an amphitheatre beneath a family mausoleum here.",
         "Grindelwald's rally takes place at the Lestrange mausoleum in this cemetery, where Leta dies.",
@@ -2237,7 +2237,7 @@
         "lat": 51.485,
         "lng": -0.21
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? He was spotted by producer David Heyman at a theatre performance, and his parents initially hesitated to let him audition.",
         "He plays Harry Potter in all eight films.",
@@ -2557,7 +2557,7 @@
         "lat": 42.6977,
         "lng": 23.3219
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? He was a student in England with almost no screen experience when he was cast as an international Quidditch star.",
         "He plays Viktor Krum, the Durmstrang champion who takes Hermione to the Yule Ball.",
@@ -4017,7 +4017,7 @@
         "lat": 44.878,
         "lng": 15.667
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? His character once owned the Elder Wand before a young Grindelwald stole it.",
         "He plays Gregorovitch, the wandmaker Voldemort hunts down in Deathly Hallows – Part 1.",
@@ -4213,9 +4213,9 @@
       "continent": "NA",
       "target": {
         "lat": 40.72,
-        "lng": -74.0
+        "lng": -74
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? Raised in London by Greek parents, she played a Squib neighbour who testifies at Harry's hearing.",
         "She plays Arabella Figg, the Dursleys' cat-loving neighbour.",
@@ -4243,7 +4243,7 @@
         "lat": 51.4415,
         "lng": 0.37
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? Later beloved as the dad in Friday Night Dinner, he played an author who has written about vampires.",
         "He plays Eldred Worple, a guest at Slughorn's Christmas party.",
@@ -4271,7 +4271,7 @@
         "lat": 52.1917,
         "lng": -1.7083
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? Her character is a senior Ministry witch whose niece Susan is in Harry's year at Hogwarts.",
         "She plays Amelia Bones, head of Magical Law Enforcement at Harry's disciplinary hearing.",
@@ -4329,7 +4329,7 @@
         "lat": 51.499,
         "lng": -0.13
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? The daughter of Law & Order actor Sam Waterston, she plays an American Auror demoted to issuing wand permits.",
         "She plays Tina Goldstein, who later marries Newt Scamander.",
@@ -4788,7 +4788,7 @@
         "lat": 40.8417,
         "lng": -73.9394
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? Famous as Hellboy, he played a goblin gangster through performance capture.",
         "He plays Gnarlak, owner of the Blind Pig speakeasy.",
@@ -4816,7 +4816,7 @@
         "lat": 55.87,
         "lng": -4.27
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? His character forbids Dumbledore from teaching Defence Against the Dark Arts.",
         "He plays Torquil Travers, Head of Magical Law Enforcement, in The Crimes of Grindelwald.",
@@ -4900,7 +4900,7 @@
         "lat": 51.626,
         "lng": -3.431
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? A Fast Show legend, he takes over the caretaker role from David Bradley.",
         "He plays Argus Filch in HBO's Harry Potter series.",
@@ -4928,7 +4928,7 @@
         "lat": 51.564,
         "lng": 0.218
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? Best known for Shaun of the Dead, he succeeds Robbie Coltrane as the gentle half-giant.",
         "He plays Rubeus Hagrid in HBO's Harry Potter series.",
@@ -4956,7 +4956,7 @@
         "lat": 51.851,
         "lng": -2.151
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Where was this actor born? He voices a portrait of a former headmaster who is also an ancestor of Sirius Black.",
         "He voices Phineas Nigellus Black in the video game Hogwarts Legacy.",
@@ -5005,7 +5005,7 @@
       "id": "albania-voldemort-exile",
       "location": "Albania",
       "city": "Tirana",
-      "region": "",
+      "region": "Albania",
       "country": "Albania",
       "continent": "EU",
       "target": {
@@ -5034,7 +5034,7 @@
       "id": "albania-ravenclaw-diadem",
       "location": "Albania (Ravenclaw's diadem)",
       "city": "Tirana",
-      "region": "",
+      "region": "Albania",
       "country": "Albania",
       "continent": "EU",
       "target": {
@@ -5064,7 +5064,7 @@
       "id": "bulgaria-krum",
       "location": "Bulgaria",
       "city": "Sofia",
-      "region": "",
+      "region": "Bulgaria",
       "country": "Bulgaria",
       "continent": "EU",
       "target": {
@@ -5092,7 +5092,7 @@
       "id": "ireland-quidditch-world-cup",
       "location": "Ireland",
       "city": "Dublin",
-      "region": "",
+      "region": "Ireland",
       "country": "Ireland",
       "continent": "EU",
       "target": {
@@ -5120,14 +5120,14 @@
       "id": "brazil-boa-constrictor",
       "location": "Brazil",
       "city": "Brasília",
-      "region": "",
+      "region": "Brazil",
       "country": "Brazil",
       "continent": "SA",
       "target": {
         "lat": -14.24,
         "lng": -51.93
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "In the books, Ron says Bill once had a penfriend here who sent him a cursed hat that made his ears shrivel.",
         "The zoo sign says Harry's boa constrictor species comes from here, though the snake itself was bred in captivity.",
@@ -5148,7 +5148,7 @@
       "id": "australia-granger-parents",
       "location": "Australia",
       "city": "Canberra",
-      "region": "",
+      "region": "Australia",
       "country": "Australia",
       "continent": "OC",
       "target": {
@@ -5183,7 +5183,7 @@
         "lat": 39.6953,
         "lng": 3.0176
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Uncle Vernon hopes a big drill order from the Masons will pay for a holiday home here.",
         "The Dursleys' dream holiday home is on this island, until Dobby ruins the dinner party.",
@@ -5208,7 +5208,7 @@
       "country": "Germany",
       "continent": "EU",
       "target": {
-        "lat": 48.0,
+        "lat": 48,
         "lng": 8.2
       },
       "status": "ready",
@@ -5288,7 +5288,7 @@
       "id": "armenia-lockhart",
       "location": "Armenia",
       "city": "Yerevan",
-      "region": "",
+      "region": "Armenia",
       "country": "Armenia",
       "continent": "AS",
       "target": {
@@ -5351,7 +5351,7 @@
         "lat": 51.35,
         "lng": -1.99
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Snape and Yaxley walk up a narrow lane here to a hedge-lined manor at the start of the final book.",
         "Malfoy Manor, where Voldemort sets up his headquarters, stands in this county.",
@@ -5381,7 +5381,7 @@
         "lat": 50.4,
         "lng": -4.9
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Bill and Fleur's home overlooks the sea on the outskirts of the village of Tinworth here.",
         "Shell Cottage, where Dobby is buried, is in this county.",
@@ -5499,7 +5499,7 @@
         "lat": 53.28,
         "lng": -4.32
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Ernie's bus leaps from this island all the way to a Scottish city in a single bang.",
         "The Knight Bus jumps from here to Aberdeen during Harry's ride.",
@@ -5529,7 +5529,7 @@
         "lat": 57.1497,
         "lng": -2.0943
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Harry's bus lands here after leaping hundreds of miles from a Welsh island.",
         "The Knight Bus arrives here in one jump from Anglesey.",
@@ -5635,13 +5635,13 @@
     {
       "id": "north-sea-azkaban",
       "location": "North Sea",
-      "city": "",
-      "region": "",
+      "city": "North Sea",
+      "region": "North Sea",
       "country": "International waters",
       "continent": "EU",
       "target": {
-        "lat": 56.0,
-        "lng": 3.0
+        "lat": 56,
+        "lng": 3
       },
       "status": "ready",
       "clues": [
@@ -5666,7 +5666,7 @@
       "id": "wales-common-welsh-green",
       "location": "Wales",
       "city": "Cardiff",
-      "region": "",
+      "region": "United Kingdom",
       "country": "United Kingdom",
       "continent": "EU",
       "target": {
@@ -5694,12 +5694,12 @@
       "id": "sweden-swedish-short-snout",
       "location": "Sweden",
       "city": "Stockholm",
-      "region": "",
+      "region": "Sweden",
       "country": "Sweden",
       "continent": "EU",
       "target": {
-        "lat": 62.0,
-        "lng": 15.0
+        "lat": 62,
+        "lng": 15
       },
       "status": "ready",
       "clues": [
@@ -5722,7 +5722,7 @@
       "id": "china-chinese-fireball",
       "location": "China",
       "city": "Beijing",
-      "region": "",
+      "region": "China",
       "country": "China",
       "continent": "AS",
       "target": {
@@ -5750,7 +5750,7 @@
       "id": "hungary-hungarian-horntail",
       "location": "Hungary",
       "city": "Budapest",
-      "region": "",
+      "region": "Hungary",
       "country": "Hungary",
       "continent": "EU",
       "target": {
@@ -5778,11 +5778,11 @@
       "id": "norway-norwegian-ridgeback",
       "location": "Norway",
       "city": "Oslo",
-      "region": "",
+      "region": "Norway",
       "country": "Norway",
       "continent": "EU",
       "target": {
-        "lat": 61.0,
+        "lat": 61,
         "lng": 8.5
       },
       "status": "ready",
@@ -5806,7 +5806,7 @@
       "id": "ukraine-ukrainian-ironbelly",
       "location": "Ukraine",
       "city": "Kyiv",
-      "region": "",
+      "region": "Ukraine",
       "country": "Ukraine",
       "continent": "EU",
       "target": {
@@ -5836,7 +5836,7 @@
       "id": "peru-peruvian-vipertooth",
       "location": "Peru",
       "city": "Lima",
-      "region": "",
+      "region": "Peru",
       "country": "Peru",
       "continent": "SA",
       "target": {
@@ -5864,7 +5864,7 @@
       "id": "new-zealand-antipodean-opaleye",
       "location": "New Zealand",
       "city": "Wellington",
-      "region": "",
+      "region": "New Zealand",
       "country": "New Zealand",
       "continent": "OC",
       "target": {
@@ -5916,7 +5916,7 @@
       "id": "romania-charlie-weasley",
       "location": "Romania",
       "city": "Bucharest",
-      "region": "",
+      "region": "Romania",
       "country": "Romania",
       "continent": "EU",
       "target": {
@@ -6006,7 +6006,7 @@
         "lat": 56.708,
         "lng": -2.467
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Its team's Seeker Eunice Murray once demanded a faster Snitch because catching it was too easy.",
         "This town's team, the Magpies, is the most successful in British and Irish League history, with 32 titles.",
@@ -6058,7 +6058,7 @@
         "lat": 54.868,
         "lng": -4.446
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team was founded by the seven children of a butcher named Walter Parkin.",
         "This town's team is called the Wanderers.",
@@ -6084,7 +6084,7 @@
         "lat": 51.575,
         "lng": -3.218
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's star 'Dangerous' Dai Llewellyn was eaten by a Chimaera while on holiday in Mykonos.",
         "This town's team is called the Catapults.",
@@ -6162,7 +6162,7 @@
         "lat": 54.577,
         "lng": -2.489
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's fans used to fire arrows into the air whenever their Chasers scored, until the practice was banned in 1894.",
         "This town's team, the Arrows, once beat the Vratsa Vultures in a match that lasted sixteen days.",
@@ -6188,7 +6188,7 @@
         "lat": 57.413,
         "lng": -6.194
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Catriona McCormack captained this team to two league titles, and her daughter Meaghan later kept goal for them.",
         "This town's team is called the Pride.",
@@ -6214,7 +6214,7 @@
         "lat": 50.799,
         "lng": -1.987
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's name comes from a Beater who hit a wasps' nest at an opposing Seeker; their fans buzz during penalties.",
         "Ludo Bagman played Beater for this town's Wasps before joining the Ministry.",
@@ -6242,7 +6242,7 @@
         "lat": 43.21,
         "lng": 23.553
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This club has won the European Cup seven times, and lost a sixteen-day match to an English side in 1932.",
         "This town's team is called the Vultures.",
@@ -6294,7 +6294,7 @@
         "lat": 49.3988,
         "lng": 8.6724
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Ireland's captain once said this team was fiercer than a dragon and twice as clever.",
         "This city's team is called the Harriers.",
@@ -6320,7 +6320,7 @@
         "lat": 42.5834,
         "lng": -71.8023
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's Seeker Maximus Brankovitch III captained the US national side at two World Cups.",
         "This city's team, the Finches, is among the most successful in the American Quidditch league.",
@@ -6346,7 +6346,7 @@
         "lat": 32.471,
         "lng": -100.406
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team celebrated a famous 1993 victory over the Fitchburg Finches with a five-day party.",
         "This town's team is called the All-Stars.",
@@ -6372,7 +6372,7 @@
         "lat": 50.393,
         "lng": -105.551
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's tradition of flying over towns trailing sparks after a win was banned in the 1970s, then revived as a crowd-pleaser.",
         "This city's team is called the Meteorites.",
@@ -6424,7 +6424,7 @@
         "lat": 34.769,
         "lng": 137.391
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This team's brooms were ceremonially set alight after a 1994 defeat by the Lithuanian side Gorodok Gargoyles.",
         "This city's team is named after the Tengu, a mythical bird-spirit.",
@@ -6499,7 +6499,7 @@
       "id": "mauritius-diricawl",
       "location": "Mauritius",
       "city": "Port Louis",
-      "region": "",
+      "region": "Mauritius",
       "country": "Mauritius",
       "continent": "AF",
       "target": {
@@ -6525,7 +6525,7 @@
       "id": "fiji-fire-crab",
       "location": "Fiji",
       "city": "Suva",
-      "region": "",
+      "region": "Fiji",
       "country": "Fiji",
       "continent": "OC",
       "target": {
@@ -6551,14 +6551,14 @@
       "id": "burkina-faso-runespoor",
       "location": "Burkina Faso",
       "city": "Ouagadougou",
-      "region": "",
+      "region": "Burkina Faso",
       "country": "Burkina Faso",
       "continent": "AF",
       "target": {
         "lat": 12.24,
         "lng": -1.56
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This country's Ministry made forests unplottable to protect its three-headed native snake.",
         "The Runespoor, a three-headed serpent, comes from this country.",
@@ -6582,7 +6582,7 @@
       "continent": "AS",
       "target": {
         "lat": 31.5,
-        "lng": 88.0
+        "lng": 88
       },
       "status": "ready",
       "clues": [
@@ -6605,7 +6605,7 @@
       "id": "greece-herpo-basilisk",
       "location": "Greece",
       "city": "Athens",
-      "region": "",
+      "region": "Greece",
       "country": "Greece",
       "continent": "EU",
       "target": {
@@ -6633,7 +6633,7 @@
       "id": "japan-kappa",
       "location": "Japan",
       "city": "Tokyo",
-      "region": "",
+      "region": "Japan",
       "country": "Japan",
       "continent": "AS",
       "target": {
@@ -6661,14 +6661,14 @@
       "id": "congo-tebo",
       "location": "Democratic Republic of the Congo",
       "city": "Kinshasa",
-      "region": "",
+      "region": "Democratic Republic of the Congo",
       "country": "Democratic Republic of the Congo",
       "continent": "AF",
       "target": {
         "lat": -4.04,
         "lng": 21.76
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "This country's ash-grey creature can make itself invisible, and its hide is prized for shields and armour.",
         "The Tebo, an invisible warthog, is native to this country.",
@@ -6741,7 +6741,7 @@
       "id": "bhutan-secrets-of-dumbledore",
       "location": "Bhutan",
       "city": "Thimphu",
-      "region": "",
+      "region": "Bhutan",
       "country": "Bhutan",
       "continent": "AS",
       "target": {
@@ -6778,7 +6778,7 @@
         "lat": 42.5195,
         "lng": -70.8967
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "Rowling's history of American magic says real wizards called Scourers were among those behind this town's infamous trials.",
         "Its infamous 1692 witch trials are referenced in the first Fantastic Beasts film.",
@@ -6806,7 +6806,7 @@
         "lat": 47.127,
         "lng": 8.747
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "A bust of this town's most famous son stands in a Hogwarts corridor.",
         "Paracelsus, the alchemist who appears on Chocolate Frog cards, was born here.",
@@ -6862,7 +6862,7 @@
         "lat": 31.2001,
         "lng": 29.9187
       },
-      "status": "review",
+      "status": "ready",
       "clues": [
         "The second Chocolate Frog card Ron is missing belongs to a scholar who worked here.",
         "Ptolemy, the astronomer on a Chocolate Frog card, studied and wrote in this city.",

@@ -9,6 +9,8 @@ describe("formatConnectionLabel", () => {
     assert.equal(formatConnectionLabel("filming"), "Filming location");
     assert.equal(formatConnectionLabel("music-video"), "Music video location");
     assert.equal(formatConnectionLabel("tour"), "Tour venue");
+    assert.equal(formatConnectionLabel("in-universe"), "Story location");
+    assert.equal(formatConnectionLabel("publishing"), "Publishing place");
   });
 
   it("returns null for empty values", () => {

@@ -101,10 +101,13 @@ describe("hubCatalog", () => {
     assert.equal(music[0]?.code, "TS");
 
     const film = hubGamesInGroup("film");
-    assert.equal(film.length, 1);
+    assert.equal(film.length, 2);
     assert.equal(film[0]?.id, "harry-potter");
     assert.equal(film[0]?.tileEmoji, "⚡");
     assert.equal(film[0]?.code, "HP");
+    assert.equal(film[1]?.id, "marvel");
+    assert.equal(film[1]?.tileEmoji, "🦸");
+    assert.equal(film[1]?.code, "MV");
   });
 
   it("lists London pubs under London with Pubs as the tile name", () => {
@@ -148,5 +151,14 @@ describe("hubCatalog", () => {
     assert.equal(potter.tileEmoji, "⚡");
     assert.equal(potter.code, "HP");
     assert.equal(potter.shortLabel, "Wizarding World");
+  });
+
+  it("lists Marvel under Film & TV", () => {
+    const marvel = HUB_GAMES.find((game) => game.id === "marvel");
+    assert.ok(marvel);
+    assert.equal(marvel.group, "film");
+    assert.equal(marvel.tileEmoji, "🦸");
+    assert.equal(marvel.code, "MV");
+    assert.equal(marvel.shortLabel, "MCU & comics");
   });
 });

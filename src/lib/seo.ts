@@ -144,6 +144,17 @@ export const MODE_SEO: Record<GameMode, SeoPage> = {
     faqs: SHARED_FAQS,
     siteName: "PIN5 Harry Potter",
   },
+  marvel: {
+    path: GAME_MODE_DEFINITIONS.marvel.path,
+    title: "Marvel Filming Locations Quiz — PIN5",
+    description:
+      "Free daily Marvel geography quiz. Five clues, five pins — find today's real-world MCU filming location or franchise place.",
+    heading: "Marvel filming locations quiz",
+    intro:
+      "PIN5 Marvel is a free daily entertainment-geography puzzle. Use five clues and five map pins to find today's real-world place from Marvel — filming locations, studios, theme parks, actor birthplaces and franchise landmarks. New place every day.",
+    faqs: SHARED_FAQS,
+    siteName: "PIN5 Marvel",
+  },
   football: {
     path: GAME_MODE_DEFINITIONS.football.path,
     title: "Daily Football Stadium Quiz — England — PIN5",

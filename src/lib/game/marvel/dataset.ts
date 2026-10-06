@@ -1,5 +1,5 @@
 /**
- * Harry Potter places dataset (pin5-harry-potter).
+ * Marvel places dataset (pin5-marvel).
  */
 
 import { readFile } from "node:fs/promises";
@@ -7,11 +7,11 @@ import path from "node:path";
 
 import { CLUE_COUNT } from "@/lib/game/constants";
 
-export const HARRY_POTTER_COUNT = 241;
+export const MARVEL_COUNT = 203;
 
-export const HARRY_POTTER_DATASET_FILE = "pin5-harry-potter.json";
+export const MARVEL_DATASET_FILE = "pin5-marvel.json";
 
-export type HarryPotterPlace = {
+export type MarvelPlace = {
   id: string;
   location: string;
   city: string;
@@ -25,17 +25,17 @@ export type HarryPotterPlace = {
   inUniverse: string[];
 };
 
-export type HarryPotterDataset = {
+export type MarvelDataset = {
   dataset: string;
   scope: string;
   locationCount: number;
-  locations: HarryPotterPlace[];
+  locations: MarvelPlace[];
 };
 
-export class InvalidHarryPotterDatasetError extends Error {
+export class InvalidMarvelDatasetError extends Error {
   constructor(reason: string) {
-    super(`Invalid Harry Potter dataset: ${reason}`);
-    this.name = "InvalidHarryPotterDatasetError";
+    super(`Invalid Marvel dataset: ${reason}`);
+    this.name = "InvalidMarvelDatasetError";
   }
 }
 
@@ -44,31 +44,24 @@ function assertNonEmptyString(
   field: string,
 ): asserts value is string {
   if (typeof value !== "string" || value.trim().length === 0) {
-    throw new InvalidHarryPotterDatasetError(
-      `${field} must be a non-empty string`,
-    );
+    throw new InvalidMarvelDatasetError(`${field} must be a non-empty string`);
   }
 }
 
 function assertCoordinate(value: unknown, field: string): number {
   if (typeof value !== "number" || !Number.isFinite(value)) {
-    throw new InvalidHarryPotterDatasetError(
-      `${field} must be a finite number`,
-    );
+    throw new InvalidMarvelDatasetError(`${field} must be a finite number`);
   }
   return value;
 }
 
-function assertStringArray(
-  value: unknown,
-  field: string,
-): string[] {
+function assertStringArray(value: unknown, field: string): string[] {
   if (!Array.isArray(value)) {
-    throw new InvalidHarryPotterDatasetError(`${field} must be an array`);
+    throw new InvalidMarvelDatasetError(`${field} must be an array`);
   }
   return value.map((entry, index) => {
     if (typeof entry !== "string" || entry.trim().length === 0) {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `${field}[${index}] must be a non-empty string`,
       );
     }
@@ -76,10 +69,10 @@ function assertStringArray(
   });
 }
 
-/** Validate a Harry Potter places payload. Safe to call from tests. */
-export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
+/** Validate a Marvel places payload. Safe to call from tests. */
+export function parseMarvelDataset(value: unknown): MarvelDataset {
   if (!value || typeof value !== "object") {
-    throw new InvalidHarryPotterDatasetError("expected an object");
+    throw new InvalidMarvelDatasetError("expected an object");
   }
 
   const raw = value as Record<string, unknown>;
@@ -87,12 +80,12 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
   assertNonEmptyString(raw.scope, "scope");
 
   if (!Array.isArray(raw.locations)) {
-    throw new InvalidHarryPotterDatasetError("locations must be an array");
+    throw new InvalidMarvelDatasetError("locations must be an array");
   }
 
-  if (raw.locations.length !== HARRY_POTTER_COUNT) {
-    throw new InvalidHarryPotterDatasetError(
-      `expected exactly ${HARRY_POTTER_COUNT} locations, found ${raw.locations.length}`,
+  if (raw.locations.length !== MARVEL_COUNT) {
+    throw new InvalidMarvelDatasetError(
+      `expected exactly ${MARVEL_COUNT} locations, found ${raw.locations.length}`,
     );
   }
 
@@ -100,15 +93,15 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
     typeof raw.locationCount === "number" &&
     raw.locationCount !== raw.locations.length
   ) {
-    throw new InvalidHarryPotterDatasetError(
+    throw new InvalidMarvelDatasetError(
       `locationCount (${raw.locationCount}) does not match locations length (${raw.locations.length})`,
     );
   }
 
   const seenIds = new Set<string>();
-  const locations: HarryPotterPlace[] = raw.locations.map((entry, index) => {
+  const locations: MarvelPlace[] = raw.locations.map((entry, index) => {
     if (!entry || typeof entry !== "object") {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `locations[${index}] must be an object`,
       );
     }
@@ -116,7 +109,7 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
 
     assertNonEmptyString(placeRaw.id, `locations[${index}].id`);
     if (seenIds.has(placeRaw.id)) {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `duplicate location id "${placeRaw.id}"`,
       );
     }
@@ -129,14 +122,14 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
     assertNonEmptyString(placeRaw.continent, `locations[${index}].continent`);
 
     if (placeRaw.status !== "ready") {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `locations[${index}].status must be "ready"`,
       );
     }
 
     const targetRaw = placeRaw.target;
     if (!targetRaw || typeof targetRaw !== "object") {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `locations[${index}].target is required`,
       );
     }
@@ -144,19 +137,19 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
     const lat = assertCoordinate(target.lat, `locations[${index}].target.lat`);
     const lng = assertCoordinate(target.lng, `locations[${index}].target.lng`);
     if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `locations[${index}].target coordinates out of range`,
       );
     }
 
     if (!Array.isArray(placeRaw.clues) || placeRaw.clues.length !== CLUE_COUNT) {
-      throw new InvalidHarryPotterDatasetError(
+      throw new InvalidMarvelDatasetError(
         `locations[${index}].clues must contain exactly ${CLUE_COUNT} strings`,
       );
     }
     const clues = placeRaw.clues.map((clue, clueIndex) => {
       if (typeof clue !== "string" || clue.trim().length === 0) {
-        throw new InvalidHarryPotterDatasetError(
+        throw new InvalidMarvelDatasetError(
           `locations[${index}].clues[${clueIndex}] must be a non-empty string`,
         );
       }
@@ -204,18 +197,13 @@ export function parseHarryPotterDataset(value: unknown): HarryPotterDataset {
 }
 
 function datasetPath(): string {
-  return path.join(
-    process.cwd(),
-    "data",
-    "harrypotter",
-    HARRY_POTTER_DATASET_FILE,
-  );
+  return path.join(process.cwd(), "data", "marvel", MARVEL_DATASET_FILE);
 }
 
-let cachedDataset: HarryPotterDataset | null = null;
+let cachedDataset: MarvelDataset | null = null;
 
-/** Load and validate the Harry Potter dataset (cached). Server-only. */
-export async function loadHarryPotterDataset(): Promise<HarryPotterDataset> {
+/** Load and validate the Marvel dataset (cached). Server-only. */
+export async function loadMarvelDataset(): Promise<MarvelDataset> {
   if (cachedDataset) {
     return cachedDataset;
   }
@@ -224,8 +212,8 @@ export async function loadHarryPotterDataset(): Promise<HarryPotterDataset> {
   try {
     raw = await readFile(datasetPath(), "utf8");
   } catch {
-    throw new InvalidHarryPotterDatasetError(
-      `missing file at data/harrypotter/${HARRY_POTTER_DATASET_FILE}`,
+    throw new InvalidMarvelDatasetError(
+      `missing file at data/marvel/${MARVEL_DATASET_FILE}`,
     );
   }
 
@@ -233,25 +221,25 @@ export async function loadHarryPotterDataset(): Promise<HarryPotterDataset> {
   try {
     parsed = JSON.parse(raw);
   } catch {
-    throw new InvalidHarryPotterDatasetError("file is not valid JSON");
+    throw new InvalidMarvelDatasetError("file is not valid JSON");
   }
 
-  cachedDataset = parseHarryPotterDataset(parsed);
+  cachedDataset = parseMarvelDataset(parsed);
   return cachedDataset;
 }
 
 /** Test helper — clear module cache between tests if needed. */
-export function resetHarryPotterDatasetCache(): void {
+export function resetMarvelDatasetCache(): void {
   cachedDataset = null;
 }
 
-export function getHarryPotterPlaceById(
-  dataset: HarryPotterDataset,
+export function getMarvelPlaceById(
+  dataset: MarvelDataset,
   placeId: string,
-): HarryPotterPlace {
+): MarvelPlace {
   const place = dataset.locations.find((entry) => entry.id === placeId);
   if (!place) {
-    throw new InvalidHarryPotterDatasetError(`unknown place id "${placeId}"`);
+    throw new InvalidMarvelDatasetError(`unknown place id "${placeId}"`);
   }
   return place;
 }
