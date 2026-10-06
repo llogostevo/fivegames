@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { HubGames } from "@/components/hub/HubGames";
 import { Pin5Mark } from "@/components/hub/Pin5Mark";
@@ -13,6 +14,8 @@ import { buildPageMetadata, HUB_SEO } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata(HUB_SEO);
 
 export default async function HomePage() {
+  // Request-time clock — do not freeze availableGameDate at build time.
+  await connection();
   const clockOptions = await getRequestClockOptions();
   const now = new Date();
   const availableGameDate = getAvailableGameDate(now, clockOptions);

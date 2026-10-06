@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { HubFlagIcon } from "@/components/hub/HubIcons";
@@ -27,7 +28,10 @@ import { hubTileAriaLabel, buildHubDayShareText } from "@/lib/game/hubShare";
 import { formatCountdown } from "@/lib/game/date";
 import { formatDailyReleaseBlurb } from "@/lib/game/dailyConfig";
 import { GAME_MODES, type GameMode } from "@/lib/game/modes";
-import { historyStorageKey } from "@/lib/game/playerHistory";
+import {
+  PLAYER_HISTORY_UPDATED_EVENT,
+  historyStorageKey,
+} from "@/lib/game/playerHistory";
 import { shareText } from "@/lib/game/share";
 
 const FOCUS_RING =
@@ -104,9 +108,13 @@ function subscribeHubProgress(onStoreChange: () => void): () => void {
   };
   window.addEventListener("storage", onChange);
   window.addEventListener("focus", onChange);
+  window.addEventListener("visibilitychange", onChange);
+  window.addEventListener(PLAYER_HISTORY_UPDATED_EVENT, onChange);
   return () => {
     window.removeEventListener("storage", onChange);
     window.removeEventListener("focus", onChange);
+    window.removeEventListener("visibilitychange", onChange);
+    window.removeEventListener(PLAYER_HISTORY_UPDATED_EVENT, onChange);
   };
 }
 
@@ -464,12 +472,26 @@ export function HubGames({
   availableGameDate,
   nextReleaseAt,
 }: HubGamesProps) {
+  const router = useRouter();
   const snapshot = useSyncExternalStore(
     subscribeHubProgress,
     () => getHubProgressSnapshot(availableGameDate),
     () => getServerHubProgressSnapshot(availableGameDate),
   );
   const columns = useColumnCount();
+
+  // At 8am London (nextReleaseAt), re-fetch the server date so tiles reset.
+  useEffect(() => {
+    const target = Date.parse(nextReleaseAt);
+    if (Number.isNaN(target)) {
+      return;
+    }
+    const delay = Math.max(0, target - Date.now() + 250);
+    const id = window.setTimeout(() => {
+      router.refresh();
+    }, delay);
+    return () => window.clearTimeout(id);
+  }, [nextReleaseAt, router]);
 
   const playedSet = new Set<GameMode>(
     HUB_GAMES.filter(

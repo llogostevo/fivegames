@@ -214,6 +214,8 @@ export function readPlayerHistory(
   }
 }
 
+export const PLAYER_HISTORY_UPDATED_EVENT = "pin5-history-updated";
+
 export function writePlayerHistory(
   history: PlayerHistory,
   storage: Pick<Storage, "setItem"> | null = typeof window !== "undefined"
@@ -227,6 +229,11 @@ export function writePlayerHistory(
 
   try {
     storage.setItem(historyStorageKey(mode), JSON.stringify(history));
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent(PLAYER_HISTORY_UPDATED_EVENT, { detail: { mode } }),
+      );
+    }
   } catch {
     // Quota / private mode — ignore.
   }
