@@ -1,5 +1,6 @@
 import type { GameMode } from "@/lib/game/modes";
 import type { ThemeId } from "@/lib/game/themes";
+import type { MapLabelPreset } from "@/lib/map/style";
 import type { Coordinates } from "@/types/coordinates";
 
 export type GameAnswer = {
@@ -32,6 +33,10 @@ export type GameDefinition = {
    * (e.g. "Filming location", "Actor birthplace"). Safe to send publicly.
    */
   connectionLabel?: string;
+  /**
+   * Optional play-time map label preset. When omitted, derived from the mode.
+   */
+  mapLabels?: MapLabelPreset;
   clues: string[];
 };
 
@@ -158,6 +163,11 @@ export type PublicGameState = {
    * with mixed connection types; omitted/null otherwise.
    */
   connectionLabel?: string | null;
+  /**
+   * Which identifying label groups stay visible during play.
+   * On reveal the client shows all identifying labels.
+   */
+  mapLabels: MapLabelPreset;
   clueCount: number;
   /** How this /start response was produced. */
   status: "new" | "resumed" | "completed";

@@ -1,5 +1,8 @@
 import { CLUE_COUNT } from "@/lib/game/constants";
-import { FOUND_LOCATION_RADIUS_METRES } from "@/lib/game/found";
+import {
+  CITY_FOUND_LOCATION_RADIUS_METRES,
+  FOUND_LOCATION_RADIUS_METRES,
+} from "@/lib/game/found";
 
 /**
  * Per-mode scoring profiles.
@@ -55,8 +58,8 @@ export const WORLD_SCORING_PROFILE: ScoringProfile = {
 };
 
 /**
- * City-scale profile (London pubs) — same ceilings, short decay so the right
- * neighbourhood matters and a wrong side of the city scores poorly.
+ * City-scale profile (London pubs / stations) — same ceilings, short decay so
+ * the right neighbourhood matters, and FOUND only within ~10 m of the venue.
  */
 export const CITY_SCORING_PROFILE: ScoringProfile = {
   clueMaxScores: [
@@ -67,7 +70,7 @@ export const CITY_SCORING_PROFILE: ScoringProfile = {
     15_000,
   ],
   accuracyDecayLengthKm: 5,
-  foundRadiusMetres: FOUND_LOCATION_RADIUS_METRES,
+  foundRadiusMetres: CITY_FOUND_LOCATION_RADIUS_METRES,
 };
 
 /** @deprecated Prefer COUNTRY_SCORING_PROFILE.clueMaxScores */

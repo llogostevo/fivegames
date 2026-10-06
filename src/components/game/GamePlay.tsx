@@ -44,6 +44,10 @@ import {
   shareText,
 } from "@/lib/game/share";
 import { getThemeOrDefault, type ThemeId } from "@/lib/game/themes";
+import {
+  DEFAULT_MAP_LABELS,
+  type MapLabelPreset,
+} from "@/lib/map/style";
 import type { Coordinates } from "@/types/coordinates";
 import type {
   CheckPinResponse,
@@ -126,6 +130,9 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
   const [theme, setTheme] = useState<string>("");
   const [themeId, setThemeId] = useState<ThemeId | null>(null);
   const [connectionLabel, setConnectionLabel] = useState<string | null>(null);
+  const [mapLabels, setMapLabels] = useState<MapLabelPreset>(
+    () => modeDef.mapLabels ?? DEFAULT_MAP_LABELS,
+  );
   const [unavailableMessage, setUnavailableMessage] = useState<string | null>(
     null,
   );
@@ -186,6 +193,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
         setTheme(data.theme);
         setThemeId(data.themeId);
         setConnectionLabel(data.connectionLabel ?? null);
+        setMapLabels(data.mapLabels ?? modeDef.mapLabels ?? DEFAULT_MAP_LABELS);
         setFlowModal(null);
         setShareStatus("idle");
         setWeekShareStatus("idle");
@@ -945,6 +953,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
           initialZoom={modeDef.mapStart.zoom}
           initialProjection={modeDef.mapStart.projection ?? "mercator"}
           gameMode
+          mapLabels={mapLabels}
           showLabels={isComplete}
           interactive={mapInteractive}
           lockedGuesses={mapGuesses}

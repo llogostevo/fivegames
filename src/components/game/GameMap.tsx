@@ -32,7 +32,13 @@ import {
   MAP_MAX_ZOOM,
   type MapProjection,
 } from "@/lib/map/provider";
-import { loadMapStyle, setIdentifyingLabelsVisible } from "@/lib/map/style";
+import {
+  DEFAULT_MAP_LABELS,
+  loadMapStyle,
+  setIdentifyingLabelsVisible,
+  setMapLabelPreset,
+  type MapLabelPreset,
+} from "@/lib/map/style";
 import { ensureMapLibreWorker } from "@/lib/map/worker";
 import type { Coordinates } from "@/types/coordinates";
 
@@ -48,6 +54,8 @@ type GameMapProps = {
   initialProjection?: MapProjection;
   /** Hide place names, POIs and other identifying labels on first load. */
   gameMode?: boolean;
+  /** Play-time label groups (ignored when showLabels is true). */
+  mapLabels?: MapLabelPreset;
   /** Show identifying labels (used for the reveal). */
   showLabels?: boolean;
   /** When false, press-and-hold placement is disabled. */
@@ -157,6 +165,7 @@ export function GameMap({
   initialZoom = DEFAULT_MAP_ZOOM,
   initialProjection = "mercator",
   gameMode = true,
+  mapLabels = DEFAULT_MAP_LABELS,
   showLabels = false,
   interactive = true,
   lockedGuesses = [],
@@ -347,7 +356,7 @@ export function GameMap({
     async function initialiseMap() {
       try {
         ensureMapLibreWorker();
-        const style = await loadMapStyle({ gameMode });
+        const style = await loadMapStyle({ gameMode, mapLabels });
 
         if (cancelled || !containerRef.current) {
           return;
@@ -673,8 +682,16 @@ export function GameMap({
     if (!mapReady || !map) {
       return;
     }
-    setIdentifyingLabelsVisible(map, showLabels);
-  }, [mapReady, showLabels]);
+    if (showLabels) {
+      setIdentifyingLabelsVisible(map, true);
+      return;
+    }
+    if (gameMode) {
+      setMapLabelPreset(map, mapLabels);
+    } else {
+      setIdentifyingLabelsVisible(map, true);
+    }
+  }, [mapReady, showLabels, mapLabels, gameMode]);
 
   function commitAtMapCentre() {
     const map = mapRef.current;

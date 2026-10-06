@@ -23,6 +23,11 @@ import {
   type MapStartView,
 } from "@/lib/map/provider";
 import {
+  DEFAULT_MAP_LABELS,
+  DETAILED_MAP_LABELS,
+  type MapLabelPreset,
+} from "@/lib/map/style";
+import {
   CITY_SCORING_PROFILE,
   COUNTRY_SCORING_PROFILE,
   WORLD_SCORING_PROFILE,
@@ -84,6 +89,11 @@ export type GameModeDefinition = {
    * Country/region overview only — must not encode the day’s answer.
    */
   mapStart: MapStartView;
+  /**
+   * Which identifying label groups stay visible during play.
+   * On reveal, all identifying labels are shown regardless.
+   */
+  mapLabels: MapLabelPreset;
   /** Distance → points curve for this mode. */
   scoring: ScoringProfile;
 };
@@ -104,6 +114,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "DAILY 5",
     family: "daily",
     mapStart: DEFAULT_MAP_START,
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   world: {
@@ -121,6 +132,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "WORLD",
     family: "world",
     mapStart: WORLD_MAP_START,
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   "world-airports": {
@@ -138,6 +150,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "AIRPORTS",
     family: "airports",
     mapStart: WORLD_MAP_START,
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   "london-pubs": {
@@ -155,6 +168,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "LONDON PUBS",
     family: "pubs",
     mapStart: LONDON_MAP_START,
+    mapLabels: DETAILED_MAP_LABELS,
     scoring: CITY_SCORING_PROFILE,
   },
   "london-stations": {
@@ -172,6 +186,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "TRAIN & TUBE",
     family: "stations",
     mapStart: LONDON_MAP_START,
+    mapLabels: DETAILED_MAP_LABELS,
     scoring: CITY_SCORING_PROFILE,
   },
   "taylor-swift": {
@@ -189,6 +204,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "TAYLOR SWIFT",
     family: "taylor-swift",
     mapStart: WORLD_MAP_START,
+    mapLabels: DETAILED_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   "harry-potter": {
@@ -207,6 +223,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "HARRY POTTER",
     family: "harry-potter",
     mapStart: WORLD_MAP_START,
+    mapLabels: DETAILED_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   marvel: {
@@ -225,6 +242,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     modeLabel: "MARVEL",
     family: "marvel",
     mapStart: WORLD_MAP_START,
+    mapLabels: DETAILED_MAP_LABELS,
     scoring: WORLD_SCORING_PROFILE,
   },
   football: {
@@ -246,6 +264,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 52.8, lng: -1.5 },
       zoom: 5.8,
     },
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-italy": {
@@ -266,6 +285,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 42.0, lng: 12.5 },
       zoom: 5.4,
     },
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-germany": {
@@ -286,6 +306,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 51.2, lng: 10.4 },
       zoom: 5.7,
     },
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-france": {
@@ -306,6 +327,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 46.6, lng: 2.2 },
       zoom: 5.4,
     },
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
   "football-spain": {
@@ -326,6 +348,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
       center: { lat: 39.8, lng: -3.5 },
       zoom: 5.4,
     },
+    mapLabels: DEFAULT_MAP_LABELS,
     scoring: COUNTRY_SCORING_PROFILE,
   },
 };

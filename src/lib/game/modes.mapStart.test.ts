@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
+import { DEFAULT_MAP_LABELS, DETAILED_MAP_LABELS } from "@/lib/map/style";
+
 import {
   GAME_MODES,
   GAME_MODE_DEFINITIONS,
@@ -47,5 +49,42 @@ describe("mode map starts", () => {
 
     assert.ok(italy.center.lng > daily.center.lng);
     assert.ok(spain.center.lat < france.center.lat);
+  });
+});
+
+describe("mode map labels", () => {
+  it("defines a label preset for every mode", () => {
+    for (const mode of GAME_MODES) {
+      const { mapLabels } = getModeDefinition(mode);
+      assert.equal(typeof mapLabels.streets, "boolean", mode);
+      assert.equal(typeof mapLabels.places, "boolean", mode);
+      assert.equal(typeof mapLabels.water, "boolean", mode);
+      assert.equal(typeof mapLabels.shields, "boolean", mode);
+    }
+  });
+
+  it("enables street-level detail for London pubs and franchise games", () => {
+    for (const mode of [
+      "london-pubs",
+      "london-stations",
+      "taylor-swift",
+      "harry-potter",
+      "marvel",
+    ] as const) {
+      assert.deepEqual(
+        GAME_MODE_DEFINITIONS[mode].mapLabels,
+        DETAILED_MAP_LABELS,
+        mode,
+      );
+    }
+  });
+
+  it("keeps UK Daily, World, and Airports blank during play", () => {
+    assert.deepEqual(GAME_MODE_DEFINITIONS.daily.mapLabels, DEFAULT_MAP_LABELS);
+    assert.deepEqual(GAME_MODE_DEFINITIONS.world.mapLabels, DEFAULT_MAP_LABELS);
+    assert.deepEqual(
+      GAME_MODE_DEFINITIONS["world-airports"].mapLabels,
+      DEFAULT_MAP_LABELS,
+    );
   });
 });

@@ -196,6 +196,12 @@ describe("public payload safety", () => {
     assert.equal(meta.gameNumber, 1);
     assert.equal(meta.accent, getTheme("music").accent);
     assert.ok(meta.nextReleaseAt);
+    assert.deepEqual(meta.mapLabels, {
+      streets: false,
+      places: false,
+      water: false,
+      shields: false,
+    });
   });
 
   it("keeps the target hidden until completion during gameplay", async () => {

@@ -196,6 +196,17 @@ describe("WORLD_SCORING_PROFILE", () => {
     assert.ok(cityFar.totalScore < countrySame.totalScore);
   });
 
+  it("requires a pin within 10m for city FOUND / full accuracy", () => {
+    assert.equal(CITY_SCORING_PROFILE.foundRadiusMetres, 10);
+    assert.equal(
+      accuracyFactorFromDistanceKm(0.01, CITY_SCORING_PROFILE),
+      1,
+    );
+    assert.ok(
+      accuracyFactorFromDistanceKm(0.05, CITY_SCORING_PROFILE) < 1,
+    );
+  });
+
   it("still collapses antipodal-scale misses toward zero", () => {
     const antipode = calculateFinalScore({
       clueNumber: 1,

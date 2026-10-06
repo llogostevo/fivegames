@@ -44,8 +44,9 @@ import {
   getTodaysMarvelGame,
   getMarvelGameByDate,
 } from "@/lib/game/marvel/loadMarvelGame";
-import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
+import { DEFAULT_GAME_MODE, getModeDefinition, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
+import { DEFAULT_MAP_LABELS } from "@/lib/map/style";
 import {
   getReleasedWorldGameByDate,
   getTodaysWorldGame,
@@ -350,6 +351,8 @@ export function getPublicGameMeta(
 ) {
   const theme = getTheme(game.theme);
   const mode = game.mode ?? DEFAULT_GAME_MODE;
+  const mapLabels =
+    game.mapLabels ?? getModeDefinition(mode).mapLabels ?? DEFAULT_MAP_LABELS;
   return {
     gameId: game.id,
     gameNumber: game.gameNumber,
@@ -361,6 +364,7 @@ export function getPublicGameMeta(
     accentSoft: theme.accentSoft,
     nextReleaseAt: getNextReleaseAt(now, options).toISOString(),
     connectionLabel: game.connectionLabel ?? null,
+    mapLabels,
   };
 }
 
