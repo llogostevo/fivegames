@@ -29,18 +29,20 @@ import {
 import {
   PLAYER_HISTORY_UPDATED_EVENT,
   historyStorageKey,
+  type PlayerHistory,
 } from "@/lib/game/playerHistory";
 import { buildCollectionModeShareText, shareText } from "@/lib/game/share";
 
 type CollectionPageSnapshot = {
   collection: CollectionState;
-  historiesFingerprint: string;
+  histories: Partial<Record<GameMode, PlayerHistory>>;
 };
 
 const EMPTY_COLLECTION: CollectionState = {};
+const EMPTY_HISTORIES: Partial<Record<GameMode, PlayerHistory>> = {};
 const EMPTY_SNAPSHOT: CollectionPageSnapshot = {
   collection: EMPTY_COLLECTION,
-  historiesFingerprint: "server",
+  histories: EMPTY_HISTORIES,
 };
 
 let cachedFingerprint: string | null = null;
@@ -99,7 +101,7 @@ function getClientCollectionSnapshot(): CollectionPageSnapshot {
   cachedFingerprint = fingerprint;
   cachedSnapshot = {
     collection: readCollectionState(),
-    historiesFingerprint: fingerprint,
+    histories: readAllPlayerHistories(),
   };
   return cachedSnapshot;
 }
@@ -499,7 +501,7 @@ export function CollectionPage() {
     getServerCollectionSnapshot,
   );
   const state = snapshot.collection;
-  const histories = readAllPlayerHistories();
+  const histories = snapshot.histories;
   const overall = getOverallCollectionCounts(state);
   const today = getAvailableGameDate(new Date());
   const todayHighlight = getTodayCollectionHighlight(today, state);
