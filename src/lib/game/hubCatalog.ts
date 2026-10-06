@@ -8,7 +8,15 @@ import {
   type GameMode,
 } from "@/lib/game/modes";
 
-export type HubGameGroup = "general" | "football";
+export type HubGameGroup = "places" | "london" | "music" | "football";
+
+/** Section display order on the hub. */
+export const HUB_SECTION_ORDER: readonly HubGameGroup[] = [
+  "places",
+  "london",
+  "music",
+  "football",
+] as const;
 
 export type HubGameEntry = {
   id: GameMode;
@@ -44,11 +52,11 @@ export function isHubGameEntry(
   return !("comingSoon" in entry && entry.comingSoon);
 }
 
-/** Ordered catalog — World featured first, then UK, London pubs, then Football. */
+/** Ordered catalog within each section’s natural order. */
 export const HUB_GAMES: readonly HubGameEntry[] = [
   {
     id: "world",
-    group: "general",
+    group: "places",
     name: "World",
     shortLabel: "Anywhere on Earth",
     code: "WORLD",
@@ -56,62 +64,62 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     href: GAME_MODE_DEFINITIONS.world.path,
     mapImage: "/hub-maps/world.webp",
     featured: true,
-    groupLabel: "Daily 5",
+    groupLabel: "Places",
   },
   {
     id: "world-airports",
-    group: "general",
+    group: "places",
     name: "Airports",
     shortLabel: "Worldwide",
     code: "APT",
     tileEmoji: "✈️",
     href: GAME_MODE_DEFINITIONS["world-airports"].path,
     mapImage: "/hub-maps/world.webp",
-    groupLabel: "Airports",
+    groupLabel: "Places",
   },
   {
     id: "daily",
-    group: "general",
+    group: "places",
     name: "United Kingdom",
     shortLabel: "Daily 5",
     code: "UK",
     tileEmoji: "📍",
     href: GAME_MODE_DEFINITIONS.daily.path,
     mapImage: "/hub-maps/uk.webp",
-    groupLabel: "Daily 5",
+    groupLabel: "Places",
   },
   {
     id: "london-pubs",
-    group: "general",
-    name: "London",
-    shortLabel: "Pubs",
+    group: "london",
+    name: "Pubs",
+    shortLabel: "London",
     code: "LDN",
     tileEmoji: "🍺",
     href: GAME_MODE_DEFINITIONS["london-pubs"].path,
     mapImage: "/hub-maps/london.webp",
-    groupLabel: "Pubs 5",
+    groupLabel: "London",
   },
   {
     id: "london-stations",
-    group: "general",
-    name: "London",
-    shortLabel: "Train & Tube",
+    group: "london",
+    name: "Train & Tube",
+    shortLabel: "London",
     code: "TFL",
     tileEmoji: "🚇",
     href: GAME_MODE_DEFINITIONS["london-stations"].path,
     mapImage: "/hub-maps/london.webp",
-    groupLabel: "Train & Tube",
+    groupLabel: "London",
   },
   {
     id: "taylor-swift",
-    group: "general",
+    group: "music",
     name: "Taylor Swift",
     shortLabel: "Career places",
     code: "TS",
     tileEmoji: "🎤",
     href: GAME_MODE_DEFINITIONS["taylor-swift"].path,
     mapImage: "/hub-maps/world.webp",
-    groupLabel: "Taylor Swift",
+    groupLabel: "Music",
   },
   {
     id: "football",
@@ -172,10 +180,22 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
 
 export const HUB_COMING_SOON: readonly HubComingSoonEntry[] = [
   {
-    id: "coming-general",
-    group: "general",
+    id: "coming-places",
+    group: "places",
     comingSoon: true,
-    label: "More daily editions coming soon",
+    label: "More place editions coming soon",
+  },
+  {
+    id: "coming-london",
+    group: "london",
+    comingSoon: true,
+    label: "More London editions coming soon",
+  },
+  {
+    id: "coming-music",
+    group: "music",
+    comingSoon: true,
+    label: "More music editions coming soon",
   },
   {
     id: "coming-football",
@@ -189,7 +209,9 @@ export const HUB_SECTION_META: Record<
   HubGameGroup,
   { id: string; title: string }
 > = {
-  general: { id: "general-knowledge", title: "General knowledge" },
+  places: { id: "places", title: "Places" },
+  london: { id: "london", title: "London" },
+  music: { id: "music", title: "Music" },
   football: { id: "football-5", title: "Football 5" },
 };
 

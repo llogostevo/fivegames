@@ -13,6 +13,7 @@ import {
 import {
   HUB_GAMES,
   HUB_SECTION_META,
+  HUB_SECTION_ORDER,
   comingSoonForGroup,
   hubGamesInGroup,
   isHubGameEntry,
@@ -476,28 +477,27 @@ export function HubGames({
     ).map((game) => game.id),
   );
   const featured = pickFeaturedGame(playedSet);
-  const generalGames = hubGamesInGroup("general");
-  /** Desktop: fold featured + up to two companion tiles into one row. */
-  const companionGeneral =
-    featured !== null && featured.group === "general"
-      ? generalGames.filter((game) => game.id !== featured.id)
+  const featuredGroup = featured?.group ?? null;
+  /** Desktop: fold featured + up to two companion tiles from the same section. */
+  const companionTiles =
+    featured !== null
+      ? hubGamesInGroup(featured.group).filter((game) => game.id !== featured.id)
       : [];
-  const foldGeneral =
+  const foldFeaturedRow =
     columns >= 4 &&
     featured !== null &&
-    featured.group === "general" &&
-    companionGeneral.length >= 1 &&
-    companionGeneral.length <= 2;
+    companionTiles.length >= 1 &&
+    companionTiles.length <= 2;
 
   return (
     <div className="space-y-5 sm:space-y-6">
-      {foldGeneral && featured ? (
+      {foldFeaturedRow && featured ? (
         <div className="grid grid-cols-4 gap-3">
           <FeaturedPlayTile
             game={featured}
-            className={`${companionGeneral.length === 1 ? "col-span-3" : "col-span-2"} h-full`}
+            className={`${companionTiles.length === 1 ? "col-span-3" : "col-span-2"} h-full`}
           />
-          {companionGeneral.map((game) => {
+          {companionTiles.map((game) => {
             const progress = hubProgressForMode(snapshot, game.id);
             return (
               <GameTile
@@ -519,21 +519,20 @@ export function HubGames({
         />
       )}
 
-      {!foldGeneral ? (
-        <HubSection
-          group="general"
-          snapshot={snapshot}
-          featuredId={featured?.id ?? null}
-          columns={columns}
-        />
-      ) : null}
-
-      <HubSection
-        group="football"
-        snapshot={snapshot}
-        featuredId={featured?.id ?? null}
-        columns={columns}
-      />
+      {HUB_SECTION_ORDER.map((group) => {
+        if (foldFeaturedRow && group === featuredGroup) {
+          return null;
+        }
+        return (
+          <HubSection
+            key={group}
+            group={group}
+            snapshot={snapshot}
+            featuredId={featured?.id ?? null}
+            columns={columns}
+          />
+        );
+      })}
     </div>
   );
 }
