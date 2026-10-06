@@ -83,4 +83,12 @@ describe("hubCatalog", () => {
     assert.equal(airports.code, "APT");
     assert.equal(airports.name, "Airports");
   });
+
+  it("lists Taylor Swift in the general section", () => {
+    const taylor = HUB_GAMES.find((game) => game.id === "taylor-swift");
+    assert.ok(taylor);
+    assert.equal(taylor.tileEmoji, "🎤");
+    assert.equal(taylor.code, "TS");
+    assert.equal(taylor.shortLabel, "Career places");
+  });
 });

@@ -1,0 +1,2577 @@
+{
+  "dataset": "pin5-taylor-swift",
+  "scope": "Public places connected to Taylor Swift's music career: tours, performances, music videos, songs, studios and major public events",
+  "clueDesign": {
+    "1": "hard Taylor Swift superfan fact",
+    "2": "easier Taylor Swift fact or famous association",
+    "3": "strong narrowing clue such as album, era, tour, event or city",
+    "4": "explicit location name",
+    "5": "geographical hint to help locate the answer"
+  },
+  "locationCount": 94,
+  "cluesWrittenCount": 94,
+  "locations": [
+    {
+      "id": "bluebird-cafe",
+      "location": "Bluebird Cafe",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1022,
+        "lng": -86.8165
+      },
+      "status": "ready",
+      "clues": [
+        "Her 2004 set here included early songs called 'Me and Britney' and 'Beautiful Eyes', and she returned in 2018 for a documentary performance.",
+        "A 2005 showcase here caught the eye of Scott Borchetta, who signed her to his new label, Big Machine.",
+        "It's a tiny strip-mall listening room famous for in-the-round songwriter nights, in the city where her career began.",
+        "The location is the Bluebird Cafe.",
+        "The location is in the Green Hills area of south Nashville, Tennessee."
+      ],
+      "facts": {
+        "connection": "career",
+        "eras": [
+          "taylor-swift"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bluebird_Cafe"
+      }
+    },
+    {
+      "id": "music-row",
+      "location": "Music Row (16th Avenue South)",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1503,
+        "lng": -86.7928
+      },
+      "status": "ready",
+      "clues": [
+        "She has said that on a spring-break trip when she was 11, her mother drove her up and down this street.",
+        "A song on Lover name-checks this street by its number.",
+        "It's the heart of Nashville's music business, home to the kind of labels and publishers she signed with as a teenager.",
+        "The location is 16th Avenue South (Music Row).",
+        "The location is just south-west of downtown Nashville, Tennessee."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "taylor-swift",
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Music_Row"
+      }
+    },
+    {
+      "id": "centennial-park-nashville",
+      "location": "Centennial Park",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1497,
+        "lng": -86.8126
+      },
+      "status": "ready",
+      "clues": [
+        "A folklore song describes the colour of the grass here.",
+        "The song recalls her reading here as a teenager, years before she met the person the song is about.",
+        "The song is 'invisible string', and the park contains a full-scale replica of the Parthenon.",
+        "The location is Centennial Park.",
+        "The location is in west Nashville, Tennessee, next to Vanderbilt University."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "folklore"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Centennial_Park_(Nashville)"
+      }
+    },
+    {
+      "id": "cumberland-university",
+      "location": "Cumberland University",
+      "city": "Lebanon",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.2163,
+        "lng": -86.2972
+      },
+      "status": "ready",
+      "clues": [
+        "Filming moved here on the second day of a two-day shoot in August 2008.",
+        "In the scenes shot here, she crosses a campus and spots her love interest reading under a tree.",
+        "These are the modern-day college scenes of the 'Love Story' video.",
+        "The location is Cumberland University.",
+        "The location is in Lebanon, Tennessee, about 30 miles east of Nashville."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Cumberland_University"
+      }
+    },
+    {
+      "id": "vanderbilt-university",
+      "location": "Vanderbilt University",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1452,
+        "lng": -86.8008
+      },
+      "status": "ready",
+      "clues": [
+        "Her band members, dancers and backing singers play the students in the video shot here.",
+        "The video ends with everyone throwing their study papers into the air like confetti.",
+        "Its library was the setting for 'The Story of Us', a Speak Now single about running into an ex at an awards show.",
+        "The location is Vanderbilt University.",
+        "The location is in Nashville, Tennessee, just south-west of downtown."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Vanderbilt_University"
+      }
+    },
+    {
+      "id": "nashville-international-airport",
+      "location": "Nashville International Airport",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1263,
+        "lng": -86.6774
+      },
+      "status": "ready",
+      "clues": [
+        "She said on set that the crew had basically shut this place down, with extras filling the terminal.",
+        "A real city transit bus, packed with extras, drops her here in the video.",
+        "It's a filming location for the 'Ours' video from the Speak Now era, which also features a dreary office.",
+        "The location is Nashville International Airport.",
+        "The location is about 8 miles south-east of downtown Nashville, Tennessee."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Nashville_International_Airport"
+      }
+    },
+    {
+      "id": "bridgestone-arena",
+      "location": "Bridgestone Arena",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1593,
+        "lng": -86.7785
+      },
+      "status": "ready",
+      "clues": [
+        "When she triumphed here in November 2009, the building was called the Sommet Center.",
+        "She won the night's top prize here at 19, the youngest winner of it at the time.",
+        "The award was Entertainer of the Year at the 2009 CMA Awards.",
+        "The location is Bridgestone Arena.",
+        "The location is on Broadway in downtown Nashville, Tennessee."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bridgestone_Arena"
+      }
+    },
+    {
+      "id": "nissan-stadium",
+      "location": "Nissan Stadium",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1665,
+        "lng": -86.7713
+      },
+      "status": "ready",
+      "clues": [
+        "Storms delayed one of her May 2023 shows here until after midnight.",
+        "On the first night of this run, she announced her next re-recording from the stage.",
+        "That re-recording was Speak Now (Taylor's Version); the stadium is home to the Tennessee Titans.",
+        "The location is Nissan Stadium.",
+        "The location is on the east bank of the Cumberland River, opposite downtown Nashville, Tennessee."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Nissan_Stadium"
+      }
+    },
+    {
+      "id": "country-music-hall-of-fame",
+      "location": "Country Music Hall of Fame and Museum",
+      "city": "Nashville",
+      "region": "Tennessee",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.1583,
+        "lng": -86.776
+      },
+      "status": "ready",
+      "clues": [
+        "Her $4 million gift here in 2012 paid for classrooms for hands-on music lessons.",
+        "Those classrooms bear her name as an education centre.",
+        "It's the museum that preserves the history of country music, in the city where her career began.",
+        "The location is the Country Music Hall of Fame and Museum.",
+        "The location is in downtown Nashville, Tennessee, next to Bridgestone Arena."
+      ],
+      "facts": {
+        "connection": "career",
+        "eras": [
+          "taylor-swift",
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Country_Music_Hall_of_Fame_and_Museum"
+      }
+    },
+    {
+      "id": "wells-fargo-center",
+      "location": "Wells Fargo Center",
+      "city": "Philadelphia",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.9012,
+        "lng": -75.172
+      },
+      "status": "ready",
+      "clues": [
+        "She was 12 when she sang here on 5 April 2002, when the arena carried a different bank's name.",
+        "She has said she realised at 11 that the anthem was the best way to get in front of a big crowd without a record deal.",
+        "She sang the US national anthem before a Philadelphia 76ers game here.",
+        "The location is the Wells Fargo Center.",
+        "The location is in the South Philadelphia Sports Complex, Pennsylvania."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "taylor-swift"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Wells_Fargo_Center_(Philadelphia)"
+      }
+    },
+    {
+      "id": "citizens-bank-park",
+      "location": "Citizens Bank Park",
+      "city": "Philadelphia",
+      "region": "Pennsylvania",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.9061,
+        "lng": -75.1665
+      },
+      "status": "ready",
+      "clues": [
+        "She joined Patti LaBelle and John Oates as anthem singers during this championship series.",
+        "The home team went on to win the title that year, their most recent championship.",
+        "She sang the anthem before Game 3 of the 2008 World Series here.",
+        "The location is Citizens Bank Park.",
+        "The location is in South Philadelphia, Pennsylvania, next to the 76ers' arena."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Citizens_Bank_Park"
+      }
+    },
+    {
+      "id": "arthur-ashe-stadium",
+      "location": "Arthur Ashe Stadium",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.75,
+        "lng": -73.8467
+      },
+      "status": "ready",
+      "clues": [
+        "A producer later said turning her down for this venue's kids' day was 'the worst decision' he ever made.",
+        "She sang here as a pre-teen, then returned as a fan in 2024 to watch the men's final.",
+        "It's the main court of the US Open tennis tournament.",
+        "The location is Arthur Ashe Stadium.",
+        "The location is in Flushing Meadows–Corona Park, Queens, New York City."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "taylor-swift"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Arthur_Ashe_Stadium"
+      }
+    },
+    {
+      "id": "madison-square-garden",
+      "location": "Madison Square Garden",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7505,
+        "lng": -73.9934
+      },
+      "status": "ready",
+      "clues": [
+        "One Friday night in July 2026, the marquee outside read 'JUST&T MARRIED'.",
+        "Adam Sandler officiated the ceremony here, with her brother as man of honor.",
+        "She married Travis Kelce here on 3 July 2026, in the arena where she had headlined on her early tours.",
+        "The location is Madison Square Garden.",
+        "The location is in Midtown Manhattan, New York City, above Penn Station."
+      ],
+      "facts": {
+        "connection": "other",
+        "eras": [
+          "fearless",
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Madison_Square_Garden"
+      }
+    },
+    {
+      "id": "radio-city-music-hall",
+      "location": "Radio City Music Hall",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.76,
+        "lng": -73.9799
+      },
+      "status": "ready",
+      "clues": [
+        "She had just won Best Female Video here for 'You Belong with Me' when the night took a turn.",
+        "Kanye West took her microphone mid-speech, saying Beyoncé had one of the best videos of all time.",
+        "It hosted the 2009 MTV Video Music Awards.",
+        "The location is Radio City Music Hall.",
+        "The location is at Rockefeller Center in Midtown Manhattan, New York City."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Radio_City_Music_Hall"
+      }
+    },
+    {
+      "id": "yankee-stadium",
+      "location": "Yankee Stadium",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8296,
+        "lng": -73.9262
+      },
+      "status": "ready",
+      "clues": [
+        "She received an honorary Doctor of Fine Arts degree here in May 2022.",
+        "Her speech here told graduates that cringe is unavoidable over a lifetime.",
+        "It hosted New York University's 2022 commencement ceremony.",
+        "The location is Yankee Stadium.",
+        "The location is in the Bronx, New York City."
+      ],
+      "facts": {
+        "connection": "career",
+        "eras": [
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Yankee_Stadium"
+      }
+    },
+    {
+      "id": "beacon-theatre",
+      "location": "Beacon Theatre",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7806,
+        "lng": -73.9812
+      },
+      "status": "ready",
+      "clues": [
+        "She talked filmmaking on stage here with director Mike Mills in June 2022.",
+        "She screened her own short film here, starring Sadie Sink and Dylan O'Brien.",
+        "The film was 'All Too Well: The Short Film', shown at the Tribeca Festival.",
+        "The location is the Beacon Theatre.",
+        "The location is on Broadway on Manhattan's Upper West Side, New York City."
+      ],
+      "facts": {
+        "connection": "career",
+        "eras": [
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Beacon_Theatre"
+      }
+    },
+    {
+      "id": "hotel-chelsea",
+      "location": "Hotel Chelsea",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7444,
+        "lng": -73.9969
+      },
+      "status": "ready",
+      "clues": [
+        "A 2024 title track compares her to Patti Smith and her lover to Dylan Thomas, then names this building.",
+        "It's famous as a home for writers and musicians; Dylan Thomas was staying here when he fell ill in 1953.",
+        "It's named in the title track of The Tortured Poets Department.",
+        "The location is the Hotel Chelsea.",
+        "The location is on West 23rd Street in Chelsea, Manhattan, New York City."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "the-tortured-poets-department"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hotel_Chelsea"
+      }
+    },
+    {
+      "id": "cornelia-street",
+      "location": "Cornelia Street",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7313,
+        "lng": -74.0021
+      },
+      "status": "ready",
+      "clues": [
+        "A Lover song recalls renting a place on this street.",
+        "The street gives its name to track 9 of Lover.",
+        "It's a short street in the West Village, and the song is simply its name.",
+        "The location is Cornelia Street.",
+        "The location is in Greenwich Village, Manhattan, New York City, between Bleecker Street and West 4th Street."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "coney-island",
+      "location": "Coney Island",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.5745,
+        "lng": -73.9785
+      },
+      "status": "ready",
+      "clues": [
+        "The song named after it was written with Aaron and Bryce Dessner.",
+        "It's on her ninth album, released by surprise in December 2020.",
+        "The song is a duet with The National, named after a famous seaside amusement area.",
+        "The location is Coney Island.",
+        "The location is on the southern tip of Brooklyn, New York City, facing the Atlantic."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "evermore"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Coney_Island"
+      }
+    },
+    {
+      "id": "times-square",
+      "location": "Times Square",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.758,
+        "lng": -73.9855
+      },
+      "status": "ready",
+      "clues": [
+        "The 'Out of the Woods' video premiered during a New Year's Eve broadcast from here.",
+        "She performed here on New Year's Eve 2014, the year her 1989 album opened with a love letter to the city.",
+        "It's where the ball drops every New Year's Eve in Manhattan.",
+        "The location is Times Square.",
+        "The location is where Broadway meets Seventh Avenue in Midtown Manhattan, New York City."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Times_Square"
+      }
+    },
+    {
+      "id": "electric-lady-studios",
+      "location": "Electric Lady Studios",
+      "city": "New York City",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7339,
+        "lng": -73.9986
+      },
+      "status": "ready",
+      "clues": [
+        "Much of her tenth album was recorded here, alongside a Brooklyn studio called Rough Customer.",
+        "It's Jack Antonoff's regular New York base, and it was built for Jimi Hendrix in 1970.",
+        "It's a legendary recording studio on West 8th Street, used for Midnights and 1989 (Taylor's Version).",
+        "The location is Electric Lady Studios.",
+        "The location is in Greenwich Village, Manhattan, New York City."
+      ],
+      "facts": {
+        "connection": "recording",
+        "eras": [
+          "midnights",
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Electric_Lady_Studios"
+      }
+    },
+    {
+      "id": "prudential-center",
+      "location": "Prudential Center",
+      "city": "Newark",
+      "region": "New Jersey",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7334,
+        "lng": -74.1711
+      },
+      "status": "ready",
+      "clues": [
+        "Accepting Video of the Year here for a ten-minute film, she revealed a brand-new album was coming.",
+        "That album, announced here in August 2022, was Midnights; a year later she won Video of the Year here again for 'Anti-Hero'.",
+        "It hosted the 2022 and 2023 MTV Video Music Awards and is home to the New Jersey Devils.",
+        "The location is the Prudential Center.",
+        "The location is in downtown Newark, New Jersey, just west of Manhattan."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "midnights",
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Prudential_Center"
+      }
+    },
+    {
+      "id": "ubs-arena",
+      "location": "UBS Arena",
+      "city": "Elmont",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.7117,
+        "lng": -73.7254
+      },
+      "status": "ready",
+      "clues": [
+        "She joked on stage here that it had taken her forever to get Post Malone to stop calling her 'ma'am'.",
+        "Her seven wins here took her career total to 30, tying Beyoncé's record.",
+        "It hosted the 2024 MTV Video Music Awards, where 'Fortnight' won Video of the Year.",
+        "The location is UBS Arena.",
+        "The location is in Elmont on Long Island, just east of Queens, New York, beside Belmont Park racetrack."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "the-tortured-poets-department"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/UBS_Arena"
+      }
+    },
+    {
+      "id": "oheka-castle",
+      "location": "Oheka Castle",
+      "city": "Huntington",
+      "region": "New York",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 40.8524,
+        "lng": -73.4352
+      },
+      "status": "ready",
+      "clues": [
+        "Director Joseph Kahn said she asked for model Sean O'Pry by name for the video shot here in September 2014.",
+        "This Gilded Age mansion also appears in 'Citizen Kane', and later served as the backdrop for her video meltdown.",
+        "It's the main filming location of the 'Blank Space' video.",
+        "The location is Oheka Castle.",
+        "The location is on Long Island's North Shore, near Huntington, New York."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Oheka_Castle"
+      }
+    },
+    {
+      "id": "christ-church-kennebunk",
+      "location": "Christ Church",
+      "city": "Kennebunk",
+      "region": "Maine",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 43.3866,
+        "lng": -70.5437
+      },
+      "status": "ready",
+      "clues": [
+        "Four days before this shoot, she and her mother spotted the three-year-old who would play her son, at a Nashville attraction.",
+        "She emerges from this church in a wedding gown with British actor Toby Hemingway.",
+        "It's the wedding scene in the 'Mine' video, the lead single from Speak Now.",
+        "The location is Christ Church.",
+        "The location is on Dane Street in Kennebunk, southern Maine."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "st-anns-church-kennebunkport",
+      "location": "St. Ann's Church",
+      "city": "Kennebunkport",
+      "region": "Maine",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 43.3398,
+        "lng": -70.4718
+      },
+      "status": "ready",
+      "clues": [
+        "Former President George H. W. Bush brought his grandchildren to see her here in August 2010.",
+        "After a TV special here, she surprised the crowd with a short set of songs.",
+        "She premiered the 'Mine' video live on CMT here, in the town where it was shot.",
+        "The location is St. Ann's Church.",
+        "The location is on the coast road near Walker's Point in Kennebunkport, Maine."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "arrowhead-stadium",
+      "location": "Arrowhead Stadium (GEHA Field)",
+      "city": "Kansas City",
+      "region": "Missouri",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 39.0489,
+        "lng": -94.4839
+      },
+      "status": "ready",
+      "clues": [
+        "A fan here tried, and failed, to give her a friendship bracelet with his phone number on it in July 2023.",
+        "That fan was Travis Kelce, and she was soon watching him play here from a suite.",
+        "It's the home stadium of the Kansas City Chiefs.",
+        "The location is Arrowhead Stadium (GEHA Field).",
+        "The location is in Kansas City, Missouri, beside the Royals' baseball stadium."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Arrowhead_Stadium"
+      }
+    },
+    {
+      "id": "allegiant-stadium",
+      "location": "Allegiant Stadium",
+      "city": "Las Vegas",
+      "region": "Nevada",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 36.0909,
+        "lng": -115.1833
+      },
+      "status": "ready",
+      "clues": [
+        "She flew about 5,500 miles overnight from a Tokyo show to get here in February 2024.",
+        "She watched the Chiefs win the championship here, then celebrated with Travis Kelce on the field.",
+        "It hosted Super Bowl LVIII and is home to the Las Vegas Raiders.",
+        "The location is Allegiant Stadium.",
+        "The location is just west of the Las Vegas Strip, Nevada."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Allegiant_Stadium"
+      }
+    },
+    {
+      "id": "caesars-superdome",
+      "location": "Caesars Superdome",
+      "city": "New Orleans",
+      "region": "Louisiana",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 29.9511,
+        "lng": -90.0812
+      },
+      "status": "ready",
+      "clues": [
+        "She played three Eras nights here in October 2024, then came back months later as a spectator.",
+        "Part of the crowd here booed when she appeared on the big screen.",
+        "It hosted Super Bowl LIX in February 2025, which the Chiefs lost to the Eagles.",
+        "The location is the Caesars Superdome.",
+        "The location is in downtown New Orleans, Louisiana."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Caesars_Superdome"
+      }
+    },
+    {
+      "id": "state-farm-stadium",
+      "location": "State Farm Stadium",
+      "city": "Glendale",
+      "region": "Arizona",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.5276,
+        "lng": -112.2626
+      },
+      "status": "ready",
+      "clues": [
+        "The city this stadium is in briefly renamed itself 'Swift City' in her honour.",
+        "Both her Reputation Stadium Tour (2018) and the Eras Tour (2023) opened here.",
+        "It's the home of the Arizona Cardinals, where the Eras Tour began on 17 March 2023.",
+        "The location is State Farm Stadium.",
+        "The location is in Glendale, Arizona, west of Phoenix."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/State_Farm_Stadium"
+      }
+    },
+    {
+      "id": "sofi-stadium",
+      "location": "SoFi Stadium",
+      "city": "Inglewood",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 33.9535,
+        "lng": -118.3392
+      },
+      "status": "ready",
+      "clues": [
+        "Wearing new blue outfits on her last night here, she announced her next re-recording.",
+        "That re-recording was 1989 (Taylor's Version), and her run here was filmed for the Eras Tour movie.",
+        "It's the home of the LA Rams and Chargers, where she played six Eras nights in August 2023.",
+        "The location is SoFi Stadium.",
+        "The location is in Inglewood, California, just east of LAX airport."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/SoFi_Stadium"
+      }
+    },
+    {
+      "id": "levis-stadium",
+      "location": "Levi's Stadium",
+      "city": "Santa Clara",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 37.403,
+        "lng": -121.97
+      },
+      "status": "ready",
+      "clues": [
+        "The host city took an honorary new name for her two July 2023 shows here.",
+        "The temporary name blended 'Swiftie' with the city's own: 'Swiftie Clara'.",
+        "It's the home stadium of the San Francisco 49ers, in Silicon Valley.",
+        "The location is Levi's Stadium.",
+        "The location is in Santa Clara, California, south of San Francisco Bay."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Levi's_Stadium"
+      }
+    },
+    {
+      "id": "lumen-field",
+      "location": "Lumen Field",
+      "city": "Seattle",
+      "region": "Washington",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 47.5952,
+        "lng": -122.3316
+      },
+      "status": "ready",
+      "clues": [
+        "Seismologists measured the crowd's dancing here as equivalent to a magnitude 2.3 earthquake.",
+        "The event, from her July 2023 shows, was nicknamed the 'Swift Quake'.",
+        "It's the home stadium of the Seattle Seahawks.",
+        "The location is Lumen Field.",
+        "The location is just south of downtown Seattle, Washington."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Lumen_Field"
+      }
+    },
+    {
+      "id": "circuit-of-the-americas",
+      "location": "Circuit of the Americas",
+      "city": "Austin",
+      "region": "Texas",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 30.1328,
+        "lng": -97.6411
+      },
+      "status": "ready",
+      "clues": [
+        "Her only full concert of 2016 was here, in a year when she otherwise stepped back from touring.",
+        "She played after the race on a Formula One weekend.",
+        "It's the racetrack that hosts Formula One's United States Grand Prix.",
+        "The location is the Circuit of the Americas.",
+        "The location is south-east of Austin, Texas."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Circuit_of_the_Americas"
+      }
+    },
+    {
+      "id": "crypto-com-arena",
+      "location": "Crypto.com Arena",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.043,
+        "lng": -118.2673
+      },
+      "status": "ready",
+      "clues": [
+        "She won Album of the Year here for her second, fifth and tenth studio albums.",
+        "Her 2024 win here made her the first artist to win Album of the Year four times.",
+        "Accepting a different award here in 2024, she announced The Tortured Poets Department.",
+        "The location is Crypto.com Arena.",
+        "The location is at L.A. Live in downtown Los Angeles, California."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "fearless",
+          "1989",
+          "midnights"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Crypto.com_Arena"
+      }
+    },
+    {
+      "id": "los-angeles-convention-center",
+      "location": "Los Angeles Convention Center",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0403,
+        "lng": -118.2696
+      },
+      "status": "ready",
+      "clues": [
+        "She performed here on a mossy set with a cabin, joined by Jack Antonoff and Aaron Dessner, with no live audience.",
+        "Her win here made her the first woman to win Album of the Year three times.",
+        "It hosted the pandemic-era 2021 Grammys, when folklore won Album of the Year.",
+        "The location is the Los Angeles Convention Center.",
+        "The location is in downtown Los Angeles, California, across the street from Crypto.com Arena."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "folklore",
+          "evermore"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Los_Angeles_Convention_Center"
+      }
+    },
+    {
+      "id": "peacock-theater",
+      "location": "Peacock Theater",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0446,
+        "lng": -118.2654
+      },
+      "status": "ready",
+      "clues": [
+        "She opened an awards show here with Nicki Minaj in 2015, weeks after a public spat between them.",
+        "'Bad Blood' won Video of the Year here in 2015, and in 2019 she was named Artist of the Decade here.",
+        "Then called the Microsoft Theater, it hosted the 2015 VMAs and the 2019 American Music Awards.",
+        "The location is the Peacock Theater.",
+        "The location is at L.A. Live in downtown Los Angeles, California."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "1989",
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Peacock_Theater"
+      }
+    },
+    {
+      "id": "amc-the-grove",
+      "location": "AMC The Grove",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0721,
+        "lng": -118.3576
+      },
+      "status": "ready",
+      "clues": [
+        "The entire shopping centre closed for the day for her event here in October 2023.",
+        "Moments before the event, she announced extra early screenings because of 'unprecedented demand'.",
+        "It hosted the world premiere of the Eras Tour concert film.",
+        "The location is AMC The Grove.",
+        "The location is in the Fairfax District of Los Angeles, California, beside the Original Farmers Market."
+      ],
+      "facts": {
+        "connection": "career",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/The_Grove_at_Farmers_Market"
+      }
+    },
+    {
+      "id": "orpheum-theatre-los-angeles",
+      "location": "Orpheum Theatre",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0448,
+        "lng": -118.2561
+      },
+      "status": "ready",
+      "clues": [
+        "She plays a banjo in a dusty prairie scene here, on one of about nine sets built for two 15-hour shooting days.",
+        "Joey King, who later starred in the 'I Can See You' video, appears in the video shot here.",
+        "This 1920s theatre was the filming location of the 'Mean' video.",
+        "The location is the Orpheum Theatre.",
+        "The location is on Broadway in downtown Los Angeles, California."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Orpheum_Theatre_(Los_Angeles)"
+      }
+    },
+    {
+      "id": "millennium-biltmore-hotel",
+      "location": "Millennium Biltmore Hotel",
+      "city": "Los Angeles",
+      "region": "California",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 34.0494,
+        "lng": -118.2537
+      },
+      "status": "ready",
+      "clues": [
+        "She dances alone through this hotel's grand lobby and corridors, believing she has become invisible.",
+        "The video shot here was directed by Joseph Kahn for a Reputation single.",
+        "It was the filming location of the 'Delicate' video.",
+        "The location is the Millennium Biltmore Hotel.",
+        "The location is on Pershing Square in downtown Los Angeles, California."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "reputation"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Millennium_Biltmore_Hotel"
+      }
+    },
+    {
+      "id": "florida",
+      "location": "Florida",
+      "city": "Florida",
+      "region": "Florida",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 28.1,
+        "lng": -81.6
+      },
+      "status": "ready",
+      "clues": [
+        "A Tortured Poets track about escaping here features Florence + the Machine.",
+        "The song's title ends with three exclamation marks.",
+        "The song is named after a US state.",
+        "The location is Florida.",
+        "The location is the US state on the south-eastern peninsula between the Gulf of Mexico and the Atlantic."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "the-tortured-poets-department"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Florida"
+      }
+    },
+    {
+      "id": "chi-health-center",
+      "location": "CHI Health Center",
+      "city": "Omaha",
+      "region": "Nebraska",
+      "country": "United States",
+      "continent": "NA",
+      "target": {
+        "lat": 41.2627,
+        "lng": -95.9282
+      },
+      "status": "ready",
+      "clues": [
+        "Ed Sheeran was her opening act when her fourth tour began here.",
+        "The tour opened here on 13 March 2013, when the arena was called the CenturyLink Center.",
+        "It hosted opening night of the Red Tour.",
+        "The location is the CHI Health Center.",
+        "The location is in downtown Omaha, Nebraska, by the Missouri River."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/CHI_Health_Center_Omaha"
+      }
+    },
+    {
+      "id": "rogers-centre",
+      "location": "Rogers Centre",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 43.6414,
+        "lng": -79.3894
+      },
+      "status": "ready",
+      "clues": [
+        "Her six nights here in November 2024 were the Eras Tour's first shows in Canada.",
+        "They came just weeks before the tour's grand finale.",
+        "It's the home of the Toronto Blue Jays, right beside the CN Tower.",
+        "The location is the Rogers Centre.",
+        "The location is in downtown Toronto, Ontario, Canada."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Rogers_Centre"
+      }
+    },
+    {
+      "id": "bc-place",
+      "location": "BC Place",
+      "city": "Vancouver",
+      "region": "British Columbia",
+      "country": "Canada",
+      "continent": "NA",
+      "target": {
+        "lat": 49.2768,
+        "lng": -123.112
+      },
+      "status": "ready",
+      "clues": [
+        "Her show here on 8 December 2024 was the 149th of its tour.",
+        "It was the very last night of the Eras Tour.",
+        "It's the domed stadium of the BC Lions and Vancouver Whitecaps.",
+        "The location is BC Place.",
+        "The location is in downtown Vancouver, British Columbia, Canada."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/BC_Place"
+      }
+    },
+    {
+      "id": "wembley-stadium",
+      "location": "Wembley Stadium",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.556,
+        "lng": -0.2796
+      },
+      "status": "ready",
+      "clues": [
+        "Robbie Williams joined her on stage here in June 2018 to sing 'Angels'.",
+        "She played eight Eras nights here in 2024, and Travis Kelce appeared on stage during one of them.",
+        "It's England's national football stadium, with a famous arch.",
+        "The location is Wembley Stadium.",
+        "The location is in Wembley, north-west London, England."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Wembley_Stadium"
+      }
+    },
+    {
+      "id": "hyde-park",
+      "location": "Hyde Park",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5073,
+        "lng": -0.1657
+      },
+      "status": "ready",
+      "clues": [
+        "She headlined a festival here in June 2015, on a stage set in a royal park rather than a stadium.",
+        "It was the only London date of her 1989 World Tour.",
+        "It hosted her British Summer Time headline show.",
+        "The location is Hyde Park.",
+        "The location is in central London, England, between Kensington and Mayfair."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Hyde_Park,_London"
+      }
+    },
+    {
+      "id": "the-o2-arena",
+      "location": "The O2 Arena",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.503,
+        "lng": 0.0032
+      },
+      "status": "ready",
+      "clues": [
+        "In 2021 she became the first woman to receive the BRITs' Global Icon award here.",
+        "Her Red Tour played a multi-night residency here in February 2014.",
+        "It's the arena inside the former Millennium Dome.",
+        "The location is The O2 Arena.",
+        "The location is on the Greenwich Peninsula, south-east London, England."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "red",
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/The_O2_Arena"
+      }
+    },
+    {
+      "id": "kings-college-london",
+      "location": "King's College London (Strand Campus)",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5115,
+        "lng": -0.116
+      },
+      "status": "ready",
+      "clues": [
+        "Her first-ever UK show was here, on 3 September 2008, in a student bar called Tutu's.",
+        "She gave it shout-outs during her 2024 London shows; her mum gave a student volunteer a huge bunch of flowers.",
+        "It's one of England's oldest universities, founded in 1829.",
+        "The location is King's College London (Strand Campus).",
+        "The location is on the Strand in central London, England, next to Somerset House."
+      ],
+      "facts": {
+        "connection": "performance",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/King's_College_London"
+      }
+    },
+    {
+      "id": "shepherds-bush-empire",
+      "location": "Shepherd's Bush Empire",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5037,
+        "lng": -0.2244
+      },
+      "status": "ready",
+      "clues": [
+        "Her two May 2009 nights here sold about 6,800 tickets.",
+        "It was the London stop of her first headline tour.",
+        "It's a historic west London theatre on a green, once used as a BBC television studio.",
+        "The location is Shepherd's Bush Empire.",
+        "The location is in Shepherd's Bush, west London, England."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "fearless"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Shepherd's_Bush_Empire"
+      }
+    },
+    {
+      "id": "camden-market",
+      "location": "Camden Market",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5413,
+        "lng": -0.1463
+      },
+      "status": "ready",
+      "clues": [
+        "A 2019 song about falling for a Londoner lists this canal-side market among her new favourite places.",
+        "The song opens with audio of Idris Elba.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Camden Market.",
+        "The location is at Camden Lock on the Regent's Canal, north London, England."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Camden_Market"
+      }
+    },
+    {
+      "id": "highgate",
+      "location": "Highgate",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5713,
+        "lng": -0.1475
+      },
+      "status": "ready",
+      "clues": [
+        "In the song, this is where she's taken to meet all of his best mates.",
+        "This hilltop village is famous for the cemetery where Karl Marx is buried.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Highgate.",
+        "The location is in north London, England, on high ground above Hampstead Heath."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Highgate"
+      }
+    },
+    {
+      "id": "brixton",
+      "location": "Brixton",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4618,
+        "lng": -0.1146
+      },
+      "status": "ready",
+      "clues": [
+        "The song says she enjoys spending her nights here.",
+        "This south London district is home to Electric Avenue and a famous music venue, the Academy.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Brixton.",
+        "The location is in south London, England, in the borough of Lambeth."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Brixton"
+      }
+    },
+    {
+      "id": "bond-street",
+      "location": "Bond Street",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5124,
+        "lng": -0.1449
+      },
+      "status": "ready",
+      "clues": [
+        "The song says love doesn't need designer bags from a luxury store on this street.",
+        "It's London's top luxury shopping street, home to a Louis Vuitton flagship.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Bond Street.",
+        "The location is in Mayfair, central London, England, between Oxford Street and Piccadilly."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Bond_Street"
+      }
+    },
+    {
+      "id": "shoreditch",
+      "location": "Shoreditch",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5246,
+        "lng": -0.0786
+      },
+      "status": "ready",
+      "clues": [
+        "The song pairs this east London area with the time of day she enjoys it.",
+        "It's known for street art, tech start-ups and the Boxpark container mall.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Shoreditch.",
+        "The location is in east London, England, just north of the City."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Shoreditch"
+      }
+    },
+    {
+      "id": "hackney",
+      "location": "Hackney",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.545,
+        "lng": -0.0553
+      },
+      "status": "ready",
+      "clues": [
+        "In the song she asks to be shown around this borough.",
+        "It's the east London borough of London Fields and Broadway Market.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is Hackney.",
+        "The location is in east London, England, north-east of Shoreditch."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/London_Borough_of_Hackney"
+      }
+    },
+    {
+      "id": "west-end-london",
+      "location": "The West End",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5103,
+        "lng": -0.1301
+      },
+      "status": "ready",
+      "clues": [
+        "The song lists it alongside high tea and stories from university as things she has grown to love.",
+        "It's London's theatre district, centred on Soho and Leicester Square.",
+        "It's named in 'London Boy', track 11 on Lover, alongside other parts of the city.",
+        "The location is the West End.",
+        "The location is in central London, England, around Leicester Square and Soho."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "lover"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/West_End_of_London"
+      }
+    },
+    {
+      "id": "bull-and-gate-kentish-town",
+      "location": "Bull & Gate",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5517,
+        "lng": -0.1408
+      },
+      "status": "ready",
+      "clues": [
+        "The London scenes of a 2018 video were shot around this Kentish Town pub, near a kebab shop that made headlines.",
+        "The video also features Ed Sheeran and Future, with scenes in Tokyo and Miami.",
+        "It's a north London pub seen in the 'End Game' video.",
+        "The location is the Bull & Gate.",
+        "The location is on Kentish Town Road in north London, England, near the Forum music venue."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "reputation"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "millennium-bridge-london",
+      "location": "Millennium Bridge",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5096,
+        "lng": -0.0985
+      },
+      "status": "ready",
+      "clues": [
+        "She crosses this footbridge at night with friends in a 2018 video.",
+        "The bridge was closed just two days after opening in 2000 because it wobbled.",
+        "It's a Thames footbridge between St Paul's and Tate Modern, seen in the 'End Game' video.",
+        "The location is the Millennium Bridge.",
+        "The location spans the River Thames in central London, England."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "reputation"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Millennium_Bridge,_London"
+      }
+    },
+    {
+      "id": "mildmay-club",
+      "location": "Mildmay Club",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5517,
+        "lng": -0.0858
+      },
+      "status": "ready",
+      "clues": [
+        "This members' club, founded in 1888, also appeared in Netflix's 'Baby Reindeer'.",
+        "A glittering dance-competition scene for a Showgirl-era video was filmed in its hall.",
+        "It's a filming location of the 'Opalite' video, starring Domhnall Gleeson.",
+        "The location is the Mildmay Club.",
+        "The location is on Newington Green, north London, England."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "the-life-of-a-showgirl"
+        ],
+        "wikipedia": ""
+      }
+    },
+    {
+      "id": "whitgift-centre",
+      "location": "Whitgift Centre",
+      "city": "Croydon",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.3755,
+        "lng": -0.0985
+      },
+      "status": "ready",
+      "clues": [
+        "Shops here were told the filming was for an insurance advert, to keep it secret.",
+        "She and Domhnall Gleeson ride its escalator holding soft pretzels in a '90s-style date scene.",
+        "It's the shopping mall seen in the 'Opalite' video.",
+        "The location is the Whitgift Centre.",
+        "The location is in central Croydon, south London, England."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "the-life-of-a-showgirl"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Whitgift_Centre"
+      }
+    },
+    {
+      "id": "victoria-and-albert-museum",
+      "location": "V&A South Kensington",
+      "city": "London",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4966,
+        "lng": -0.1722
+      },
+      "status": "ready",
+      "clues": [
+        "Her stage costumes and handwritten lyrics were spread through this museum's galleries in 2024.",
+        "The display was timed with her eight London Eras shows that summer.",
+        "It's the art and design museum that hosted the Taylor Swift Songbook Trail.",
+        "The location is the V&A South Kensington.",
+        "The location is on Cromwell Road in South Kensington, west London, England."
+      ],
+      "facts": {
+        "connection": "other",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Victoria_and_Albert_Museum"
+      }
+    },
+    {
+      "id": "windermere-lake-district",
+      "location": "Windermere, Lake District",
+      "city": "Windermere",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 54.36,
+        "lng": -2.935
+      },
+      "status": "ready",
+      "clues": [
+        "A folklore bonus track imagines her escaping to this region, with a pun on a Romantic poet's name.",
+        "The poet, who lived here, is William Wordsworth.",
+        "It's the region named in 'the lakes', and this is its largest lake.",
+        "The location is Windermere in the Lake District.",
+        "The location is in Cumbria, north-west England."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "folklore"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Windermere"
+      }
+    },
+    {
+      "id": "cunard-building",
+      "location": "Cunard Building",
+      "city": "Liverpool",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.4049,
+        "lng": -2.9958
+      },
+      "status": "ready",
+      "clues": [
+        "Glass cases of her old tour outfits were built nearby for a heist scene filmed in April 2023.",
+        "Taylor Lautner, Joey King and Presley Cash break her out of a vault in the video shot here.",
+        "It's one of the city's 'Three Graces' and the main location of 'I Can See You (Taylor's Version)'.",
+        "The location is the Cunard Building.",
+        "The location is at the Pier Head on the Liverpool waterfront, England."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Cunard_Building"
+      }
+    },
+    {
+      "id": "anfield",
+      "location": "Anfield",
+      "city": "Liverpool",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.4308,
+        "lng": -2.9608
+      },
+      "status": "ready",
+      "clues": [
+        "She sang a mashup of 'I Can See You' and 'Mine' here, nodding to a video shot in the same city.",
+        "Her first night here was the Eras Tour's 100th show, and the city called itself 'Taylor Town'.",
+        "It's Liverpool FC's stadium.",
+        "The location is Anfield.",
+        "The location is in north Liverpool, England, next to Stanley Park."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Anfield"
+      }
+    },
+    {
+      "id": "murrayfield-stadium",
+      "location": "Murrayfield Stadium",
+      "city": "Edinburgh",
+      "region": "Scotland",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 55.9422,
+        "lng": -3.2409
+      },
+      "status": "ready",
+      "clues": [
+        "Earthquake monitors 3.7 miles away picked up the crowd's dancing here.",
+        "Her three nights here opened the UK leg of the Eras Tour in June 2024.",
+        "It's Scotland's national rugby stadium.",
+        "The location is Murrayfield Stadium.",
+        "The location is in west Edinburgh, Scotland."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Murrayfield_Stadium"
+      }
+    },
+    {
+      "id": "principality-stadium",
+      "location": "Principality Stadium",
+      "city": "Cardiff",
+      "region": "Wales",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 51.4782,
+        "lng": -3.1826
+      },
+      "status": "ready",
+      "clues": [
+        "Fans read her red-and-green 1989 outfit here as a nod to the national flag.",
+        "She greeted the crowd in the local language, welcoming them to the Eras Tour.",
+        "It was her first-ever show in Wales, in June 2024.",
+        "The location is the Principality Stadium.",
+        "The location is in central Cardiff, Wales, on the River Taff."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Millennium_Stadium"
+      }
+    },
+    {
+      "id": "etihad-stadium-manchester",
+      "location": "Etihad Stadium",
+      "city": "Manchester",
+      "region": "England",
+      "country": "United Kingdom",
+      "continent": "EU",
+      "target": {
+        "lat": 53.4831,
+        "lng": -2.2004
+      },
+      "status": "ready",
+      "clues": [
+        "Camila Cabello and Charli XCX opened for her here in June 2018.",
+        "These were the first European dates of her Reputation Stadium Tour.",
+        "It's Manchester City's football stadium.",
+        "The location is the Etihad Stadium.",
+        "The location is in east Manchester, England."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/City_of_Manchester_Stadium"
+      }
+    },
+    {
+      "id": "aviva-stadium",
+      "location": "Aviva Stadium",
+      "city": "Dublin",
+      "region": "Leinster",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 53.3352,
+        "lng": -6.2285
+      },
+      "status": "ready",
+      "clues": [
+        "Her three June 2024 nights here drew around 150,000 fans.",
+        "It was her first concert in Ireland since her Reputation tour in 2018.",
+        "It's Ireland's national rugby and football stadium.",
+        "The location is the Aviva Stadium.",
+        "The location is in Ballsbridge, south Dublin, Ireland."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Aviva_Stadium"
+      }
+    },
+    {
+      "id": "county-wicklow",
+      "location": "County Wicklow",
+      "city": "Wicklow",
+      "region": "Leinster",
+      "country": "Ireland",
+      "continent": "EU",
+      "target": {
+        "lat": 52.98,
+        "lng": -6.37
+      },
+      "status": "ready",
+      "clues": [
+        "A Midnights song co-written with 'William Bowery' remembers a pebble picked up here.",
+        "The song recalls a trip to this Irish county in July 2021.",
+        "It's named in 'Sweet Nothing', and it's nicknamed the 'Garden of Ireland'.",
+        "The location is County Wicklow.",
+        "The location is just south of Dublin on Ireland's east coast."
+      ],
+      "facts": {
+        "connection": "song",
+        "eras": [
+          "midnights"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/County_Wicklow"
+      }
+    },
+    {
+      "id": "paris-la-defense-arena",
+      "location": "Paris La Défense Arena",
+      "city": "Nanterre",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.8957,
+        "lng": 2.2297
+      },
+      "status": "ready",
+      "clues": [
+        "Her four May 2024 nights here, in Europe's largest indoor arena, launched a restructured show.",
+        "The Tortured Poets Department section of the show debuted on the first night here.",
+        "It was the opening venue of the European Eras leg, home of the Racing 92 rugby club.",
+        "The location is Paris La Défense Arena.",
+        "The location is in Nanterre, just west of the La Défense business district, Paris, France."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "the-tortured-poets-department"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Paris_La_Défense_Arena"
+      }
+    },
+    {
+      "id": "cafe-la-palette",
+      "location": "Café La Palette",
+      "city": "Paris",
+      "region": "Île-de-France",
+      "country": "France",
+      "continent": "EU",
+      "target": {
+        "lat": 48.8556,
+        "lng": 2.3367
+      },
+      "status": "ready",
+      "clues": [
+        "This café, a hangout for students from the nearby fine arts school, is the most-featured location in a 2012 video.",
+        "In the video she meets a new love interest here after cycling around the city.",
+        "It's the Saint-Germain café in the 'Begin Again' video, which she called a love letter to Paris.",
+        "The location is Café La Palette.",
+        "The location is on Rue de Seine in the 6th arrondissement of Paris, France, close to the Pont des Arts."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "red"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/La_Palette"
+      }
+    },
+    {
+      "id": "friends-arena",
+      "location": "Friends Arena (Strawberry Arena)",
+      "city": "Solna",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "continent": "EU",
+      "target": {
+        "lat": 59.3727,
+        "lng": 18.0002
+      },
+      "status": "ready",
+      "clues": [
+        "She performed a medley dedicated to her longtime producer, a native of this city, here in May 2024.",
+        "That producer, Max Martin, later co-produced The Life of a Showgirl.",
+        "It's Sweden's national football stadium, since renamed after a new sponsor.",
+        "The location is Friends Arena (Strawberry Arena).",
+        "The location is in Solna, just north of central Stockholm, Sweden."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "the-life-of-a-showgirl"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Friends_Arena"
+      }
+    },
+    {
+      "id": "estadio-da-luz",
+      "location": "Estádio da Luz",
+      "city": "Lisbon",
+      "region": "Lisbon",
+      "country": "Portugal",
+      "continent": "EU",
+      "target": {
+        "lat": 38.7527,
+        "lng": -9.1847
+      },
+      "status": "ready",
+      "clues": [
+        "A 2020 festival date in this city was cancelled by the pandemic, so her May 2024 shows here were her first in the country.",
+        "She played the TTPD title track live for the first time here.",
+        "It's Benfica's stadium.",
+        "The location is Estádio da Luz.",
+        "The location is in north Lisbon, Portugal."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "the-tortured-poets-department"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Estádio_da_Luz"
+      }
+    },
+    {
+      "id": "veltins-arena",
+      "location": "Veltins-Arena",
+      "city": "Gelsenkirchen",
+      "region": "North Rhine-Westphalia",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 51.5546,
+        "lng": 7.0676
+      },
+      "status": "ready",
+      "clues": [
+        "The town it's in put up signs giving itself a new name for her July 2024 shows.",
+        "The new name was 'Swiftkirchen'.",
+        "It's the home stadium of Schalke 04.",
+        "The location is the Veltins-Arena.",
+        "The location is in Gelsenkirchen, in the Ruhr area of western Germany."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Veltins-Arena"
+      }
+    },
+    {
+      "id": "olympiastadion-munich",
+      "location": "Olympiastadion",
+      "city": "Munich",
+      "region": "Bavaria",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 48.1731,
+        "lng": 11.5466
+      },
+      "status": "ready",
+      "clues": [
+        "Tens of thousands of fans without tickets gathered on a hill next door to listen in July 2024.",
+        "The hill, the Olympiaberg, was built from Second World War rubble.",
+        "It's the stadium built for the 1972 Olympics, with a tent-like roof.",
+        "The location is the Olympiastadion.",
+        "The location is in Olympic Park, north Munich, Germany."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Olympiastadion_(Munich)"
+      }
+    },
+    {
+      "id": "psd-bank-dome",
+      "location": "PSD Bank Dome",
+      "city": "Düsseldorf",
+      "region": "North Rhine-Westphalia",
+      "country": "Germany",
+      "continent": "EU",
+      "target": {
+        "lat": 51.2717,
+        "lng": 6.8137
+      },
+      "status": "ready",
+      "clues": [
+        "She won four awards here in November 2022, including Best Longform Video.",
+        "The longform winner was 'All Too Well: The Short Film'.",
+        "It hosted the 2022 MTV Europe Music Awards.",
+        "The location is the PSD Bank Dome.",
+        "The location is in Düsseldorf, Germany."
+      ],
+      "facts": {
+        "connection": "award-event",
+        "eras": [
+          "red",
+          "midnights"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/PSD_Bank_Dome"
+      }
+    },
+    {
+      "id": "ernst-happel-stadion",
+      "location": "Ernst Happel Stadion",
+      "city": "Vienna",
+      "region": "Vienna",
+      "country": "Austria",
+      "continent": "EU",
+      "target": {
+        "lat": 48.2072,
+        "lng": 16.4209
+      },
+      "status": "ready",
+      "clues": [
+        "All three of her August 2024 shows here were cancelled the day before the first one.",
+        "Police had uncovered a plot to attack a concert; she later wrote that it filled her with fear and guilt.",
+        "It's Austria's national stadium, where her Eras shows never took place.",
+        "The location is Ernst Happel Stadion.",
+        "The location is in the Prater park, Vienna, Austria."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Ernst-Happel-Stadion"
+      }
+    },
+    {
+      "id": "pge-narodowy",
+      "location": "PGE Narodowy",
+      "city": "Warsaw",
+      "region": "Masovia",
+      "country": "Poland",
+      "continent": "EU",
+      "target": {
+        "lat": 52.2395,
+        "lng": 21.0458
+      },
+      "status": "ready",
+      "clues": [
+        "Her August 2024 shows here were her first-ever concerts in the country.",
+        "The stadium's red-and-white façade echoes the national flag.",
+        "It's Poland's national stadium.",
+        "The location is PGE Narodowy.",
+        "The location is on the east bank of the Vistula in Warsaw, Poland."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stadion_Narodowy"
+      }
+    },
+    {
+      "id": "tokyo-dome",
+      "location": "Tokyo Dome",
+      "city": "Tokyo",
+      "region": "Tokyo",
+      "country": "Japan",
+      "continent": "AS",
+      "target": {
+        "lat": 35.7056,
+        "lng": 139.7519
+      },
+      "status": "ready",
+      "clues": [
+        "Her 1989 World Tour opened here on 5 May 2015, and her Reputation tour ended here in 2018.",
+        "After her last Eras show here in February 2024, she flew straight to the Super Bowl.",
+        "It's a domed baseball stadium, home of the Yomiuri Giants.",
+        "The location is the Tokyo Dome.",
+        "The location is in Bunkyō, central Tokyo, Japan."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "1989",
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Tokyo_Dome"
+      }
+    },
+    {
+      "id": "national-stadium-singapore",
+      "location": "National Stadium",
+      "city": "Singapore",
+      "region": "Singapore",
+      "country": "Singapore",
+      "continent": "AS",
+      "target": {
+        "lat": 1.3044,
+        "lng": 103.8746
+      },
+      "status": "ready",
+      "clues": [
+        "Politicians in neighbouring countries complained about an exclusivity deal for her shows here.",
+        "Her six nights here in March 2024 were the Eras Tour's only South-East Asian dates.",
+        "It's the domed national stadium in the Singapore Sports Hub.",
+        "The location is the National Stadium.",
+        "The location is in Kallang, Singapore."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Stadium,_Singapore"
+      }
+    },
+    {
+      "id": "singapore-indoor-stadium",
+      "location": "Singapore Indoor Stadium",
+      "city": "Singapore",
+      "region": "Singapore",
+      "country": "Singapore",
+      "continent": "AS",
+      "target": {
+        "lat": 1.3007,
+        "lng": 103.8747
+      },
+      "status": "ready",
+      "clues": [
+        "Her second world tour began here on 9 February 2011, in front of just under 9,000 fans.",
+        "She returned here on both the Red and 1989 tours.",
+        "It hosted opening night of the Speak Now World Tour.",
+        "The location is the Singapore Indoor Stadium.",
+        "The location is in Kallang, Singapore, beside the National Stadium."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "speak-now",
+          "red",
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Singapore_Indoor_Stadium"
+      }
+    },
+    {
+      "id": "mercedes-benz-arena-shanghai",
+      "location": "Mercedes-Benz Arena",
+      "city": "Shanghai",
+      "region": "Shanghai",
+      "country": "China",
+      "continent": "AS",
+      "target": {
+        "lat": 31.189,
+        "lng": 121.4911
+      },
+      "status": "ready",
+      "clues": [
+        "Her shows here were added in mid-2015, months after the rest of that tour was announced.",
+        "The arena's flying-saucer shape stands on the former Expo 2010 site.",
+        "It hosted her 1989 World Tour concerts in mainland China.",
+        "The location is the Mercedes-Benz Arena.",
+        "The location is in Pudong, Shanghai, China, by the Huangpu River."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mercedes-Benz_Arena_(Shanghai)"
+      }
+    },
+    {
+      "id": "melbourne-cricket-ground",
+      "location": "Melbourne Cricket Ground",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.82,
+        "lng": 144.9834
+      },
+      "status": "ready",
+      "clues": [
+        "Around 96,000 people attended each of her February 2024 nights here, her biggest Eras crowds.",
+        "Sabrina Carpenter opened for her on this Australian leg.",
+        "It's Australia's largest stadium, home of cricket and Aussie rules football.",
+        "The location is the Melbourne Cricket Ground.",
+        "The location is in Yarra Park, Melbourne, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Melbourne_Cricket_Ground"
+      }
+    },
+    {
+      "id": "aami-park",
+      "location": "AAMI Park",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -37.8251,
+        "lng": 144.9834
+      },
+      "status": "ready",
+      "clues": [
+        "She became the first act ever to play three concerts here, all in December 2015.",
+        "Her show here on 12 December 2015 ended the 1989 World Tour.",
+        "It's a rectangular stadium with a bubble-dome roof, a short walk from the MCG.",
+        "The location is AAMI Park.",
+        "The location is in the Melbourne Sports Precinct, Victoria, Australia."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Melbourne_Rectangular_Stadium"
+      }
+    },
+    {
+      "id": "accor-stadium",
+      "location": "Accor Stadium",
+      "city": "Sydney",
+      "region": "New South Wales",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -33.847,
+        "lng": 151.0634
+      },
+      "status": "ready",
+      "clues": [
+        "She has played here on three different tours, under two different stadium names.",
+        "Her four February 2024 Eras nights here were the tour's Sydney stop.",
+        "Built for the 2000 Olympics, it was called ANZ Stadium when she played her 1989 and Reputation shows here.",
+        "The location is Accor Stadium.",
+        "The location is in Sydney Olympic Park, western Sydney, New South Wales, Australia."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour",
+          "1989",
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Stadium_Australia"
+      }
+    },
+    {
+      "id": "optus-stadium",
+      "location": "Optus Stadium",
+      "city": "Perth",
+      "region": "Western Australia",
+      "country": "Australia",
+      "continent": "OC",
+      "target": {
+        "lat": -31.9512,
+        "lng": 115.889
+      },
+      "status": "ready",
+      "clues": [
+        "Her October 2018 show here opened the Oceania leg of a tour, in a stadium opened that same year.",
+        "The Eras Tour later skipped this city.",
+        "It's the stadium of Western Australia's capital, on the Swan River.",
+        "The location is Optus Stadium.",
+        "The location is in Burswood, Perth, Western Australia."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Perth_Stadium"
+      }
+    },
+    {
+      "id": "mount-smart-stadium",
+      "location": "Mount Smart Stadium",
+      "city": "Auckland",
+      "region": "Auckland",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -36.918,
+        "lng": 174.8128
+      },
+      "status": "ready",
+      "clues": [
+        "Her November 2018 Reputation show here is still her last concert in this country.",
+        "The Eras Tour skipped the country entirely, to many fans' disappointment.",
+        "It's a stadium in Auckland's southern suburbs, built inside an old volcanic quarry.",
+        "The location is Mount Smart Stadium.",
+        "The location is in Penrose, south Auckland, New Zealand."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "reputation-stadium-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Mount_Smart_Stadium"
+      }
+    },
+    {
+      "id": "spark-arena",
+      "location": "Spark Arena",
+      "city": "Auckland",
+      "region": "Auckland",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -36.8471,
+        "lng": 174.7783
+      },
+      "status": "ready",
+      "clues": [
+        "Her second world tour ended here on 18 March 2012, when the venue was called Vector Arena.",
+        "She played three nights here to finish the Speak Now World Tour.",
+        "It's Auckland's main indoor arena, near the port.",
+        "The location is Spark Arena.",
+        "The location is in Quay Park, central Auckland, New Zealand."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "speak-now"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Spark_Arena"
+      }
+    },
+    {
+      "id": "bethells-beach",
+      "location": "Bethells Beach (Te Henga)",
+      "city": "Auckland",
+      "region": "Auckland",
+      "country": "New Zealand",
+      "continent": "OC",
+      "target": {
+        "lat": -36.8897,
+        "lng": 174.4426
+      },
+      "status": "ready",
+      "clues": [
+        "Local officials said her film crew brought about a dozen vehicles onto this beach instead of the two allowed.",
+        "The beach is home to endangered dotterels, whose habitat officials said was put at risk.",
+        "It's a filming location for the 'Out of the Woods' video, shot by Joseph Kahn in New Zealand.",
+        "The location is Bethells Beach (Te Henga).",
+        "The location is on the wild west coast near Auckland, in the Waitākere Ranges, New Zealand."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Te_Henga_/_Bethells_Beach"
+      }
+    },
+    {
+      "id": "estadio-gnp-seguros",
+      "location": "Estadio GNP Seguros",
+      "city": "Mexico City",
+      "region": "Mexico City",
+      "country": "Mexico",
+      "continent": "NA",
+      "target": {
+        "lat": 19.4047,
+        "lng": -99.0889
+      },
+      "status": "ready",
+      "clues": [
+        "Sabrina Carpenter joined her as opening act from these shows onward.",
+        "Her four nights here in August 2023 opened the Latin American leg of the Eras Tour.",
+        "Formerly called Foro Sol, it's a stadium built inside a motor racing circuit.",
+        "The location is Estadio GNP Seguros.",
+        "The location is in east Mexico City, Mexico."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Estadio_GNP_Seguros"
+      }
+    },
+    {
+      "id": "estadio-monumental",
+      "location": "Estadio Monumental",
+      "city": "Buenos Aires",
+      "region": "Buenos Aires",
+      "country": "Argentina",
+      "continent": "SA",
+      "target": {
+        "lat": -34.5453,
+        "lng": -58.4498
+      },
+      "status": "ready",
+      "clues": [
+        "One of her November 2023 shows here was postponed because of severe weather.",
+        "Travis Kelce was in the crowd here, and she changed a 'Karma' lyric to mention him.",
+        "It's River Plate's stadium, Argentina's largest.",
+        "The location is Estadio Monumental.",
+        "The location is in Núñez, north Buenos Aires, Argentina."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Estadio_Monumental_Antonio_Vespucio_Liberti"
+      }
+    },
+    {
+      "id": "estadio-nilton-santos",
+      "location": "Estádio Nilton Santos",
+      "city": "Rio de Janeiro",
+      "region": "Rio de Janeiro",
+      "country": "Brazil",
+      "continent": "SA",
+      "target": {
+        "lat": -22.8932,
+        "lng": -43.2922
+      },
+      "status": "ready",
+      "clues": [
+        "One of her November 2023 shows here was postponed because of extreme heat.",
+        "A young fan, Ana Clara Benevides, died after falling ill at the first show here; Swift said she was devastated.",
+        "Also known as Engenhão, it's Botafogo's stadium and hosted athletics at the 2016 Olympics.",
+        "The location is Estádio Nilton Santos.",
+        "The location is in the north zone of Rio de Janeiro, Brazil."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Estádio_Nilton_Santos"
+      }
+    },
+    {
+      "id": "christ-the-redeemer",
+      "location": "Christ the Redeemer",
+      "city": "Rio de Janeiro",
+      "region": "Rio de Janeiro",
+      "country": "Brazil",
+      "continent": "SA",
+      "target": {
+        "lat": -22.9519,
+        "lng": -43.2105
+      },
+      "status": "ready",
+      "clues": [
+        "In November 2023, this landmark was lit up with a welcome message and an image of her.",
+        "It was a greeting for her Eras shows in the city.",
+        "It's the giant art deco statue on top of Corcovado mountain.",
+        "The location is Christ the Redeemer.",
+        "The location is in Tijuca National Park, above Rio de Janeiro, Brazil."
+      ],
+      "facts": {
+        "connection": "tour",
+        "eras": [
+          "eras-tour"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)"
+      }
+    },
+    {
+      "id": "makgadikgadi-pans",
+      "location": "Makgadikgadi Pans",
+      "city": "Makgadikgadi",
+      "region": "Central District",
+      "country": "Botswana",
+      "continent": "AF",
+      "target": {
+        "lat": -20.7,
+        "lng": 25.5
+      },
+      "status": "ready",
+      "clues": [
+        "She went brunette to play a 1950s film star on location here.",
+        "All of her proceeds from the video were donated to the African Parks Foundation of America.",
+        "It's the salt pan region where part of the 'Wildest Dreams' video was filmed.",
+        "The location is the Makgadikgadi Pans.",
+        "The location is in north-eastern Botswana, southern Africa."
+      ],
+      "facts": {
+        "connection": "music-video",
+        "eras": [
+          "1989"
+        ],
+        "wikipedia": "https://en.wikipedia.org/wiki/Makgadikgadi_Pan"
+      }
+    }
+  ]
+}

@@ -103,6 +103,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "Train & Tube",
   },
   {
+    id: "taylor-swift",
+    group: "general",
+    name: "Taylor Swift",
+    shortLabel: "Career places",
+    code: "TS",
+    tileEmoji: "🎤",
+    href: GAME_MODE_DEFINITIONS["taylor-swift"].path,
+    mapImage: "/hub-maps/world.webp",
+    groupLabel: "Taylor Swift",
+  },
+  {
     id: "football",
     group: "football",
     name: "England",

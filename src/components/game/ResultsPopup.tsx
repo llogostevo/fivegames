@@ -113,7 +113,8 @@ function modeRowLabel(def: GameModeDefinition): string {
     def.family === "world" ||
     def.family === "pubs" ||
     def.family === "stations" ||
-    def.family === "airports"
+    def.family === "airports" ||
+    def.family === "taylor-swift"
     ? `${def.title.replace(" 5", "")} · ${def.subtitle}`
     : def.title;
 }
@@ -133,6 +134,9 @@ function modeRowHint(def: GameModeDefinition): string {
   }
   if (def.family === "stations") {
     return "5 clues · find today's London station";
+  }
+  if (def.family === "taylor-swift") {
+    return "5 clues · find today's Taylor Swift place";
   }
   return "5 clues · one UK place";
 }
@@ -267,18 +271,20 @@ export function ResultsPopup({
       otherDef.family === "world" ||
       otherDef.family === "pubs" ||
       otherDef.family === "stations" ||
-      otherDef.family === "airports"
+      otherDef.family === "airports" ||
+      otherDef.family === "taylor-swift"
         ? `Play ${otherDef.title} · ${otherDef.subtitle}`
         : `Play ${otherDef.title}`,
   };
 
-  // World first, then airports, Daily UK, London editions, then football.
+  // World first, then airports, Daily UK, London editions, Taylor Swift, then football.
   const orderedStatuses = [
     ...modeStatuses.filter((row) => row.def.family === "world"),
     ...modeStatuses.filter((row) => row.def.family === "airports"),
     ...modeStatuses.filter((row) => row.def.family === "daily"),
     ...modeStatuses.filter((row) => row.def.family === "pubs"),
     ...modeStatuses.filter((row) => row.def.family === "stations"),
+    ...modeStatuses.filter((row) => row.def.family === "taylor-swift"),
     ...modeStatuses.filter((row) => row.def.family === "football"),
   ];
 
@@ -311,7 +317,9 @@ export function ResultsPopup({
                       ? "The station was"
                       : mode === "world-airports"
                         ? "The airport was"
-                        : "The place was"}
+                        : mode === "taylor-swift"
+                          ? "The place was"
+                          : "The place was"}
               </p>
               <h2
                 id={titleId}

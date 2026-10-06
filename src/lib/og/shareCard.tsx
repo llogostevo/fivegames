@@ -15,7 +15,8 @@ export type ShareCardKind =
   | "football"
   | "pubs"
   | "stations"
-  | "airports";
+  | "airports"
+  | "taylor-swift";
 
 export type FootballFlag = "ENG" | "ITA" | "GER" | "FRA" | "ESP";
 
@@ -285,6 +286,24 @@ function AirportsIcon({
   );
 }
 
+function TaylorSwiftIcon({
+  size = 220,
+}: {
+  size?: number;
+  accent?: string;
+}) {
+  return (
+    <RoundedFrame background="#1e1e24" size={size}>
+      <EmojiStack
+        primary="🎤"
+        secondary="♪"
+        primarySize={Math.round(size * 0.42)}
+        secondarySize={Math.round(size * 0.2)}
+      />
+    </RoundedFrame>
+  );
+}
+
 function ShareIcon({
   kind,
   accent,
@@ -307,6 +326,8 @@ function ShareIcon({
       return <StationsIcon accent={accent} />;
     case "airports":
       return <AirportsIcon accent={accent} />;
+    case "taylor-swift":
+      return <TaylorSwiftIcon accent={accent} />;
     case "football":
       return <FootballIcon accent={accent} flag={flag} />;
   }
@@ -323,7 +344,8 @@ export function shareCardImage({
     kind === "football" ||
     kind === "pubs" ||
     kind === "stations" ||
-    kind === "airports"
+    kind === "airports" ||
+    kind === "taylor-swift"
       ? accent
       : "#1d1d1f";
   const bg =
@@ -335,7 +357,9 @@ export function shareCardImage({
           ? "radial-gradient(circle at 50% 45%, #fff5f5 0%, #fde8e8 55%, #f5dede 100%)"
           : kind === "airports"
             ? "radial-gradient(circle at 50% 45%, #f0f9ff 0%, #e0f2fe 55%, #dbeafe 100%)"
-            : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
+            : kind === "taylor-swift"
+              ? "radial-gradient(circle at 50% 45%, #fff5fa 0%, #fbe7f2 55%, #f3d6e6 100%)"
+              : "radial-gradient(circle at 50% 45%, #ffffff 0%, #f3f4f1 55%, #e8eae6 100%)";
 
   return new ImageResponse(
     (
@@ -388,7 +412,8 @@ export function shareCardImage({
                   kind === "football" ||
                   kind === "pubs" ||
                   kind === "stations" ||
-                  kind === "airports"
+                  kind === "airports" ||
+                  kind === "taylor-swift"
                     ? "0.08em"
                     : "-0.02em",
                 lineHeight: 1.05,

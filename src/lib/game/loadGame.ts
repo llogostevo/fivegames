@@ -29,6 +29,11 @@ import {
   getTodaysWorldAirportsGame,
   getWorldAirportsGameByDate,
 } from "@/lib/game/worldairports/loadWorldAirportsGame";
+import {
+  getReleasedTaylorSwiftGameByDate,
+  getTodaysTaylorSwiftGame,
+  getTaylorSwiftGameByDate,
+} from "@/lib/game/taylorswift/loadTaylorSwiftGame";
 import { DEFAULT_GAME_MODE, type GameMode } from "@/lib/game/modes";
 import { getTheme, isThemeId } from "@/lib/game/themes";
 import {
@@ -225,6 +230,9 @@ export async function getTodaysGameForMode(
   if (mode === "world-airports") {
     return getTodaysWorldAirportsGame(now, options);
   }
+  if (mode === "taylor-swift") {
+    return getTodaysTaylorSwiftGame(now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getTodaysFootballGame(now, options, leagueId);
@@ -266,6 +274,9 @@ export async function getReleasedGameForMode(
   if (mode === "world-airports") {
     return getReleasedWorldAirportsGameByDate(date, now, options);
   }
+  if (mode === "taylor-swift") {
+    return getReleasedTaylorSwiftGameByDate(date, now, options);
+  }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
     return getReleasedFootballGameByDate(date, now, options, leagueId);
@@ -289,6 +300,9 @@ export async function getGameForModeByDate(
   }
   if (mode === "world-airports") {
     return getWorldAirportsGameByDate(date);
+  }
+  if (mode === "taylor-swift") {
+    return getTaylorSwiftGameByDate(date);
   }
   const leagueId = footballLeagueForMode(mode);
   if (leagueId) {
