@@ -636,8 +636,8 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
   return (
     <div
-      className={`flex flex-1 flex-col lg:h-dvh ${
-        isComplete ? "h-dvh overflow-hidden" : "min-h-dvh"
+      className={`flex flex-1 flex-col min-h-dvh lg:h-dvh ${
+        isComplete ? "lg:overflow-hidden" : ""
       }`}
       style={themeStyle}
     >
@@ -940,9 +940,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
 
         <GameMap
           key={`${mode}-${round}`}
-          className={`relative w-full flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none ${
-            isComplete ? "min-h-0" : "min-h-[50dvh]"
-          }`}
+          className="relative w-full min-h-[50dvh] flex-1 overflow-hidden rounded-lg border border-rule bg-neutral-100 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-full lg:min-h-0 lg:flex-none"
           initialCenter={modeDef.mapStart.center}
           initialZoom={modeDef.mapStart.zoom}
           initialProjection={modeDef.mapStart.projection ?? "mercator"}
