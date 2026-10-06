@@ -31,7 +31,7 @@ describe("London pubs dataset", () => {
           pubCount: 1,
           pubs: [],
         }),
-      /exactly 25/,
+      /exactly 107/,
     );
   });
 });

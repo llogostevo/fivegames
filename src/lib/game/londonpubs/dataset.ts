@@ -7,7 +7,7 @@ import path from "node:path";
 
 import { CLUE_COUNT } from "@/lib/game/constants";
 
-export const LONDON_PUBS_COUNT = 25;
+export const LONDON_PUBS_COUNT = 107;
 
 export const LONDON_PUBS_DATASET_FILE = "pin5-london-pubs.json";
 

@@ -37,7 +37,7 @@ describe("London pubs schedule", () => {
   });
 
   it("cycles after the full pub pool", () => {
-    const afterCycleDate = "2026-10-23"; // 25 days after 2026-09-28
+    const afterCycleDate = "2027-01-13"; // 107 days after 2026-09-28
     assert.equal(londonPubsGameNumber(afterCycleDate), LONDON_PUBS_COUNT + 1);
   });
 
