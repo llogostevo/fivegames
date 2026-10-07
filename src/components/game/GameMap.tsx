@@ -4,6 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import {
@@ -29,9 +30,12 @@ import {
 } from "@/lib/game/pinHold";
 import {
   collectMapEnvironment,
+  copyMapDiagReport,
   describeUnknownError,
+  getMapDiagEntryCount,
   isMapDiagEnabled,
   logMapDiag,
+  subscribeMapDiag,
 } from "@/lib/map/diagnostics";
 import {
   DEFAULT_MAP_CENTER,
@@ -114,6 +118,50 @@ function prefersReducedMotion() {
   return (
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function MapDiagCopyButton() {
+  const [enabled, setEnabled] = useState(false);
+  const count = useSyncExternalStore(
+    subscribeMapDiag,
+    getMapDiagEntryCount,
+    () => 0,
+  );
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+
+  useEffect(() => {
+    setEnabled(isMapDiagEnabled());
+  }, []);
+
+  useEffect(() => {
+    if (status === "idle") {
+      return;
+    }
+    const timer = window.setTimeout(() => setStatus("idle"), 2000);
+    return () => window.clearTimeout(timer);
+  }, [status]);
+
+  if (!enabled) {
+    return null;
+  }
+
+  return (
+    <button
+      type="button"
+      className="absolute left-3 top-3 z-30 rounded-md bg-foreground/90 px-2.5 py-1.5 text-xs font-semibold text-white shadow-md"
+      onClick={() => {
+        void copyMapDiagReport().then((ok) => {
+          setStatus(ok ? "copied" : "failed");
+        });
+      }}
+    >
+      {status === "copied"
+        ? "Copied — paste into email"
+        : status === "failed"
+          ? "Copy failed"
+          : `Copy map logs (${count})`}
+    </button>
   );
 }
 
@@ -912,6 +960,7 @@ export function GameMap({
           {styleError}
         </p>
       ) : null}
+      <MapDiagCopyButton />
       {children}
     </div>
   );

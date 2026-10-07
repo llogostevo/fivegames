@@ -7,6 +7,8 @@
 export const MAP_DIAG_PREFIX = "[pin5-map]";
 export const MAP_DIAG_QUERY_PARAM = "mapdiag";
 
+const MAX_BUFFERED_ENTRIES = 200;
+
 export type MapDiagEnvironment = {
   containerWidth: number;
   containerHeight: number;
@@ -19,6 +21,37 @@ export type MapDiagEnvironment = {
     statusMessage: string | null;
   };
 };
+
+type MapDiagEntry = {
+  at: string;
+  event: string;
+  details?: Record<string, unknown>;
+};
+
+const diagBuffer: MapDiagEntry[] = [];
+const listeners = new Set<() => void>();
+
+function notifyDiagListeners() {
+  listeners.forEach((listener) => {
+    try {
+      listener();
+    } catch {
+      // Ignore subscriber errors.
+    }
+  });
+}
+
+/** Subscribe to buffer changes (for the copy-button count). */
+export function subscribeMapDiag(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+export function getMapDiagEntryCount(): number {
+  return diagBuffer.length;
+}
 
 /** True when the page URL includes `?mapdiag=1` (or truthy mapdiag). */
 export function isMapDiagEnabled(): boolean {
@@ -90,6 +123,14 @@ export function collectMapEnvironment(
   };
 }
 
+function safeJson(value: unknown): string {
+  try {
+    return JSON.stringify(value, null, 2);
+  } catch {
+    return String(value);
+  }
+}
+
 export function logMapDiag(
   event: string,
   details?: Record<string, unknown>,
@@ -98,6 +139,17 @@ export function logMapDiag(
     return;
   }
   try {
+    const entry: MapDiagEntry = {
+      at: new Date().toISOString(),
+      event,
+      details,
+    };
+    diagBuffer.push(entry);
+    if (diagBuffer.length > MAX_BUFFERED_ENTRIES) {
+      diagBuffer.splice(0, diagBuffer.length - MAX_BUFFERED_ENTRIES);
+    }
+    notifyDiagListeners();
+
     if (details) {
       console.warn(MAP_DIAG_PREFIX, event, details);
     } else {
@@ -106,6 +158,62 @@ export function logMapDiag(
   } catch {
     // Never break gameplay for diagnostics.
   }
+}
+
+/** Plain-text report suitable for pasting into email. */
+export function formatMapDiagReport(): string {
+  const href =
+    typeof window !== "undefined" ? window.location.href : "(unknown url)";
+  const lines = [
+    "Pin5 map diagnostics",
+    `Captured: ${new Date().toISOString()}`,
+    `URL: ${href}`,
+    `Entries: ${diagBuffer.length}`,
+    "",
+  ];
+  for (const entry of diagBuffer) {
+    lines.push(`[${entry.at}] ${entry.event}`);
+    if (entry.details) {
+      lines.push(safeJson(entry.details));
+    }
+    lines.push("");
+  }
+  return lines.join("\n").trimEnd();
+}
+
+async function writeClipboardText(text: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // Fall through to legacy path.
+  }
+  try {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.left = "-9999px";
+    area.style.top = "0";
+    document.body.appendChild(area);
+    area.select();
+    area.setSelectionRange(0, text.length);
+    const ok = document.execCommand("copy");
+    document.body.removeChild(area);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Copy the buffered diagnostic report to the clipboard. */
+export async function copyMapDiagReport(): Promise<boolean> {
+  if (!isMapDiagEnabled()) {
+    return false;
+  }
+  return writeClipboardText(formatMapDiagReport());
 }
 
 export function describeUnknownError(error: unknown): Record<string, unknown> {
