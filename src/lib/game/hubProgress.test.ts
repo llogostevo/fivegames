@@ -92,8 +92,8 @@ describe("readHubProgress", () => {
     assert.equal(italy.streak, 1);
   });
 
-  it("uses the London release date before 08:00", () => {
-    const before = londonWallTimeToUtc("2026-10-05", 7, 59);
+  it("uses the London release date before 06:00", () => {
+    const before = londonWallTimeToUtc("2026-10-05", 5, 59);
     const storage = memoryStorage({
       [historyStorageKey("daily")]: historyPayload("2026-10-04", 12_000),
     });

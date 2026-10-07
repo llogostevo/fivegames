@@ -68,8 +68,8 @@ describe("Football England schedule", () => {
     assert.equal(first.answerDetail?.clubId, afterCycle.answerDetail?.clubId);
   });
 
-  it("pre/post 08:00 Europe/London release works", async () => {
-    const before = londonWallTimeToUtc("2026-10-01", 7, 59);
+  it("pre/post 06:00 Europe/London release works", async () => {
+    const before = londonWallTimeToUtc("2026-10-01", 5, 59);
     assert.equal(getAvailableGameDate(before, { now: before }), "2026-09-30");
     const yesterday = await getTodaysFootballGame(before, { now: before });
     assert.equal(yesterday.id, "2026-09-30");
@@ -79,7 +79,7 @@ describe("Football England schedule", () => {
         getReleasedFootballGameByDate("2026-10-01", before, { now: before }),
     );
 
-    const at = londonWallTimeToUtc("2026-10-01", 8, 0);
+    const at = londonWallTimeToUtc("2026-10-01", 6, 0);
     const today = await getTodaysFootballGame(at, { now: at });
     assert.equal(today.id, "2026-10-01");
     const released = await getReleasedFootballGameByDate(

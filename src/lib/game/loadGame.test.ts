@@ -157,22 +157,22 @@ describe("getTodaysGame", () => {
     assert.equal(game.theme, "history");
   });
 
-  it("serves the previous day before the 08:00 London release", async () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+  it("serves the previous day before the 06:00 London release", async () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     const game = await getTodaysGame(clock, { now: clock });
     assert.equal(game.id, "2026-09-30");
     assert.equal(game.theme, "sport");
   });
 
-  it("serves today's dated game from 08:00 London", async () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 0);
+  it("serves today's dated game from 06:00 London", async () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 0);
     const game = await getTodaysGame(clock, { now: clock });
     assert.equal(game.id, "2026-10-01");
     assert.equal(game.theme, "history");
   });
 
   it("blocks unreleased future games from the public release helper", async () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     await assert.rejects(
       () => getReleasedGameByDate("2026-10-01", clock, { now: clock }),
       GameNotFoundError,

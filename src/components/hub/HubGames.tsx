@@ -480,7 +480,7 @@ export function HubGames({
   );
   const columns = useColumnCount();
 
-  // At 8am London (nextReleaseAt), re-fetch the server date so tiles reset.
+  // At 6am London (nextReleaseAt), re-fetch the server date so tiles reset.
   useEffect(() => {
     const target = Date.parse(nextReleaseAt);
     if (Number.isNaN(target)) {
