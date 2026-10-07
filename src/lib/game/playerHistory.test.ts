@@ -242,8 +242,8 @@ describe("streaks", () => {
     assert.equal(getCurrentStreak(h, "2026-10-07"), 2);
   });
 
-  it("does not treat an unreleased day as a miss before 08:00", () => {
-    // At Mon 07:59 the available game is still Sunday.
+  it("does not treat an unreleased day as a miss before 06:00", () => {
+    // At Mon 05:59 the available game is still Sunday.
     const h = history([game("2026-10-11", 1)]);
     assert.equal(getCurrentStreak(h, "2026-10-11"), 1);
   });

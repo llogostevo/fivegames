@@ -266,7 +266,7 @@ describe("resolveStartGame", () => {
   });
 
   it("keeps future games inaccessible via start of available day only", async () => {
-    const before = londonWallTimeToUtc("2026-10-01", 7, 59);
+    const before = londonWallTimeToUtc("2026-10-01", 5, 59);
     const available = await getTodaysGame(before, { now: before });
     assert.equal(available.id, "2026-09-30");
 

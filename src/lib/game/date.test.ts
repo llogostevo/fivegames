@@ -56,60 +56,75 @@ describe("getLondonDateISO", () => {
 
 describe("londonWallTimeToUtc", () => {
   it("maps BST wall times correctly", () => {
-    // 08:00 BST on 1 Oct 2026 = 07:00 UTC
+    // 06:00 BST on 1 Oct 2026 = 05:00 UTC
     assert.equal(
-      londonWallTimeToUtc("2026-10-01", 8, 0).toISOString(),
-      "2026-10-01T07:00:00.000Z",
+      londonWallTimeToUtc("2026-10-01", 6, 0).toISOString(),
+      "2026-10-01T05:00:00.000Z",
     );
   });
 
   it("maps GMT wall times correctly", () => {
-    // 08:00 GMT on 1 Nov 2026 = 08:00 UTC
+    // 06:00 GMT on 1 Nov 2026 = 06:00 UTC
     assert.equal(
-      londonWallTimeToUtc("2026-11-01", 8, 0).toISOString(),
-      "2026-11-01T08:00:00.000Z",
+      londonWallTimeToUtc("2026-11-01", 6, 0).toISOString(),
+      "2026-11-01T06:00:00.000Z",
     );
   });
 
   it("handles the spring-forward DST transition morning", () => {
-    // 2026-03-29 clocks jump 01:00 → 02:00; 08:00 BST = 07:00 UTC
+    // 2026-03-29 clocks jump 01:00 → 02:00; 06:00 BST = 05:00 UTC
     assert.equal(
-      londonWallTimeToUtc("2026-03-29", 8, 0).toISOString(),
-      "2026-03-29T07:00:00.000Z",
+      londonWallTimeToUtc("2026-03-29", 6, 0).toISOString(),
+      "2026-03-29T05:00:00.000Z",
     );
   });
 
   it("handles the autumn clock-change weekend", () => {
-    // 2026-10-25 clocks fall back; 08:00 GMT = 08:00 UTC
+    // 2026-10-25 clocks fall back; 06:00 GMT = 06:00 UTC
     assert.equal(
-      londonWallTimeToUtc("2026-10-25", 8, 0).toISOString(),
-      "2026-10-25T08:00:00.000Z",
+      londonWallTimeToUtc("2026-10-25", 6, 0).toISOString(),
+      "2026-10-25T06:00:00.000Z",
     );
   });
 });
 
 describe("daily release availability", () => {
-  it("does not release today's game at 07:59 London", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+  it("keeps the previous day's game at 05:59 UK time", () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     assert.equal(getAvailableGameDate(clock, { now: clock }), "2026-09-30");
     assert.equal(isGameDateReleased("2026-10-01", clock, { now: clock }), false);
     assert.equal(isGameDateReleased("2026-09-30", clock, { now: clock }), true);
   });
 
-  it("releases today's game at 08:00 London", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 0);
+  it("releases today's game at 06:00 UK time", () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 0);
     assert.equal(getAvailableGameDate(clock, { now: clock }), "2026-10-01");
     assert.equal(isGameDateReleased("2026-10-01", clock, { now: clock }), true);
   });
 
-  it("keeps today's game available at 08:01 London", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 1);
+  it("keeps today's game available at 06:01 UK time", () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 1);
     assert.equal(getAvailableGameDate(clock, { now: clock }), "2026-10-01");
   });
 
-  it("uses GMT release timing after the autumn clock change", () => {
-    const before = londonWallTimeToUtc("2026-11-01", 7, 59);
-    const atRelease = londonWallTimeToUtc("2026-11-01", 8, 0);
+  it("uses BST release timing in summer", () => {
+    // 1 Oct 2026 is BST: 05:59 London = 04:59 UTC; 06:00 London = 05:00 UTC
+    const before = londonWallTimeToUtc("2026-10-01", 5, 59);
+    const atRelease = londonWallTimeToUtc("2026-10-01", 6, 0);
+    assert.equal(before.toISOString(), "2026-10-01T04:59:00.000Z");
+    assert.equal(atRelease.toISOString(), "2026-10-01T05:00:00.000Z");
+    assert.equal(getAvailableGameDate(before, { now: before }), "2026-09-30");
+    assert.equal(
+      getAvailableGameDate(atRelease, { now: atRelease }),
+      "2026-10-01",
+    );
+  });
+
+  it("uses GMT release timing in winter", () => {
+    const before = londonWallTimeToUtc("2026-11-01", 5, 59);
+    const atRelease = londonWallTimeToUtc("2026-11-01", 6, 0);
+    assert.equal(before.toISOString(), "2026-11-01T05:59:00.000Z");
+    assert.equal(atRelease.toISOString(), "2026-11-01T06:00:00.000Z");
     assert.equal(getAvailableGameDate(before, { now: before }), "2026-10-31");
     assert.equal(
       getAvailableGameDate(atRelease, { now: atRelease }),
@@ -117,8 +132,36 @@ describe("daily release availability", () => {
     );
   });
 
+  it("handles the spring DST transition (clocks jump forward)", () => {
+    // 2026-03-29: 01:00 → 02:00; release is still 06:00 London (= 05:00 UTC)
+    const before = londonWallTimeToUtc("2026-03-29", 5, 59);
+    const atRelease = londonWallTimeToUtc("2026-03-29", 6, 0);
+    const after = londonWallTimeToUtc("2026-03-29", 6, 1);
+    assert.equal(atRelease.toISOString(), "2026-03-29T05:00:00.000Z");
+    assert.equal(getAvailableGameDate(before, { now: before }), "2026-03-28");
+    assert.equal(
+      getAvailableGameDate(atRelease, { now: atRelease }),
+      "2026-03-29",
+    );
+    assert.equal(getAvailableGameDate(after, { now: after }), "2026-03-29");
+  });
+
+  it("handles the autumn DST transition (clocks fall back)", () => {
+    // 2026-10-25: clocks fall back; 06:00 London = 06:00 UTC (GMT)
+    const before = londonWallTimeToUtc("2026-10-25", 5, 59);
+    const atRelease = londonWallTimeToUtc("2026-10-25", 6, 0);
+    const after = londonWallTimeToUtc("2026-10-25", 6, 1);
+    assert.equal(atRelease.toISOString(), "2026-10-25T06:00:00.000Z");
+    assert.equal(getAvailableGameDate(before, { now: before }), "2026-10-24");
+    assert.equal(
+      getAvailableGameDate(atRelease, { now: atRelease }),
+      "2026-10-25",
+    );
+    assert.equal(getAvailableGameDate(after, { now: after }), "2026-10-25");
+  });
+
   it("changes availability when the configured release time changes", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 30);
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 30);
     assert.equal(
       getAvailableGameDate(clock, { now: clock }, DAILY_GAME_CONFIG),
       "2026-10-01",
@@ -135,19 +178,19 @@ describe("daily release availability", () => {
 });
 
 describe("getNextReleaseAt", () => {
-  it("points to today's release when still before 08:00", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+  it("points to today's release when still before 06:00", () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     assert.equal(
       getNextReleaseAt(clock, { now: clock }).toISOString(),
-      londonWallTimeToUtc("2026-10-01", 8, 0).toISOString(),
+      londonWallTimeToUtc("2026-10-01", 6, 0).toISOString(),
     );
   });
 
-  it("points to tomorrow's release after completing after 08:00", () => {
+  it("points to tomorrow's release after completing after 06:00", () => {
     const clock = londonWallTimeToUtc("2026-10-01", 20, 45);
     assert.equal(
       getNextReleaseAt(clock, { now: clock }).toISOString(),
-      londonWallTimeToUtc("2026-10-02", 8, 0).toISOString(),
+      londonWallTimeToUtc("2026-10-02", 6, 0).toISOString(),
     );
   });
 
@@ -155,11 +198,11 @@ describe("getNextReleaseAt", () => {
     const clock = londonWallTimeToUtc("2026-10-01", 20, 45);
     const next = getNextReleaseAt(clock, { now: clock });
     const hours = (next.getTime() - clock.getTime()) / 3_600_000;
-    assert.ok(hours > 10 && hours < 12);
+    assert.ok(hours > 8 && hours < 10);
   });
 
   it("follows a changed release configuration", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 10);
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 10);
     const next = getNextReleaseAt(clock, { now: clock }, {
       ...DAILY_GAME_CONFIG,
       releaseHour: 9,
@@ -175,8 +218,8 @@ describe("getNextReleaseAt", () => {
 describe("development clock overrides", () => {
   it("parses London wall-clock FIVEGAMES_DEV_NOW values", () => {
     assert.equal(
-      parseDevNow("2026-10-01T07:59").toISOString(),
-      londonWallTimeToUtc("2026-10-01", 7, 59).toISOString(),
+      parseDevNow("2026-10-01T05:59").toISOString(),
+      londonWallTimeToUtc("2026-10-01", 5, 59).toISOString(),
     );
   });
 
@@ -205,7 +248,7 @@ describe("development clock overrides", () => {
     assert.equal(
       getAvailableGameDate(new Date("2026-10-01T12:00:00.000Z"), {
         nodeEnv: "production",
-        devNow: "2026-09-30T07:59",
+        devNow: "2026-09-30T05:59",
       }),
       "2026-10-01",
     );
@@ -235,7 +278,7 @@ describe("development clock overrides", () => {
   });
 
   it("keeps getEffectiveGameDate aligned with availability", () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     assert.equal(
       getEffectiveGameDate(clock, { now: clock }),
       getAvailableGameDate(clock, { now: clock }),

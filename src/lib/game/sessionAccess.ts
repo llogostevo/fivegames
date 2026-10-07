@@ -13,7 +13,7 @@ import type { GameDefinition } from "@/types/game";
  * -----------
  * START (/api/game/start?mode=…):
  *   - Uses server clock only (production ignores all client overrides).
- *   - Loads getTodaysGameForMode() = currently released date at 08:00 Europe/London.
+ *   - Loads getTodaysGameForMode() = currently released date at 06:00 Europe/London.
  *   - Mints a signed session with { gameId, mode, startedAt, progression }.
  *   - Clients never choose a gameId.
  *   - Each mode has its own cookie so Daily and Football can coexist.
@@ -25,7 +25,7 @@ import type { GameDefinition } from "@/types/game";
  *   - Additionally: gameId must have been released at session.startedAt.
  *     This blocks forged-but-signed sessions that point at future JSON if the
  *     signing secret were ever weak, without breaking a player who started
- *     yesterday's game and finishes after today's 08:00 rollover.
+ *     yesterday's game and finishes after today's 06:00 rollover.
  *   - getGameForModeByDate(session.mode, session.gameId) then proceeds;
  *     progression rules stay in evaluateGuess.
  */

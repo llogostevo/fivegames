@@ -10,8 +10,8 @@ import {
 import { getReleasedGameByDate, getTodaysGame } from "./loadGame";
 
 describe("release gating security", () => {
-  it("blocks tomorrow before 08:00 Europe/London (BST)", async () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 7, 59);
+  it("blocks tomorrow before 06:00 Europe/London (BST)", async () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 5, 59);
     assert.equal(getAvailableGameDate(clock, { now: clock }), "2026-09-30");
     assert.equal(isGameDateReleased("2026-10-01", clock, { now: clock }), false);
     await assert.rejects(
@@ -21,8 +21,8 @@ describe("release gating security", () => {
     assert.equal(game.id, "2026-09-30");
   });
 
-  it("releases the daily game at 08:00 Europe/London (BST)", async () => {
-    const clock = londonWallTimeToUtc("2026-10-01", 8, 0);
+  it("releases the daily game at 06:00 Europe/London (BST)", async () => {
+    const clock = londonWallTimeToUtc("2026-10-01", 6, 0);
     assert.equal(getAvailableGameDate(clock, { now: clock }), "2026-10-01");
     const game = await getTodaysGame(clock, { now: clock });
     assert.equal(game.id, "2026-10-01");
@@ -30,9 +30,9 @@ describe("release gating security", () => {
 
   it("handles GMT winter release boundary", async () => {
     // 2026-11-02 is a Monday after our beta set; use 2026-10-25 (last beta day).
-    const before = londonWallTimeToUtc("2026-10-25", 7, 59);
+    const before = londonWallTimeToUtc("2026-10-25", 5, 59);
     assert.equal(getAvailableGameDate(before, { now: before }), "2026-10-24");
-    const at = londonWallTimeToUtc("2026-10-25", 8, 0);
+    const at = londonWallTimeToUtc("2026-10-25", 6, 0);
     assert.equal(getAvailableGameDate(at, { now: at }), "2026-10-25");
   });
 

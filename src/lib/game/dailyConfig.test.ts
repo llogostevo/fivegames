@@ -9,10 +9,13 @@ import {
 
 describe("daily release copy", () => {
   it("derives the release-time blurb from configuration", () => {
-    assert.equal(formatReleaseTimeLabel(DAILY_GAME_CONFIG), "8:00am");
+    assert.equal(DAILY_GAME_CONFIG.releaseHour, 6);
+    assert.equal(DAILY_GAME_CONFIG.releaseMinute, 0);
+    assert.equal(DAILY_GAME_CONFIG.timezone, "Europe/London");
+    assert.equal(formatReleaseTimeLabel(DAILY_GAME_CONFIG), "6am");
     assert.equal(
       formatDailyReleaseBlurb(DAILY_GAME_CONFIG),
-      "New game every day at 8:00am",
+      "A new Pin5 every morning at 6am.",
     );
   });
 
@@ -23,7 +26,7 @@ describe("daily release copy", () => {
         releaseHour: 9,
         releaseMinute: 30,
       }),
-      "New game every day at 9:30am",
+      "A new Pin5 every morning at 9:30am.",
     );
   });
 });

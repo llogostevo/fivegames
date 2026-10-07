@@ -33,7 +33,7 @@ export type ClockOptions = {
   devNow?: string | null;
   /**
    * Legacy date-only override; defaults to `process.env.FIVEGAMES_DEV_DATE`.
-   * Interpreted as 12:00 Europe/London on that date (after the default 08:00 release).
+   * Interpreted as 12:00 Europe/London on that date (after the configured daily release).
    * Pass `null` to force “no override”.
    */
   devDate?: string | null;
@@ -227,7 +227,7 @@ export function resolveClock(
         `Invalid FIVEGAMES_DEV_DATE "${devDate}". Use YYYY-MM-DD.`,
       );
     }
-    // Noon London ⇒ after the default 08:00 release on that calendar day.
+    // Noon London ⇒ after the configured daily release on that calendar day.
     return londonWallTimeToUtc(devDate, 12, 0);
   }
 

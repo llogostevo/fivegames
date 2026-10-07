@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   try {
     const mode = requestGameMode(request);
     const clock = await getRequestClockOptions();
-    // Release-gated: only the currently available game for this mode (08:00 London).
+    // Release-gated: only the currently available game for this mode (06:00 London).
     const game = await getTodaysGameForMode(mode, new Date(), clock);
 
     const existingSession = await readSignedSessionForMode(mode);

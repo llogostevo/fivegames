@@ -367,7 +367,7 @@ export function getWeeklyStats(
  * Consecutive calendar-day streak ending on the currently released game date
  * (if completed) or the previous calendar day (if not yet completed).
  *
- * Pass the currently released game date — not a naïve device date before 08:00 —
+ * Pass the currently released game date — not a naïve device date before 06:00 —
  * so an unreleased “tomorrow” is never treated as a miss.
  */
 export function getCurrentStreak(

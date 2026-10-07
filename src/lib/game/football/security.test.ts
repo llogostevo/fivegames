@@ -84,7 +84,7 @@ describe("Football answer security", () => {
   });
 
   it("gates future Football games behind the release schedule", async () => {
-    const before = londonWallTimeToUtc("2026-10-05", 7, 59);
+    const before = londonWallTimeToUtc("2026-10-05", 5, 59);
     await assert.rejects(
       () =>
         getReleasedFootballGameByDate("2026-10-05", before, { now: before }),
@@ -109,7 +109,7 @@ describe("Football answer security", () => {
   });
 
   it("rejects sessions started before their game released", async () => {
-    const tooEarly = londonWallTimeToUtc("2026-09-28", 7, 0);
+    const tooEarly = londonWallTimeToUtc("2026-09-28", 5, 0);
     const session = createEmptySession("2026-09-28", tooEarly, "football");
     await assert.rejects(
       () => loadGameForSession(session, { now: tooEarly }),

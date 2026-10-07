@@ -31,7 +31,7 @@ npm start
 
 Games live as server-only JSON under `data/games/YYYY-MM-DD.json`.
 
-A dated game becomes playable at **08:00 Europe/London** on its date (not midnight). Before that time, the previous day's game remains the available challenge. GMT/BST are handled via the `Europe/London` timezone.
+A dated game becomes playable at **06:00 Europe/London** on its date (not midnight). Before that time, the previous day's game remains the available challenge. GMT/BST are handled via the `Europe/London` timezone.
 
 Release schedule is configured in `src/lib/game/dailyConfig.ts` (`DAILY_GAME_CONFIG`). Change `releaseHour` / `releaseMinute` there to move the daily drop; countdown copy updates automatically.
 

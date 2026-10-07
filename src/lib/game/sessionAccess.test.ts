@@ -24,8 +24,8 @@ describe("loadGameForSession", () => {
     );
   });
 
-  it("rejects a future game started before its 08:00 release", async () => {
-    const tooEarly = londonWallTimeToUtc("2026-10-02", 7, 59);
+  it("rejects a future game started before its 06:00 release", async () => {
+    const tooEarly = londonWallTimeToUtc("2026-10-02", 5, 59);
     const session = createEmptySession("2026-10-02", tooEarly);
     await assert.rejects(
       () => loadGameForSession(session, { now: tooEarly }),
