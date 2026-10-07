@@ -11,6 +11,7 @@ import {
   Map as MapLibreMap,
   Marker,
   NavigationControl,
+  GPUInitializationError,
   type GeoJSONSource,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -26,6 +27,12 @@ import {
   shouldCancelHoldForMovement,
   triggerPinCommitHaptic,
 } from "@/lib/game/pinHold";
+import {
+  collectMapEnvironment,
+  describeUnknownError,
+  isMapDiagEnabled,
+  logMapDiag,
+} from "@/lib/map/diagnostics";
 import {
   DEFAULT_MAP_CENTER,
   DEFAULT_MAP_ZOOM,
@@ -354,21 +361,99 @@ export function GameMap({
     let cancelled = false;
 
     async function initialiseMap() {
+      const diag = isMapDiagEnabled();
+      if (diag) {
+        const env = collectMapEnvironment(container);
+        logMapDiag("init:start", {
+          ...env,
+          workerPathHint: "/maplibre/<version>/maplibre-gl-worker.mjs",
+        });
+
+        if (env.containerWidth < 2 || env.containerHeight < 2) {
+          logMapDiag("init:zero-size-container", {
+            containerWidth: env.containerWidth,
+            containerHeight: env.containerHeight,
+          });
+        }
+
+        if (!env.webgl2.ok) {
+          logMapDiag("init:webgl2-probe-failed", {
+            statusMessage: env.webgl2.statusMessage,
+            userAgent: env.userAgent,
+          });
+        }
+      }
+
       try {
         ensureMapLibreWorker();
+        logMapDiag("init:worker-configured");
+
         const style = await loadMapStyle({ gameMode, mapLabels });
+        logMapDiag("init:style-loaded", {
+          styleUrl: "https://tiles.openfreemap.org/styles/liberty",
+        });
 
         if (cancelled || !containerRef.current) {
           return;
         }
 
-        const map = new MapLibreMap({
-          container: containerRef.current,
-          style,
-          center: [initialCenter.lng, initialCenter.lat],
-          zoom: initialZoom,
-          maxZoom: MAP_MAX_ZOOM,
-          attributionControl: { compact: true },
+        if (diag) {
+          const envAfterStyle = collectMapEnvironment(containerRef.current);
+          logMapDiag("init:before-map-constructor", {
+            containerWidth: envAfterStyle.containerWidth,
+            containerHeight: envAfterStyle.containerHeight,
+          });
+        }
+
+        let map: MapLibreMap;
+        try {
+          map = new MapLibreMap({
+            container: containerRef.current,
+            style,
+            center: [initialCenter.lng, initialCenter.lat],
+            zoom: initialZoom,
+            maxZoom: MAP_MAX_ZOOM,
+            attributionControl: { compact: true },
+          });
+        } catch (constructError) {
+          const details = describeUnknownError(constructError);
+          if (constructError instanceof GPUInitializationError) {
+            logMapDiag("error:GPUInitializationError", {
+              ...details,
+              statusMessage: constructError.statusMessage,
+              requestedAttributes: constructError.requestedAttributes,
+              environment: diag
+                ? collectMapEnvironment(containerRef.current)
+                : undefined,
+            });
+          } else {
+            logMapDiag("error:map-constructor", {
+              ...details,
+              environment: diag
+                ? collectMapEnvironment(containerRef.current)
+                : undefined,
+            });
+          }
+          throw constructError;
+        }
+
+        map.on("error", (event) => {
+          const error = event.error;
+          if (error instanceof GPUInitializationError) {
+            logMapDiag("error:map-event-GPUInitializationError", {
+              ...describeUnknownError(error),
+              statusMessage: error.statusMessage,
+            });
+            return;
+          }
+          logMapDiag("error:map-event", {
+            ...describeUnknownError(error),
+            // MapLibre sometimes attaches source/tile URLs on the error object.
+            url:
+              error && typeof error === "object" && "url" in error
+                ? String((error as { url?: unknown }).url)
+                : undefined,
+          });
         });
 
         if (showControls) {
@@ -379,6 +464,31 @@ export function GameMap({
         }
 
         const canvas = map.getCanvas();
+
+        const onContextLost = (event: Event) => {
+          event.preventDefault();
+          logMapDiag("webgl:contextlost", {
+            environment: diag
+              ? collectMapEnvironment(containerRef.current ?? container)
+              : undefined,
+          });
+        };
+        const onContextRestored = () => {
+          logMapDiag("webgl:contextrestored", {
+            environment: diag
+              ? collectMapEnvironment(containerRef.current ?? container)
+              : undefined,
+          });
+          try {
+            map.resize();
+          } catch (resizeError) {
+            logMapDiag("webgl:contextrestored-resize-failed", {
+              ...describeUnknownError(resizeError),
+            });
+          }
+        };
+        canvas.addEventListener("webglcontextlost", onContextLost);
+        canvas.addEventListener("webglcontextrestored", onContextRestored);
 
         const onPointerDown = (event: PointerEvent) => {
           if (!interactiveRef.current || submittingRef.current) {
@@ -471,6 +581,17 @@ export function GameMap({
           if (cancelled) {
             return;
           }
+          if (diag) {
+            const size = collectMapEnvironment(containerRef.current ?? container);
+            logMapDiag("init:map-load", {
+              containerWidth: size.containerWidth,
+              containerHeight: size.containerHeight,
+              canvasWidth: canvas.width,
+              canvasHeight: canvas.height,
+              clientWidth: canvas.clientWidth,
+              clientHeight: canvas.clientHeight,
+            });
+          }
           // Globe must wait until style load — early setProjection throws and
           // blocks World mode ("Style is not done loading").
           if (initialProjection === "globe") {
@@ -478,6 +599,7 @@ export function GameMap({
               map.setProjection({ type: "globe" });
             } catch (error) {
               console.warn("Could not enable globe projection", error);
+              logMapDiag("init:globe-projection-failed", describeUnknownError(error));
             }
           }
           map.addSource(COURSE_SOURCE_ID, {
@@ -510,6 +632,17 @@ export function GameMap({
             },
           });
           map.resize();
+          if (diag) {
+            const afterResize = collectMapEnvironment(
+              containerRef.current ?? container,
+            );
+            logMapDiag("init:after-first-resize", {
+              containerWidth: afterResize.containerWidth,
+              containerHeight: afterResize.containerHeight,
+              canvasWidth: canvas.width,
+              canvasHeight: canvas.height,
+            });
+          }
           setMapReady(true);
         });
 
@@ -530,12 +663,15 @@ export function GameMap({
           }
         ).__pin5HoldCleanup = () => {
           canvas.removeEventListener("pointerdown", onPointerDown);
+          canvas.removeEventListener("webglcontextlost", onContextLost);
+          canvas.removeEventListener("webglcontextrestored", onContextRestored);
           window.removeEventListener("pointermove", onPointerMove);
           window.removeEventListener("pointerup", onPointerUp);
           window.removeEventListener("pointercancel", onPointerUp);
           canvas.removeEventListener("contextmenu", onContextMenu);
         };
       } catch (error) {
+        logMapDiag("init:failed", describeUnknownError(error));
         if (!cancelled) {
           setStyleError(
             error instanceof Error
@@ -575,7 +711,14 @@ export function GameMap({
       return;
     }
 
-    const observer = new ResizeObserver(() => {
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      const width = entry?.contentRect.width ?? container.clientWidth;
+      const height = entry?.contentRect.height ?? container.clientHeight;
+      if (width < 2 || height < 2) {
+        logMapDiag("resize:skip-zero-size", { width, height });
+        return;
+      }
       map.resize();
     });
     observer.observe(container);
