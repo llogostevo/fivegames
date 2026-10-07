@@ -3,7 +3,7 @@ import { describe, it } from "node:test";
 
 import { getTodaysGameForMode } from "@/lib/game/loadGame";
 import { scoringProfileForMode } from "@/lib/game/modes";
-import { WORLD_SCORING_PROFILE } from "@/lib/game/scoring";
+import { WORLD_AIRPORTS_SCORING_PROFILE } from "@/lib/game/scoring";
 
 import { WORLD_AIRPORTS_COUNT } from "./dataset";
 import { resetWorldAirportsScheduleCache } from "./loadWorldAirportsGame";
@@ -50,10 +50,10 @@ describe("World airports schedule", () => {
     );
   });
 
-  it("uses the world scoring profile", () => {
+  it("uses the world-airports scoring profile (1km FOUND)", () => {
     assert.equal(
       scoringProfileForMode("world-airports"),
-      WORLD_SCORING_PROFILE,
+      WORLD_AIRPORTS_SCORING_PROFILE,
     );
   });
 });

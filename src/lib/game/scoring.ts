@@ -2,6 +2,7 @@ import { CLUE_COUNT } from "@/lib/game/constants";
 import {
   CITY_FOUND_LOCATION_RADIUS_METRES,
   FOUND_LOCATION_RADIUS_METRES,
+  WORLD_FOUND_LOCATION_RADIUS_METRES,
 } from "@/lib/game/found";
 
 /**
@@ -43,7 +44,8 @@ export const COUNTRY_SCORING_PROFILE: ScoringProfile = {
 /**
  * World-scale profile — same ceilings, much longer decay so multi-thousand-km
  * misses can still score (wrong city / neighbouring country), while antipodal
- * guesses collapse toward zero.
+ * guesses collapse toward zero. FOUND uses the wider world radius for soft
+ * geographic centres.
  */
 export const WORLD_SCORING_PROFILE: ScoringProfile = {
   clueMaxScores: [
@@ -54,6 +56,15 @@ export const WORLD_SCORING_PROFILE: ScoringProfile = {
     15_000,
   ],
   accuracyDecayLengthKm: 2_000,
+  foundRadiusMetres: WORLD_FOUND_LOCATION_RADIUS_METRES,
+};
+
+/**
+ * World airports — same world accuracy curve, but the tighter country FOUND
+ * radius: terminals are visible on zoom and have a precise pin.
+ */
+export const WORLD_AIRPORTS_SCORING_PROFILE: ScoringProfile = {
+  ...WORLD_SCORING_PROFILE,
   foundRadiusMetres: FOUND_LOCATION_RADIUS_METRES,
 };
 

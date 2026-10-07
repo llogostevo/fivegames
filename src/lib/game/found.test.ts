@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import { checkPin, continueToNextClue, lockFinalAnswer, lockGuess } from "./evaluateGuess";
 import {
   FOUND_LOCATION_RADIUS_METRES,
+  WORLD_FOUND_LOCATION_RADIUS_METRES,
   isFoundLocation,
 } from "./found";
 import { distanceMeters } from "./distance";
@@ -29,10 +30,13 @@ const inside = { lat: 53.41, lng: -2.99 };
 describe("FOUND threshold helper", () => {
   it("treats distances at or below the radius as FOUND", () => {
     assert.equal(FOUND_LOCATION_RADIUS_METRES, 1_000);
+    assert.equal(WORLD_FOUND_LOCATION_RADIUS_METRES, 10_000);
     assert.equal(isFoundLocation(999), true);
     assert.equal(isFoundLocation(1_000), true);
     assert.equal(isFoundLocation(1_001), false);
     assert.equal(isFoundLocation(0), true);
+    assert.equal(isFoundLocation(10_000, WORLD_FOUND_LOCATION_RADIUS_METRES), true);
+    assert.equal(isFoundLocation(10_001, WORLD_FOUND_LOCATION_RADIUS_METRES), false);
   });
 
   it("uses metres from the same geodesic helper as scoring", () => {
