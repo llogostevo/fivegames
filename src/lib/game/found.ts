@@ -1,8 +1,14 @@
 /**
  * A pin has FOUND the location when its distance is at or within this radius.
- * Country / world profiles use this; city-scale modes override via ScoringProfile.
+ * Country / airports use this; world-scale and city modes override via ScoringProfile.
  */
 export const FOUND_LOCATION_RADIUS_METRES = 1_000;
+
+/**
+ * World / franchise places — geographic centres are soft targets (bays, cities,
+ * filming regions), so FOUND is more forgiving than country modes.
+ */
+export const WORLD_FOUND_LOCATION_RADIUS_METRES = 10_000;
 
 /** London pubs / stations — pin must land essentially on the venue. */
 export const CITY_FOUND_LOCATION_RADIUS_METRES = 10;

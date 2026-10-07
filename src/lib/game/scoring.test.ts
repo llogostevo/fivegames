@@ -6,6 +6,7 @@ import {
   CITY_SCORING_PROFILE,
   COUNTRY_SCORING_PROFILE,
   SCORING,
+  WORLD_AIRPORTS_SCORING_PROFILE,
   WORLD_SCORING_PROFILE,
   accuracyFactorFromDistanceKm,
   calculateFinalScore,
@@ -204,6 +205,30 @@ describe("WORLD_SCORING_PROFILE", () => {
     );
     assert.ok(
       accuracyFactorFromDistanceKm(0.05, CITY_SCORING_PROFILE) < 1,
+    );
+  });
+
+  it("treats pins within 10km as FOUND on the world profile", () => {
+    assert.equal(WORLD_SCORING_PROFILE.foundRadiusMetres, 10_000);
+    assert.equal(
+      accuracyFactorFromDistanceKm(10, WORLD_SCORING_PROFILE),
+      1,
+    );
+    assert.ok(accuracyFactorFromDistanceKm(11, WORLD_SCORING_PROFILE) < 1);
+  });
+
+  it("keeps the 1km FOUND radius for world airports", () => {
+    assert.equal(WORLD_AIRPORTS_SCORING_PROFILE.foundRadiusMetres, 1_000);
+    assert.equal(
+      WORLD_AIRPORTS_SCORING_PROFILE.accuracyDecayLengthKm,
+      WORLD_SCORING_PROFILE.accuracyDecayLengthKm,
+    );
+    assert.equal(
+      accuracyFactorFromDistanceKm(1, WORLD_AIRPORTS_SCORING_PROFILE),
+      1,
+    );
+    assert.ok(
+      accuracyFactorFromDistanceKm(2, WORLD_AIRPORTS_SCORING_PROFILE) < 1,
     );
   });
 

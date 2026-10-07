@@ -32,6 +32,7 @@ import {
 import {
   CITY_SCORING_PROFILE,
   COUNTRY_SCORING_PROFILE,
+  WORLD_AIRPORTS_SCORING_PROFILE,
   WORLD_SCORING_PROFILE,
   type ScoringProfile,
 } from "@/lib/game/scoring";
@@ -155,7 +156,7 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     family: "airports",
     mapStart: WORLD_MAP_START,
     mapLabels: STREETS_ONLY_MAP_LABELS,
-    scoring: WORLD_SCORING_PROFILE,
+    scoring: WORLD_AIRPORTS_SCORING_PROFILE,
   },
   "london-pubs": {
     id: "london-pubs",
