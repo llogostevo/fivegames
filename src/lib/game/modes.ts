@@ -10,6 +10,7 @@
  * `world` = World places (/world)
  * `london-pubs` = London pubs (/london-pubs)
  * `london-stations` = London train & tube (/london-stations)
+ * `uk-stations` = UK National Rail (/uk-stations)
  * `world-airports` = World airports (/airports)
  * `taylor-swift` = Taylor Swift places (/taylor-swift)
  * `harry-potter` = Harry Potter places (/harry-potter)
@@ -43,6 +44,7 @@ export const GAME_MODES = [
   "daily",
   "london-pubs",
   "london-stations",
+  "uk-stations",
   "taylor-swift",
   "harry-potter",
   "marvel",
@@ -84,6 +86,7 @@ export type GameModeDefinition = {
     | "world"
     | "pubs"
     | "stations"
+    | "uk-stations"
     | "airports"
     | "taylor-swift"
     | "harry-potter"
@@ -193,6 +196,24 @@ export const GAME_MODE_DEFINITIONS: Record<GameMode, GameModeDefinition> = {
     mapStart: LONDON_MAP_START,
     mapLabels: DETAILED_MAP_LABELS,
     scoring: CITY_SCORING_PROFILE,
+  },
+  "uk-stations": {
+    id: "uk-stations",
+    path: "/uk-stations",
+    title: "UK Railway Stations",
+    subtitle: "National Rail",
+    chipLabel: "UK Railway Stations",
+    emoji: "🚂",
+    detail: "Five clues to find today’s National Rail station.",
+    sessionCookie: "fivegames_session_uk_stations",
+    historyKey: "pin5_uk_stations_player_history",
+    sharePath: "/uk-stations",
+    shareTitle: "PIN5 🚂 UK RAILWAY STATIONS",
+    modeLabel: "UK RAILWAY STATIONS",
+    family: "uk-stations",
+    mapStart: DEFAULT_MAP_START,
+    mapLabels: STREETS_WATER_MAP_LABELS,
+    scoring: COUNTRY_SCORING_PROFILE,
   },
   "taylor-swift": {
     id: "taylor-swift",
@@ -384,6 +405,7 @@ export const SESSION_COOKIE_BY_MODE: Record<GameMode, string> = {
   "world-airports": GAME_MODE_DEFINITIONS["world-airports"].sessionCookie,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].sessionCookie,
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].sessionCookie,
+  "uk-stations": GAME_MODE_DEFINITIONS["uk-stations"].sessionCookie,
   "taylor-swift": GAME_MODE_DEFINITIONS["taylor-swift"].sessionCookie,
   "harry-potter": GAME_MODE_DEFINITIONS["harry-potter"].sessionCookie,
   marvel: GAME_MODE_DEFINITIONS.marvel.sessionCookie,
@@ -403,6 +425,7 @@ export const PLAYER_HISTORY_KEY_BY_MODE: Record<GameMode, string> = {
   "world-airports": GAME_MODE_DEFINITIONS["world-airports"].historyKey,
   "london-pubs": GAME_MODE_DEFINITIONS["london-pubs"].historyKey,
   "london-stations": GAME_MODE_DEFINITIONS["london-stations"].historyKey,
+  "uk-stations": GAME_MODE_DEFINITIONS["uk-stations"].historyKey,
   "taylor-swift": GAME_MODE_DEFINITIONS["taylor-swift"].historyKey,
   "harry-potter": GAME_MODE_DEFINITIONS["harry-potter"].historyKey,
   marvel: GAME_MODE_DEFINITIONS.marvel.historyKey,
@@ -462,6 +485,7 @@ export function modeDisplayName(mode: GameMode): string {
     def.family === "world" ||
     def.family === "pubs" ||
     def.family === "stations" ||
+    def.family === "uk-stations" ||
     def.family === "airports" ||
     def.family === "taylor-swift" ||
     def.family === "harry-potter" ||
@@ -493,6 +517,10 @@ export function isPubsMode(mode: GameMode): boolean {
 
 export function isStationsMode(mode: GameMode): boolean {
   return getModeDefinition(mode).family === "stations";
+}
+
+export function isUkStationsMode(mode: GameMode): boolean {
+  return getModeDefinition(mode).family === "uk-stations";
 }
 
 export function isAirportsMode(mode: GameMode): boolean {
@@ -532,6 +560,7 @@ export function listGeneralKnowledgeModes(): GameModeDefinition[] {
     GAME_MODE_DEFINITIONS.daily,
     GAME_MODE_DEFINITIONS["london-pubs"],
     GAME_MODE_DEFINITIONS["london-stations"],
+    GAME_MODE_DEFINITIONS["uk-stations"],
     GAME_MODE_DEFINITIONS["taylor-swift"],
     GAME_MODE_DEFINITIONS["harry-potter"],
     GAME_MODE_DEFINITIONS.marvel,

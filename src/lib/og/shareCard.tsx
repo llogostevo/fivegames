@@ -15,6 +15,7 @@ export type ShareCardKind =
   | "football"
   | "pubs"
   | "stations"
+  | "uk-stations"
   | "airports"
   | "taylor-swift"
   | "harry-potter"
@@ -380,6 +381,7 @@ function ShareIcon({
     case "pubs":
       return <PubsIcon accent={accent} />;
     case "stations":
+    case "uk-stations":
       return <StationsIcon accent={accent} />;
     case "airports":
       return <AirportsIcon accent={accent} />;
@@ -407,6 +409,7 @@ export function shareCardImage({
     kind === "football" ||
     kind === "pubs" ||
     kind === "stations" ||
+    kind === "uk-stations" ||
     kind === "airports" ||
     kind === "taylor-swift" ||
     kind === "harry-potter" ||
@@ -421,6 +424,8 @@ export function shareCardImage({
         ? "radial-gradient(circle at 50% 45%, #fffaf3 0%, #f7efe3 55%, #efe4d4 100%)"
         : kind === "stations"
           ? "radial-gradient(circle at 50% 45%, #fff5f5 0%, #fde8e8 55%, #f5dede 100%)"
+          : kind === "uk-stations"
+            ? "radial-gradient(circle at 50% 45%, #f4f7fb 0%, #e6eef6 55%, #d5e2ef 100%)"
           : kind === "airports"
             ? "radial-gradient(circle at 50% 45%, #f0f9ff 0%, #e0f2fe 55%, #dbeafe 100%)"
             : kind === "taylor-swift"
@@ -484,6 +489,7 @@ export function shareCardImage({
                   kind === "football" ||
                   kind === "pubs" ||
                   kind === "stations" ||
+                  kind === "uk-stations" ||
                   kind === "airports" ||
                   kind === "taylor-swift" ||
                   kind === "harry-potter" ||

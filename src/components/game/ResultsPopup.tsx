@@ -120,6 +120,7 @@ function modeRowLabel(def: GameModeDefinition): string {
     def.family === "world" ||
     def.family === "pubs" ||
     def.family === "stations" ||
+    def.family === "uk-stations" ||
     def.family === "airports" ||
     def.family === "taylor-swift" ||
     def.family === "harry-potter" ||
@@ -144,6 +145,9 @@ function modeRowHint(def: GameModeDefinition): string {
   }
   if (def.family === "stations") {
     return "5 clues · find today's London station";
+  }
+  if (def.family === "uk-stations") {
+    return "5 clues · find today's National Rail station";
   }
   if (def.family === "taylor-swift") {
     return "5 clues · find today's Taylor Swift place";
@@ -299,6 +303,7 @@ export function ResultsPopup({
       otherDef.family === "world" ||
       otherDef.family === "pubs" ||
       otherDef.family === "stations" ||
+      otherDef.family === "uk-stations" ||
       otherDef.family === "airports" ||
       otherDef.family === "taylor-swift" ||
       otherDef.family === "harry-potter" ||
@@ -315,6 +320,7 @@ export function ResultsPopup({
     ...modeStatuses.filter((row) => row.def.family === "daily"),
     ...modeStatuses.filter((row) => row.def.family === "pubs"),
     ...modeStatuses.filter((row) => row.def.family === "stations"),
+    ...modeStatuses.filter((row) => row.def.family === "uk-stations"),
     ...modeStatuses.filter((row) => row.def.family === "taylor-swift"),
     ...modeStatuses.filter((row) => row.def.family === "harry-potter"),
     ...modeStatuses.filter((row) => row.def.family === "marvel"),
@@ -347,7 +353,7 @@ export function ResultsPopup({
                   ? "The club was"
                   : mode === "london-pubs"
                     ? "The pub was"
-                    : mode === "london-stations"
+                    : mode === "london-stations" || mode === "uk-stations"
                       ? "The station was"
                       : mode === "world-airports"
                         ? "The airport was"

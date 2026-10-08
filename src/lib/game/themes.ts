@@ -15,6 +15,7 @@ export const THEME_IDS = [
   "world",
   "london-pubs",
   "london-stations",
+  "uk-stations",
   "world-airports",
   "taylor-swift",
   "harry-potter",
@@ -126,6 +127,14 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
     accent: "#e11d48",
     accentSoft: "#ffe4e6",
     emoji: "🚇",
+  },
+  "uk-stations": {
+    id: "uk-stations",
+    displayName: "UK Railway Stations",
+    label: "UK Railway Stations",
+    accent: "#0f3d6e",
+    accentSoft: "#e0e7ff",
+    emoji: "🚂",
   },
   "world-airports": {
     id: "world-airports",

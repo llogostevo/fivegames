@@ -99,13 +99,14 @@ describe("mode map labels", () => {
     );
   });
 
-  it("shows streets and water but not place names for football", () => {
+  it("shows streets and water but not place names for football and UK stations", () => {
     for (const mode of [
       "football",
       "football-italy",
       "football-germany",
       "football-france",
       "football-spain",
+      "uk-stations",
     ] as const) {
       assert.deepEqual(
         GAME_MODE_DEFINITIONS[mode].mapLabels,

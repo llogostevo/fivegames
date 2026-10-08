@@ -43,6 +43,8 @@ export function HubFlagIcon({
       return <TubeRoundel className={frame} />;
     case "APT":
       return <AirportBadge className={frame} />;
+    case "RW":
+      return <RailBadge className={frame} />;
     default:
       return (
         <span
@@ -180,6 +182,32 @@ function TubeRoundel({ className }: IconProps) {
       <rect width="24" height="18" rx="2" fill="#1d1d1f" />
       <circle cx="12" cy="9" r="6.2" fill="none" stroke="#E32017" strokeWidth="2.4" />
       <rect x="3.5" y="7.35" width="17" height="3.3" rx="0.4" fill="#0019A8" />
+    </svg>
+  );
+}
+
+/** National Rail–style badge for UK Railway Stations. */
+function RailBadge({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 18"
+      className={className}
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <rect width="24" height="18" rx="2" fill="#0f3d6e" />
+      <path
+        d="M5 8.2h14v3.2H5z"
+        fill="#ffffff"
+      />
+      <path
+        d="M7.2 8.2V5.4h9.6v2.8"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="1.2"
+      />
+      <circle cx="8.2" cy="13.2" r="1.35" fill="#ffffff" />
+      <circle cx="15.8" cy="13.2" r="1.35" fill="#ffffff" />
     </svg>
   );
 }

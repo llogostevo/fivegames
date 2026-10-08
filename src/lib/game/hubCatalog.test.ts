@@ -79,7 +79,7 @@ describe("hubCatalog", () => {
     assert.equal(HUB_SECTION_META.football.title, "Football 5");
 
     const places = hubGamesInGroup("places").map((game) => game.id);
-    assert.deepEqual(places, ["world", "world-airports", "daily"]);
+    assert.deepEqual(places, ["world", "world-airports", "daily", "uk-stations"]);
 
     const london = hubGamesInGroup("london");
     assert.equal(london.length, 2);
@@ -127,6 +127,16 @@ describe("hubCatalog", () => {
     assert.equal(stations.name, "Train & Tube");
     assert.equal(stations.shortLabel, "London");
     assert.equal(stations.code, "TFL");
+  });
+
+  it("lists UK National Rail stations under Places", () => {
+    const stations = HUB_GAMES.find((game) => game.id === "uk-stations");
+    assert.ok(stations);
+    assert.equal(stations.group, "places");
+    assert.equal(stations.name, "UK Railway Stations");
+    assert.equal(stations.shortLabel, "National Rail");
+    assert.equal(stations.tileEmoji, "🚂");
+    assert.equal(stations.code, "RW");
   });
 
   it("lists World airports under Places", () => {

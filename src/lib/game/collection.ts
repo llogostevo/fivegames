@@ -37,6 +37,7 @@ const PLACE_TOTAL_BY_MODE: Record<GameMode, number> = {
   daily: 28, // data/games/*.json
   "london-pubs": 107, // LONDON_PUBS_COUNT
   "london-stations": 495, // LONDON_STATIONS_COUNT
+  "uk-stations": 316, // UK_RAIL_READY_COUNT
   "taylor-swift": 94, // TAYLOR_SWIFT_COUNT (ready-only via parser)
   "harry-potter": 241, // HARRY_POTTER_COUNT (ready-only via parser)
   marvel: 203, // MARVEL_COUNT (ready-only via parser)

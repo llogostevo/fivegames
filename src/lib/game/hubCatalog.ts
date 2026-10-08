@@ -112,6 +112,17 @@ export const HUB_GAMES: readonly HubGameEntry[] = [
     groupLabel: "London",
   },
   {
+    id: "uk-stations",
+    group: "places",
+    name: "UK Railway Stations",
+    shortLabel: "National Rail",
+    code: "RW",
+    tileEmoji: "🚂",
+    href: GAME_MODE_DEFINITIONS["uk-stations"].path,
+    mapImage: "/hub-maps/uk.webp",
+    groupLabel: "Places",
+  },
+  {
     id: "taylor-swift",
     group: "music",
     name: "Taylor Swift",

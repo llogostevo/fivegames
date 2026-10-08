@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PIN5 UK Stations">
+  <rect width="32" height="32" rx="8" fill="#0f3d6e"/>
+  <rect x="6" y="14" width="20" height="4" rx="1" fill="#ffffff"/>
+  <circle cx="11" cy="20" r="2" fill="#ffffff"/>
+  <circle cx="21" cy="20" r="2" fill="#ffffff"/>
+  <path d="M10 14 V10 h12 v4" fill="none" stroke="#ffffff" stroke-width="1.6"/>
+</svg>

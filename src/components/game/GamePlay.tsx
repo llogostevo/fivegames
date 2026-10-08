@@ -882,7 +882,7 @@ export function GamePlay({ mode = DEFAULT_GAME_MODE }: GamePlayProps) {
                       ? "The club was"
                       : mode === "london-pubs"
                         ? "The pub was"
-                        : mode === "london-stations"
+                        : mode === "london-stations" || mode === "uk-stations"
                           ? "The station was"
                           : mode === "world-airports"
                             ? "The airport was"

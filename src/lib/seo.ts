@@ -122,6 +122,17 @@ export const MODE_SEO: Record<GameMode, SeoPage> = {
     faqs: SHARED_FAQS,
     siteName: "PIN5 Train & Tube",
   },
+  "uk-stations": {
+    path: GAME_MODE_DEFINITIONS["uk-stations"].path,
+    title: "UK Railway Stations Daily Quiz — PIN5",
+    description:
+      "Free daily National Rail quiz. Five clues, five pins — find today's UK railway station on the map.",
+    heading: "UK railway stations daily quiz",
+    intro:
+      "PIN5 UK Railway Stations is a free daily National Rail puzzle. Use five clues and five map pins to find today's railway station somewhere in Great Britain. A new station every morning.",
+    faqs: SHARED_FAQS,
+    siteName: "PIN5 UK Railway Stations",
+  },
   "taylor-swift": {
     path: GAME_MODE_DEFINITIONS["taylor-swift"].path,
     title: "Taylor Swift Daily Geography Quiz — PIN5",
