@@ -4,7 +4,7 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 
 import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
 import { DevDateToolbarHost } from "@/components/dev/DevDateToolbarHost";
-import { HUB_SEO } from "@/lib/seo";
+import { HUB_SEO, socialDescriptionFor, socialTitleFor } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 import "./globals.css";
@@ -33,16 +33,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: HUB_SEO.title,
-    description: HUB_SEO.description,
+    title: socialTitleFor(HUB_SEO),
+    description: socialDescriptionFor(HUB_SEO),
     siteName: "PIN5",
     locale: "en_GB",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: HUB_SEO.title,
-    description: HUB_SEO.description,
+    title: socialTitleFor(HUB_SEO),
+    description: socialDescriptionFor(HUB_SEO),
   },
 };
 

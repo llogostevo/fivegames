@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import {
   faqJsonLd,
+  gameJsonLd,
   relatedGameLinks,
   type SeoPage,
   websiteJsonLd,
@@ -16,6 +17,8 @@ type SeoCopyProps = {
   includeWebsiteSchema?: boolean;
   /** Hub already has an H1 — use 2 there. Game pages use 1. */
   headingLevel?: 1 | 2;
+  /** Skip the heading when the page already renders it as the H1. */
+  hideHeading?: boolean;
 };
 
 export function SeoCopy({
@@ -23,6 +26,7 @@ export function SeoCopy({
   mode,
   includeWebsiteSchema = false,
   headingLevel = 1,
+  hideHeading = false,
 }: SeoCopyProps) {
   const related = relatedGameLinks(mode);
   const HeadingTag = headingLevel === 1 ? "h1" : "h2";
@@ -33,10 +37,14 @@ export function SeoCopy({
       className="border-t border-[#d8dbd4] bg-[#ebece7] px-4 py-10 sm:px-6 sm:py-12"
     >
       <div className="mx-auto w-full max-w-[720px]">
-        <HeadingTag className="font-display text-2xl font-bold tracking-tight text-[#1d1d1f] sm:text-[1.75rem]">
-          {page.heading}
-        </HeadingTag>
-        <p className="mt-3 text-[0.95rem] leading-relaxed text-[#3c4043] sm:text-base">
+        {hideHeading ? null : (
+          <HeadingTag className="font-display text-2xl font-bold tracking-tight text-[#1d1d1f] sm:text-[1.75rem]">
+            {page.heading}
+          </HeadingTag>
+        )}
+        <p
+          className={`${hideHeading ? "" : "mt-3 "}text-[0.95rem] leading-relaxed text-[#3c4043] sm:text-base`}
+        >
           {page.intro}
         </p>
 
@@ -87,12 +95,22 @@ export function SeoCopy({
         ) : null}
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd(page)),
-        }}
-      />
+      {page.faqs.length > 0 ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd(page)),
+          }}
+        />
+      ) : null}
+      {mode ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(gameJsonLd(page)),
+          }}
+        />
+      ) : null}
       {includeWebsiteSchema ? (
         <script
           type="application/ld+json"

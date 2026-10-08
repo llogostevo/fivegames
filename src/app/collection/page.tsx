@@ -12,6 +12,7 @@ export const metadata: Metadata = buildPageMetadata({
   intro:
     "Track the Pin5 places you have Found within the success threshold, and Bagged on clue 1.",
   faqs: [],
+  noIndex: true,
 });
 
 export default function CollectionRoute() {

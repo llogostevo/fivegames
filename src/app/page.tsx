@@ -28,12 +28,12 @@ export default async function HomePage() {
           <div className="flex items-center gap-3.5">
             <Pin5Mark className="h-14 w-14 shrink-0" />
             <div className="min-w-0">
-              <h1 className="font-display text-[2.35rem] font-bold leading-none tracking-tight text-[#1d1d1f] sm:text-[2.75rem]">
+              <p className="font-display text-[2.35rem] font-bold leading-none tracking-tight text-[#1d1d1f] sm:text-[2.75rem]">
                 PIN5
-              </h1>
-              <p className="mt-1 text-[0.95rem] leading-snug text-[#5f6368] sm:text-base">
-                Daily location games — five clues, five pins, one place
               </p>
+              <h1 className="mt-2 max-w-xl font-display text-xl font-bold leading-tight tracking-tight text-[#1d1d1f] sm:text-2xl">
+                {HUB_SEO.heading}
+              </h1>
             </div>
           </div>
         </header>
@@ -44,7 +44,7 @@ export default async function HomePage() {
         />
       </div>
 
-      <SeoCopy page={HUB_SEO} includeWebsiteSchema headingLevel={2} />
+      <SeoCopy page={HUB_SEO} includeWebsiteSchema hideHeading />
     </main>
   );
 }
